@@ -29,3 +29,5 @@ result = t.compute_isolated('review_candidate.py',
 ```
 
 上述隔离接口在当前机器上因为未安装 Docker 未能运行端到端测试；只验证缺少 Docker 时拒绝在主进程执行。使用前必须在目标 Docker/操作系统上检查实际隔离设置、只读挂载和资源限制，不能将此接口视为已经过安全认证的沙箱。严格科研条件下请保留代码审查记录与输入输出摘要。
+
+Covasim另保存native_parameters.json与native_parameters_final.json，使用原生Sim.to_json导出初始化后和执行结束时的全部实际参数（含疾病持续时间、概率、接触层和干预默认值）；它们也计入manifest的SHA-256并由export复制，避免只保存显式YAML而遗漏原生默认配置。

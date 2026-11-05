@@ -32,3 +32,15 @@ python -m experiments.fetch_ttq_reference
 下载器校验整个Zenodo归档SHA-256和所选缓存SHA-256，不执行缓存；后一步加载出版社提供的已校验pickle，仅在独立引擎环境执行。不要对任意来源的pickle使用此命令。实际比对结果在results/covasim_engine_validation.json，一次已核查结果在experiments/中。公开缓存不随平台源码再分发，保留原始CC BY-SA来源和使用条件。
 
 Covasim平台step0是首次原生日更新之前，simulation_day=-1；平台step1完成day0。运行预算steps与原生n_days不同，adapter设置n_days=steps-1。完整记录模式保留全部可观测个体和接触快照，低资源模式可关表或降频。关闭界面、强制终止或断电可能留下未完成Parquet，检查manifest状态和校验值后使用。
+
+
+若旧版Python的pip因本机代理/TLS连接失败，可用主环境Python准备离线wheel，再交给Covasim环境安装。此次开发采用了这一路径；没有关闭证书校验或修改引擎源码。Windows示例：
+
+```powershell
+python -m pip download --no-deps --dest results/bootstrap pip
+.\.covasim-venv\Scripts\python.exe -m pip install --no-index --find-links results/bootstrap --upgrade pip
+python -m pip download --dest results/covasim_wheels --python-version 310 --platform win_amd64 --implementation cp --abi cp310 --only-binary=:all: -r requirements-covasim-compat-lock.txt
+.\.covasim-venv\Scripts\python.exe -m pip install --no-index --find-links results/covasim_wheels -r requirements-covasim-compat-lock.txt
+```
+
+原生初始化后的所有默认参数及终态实际参数，分别保存为native_parameters.json及native_parameters_final.json并校验，疾病参数不只依靠默认版本推断。

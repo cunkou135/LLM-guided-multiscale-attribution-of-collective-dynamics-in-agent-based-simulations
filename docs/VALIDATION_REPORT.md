@@ -6,9 +6,9 @@
 
 - 固定想定 1.0 原文、manifest、SHA256SUMS 与代码固定哈希；每次运行校验两份文件。篡改拒绝、场景与模型匹配、输出来源信息均有自动测试。
 - Schelling 沿用 Mesa 3.5.2 规则；Covasim 使用独立 Python 3.10.2 中的原生 2.0.0。配置、串行批量、结果目录、统一 Parquet 记录及查询和指标接口共用。Deffuant 源码及配置已移除。
-- `python main.py run --config configs/schelling.yaml` 实际通过，默认种子在 8 步达到全体满意。`python main.py run --config configs/covasim.yaml` 实际执行 N=1000 的 60 日演示，本次结果 cbd74d90786241778eff9f3e998153b4 有61000条主体状态、481条感染事件、201条检测事件、4957条状态转移事件及保留层名的每日接触边。完整输出四张表；达到执行预算应记 max_steps，不等于疫情稳定。开发中发现曾将原生 complete 误标 stable，已修复并通过测试检查。
+- `python main.py run --config configs/schelling.yaml` 实际通过，默认种子在 8 步达到全体满意。`python main.py run --config configs/covasim.yaml` 实际执行 N=1000 的 60 日演示，本次结果 cbd74d90786241778eff9f3e998153b4 有61000条主体状态、481条感染事件、201条检测事件、4957条状态转移事件及保留层名的每日接触边。另外保存原生初始化及终态完整参数JSON并校验。完整输出四张表；达到执行预算应记 max_steps，不等于疫情稳定。开发中发现曾将原生 complete 误标 stable，已修复并通过测试检查。
 - `python main.py batch --config configs/batch_schelling.yaml` 批次 batch_61af099b04314334b4e78dcc9859f063.json，6 次成功。`python main.py batch --config configs/batch_covasim.yaml` 批次 batch_4f014d45c0e8431ea5d067f391f7a09c.json，4 次成功、0 错误。不同运行互不覆盖，测试覆盖某组合非法时继续保留其他成功运行。
-- `python -m pytest -q` 检查状态、规则、种子重复、独立种子、完整和低资源日志、元数据、导出、动态指标、固定想定以及界面/无头一致性。本次最终实际输出为26 passed（50.53秒）；不能引用旧版平台的通过数。
+- `python -m pytest -q` 检查状态、规则、种子重复、独立种子、完整和低资源日志、元数据、导出、动态指标、固定想定以及界面/无头一致性。本次最终实际输出为26 passed（50.52秒）；不能引用旧版平台的通过数。
 
 ## Schelling 对照
 

@@ -35,7 +35,9 @@ def test_repeatability_logs_and_indicator(config, tmp_path):
     assert meta['actual_steps'] == 3 and meta['status'] == 'max_steps'
     assert meta['engine_versions']['covasim'] == '2.0.0'
     assert meta['historical_reproduction'] is False
-    assert len(meta['checksums_sha256']) == 4
+    assert len(meta['checksums_sha256']) == 6
+    native = json.loads((a / 'native_parameters.json').read_text())['parameters']
+    assert native['pop_size'] == config['parameters']['pop_size'] and 'dur' in native
 
 
 def test_low_resource_and_final_snapshot(config):

@@ -168,6 +168,7 @@ def worker():
     from simulations.common.trajectory_api import send_record
     config = json.loads(sys.stdin.readline())
     model = CovasimAdapter(config)
+    send_record('native_parameters', model.sim.to_json(keys='parameters'))
     for row in model.events():
         send_record('events', row)
     versions = dict(python=platform.python_version(), covasim=cv.__version__, numpy=np.__version__)
@@ -180,6 +181,8 @@ def worker():
             model.step()
             for row in model.events():
                 send_record('events', row)
+            if not model.running:
+                send_record('native_parameters_final', model.sim.to_json(keys='parameters'))
         elif command.strip() == 'snapshot':
             if config['logging']['agent_states']:
                 for row in model.states():

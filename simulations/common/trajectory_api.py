@@ -112,6 +112,9 @@ class TrajectoryWriter:
         self.step = 0
 
     def record(self, name, row):
+        if name in ('native_parameters', 'native_parameters_final'):
+            (self.directory / f'{name}.json').write_text(json.dumps(row, indent=2, ensure_ascii=False, allow_nan=False), encoding='utf-8')
+            return
         if name == 'events':
             self.event_index += 1
         if not self.enabled[name]:
@@ -155,6 +158,9 @@ class TrajectoryWriter:
             granularity = {'agent_states': 'agent per sampled step', 'events': 'observed model event', 'model_states': 'one per sampled step', 'contacts': 'potential contact edge per sampled step'}[name]
             catalog[name] = {'granularity': granularity, 'fields': {key: {'type': str(typ), 'description': desc} for key, (typ, desc) in self.definitions[name].items()}}
         (self.directory / 'field_catalog.json').write_text(json.dumps(catalog, indent=2, ensure_ascii=False), encoding='utf-8')
+        for name in ('native_parameters.json', 'native_parameters_final.json'):
+            if (self.directory / name).exists():
+                checksums[name] = _digest(self.directory / name)
         return checksums
 
 
@@ -186,7 +192,7 @@ class Trajectory:
         dest.mkdir(parents=True, exist_ok=True)
         for name in self.catalog:
             shutil.copy2(self.directory / f'{name}.parquet', dest / f'{name}.parquet')
-        for name in ('field_catalog.json', 'manifest.json', 'resolved_config.yaml', 'scenario.md'):
+        for name in ('field_catalog.json', 'manifest.json', 'resolved_config.yaml', 'scenario.md', 'native_parameters.json', 'native_parameters_final.json'):
             source = self.directory / name
             if source.exists():
                 shutil.copy2(source, dest / name)
