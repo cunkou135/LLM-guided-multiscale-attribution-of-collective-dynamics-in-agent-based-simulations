@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<experiments>
+  <experiment name="comparison" repetitions="3" sequentialRunOrder="true" runMetricsEveryStep="true" timeLimit="40">
+    <setup>random-seed (11 * (1 + ((behaviorspace-run-number - 1) mod 3)))
+setup</setup>
+    <go>go</go>
+    <exitCondition>all? turtles [happy?]</exitCondition>
+    <metrics>
+      <metric>11 * (1 + ((behaviorspace-run-number - 1) mod 3))</metric>
+      <metric>count turtles</metric>
+      <metric>percent-unhappy</metric>
+      <metric>percent-similar</metric>
+    </metrics>
+    <constants>
+      <enumeratedValueSet variable="density"><value value="80"/></enumeratedValueSet>
+      <enumeratedValueSet variable="visualization"><value value="&quot;old&quot;"/></enumeratedValueSet>
+    </constants>
+    <subExperiments>
+      <subExperiment>
+        <enumeratedValueSet variable="%-similar-wanted"><value value="20"/><value value="40"/></enumeratedValueSet>
+      </subExperiment>
+    </subExperiments>
+  </experiment>
+</experiments>

@@ -1,0 +1,152 @@
+[
+  {
+    "seed": 11,
+    "threshold": 0.2,
+    "mesa_run_id": "c63f36bfef3a4776b5e4949295724421",
+    "mesa_initial": {
+      "step": 0,
+      "unhappy": 0.08653846153846156,
+      "similarity": 0.5091463414634146
+    },
+    "mesa_final": {
+      "step": 3,
+      "unhappy": 0.0,
+      "similarity": 0.6137295081967213
+    },
+    "netlogo_initial": {
+      "step": 0,
+      "unhappy": 0.06097560975609756,
+      "similarity": 0.4706430568499534
+    },
+    "netlogo_final": {
+      "step": 5,
+      "unhappy": 0.0,
+      "similarity": 0.5421686746987951
+    }
+  },
+  {
+    "seed": 22,
+    "threshold": 0.2,
+    "mesa_run_id": "9899ae3fb0b0461bbb97deca50651164",
+    "mesa_initial": {
+      "step": 0,
+      "unhappy": 0.04643962848297212,
+      "similarity": 0.49334600760456276
+    },
+    "mesa_final": {
+      "step": 3,
+      "unhappy": 0.0,
+      "similarity": 0.5420650095602294
+    },
+    "netlogo_initial": {
+      "step": 0,
+      "unhappy": 0.06209150326797386,
+      "similarity": 0.5027144408251901
+    },
+    "netlogo_final": {
+      "step": 5,
+      "unhappy": 0.0,
+      "similarity": 0.5714285714285714
+    }
+  },
+  {
+    "seed": 33,
+    "threshold": 0.2,
+    "mesa_run_id": "ff9196ac2989485b82e8a3e1d27fe751",
+    "mesa_initial": {
+      "step": 0,
+      "unhappy": 0.10299003322259137,
+      "similarity": 0.49667405764966743
+    },
+    "mesa_final": {
+      "step": 6,
+      "unhappy": 0.0,
+      "similarity": 0.5982339955849889
+    },
+    "netlogo_initial": {
+      "step": 0,
+      "unhappy": 0.0759493670886076,
+      "similarity": 0.49799196787148586
+    },
+    "netlogo_final": {
+      "step": 5,
+      "unhappy": 0.0,
+      "similarity": 0.56797583081571
+    }
+  },
+  {
+    "seed": 11,
+    "threshold": 0.4,
+    "mesa_run_id": "b0a6e5f51e034227814a4b2cc7e9959c",
+    "mesa_initial": {
+      "step": 0,
+      "unhappy": 0.2628205128205128,
+      "similarity": 0.5091463414634146
+    },
+    "mesa_final": {
+      "step": 15,
+      "unhappy": 0.0,
+      "similarity": 0.7921686746987951
+    },
+    "netlogo_initial": {
+      "step": 0,
+      "unhappy": 0.31402439024390244,
+      "similarity": 0.4706430568499534
+    },
+    "netlogo_final": {
+      "step": 16,
+      "unhappy": 0.0,
+      "similarity": 0.8078358208955224
+    }
+  },
+  {
+    "seed": 22,
+    "threshold": 0.4,
+    "mesa_run_id": "83c9554882854ba89045ef3502b22cb1",
+    "mesa_initial": {
+      "step": 0,
+      "unhappy": 0.2786377708978328,
+      "similarity": 0.49334600760456276
+    },
+    "mesa_final": {
+      "step": 14,
+      "unhappy": 0.0,
+      "similarity": 0.8229755178907722
+    },
+    "netlogo_initial": {
+      "step": 0,
+      "unhappy": 0.2679738562091504,
+      "similarity": 0.5027144408251901
+    },
+    "netlogo_final": {
+      "step": 8,
+      "unhappy": 0.0,
+      "similarity": 0.8066239316239315
+    }
+  },
+  {
+    "seed": 33,
+    "threshold": 0.4,
+    "mesa_run_id": "9095b83b8345432ea873f293075694b7",
+    "mesa_initial": {
+      "step": 0,
+      "unhappy": 0.3156146179401993,
+      "similarity": 0.49667405764966743
+    },
+    "mesa_final": {
+      "step": 8,
+      "unhappy": 0.0,
+      "similarity": 0.8090614886731392
+    },
+    "netlogo_initial": {
+      "step": 0,
+      "unhappy": 0.310126582278481,
+      "similarity": 0.49799196787148586
+    },
+    "netlogo_final": {
+      "step": 9,
+      "unhappy": 0.0,
+      "similarity": 0.8472222222222221
+    }
+  }
+]

@@ -4,7 +4,7 @@
 
 - Schelling, T. C. (1971). Dynamic models of segregation. *Journal of Mathematical Sociology*. [doi:10.1080/0022250X.1971.9989794](https://doi.org/10.1080/0022250X.1971.9989794)。原始理论包含多种设定；不能将任何现代网格示例简单等同为原始论文的唯一实现。
 - 实际逐项选择的可运行参考是 [Mesa v3.5.2 Schelling 示例](https://github.com/mesa/mesa/tree/v3.5.2/mesa/examples/basic/schelling)，核查的是安装的 3.5.2 wheel 中 `model.py` 和 `agents.py`，不是 main 分支。Mesa 版权归 Core Mesa Team and contributors，Apache-2.0，原版权通知保留于根目录 `THIRD_PARTY_NOTICES`。本项目针对该参考规则重新实现，加入原始状态/事件采集、可配置边界与实验步数上限；Mesa 上游未提供本项目的日志和界面封装。
-- [Wilensky, NetLogo Segregation](https://ccl.northwestern.edu/netlogo/models/Segregation) 是独立比较来源：其文档描述包裹边界、按邻居比例判断和在附近寻找空位；Mesa 默认非周期边界，随机从所有空格选择。两者并非同一动力学实现，本项目没有复制 NetLogo 代码，不将其作为数值逐步基准。
+- [Wilensky, NetLogo Segregation](https://ccl.northwestern.edu/netlogo/models/Segregation) 是独立比较来源：本机 NetLogo 7.0.4 的模型源码显示包裹边界、在附近寻找空位；Mesa 默认非周期边界，随机从所有空格选择。NetLogo 的 `similar-nearby >= threshold * total-nearby` 在没有邻居时判断为满意；Mesa 在阈值大于 0 时判断为不满意。NetLogo 的 `percent-similar` 源码实际计算全部同类邻居数之和除以全部已占邻居数之和，与本项目同定义的有向邻居比例可比较（网页使用“平均”措辞可能令人误解）。两者并非同一动力学实现，本项目没有复制 NetLogo 代码，不将其作为数值逐步基准。
 
 ## Deffuant
 

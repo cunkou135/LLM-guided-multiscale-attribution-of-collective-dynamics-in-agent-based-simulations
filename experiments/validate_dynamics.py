@@ -37,11 +37,13 @@ def main():
                 c['seed'], c['steps'] = seed, 150
                 c['parameters'].update(epsilon=epsilon, mu=mu)
                 output = run(c)
-                states = Trajectory(output).read('agent_states', start=c['steps'])
-                x = states.opinion
+                states = Trajectory(output).read('agent_states')
+                x = states.loc[states.step == c['steps'], 'opinion']
+                variance = states.groupby('step').opinion.var(ddof=0)
                 entries.append(dict(model='deffuant', seed=seed, epsilon=epsilon, mu=mu,
                                     run_id=output.name, steps=c['steps'], initial_distribution='uniform_0_1',
                                     final_groups_gap_0_02=groups(x), final_variance=float(x.var(ddof=0)),
+                                    variance_by_step={str(s): float(variance.loc[s]) for s in (0, 50, 100, 150)},
                                     final_min=float(x.min()), final_max=float(x.max())))
     path = Path('results') / 'validation_dynamics.json'
     path.write_text(json.dumps(entries, indent=2), encoding='utf-8')
