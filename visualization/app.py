@@ -1,0 +1,101 @@
+"""Mesa SolaraViz interface; the simulation itself is the headless RunSession."""
+import copy
+import os
+from pathlib import Path
+
+import numpy as np
+import solara
+from matplotlib.figure import Figure
+from mesa import Model
+from mesa.visualization import Slider, SolaraViz
+
+from simulations.common.runner import RunSession, load
+
+
+class VisualRun(Model):
+    def __init__(self, config, primary, secondary):
+        c = copy.deepcopy(config)
+        if c['model'] == 'schelling':
+            c['parameters'].update(homophily=primary, density=secondary)
+        else:
+            c['parameters'].update(epsilon=primary, mu=secondary)
+        super().__init__(rng=c['seed'])
+        self.session = RunSession(c)
+        self.history = []
+        self.remember()
+
+    def remember(self):
+        m = self.session.model
+        if self.session.config['model'] == 'schelling':
+            summary = m.summary()
+            population = summary['population']
+            score = summary['happy'] / population if population else 0
+            similarity = summary['same_neighbors'] / summary['neighbors'] if summary['neighbors'] else 0
+            self.history.append((self.session.completed, score, similarity))
+        else:
+            opinions = [a.opinion for a in m.agents]
+            self.history.append((self.session.completed, float(np.mean(opinions)), float(np.std(opinions))))
+
+    def step(self):
+        if not self.session.closed:
+            self.session.advance()
+            self.remember()
+        self.running = not self.session.closed
+
+    def close(self):
+        self.session.close()
+        self.running = False
+
+
+def display(model):
+    session = model.session
+    core = session.model
+    fig = Figure(figsize=(9, 4), constrained_layout=True)
+    left, right = fig.subplots(1, 2)
+    if session.config['model'] == 'schelling':
+        for kind, color in ((0, '#377eb8'), (1, '#e67e22')):
+            for happy, marker in ((True, 'o'), (False, 'x')):
+                agents = [a for a in core.agents if a.kind == kind and a.happy == happy]
+                left.scatter([a.cell.coordinate[0] for a in agents], [a.cell.coordinate[1] for a in agents], c=color, marker=marker, s=30, label=f'{kind} {"happy" if happy else "unhappy"}')
+        p = session.config['parameters']
+        left.set(xlim=(-.5, p['width']-.5), ylim=(-.5, p['height']-.5), title='Residents (empty = vacant)', aspect='equal')
+        left.legend(fontsize=7)
+        titles = ('Happy fraction', 'Same-kind neighbor fraction')
+    else:
+        x = [a.opinion for a in core.agents]
+        left.hist(x, bins=np.linspace(0, 1, 21), color='#377eb8')
+        left.set(xlim=(0, 1), title='Current opinion distribution', xlabel='Opinion', ylabel='Agents')
+        titles = ('Mean opinion', 'Opinion standard deviation')
+    history = np.asarray(model.history)
+    right.plot(history[:, 0], history[:, 1], label=titles[0])
+    right.plot(history[:, 0], history[:, 2], label=titles[1])
+    right.set(xlabel='Sampling step', title='Evolution')
+    right.legend(fontsize=8)
+    return solara.FigureMatplotlib(fig, format='png')
+
+
+def status(model):
+    c = model.session.config
+    return solara.Markdown(f"**Step:** {model.session.completed}/{c['steps']}　 **Seed:** {c['seed']}　 **Parameters:** `{c['parameters']}`  \n**Run:** `{model.session.out}`")
+
+
+@solara.component
+def Page():
+    config = load(os.environ['ABMS_CONFIG'])
+    p = config['parameters']
+    if config['model'] == 'schelling':
+        primary, secondary = p['homophily'], p['density']
+        names = ('Homophily', 'Density')
+    else:
+        primary, secondary = p['epsilon'], p['mu']
+        names = ('Confidence epsilon', 'Assimilation mu')
+    initial = solara.use_memo(lambda: VisualRun(config, primary, secondary), [])
+    reactive = solara.use_reactive(initial)
+    current = reactive.value
+
+    def close_when_replaced():
+        return current.close
+
+    solara.use_effect(close_when_replaced, [current])
+    params = {'config': config, 'primary': Slider(names[0], primary, 0, 1, .05), 'secondary': Slider(names[1], secondary, 0, 1 if config['model'] == 'schelling' else .5, .05)}
+    SolaraViz(reactive, components=[display, status], model_params=params, name=f"ABMS Lab — {config['model']}")
