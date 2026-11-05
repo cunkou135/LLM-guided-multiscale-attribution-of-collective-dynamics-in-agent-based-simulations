@@ -1,4 +1,0 @@
-base_config: deffuant.yaml
-seeds: [11, 22, 33]
-grid:
-  epsilon: [0.1, 0.3]

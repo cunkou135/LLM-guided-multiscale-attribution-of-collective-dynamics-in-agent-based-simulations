@@ -1,65 +1,67 @@
-# ABMS Lab：标准多主体仿真实验平台
+# ABMS Lab：Schelling 与 Covasim 双场景平台
 
-本项目为多尺度机制归因研究提供两类经典仿真及可追溯原始轨迹：Mesa 3.5.2 Schelling 居住隔离示例对应实现，和完全混合的 Deffuant–Weisbuch 有界信任模型。主体由经典规则驱动。本项目不实现大语言模型、因果图、统计检验或主动实验调度；仿真结果及描述性指标本身不构成因果证据。
+平台提供 Mesa 3.5.2 的 Schelling 标准规则及原生 Covasim 2.0.0 的运行管理、浏览器界面、批量实验与原始轨迹。固定想定在 scenarios/，其文本、编号和 SHA-256 不随参数实验改变。LLM、因果发现、Bootstrap 和证据融合不在本项目范围内。
 
-规则、许可和差异参见 [模型来源](docs/MODEL_SOURCES.md)、[ODD 规格](docs/MODEL_SPECIFICATIONS.md)，实际检查及其限制见 [验证报告](docs/VALIDATION_REPORT.md)。
+Covasim 默认配置是**未完成金县历史校准的 hybrid 演示**，没有 LTCF 层。论文的 Figure 3 小规模公开基准已作缓存对照；这不表示原研究的金县人口和疫情校准已经复现。模型、数据与许可来源见 [来源核查](docs/MODEL_SOURCES.md)。
 
 ## 安装
 
-在 Python 3.12 的隔离环境中，从项目根目录运行：
+主环境使用 Python 3.12：
 
 ```bash
 python -m venv .venv
-# Windows PowerShell: .venv\Scripts\Activate.ps1
-# macOS/Linux: source .venv/bin/activate
+# Windows: .venv\Scripts\Activate.ps1
+# Linux/macOS: source .venv/bin/activate
 python -m pip install -e ".[test]"
-python -m pytest -q
 ```
 
-本项目固定 Mesa 3.5.2，其他依赖范围见 `pyproject.toml`。如需跨机器精确复现，应另存 `python -m pip freeze` 的环境清单；该项目并未锁定全部传递依赖。无需密钥或私有服务。
+Covasim 使用独立 Python 3.10 兼容环境。本次实测 Python 3.10.2；它不是论文原始 Python 3.8 冻结环境。Windows 已安装 Python 3.10 时：
 
-## 运行和配置
+```powershell
+py -3.10 -m venv .covasim-venv
+.\.covasim-venv\Scripts\python.exe -m pip install -r requirements-covasim-compat-lock.txt
+```
 
-所有命令在项目根目录执行；`output.directory` 相对于当前工作目录。单次和串行批量模式不会打开浏览器：
+Linux/macOS 可用 `python3.10 -m venv .covasim-venv` 和 `.covasim-venv/bin/python`；相应修改 YAML 中 `engine.python`。跨系统安装锁定依赖的可用性仍需在目标系统验证。精确实测依赖保存在 requirements-covasim-compat-lock.txt，最小直接依赖在 requirements-covasim-compat.txt。两个环境通过子进程传输记录，Covasim 没有改写为 Mesa 模型。
+
+## 执行
+
+在仓库根目录运行，输出路径相对于当前工作目录：
 
 ```bash
 python main.py run --config configs/schelling.yaml
-python main.py run --config configs/deffuant.yaml
+python main.py run --config configs/covasim.yaml
 python main.py batch --config configs/batch_schelling.yaml
-python main.py batch --config configs/batch_deffuant.yaml
-python -m experiments.validate_dynamics
-```
-
-单次运行打印唯一结果目录；批量运行打印 JSON 报告路径，某次失败不阻止其他组合，报告记录全部种子、参数和错误，存在失败时命令退出码为 1。批量配置可使用 `seeds: [11, 22]`，或改成 `master_seed: 123` 和 `replicates: 2`；`grid` 中列出模型参数及可选 `steps` 的列表，生成笛卡尔积。相同种子可配对不同参数，但**不保证**不同条件消费相同随机事件。
-
-配置包含 `model`、`model_version`、`seed`、`steps`、`parameters`、`sampling`、`logging`、`output`、`visualization`；未知字段及不合法的类型/取值会被拒绝。`steps` 是上限，Schelling 满足稳定条件时提前停止。`sampling.frequency` 控制状态快照间隔，初态和最后状态总会保存；事件默认每次完整保存。关闭数据类别或降低采样频率会在 manifest 标注缺失。Schelling 的 density 是每个格子独立占用的概率，实际数量不固定；若完全占满且存在不满意主体，官方随机空格搬迁无法执行，此运行会记录错误。Deffuant 的一步包含 `interactions_per_step` 次随机配对。
-
-## 可视化
-
-```bash
+python main.py batch --config configs/batch_covasim.yaml
 python main.py ui --config configs/schelling.yaml
-python main.py ui --config configs/deffuant.yaml
+python main.py ui --config configs/covasim.yaml
+python -m pytest -q
 ```
 
-分别启动后访问配置中 `visualization.host:visualization.port`，默认为 <http://127.0.0.1:8765>。控制栏提供单步、连续、暂停、重置；拖动参数滑块后点击 Reset 创建新运行。选模型或载入另一份 YAML 时，停止服务并以新配置重启。Reset 会结束并保存上次运行；完成上限或稳定条件也会自动保存。未正常退出的服务或浏览器断线可能留下未完成日志，正式实验建议使用无头模式并检查 manifest。默认监听回环地址；不要随意对公网开放。
+无头模式不会打开浏览器。界面命令启动后访问配置中的 host/port，默认为 http://127.0.0.1:8765 。单步、运行/暂停和重置由 Mesa SolaraViz 控制。滑块修改后 Reset 创建新运行；选择另一模型或 YAML 时停止服务并以对应命令重启。两模型的界面和无头模式使用同一运行会话；Covasim 每步实际调用原生引擎，页面不是轨迹回放。页面标明其未历史校准，并显示分层潜在接触边、疾病状态、参数和干预配置。正式实验建议无头执行。
 
-## 读取日志与示例指标
+YAML 控制 model、model_version、scenario_id、seed、steps、parameters、sampling、logging、output、visualization；Covasim 另含 engine。Schelling 参数沿用参考含义，density 是每格独立占用概率而非固定人数。Covasim 运行长度 steps 至少为2（原生2.0.0不接受n_days=0）；当前微观日志配置显式要求 pop_scale=1、rescale=false，避免动态重采样改变 UID 的纵向意义。任何声明都不会将其标成历史复现。
+
+`logging` 中全部表开关为 true 且采样频率 1 是完整可观测模式。低资源模式可关闭 contacts/agent_states/events 或增大 sampling.frequency；清单记录缺失，不能拿低资源结果冒充完整微观数据。未成功传播尝试等原生不暴露的数据，即使完整模式也会标记缺失。
+
+批量配置支持 seeds 列表，或 master_seed 与 replicates；grid 列出参数或 steps 的取值列表。每次独立运行有唯一目录，错误保留并继续其他组合，批次失败时命令退出 1。相同种子不保证不同参数条件有逐事件相同的随机序列。
+
+## 读取与指标
 
 ```python
 from simulations.common.trajectory_api import Trajectory
-from examples.indicators import schelling_same_neighbor_fraction
+from examples.indicators import covasim_infectious_fraction
 
 t = Trajectory('results/<run_id>')
-states = t.read('agent_states', start=0, end=10, agent_id=1)
-events = t.read('events', start=1, end=10, agent_id=1)
-print(t.catalog)  # 实际字段、数据类型和粒度
-series = t.compute(schelling_same_neighbor_fraction,
-                   {'agent_states': ['step', 'same_neighbors', 'neighbors']})
+print(t.catalog)
+agent = t.read('agent_states', start=0, end=10, agent_id=0)
+events = t.read('events', agent_id=0)
+contacts = t.read('contacts', start=1, end=1, agent_id=0)
+series = t.compute(covasim_infectious_fraction,
+                   {'agent_states': ['step', 'infectious']})
 t.export('exported_trajectory')
 ```
 
-`compute` 只接受已审查的可信函数，操作内存副本，并非安全沙箱。未经审查的指标必须使用 `compute_isolated` 与预先配置的 Docker 隔离环境，或更强的独立虚拟机；本机没有 Docker，容器执行尚未实测。配置方法和限制见 [数据接口](docs/DATA_SCHEMA.md)。
+全部日志、字段查询、导出和指标入口在 trajectory_api.py。compute 只接受经过审查的可信函数，传入数据副本；不可信代码必须用独立受限环境，compute_isolated 在没有 Docker 时拒绝执行，容器路径本机尚未端到端验证。参见 [数据 Schema](docs/DATA_SCHEMA.md)。
 
-## 目录
-
-`configs/` 配置；`simulations/` 模型及唯一日志接口；`visualization/` Solara 界面；`tests/` 测试；`examples/` 指标示例；`experiments/` 定性验证脚本及一次结果摘要；`results/` 本地运行输出，默认不提交。详见 [复现说明](docs/REPRODUCIBILITY.md)。
+实验、测试与限制详见 [验收报告](docs/VALIDATION_REPORT.md)、[复现说明](docs/REPRODUCIBILITY.md)、[ODD 规格](docs/MODEL_SPECIFICATIONS.md)、[固定想定协议](docs/SCENARIO_PROTOCOL.md)。results/ 默认不上传，experiments/ 中提供公开可复查的脚本与本次结果摘要。Deffuant 的代码与配置已移除，历史版本可从 Git 历史审计。

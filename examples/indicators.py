@@ -7,6 +7,6 @@ def schelling_same_neighbor_fraction(data, config):
     return group.assign(same_fraction=group.same_neighbors / group.neighbors.replace(0, float('nan')))[['same_fraction']]
 
 
-def deffuant_opinion_variance(data, config):
-    """Population variance across agent opinions at each recorded step."""
-    return data['agent_states'].groupby('step').opinion.var(ddof=0).to_frame('opinion_variance')
+def covasim_infectious_fraction(data, config):
+    """Fraction of simulated people who are infectious at recorded steps."""
+    return data['agent_states'].groupby('step').infectious.mean().to_frame('infectious_fraction')

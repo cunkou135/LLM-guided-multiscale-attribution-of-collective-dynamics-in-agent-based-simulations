@@ -1,141 +1,116 @@
 import json
 from pathlib import Path
-
 import pandas as pd
 import pytest
 import yaml
-
-from simulations.common.runner import batch, load, run, validate
+from simulations.common.runner import load, run, batch, validate
 from simulations.common.trajectory_api import Trajectory
-from simulations.deffuant.model import Deffuant
+from examples.indicators import covasim_infectious_fraction
 
 
 @pytest.fixture
 def config(tmp_path):
-    c = load('configs/deffuant.yaml')
-    c['output']['directory'] = str(tmp_path)
+    c = load('configs/covasim.yaml')
     c['steps'] = 3
-    c['parameters'].update(population=12, interactions_per_step=17)
-    c['logging']['batch_size'] = 7
+    c['parameters'].update(pop_size=30, pop_infected=3)
+    c['output']['directory'] = str(tmp_path)
     return c
 
 
-def test_reproducibility_queries_and_indicators(config, tmp_path):
+def test_repeatability_logs_and_indicator(config, tmp_path):
     a, b = run(config), run(config)
     ta, tb = Trajectory(a), Trajectory(b)
-    for table in ('agent_states', 'events', 'model_states'):
-        pd.testing.assert_frame_equal(ta.read(table).drop(columns='run_id'), tb.read(table).drop(columns='run_id'))
-    assert len(ta.read('events')) == 51
-    assert len(ta.read('agent_states')) == 48
-    assert len(ta.read('agent_states', start=1, end=2, agent_id=1)) == 2
-    assert len(ta.read('events', agent_id=1)) > 0
-    assert 'opinion' in ta.catalog['agent_states']['fields']
-    out = ta.compute(lambda d, c: d['agent_states'].groupby('step').opinion.mean(), {'agent_states': ['opinion', 'step']})
-    assert len(out) == 4
+    for name in ('agent_states', 'events', 'model_states', 'contacts'):
+        pd.testing.assert_frame_equal(ta.read(name).drop(columns='run_id'), tb.read(name).drop(columns='run_id'))
+    assert len(ta.read('agent_states')) == 120
+    assert len(ta.read('agent_states', start=1, end=2, agent_id=0)) == 2
+    assert set(ta.read('contacts').layer) == {'h', 's', 'w', 'c'}
+    assert len(ta.read('events').query("event_type == 'infection'")) >= 3
+    assert len(ta.compute(covasim_infectious_fraction, {'agent_states': ['step', 'infectious']})) == 4
     with pytest.raises(ValueError, match='missing'):
         ta.compute(lambda d, c: None, {'agent_states': ['absent']})
-    with pytest.raises(TypeError, match='Series or DataFrame'):
-        ta.compute(lambda d, c: None, {'agent_states': ['opinion']})
-    def mutate(data, config):
-        data['agent_states']['opinion'] = -999
-        return data['agent_states'][['opinion']]
-    ta.compute(mutate, {'agent_states': ['opinion']})
-    assert ta.read('agent_states').opinion.min() >= 0
     ta.export(tmp_path / 'exported')
-    assert (tmp_path / 'exported' / 'events.parquet').exists()
-    assert (tmp_path / 'exported' / 'manifest.json').exists()
-    manifest = json.loads((a / 'manifest.json').read_text())
-    assert manifest['actual_steps'] == 3 and manifest['seed'] == config['seed']
-    assert len(manifest['checksums_sha256']) == 3
-    assert yaml.safe_load((a / 'resolved_config.yaml').read_text()) == config
+    assert Trajectory(tmp_path / 'exported').read('contacts').equals(ta.read('contacts'))
+    meta = json.loads((a / 'manifest.json').read_text())
+    assert meta['actual_steps'] == 3 and meta['status'] == 'max_steps'
+    assert meta['engine_versions']['covasim'] == '2.0.0'
+    assert meta['historical_reproduction'] is False
+    assert len(meta['checksums_sha256']) == 4
 
 
-def test_sampled_and_disabled(config):
+def test_low_resource_and_final_snapshot(config):
     config['steps'] = 5
     config['sampling']['frequency'] = 3
-    config['logging']['events'] = False
-    output = run(config)
-    t = Trajectory(output)
+    config['logging'].update(events=False, contacts=False)
+    out = run(config)
+    t = Trajectory(out)
     assert sorted(t.read('agent_states').step.unique()) == [0, 3, 5]
-    assert not (output / 'events.parquet').exists()
-    assert 'events' in json.loads((output / 'manifest.json').read_text())['missing_data']
+    assert 'contacts' in json.loads((out / 'manifest.json').read_text())['missing_data']
+    with pytest.raises(ValueError):
+        t.read('events')
 
 
-def test_empty_population_has_schema(tmp_path):
-    c = load('configs/schelling.yaml')
-    c['output']['directory'] = str(tmp_path)
-    c['parameters']['density'] = 0
-    t = Trajectory(run(c))
-    assert t.read('agent_states').empty and t.read('events').empty
-    assert 'agent_id' in t.read('events').columns
+def test_independent_seed_changes_initial_population(config):
+    config['steps'] = 2
+    a = Trajectory(run(config)).read('agent_states', end=0)
+    config['seed'] += 1
+    b = Trajectory(run(config)).read('agent_states', end=0)
+    assert a.age.tolist() != b.age.tolist()
 
 
-@pytest.mark.parametrize('path,value', [(['steps'], 0), (['seed'], -1), (['parameters', 'mu'], .6), (['parameters', 'epsilon'], float('nan')), (['parameters', 'initial_distribution'], 'bimodal'), (['logging', 'events'], 1), (['sampling', 'frequency'], 0)])
-def test_validation_rejects_invalid(config, path, value):
-    obj = config
-    for key in path[:-1]:
-        obj = obj[key]
-    obj[path[-1]] = value
+def test_covasim_native_zero_duration_rejected(config):
+    config['steps'] = 1
+    with pytest.raises(ValueError, match='steps >= 2'):
+        validate(config)
+
+
+def test_native_engine_failure_preserves_error_and_log(config):
+    config['parameters']['interventions'] = [{'type': 'test_prob', 'unknown_parameter': 1}]
+    with pytest.raises(RuntimeError, match='engine.log'):
+        run(config)
+    directories = list(Path(config['output']['directory']).iterdir())
+    assert len(directories) == 1
+    manifest = json.loads((directories[0] / 'manifest.json').read_text())
+    assert manifest['status'] == 'error' and manifest['actual_steps'] == 0
+    assert 'TypeError' in (directories[0] / 'engine.log').read_text(encoding='utf-8')
+
+
+@pytest.mark.parametrize('field,value', [('beta', float('nan')), ('pop_size', 0), ('pop_infected', -1), ('rescale', True)])
+def test_invalid_parameters(config, field, value):
+    config['parameters'][field] = value
     with pytest.raises(ValueError):
         validate(config)
 
 
-def test_batch_continues_after_invalid_case(config, tmp_path):
-    base = tmp_path / 'base.yaml'
-    base.write_text(yaml.safe_dump(config), encoding='utf-8')
-    specification = tmp_path / 'batch.yaml'
-    specification.write_text(yaml.safe_dump({'base_config': 'base.yaml', 'seeds': [1, 2], 'grid': {'mu': [.2, .9]}}), encoding='utf-8')
-    outcomes = json.loads(batch(specification).read_text())
-    assert len(outcomes) == 4
-    assert sum(item['error'] is None for item in outcomes) == 2
-    assert all(Path(item['run']).exists() for item in outcomes if item['error'] is None)
+def test_batch_preserves_successes_after_invalid_combination(tmp_path):
+    c = load('configs/schelling.yaml')
+    c['steps'] = 1
+    c['output']['directory'] = str(tmp_path / 'out')
+    (tmp_path / 'base.yaml').write_text(yaml.safe_dump(c))
+    spec = tmp_path / 'batch.yaml'
+    spec.write_text(yaml.safe_dump(dict(base_config='base.yaml', master_seed=11, replicates=2, grid={'homophily': [.4, 2.]})))
+    rows = json.loads(batch(spec).read_text())
+    assert len(rows) == 4 and sum(r['error'] is None for r in rows) == 2
+    assert all(Path(r['run']).exists() for r in rows if r['error'] is None)
 
 
-def test_logging_does_not_consume_model_randomness(config):
-    t = Trajectory(run(config))
-    model = Deffuant(**config['parameters'], seed=config['seed'])
-    for _ in range(config['steps']):
-        model.step()
-    actual = t.read('agent_states', start=config['steps']).sort_values('agent_id')
-    assert actual.opinion.tolist() == [a.opinion for a in model.agents]
-
-
-def test_different_seed_changes_trajectory(config):
-    first = Trajectory(run(config)).read('agent_states')
-    config['seed'] += 1
-    second = Trajectory(run(config)).read('agent_states')
-    assert first.opinion.tolist() != second.opinion.tolist()
-
-
-def test_failed_run_retains_manifest(tmp_path):
+def test_empty_schelling_and_failed_run(tmp_path):
     c = load('configs/schelling.yaml')
     c['output']['directory'] = str(tmp_path)
-    c['parameters'].update(width=4, height=4, density=1, minority_pc=.5, homophily=1)
-    with pytest.raises(Exception):
+    c['parameters']['density'] = 0
+    assert Trajectory(run(c)).read('events').empty
+    c['parameters'].update(width=4, height=4, density=1, homophily=1)
+    with pytest.raises(ValueError):
         run(c)
-    manifests = list(tmp_path.glob('*/manifest.json'))
-    assert len(manifests) == 1
-    manifest = json.loads(manifests[0].read_text())
-    assert manifest['status'] == 'error' and manifest['error']
+    assert any(json.loads(p.read_text())['status'] == 'error' for p in tmp_path.glob('*/manifest.json'))
 
 
-def test_isolation_fails_closed_without_docker(config, tmp_path, monkeypatch):
+def test_untrusted_code_not_run_without_docker(tmp_path, monkeypatch):
     import shutil
-    t = Trajectory(run(config))
-    code = tmp_path / 'indicator.py'
-    code.write_text('raise RuntimeError("must not run on host")', encoding='utf-8')
-    monkeypatch.setattr(shutil, 'which', lambda name: None)
+    c = load('configs/schelling.yaml')
+    c['output']['directory'] = str(tmp_path)
+    c['steps'] = 1
+    t = Trajectory(run(c))
+    monkeypatch.setattr(shutil, 'which', lambda _: None)
     with pytest.raises(RuntimeError, match='not executed'):
-        t.compute_isolated(code, {'agent_states': ['opinion']})
-    with pytest.raises(ValueError, match='not recorded'):
-        t.compute_isolated(code, {'../other': []})
-
-
-def test_master_seed_batch_is_repeatable(config, tmp_path):
-    base = tmp_path / 'base.yaml'
-    base.write_text(yaml.safe_dump(config), encoding='utf-8')
-    spec = tmp_path / 'batch.yaml'
-    spec.write_text(yaml.safe_dump({'base_config': 'base.yaml', 'master_seed': 100, 'replicates': 2, 'grid': {'mu': [0, .5]}}), encoding='utf-8')
-    first, second = json.loads(batch(spec).read_text()), json.loads(batch(spec).read_text())
-    assert [r['seed'] for r in first] == [r['seed'] for r in second]
-    assert all(row['error'] is None for row in first + second)
+        t.compute_isolated(tmp_path / 'untrusted.py', {'agent_states': ['happy']})

@@ -1,0 +1,13 @@
+scenarios:
+  SCENARIO-SCHELLING-001:
+    version: '1.0'
+    path: scenarios/schelling.md
+    sha256: 820cbcc69f941c2b468f31a7b1ef22488a4271423bd37bbbf232badda2992b3d
+    created: '2026-11-05'
+    nature: 假想城市的理想化仿真想定
+  SCENARIO-COVASIM-001:
+    version: '1.0'
+    path: scenarios/covasim.md
+    sha256: 7a477bf35fd70f0d9847cd260efd2f05f5d7ec1d6055aeb4f954e923412f8c6b
+    created: '2026-11-05'
+    nature: 以2020年金县疫情为背景的历史研究想定；真实复现须独立校准验证

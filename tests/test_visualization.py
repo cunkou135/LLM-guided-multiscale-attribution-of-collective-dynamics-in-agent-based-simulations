@@ -7,13 +7,13 @@ from simulations.common.trajectory_api import Trajectory
 from visualization.app import VisualRun
 
 
-@pytest.mark.parametrize('name', ['schelling', 'deffuant'])
+@pytest.mark.parametrize('name', ['schelling', 'covasim'])
 def test_visual_and_headless_use_same_core(tmp_path, name):
     config = load(f'configs/{name}.yaml')
     config['steps'] = 3
     config['output']['directory'] = str(tmp_path)
     p = config['parameters']
-    primary, secondary = (p['homophily'], p['density']) if name == 'schelling' else (p['epsilon'], p['mu'])
+    primary, secondary = (p['homophily'], p['density']) if name == 'schelling' else (p['beta'], p['pop_infected'])
     visual = VisualRun(config, primary, secondary)
     while visual.running:
         visual.step()
@@ -24,10 +24,10 @@ def test_visual_and_headless_use_same_core(tmp_path, name):
 
 
 def test_visual_interrupted_run_saves_final_state(tmp_path):
-    config = load('configs/deffuant.yaml')
+    config = load('configs/covasim.yaml')
     config['output']['directory'] = str(tmp_path)
     config['sampling']['frequency'] = 5
-    v = VisualRun(config, .2, .5)
+    v = VisualRun(config, .016, 10)
     v.step()
     v.close()
     output = v.session.out

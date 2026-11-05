@@ -1,0 +1,2 @@
+scenarios/*.md text eol=lf
+scenarios/SHA256SUMS text eol=lf

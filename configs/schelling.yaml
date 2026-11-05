@@ -1,4 +1,5 @@
 model: schelling
+scenario_id: SCENARIO-SCHELLING-001
 model_version: '1'
 seed: 42
 steps: 50

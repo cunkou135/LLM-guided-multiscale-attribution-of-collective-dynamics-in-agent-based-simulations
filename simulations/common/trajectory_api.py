@@ -11,8 +11,26 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 
 
+def send_record(table, row):
+    """Line-oriented transport for the isolated native-engine subprocess."""
+    import sys
+    sys.stdout.write('ABMS_RECORD:' + json.dumps({'table': table, 'row': row}, allow_nan=False) + '\n')
+    sys.stdout.flush()
+
+
+def receive_records(stream):
+    """Ignore upstream banner text and decode only the explicit record protocol."""
+    for line in stream:
+        if line.startswith('ABMS_RECORD:'):
+            message = json.loads(line[len('ABMS_RECORD:'):])
+            yield message['table'], message['row']
+
+
 # Explicit schemas prevent a first all-null or empty batch from changing types.
 COMMON = {
+    'scenario_id': (pa.string(), 'Fixed scenario identifier'),
+    'scenario_version': (pa.string(), 'Fixed scenario text version'),
+    'scenario_sha256': (pa.string(), 'SHA-256 of fixed scenario bytes'),
     'run_id': (pa.string(), 'Unique run identifier'),
     'model_name': (pa.string(), 'Model identifier'),
     'model_version': (pa.string(), 'Implementation version'),
@@ -39,19 +57,34 @@ S_EVENT = {
     'moved': (pa.bool_(), 'Whether the resident moved'),
     'reason': (pa.string(), 'Reason for movement or no movement'),
 }
-D_STATE = {'opinion': (pa.float64(), 'Continuous opinion')}
-D_EVENT = {
-    'partner_id': (pa.int64(), 'Second agent in pair'),
-    **{k: (pa.float64(), k.replace('_', ' ')) for k in ('opinion_before', 'partner_opinion_before', 'opinion_after', 'partner_opinion_after', 'difference', 'epsilon', 'mu', 'delta', 'partner_delta')},
-    'accepted': (pa.bool_(), 'Whether strict confidence condition held'),
-    'reason': (pa.string(), 'Reason for update or no update'),
-}
 S_MODEL = {k: (pa.int64(), k.replace('_', ' ')) for k in ('population', 'happy', 'same_neighbors', 'neighbors')}
-D_MODEL = {'population': (pa.int64(), 'Population'), **{k: (pa.float64(), k.replace('_', ' ')) for k in ('mean_opinion', 'min_opinion', 'max_opinion')}}
+
+C_FLAGS = ('susceptible', 'exposed', 'infectious', 'symptomatic', 'severe', 'critical',
+           'tested', 'diagnosed', 'recovered', 'dead', 'known_contact', 'quarantined')
+C_DAY = {'simulation_day': (pa.int64(), 'Covasim day; -1 is initialized pre-day-zero state')}
+C_PERSON = C_DAY | {'uid': (pa.int64(), 'Covasim person UID')}
+C_PERSON.update({key: (pa.float64(), key.replace('_', ' ')) for key in
+                 ('age', 'sex', 'symp_prob', 'severe_prob', 'crit_prob', 'death_prob', 'rel_trans', 'rel_sus')})
+C_PERSON.update({key: (pa.bool_(), 'Native Covasim ' + key) for key in C_FLAGS})
+C_PERSON.update({key: (pa.float64(), 'Native Covasim day or duration; null when unset') for key in
+                 tuple('date_' + flag for flag in C_FLAGS) + ('date_pos_test', 'date_end_quarantine',
+                 'dur_exp2inf', 'dur_inf2sym', 'dur_sym2sev', 'dur_sev2crit', 'dur_disease')})
+C_EVENT = C_DAY | {'partner_id': (pa.int64(), 'Infection source; null for seed/importation or status event'),
+                      'layer': (pa.string(), 'Original Covasim contact layer'),
+                      'state': (pa.string(), 'Changed native state'),
+                      'before': (pa.bool_(), 'Previous boolean state'), 'after': (pa.bool_(), 'New boolean state')}
+C_CONTACT = C_DAY | {'partner_id': (pa.int64(), 'Second endpoint of potential contact edge'),
+                        'layer': (pa.string(), 'Original contact layer'), 'beta': (pa.float64(), 'Native edge weight, not realized transmission probability')}
+C_MODEL = C_DAY | {key: (pa.int64(), 'Unscaled simulated count: ' + key) for key in ('population',) + C_FLAGS}
 
 
 def _definitions(model):
-    additions = (S_FIELDS, S_EVENT, S_MODEL) if model == 'schelling' else (D_STATE, D_EVENT, D_MODEL)
+    if model == 'covasim':
+        return {name: COMMON | fields for name, fields in
+                (('agent_states', C_PERSON), ('events', C_EVENT), ('model_states', C_MODEL), ('contacts', C_CONTACT))}
+    if model != 'schelling':
+        raise ValueError(f'Unknown model: {model}')
+    additions = (S_FIELDS, S_EVENT, S_MODEL)
     return {name: COMMON | fields for name, fields in zip(('agent_states', 'events', 'model_states'), additions)}
 
 
@@ -69,8 +102,8 @@ class TrajectoryWriter:
         self.directory.mkdir(parents=True, exist_ok=False)
         self.metadata = metadata
         self.batch_size, self.compression = batch_size, compression
-        self.enabled = enabled or {'agent_states': True, 'events': True, 'model_states': True}
         self.definitions = _definitions(metadata['model_name'])
+        self.enabled = enabled or {name: True for name in self.definitions}
         self.schemas = {name: pa.schema([(key, value[0]) for key, value in fields.items()]) for name, fields in self.definitions.items()}
         self.buffers = {name: [] for name in self.definitions}
         self.writers = {}
@@ -84,6 +117,7 @@ class TrajectoryWriter:
         if not self.enabled[name]:
             return
         common = {k: self.metadata[k] for k in ('run_id', 'model_name', 'model_version', 'seed')}
+        common.update({k: self.metadata.get(k) for k in ('scenario_id', 'scenario_version', 'scenario_sha256')})
         common.update(step=self.step, event_index=self.event_index, timestamp_or_sim_time=self.step, agent_id=None, event_type=name)
         common.update(row)
         unknown = set(common) - set(self.schemas[name].names)
@@ -118,7 +152,7 @@ class TrajectoryWriter:
             if metadata.num_rows != self.counts[name] or not pq.read_schema(path).equals(self.schemas[name]):
                 raise IOError(f'Parquet verification failed: {path}')
             checksums[path.name] = _digest(path)
-            granularity = {'agent_states': 'agent per sampled step', 'events': 'attempted agent action or pair', 'model_states': 'one per sampled step'}[name]
+            granularity = {'agent_states': 'agent per sampled step', 'events': 'observed model event', 'model_states': 'one per sampled step', 'contacts': 'potential contact edge per sampled step'}[name]
             catalog[name] = {'granularity': granularity, 'fields': {key: {'type': str(typ), 'description': desc} for key, (typ, desc) in self.definitions[name].items()}}
         (self.directory / 'field_catalog.json').write_text(json.dumps(catalog, indent=2, ensure_ascii=False), encoding='utf-8')
         return checksums
@@ -140,7 +174,7 @@ class Trajectory:
         data = pq.read_table(self.directory / f'{name}.parquet', filters=filters or None).to_pandas()
         if agent_id is not None:
             mask = data.agent_id == agent_id
-            if name == 'events' and 'partner_id' in data:
+            if 'partner_id' in data:
                 mask |= data.partner_id == agent_id
             data = data[mask]
         return data.copy(deep=True)
@@ -152,7 +186,7 @@ class Trajectory:
         dest.mkdir(parents=True, exist_ok=True)
         for name in self.catalog:
             shutil.copy2(self.directory / f'{name}.parquet', dest / f'{name}.parquet')
-        for name in ('field_catalog.json', 'manifest.json', 'resolved_config.yaml'):
+        for name in ('field_catalog.json', 'manifest.json', 'resolved_config.yaml', 'scenario.md'):
             source = self.directory / name
             if source.exists():
                 shutil.copy2(source, dest / name)

@@ -1,0 +1,30 @@
+model: covasim
+model_version: '2.0.0'
+scenario_id: SCENARIO-COVASIM-001
+seed: 8
+steps: 60
+engine:
+  python: .covasim-venv/Scripts/python.exe
+  experiment_class: uncalibrated_demonstration
+parameters:
+  pop_size: 1000
+  pop_infected: 10
+  pop_type: hybrid
+  start_day: '2020-01-27'
+  beta: 0.016
+  pop_scale: 1
+  rescale: false
+  interventions:
+    - type: test_prob
+      start_day: 20
+      symp_prob: 0.15
+      asymp_prob: 0.0
+      test_delay: 0
+    - type: contact_tracing
+      start_day: 20
+      trace_probs: {h: 0.7, s: 0.1, w: 0.1, c: 0.0}
+      trace_time: 0
+sampling: {frequency: 1}
+logging: {format: parquet, batch_size: 1024, compression: zstd, agent_states: true, events: true, model_states: true, contacts: true, level: INFO}
+output: {directory: results}
+visualization: {enabled: true, host: 127.0.0.1, port: 8765}

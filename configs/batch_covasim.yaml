@@ -1,0 +1,5 @@
+base_config: covasim.yaml
+seeds: [8, 9]
+grid:
+  beta: [0.012, 0.016]
+  steps: [30]

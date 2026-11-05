@@ -18,7 +18,7 @@ class VisualRun(Model):
         if c['model'] == 'schelling':
             c['parameters'].update(homophily=primary, density=secondary)
         else:
-            c['parameters'].update(epsilon=primary, mu=secondary)
+            c['parameters'].update(beta=primary, pop_infected=int(secondary))
         super().__init__(rng=c['seed'])
         self.session = RunSession(c)
         self.history = []
@@ -33,8 +33,8 @@ class VisualRun(Model):
             similarity = summary['same_neighbors'] / summary['neighbors'] if summary['neighbors'] else 0
             self.history.append((self.session.completed, score, similarity))
         else:
-            opinions = [a.opinion for a in m.agents]
-            self.history.append((self.session.completed, float(np.mean(opinions)), float(np.std(opinions))))
+            summary = m.summary()
+            self.history.append((self.session.completed, summary['infectious'], summary['diagnosed']))
 
     def step(self):
         if not self.session.closed:
@@ -62,10 +62,12 @@ def display(model):
         left.legend(fontsize=7)
         titles = ('Happy fraction', 'Same-kind neighbor fraction')
     else:
-        x = [a.opinion for a in core.agents]
-        left.hist(x, bins=np.linspace(0, 1, 21), color='#377eb8')
-        left.set(xlim=(0, 1), title='Current opinion distribution', xlabel='Opinion', ylabel='Agents')
-        titles = ('Mean opinion', 'Opinion standard deviation')
+        summary = core.summary()
+        labels = ['susceptible', 'exposed', 'infectious', 'recovered', 'diagnosed', 'quarantined', 'dead']
+        left.bar(labels, [summary[k] for k in labels], color='#377eb8')
+        left.tick_params(axis='x', labelrotation=60)
+        left.set(title='Native Covasim states (overlapping)', ylabel='Simulated people')
+        titles = ('Infectious', 'Diagnosed')
     history = np.asarray(model.history)
     right.plot(history[:, 0], history[:, 1], label=titles[0])
     right.plot(history[:, 0], history[:, 2], label=titles[1])
@@ -76,7 +78,10 @@ def display(model):
 
 def status(model):
     c = model.session.config
-    return solara.Markdown(f"**Step:** {model.session.completed}/{c['steps']}　 **Seed:** {c['seed']}　 **Parameters:** `{c['parameters']}`  \n**Run:** `{model.session.out}`")
+    extra = ''
+    if c['model'] == 'covasim':
+        extra = f"  \n**Uncalibrated demonstration, not historical reproduction.** Potential contact edges by layer: `{model.session.model.contact_counts}`. Interventions: `{c['parameters']['interventions']}`"
+    return solara.Markdown(f"**Step:** {model.session.completed}/{c['steps']}　 **Seed:** {c['seed']}　 **Parameters:** `{c['parameters']}`  \n**Run:** `{model.session.out}`" + extra)
 
 
 @solara.component
@@ -87,8 +92,8 @@ def Page():
         primary, secondary = p['homophily'], p['density']
         names = ('Homophily', 'Density')
     else:
-        primary, secondary = p['epsilon'], p['mu']
-        names = ('Confidence epsilon', 'Assimilation mu')
+        primary, secondary = p['beta'], p['pop_infected']
+        names = ('Transmission beta', 'Initial infections')
     initial = solara.use_memo(lambda: VisualRun(config, primary, secondary), [])
     reactive = solara.use_reactive(initial)
     current = reactive.value
@@ -97,5 +102,5 @@ def Page():
         return current.close
 
     solara.use_effect(close_when_replaced, [current])
-    params = {'config': config, 'primary': Slider(names[0], primary, 0, 1, .05), 'secondary': Slider(names[1], secondary, 0, 1 if config['model'] == 'schelling' else .5, .05)}
+    params = {'config': config, 'primary': Slider(names[0], primary, 0, 1 if config['model'] == 'schelling' else .1, .05 if config['model'] == 'schelling' else .001), 'secondary': Slider(names[1], secondary, 0, 1 if config['model'] == 'schelling' else p['pop_size'], .05 if config['model'] == 'schelling' else 1)}
     SolaraViz(reactive, components=[display, status], model_params=params, name=f"ABMS Lab — {config['model']}")

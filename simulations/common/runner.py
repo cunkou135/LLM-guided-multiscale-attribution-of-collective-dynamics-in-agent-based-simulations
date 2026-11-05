@@ -16,8 +16,9 @@ import pyarrow
 import yaml
 
 from simulations.common.trajectory_api import TrajectoryWriter
-from simulations.deffuant.model import Deffuant
+from simulations.covasim.adapter import RemoteCovasim
 from simulations.schelling.model import Schelling
+from scenarios.protocol import load_scenario
 
 
 def load(path):
@@ -28,17 +29,20 @@ def load(path):
 
 
 def validate(c):
-    required = {'model', 'model_version', 'seed', 'steps', 'parameters', 'sampling', 'logging', 'output', 'visualization'}
-    if not isinstance(c, dict) or set(c) != required:
+    required = {'model', 'model_version', 'scenario_id', 'seed', 'steps', 'parameters', 'sampling', 'logging', 'output', 'visualization'}
+    if not isinstance(c, dict) or set(c) - {'engine'} != required:
         raise ValueError(f'configuration keys must be {sorted(required)}')
-    if c['model'] not in ('schelling', 'deffuant') or c['model_version'] != '1':
+    if (c['model'], c['model_version']) not in (('schelling', '1'), ('covasim', '2.0.0')):
         raise ValueError('unsupported model or version')
-    if type(c['seed']) is not int or not 0 <= c['seed'] < 2**63 or type(c['steps']) is not int or c['steps'] < 1:
+    if c['scenario_id'] != ('SCENARIO-SCHELLING-001' if c['model'] == 'schelling' else 'SCENARIO-COVASIM-001'):
+        raise ValueError('model and fixed scenario do not match')
+    if type(c['seed']) is not int or not 0 <= c['seed'] < 2**32 or type(c['steps']) is not int or c['steps'] < 1:
         raise ValueError('seed and steps must be nonnegative integer and positive integer')
     if not isinstance(c['sampling'], dict) or set(c['sampling']) != {'frequency'} or type(c['sampling']['frequency']) is not int or c['sampling']['frequency'] < 1:
         raise ValueError('sampling.frequency must be a positive integer')
     log = c['logging']
-    if not isinstance(log, dict) or set(log) != {'format', 'batch_size', 'compression', 'agent_states', 'events', 'model_states', 'level'} or log.get('format') != 'parquet':
+    expected_log = {'format', 'batch_size', 'compression', 'agent_states', 'events', 'model_states', 'level'} | ({'contacts'} if c['model'] == 'covasim' else set())
+    if not isinstance(log, dict) or set(log) != expected_log or log.get('format') != 'parquet':
         raise ValueError('invalid logging fields')
     if type(log['batch_size']) is not int or log['batch_size'] < 1 or log['compression'] not in ('zstd', 'snappy', 'gzip', 'none') or log['level'] not in ('DEBUG', 'INFO', 'WARNING', 'ERROR'):
         raise ValueError('invalid logging batch size, compression or level')
@@ -61,12 +65,23 @@ def validate(c):
         if any(not number(p[k]) or not 0 <= p[k] <= 1 for k in ('density', 'minority_pc', 'homophily')):
             raise ValueError('probabilities must lie within [0, 1]')
     else:
-        if set(p) != {'population', 'epsilon', 'mu', 'interactions_per_step', 'initial_distribution'} or p.get('initial_distribution') != 'uniform_0_1':
-            raise ValueError('invalid Deffuant parameters')
-        if type(p['population']) is not int or p['population'] < 2 or type(p['interactions_per_step']) is not int or p['interactions_per_step'] < 1:
-            raise ValueError('invalid population or interactions_per_step')
-        if not number(p['epsilon']) or not 0 <= p['epsilon'] <= 1 or not number(p['mu']) or not 0 <= p['mu'] <= .5:
-            raise ValueError('invalid epsilon or mu')
+        if c['steps'] < 2:
+            raise ValueError('Covasim 2.0.0 requires steps >= 2 (native n_days must be positive)')
+        if set(p) != {'pop_size', 'pop_infected', 'pop_type', 'start_day', 'beta', 'pop_scale', 'rescale', 'interventions'}:
+            raise ValueError('invalid Covasim parameters')
+        if type(p['pop_size']) is not int or p['pop_size'] < 2 or type(p['pop_infected']) is not int or not 0 <= p['pop_infected'] <= p['pop_size']:
+            raise ValueError('invalid Covasim population')
+        if p['pop_type'] != 'hybrid' or not number(p['beta']) or not 0 <= p['beta'] <= 1 or p['pop_scale'] != 1 or p['rescale'] is not False:
+            raise ValueError('current uncalibrated profile requires hybrid, pop_scale=1 and rescale=false')
+        from datetime import date
+        date.fromisoformat(p['start_day'])
+        if not isinstance(p['interventions'], list) or any(not isinstance(i, dict) or i.get('type') not in ('test_prob', 'contact_tracing', 'change_beta', 'clip_edges') for i in p['interventions']):
+            raise ValueError('invalid intervention definitions')
+        engine = c.get('engine')
+        if not isinstance(engine, dict) or set(engine) != {'python', 'experiment_class'} or not isinstance(engine['python'], str) or engine['experiment_class'] != 'uncalibrated_demonstration':
+            raise ValueError('Covasim requires explicit interpreter and uncalibrated_demonstration classification')
+        if type(log['contacts']) is not bool:
+            raise ValueError('logging.contacts must be boolean')
 
 
 class RunSession:
@@ -76,18 +91,26 @@ class RunSession:
         self.config = c
         logging.getLogger('abms_lab').setLevel(c['logging']['level'])
         self.meta = dict(run_id=uuid.uuid4().hex, model_name=c['model'], model_version=c['model_version'], seed=c['seed'])
+        scenario = load_scenario(c['scenario_id'])
+        self.meta.update({k: v for k, v in scenario.items() if k != 'text'})
         self.out = Path(c['output']['directory']) / self.meta['run_id']
         log = c['logging']
         self.enabled = {name: log[name] for name in ('agent_states', 'events', 'model_states')}
+        if c['model'] == 'covasim':
+            self.enabled['contacts'] = log['contacts']
         self.writer = TrajectoryWriter(self.out, self.meta, batch_size=log['batch_size'], compression=log['compression'], enabled=self.enabled)
         (self.out / 'resolved_config.yaml').write_text(yaml.safe_dump(c, sort_keys=False), encoding='utf-8')
+        if scenario is not None:
+            (self.out / 'scenario.md').write_text(scenario['text'], encoding='utf-8', newline='\n')
         self.started = datetime.now(timezone.utc).isoformat()
         self.completed = 0
         self.last_snapshot = -1
         self.closed = False
         try:
-            cls = Schelling if c['model'] == 'schelling' else Deffuant
-            self.model = cls(**c['parameters'], seed=c['seed'], event=lambda row: self.writer.record('events', row))
+            if c['model'] == 'schelling':
+                self.model = Schelling(**c['parameters'], seed=c['seed'], event=lambda row: self.writer.record('events', row))
+            else:
+                self.model = RemoteCovasim(c, self.writer.record, self.out)
             self.snapshot()
         except Exception as exc:
             self.close('error', f'{type(exc).__name__}: {exc}')
@@ -110,7 +133,7 @@ class RunSession:
             if self.completed % self.config['sampling']['frequency'] == 0 or finished:
                 self.snapshot()
             if finished:
-                self.close('stable' if not self.model.running else 'max_steps')
+                self.close('stable' if self.config['model'] == 'schelling' and not self.model.running else 'max_steps')
         except Exception as exc:
             self.close('error', f'{type(exc).__name__}: {exc}')
             raise
@@ -131,6 +154,8 @@ class RunSession:
             error = f'log finalization failed: {type(exc).__name__}: {exc}'
             raise
         finally:
+            if self.config['model'] == 'covasim' and hasattr(self, 'model'):
+                self.model.close()
             try:
                 git = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=Path(__file__).resolve().parents[2], capture_output=True, text=True)
                 revision = git.stdout.strip() if git.returncode == 0 else None
@@ -143,9 +168,15 @@ class RunSession:
                 missing.append('intermediate state snapshots between sampling steps')
             if reason == 'error':
                 missing.append('run may be incomplete')
-            source = 'Mesa 3.5.2 Schelling example' if self.meta['model_name'] == 'schelling' else 'Deffuant et al. 2000 complete mixing, independent implementation'
+            source = 'Mesa 3.5.2 Schelling example' if self.meta['model_name'] == 'schelling' else 'Native Covasim 2.0.0; uncalibrated hybrid demonstration'
             versions = {'mesa': mesa.__version__, 'numpy': numpy.__version__, 'pandas': pandas.__version__, 'pyarrow': pyarrow.__version__, 'pyyaml': yaml.__version__}
+            engine_versions = getattr(getattr(self, 'model', None), 'engine_versions', {})
+            if self.config['model'] == 'covasim':
+                missing += ['unrealized transmission attempts are not exposed by native engine', 'within-day repeated testing of same person is not individually exposed', 'historical calibration and LTCF layer not present in demonstration']
             manifest = dict(self.meta, model_source=source, parameters=self.config['parameters'], requested_steps=self.config['steps'], sampling=self.config['sampling'], started_at=self.started, ended_at=datetime.now(timezone.utc).isoformat(), actual_steps=self.completed, status=reason, error=error, python=platform.python_version(), mesa=mesa.__version__, software_versions=versions, git_commit=revision, git_dirty=dirty, missing_data=missing, checksums_sha256=checksums)
+            manifest.update(engine_versions=engine_versions, historical_reproduction=False)
+            manifest.update(logging=self.config['logging'], scenario_integrity_verified=True,
+                            recording_mode='full_observable' if all(self.enabled.values()) and self.config['sampling']['frequency'] == 1 else 'reduced')
             (self.out / 'manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
             logging.getLogger('abms_lab').info('run %s finished: %s after %d steps', self.meta['run_id'], reason, self.completed)
 
