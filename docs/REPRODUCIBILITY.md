@@ -15,7 +15,7 @@ python -m experiments.compare_netlogo results/netlogo_comparison.csv
 
 实际执行时，使用前先在当前 PowerShell 会话中设定 `$nl` 为本机 NetLogo 7.0.4 安装路径。两套模型的随机过程与规则差异见 MODEL_SOURCES；相同整数种子不表示相同初始布局。
 
-`status=stable` 仅表示 Schelling 的参考停止条件；`max_steps` 表示达到外部上限；`interrupted` 表示界面中断或重置；`error` 表示失败且轨迹可能不完整。界面运行的最后记录在正常完成或重置时关闭；进程被强制终止、机器故障时，正在写入的 Parquet 文件可能未完成。只有检查了 manifest、校验和和状态之后才应将其用于分析。批量执行是串行且各运行互不覆盖。
+`status=stable`表示Schelling全体满意；扩展版本的`frozen`表示仍不满意但已穷举无可行迁居；`max_steps` 表示达到外部上限；`interrupted` 表示界面中断或重置；`error` 表示失败且轨迹可能不完整。界面运行的最后记录在正常完成或重置时关闭；进程被强制终止、机器故障时，正在写入的 Parquet 文件可能未完成。只有检查了 manifest、校验和和状态之后才应将其用于分析。批量执行是串行且各运行互不覆盖。
 
 
 ## Covasim 环境及公开基准
@@ -44,3 +44,11 @@ python -m pip download --dest results/covasim_wheels --python-version 310 --plat
 ```
 
 原生初始化后的所有默认参数及终态实际参数，分别保存为native_parameters.json及native_parameters_final.json并校验，疾病参数不只依靠默认版本推断。
+
+## 2.0开发验收材料与嵌套干预
+
+本轮不执行参数探索。默认正式扩展Schelling只做一次100×100、300轮上限的性能运行，默认Covasim只做一次1000人、60步性能运行。experiments/validation/runs/保存这两次真实记录、配置、字段目录、清单、原生参数与性能摘要；图版从这些记录生成。性能清单中的git_commit指开发基准且git_dirty=true，不能将其伪装成提交后重跑结果。最终Git提交包含实际使用的开发代码；计时仅代表当时机器状态。
+
+批量干预支持`interventions.0.symp_prob`、`interventions.1.trace_probs.h`等路径，数字表示YAML列表零起始索引，也可写`parameters.interventions...`。仅修改已有字段，错误拼写/越界及重叠路径拒绝。每种组合独立复制基础配置，保存全部解析值；不提供配对随机数同步承诺。pytest包含真实原生小规模嵌套参数批次测试，功能性重复不用于参数探索结论。
+
+主环境完整冻结清单见experiments/validation/main_environment.txt；引擎冻结依赖继续保留既有requirements-covasim-compat-lock.txt。论文图版的figure_manifest保存导出程序版本、当时提交、来源Parquet哈希和全部显示配置；重新导出不修改仿真数据。

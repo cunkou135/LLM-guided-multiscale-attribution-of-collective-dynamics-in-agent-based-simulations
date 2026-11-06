@@ -18,7 +18,7 @@ def main():
         first, last = rows.iloc[0], rows.iloc[-1]
         seed = int(first.iloc[5])
         threshold = float(first['%-similar-wanted']) / 100
-        c = load('configs/schelling.yaml')
+        c = load('configs/schelling_standard.yaml')
         c['seed'], c['steps'] = seed, 40
         c['parameters'].update(width=20, height=20, torus=True, density=.8, minority_pc=.5, homophily=threshold)
         output = run(c)

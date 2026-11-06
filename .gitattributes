@@ -1,2 +1,5 @@
 scenarios/*.md text eol=lf
+scenarios/v2/*.md text eol=lf
+scenarios/fish.md -text
+simulations/fish/engine.py -text
 scenarios/SHA256SUMS text eol=lf

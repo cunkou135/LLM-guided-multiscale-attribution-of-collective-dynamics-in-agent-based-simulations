@@ -1,0 +1,15 @@
+{
+  "run_id": "3249f90463154305aed53504106b3dae",
+  "model": "covasim",
+  "population": 1000,
+  "requested_steps": 60,
+  "actual_steps": 60,
+  "stop_reason": "max_steps",
+  "elapsed_seconds": 35.90462320000006,
+  "peak_rss_bytes": 381997056,
+  "output_bytes": 8844423,
+  "config": "configs/covasim.yaml",
+  "git_commit": "163a235991460fe5e2e4620aa479735afc348bde",
+  "git_dirty": true,
+  "memory_method": "20ms sampled RSS sum of parent and child processes; not allocator peak"
+}

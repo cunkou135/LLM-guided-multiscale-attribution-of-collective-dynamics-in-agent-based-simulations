@@ -1,0 +1,62 @@
+{
+  "schelling": {
+    "tables": {
+      "agent_states": 67992,
+      "events": 59493,
+      "model_states": 8
+    },
+    "final": {
+      "scenario_id": "SCENARIO-SCHELLING-001",
+      "scenario_version": "2.0",
+      "scenario_sha256": "ecfa1373637c172b6e1ab2786a9d4b803ea9f58ae65963f2d883326dde85d4c7",
+      "run_id": "3b1b5e8b6f9a41d695988be12ab8c060",
+      "model_name": "schelling_extended",
+      "model_version": "2.0",
+      "seed": 42,
+      "step": 7,
+      "event_index": 59493,
+      "timestamp_or_sim_time": 7,
+      "event_type": "model_states",
+      "population": 8499,
+      "happy": 8497,
+      "same_neighbors": 50808,
+      "neighbors": 57450,
+      "moves": 0
+    }
+  },
+  "covasim": {
+    "tables": {
+      "agent_states": 61000,
+      "events": 5639,
+      "model_states": 61,
+      "contacts": 1078175
+    },
+    "final": {
+      "scenario_id": "SCENARIO-COVASIM-001",
+      "scenario_version": "2.0",
+      "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+      "run_id": "3249f90463154305aed53504106b3dae",
+      "model_name": "covasim",
+      "model_version": "2.0.0",
+      "seed": 8,
+      "step": 60,
+      "event_index": 5639,
+      "timestamp_or_sim_time": 60,
+      "event_type": "model_states",
+      "simulation_day": 59,
+      "population": 1000,
+      "susceptible": 519,
+      "exposed": 32,
+      "infectious": 25,
+      "symptomatic": 15,
+      "severe": 3,
+      "critical": 1,
+      "tested": 201,
+      "diagnosed": 201,
+      "recovered": 449,
+      "dead": 0,
+      "known_contact": 440,
+      "quarantined": 43
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "run_id": "3249f90463154305aed53504106b3dae",
+  "scenario_id": "SCENARIO-COVASIM-001",
+  "scenario_version": "2.0",
+  "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+  "time_range": [
+    0,
+    60
+  ],
+  "figure_configuration": {
+    "width_inches": 7.2,
+    "aspect": "4:3",
+    "dpi": [
+      300,
+      600
+    ],
+    "formats": [
+      "png",
+      "svg"
+    ],
+    "font_size": 8,
+    "network_max_nodes": 60,
+    "network_root": null,
+    "window_start": 0,
+    "window_end": null,
+    "age_bins": [
+      0,
+      20,
+      40,
+      60,
+      80,
+      100,
+      120
+    ],
+    "display_seed": 17
+  },
+  "export_version": "2.0.0",
+  "export_commit": "163a235991460fe5e2e4620aa479735afc348bde",
+  "source_fingerprints": {
+    "agent_states.parquet": "f0cc6649623f48b79d92dd850987b46a266a4584e37f4fad1af5b19097a8fa4b",
+    "contacts.parquet": "0793defd7960a1fb81229dafb28f6d019c72cb143625319321f9e8ba479d7850",
+    "events.parquet": "9f09be38dd3c311a16fc24904f8cd037d5b571f0410882e0725037fbb5127799",
+    "model_states.parquet": "3b70d1eb6399a31cebc20cba5d29df257fead0f6453306ac95f60fbb02d9927b"
+  },
+  "figure_data_sha256": "f428417caeadb2f6ad03d3f2e56c478e15029e10c564688d672b1b4f99c48a42"
+}

@@ -1,0 +1,12 @@
+{
+  "source": "user-provided pt/collective_motion_lab",
+  "files_sha256": {
+    "simulation/fish.py": "a17aa7929ca719a63d0c4fffe7724c0c76a3a0868736846f5da51228f595ac86",
+    "config.yaml": "7cc7422b8d409352b7cf57f1e7a561b61a18f26c8df6c3e978ec16fa824eb329",
+    "\u60f3\u5b9a.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+    "static/style.css": "757a67e02f87afc1c14b27a905711a26da27a7426ff3a99138c5e7c03d37de48",
+    "static/app.js": "3fd62ee7c7a3d367a7fdf68dc56fad46cf41c8b9b0be24fac078ecfe98c08f50"
+  },
+  "engine_copy": "simulations/fish/engine.py",
+  "rules_modified": false
+}

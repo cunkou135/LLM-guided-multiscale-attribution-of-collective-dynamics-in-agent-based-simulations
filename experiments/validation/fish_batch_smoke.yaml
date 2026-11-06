@@ -1,0 +1,9 @@
+base_config: fish_validation.yaml
+seeds:
+- 42
+- 43
+grid:
+  population.count:
+  - 30
+  steps:
+  - 2

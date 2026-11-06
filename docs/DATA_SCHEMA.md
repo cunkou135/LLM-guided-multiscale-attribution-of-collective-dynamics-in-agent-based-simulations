@@ -4,7 +4,7 @@
 
 各表公共字段：`run_id`、`model_name`、`model_version`、`seed`、`step`、`event_index`、`timestamp_or_sim_time`、`agent_id`、`event_type`。`step` 和 `timestamp_or_sim_time` 均为离散采样步，不是墙钟时间；`event_index` 为该运行累计事件序号，状态行记录采样时已发生的事件数量，模型行无 `agent_id`。初态为 step=0、event_index=0。状态按配置采样，最后完成步始终记录；事件在启用时每次尝试都保存。范围查询的起止均包含边界。
 
-Schelling 的主体表有 `kind,x,y,neighbors,same_neighbors,other_neighbors,happy`。事件表每个激活一行，包含 `kind`、`x_before,y_before,x_after,y_after`、行为前后邻居数、`happy_before,happy_after,moved,reason`；满意状态在整轮末统一重算，所以 `happy_after` 是行为后存储状态而非新位置即时满意度。模型表包含人口、满意人数、同类邻居对计数及邻居总计数，邻居对按有向观察计数。
+标准Schelling的主体表有 `kind,x,y,neighbors,same_neighbors,other_neighbors,happy`。事件表每个激活一行，包含 `kind`、`x_before,y_before,x_after,y_after`、行为前后邻居数、`happy_before,happy_after,moved,reason`；满意状态在整轮末统一重算，所以 `happy_after` 是行为后存储状态而非新位置即时满意度。模型表包含人口、满意人数、同类邻居对计数及邻居总计数，邻居对按有向观察计数。
 
 Covasim 主体表完整输出原生 40 个个体字段，详见 MODEL_SPECIFICATIONS。附加 simulation_day 表示原生时间，初态 -1，平台 step k 对应已执行 day k-1。原生感染日期、计划转移日期和实际转移事件不同，不能把已采样的未来疾病日期当成已经发生的事实。按盲测要求可另行限定提供给 LLM 的列，但原始日志保留未删减版本。
 
@@ -31,3 +31,17 @@ result = t.compute_isolated('review_candidate.py',
 上述隔离接口在当前机器上因为未安装 Docker 未能运行端到端测试；只验证缺少 Docker 时拒绝在主进程执行。使用前必须在目标 Docker/操作系统上检查实际隔离设置、只读挂载和资源限制，不能将此接口视为已经过安全认证的沙箱。严格科研条件下请保留代码审查记录与输入输出摘要。
 
 Covasim另保存native_parameters.json与native_parameters_final.json，使用原生Sim.to_json导出初始化后和执行结束时的全部实际参数（含疾病持续时间、概率、接触层和干预默认值）；它们也计入manifest的SHA-256并由export复制，避免只保存显式YAML而遗漏原生默认配置。
+
+## 扩展Schelling与回放接口
+
+schelling_extended主体状态保留标准字段，新增float64的theta_i。激活日志增加theta_i、attempted（bool）、candidate_count与feasible_count（int64）、similarity_before与similarity_after（float64）。happy_before是在本次激活时根据当前邻居重算；happy_after是自身行动后的即时结果。它与标准版本使用上一轮存储满意度的含义不同。模型状态新增本轮实际moves。事件原因见MODEL_SPECIFICATIONS；未尝试搬迁、搜索失败和实际搬迁均保留一行。每轮主体状态与事件都保留实际坐标，能够重建空间占用。
+
+`configuration()`和`metadata()`分别读取实际保存配置及清单；`available_steps()`仅返回实际已保存采样步；`read_snapshot(step)`对未保存时间点报错，不插值或再次仿真。`source_fingerprints()`返回日志SHA-256。图形、历史回放和后续指标均通过本文件访问数据。
+
+实时界面额外保存checkpoints/中的闭合Parquet文件，按完整采样轮提交主体、事件、接触和模型状态，临时文件原子替换后才能读取。采样频率大于1时，事件保留其实际发生步。未完成运行读取这些快照，最终清单存在后读取正式Parquet。Covasim的contacts也保存实时闭合快照；模型状态检查点最后提交，作为完整帧的可读标记。主网络读取对应时点实际接触，传播动画单独读取感染事件；最终潜在接触表仍按原模式写入。run_metadata.json允许实时阶段显示来源；正式运行状态以manifest.json为准。强制终止可能损坏尚未关闭的正式文件，检查点不等于完整运行验收。
+
+figure_manifest.json记录run_id、场景编号/版本/哈希、时间窗口、全部图形配置、导出程序版本/提交、来源文件SHA-256和figure_data.json的SHA-256。图版数据仅是展示产物，不注册论文因果变量。可视化默认需要agent_states、events、model_states全部启用；关闭后不会用零替代缺失值。
+
+## 迁移鱼群协议fish-3.0
+
+fish使用agent_states、events、contacts、raw_frames、model_states五张表。role区分fish/shark；位置与朝向是原生模型单位。fright对应原项目画面使用的本次行动类别，remaining是更新后的剩余持续步数，两者不能混为同一时刻的状态定义。target_id=-1表示鲨鱼无目标。决策JSON保存全部个体原生字段，raw_frames.frame_json额外无损保存原始整体帧与decision_input；read_frame(step)为统一访问入口。contacts的agent_id是受体UID、partner_id是步初处于受惊状态的邻居UID，source_episode为步初事件类别。它是原生受惊邻居接触记录，不保证受体实际触发社会受惊。

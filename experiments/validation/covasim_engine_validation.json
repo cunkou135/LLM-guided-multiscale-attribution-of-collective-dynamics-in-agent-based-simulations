@@ -1,0 +1,89 @@
+[
+  {
+    "policy": "none",
+    "days": 126,
+    "state_fields": 40,
+    "infections": 71,
+    "final": {
+      "simulation_day": 125,
+      "population": 100,
+      "susceptible": 29,
+      "exposed": 0,
+      "infectious": 0,
+      "symptomatic": 0,
+      "severe": 0,
+      "critical": 0,
+      "tested": 0,
+      "diagnosed": 0,
+      "recovered": 70,
+      "dead": 1,
+      "known_contact": 0,
+      "quarantined": 0
+    },
+    "published_cache_comparison": {
+      "cached_version_attribute": "3.0.1",
+      "infection_log_exact": true,
+      "final_individual_fields_exact": true,
+      "result_series_compared": 29
+    },
+    "passive_adapter_matches_native": true
+  },
+  {
+    "policy": "test",
+    "days": 126,
+    "state_fields": 40,
+    "infections": 55,
+    "final": {
+      "simulation_day": 125,
+      "population": 100,
+      "susceptible": 45,
+      "exposed": 0,
+      "infectious": 0,
+      "symptomatic": 0,
+      "severe": 0,
+      "critical": 0,
+      "tested": 28,
+      "diagnosed": 28,
+      "recovered": 55,
+      "dead": 0,
+      "known_contact": 0,
+      "quarantined": 0
+    },
+    "published_cache_comparison": {
+      "cached_version_attribute": "3.0.1",
+      "infection_log_exact": true,
+      "final_individual_fields_exact": true,
+      "result_series_compared": 29
+    },
+    "passive_adapter_matches_native": true
+  },
+  {
+    "policy": "trace",
+    "days": 126,
+    "state_fields": 40,
+    "infections": 40,
+    "final": {
+      "simulation_day": 125,
+      "population": 100,
+      "susceptible": 60,
+      "exposed": 0,
+      "infectious": 0,
+      "symptomatic": 0,
+      "severe": 0,
+      "critical": 0,
+      "tested": 52,
+      "diagnosed": 24,
+      "recovered": 40,
+      "dead": 0,
+      "known_contact": 49,
+      "quarantined": 0
+    },
+    "published_cache_comparison": {
+      "cached_version_attribute": "3.0.1",
+      "infection_log_exact": true,
+      "final_individual_fields_exact": true,
+      "result_series_compared": 29
+    },
+    "passive_adapter_matches_native": true
+  }
+]

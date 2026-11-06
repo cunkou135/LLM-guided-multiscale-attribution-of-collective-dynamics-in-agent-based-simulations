@@ -1,0 +1,355 @@
+{
+  "agent_states": {
+    "granularity": "agent per sampled step",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "role": {
+        "type": "string",
+        "description": "fish or shark"
+      },
+      "x": {
+        "type": "double",
+        "description": "x"
+      },
+      "y": {
+        "type": "double",
+        "description": "y"
+      },
+      "heading": {
+        "type": "double",
+        "description": "heading"
+      },
+      "vx": {
+        "type": "double",
+        "description": "vx"
+      },
+      "vy": {
+        "type": "double",
+        "description": "vy"
+      },
+      "fright": {
+        "type": "int64",
+        "description": "Native action episode: 0 ordinary, 1 direct, 2 social; same presentation as source"
+      },
+      "remaining": {
+        "type": "int64",
+        "description": "Remaining fright steps after update"
+      },
+      "target_id": {
+        "type": "int64",
+        "description": "Shark target UID, -1 when absent"
+      }
+    }
+  },
+  "events": {
+    "granularity": "observed model event",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "role": {
+        "type": "string",
+        "description": "fish or shark"
+      },
+      "x_before": {
+        "type": "double",
+        "description": "x_before"
+      },
+      "y_before": {
+        "type": "double",
+        "description": "y_before"
+      },
+      "x_after": {
+        "type": "double",
+        "description": "x_after"
+      },
+      "y_after": {
+        "type": "double",
+        "description": "y_after"
+      },
+      "heading": {
+        "type": "double",
+        "description": "heading"
+      },
+      "decision_json": {
+        "type": "string",
+        "description": "Lossless native individual decision fields and random draws"
+      }
+    }
+  },
+  "contacts": {
+    "granularity": "native recorded interaction/contact edge",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "partner_id": {
+        "type": "int64",
+        "description": "Source neighbor UID"
+      },
+      "source_episode": {
+        "type": "int64",
+        "description": "Source fright episode at decision time"
+      }
+    }
+  },
+  "raw_frames": {
+    "granularity": "lossless native frame per sampled step",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "frame_json": {
+        "type": "string",
+        "description": "Exact native fish-3.0 raw_frame JSON"
+      }
+    }
+  },
+  "model_states": {
+    "granularity": "one per sampled step",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "population": {
+        "type": "int64",
+        "description": "Fish count"
+      },
+      "predators": {
+        "type": "int64",
+        "description": "Shark count"
+      },
+      "elapsed": {
+        "type": "double",
+        "description": "Native elapsed model time"
+      }
+    }
+  }
+}

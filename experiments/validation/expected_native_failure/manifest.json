@@ -1,0 +1,72 @@
+{
+  "run_id": "9fe37c838ce44a70905a2d6c2e9b1946",
+  "model_name": "covasim",
+  "model_version": "2.0.0",
+  "seed": 8,
+  "scenario_id": "SCENARIO-COVASIM-001",
+  "scenario_version": "2.0",
+  "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+  "scenario_file": "scenarios/v2/covasim.md",
+  "model_source": "Native Covasim 2.0.0; uncalibrated hybrid demonstration",
+  "parameters": {
+    "pop_size": 30,
+    "pop_infected": 3,
+    "pop_type": "hybrid",
+    "start_day": "2020-01-27",
+    "beta": 0.016,
+    "pop_scale": 1,
+    "rescale": false,
+    "interventions": [
+      {
+        "type": "test_prob",
+        "unknown_parameter": 1
+      }
+    ]
+  },
+  "requested_steps": 3,
+  "sampling": {
+    "frequency": 1
+  },
+  "started_at": "2026-11-06T01:16:30.037760+00:00",
+  "ended_at": "2026-11-06T01:16:33.747943+00:00",
+  "actual_steps": 0,
+  "status": "error",
+  "error": "RuntimeError: Covasim worker exited before completing command; inspect engine.log",
+  "python": "3.12.3",
+  "mesa": "3.5.2",
+  "software_versions": {
+    "mesa": "3.5.2",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "pyarrow": "21.0.0",
+    "pyyaml": "6.0.2"
+  },
+  "git_commit": "163a235991460fe5e2e4620aa479735afc348bde",
+  "git_dirty": true,
+  "missing_data": [
+    "run may be incomplete",
+    "unrealized transmission attempts are not exposed by native engine",
+    "within-day repeated testing of same person is not individually exposed",
+    "historical calibration and LTCF layer not present in demonstration"
+  ],
+  "checksums_sha256": {
+    "agent_states.parquet": "d75021c176d35f32f6fbb864cf6bda1f856726f6bbb2ee17c936a92b6b5b813d",
+    "events.parquet": "9d6a0f181fd5e3713be701dc3be0d2ed29545fb9a7218851ae171500e7eacb5f",
+    "model_states.parquet": "f15bbf895100169fdb2c4788e356333db1b39f5e9ee7df4bc1ed891fe5b7ae32",
+    "contacts.parquet": "164b2756e8dd1f65b1a74d59306532e38df76106283a4b3fe5ba4134fa3ea399"
+  },
+  "engine_versions": {},
+  "historical_reproduction": false,
+  "logging": {
+    "format": "parquet",
+    "batch_size": 1024,
+    "compression": "zstd",
+    "agent_states": true,
+    "events": true,
+    "model_states": true,
+    "contacts": true,
+    "level": "INFO"
+  },
+  "scenario_integrity_verified": true,
+  "recording_mode": "full_observable"
+}

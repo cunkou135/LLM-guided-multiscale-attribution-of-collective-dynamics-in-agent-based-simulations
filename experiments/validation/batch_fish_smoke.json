@@ -1,0 +1,20 @@
+[
+  {
+    "seed": 42,
+    "parameters": {
+      "population.count": 30,
+      "steps": 2
+    },
+    "run": "results\\7adfe4fb90ac4e7a931eb7b4dd581e55",
+    "error": null
+  },
+  {
+    "seed": 43,
+    "parameters": {
+      "population.count": 30,
+      "steps": 2
+    },
+    "run": "results\\238ce5c86f834a8cab63d28ac88c2315",
+    "error": null
+  }
+]

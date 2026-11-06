@@ -1,0 +1,18 @@
+{
+  "live_run_id": "0e9a1ab44c534823b8fda2ee680ddcf6",
+  "headless_run_id": "3249f90463154305aed53504106b3dae",
+  "tables": {
+    "agent_states": {
+      "equal": true,
+      "rows": 61000
+    },
+    "events": {
+      "equal": true,
+      "rows": 5639
+    },
+    "model_states": {
+      "equal": true,
+      "rows": 61
+    }
+  }
+}

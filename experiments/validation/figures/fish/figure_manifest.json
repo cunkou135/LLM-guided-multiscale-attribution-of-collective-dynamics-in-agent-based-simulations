@@ -1,0 +1,50 @@
+{
+  "run_id": "2a815b4dfe4f47b8ac2416fac04456e5",
+  "scenario_id": "SCENARIO-FISH-001",
+  "scenario_version": "1.0",
+  "scenario_sha256": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+  "time_range": [
+    0,
+    20
+  ],
+  "figure_configuration": {
+    "width_inches": 7.2,
+    "aspect": "4:3",
+    "dpi": [
+      300,
+      600
+    ],
+    "formats": [
+      "png",
+      "svg"
+    ],
+    "font_size": 8,
+    "network_max_nodes": 60,
+    "network_root": null,
+    "window_start": 0,
+    "window_end": null,
+    "age_bins": [
+      0,
+      20,
+      40,
+      60,
+      80,
+      100,
+      120
+    ],
+    "display_seed": 17
+  },
+  "export_version": "2.0.0",
+  "export_commit": "163a235991460fe5e2e4620aa479735afc348bde",
+  "export_git_dirty": true,
+  "source_run_commit": "163a235991460fe5e2e4620aa479735afc348bde",
+  "source_run_git_dirty": true,
+  "source_fingerprints": {
+    "agent_states.parquet": "473797b9f364cd8c17f7a9a5d5a483c2cc27dabe4662bff1ec1b8a06e1843a74",
+    "contacts.parquet": "43831bd9c732c2cf1c6a241edec9e11d630fd390ce9808c8910166a46d77367c",
+    "events.parquet": "5868a97e01062c5e84987e65f3511dbb3f58d7ca19972467092e8ce60626588a",
+    "model_states.parquet": "84f80dc65b6cf989bd637e8418625546726429d9dd960ba7f026347d8c28e18f",
+    "raw_frames.parquet": "0cd5cb6fbfe13b583aa00dc246dcd0f6b0c8153cca17e5b66b056a01a8fd1f29"
+  },
+  "figure_data_sha256": "5f6c51f982de5fe0c8b59f6966e8ecaa2aecbd26c57dd06f395fcaf6f90e3c11"
+}

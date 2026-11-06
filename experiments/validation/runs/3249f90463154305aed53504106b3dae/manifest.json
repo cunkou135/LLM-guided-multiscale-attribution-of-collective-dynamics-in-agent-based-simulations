@@ -1,0 +1,98 @@
+{
+  "run_id": "3249f90463154305aed53504106b3dae",
+  "model_name": "covasim",
+  "model_version": "2.0.0",
+  "seed": 8,
+  "scenario_id": "SCENARIO-COVASIM-001",
+  "scenario_version": "2.0",
+  "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+  "scenario_file": "scenarios/v2/covasim.md",
+  "model_source": "Native Covasim 2.0.0; uncalibrated hybrid demonstration",
+  "parameters": {
+    "pop_size": 1000,
+    "pop_infected": 10,
+    "pop_type": "hybrid",
+    "start_day": "2020-01-27",
+    "beta": 0.016,
+    "pop_scale": 1,
+    "rescale": false,
+    "interventions": [
+      {
+        "type": "test_prob",
+        "start_day": 20,
+        "symp_prob": 0.15,
+        "asymp_prob": 0.0,
+        "test_delay": 0
+      },
+      {
+        "type": "contact_tracing",
+        "start_day": 20,
+        "trace_probs": {
+          "h": 0.7,
+          "s": 0.1,
+          "w": 0.1,
+          "c": 0.0
+        },
+        "trace_time": 0
+      }
+    ]
+  },
+  "requested_steps": 60,
+  "sampling": {
+    "frequency": 1
+  },
+  "started_at": "2026-11-06T00:55:32.953829+00:00",
+  "ended_at": "2026-11-06T00:56:08.840877+00:00",
+  "actual_steps": 60,
+  "status": "max_steps",
+  "error": null,
+  "python": "3.12.3",
+  "mesa": "3.5.2",
+  "software_versions": {
+    "mesa": "3.5.2",
+    "numpy": "1.26.4",
+    "pandas": "2.2.3",
+    "pyarrow": "21.0.0",
+    "pyyaml": "6.0.2"
+  },
+  "git_commit": "163a235991460fe5e2e4620aa479735afc348bde",
+  "git_dirty": true,
+  "missing_data": [
+    "unrealized transmission attempts are not exposed by native engine",
+    "within-day repeated testing of same person is not individually exposed",
+    "historical calibration and LTCF layer not present in demonstration"
+  ],
+  "checksums_sha256": {
+    "agent_states.parquet": "f0cc6649623f48b79d92dd850987b46a266a4584e37f4fad1af5b19097a8fa4b",
+    "events.parquet": "9f09be38dd3c311a16fc24904f8cd037d5b571f0410882e0725037fbb5127799",
+    "model_states.parquet": "3b70d1eb6399a31cebc20cba5d29df257fead0f6453306ac95f60fbb02d9927b",
+    "contacts.parquet": "0793defd7960a1fb81229dafb28f6d019c72cb143625319321f9e8ba479d7850",
+    "native_parameters.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+    "native_parameters_final.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780"
+  },
+  "engine_versions": {
+    "python": "3.10.2",
+    "covasim": "2.0.0",
+    "numpy": "1.23.5",
+    "sciris": "1.1.1",
+    "numba": "0.56.4",
+    "scipy": "1.10.1",
+    "pandas": "1.5.3",
+    "pyarrow": "17.0.0",
+    "matplotlib": "3.6.3",
+    "PyYAML": "6.0.3"
+  },
+  "historical_reproduction": false,
+  "logging": {
+    "format": "parquet",
+    "batch_size": 1024,
+    "compression": "zstd",
+    "agent_states": true,
+    "events": true,
+    "model_states": true,
+    "contacts": true,
+    "level": "INFO"
+  },
+  "scenario_integrity_verified": true,
+  "recording_mode": "full_observable"
+}

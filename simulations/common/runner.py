@@ -1,4 +1,5 @@
 import itertools
+import copy
 import json
 import logging
 import math
@@ -18,6 +19,7 @@ import yaml
 from simulations.common.trajectory_api import TrajectoryWriter
 from simulations.covasim.adapter import RemoteCovasim
 from simulations.schelling.model import Schelling
+from simulations.schelling.extended import ExtendedSchelling
 from scenarios.protocol import load_scenario
 
 
@@ -30,18 +32,18 @@ def load(path):
 
 def validate(c):
     required = {'model', 'model_version', 'scenario_id', 'seed', 'steps', 'parameters', 'sampling', 'logging', 'output', 'visualization'}
-    if not isinstance(c, dict) or set(c) - {'engine'} != required:
+    if not isinstance(c, dict) or set(c) - {'engine', 'scenario_version'} != required:
         raise ValueError(f'configuration keys must be {sorted(required)}')
-    if (c['model'], c['model_version']) not in (('schelling', '1'), ('covasim', '2.0.0')):
+    if (c['model'], c['model_version']) not in (('schelling', '1'), ('schelling_standard', '1'), ('schelling_extended', '2.0'), ('covasim', '2.0.0'), ('fish','fish-3.0')):
         raise ValueError('unsupported model or version')
-    if c['scenario_id'] != ('SCENARIO-SCHELLING-001' if c['model'] == 'schelling' else 'SCENARIO-COVASIM-001'):
+    if c['scenario_id'] != ('SCENARIO-SCHELLING-001' if c['model'].startswith('schelling') else 'SCENARIO-FISH-001' if c['model']=='fish' else 'SCENARIO-COVASIM-001'):
         raise ValueError('model and fixed scenario do not match')
     if type(c['seed']) is not int or not 0 <= c['seed'] < 2**32 or type(c['steps']) is not int or c['steps'] < 1:
         raise ValueError('seed and steps must be nonnegative integer and positive integer')
     if not isinstance(c['sampling'], dict) or set(c['sampling']) != {'frequency'} or type(c['sampling']['frequency']) is not int or c['sampling']['frequency'] < 1:
         raise ValueError('sampling.frequency must be a positive integer')
     log = c['logging']
-    expected_log = {'format', 'batch_size', 'compression', 'agent_states', 'events', 'model_states', 'level'} | ({'contacts'} if c['model'] == 'covasim' else set())
+    expected_log = {'format', 'batch_size', 'compression', 'agent_states', 'events', 'model_states', 'level'} | ({'contacts'} if c['model'] in ('covasim','fish') else set())
     if not isinstance(log, dict) or set(log) != expected_log or log.get('format') != 'parquet':
         raise ValueError('invalid logging fields')
     if type(log['batch_size']) is not int or log['batch_size'] < 1 or log['compression'] not in ('zstd', 'snappy', 'gzip', 'none') or log['level'] not in ('DEBUG', 'INFO', 'WARNING', 'ERROR'):
@@ -51,19 +53,51 @@ def validate(c):
     if not isinstance(c['output'], dict) or set(c['output']) != {'directory'} or not isinstance(c['output']['directory'], str) or not c['output']['directory']:
         raise ValueError('output.directory required')
     v = c['visualization']
-    if not isinstance(v, dict) or set(v) != {'enabled', 'host', 'port'} or type(v['enabled']) is not bool or not isinstance(v['host'], str) or not v['host'] or type(v['port']) is not int or not 1 <= v['port'] <= 65535:
+    if not isinstance(v, dict) or set(v) - {'display'} != {'enabled', 'host', 'port'} or type(v['enabled']) is not bool or not isinstance(v['host'], str) or not v['host'] or type(v['port']) is not int or not 1 <= v['port'] <= 65535:
         raise ValueError('visualization requires enabled, host and port')
     p = c['parameters']
     if not isinstance(p, dict):
         raise ValueError('parameters must be a mapping')
     number = lambda x: type(x) in (int, float) and math.isfinite(x)
-    if c['model'] == 'schelling':
-        if set(p) != {'width', 'height', 'density', 'minority_pc', 'homophily', 'radius', 'torus'}:
+    if 'display' in v:
+        display = v['display']
+        if not isinstance(display, dict) or set(display) - {'play_interval_seconds', 'recent_steps', 'figure_config', 'population_config','fish_config'}:
+            raise ValueError('invalid visualization.display fields')
+        if not number(display.get('play_interval_seconds', .35)) or display.get('play_interval_seconds', .35) <= 0:
+            raise ValueError('play interval must be positive')
+        if type(display.get('recent_steps', 3)) is not int or display.get('recent_steps', 3) < 0:
+            raise ValueError('recent_steps must be a nonnegative integer')
+        if not isinstance(display.get('figure_config', 'configs/figures.yaml'), str):
+            raise ValueError('figure_config must be a path')
+        if not isinstance(display.get('population_config', 'configs/population.yaml'), str):
+            raise ValueError('population_config must be a path')
+    if c['model'].startswith('schelling'):
+        extended = c['model'] == 'schelling_extended'
+        extra = {'homophily_mean', 'homophily_std', 'homophily_min', 'homophily_max', 'relocation_radius', 'relocation_policy'} if extended else {'homophily'}
+        if set(p) != {'width', 'height', 'density', 'minority_pc', 'radius', 'torus'} | extra:
             raise ValueError('invalid Schelling parameters')
         if any(type(p[k]) is not int or p[k] < 2 for k in ('width', 'height')) or type(p['radius']) is not int or p['radius'] < 1 or type(p['torus']) is not bool:
             raise ValueError('invalid grid dimensions, radius or torus')
-        if any(not number(p[k]) or not 0 <= p[k] <= 1 for k in ('density', 'minority_pc', 'homophily')):
+        if any(not number(p[k]) or not 0 <= p[k] <= 1 for k in ('density', 'minority_pc') + (() if extended else ('homophily',))):
             raise ValueError('probabilities must lie within [0, 1]')
+        if extended:
+            from statistics import NormalDist
+            if p['radius'] != 1 or type(p['relocation_radius']) is not int or p['relocation_radius'] < 1 or p['relocation_policy'] != 'best_local_satisfactory':
+                raise ValueError('extended model requires Moore radius 1 and positive relocation radius')
+            if any(not number(p[k]) for k in ('homophily_mean', 'homophily_std', 'homophily_min', 'homophily_max')) or not 0 <= p['homophily_min'] < p['homophily_max'] <= 1 or p['homophily_std'] < 0:
+                raise ValueError('invalid truncated normal parameters')
+            if p['homophily_std'] == 0:
+                if not p['homophily_min'] <= p['homophily_mean'] <= p['homophily_max']:
+                    raise ValueError('degenerate preference lies outside bounds')
+            else:
+                distribution = NormalDist(p['homophily_mean'], p['homophily_std'])
+                if distribution.cdf(p['homophily_max']) - distribution.cdf(p['homophily_min']) < 1e-8:
+                    raise ValueError('truncation acceptance probability too small for rejection sampling')
+    elif c['model']=='fish':
+        from simulations.fish.adapter import validate_parameters
+        validate_parameters(p)
+        if type(log['contacts']) is not bool:
+            raise ValueError('logging.contacts must be boolean')
     else:
         if c['steps'] < 2:
             raise ValueError('Covasim 2.0.0 requires steps >= 2 (native n_days must be positive)')
@@ -86,29 +120,35 @@ def validate(c):
 
 class RunSession:
     """Identical lifecycle used by batch, headless and interactive execution."""
-    def __init__(self, c):
+    def __init__(self, c, live_snapshots=False):
         validate(c)
         self.config = c
         logging.getLogger('abms_lab').setLevel(c['logging']['level'])
         self.meta = dict(run_id=uuid.uuid4().hex, model_name=c['model'], model_version=c['model_version'], seed=c['seed'])
-        scenario = load_scenario(c['scenario_id'])
+        scenario = load_scenario(c['scenario_id'], version=c.get('scenario_version', '1.0'))
         self.meta.update({k: v for k, v in scenario.items() if k != 'text'})
         self.out = Path(c['output']['directory']) / self.meta['run_id']
         log = c['logging']
         self.enabled = {name: log[name] for name in ('agent_states', 'events', 'model_states')}
-        if c['model'] == 'covasim':
+        if c['model'] in ('covasim','fish'):
             self.enabled['contacts'] = log['contacts']
-        self.writer = TrajectoryWriter(self.out, self.meta, batch_size=log['batch_size'], compression=log['compression'], enabled=self.enabled)
+        if c['model']=='fish':
+            self.enabled['raw_frames']=log['agent_states']
+        self.writer = TrajectoryWriter(self.out, self.meta, batch_size=log['batch_size'], compression=log['compression'], enabled=self.enabled, checkpointing=live_snapshots)
         (self.out / 'resolved_config.yaml').write_text(yaml.safe_dump(c, sort_keys=False), encoding='utf-8')
         if scenario is not None:
-            (self.out / 'scenario.md').write_text(scenario['text'], encoding='utf-8', newline='\n')
+            (self.out / 'scenario.md').write_bytes((Path(__file__).resolve().parents[2]/scenario['scenario_file']).read_bytes())
         self.started = datetime.now(timezone.utc).isoformat()
         self.completed = 0
         self.last_snapshot = -1
         self.closed = False
         try:
-            if c['model'] == 'schelling':
-                self.model = Schelling(**c['parameters'], seed=c['seed'], event=lambda row: self.writer.record('events', row))
+            if c['model'].startswith('schelling'):
+                cls = ExtendedSchelling if c['model'] == 'schelling_extended' else Schelling
+                self.model = cls(**c['parameters'], seed=c['seed'], event=lambda row: self.writer.record('events', row))
+            elif c['model']=='fish':
+                from simulations.fish.adapter import FishSimulation
+                self.model=FishSimulation(c['parameters'],c['seed'],event=lambda row:self.writer.record('events',row),contact=lambda row:self.writer.record('contacts',row))
             else:
                 self.model = RemoteCovasim(c, self.writer.record, self.out)
             self.snapshot()
@@ -119,7 +159,10 @@ class RunSession:
     def snapshot(self):
         for state in self.model.states():
             self.writer.record('agent_states', state)
+        if self.config['model']=='fish':
+            self.writer.record('raw_frames',dict(event_type='native_raw_frame',frame_json=json.dumps(self.model.raw_frame(),allow_nan=False)))
         self.writer.record('model_states', self.model.summary())
+        self.writer.save_checkpoint()
         self.last_snapshot = self.completed
 
     def advance(self):
@@ -133,7 +176,7 @@ class RunSession:
             if self.completed % self.config['sampling']['frequency'] == 0 or finished:
                 self.snapshot()
             if finished:
-                self.close('stable' if self.config['model'] == 'schelling' and not self.model.running else 'max_steps')
+                self.close((getattr(self.model, 'stop_reason', None) or 'stable') if self.config['model'].startswith('schelling') and not self.model.running else 'max_steps')
         except Exception as exc:
             self.close('error', f'{type(exc).__name__}: {exc}')
             raise
@@ -168,7 +211,7 @@ class RunSession:
                 missing.append('intermediate state snapshots between sampling steps')
             if reason == 'error':
                 missing.append('run may be incomplete')
-            source = 'Mesa 3.5.2 Schelling example' if self.meta['model_name'] == 'schelling' else 'Native Covasim 2.0.0; uncalibrated hybrid demonstration'
+            source = 'User-provided collective_motion_lab fish-3.0; unmodified core' if self.meta['model_name']=='fish' else 'Study-specific heterogeneous local-relocation Schelling extension' if self.meta['model_name'] == 'schelling_extended' else 'Mesa 3.5.2 Schelling example' if self.meta['model_name'].startswith('schelling') else 'Native Covasim 2.0.0; uncalibrated hybrid demonstration'
             versions = {'mesa': mesa.__version__, 'numpy': numpy.__version__, 'pandas': pandas.__version__, 'pyarrow': pyarrow.__version__, 'pyyaml': yaml.__version__}
             engine_versions = getattr(getattr(self, 'model', None), 'engine_versions', {})
             if self.config['model'] == 'covasim':
@@ -191,6 +234,26 @@ def run(c):
     return session.out
 
 
+def _parameter_target(config, path):
+    """Resolve existing dotted YAML paths; integers index intervention lists."""
+    if not isinstance(path, str) or not path:
+        raise ValueError('batch parameter paths must be nonempty strings')
+    parts = path.split('.')
+    if parts[0] != 'parameters' and path != 'steps':
+        parts.insert(0, 'parameters')
+    node = config
+    try:
+        for part in parts[:-1]:
+            node = node[int(part)] if isinstance(node, list) and part.isdecimal() else node[part]
+        key = int(parts[-1]) if isinstance(node, list) and parts[-1].isdecimal() else parts[-1]
+        node[key]  # Reject accidental creation or misspellings.
+        if isinstance(key, int) and key < 0:
+            raise IndexError(key)
+    except (KeyError, IndexError, TypeError, ValueError) as exc:
+        raise ValueError(f'unknown batch parameter path: {path}') from exc
+    return node, key, '.'.join(parts)
+
+
 def batch(path):
     spec = yaml.safe_load(Path(path).read_text(encoding='utf-8'))
     if not isinstance(spec, dict) or set(spec) not in ({'base_config', 'seeds', 'grid'}, {'base_config', 'master_seed', 'replicates', 'grid'}):
@@ -198,26 +261,26 @@ def batch(path):
     if not isinstance(spec['base_config'], str) or not isinstance(spec['grid'], dict) or any(not isinstance(v, list) or not v for v in spec['grid'].values()):
         raise ValueError('invalid batch base_config or grid')
     base = load(Path(path).parent / spec['base_config'])
-    if set(spec['grid']) - (set(base['parameters']) | {'steps'}):
-        raise ValueError('batch grid contains unknown parameter')
+    normalized = [_parameter_target(base, key)[2] for key in spec['grid']]
+    if any(a == b or a.startswith(b+'.') or b.startswith(a+'.')
+           for index, a in enumerate(normalized) for b in normalized[index+1:]):
+        raise ValueError('overlapping batch parameter paths')
     seeds = spec.get('seeds')
     if seeds is None:
         if type(spec['master_seed']) is not int or spec['master_seed'] < 0 or type(spec['replicates']) is not int or not 1 <= spec['replicates'] <= 100000:
             raise ValueError('invalid master_seed or replicates')
         seeds = random.Random(spec['master_seed']).sample(range(2**32), spec['replicates'])
-    if not isinstance(seeds, list) or not seeds or any(type(seed) is not int or not 0 <= seed < 2**63 for seed in seeds):
+    if not isinstance(seeds, list) or not seeds or any(type(seed) is not int or not 0 <= seed < 2**32 for seed in seeds):
         raise ValueError('seeds must be a nonempty list of nonnegative integers')
     keys = list(spec['grid'])
     outcomes = []
     for values in itertools.product(*(spec['grid'][k] for k in keys)):
         for seed in seeds:
-            c = yaml.safe_load(yaml.safe_dump(base))
+            c = copy.deepcopy(base)
             c['seed'] = seed
             for key, value in zip(keys, values):
-                if key == 'steps':
-                    c['steps'] = value
-                else:
-                    c['parameters'][key] = value
+                node, field, _ = _parameter_target(c, key)
+                node[field] = copy.deepcopy(value)
             try:
                 outcomes.append({'seed': seed, 'parameters': dict(zip(keys, values)), 'run': str(run(c)), 'error': None})
             except Exception as exc:

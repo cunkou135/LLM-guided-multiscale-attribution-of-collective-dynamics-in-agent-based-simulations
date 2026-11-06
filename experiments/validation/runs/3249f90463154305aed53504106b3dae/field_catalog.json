@@ -1,0 +1,474 @@
+{
+  "agent_states": {
+    "granularity": "agent per sampled step",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "simulation_day": {
+        "type": "int64",
+        "description": "Covasim day; -1 is initialized pre-day-zero state"
+      },
+      "uid": {
+        "type": "int64",
+        "description": "Covasim person UID"
+      },
+      "age": {
+        "type": "double",
+        "description": "age"
+      },
+      "sex": {
+        "type": "double",
+        "description": "sex"
+      },
+      "symp_prob": {
+        "type": "double",
+        "description": "symp prob"
+      },
+      "severe_prob": {
+        "type": "double",
+        "description": "severe prob"
+      },
+      "crit_prob": {
+        "type": "double",
+        "description": "crit prob"
+      },
+      "death_prob": {
+        "type": "double",
+        "description": "death prob"
+      },
+      "rel_trans": {
+        "type": "double",
+        "description": "rel trans"
+      },
+      "rel_sus": {
+        "type": "double",
+        "description": "rel sus"
+      },
+      "susceptible": {
+        "type": "bool",
+        "description": "Native Covasim susceptible"
+      },
+      "exposed": {
+        "type": "bool",
+        "description": "Native Covasim exposed"
+      },
+      "infectious": {
+        "type": "bool",
+        "description": "Native Covasim infectious"
+      },
+      "symptomatic": {
+        "type": "bool",
+        "description": "Native Covasim symptomatic"
+      },
+      "severe": {
+        "type": "bool",
+        "description": "Native Covasim severe"
+      },
+      "critical": {
+        "type": "bool",
+        "description": "Native Covasim critical"
+      },
+      "tested": {
+        "type": "bool",
+        "description": "Native Covasim tested"
+      },
+      "diagnosed": {
+        "type": "bool",
+        "description": "Native Covasim diagnosed"
+      },
+      "recovered": {
+        "type": "bool",
+        "description": "Native Covasim recovered"
+      },
+      "dead": {
+        "type": "bool",
+        "description": "Native Covasim dead"
+      },
+      "known_contact": {
+        "type": "bool",
+        "description": "Native Covasim known_contact"
+      },
+      "quarantined": {
+        "type": "bool",
+        "description": "Native Covasim quarantined"
+      },
+      "date_susceptible": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_exposed": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_infectious": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_symptomatic": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_severe": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_critical": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_tested": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_diagnosed": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_recovered": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_dead": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_known_contact": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_quarantined": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_pos_test": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "date_end_quarantine": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "dur_exp2inf": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "dur_inf2sym": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "dur_sym2sev": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "dur_sev2crit": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      },
+      "dur_disease": {
+        "type": "double",
+        "description": "Native Covasim day or duration; null when unset"
+      }
+    }
+  },
+  "events": {
+    "granularity": "observed model event",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "simulation_day": {
+        "type": "int64",
+        "description": "Covasim day; -1 is initialized pre-day-zero state"
+      },
+      "partner_id": {
+        "type": "int64",
+        "description": "Infection source; null for seed/importation or status event"
+      },
+      "layer": {
+        "type": "string",
+        "description": "Original Covasim contact layer"
+      },
+      "state": {
+        "type": "string",
+        "description": "Changed native state"
+      },
+      "before": {
+        "type": "bool",
+        "description": "Previous boolean state"
+      },
+      "after": {
+        "type": "bool",
+        "description": "New boolean state"
+      }
+    }
+  },
+  "model_states": {
+    "granularity": "one per sampled step",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "simulation_day": {
+        "type": "int64",
+        "description": "Covasim day; -1 is initialized pre-day-zero state"
+      },
+      "population": {
+        "type": "int64",
+        "description": "Unscaled simulated count: population"
+      },
+      "susceptible": {
+        "type": "int64",
+        "description": "Unscaled simulated count: susceptible"
+      },
+      "exposed": {
+        "type": "int64",
+        "description": "Unscaled simulated count: exposed"
+      },
+      "infectious": {
+        "type": "int64",
+        "description": "Unscaled simulated count: infectious"
+      },
+      "symptomatic": {
+        "type": "int64",
+        "description": "Unscaled simulated count: symptomatic"
+      },
+      "severe": {
+        "type": "int64",
+        "description": "Unscaled simulated count: severe"
+      },
+      "critical": {
+        "type": "int64",
+        "description": "Unscaled simulated count: critical"
+      },
+      "tested": {
+        "type": "int64",
+        "description": "Unscaled simulated count: tested"
+      },
+      "diagnosed": {
+        "type": "int64",
+        "description": "Unscaled simulated count: diagnosed"
+      },
+      "recovered": {
+        "type": "int64",
+        "description": "Unscaled simulated count: recovered"
+      },
+      "dead": {
+        "type": "int64",
+        "description": "Unscaled simulated count: dead"
+      },
+      "known_contact": {
+        "type": "int64",
+        "description": "Unscaled simulated count: known_contact"
+      },
+      "quarantined": {
+        "type": "int64",
+        "description": "Unscaled simulated count: quarantined"
+      }
+    }
+  },
+  "contacts": {
+    "granularity": "potential contact edge per sampled step",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "simulation_day": {
+        "type": "int64",
+        "description": "Covasim day; -1 is initialized pre-day-zero state"
+      },
+      "partner_id": {
+        "type": "int64",
+        "description": "Second endpoint of potential contact edge"
+      },
+      "layer": {
+        "type": "string",
+        "description": "Original contact layer"
+      },
+      "beta": {
+        "type": "double",
+        "description": "Native edge weight, not realized transmission probability"
+      }
+    }
+  }
+}

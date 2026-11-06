@@ -1,0 +1,10 @@
+{
+  "run_id": "3249f90463154305aed53504106b3dae",
+  "model_name": "covasim",
+  "model_version": "2.0.0",
+  "seed": 8,
+  "scenario_id": "SCENARIO-COVASIM-001",
+  "scenario_version": "2.0",
+  "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+  "scenario_file": "scenarios/v2/covasim.md"
+}

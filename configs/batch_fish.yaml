@@ -1,0 +1,9 @@
+base_config: fish.yaml
+seeds:
+- 42
+- 43
+grid:
+  steps:
+  - 100
+  fish.p_s:
+  - 0.12

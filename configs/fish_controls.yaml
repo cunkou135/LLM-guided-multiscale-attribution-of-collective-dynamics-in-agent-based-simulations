@@ -1,0 +1,228 @@
+simulation.dt:
+  label: 仿真时间步长
+  group: 仿真设置
+  type: float
+  min: 0.01
+  max: 0.2
+  step: 0.01
+  unit: 秒
+  apply: reset
+population.count:
+  label: 个体数量
+  group: 初始群体
+  type: int
+  min: 10
+  max: 6000
+  step: 10
+  apply: reset
+population.distribution:
+  label: 初始空间分布
+  group: 初始群体
+  type: select
+  options:
+    disk: 圆盘内随机
+    rectangle: 矩形内随机
+  apply: reset
+population.spawn_x:
+  label: 初始区域中心 X
+  group: 初始群体
+  type: float
+  min: -500
+  max: 500
+  step: 1
+  apply: reset
+population.spawn_y:
+  label: 初始区域中心 Y
+  group: 初始群体
+  type: float
+  min: -500
+  max: 500
+  step: 1
+  apply: reset
+population.spawn_radius:
+  label: 初始区域尺度
+  group: 初始群体
+  type: float
+  min: 3
+  max: 150
+  step: 1
+  apply: reset
+population.initial_heading_deg:
+  label: 初始朝向中心
+  group: 初始群体
+  type: float
+  min: -180
+  max: 180
+  step: 5
+  unit: 度
+  apply: reset
+population.heading_spread_deg:
+  label: 初始朝向随机范围
+  group: 初始群体
+  type: float
+  min: 0
+  max: 180
+  step: 5
+  unit: 度
+  apply: reset
+predator.max_turn_deg:
+  label: 捕食者最大转向速度
+  group: 捕食与逃逸
+  type: float
+  min: 5
+  max: 360
+  step: 5
+  unit: 度每秒
+  apply: reset
+predator.spawn_distance:
+  label: 捕食者初始距离
+  group: 捕食与逃逸
+  type: float
+  min: 5
+  max: 150
+  step: 1
+  description: 相对于初始区域中心，新增捕食者时生效
+  apply: reset
+predator.spawn_angle_deg:
+  label: 捕食者初始方位
+  group: 捕食与逃逸
+  type: float
+  min: -180
+  max: 180
+  step: 5
+  unit: 度
+  apply: reset
+fish.N_p:
+  label: 鲨鱼数量 Np
+  group: 鲨鱼
+  type: int
+  min: 0
+  max: 30
+  step: 1
+  apply: reset
+fish.R_h:
+  label: 捕猎感知半径 Rh
+  group: 鲨鱼
+  type: float
+  min: 1
+  max: 150
+  step: 1
+  apply: reset
+fish.mu_p:
+  label: 鲨鱼平均速度 μp
+  group: 鲨鱼
+  type: float
+  min: 0.1
+  max: 30
+  step: 0.1
+  apply: reset
+  description: 每步独立重采样对数正态速度；此处为速度的算术均值或标准差。
+fish.sigma_p:
+  label: 鲨鱼速度标准差 σp
+  group: 鲨鱼
+  type: float
+  min: 0
+  max: 10
+  step: 0.1
+  apply: reset
+  description: 每步独立重采样对数正态速度；此处为速度的算术均值或标准差。
+fish.R_p:
+  label: 直接威胁感知半径 Rp
+  group: 鱼的感知
+  type: float
+  min: 0.1
+  max: 80
+  step: 0.5
+  apply: reset
+fish.r_r:
+  label: 排斥区外径 rr
+  group: 鱼的感知
+  type: float
+  min: 0.1
+  max: 10
+  step: 0.1
+  apply: reset
+fish.r_a:
+  label: 对齐区外径 ra
+  group: 鱼的感知
+  type: float
+  min: 0.2
+  max: 40
+  step: 0.2
+  apply: reset
+fish.R_s:
+  label: 吸引区外径 Rs
+  group: 鱼的感知
+  type: float
+  min: 0.3
+  max: 100
+  step: 0.5
+  apply: reset
+fish.p_s:
+  label: 社会受惊概率 ps
+  group: 受惊传播
+  type: float
+  min: 0
+  max: 1
+  step: 0.01
+  apply: reset
+fish.tau_f:
+  label: 受惊持续步数 τf
+  group: 受惊传播
+  type: int
+  min: 1
+  max: 200
+  step: 1
+  apply: reset
+fish.w:
+  label: 逃离方向合成比例 w
+  group: 受惊传播
+  type: float
+  min: 0
+  max: 1
+  step: 0.05
+  apply: reset
+fish.Omega:
+  label: 鱼的最大转向速率 Ω
+  group: 鱼的运动
+  type: float
+  min: 1
+  max: 720
+  step: 5
+  apply: reset
+fish.mu_f:
+  label: 鱼的平均速度 μf
+  group: 鱼的运动
+  type: float
+  min: 0.1
+  max: 30
+  step: 0.1
+  apply: reset
+  description: 每步独立重采样对数正态速度；此处为速度的算术均值或标准差。
+fish.sigma_f:
+  label: 鱼的速度标准差 σf
+  group: 鱼的运动
+  type: float
+  min: 0
+  max: 10
+  step: 0.1
+  apply: reset
+  description: 每步独立重采样对数正态速度；此处为速度的算术均值或标准差。
+fish.eta_theta:
+  label: 角度噪声标准差 ηθ
+  group: 鱼的运动
+  type: float
+  min: 0
+  max: 90
+  step: 0.5
+  apply: reset
+  description: 鱼与鲨鱼每步角度噪声的标准差，单位为度。
+fish.eta_x:
+  label: 位置噪声标准差 ηx
+  group: 鱼的运动
+  type: float
+  min: 0
+  max: 1
+  step: 0.01
+  apply: reset
+  description: 鱼每步位移的二维独立高斯扰动，每个坐标的标准差。

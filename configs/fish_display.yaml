@@ -1,0 +1,15 @@
+follow_camera: true
+camera_smoothing: 0.08
+zoom: 4.0
+show_grid: true
+show_trails: false
+trail_length: 22
+trail_opacity: 0.25
+show_zones: true
+show_predator_radius: false
+agent_size: 3.5
+predator_size: 14.0
+fish_color: '#87d8d3'
+predator_color: '#f28a63'
+fish_background: '#091b25'
+height: 520

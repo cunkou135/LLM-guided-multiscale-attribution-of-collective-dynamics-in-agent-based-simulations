@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "D:\Python\lib\runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "D:\Python\lib\runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "E:\work\成果\发表论文\Nature Communication\abms_lab\simulations\covasim\adapter.py", line 199, in <module>
+    worker()
+  File "E:\work\成果\发表论文\Nature Communication\abms_lab\simulations\covasim\adapter.py", line 170, in worker
+    model = CovasimAdapter(config)
+  File "E:\work\成果\发表论文\Nature Communication\abms_lab\simulations\covasim\adapter.py", line 29, in __init__
+    self.sim = build_sim(config)
+  File "E:\work\成果\发表论文\Nature Communication\abms_lab\simulations\covasim\adapter.py", line 21, in build_sim
+    interventions.append(factories[kind](**specification))
+TypeError: test_prob.__init__() missing 1 required positional argument: 'symp_prob'

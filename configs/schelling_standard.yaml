@@ -1,0 +1,34 @@
+model: schelling_standard
+scenario_id: SCENARIO-SCHELLING-001
+model_version: '1'
+seed: 42
+steps: 50
+parameters:
+  width: 20
+  height: 20
+  density: 0.8
+  minority_pc: 0.5
+  homophily: 0.4
+  radius: 1
+  torus: false
+sampling:
+  frequency: 1
+logging:
+  format: parquet
+  batch_size: 1024
+  compression: zstd
+  agent_states: true
+  events: true
+  model_states: true
+  level: INFO
+output:
+  directory: results
+visualization:
+  enabled: true
+  host: 127.0.0.1
+  port: 8765
+  display:
+    play_interval_seconds: 0.35
+    recent_steps: 3
+    figure_config: configs/figures.yaml
+scenario_version: '1.0'

@@ -58,6 +58,15 @@ S_EVENT = {
     'reason': (pa.string(), 'Reason for movement or no movement'),
 }
 S_MODEL = {k: (pa.int64(), k.replace('_', ' ')) for k in ('population', 'happy', 'same_neighbors', 'neighbors')}
+EXT_STATE = S_FIELDS | {'theta_i': (pa.float64(), 'Fixed individual preference from truncated normal initialization')}
+EXT_EVENT = S_EVENT | {'theta_i': EXT_STATE['theta_i'], 'attempted': (pa.bool_(), 'Unsatisfied at actual activation; exhaustive local search attempted'),
+                       'happy_before': (pa.bool_(), 'Satisfaction recomputed using current neighbors at activation'),
+                       'happy_after': (pa.bool_(), 'Satisfaction immediately after own activation; final snapshot includes later neighbor moves'),
+                       'candidate_count': (pa.int64(), 'Vacant local candidate cells'),
+                       'feasible_count': (pa.int64(), 'Satisfactory candidates, otherwise strictly improving candidates'),
+                       'similarity_before': (pa.float64(), 'Occupied same-kind neighbor proportion before activation'),
+                       'similarity_after': (pa.float64(), 'Occupied same-kind neighbor proportion after activation')}
+EXT_MODEL = S_MODEL | {'moves': (pa.int64(), 'Actual relocations in this completed sweep')}
 
 C_FLAGS = ('susceptible', 'exposed', 'infectious', 'symptomatic', 'severe', 'critical',
            'tested', 'diagnosed', 'recovered', 'dead', 'known_contact', 'quarantined')
@@ -76,13 +85,25 @@ C_EVENT = C_DAY | {'partner_id': (pa.int64(), 'Infection source; null for seed/i
 C_CONTACT = C_DAY | {'partner_id': (pa.int64(), 'Second endpoint of potential contact edge'),
                         'layer': (pa.string(), 'Original contact layer'), 'beta': (pa.float64(), 'Native edge weight, not realized transmission probability')}
 C_MODEL = C_DAY | {key: (pa.int64(), 'Unscaled simulated count: ' + key) for key in ('population',) + C_FLAGS}
+F_STATE={'role':(pa.string(),'fish or shark'),**{key:(pa.float64(),key) for key in ('x','y','heading','vx','vy')},
+         'fright':(pa.int64(),'Native action episode: 0 ordinary, 1 direct, 2 social; same presentation as source'),
+         'remaining':(pa.int64(),'Remaining fright steps after update'), 'target_id':(pa.int64(),'Shark target UID, -1 when absent')}
+F_EVENT={'role':F_STATE['role'],**{key:(pa.float64(),key) for key in ('x_before','y_before','x_after','y_after','heading')},
+         'decision_json':(pa.string(),'Lossless native individual decision fields and random draws')}
+F_CONTACT={'partner_id':(pa.int64(),'Source neighbor UID'), 'source_episode':(pa.int64(),'Source fright episode at decision time')}
+F_MODEL={'population':(pa.int64(),'Fish count'), 'predators':(pa.int64(),'Shark count'),'elapsed':(pa.float64(),'Native elapsed model time')}
 
 
 def _definitions(model):
+    if model=='fish':
+        return {name:COMMON|fields for name,fields in (('agent_states',F_STATE),('events',F_EVENT),('contacts',F_CONTACT),
+                 ('raw_frames',{'frame_json':(pa.string(),'Exact native fish-3.0 raw_frame JSON')}),('model_states',F_MODEL))}
     if model == 'covasim':
         return {name: COMMON | fields for name, fields in
                 (('agent_states', C_PERSON), ('events', C_EVENT), ('model_states', C_MODEL), ('contacts', C_CONTACT))}
-    if model != 'schelling':
+    if model == 'schelling_extended':
+        return {name: COMMON | fields for name, fields in zip(('agent_states', 'events', 'model_states'), (EXT_STATE, EXT_EVENT, EXT_MODEL))}
+    if model not in ('schelling', 'schelling_standard'):
         raise ValueError(f'Unknown model: {model}')
     additions = (S_FIELDS, S_EVENT, S_MODEL)
     return {name: COMMON | fields for name, fields in zip(('agent_states', 'events', 'model_states'), additions)}
@@ -97,7 +118,7 @@ def _digest(path):
 
 
 class TrajectoryWriter:
-    def __init__(self, directory, metadata, batch_size=1024, compression='zstd', enabled=None):
+    def __init__(self, directory, metadata, batch_size=1024, compression='zstd', enabled=None, checkpointing=False):
         self.directory = Path(directory)
         self.directory.mkdir(parents=True, exist_ok=False)
         self.metadata = metadata
@@ -110,6 +131,31 @@ class TrajectoryWriter:
         self.counts = dict.fromkeys(self.definitions, 0)
         self.event_index = 0
         self.step = 0
+        self.checkpointing = checkpointing
+        # Commit model_states last: its appearance marks a complete frame.
+        self.checkpoint_rows = {name: [] for name in ('agent_states', 'events', 'contacts', 'raw_frames', 'model_states') if name in self.definitions}
+        if checkpointing:
+            (self.directory / 'checkpoints').mkdir()
+            self._write_catalog()
+        (self.directory / 'run_metadata.json').write_text(json.dumps(metadata, indent=2), encoding='utf-8')
+
+    def _write_catalog(self):
+        granularities = {'agent_states': 'agent per sampled step', 'events': 'observed model event', 'model_states': 'one per sampled step', 'contacts': 'native recorded interaction/contact edge', 'raw_frames':'lossless native frame per sampled step'}
+        catalog = {name: {'granularity': granularities[name], 'fields': {key: {'type': str(typ), 'description': desc} for key, (typ, desc) in fields.items()}}
+                   for name, fields in self.definitions.items() if self.enabled[name]}
+        (self.directory / 'field_catalog.json').write_text(json.dumps(catalog, indent=2, ensure_ascii=False), encoding='utf-8')
+
+    def save_checkpoint(self):
+        """Closed Parquet snapshots for live inspection; never interpolate or rerun."""
+        if not self.checkpointing:
+            return
+        for name, rows in self.checkpoint_rows.items():
+            if self.enabled[name]:
+                destination = self.directory / 'checkpoints' / f'{name}_{self.step:06d}.parquet'
+                temporary = destination.with_suffix('.tmp')
+                pq.write_table(pa.Table.from_pylist(rows, schema=self.schemas[name]), temporary, compression=self.compression)
+                temporary.replace(destination)
+            rows.clear()
 
     def record(self, name, row):
         if name in ('native_parameters', 'native_parameters_final'):
@@ -127,6 +173,8 @@ class TrajectoryWriter:
         if unknown:
             raise ValueError(f'Unknown {name} fields: {sorted(unknown)}')
         self.buffers[name].append(common)
+        if self.checkpointing and name in self.checkpoint_rows:
+            self.checkpoint_rows[name].append(common)
         if len(self.buffers[name]) >= self.batch_size:
             self.flush(name)
 
@@ -155,7 +203,7 @@ class TrajectoryWriter:
             if metadata.num_rows != self.counts[name] or not pq.read_schema(path).equals(self.schemas[name]):
                 raise IOError(f'Parquet verification failed: {path}')
             checksums[path.name] = _digest(path)
-            granularity = {'agent_states': 'agent per sampled step', 'events': 'observed model event', 'model_states': 'one per sampled step', 'contacts': 'potential contact edge per sampled step'}[name]
+            granularity = {'agent_states': 'agent per sampled step', 'events': 'observed model event', 'model_states': 'one per sampled step', 'contacts': 'native recorded interaction/contact edge', 'raw_frames':'lossless native frame per sampled step'}[name]
             catalog[name] = {'granularity': granularity, 'fields': {key: {'type': str(typ), 'description': desc} for key, (typ, desc) in self.definitions[name].items()}}
         (self.directory / 'field_catalog.json').write_text(json.dumps(catalog, indent=2, ensure_ascii=False), encoding='utf-8')
         for name in ('native_parameters.json', 'native_parameters_final.json'):
@@ -169,6 +217,20 @@ class Trajectory:
         self.directory = Path(directory)
         self.catalog = json.loads((self.directory / 'field_catalog.json').read_text(encoding='utf-8'))
 
+    def configuration(self):
+        import yaml
+        return yaml.safe_load((self.directory / 'resolved_config.yaml').read_text(encoding='utf-8'))
+
+    def metadata(self):
+        path = self.directory / 'manifest.json'
+        if not path.exists():
+            path = self.directory / 'run_metadata.json'
+        return json.loads(path.read_text(encoding='utf-8'))
+
+    def source_fingerprints(self):
+        paths = list(self.directory.glob('*.parquet')) if (self.directory / 'manifest.json').exists() else list((self.directory / 'checkpoints').glob('*.parquet'))
+        return {str(path.relative_to(self.directory)): _digest(path) for path in sorted(paths)}
+
     def read(self, name, start=None, end=None, agent_id=None):
         if name not in self.catalog:
             raise ValueError(f'{name} was not recorded or does not exist')
@@ -177,13 +239,35 @@ class Trajectory:
             filters.append(('step', '>=', start))
         if end is not None:
             filters.append(('step', '<=', end))
-        data = pq.read_table(self.directory / f'{name}.parquet', filters=filters or None).to_pandas()
+        source = self.directory / f'{name}.parquet'
+        if not (self.directory / 'manifest.json').exists() and (self.directory / 'checkpoints').exists():
+            source = sorted((self.directory / 'checkpoints').glob(f'{name}_*.parquet'))
+            if not source:
+                raise ValueError(f'No completed checkpoint for {name}')
+        data = pq.read_table(source, filters=filters or None).to_pandas()
         if agent_id is not None:
             mask = data.agent_id == agent_id
             if 'partner_id' in data:
                 mask |= data.partner_id == agent_id
             data = data[mask]
         return data.copy(deep=True)
+
+    def available_steps(self):
+        return sorted(int(s) for s in self.read('model_states').step.unique())
+
+    def read_snapshot(self, step):
+        if step not in self.available_steps():
+            raise ValueError(f'Step {step} was not recorded; select an actual sampled step')
+        return self.read('agent_states', start=step, end=step)
+
+    def read_frame(self,step):
+        """Exact migrated native frame; never recomputed from a replay engine."""
+        if step not in self.available_steps():
+            raise ValueError(f'Step {step} was not recorded')
+        rows=self.read('raw_frames',start=step,end=step)
+        if len(rows)!=1:
+            raise ValueError('Expected exactly one native raw frame')
+        return json.loads(rows.iloc[0].frame_json)
 
     def export(self, destination):
         """Copy recorded Parquet tables and accompanying run metadata."""
@@ -192,7 +276,7 @@ class Trajectory:
         dest.mkdir(parents=True, exist_ok=True)
         for name in self.catalog:
             shutil.copy2(self.directory / f'{name}.parquet', dest / f'{name}.parquet')
-        for name in ('field_catalog.json', 'manifest.json', 'resolved_config.yaml', 'scenario.md', 'native_parameters.json', 'native_parameters_final.json'):
+        for name in ('field_catalog.json', 'manifest.json', 'run_metadata.json', 'resolved_config.yaml', 'scenario.md', 'native_parameters.json', 'native_parameters_final.json'):
             source = self.directory / name
             if source.exists():
                 shutil.copy2(source, dest / name)

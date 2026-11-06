@@ -1,0 +1,45 @@
+{
+  "run_id": "3b1b5e8b6f9a41d695988be12ab8c060",
+  "scenario_id": "SCENARIO-SCHELLING-001",
+  "scenario_version": "2.0",
+  "scenario_sha256": "ecfa1373637c172b6e1ab2786a9d4b803ea9f58ae65963f2d883326dde85d4c7",
+  "time_range": [
+    0,
+    4
+  ],
+  "figure_configuration": {
+    "width_inches": 7.2,
+    "aspect": "4:3",
+    "dpi": [
+      300,
+      600
+    ],
+    "formats": [
+      "png",
+      "svg"
+    ],
+    "font_size": 8,
+    "network_max_nodes": 60,
+    "network_root": null,
+    "window_start": 0,
+    "window_end": null,
+    "age_bins": [
+      0,
+      20,
+      40,
+      60,
+      80,
+      100,
+      120
+    ],
+    "display_seed": 17
+  },
+  "export_version": "2.0.0",
+  "export_commit": "163a235991460fe5e2e4620aa479735afc348bde",
+  "source_fingerprints": {
+    "agent_states.parquet": "9a958e10d5f0764d6b99a40fa75a95696e7119acfc4cc976b526526600189f9b",
+    "events.parquet": "73322c7645e45245f7e71eb4f880df6efd540313eff593228008d2eedcf4d38a",
+    "model_states.parquet": "72d4780ddc6bacbdd22487faa0600cb8082bed65115630615e7b302109bcb6a8"
+  },
+  "figure_data_sha256": "0a4c3f1630b7603c185495b3de33a33199058a68bfa5d00ccdd949a31a02d321"
+}

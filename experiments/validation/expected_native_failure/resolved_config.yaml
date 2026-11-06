@@ -1,0 +1,41 @@
+model: covasim
+model_version: 2.0.0
+scenario_id: SCENARIO-COVASIM-001
+seed: 8
+steps: 3
+engine:
+  python: .covasim-venv/Scripts/python.exe
+  experiment_class: uncalibrated_demonstration
+parameters:
+  pop_size: 30
+  pop_infected: 3
+  pop_type: hybrid
+  start_day: '2020-01-27'
+  beta: 0.016
+  pop_scale: 1
+  rescale: false
+  interventions:
+  - type: test_prob
+    unknown_parameter: 1
+sampling:
+  frequency: 1
+logging:
+  format: parquet
+  batch_size: 1024
+  compression: zstd
+  agent_states: true
+  events: true
+  model_states: true
+  contacts: true
+  level: INFO
+output:
+  directory: C:\Users\14344\AppData\Local\Temp\pytest-of-14344\pytest-28\test_native_engine_failure_pre0
+visualization:
+  enabled: true
+  host: 127.0.0.1
+  port: 8765
+  display:
+    play_interval_seconds: 0.35
+    recent_steps: 3
+    figure_config: configs/figures.yaml
+scenario_version: '2.0'

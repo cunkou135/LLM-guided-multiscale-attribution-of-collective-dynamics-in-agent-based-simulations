@@ -1,9 +1,18 @@
-# 固定想定协议
+# 固定想定版本协议
 
-`scenarios/schelling.md` 与 `scenarios/covasim.md` 为任务给定的 1.0 原文，UTF-8、LF 换行。文件仅含原始标题和正文；编号、版本、建立日期及性质在 manifest.yaml，文件字节 SHA-256 同时登记在 SHA256SUMS 和 protocol.py。Git 属性强制 Markdown 使用 LF，防止跨平台检出改变哈希。
+scenarios根目录的schelling.md和covasim.md保持1.0原始字节和旧路径，v2/目录另存本次任务逐字给定的2.0标题与正文。UTF-8、LF；Git属性固定换行。两版仅包含场景文本，不加入网格、人口、参数、预设指标或因果关系。manifest.yaml以场景编号下的versions映射登记，不覆盖旧记录。
 
-`scenarios.protocol.load_scenario(scenario_id)` 每次校验两份文件与登记信息。内容或登记版本发生差异就抛出异常，报告文件、预期和实际哈希；即使请求另一份想定，也拒绝放过被改动的材料。不得自动重写或更新登记值来使实验通过。新场景须建立新编号与版本，当前两份原文保持不变。
+| 编号 | 版本 | 文件 | SHA-256 |
+|---|---|---|---|
+| SCENARIO-SCHELLING-001 | 1.0 | schelling.md | 820cbcc69f941c2b468f31a7b1ef22488a4271423bd37bbbf232badda2992b3d |
+| SCENARIO-COVASIM-001 | 1.0 | covasim.md | 7a477bf35fd70f0d9847cd260efd2f05f5d7ec1d6055aeb4f954e923412f8c6b |
+| SCENARIO-SCHELLING-001 | 2.0 | v2/schelling.md | ecfa1373637c172b6e1ab2786a9d4b803ea9f58ae65963f2d883326dde85d4c7 |
+| SCENARIO-COVASIM-001 | 2.0 | v2/covasim.md | 50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde |
 
-固定想定描述背景；YAML 是执行参数；结果目录是仿真日志；后续指标、图及因果检验是分析产物。不得把参考图、检验结果或干预响应加入原文。Covasim 的历史背景不意味着所有使用该背景的仿真已校准或重现历史疫情。
+`load_scenario(scenario_id, version='2.0')`按版本返回对应文件；每次校验全部四份文件、manifest和SHA256SUMS，篡改直接拒绝。不得自动改哈希放过异常。默认研究配置显式选择2.0；标准参考配置显式选择1.0。兼容旧YAML：未写scenario_version时runner映射为1.0。历史清单已经记录自身版本，Trajectory直接读取历史日志，不套用新版本。
 
-运行清单及表格记录 scenario_id、scenario_version、scenario_sha256，结果目录保存本次使用的 scenario.md。两个模型均接入此流程；Covasim 默认运行另外标注未历史校准，哈希正确并不能替代模型校准验证。
+固定想定是后续LLM唯一的自然语言研究输入；YAML是仿真输入，日志是实际执行记录，图形与指标是后续产物。这些材料分别保存。运行表和清单包含scenario_id/version/sha256，目录复制本次scenario.md。文本版本正确不能替代模型机制或现实校准验证。
+
+## 迁移鱼群想定
+
+另登记SCENARIO-FISH-001/1.0，scenarios/fish.md按用户原文件逐字复制并保留换行；哈希f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936。它作为新增场景独立管理，未改变原两场景的1.0/2.0内容。所有正式启动同时校验原四份文本及本份文件，输出scenario.md复制实际文件字节。

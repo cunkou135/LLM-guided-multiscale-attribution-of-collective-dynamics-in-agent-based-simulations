@@ -1,0 +1,15 @@
+{
+  "run_id": "2a815b4dfe4f47b8ac2416fac04456e5",
+  "model": "fish",
+  "population": 2000,
+  "requested_steps": 20,
+  "actual_steps": 20,
+  "stop_reason": "max_steps",
+  "elapsed_seconds": 9.015076300001965,
+  "peak_rss_bytes": 287993856,
+  "output_bytes": 19200833,
+  "config": "experiments/validation/fish_validation.yaml",
+  "git_commit": "163a235991460fe5e2e4620aa479735afc348bde",
+  "git_dirty": true,
+  "memory_method": "20ms sampled RSS sum of parent and child processes; not allocator peak"
+}

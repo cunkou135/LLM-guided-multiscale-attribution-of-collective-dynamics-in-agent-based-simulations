@@ -14,7 +14,7 @@ def main():
     entries = []
     for seed in (11, 22, 33):
         for homophily in (.2, .4):
-            c = load('configs/schelling.yaml')
+            c = load('configs/schelling_standard.yaml')
             c['seed'], c['steps'] = seed, 40
             c['parameters']['homophily'] = homophily
             output = run(c)

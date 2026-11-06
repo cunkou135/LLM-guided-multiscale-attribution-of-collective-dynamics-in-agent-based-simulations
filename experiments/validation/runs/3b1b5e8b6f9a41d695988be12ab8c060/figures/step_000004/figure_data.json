@@ -1,0 +1,56 @@
+{
+  "model": "schelling_extended",
+  "window": [
+    0,
+    4
+  ],
+  "recorded_steps": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "snapshot_steps": [
+    0,
+    2,
+    4
+  ],
+  "snapshot_population": [
+    8499,
+    8499,
+    8499
+  ],
+  "curves": [
+    {
+      "step": 0,
+      "happy_fraction": 0.5834804094599365,
+      "move_count": 0,
+      "same_fraction": 0.49799943843886
+    },
+    {
+      "step": 1,
+      "happy_fraction": 0.9681138957524414,
+      "move_count": 2875,
+      "same_fraction": 0.8435281362571259
+    },
+    {
+      "step": 2,
+      "happy_fraction": 0.9955288857512649,
+      "move_count": 310,
+      "same_fraction": 0.8785851193587733
+    },
+    {
+      "step": 3,
+      "happy_fraction": 0.9989410518884575,
+      "move_count": 46,
+      "same_fraction": 0.8828135876374774
+    },
+    {
+      "step": 4,
+      "happy_fraction": 0.9992940345923049,
+      "move_count": 7,
+      "same_fraction": 0.8835590211299474
+    }
+  ]
+}

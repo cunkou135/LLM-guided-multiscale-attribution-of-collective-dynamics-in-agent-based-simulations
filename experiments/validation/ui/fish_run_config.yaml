@@ -1,0 +1,60 @@
+model: fish
+scenario_id: SCENARIO-FISH-001
+model_version: fish-3.0
+seed: 42
+steps: 1000
+parameters:
+  simulation:
+    dt: 0.08
+  population:
+    count: 2000
+    distribution: disk
+    spawn_x: 0.0
+    spawn_y: 0.0
+    spawn_radius: 40.0
+    initial_heading_deg: 0.0
+    heading_spread_deg: 30.0
+  predator:
+    max_turn_deg: 100.0
+    spawn_distance: 48.0
+    spawn_angle_deg: 180.0
+  fish:
+    N_p: 5
+    R_h: 55.0
+    mu_p: 9.0
+    sigma_p: 1.0
+    R_p: 14.0
+    r_r: 1.0
+    r_a: 5.0
+    R_s: 12.0
+    p_s: 0.12
+    tau_f: 20
+    w: 0.65
+    Omega: 130.0
+    mu_f: 6.0
+    sigma_f: 0.6
+    eta_theta: 3.0
+    eta_x: 0.02
+sampling:
+  frequency: 1
+logging:
+  format: parquet
+  batch_size: 1024
+  compression: zstd
+  agent_states: true
+  events: true
+  model_states: true
+  level: INFO
+  contacts: true
+output:
+  directory: results
+visualization:
+  enabled: true
+  host: 127.0.0.1
+  port: 8771
+  display:
+    play_interval_seconds: 0.03
+    recent_steps: 3
+    figure_config: configs/figures.yaml
+    fish_config: configs/fish_display.yaml
+scenario_version: '1.0'

@@ -8,9 +8,20 @@ from pathlib import Path
 from simulations.common.runner import batch, load, run
 
 parser = argparse.ArgumentParser()
-parser.add_argument('command', choices=['run', 'batch', 'ui'])
-parser.add_argument('--config', required=True)
+parser.add_argument('command', choices=['run', 'batch', 'ui', 'export'])
+parser.add_argument('--config')
+parser.add_argument('--run-dir')
+parser.add_argument('--output')
+parser.add_argument('--figure-config', default='configs/figures.yaml')
 args = parser.parse_args()
+if args.command == 'export':
+    if not args.run_dir:
+        parser.error('export requires --run-dir')
+    from visualization.figures import export_publication
+    print(export_publication(args.run_dir, args.output, args.figure_config))
+    sys.exit(0)
+if not args.config:
+    parser.error('run, batch and ui require --config')
 if args.command == 'ui':
     config = load(args.config)  # Fail fast before starting the server.
     if not config['visualization']['enabled']:

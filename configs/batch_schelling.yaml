@@ -1,4 +1,7 @@
 base_config: schelling.yaml
-seeds: [11, 22, 33]
+seeds:
+- 42
+- 43
 grid:
-  homophily: [0.3, 0.4]
+  homophily_mean:
+  - 0.45

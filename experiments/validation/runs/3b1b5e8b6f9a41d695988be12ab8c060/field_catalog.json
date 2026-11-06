@@ -1,0 +1,297 @@
+{
+  "agent_states": {
+    "granularity": "agent per sampled step",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "kind": {
+        "type": "int64",
+        "description": "Resident group, 0 or 1"
+      },
+      "x": {
+        "type": "int64",
+        "description": "Grid x coordinate"
+      },
+      "y": {
+        "type": "int64",
+        "description": "Grid y coordinate"
+      },
+      "neighbors": {
+        "type": "int64",
+        "description": "Number of occupied neighbors"
+      },
+      "same_neighbors": {
+        "type": "int64",
+        "description": "Number of same-kind neighbors"
+      },
+      "other_neighbors": {
+        "type": "int64",
+        "description": "Number of other-kind neighbors"
+      },
+      "happy": {
+        "type": "bool",
+        "description": "Happiness evaluated at snapshot"
+      },
+      "theta_i": {
+        "type": "double",
+        "description": "Fixed individual preference from truncated normal initialization"
+      }
+    }
+  },
+  "events": {
+    "granularity": "observed model event",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "kind": {
+        "type": "int64",
+        "description": "Resident group, 0 or 1"
+      },
+      "x_before": {
+        "type": "int64",
+        "description": "x before"
+      },
+      "y_before": {
+        "type": "int64",
+        "description": "y before"
+      },
+      "x_after": {
+        "type": "int64",
+        "description": "x after"
+      },
+      "y_after": {
+        "type": "int64",
+        "description": "y after"
+      },
+      "neighbors": {
+        "type": "int64",
+        "description": "neighbors"
+      },
+      "same_neighbors": {
+        "type": "int64",
+        "description": "same neighbors"
+      },
+      "other_neighbors": {
+        "type": "int64",
+        "description": "other neighbors"
+      },
+      "neighbors_after": {
+        "type": "int64",
+        "description": "neighbors after"
+      },
+      "same_neighbors_after": {
+        "type": "int64",
+        "description": "same neighbors after"
+      },
+      "other_neighbors_after": {
+        "type": "int64",
+        "description": "other neighbors after"
+      },
+      "happy_before": {
+        "type": "bool",
+        "description": "Stored satisfaction used for this activation"
+      },
+      "happy_after": {
+        "type": "bool",
+        "description": "Stored satisfaction after activation; recalculated only after the sweep"
+      },
+      "moved": {
+        "type": "bool",
+        "description": "Whether the resident moved"
+      },
+      "reason": {
+        "type": "string",
+        "description": "Reason for movement or no movement"
+      },
+      "theta_i": {
+        "type": "double",
+        "description": "Fixed individual preference from truncated normal initialization"
+      },
+      "attempted": {
+        "type": "bool",
+        "description": "Unsatisfied at actual activation; exhaustive local search attempted"
+      },
+      "candidate_count": {
+        "type": "int64",
+        "description": "Vacant local candidate cells"
+      },
+      "feasible_count": {
+        "type": "int64",
+        "description": "Satisfactory candidates, otherwise strictly improving candidates"
+      },
+      "similarity_before": {
+        "type": "double",
+        "description": "Occupied same-kind neighbor proportion before activation"
+      },
+      "similarity_after": {
+        "type": "double",
+        "description": "Occupied same-kind neighbor proportion after activation"
+      }
+    }
+  },
+  "model_states": {
+    "granularity": "one per sampled step",
+    "fields": {
+      "scenario_id": {
+        "type": "string",
+        "description": "Fixed scenario identifier"
+      },
+      "scenario_version": {
+        "type": "string",
+        "description": "Fixed scenario text version"
+      },
+      "scenario_sha256": {
+        "type": "string",
+        "description": "SHA-256 of fixed scenario bytes"
+      },
+      "run_id": {
+        "type": "string",
+        "description": "Unique run identifier"
+      },
+      "model_name": {
+        "type": "string",
+        "description": "Model identifier"
+      },
+      "model_version": {
+        "type": "string",
+        "description": "Implementation version"
+      },
+      "seed": {
+        "type": "int64",
+        "description": "Random seed"
+      },
+      "step": {
+        "type": "int64",
+        "description": "Sampling step; initial state is zero"
+      },
+      "event_index": {
+        "type": "int64",
+        "description": "Cumulative attempted events in this run"
+      },
+      "timestamp_or_sim_time": {
+        "type": "int64",
+        "description": "Discrete sampling step, not wall time"
+      },
+      "agent_id": {
+        "type": "int64",
+        "description": "Actor ID; null for model states"
+      },
+      "event_type": {
+        "type": "string",
+        "description": "Record type"
+      },
+      "population": {
+        "type": "int64",
+        "description": "population"
+      },
+      "happy": {
+        "type": "int64",
+        "description": "happy"
+      },
+      "same_neighbors": {
+        "type": "int64",
+        "description": "same neighbors"
+      },
+      "neighbors": {
+        "type": "int64",
+        "description": "neighbors"
+      },
+      "moves": {
+        "type": "int64",
+        "description": "Actual relocations in this completed sweep"
+      }
+    }
+  }
+}

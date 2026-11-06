@@ -1,0 +1,18 @@
+[
+  {
+    "seed": 42,
+    "parameters": {
+      "homophily_mean": 0.45
+    },
+    "run": "results\\897aecf0e6cd4bf8a6b05850e3506fc4",
+    "error": null
+  },
+  {
+    "seed": 43,
+    "parameters": {
+      "homophily_mean": 0.45
+    },
+    "run": "results\\420da5ecd4c141b7892097717f882594",
+    "error": null
+  }
+]

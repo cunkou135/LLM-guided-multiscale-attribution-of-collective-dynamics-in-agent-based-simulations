@@ -1,0 +1,22 @@
+{
+  "live_run_id": "027441060ba942b2b2cd8d1e24586dc6",
+  "through_step": 12,
+  "tables": {
+    "agent_states": {
+      "equal": true,
+      "rows": 13000
+    },
+    "events": {
+      "equal": true,
+      "rows": 240
+    },
+    "model_states": {
+      "equal": true,
+      "rows": 13
+    },
+    "contacts": {
+      "equal": true,
+      "rows": 229775
+    }
+  }
+}

@@ -85,7 +85,7 @@ def test_invalid_parameters(config, field, value):
 
 
 def test_batch_preserves_successes_after_invalid_combination(tmp_path):
-    c = load('configs/schelling.yaml')
+    c = load('configs/schelling_standard.yaml')
     c['steps'] = 1
     c['output']['directory'] = str(tmp_path / 'out')
     (tmp_path / 'base.yaml').write_text(yaml.safe_dump(c))
@@ -97,7 +97,7 @@ def test_batch_preserves_successes_after_invalid_combination(tmp_path):
 
 
 def test_empty_schelling_and_failed_run(tmp_path):
-    c = load('configs/schelling.yaml')
+    c = load('configs/schelling_standard.yaml')
     c['output']['directory'] = str(tmp_path)
     c['parameters']['density'] = 0
     assert Trajectory(run(c)).read('events').empty
@@ -109,7 +109,7 @@ def test_empty_schelling_and_failed_run(tmp_path):
 
 def test_untrusted_code_not_run_without_docker(tmp_path, monkeypatch):
     import shutil
-    c = load('configs/schelling.yaml')
+    c = load('configs/schelling_standard.yaml')
     c['output']['directory'] = str(tmp_path)
     c['steps'] = 1
     t = Trajectory(run(c))

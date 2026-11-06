@@ -1,0 +1,9 @@
+{
+  "run_id": "31d0ffa4a7a94096be59b73da99f6504",
+  "step": 44,
+  "model": "fish",
+  "model_time": 3.520000000000002,
+  "node_count": 2005,
+  "capture_type": "actual_browser_canvas",
+  "png_sha256": "fc70a62a5ba3a8970c74854c0dadeb29240ca147c1df6fcd5887781660c32940"
+}

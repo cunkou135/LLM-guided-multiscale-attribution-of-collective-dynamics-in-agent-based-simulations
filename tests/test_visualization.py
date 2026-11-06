@@ -7,19 +7,19 @@ from simulations.common.trajectory_api import Trajectory
 from visualization.app import VisualRun
 
 
-@pytest.mark.parametrize('name', ['schelling', 'covasim'])
+@pytest.mark.parametrize('name', ['schelling', 'schelling_standard', 'covasim','fish'])
 def test_visual_and_headless_use_same_core(tmp_path, name):
     config = load(f'configs/{name}.yaml')
     config['steps'] = 3
     config['output']['directory'] = str(tmp_path)
     p = config['parameters']
-    primary, secondary = (p['homophily'], p['density']) if name == 'schelling' else (p['beta'], p['pop_infected'])
+    primary, secondary = (p['population']['count'],p['fish']['N_p']) if name=='fish' else (p.get('homophily_mean',p.get('homophily')), p['density']) if name.startswith('schelling') else (p['beta'], p['pop_infected'])
     visual = VisualRun(config, primary, secondary)
     while visual.running:
         visual.step()
     direct = run(config)
     a, b = Trajectory(visual.session.out), Trajectory(direct)
-    for table in ('agent_states', 'events', 'model_states'):
+    for table in a.catalog:
         pd.testing.assert_frame_equal(a.read(table).drop(columns='run_id'), b.read(table).drop(columns='run_id'))
 
 

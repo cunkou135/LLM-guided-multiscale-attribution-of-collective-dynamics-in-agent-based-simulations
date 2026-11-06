@@ -8,6 +8,10 @@
 
 Schelling 的具体源码对应为：Mesa 示例 model.py:Schelling.__init__ 对应 simulations/schelling/model.py:Schelling.__init__（逐格独立占用和类型抽样）；agents.py:SchellingAgent.assign_state 对应 Resident.assign_state 与 counts（Moore 已占邻居比例、孤立主体为0）；agents.py:step 对应 Resident.step（上一轮满意状态控制迁居）；model.py:step 对应 Schelling.step（随机顺序、整轮后统一重算、全体满意停止）。日志由 states/summary 和 runner.RunSession.snapshot 在初态、采样步及末步采集。torus=true 是显式边界配置扩展，默认false与示例一致；最大步数是外部预算，不改变一次迁移决策。
 
+## 本研究的 Schelling 扩展
+
+`simulations/schelling/model.py`保留基准规则，`extended.py`实现schelling_extended。个体阈值拒绝抽样、有限Chebyshev迁居、原位置腾空后候选评分、优先满意/其次严格改善与冻结判断，均为本研究明确规定的实验设置。没有声称逐步复现另一篇扩展Schelling论文。它使用Mesa网格与调度组件，但决策机制与标准示例不同。完整规则、参数与验证范围见MODEL_SPECIFICATIONS和VALIDATION_REPORT。
+
 ## Covasim 与 NC 研究
 
 平台固定原生 Covasim 2.0.0，在独立 Python 3.10 兼容环境中执行。该环境不是论文原始 Python 3.8 冻结环境。模型来源为 Kerr et al., PLOS Computational Biology (2021), doi:10.1371/journal.pcbi.1009149；历史案例为 Kerr et al., Nature Communications (2021), doi:10.1038/s41467-021-23276-9。
@@ -31,3 +35,7 @@ Schelling 的具体源码对应为：Mesa 示例 model.py:Schelling.__init__ 对
 Covasim 2.0.0 wheel 与 TTQ 归档均为 CC BY-SA 4.0，不能使用 Covasim 当前主分支的 MIT 许可替代旧版许可。旧引擎作为独立安装依赖，未改写或捆绑源码；本平台适配器独立实现。TTQ 配置按公开参数重新声明，未复制其源文件。依赖的原始许可证与版权必须保留。细节及实际安装失败记录见 COVASIM_SOURCE_AUDIT.md。
 
 任务开始时当前项目未发现旧论文 TeX/PDF 或旧仿真源码，无法宣称旧稿源码级一致。已有 Deffuant 模型和配置按本次新范围移除，历史提交仍可在 Git 历史中审计。Mesa 的 Apache-2.0 通知保留于 THIRD_PARTY_NOTICES；其余依赖适用各自许可证。
+
+## 用户提供的鱼群场景与界面参考
+
+鱼群运动与鲨鱼场景迁移自用户提供的pt/collective_motion_lab。引擎文件逐字保留，来源哈希、原始配置/文本/样式文件哈希及本次逐帧行为基线进入experiments/validation/。界面的纸面/松绿/深海色与鱼形绘制参考同项目，不修改原目录，不移植其离线LLM与Reward程序。详细边界见FISH_MIGRATION.md。

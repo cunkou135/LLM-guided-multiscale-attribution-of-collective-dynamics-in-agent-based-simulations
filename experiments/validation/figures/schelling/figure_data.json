@@ -1,0 +1,77 @@
+{
+  "model": "schelling_extended",
+  "window": [
+    0,
+    7
+  ],
+  "recorded_steps": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "snapshot_steps": [
+    0,
+    4,
+    7
+  ],
+  "snapshot_population": [
+    8499,
+    8499,
+    8499
+  ],
+  "curves": [
+    {
+      "step": 0,
+      "happy_fraction": 0.5834804094599365,
+      "move_count": 0,
+      "same_fraction": 0.49799943843886
+    },
+    {
+      "step": 1,
+      "happy_fraction": 0.9681138957524414,
+      "move_count": 2875,
+      "same_fraction": 0.8435281362571259
+    },
+    {
+      "step": 2,
+      "happy_fraction": 0.9955288857512649,
+      "move_count": 310,
+      "same_fraction": 0.8785851193587733
+    },
+    {
+      "step": 3,
+      "happy_fraction": 0.9989410518884575,
+      "move_count": 46,
+      "same_fraction": 0.8828135876374774
+    },
+    {
+      "step": 4,
+      "happy_fraction": 0.9992940345923049,
+      "move_count": 7,
+      "same_fraction": 0.8835590211299474
+    },
+    {
+      "step": 5,
+      "happy_fraction": 0.9996470172961525,
+      "move_count": 6,
+      "same_fraction": 0.8841654480885732
+    },
+    {
+      "step": 6,
+      "happy_fraction": 0.999764678197435,
+      "move_count": 2,
+      "same_fraction": 0.8843864229765013
+    },
+    {
+      "step": 7,
+      "happy_fraction": 0.999764678197435,
+      "move_count": 0,
+      "same_fraction": 0.8843864229765013
+    }
+  ]
+}

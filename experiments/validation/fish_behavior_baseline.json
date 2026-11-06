@@ -1,0 +1,51 @@
+{
+  "source_engine_sha256": "a17aa7929ca719a63d0c4fffe7724c0c76a3a0868736846f5da51228f595ac86",
+  "cases": [
+    {
+      "seed": 42,
+      "count": 128,
+      "sharks": 5,
+      "steps": 8,
+      "sha256": [
+        "dcf69e4af7385657bd1132ea2199e6b96a97434d1953d1543ba52fc790d31820",
+        "35f8dfbdf4d24f8f2f51e98017527f4287211c87558825362c1f9b05ef7ec1b6",
+        "13bed974818793849746f44c41c932091c1345081b9b424db852baf61f3de0b1",
+        "14798ce426ceaa9de71edd03079b9033fd4c42693f044b3dd1cc7e4213a67538",
+        "88d72a03e7f3cb81cc7e39e41315292d4b0821f0f0aaa10c5a8c435e2361fdcd",
+        "80992f5e1cdf92af78a2a3607dda57e4bf4f599fd00402ae4fcd7798bebdc1b9",
+        "d3ed0d68b17576b45572b5f5ee2ace3bed5096b4f749ec1fb5ac4fb41cb481a4",
+        "818879cb8b6266adb1c72a1b28cbaf90ef842eb40943dde364b329ee144dd704",
+        "19b2f6b6e33aa0f4e7f5bccb58b87027391d490335128cade7649f0e060a449c"
+      ]
+    },
+    {
+      "seed": 7,
+      "count": 128,
+      "sharks": 0,
+      "steps": 8,
+      "sha256": [
+        "f1fd2633dc3ead81d6b735bed286d4542145a72acf89f67f59d4f973473b418c",
+        "76ae0713e475620a58962bb6a1cdd99e0a8c20d5017b6affdd695bb2540da00e",
+        "a5915172e39d6bcc74ff1fb6ca7e5d029576cc17ea63b3f95a8cb94f1a57ae36",
+        "23d7c3e529b35747acab4d99cb18a27949669679ada969452c4d260ac122ec45",
+        "8c8f2bd4c8599e102a17d02723438c23877e3327e42ef5ca95c2552be10dff8a",
+        "e884979ac2798364af251576c12a52b3b66ec261549d13898be735b72031399a",
+        "736c0283c09ae6bc4d085de86d49efbf98f27fabf3ac8be78042fc45e7c79b10",
+        "58865a42ab424a36e3fdd516c5767c9ac147f4f2b0bb28ff083701ba9c400120",
+        "87266b70a1773b591682a59c14a1192bd7a531183d19c33d50c6eff097ff542f"
+      ]
+    },
+    {
+      "seed": 42,
+      "count": 2000,
+      "sharks": 5,
+      "steps": 3,
+      "sha256": [
+        "ce7f50054eb5ea081723d51445b048d37db49305c191e0f6e551c2aae8b5b536",
+        "f7b1d4a5d21244e876ff05dfa3f89e55df49e8b88c5d867c0733417d9ae143c0",
+        "a507c7814c5a873a18f0b3daa3c3763343f5ca614c97302174dfb201cee8924e",
+        "7303e4be3975901a1379de1b1e05163f70c6ee3b305f1a3c8b75225ae5095d2b"
+      ]
+    }
+  ]
+}

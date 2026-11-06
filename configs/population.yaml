@@ -1,0 +1,6 @@
+height: 600
+max_edges: 1400
+pulse_ms: 1200
+layout_seed: 17
+layout_iterations: 40
+recent_steps: 3

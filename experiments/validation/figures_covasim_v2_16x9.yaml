@@ -1,0 +1,22 @@
+age_bins:
+- 0
+- 20
+- 40
+- 60
+- 80
+- 100
+- 120
+aspect: '16:9'
+display_seed: 17
+dpi:
+- 300
+- 600
+font_size: 8
+formats:
+- png
+- svg
+network_max_nodes: 60
+network_root: null
+width_inches: 7.2
+window_end: null
+window_start: 0

@@ -1,13 +1,37 @@
 scenarios:
   SCENARIO-SCHELLING-001:
-    version: '1.0'
-    path: scenarios/schelling.md
-    sha256: 820cbcc69f941c2b468f31a7b1ef22488a4271423bd37bbbf232badda2992b3d
-    created: '2026-11-05'
-    nature: 假想城市的理想化仿真想定
+    versions:
+      '1.0':
+        version: '1.0'
+        path: scenarios/schelling.md
+        sha256: 820cbcc69f941c2b468f31a7b1ef22488a4271423bd37bbbf232badda2992b3d
+        created: '2026-11-05'
+        nature: 假想城市的理想化仿真想定
+      '2.0':
+        version: '2.0'
+        path: scenarios/v2/schelling.md
+        sha256: ecfa1373637c172b6e1ab2786a9d4b803ea9f58ae65963f2d883326dde85d4c7
+        created: '2026-11-05'
+        nature: 假想城市的异质偏好与有限迁居研究想定
   SCENARIO-COVASIM-001:
-    version: '1.0'
-    path: scenarios/covasim.md
-    sha256: 7a477bf35fd70f0d9847cd260efd2f05f5d7ec1d6055aeb4f954e923412f8c6b
-    created: '2026-11-05'
-    nature: 以2020年金县疫情为背景的历史研究想定；真实复现须独立校准验证
+    versions:
+      '1.0':
+        version: '1.0'
+        path: scenarios/covasim.md
+        sha256: 7a477bf35fd70f0d9847cd260efd2f05f5d7ec1d6055aeb4f954e923412f8c6b
+        created: '2026-11-05'
+        nature: 以2020年金县疫情为背景的历史研究想定；真实复现须独立校准验证
+      '2.0':
+        version: '2.0'
+        path: scenarios/v2/covasim.md
+        sha256: 50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde
+        created: '2026-11-05'
+        nature: 一般城市传染病传播研究想定；非具体历史地区校准
+  SCENARIO-FISH-001:
+    versions:
+      '1.0':
+        version: '1.0'
+        path: scenarios/fish.md
+        sha256: f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936
+        created: '2026-11-06'
+        nature: 用户提供的原鱼群与鲨鱼场景，保留原文与模型规则
