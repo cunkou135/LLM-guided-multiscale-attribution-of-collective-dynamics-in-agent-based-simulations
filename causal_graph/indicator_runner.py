@@ -120,6 +120,8 @@ def execute_indicator(node, run, root, settings, approvals=None):
               'source_hashes': run['data_hashes']}
     started = time.monotonic()
     try:
+        if node.get('implementation_status') == 'unavailable':
+            raise LookupError('Definition retained but implementation unavailable: ' + node['failure_reason'])
         trajectory = Trajectory(run['directory'])
         for table, fields in node['required'].items():
             if table not in trajectory.catalog:
@@ -134,7 +136,14 @@ def execute_indicator(node, run, root, settings, approvals=None):
         # or absence of fabricated math in arbitrary code; human scientific review remains needed.
         report['data_contract_valid'] = True
         if settings.execution_mode == 'isolated':
-            result = trajectory.compute_isolated(code, node['required'], node['config'],
+            adapter = folder / 'execution_adapter.py'
+            adapter.write_text(code.read_text(encoding='utf-8') + '\n\n_stage1_original = compute_indicator\n'
+                'def compute_indicator(data, config):\n'
+                f'    required = {node["required"]!r}\n'
+                '    projected = {name: data[name].loc[:, fields].copy(deep=True) for name, fields in required.items()}\n'
+                '    return _stage1_original(projected, config)\n', encoding='utf-8')
+            report['execution_adapter_sha256'] = digest(adapter)
+            result = trajectory.compute_isolated(adapter, node['required'], node['config'],
                                                   image=settings.image, timeout=settings.indicator_timeout)
         else:
             if approvals is None or approvals['code_sha256'].get(iid) != node['code_sha256']:

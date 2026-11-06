@@ -1,4 +1,4 @@
-"""Ten inspectable stage-one steps with resumable generation and provenance."""
+"""Twelve inspectable first-part steps with resumable generation and provenance."""
 from dataclasses import asdict
 import importlib.metadata
 from pathlib import Path
@@ -9,10 +9,12 @@ import traceback
 import uuid
 
 from . import __version__
-from .generation import identify_phenomena, define_indicators, generate_codes, propose_edges
-from .graph_export import assemble_graph, export_graphs
+from .generation import (identify_phenomena, define_indicators, generate_codes,
+                         propose_upward_edges, propose_downward_edges, propose_intrascale_edges)
+from .graph_export import assemble_graph, export_graphs, merge_candidate_edges
 from .indicator_runner import execute_indicator
 from .inputs import inspect_runs, assert_unchanged
+from .data_schema import build_data_schema
 from .io import digest, now, object_digest, read_json, save_json
 from .llm_client import LLMClient
 from .prompts import TEMPLATE_VERSION
@@ -79,6 +81,8 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
     try:
         runs = step(1, 'read_fixed_scenario_and_verify_runs', [str(p) for p in paths], ['inputs.json', 'scenario.md'],
                     lambda: inspect_runs(paths))
+        data_schema, schema_audit = step(2, 'build_observed_data_schema', ['inputs/field_catalog.json', 'Trajectory.read'],
+            ['data_schema.json', 'data_schema_audit.json'], lambda: build_data_schema(runs))
         software = software_provenance()
         # Execution mode may change only via explicit resume; generation identity cannot change.
         generation_settings = {k: asdict(settings)[k] for k in
@@ -86,7 +90,8 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
         identity = {'inputs': [{k: r[k] for k in ('directory', 'data_hashes')} for r in runs],
                     'llm': llm_config.summary(), 'generation_settings': generation_settings,
                     'prompt_version': TEMPLATE_VERSION, 'source_sha256': software['source_sha256'],
-                    'client_mode': client.mode}
+                    'client_mode': client.mode, 'data_schema_sha256': object_digest(data_schema)}
+        save_json(invocation / 'proposed_identity.json', identity)
         if resume:
             metadata = read_json(output / 'experiment.json')
             if metadata['identity_sha256'] != object_digest(identity):
@@ -95,40 +100,53 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
             manifest = runs[0]['manifest']
             metadata = {'experiment_id': uuid.uuid4().hex, 'started_at': now(), 'status': 'running',
                         'model_name': manifest['model_name'], 'model_version': manifest['model_version'],
-                        'scenario': runs[0]['scenario'], 'llm': llm_config.summary(), 'client_mode': client.mode,
+                        'scenario': runs[0]['scenario'], 'schema_version': '2.0', 'data_schema_sha256': object_digest(data_schema), 'llm': llm_config.summary(), 'client_mode': client.mode,
                         'software': software, 'identity': identity, 'identity_sha256': object_digest(identity),
                         'invocations': []}
         metadata['invocations'].append(invocation.relative_to(output).as_posix())
         metadata.update(status='running', pipeline_config=asdict(settings))
         save_json(output / 'experiment.json', metadata)
+        save_json(output / 'data_schema.json', data_schema)
+        save_json(output / 'data_schema_audit.json', schema_audit)
         save_json(output / 'inputs.json', [{k: v for k, v in r.items() if k != 'scenario_text'} for r in runs])
         (output / 'scenario.md').write_text(runs[0]['scenario_text'], encoding='utf-8')
         save_json(output / 'schemas.json', {'generation': SCHEMAS, 'candidate_graph': GRAPH_SCHEMA,
                                           'executable_graph': EXECUTABLE_SCHEMA})
         save_json(invocation / 'settings.json', {'pipeline': asdict(settings), 'generate_only': generate_only,
                                                'review': approvals})
-        context, calls = {}, {}
-        for number, name, action in ((2, 'phenomena', identify_phenomena), (3, 'indicators', define_indicators),
-                                     (4, 'codes', generate_codes), (5, 'edges', propose_edges)):
-            parsed, call = step(number, f'generate_{name}', ['scenario.md', *context],
+        context, calls = {'data_schema': data_schema}, {}
+        tasks = ((3, 'phenomena', identify_phenomena), (4, 'indicators', define_indicators),
+                 (5, 'codes', generate_codes), (6, 'edges_upward', propose_upward_edges),
+                 (7, 'edges_downward', propose_downward_edges), (8, 'edges_intrascale', propose_intrascale_edges))
+        for number, name, action in tasks:
+            parsed, call = step(number, f'generate_{name}', ['scenario.md', 'data_schema.json' if name in ('indicators','codes') else 'generated definitions'],
                                 [f'generation/{name}/parsed.json'],
                                 lambda fn=action: fn(runs[0]['scenario_text'], context, settings, client, output))
-            context.update(parsed)
+            if name.startswith('edges_'):
+                context[name] = parsed['edges']
+            else:
+                context.update(parsed)
             calls[name] = call
-        graph = step(6, 'validate_and_assemble_candidate', ['generation/*/parsed.json'],
+        merged, merge_report = step(9, 'merge_candidate_directions', ['generation/edges_*/parsed.json'],
+            ['edge_merge_report.json'], lambda: merge_candidate_edges(context, calls, settings))
+        context['merged_edges'] = merged
+        save_json(output / 'edge_merge_report.json', merge_report)
+        graph = step(10, 'validate_and_assemble_candidate', ['generation/*/parsed.json'],
                      ['candidate_graph.json', 'indicator_code/', 'structure_report.json'],
                      lambda: assemble_graph(context, calls['codes'], output))
         save_json(output / 'candidate_graph.json', graph)
         save_json(output / 'structure_report.json', {'valid': True, 'checks': [
-            'JSON Schema', 'unique IDs/names', 'references', 'scale direction', 'complete paths',
-            'function signatures', 'Python syntax', 'code constraints'], 'generation_calls': calls})
+            'JSON Schema 2.0', 'unique node IDs/names', 'references', 'three scale directions',
+            'no self loops', 'feedback and isolated nodes retained', 'observed fields',
+            'function signatures', 'Python syntax', 'static access and runtime projection'], 'generation_calls': calls,
+            'stage_reports': {name: read_json(output / call / 'validation.json') for name, call in calls.items()}})
         run_ids = [r['manifest']['run_id'] for r in runs]
         reports = []
 
         def execute():
             for run in runs:
                 for node in graph['nodes']:
-                    if generate_only:
+                    if generate_only and node['implementation_status'] != 'unavailable':
                         result = {'run_id': run['manifest']['run_id'], 'indicator_id': node['indicator_id'],
                                   'status': 'not_executed', 'reason': 'explicit_generate_only',
                                   'code_sha256': node['code_sha256'], 'generation_call': node['generation_call']}
@@ -138,14 +156,14 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
                     save_json(invocation / 'execution_report.json', reports)
             return reports
 
-        step(7, 'execute_indicators', ['indicator_code/', 'inputs.json'], ['execution/', 'indicator_series/'], execute)
-        step(8, 'report_computational_validity', ['execution/'], ['execution_report.json'],
-             lambda: save_json(output / 'execution_report.json', reports))
-        executable = step(9, 'export_semantic_and_executable_graphs', ['candidate_graph.json', 'execution_report.json'],
+        step(11, 'execute_and_validate_indicators', ['indicator_code/', 'inputs.json'], ['execution/', 'indicator_series/'], execute)
+        save_json(output / 'execution_report.json', reports)
+        def finalize_graphs():
+            assert_unchanged(runs)
+            return export_graphs(graph, reports, run_ids, output)
+        executable = step(12, 'export_graphs_and_finalize_provenance', ['candidate_graph.json', 'execution_report.json'],
                           ['candidate_graph.graphml', 'executable_graph.json', 'executable_graph.graphml', 'per_run/'],
-                          lambda: export_graphs(graph, reports, run_ids, output))
-        step(10, 'finalize_provenance', ['inputs.json'], ['experiment.json', 'artifact_hashes.json'],
-             lambda: assert_unchanged(runs))
+                          finalize_graphs)
         report.update(status='generated_only' if generate_only else
                       'completed' if all(r['status'] == 'success' for r in reports) else 'completed_with_failures',
                       successful_calculations=sum(r['status'] == 'success' for r in reports),

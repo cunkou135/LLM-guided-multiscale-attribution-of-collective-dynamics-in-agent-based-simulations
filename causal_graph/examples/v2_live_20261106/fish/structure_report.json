@@ -1,0 +1,179 @@
+{
+  "valid": true,
+  "checks": [
+    "JSON Schema 2.0",
+    "unique node IDs/names",
+    "references",
+    "three scale directions",
+    "no self loops",
+    "feedback and isolated nodes retained",
+    "observed fields",
+    "function signatures",
+    "Python syntax",
+    "static access and runtime projection"
+  ],
+  "generation_calls": {
+    "phenomena": "generation/phenomena/attempt_000",
+    "indicators": "generation/indicators/attempt_000",
+    "codes": "generation/codes/attempt_000",
+    "edges_upward": "generation/edges_upward/attempt_000",
+    "edges_downward": "generation/edges_downward/attempt_000",
+    "edges_intrascale": "generation/edges_intrascale/attempt_000"
+  },
+  "stage_reports": {
+    "phenomena": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "indicators": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "codes": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {
+        "frag_micro_nn_distance": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "frag_meso_contact_component_count": {
+          "errors": [],
+          "statically_observed_access": {
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ],
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "frag_macro_largest_component_fraction": {
+          "errors": [],
+          "statically_observed_access": {
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ],
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_micro_axis_alignment": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_meso_local_eigen_ratio": {
+          "errors": [],
+          "statically_observed_access": {
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ],
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_macro_global_eigen_ratio": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        }
+      }
+    },
+    "edges_upward": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "edges_downward": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "edges_intrascale": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    }
+  }
+}

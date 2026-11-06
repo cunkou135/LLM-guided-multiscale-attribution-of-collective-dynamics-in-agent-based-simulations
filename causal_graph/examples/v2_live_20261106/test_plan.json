@@ -1,0 +1,13 @@
+{
+  "created_at": "2026-11-06T14:34:29.677411+00:00",
+  "scope": "functional_generation_not_performance_comparison",
+  "model": "deepseek-flash",
+  "reasoning_effort": "low",
+  "timeout_per_request": 600,
+  "max_retries": 1,
+  "max_phenomena": 2,
+  "max_indicators": 6,
+  "max_edges": 24,
+  "source_config_path": "E:/work/jk项目/博士生项目/演示案例_20261027/llm_config.json",
+  "execution": "generate-only; no unreviewed host execution"
+}

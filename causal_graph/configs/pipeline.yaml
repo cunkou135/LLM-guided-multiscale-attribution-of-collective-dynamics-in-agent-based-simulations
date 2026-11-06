@@ -1,5 +1,6 @@
 max_phenomena: 6
 max_indicators: 36
+# Global merged-edge ceiling. Each independent direction receives floor(max_edges/3).
 max_edges: 144
 generation_attempts: 2
 execution_mode: isolated

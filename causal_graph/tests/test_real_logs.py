@@ -9,7 +9,7 @@ from simulations.common.trajectory_api import Trajectory
 from causal_graph.inputs import inspect_run
 from causal_graph.graph_export import assemble_graph
 from causal_graph.indicator_runner import execute_indicator
-from .fixtures import fixture_outputs
+from .fixtures import fixture_outputs, fixture_context
 from .validate_logs import additional_raw_check
 
 
@@ -21,8 +21,16 @@ def test_real_native_logs_and_generated_function_contract(tmp_path, settings, mo
     source = run(config)
     inspected = inspect_run(source)
     assert inspected['manifest']['model_name'] == model
+    from causal_graph.data_schema import build_data_schema
+    schema, _ = build_data_schema([inspected])
+    assert field in schema['tables']['agent_states']['fields']
+    if model == 'fish':
+        nested = schema['tables']['raw_frames']['fields']['frame_json']['json_structure']
+        assert {'decisions', 'decision_input', 'positions'} <= set(nested['properties'])
+    else:
+        assert {'infectious', 'simulation_day', 'age'} <= set(schema['tables']['agent_states']['fields'])
     fixture = fixture_outputs(field)
-    context = {k: v for part in fixture.values() for k, v in part.items()}
+    context = fixture_context(fixture)
     graph = assemble_graph(context, 'offline_fixture_only', tmp_path)
     reviewed = replace(settings, execution_mode='trusted_reviewed')
     node = graph['nodes'][0]

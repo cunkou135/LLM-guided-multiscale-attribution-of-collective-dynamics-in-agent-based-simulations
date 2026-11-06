@@ -1,0 +1,323 @@
+{
+  "valid": true,
+  "checks": [
+    "JSON Schema 2.0",
+    "unique node IDs/names",
+    "references",
+    "three scale directions",
+    "no self loops",
+    "feedback and isolated nodes retained",
+    "observed fields",
+    "function signatures",
+    "Python syntax",
+    "static access and runtime projection"
+  ],
+  "generation_calls": {
+    "phenomena": "generation/phenomena/attempt_000",
+    "indicators": "generation/indicators/attempt_000",
+    "codes": "generation/codes/attempt_000",
+    "edges_upward": "generation/edges_upward/attempt_000",
+    "edges_downward": "generation/edges_downward/attempt_000",
+    "edges_intrascale": "generation/edges_intrascale/attempt_000"
+  },
+  "stage_reports": {
+    "phenomena": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "indicators": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "codes": {
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        {
+          "indicator_id": "sic_micro_prior_setting_degree",
+          "type": "required_data_changed",
+          "definition_required": {
+            "events": [
+              "run_id",
+              "step",
+              "agent_id",
+              "layer",
+              "event_type",
+              "state"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id",
+              "layer"
+            ]
+          },
+          "code_required": {
+            "events": [
+              "run_id",
+              "step",
+              "agent_id",
+              "layer",
+              "event_type",
+              "state"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "layer",
+              "agent_id",
+              "partner_id"
+            ]
+          }
+        },
+        {
+          "indicator_id": "sic_meso_layer_infection_contact_ratio",
+          "type": "required_data_changed",
+          "definition_required": {
+            "events": [
+              "run_id",
+              "step",
+              "layer",
+              "event_type",
+              "state"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "layer",
+              "agent_id",
+              "partner_id"
+            ]
+          },
+          "code_required": {
+            "events": [
+              "step",
+              "layer",
+              "event_type",
+              "state"
+            ],
+            "contacts": [
+              "step",
+              "layer"
+            ]
+          }
+        },
+        {
+          "indicator_id": "sic_macro_layer_entropy",
+          "type": "required_data_changed",
+          "definition_required": {
+            "events": [
+              "run_id",
+              "step",
+              "layer",
+              "event_type",
+              "state"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "layer"
+            ]
+          },
+          "code_required": {
+            "events": [
+              "step",
+              "layer",
+              "event_type",
+              "state"
+            ],
+            "contacts": [
+              "step",
+              "layer"
+            ]
+          }
+        },
+        {
+          "indicator_id": "icts_meso_layer_contact_change",
+          "type": "required_data_changed",
+          "definition_required": {
+            "model_states": [
+              "run_id",
+              "step",
+              "quarantined"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "layer",
+              "agent_id",
+              "partner_id"
+            ]
+          },
+          "code_required": {
+            "model_states": [
+              "step",
+              "quarantined"
+            ],
+            "contacts": [
+              "step",
+              "layer"
+            ]
+          }
+        },
+        {
+          "indicator_id": "icts_macro_city_contact_change_on_quarantine_increase",
+          "type": "required_data_changed",
+          "definition_required": {
+            "model_states": [
+              "run_id",
+              "step",
+              "quarantined"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "code_required": {
+            "contacts": [
+              "step"
+            ],
+            "model_states": [
+              "step",
+              "quarantined"
+            ]
+          }
+        }
+      ],
+      "code_contracts": {
+        "sic_micro_prior_setting_degree": {
+          "errors": [],
+          "statically_observed_access": {
+            "events": [
+              "agent_id",
+              "layer",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "layer",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "contacts: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "sic_meso_layer_infection_contact_ratio": {
+          "errors": [],
+          "statically_observed_access": {
+            "events": [
+              "layer",
+              "step"
+            ],
+            "contacts": [
+              "layer",
+              "step"
+            ]
+          },
+          "unresolved_access": [],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "sic_macro_layer_entropy": {
+          "errors": [],
+          "statically_observed_access": {
+            "events": [
+              "layer",
+              "step"
+            ],
+            "contacts": [
+              "layer",
+              "step"
+            ]
+          },
+          "unresolved_access": [],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "icts_micro_quarantine_contact_ratio": {
+          "errors": [],
+          "statically_observed_access": {
+            "events": [
+              "after",
+              "agent_id",
+              "before",
+              "run_id",
+              "state",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "contacts: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "icts_meso_layer_contact_change": {
+          "errors": [],
+          "statically_observed_access": {
+            "contacts": [
+              "layer",
+              "step"
+            ],
+            "model_states": [
+              "quarantined",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "model_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "icts_macro_city_contact_change_on_quarantine_increase": {
+          "errors": [],
+          "statically_observed_access": {
+            "contacts": [
+              "step"
+            ],
+            "model_states": [
+              "quarantined",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "model_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        }
+      }
+    },
+    "edges_upward": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "edges_downward": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "edges_intrascale": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    }
+  }
+}

@@ -1,0 +1,748 @@
+{
+  "schema_version": "2.0",
+  "evidence_status": "unvalidated_semantic_candidates",
+  "phenomena": [
+    {
+      "phenomenon_id": "setting_infection_clustering",
+      "name": "活动场所感染聚集",
+      "description": "在城市不同家庭、学校、工作场所和社区活动环境中，新增感染事件在场所和时间上的分布不均衡，部分场所或场所类型出现相对集中的感染事件簇。"
+    },
+    {
+      "phenomenon_id": "intervention_contact_trajectory_shift",
+      "name": "干预伴随接触与感染轨迹变化",
+      "description": "随着病毒检测、感染者识别、密切接触者追踪、隔离以及居民减少社会活动等措施的实施，城市层面的接触活动、感染发现和新增感染时间轨迹呈现阶段性变化；不同实施时间、执行范围和居民遵守情况下，变化模式存在差异。"
+    }
+  ],
+  "nodes": [
+    {
+      "indicator_id": "sic_micro_prior_setting_degree",
+      "phenomenon_id": "setting_infection_clustering",
+      "name": "Newly infected agent prior same-setting contact degree",
+      "scale": "micro",
+      "description": "Per infection event, number of distinct partners the infected agent had in the event's contact layer during a pre-infection observation window.",
+      "mathematical_definition": "For each event row e in events with run_id r, step t, agent_id a, layer L, classified as an infection transition by a fixed observed event_type/state label set, define D(e)=# { p : p is non-null/non-sentinel, p!=a, and exists c in contacts with c.run_id=r, c.layer=L, c.step in [t-W,t-1], and ((c.agent_id=a and c.partner_id=p) or (c.partner_id=a and c.agent_id=p)) }. The indicator value for e is D(e). W is a pre-specified nonnegative integer window length.",
+      "units": "contacts per infection event",
+      "computation_notes": "Use run_id and step as join keys; compare layer strings exactly. Determine infection-transition labels from observed event_type/state values before computation; do not assume absent labels. Exclude null/sentinel agent_id/partner_id. If L is null or no observed pre-window contacts exist, report undefined only for null layer; absence of contact rows yields zero distinct partners. W is fixed by analysis protocol, not tuned to outcomes. Do not infer transmission from contact edges.",
+      "required_data": {
+        "events": [
+          "run_id",
+          "step",
+          "agent_id",
+          "layer",
+          "event_type",
+          "state"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id",
+          "layer"
+        ]
+      },
+      "required": {
+        "events": [
+          "run_id",
+          "step",
+          "agent_id",
+          "layer",
+          "event_type",
+          "state"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "layer",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "config": {
+        "window": 5,
+        "aggregation": "mean",
+        "infection_event_types": [
+          "infection"
+        ],
+        "infection_states": [],
+        "units": "distinct prior same-layer partners per infection event",
+        "aggregation_rule": "Per-event degrees D(e) are grouped by the event step and reduced with the configured aggregation (mean/median/max/min) because the trajectory contract requires one numeric value per step index; every event row still contributes exactly one D(e).",
+        "label_rule": "Infection-transition rows are selected only by the configured observed labels in infection_event_types / infection_states; no label is invented. An empty label set yields no selected events and therefore an empty step index.",
+        "missing_rule": "Events with null layer or null agent_id get value NaN; absence of contact rows inside the window yields 0 distinct partners; invalid (null/sentinel/self) partners are excluded.",
+        "note": "Assumes the supplied mapping corresponds to one run_id per execution; contacts are potential edges, not realized transmissions."
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef _infection_mask(df, config):\n    event_types = config.get(\"infection_event_types\") or []\n    states = config.get(\"infection_states\") or []\n    mask = pd.Series(False, index=df.index)\n    if event_types:\n        mask = mask | df[\"event_type\"].isin(event_types).fillna(False).astype(bool)\n    if states:\n        mask = mask | df[\"state\"].isin(states).fillna(False).astype(bool)\n    return mask\n\n\ndef _is_null(value):\n    if value is None:\n        return True\n    try:\n        return bool(pd.isna(value))\n    except (TypeError, ValueError):\n        return False\n\n\ndef compute_indicator(data, config):\n    events = data[\"events\"]\n    contacts = data[\"contacts\"]\n    window = int(config.get(\"window\", 5))\n    aggregation = str(config.get(\"aggregation\", \"mean\"))\n\n    ev = events.loc[_infection_mask(events, config), [\"run_id\", \"step\", \"agent_id\", \"layer\"]]\n    ev = ev.dropna(subset=[\"step\"])\n    if ev.empty:\n        return pd.Series(dtype=\"float64\", index=pd.Index([], name=\"step\", dtype=\"int64\"), name=\"value\")\n\n    con = contacts[[\"run_id\", \"step\", \"layer\", \"agent_id\", \"partner_id\"]].dropna(\n        subset=[\"run_id\", \"step\", \"layer\", \"agent_id\", \"partner_id\"]\n    )\n    con = con[con[\"agent_id\"] != con[\"partner_id\"]]\n\n    fwd = con.rename(columns={\"agent_id\": \"a\", \"partner_id\": \"p\"})[[\"run_id\", \"layer\", \"step\", \"a\", \"p\"]]\n    bwd = con.rename(columns={\"partner_id\": \"a\", \"agent_id\": \"p\"})[[\"run_id\", \"layer\", \"step\", \"a\", \"p\"]]\n    edges = pd.concat([fwd, bwd], ignore_index=True)\n\n    edge_groups = {}\n    for key, g in edges.groupby([\"run_id\", \"layer\"], sort=False):\n        g = g.sort_values(\"step\")\n        edge_groups[key] = (\n            g[\"step\"].to_numpy(dtype=\"int64\"),\n            g[\"a\"].to_numpy(),\n            g[\"p\"].to_numpy(),\n        )\n\n    out_steps = []\n    out_values = []\n    for run_id, step, agent_id, layer in ev.itertuples(index=False):\n        if _is_null(layer) or _is_null(agent_id):\n            out_steps.append(step)\n            out_values.append(np.nan)\n            continue\n        entry = edge_groups.get((run_id, layer))\n        if entry is None:\n            out_steps.append(step)\n            out_values.append(0.0)\n            continue\n        steps_arr, a_arr, p_arr = entry\n        lo = int(np.searchsorted(steps_arr, step - window, side=\"left\"))\n        hi = int(np.searchsorted(steps_arr, step - 1, side=\"right\"))\n        if hi <= lo:\n            out_steps.append(step)\n            out_values.append(0.0)\n            continue\n        sel_p = p_arr[lo:hi]\n        sel_a = a_arr[lo:hi]\n        partners = pd.unique(sel_p[sel_a == agent_id])\n        out_steps.append(step)\n        out_values.append(float(len(partners)))\n\n    frame = pd.DataFrame({\"step\": out_steps, \"value\": out_values})\n    series = frame.groupby(\"step\")[\"value\"].agg(aggregation).sort_index()\n    series.index = series.index.astype(\"int64\")\n    series.index.name = \"step\"\n    series.name = \"value\"\n    return series\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "sic_micro_prior_setting_degree",
+      "code_file": "indicator_code/sic_micro_prior_setting_degree.py",
+      "code_sha256": "0851a97e71f5a682d586c6eefd8a19b6404478d34b72ad688ad9921abefca2f5",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "3249f90463154305aed53504106b3dae": {
+          "status": "not_executed",
+          "reason": "explicit_generate_only"
+        }
+      }
+    },
+    {
+      "indicator_id": "sic_meso_layer_infection_contact_ratio",
+      "phenomenon_id": "setting_infection_clustering",
+      "name": "Layer-specific infection events per contact edge",
+      "scale": "meso",
+      "description": "For each run, contact layer, and time window, ratio of infection-transition events to observed contact rows in that layer.",
+      "mathematical_definition": "For run r, layer L, window [s,s+W-1], let I(r,L,s)=# { e in events : e.run_id=r, e.layer=L, e.step in [s,s+W-1], e classified as an infection transition }, and C(r,L,s)=# { c in contacts : c.run_id=r, c.layer=L, c.step in [s,s+W-1] }. Indicator = I(r,L,s)/C(r,L,s) when C>0; undefined when C=0 or L is null.",
+      "units": "infection events per contact row",
+      "computation_notes": "Use run_id, step and layer as grouping keys. Count contacts rows as potential contact edges per sampled step, not realized transmissions. Apply the same fixed infection-transition label set for all runs. Do not pool different seeds or runs into one value.",
+      "required_data": {
+        "events": [
+          "run_id",
+          "step",
+          "layer",
+          "event_type",
+          "state"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "layer",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "required": {
+        "events": [
+          "step",
+          "layer",
+          "event_type",
+          "state"
+        ],
+        "contacts": [
+          "step",
+          "layer"
+        ]
+      },
+      "config": {
+        "window": 1,
+        "infection_event_types": [
+          "infection"
+        ],
+        "infection_states": [],
+        "units": "infection events per recorded contact row",
+        "window_semantics": "Each output step s is the start of the window [s, s+W-1]; windows are truncated at the last observed step rather than extrapolated.",
+        "layer_rule": "Columns are exactly the non-null layer labels observed in contacts or events; no layer category is invented. Null-layer rows are dropped from both numerator and denominator.",
+        "missing_rule": "A layer/window with zero recorded contact rows is reported as NaN (undefined), not as zero; windows are never filled by interpolation or by invented steps.",
+        "note": "Assumes one run_id per execution; contact rows are potential edges, not realized transmissions."
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef _infection_mask(df, config):\n    event_types = config.get(\"infection_event_types\") or []\n    states = config.get(\"infection_states\") or []\n    mask = pd.Series(False, index=df.index)\n    if event_types:\n        mask = mask | df[\"event_type\"].isin(event_types).fillna(False).astype(bool)\n    if states:\n        mask = mask | df[\"state\"].isin(states).fillna(False).astype(bool)\n    return mask\n\n\ndef compute_indicator(data, config):\n    events = data[\"events\"]\n    contacts = data[\"contacts\"]\n    window = int(config.get(\"window\", 1))\n    if window < 1:\n        window = 1\n\n    ev = events.loc[_infection_mask(events, config), [\"step\", \"layer\"]].dropna(subset=[\"step\", \"layer\"])\n    con = contacts[[\"step\", \"layer\"]].dropna(subset=[\"step\", \"layer\"])\n\n    ev = ev.assign(step=ev[\"step\"].astype(\"int64\"), layer=ev[\"layer\"].astype(str))\n    con = con.assign(step=con[\"step\"].astype(\"int64\"), layer=con[\"layer\"].astype(str))\n\n    layers = sorted(set(ev[\"layer\"].unique()) | set(con[\"layer\"].unique()))\n    steps = np.array(sorted(set(ev[\"step\"].unique()) | set(con[\"step\"].unique())), dtype=\"int64\")\n    if not layers or steps.size == 0:\n        return pd.DataFrame(index=pd.Index([], name=\"step\", dtype=\"int64\"))\n\n    if ev.empty:\n        i_mat = np.zeros((steps.size, len(layers)), dtype=\"float64\")\n    else:\n        i_mat = (\n            ev.groupby([\"step\", \"layer\"]).size().unstack(fill_value=0)\n            .reindex(index=steps, columns=layers, fill_value=0)\n            .fillna(0.0)\n            .to_numpy(dtype=\"float64\")\n        )\n\n    if con.empty:\n        c_mat = np.zeros((steps.size, len(layers)), dtype=\"float64\")\n    else:\n        c_mat = (\n            con.groupby([\"step\", \"layer\"]).size().unstack(fill_value=0)\n            .reindex(index=steps, columns=layers, fill_value=0)\n            .fillna(0.0)\n            .to_numpy(dtype=\"float64\")\n        )\n\n    lo = np.searchsorted(steps, steps, side=\"left\")\n    hi = np.searchsorted(steps, steps + (window - 1), side=\"right\")\n\n    zeros = np.zeros((1, len(layers)), dtype=\"float64\")\n    i_pre = np.vstack([zeros, np.cumsum(i_mat, axis=0)])\n    c_pre = np.vstack([zeros, np.cumsum(c_mat, axis=0)])\n\n    i_win = i_pre[hi] - i_pre[lo]\n    c_win = c_pre[hi] - c_pre[lo]\n\n    safe = np.where(c_win > 0.0, c_win, 1.0)\n    with np.errstate(divide=\"ignore\", invalid=\"ignore\"):\n        ratio = np.where(c_win > 0.0, i_win / safe, np.nan)\n\n    return pd.DataFrame(ratio, index=pd.Index(steps, name=\"step\"), columns=layers)\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "sic_meso_layer_infection_contact_ratio",
+      "code_file": "indicator_code/sic_meso_layer_infection_contact_ratio.py",
+      "code_sha256": "69fead8868c708841bd9966f947ecc31f8fcbe17235b3e6dad397f5010f7b8ba",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "3249f90463154305aed53504106b3dae": {
+          "status": "not_executed",
+          "reason": "explicit_generate_only"
+        }
+      }
+    },
+    {
+      "indicator_id": "sic_macro_layer_entropy",
+      "phenomenon_id": "setting_infection_clustering",
+      "name": "City infection-event layer entropy",
+      "scale": "macro",
+      "description": "Normalized entropy of infection-transition events across observed contact layers for each run and time window.",
+      "mathematical_definition": "For run r and window [s,s+W-1], let n_L = # infection-transition events with layer L for each non-null layer label L observed in r; N=sum_L n_L; p_L=n_L/N; K=# non-null layer labels observed in r in contacts or events; H = -(sum_L p_L log p_L)/log K if N>0 and K>1; undefined otherwise.",
+      "units": "dimensionless normalized entropy",
+      "computation_notes": "Use observed non-null layer labels from the same run; do not invent layer categories. The normalized entropy is bounded in [0,1] when defined. Apply the fixed infection-transition label set. If N=0 or K<=1, report undefined. Compute separately per run and window.",
+      "required_data": {
+        "events": [
+          "run_id",
+          "step",
+          "layer",
+          "event_type",
+          "state"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "layer"
+        ]
+      },
+      "required": {
+        "events": [
+          "step",
+          "layer",
+          "event_type",
+          "state"
+        ],
+        "contacts": [
+          "step",
+          "layer"
+        ]
+      },
+      "config": {
+        "window": 1,
+        "infection_event_types": [
+          "infection"
+        ],
+        "infection_states": [],
+        "units": "dimensionless normalized entropy",
+        "normalizer_rule": "K is the number of non-null layer labels observed in the run across contacts and events, matching the definition; K<=1 or an empty infection window yields NaN.",
+        "window_semantics": "Each output step s indexes the window [s, s+W-1]; windows are truncated at the last observed step.",
+        "missing_rule": "Null-layer rows are excluded from the layer counts; no pseudo-count smoothing is applied.",
+        "note": "Assumes one run_id per execution."
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef _infection_mask(df, config):\n    event_types = config.get(\"infection_event_types\") or []\n    states = config.get(\"infection_states\") or []\n    mask = pd.Series(False, index=df.index)\n    if event_types:\n        mask = mask | df[\"event_type\"].isin(event_types).fillna(False).astype(bool)\n    if states:\n        mask = mask | df[\"state\"].isin(states).fillna(False).astype(bool)\n    return mask\n\n\ndef compute_indicator(data, config):\n    events = data[\"events\"]\n    contacts = data[\"contacts\"]\n    window = int(config.get(\"window\", 1))\n    if window < 1:\n        window = 1\n\n    ev = events.loc[_infection_mask(events, config), [\"step\", \"layer\"]].dropna(subset=[\"step\", \"layer\"])\n    con = contacts[[\"step\", \"layer\"]].dropna(subset=[\"step\", \"layer\"])\n\n    ev = ev.assign(step=ev[\"step\"].astype(\"int64\"), layer=ev[\"layer\"].astype(str))\n    con = con.assign(step=con[\"step\"].astype(\"int64\"), layer=con[\"layer\"].astype(str))\n\n    layers = sorted(set(ev[\"layer\"].unique()) | set(con[\"layer\"].unique()))\n    steps = np.array(sorted(set(ev[\"step\"].unique()) | set(con[\"step\"].unique())), dtype=\"int64\")\n    n_layers = len(layers)\n\n    if steps.size == 0:\n        return pd.Series(dtype=\"float64\", index=pd.Index([], name=\"step\", dtype=\"int64\"), name=\"layer_entropy\")\n    if n_layers <= 1 or ev.empty:\n        return pd.Series(\n            np.full(steps.size, np.nan, dtype=\"float64\"),\n            index=pd.Index(steps, name=\"step\"),\n            name=\"layer_entropy\",\n        )\n\n    mat = (\n        ev.groupby([\"step\", \"layer\"]).size().unstack(fill_value=0)\n        .reindex(index=steps, columns=layers, fill_value=0)\n        .fillna(0.0)\n        .to_numpy(dtype=\"float64\")\n    )\n\n    lo = np.searchsorted(steps, steps, side=\"left\")\n    hi = np.searchsorted(steps, steps + (window - 1), side=\"right\")\n\n    zeros = np.zeros((1, n_layers), dtype=\"float64\")\n    pre = np.vstack([zeros, np.cumsum(mat, axis=0)])\n    windows = pre[hi] - pre[lo]\n\n    totals = windows.sum(axis=1)\n    safe_total = np.where(totals > 0.0, totals, 1.0)\n    probs = windows / safe_total[:, None]\n    safe_probs = np.where(probs > 0.0, probs, 1.0)\n    terms = np.where(probs > 0.0, probs * np.log(safe_probs), 0.0)\n\n    with np.errstate(divide=\"ignore\", invalid=\"ignore\"):\n        entropy = -terms.sum(axis=1) / np.log(float(n_layers))\n\n    entropy = np.where(totals > 0.0, entropy, np.nan)\n    return pd.Series(entropy, index=pd.Index(steps, name=\"step\"), name=\"layer_entropy\")\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "sic_macro_layer_entropy",
+      "code_file": "indicator_code/sic_macro_layer_entropy.py",
+      "code_sha256": "8d5f83024770e0e245dc396ff43421371e83ce0b9c59647ada859c073fb7d9d8",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "3249f90463154305aed53504106b3dae": {
+          "status": "not_executed",
+          "reason": "explicit_generate_only"
+        }
+      }
+    },
+    {
+      "indicator_id": "icts_micro_quarantine_contact_ratio",
+      "phenomenon_id": "intervention_contact_trajectory_shift",
+      "name": "Agent contact-degree ratio around quarantine onset",
+      "scale": "micro",
+      "description": "Per quarantine-onset event, ratio of distinct contacts after onset to distinct contacts before onset for the same agent.",
+      "mathematical_definition": "For each event q in events with run_id r, step s, agent_id a, state matching the observed quarantined label, before=false, after=true, let P_pre={p: exists c in contacts, c.run_id=r, c.step in [s-W,s-1], ((c.agent_id=a and c.partner_id=p) or (c.partner_id=a and c.agent_id=p)), p non-null/non-sentinel, p!=a} and P_post similarly for c.step in [s+1,s+W]. Indicator = |P_post|/|P_pre| if |P_pre|>0; undefined if |P_pre|=0.",
+      "units": "dimensionless ratio",
+      "computation_notes": "Identify quarantine-onset rows by observed native state label and before/after booleans; do not hardcode unseen labels. Use run_id and step as join keys. Exclude null/sentinel agent_id/partner_id. W is pre-specified. If interval steps are not observed, use observed steps in that interval; undefined if no pre-onset contacts. This is an observation of contact activity around onset, not causal evidence.",
+      "required_data": {
+        "events": [
+          "run_id",
+          "step",
+          "agent_id",
+          "state",
+          "before",
+          "after"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "required": {
+        "events": [
+          "run_id",
+          "step",
+          "agent_id",
+          "state",
+          "before",
+          "after"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "config": {
+        "window": 7,
+        "quarantine_state_labels": [
+          "quarantined"
+        ],
+        "aggregation": "mean",
+        "units": "dimensionless ratio",
+        "aggregation_rule": "Per-onset ratios are grouped by the onset step and reduced by the mean because the trajectory contract requires one numeric value per step index; each onset still contributes one |P_post|/|P_pre|.",
+        "label_rule": "Onset rows require state in the configured observed quarantine labels AND before=false AND after=true; missing before/after values are treated as not satisfying the transition rather than as observed true.",
+        "missing_rule": "Ratio is NaN when the pre-window contains no distinct partners (undefined per definition); null agent_id or runs without contacts rows are NaN.",
+        "note": "Contacts are potential edges; the ratio describes observed contact activity, not a causal effect."
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef compute_indicator(data, config):\n    window = int(config.get(\"window\", 7))\n    labels = config.get(\"quarantine_state_labels\") or [\"quarantined\"]\n    aggregation = str(config.get(\"aggregation\", \"mean\"))\n    events = data[\"events\"]\n    contacts = data[\"contacts\"]\n\n    q = events[[\"run_id\", \"step\", \"agent_id\", \"state\", \"before\", \"after\"]].dropna(subset=[\"step\"])\n    if q.empty:\n        return pd.Series(dtype=\"float64\", index=pd.Index([], name=\"step\", dtype=\"int64\"), name=\"value\")\n\n    before = pd.array(q[\"before\"], dtype=\"boolean\").fillna(False).to_numpy(dtype=bool)\n    after = pd.array(q[\"after\"], dtype=\"boolean\").fillna(False).to_numpy(dtype=bool)\n    state_hit = q[\"state\"].isin(labels).fillna(False).to_numpy(dtype=bool)\n    onsets = q.loc[state_hit & (~before) & after, [\"run_id\", \"step\", \"agent_id\"]]\n    if onsets.empty:\n        return pd.Series(dtype=\"float64\", index=pd.Index([], name=\"step\", dtype=\"int64\"), name=\"value\")\n\n    con = contacts[[\"run_id\", \"step\", \"agent_id\", \"partner_id\"]].dropna(\n        subset=[\"run_id\", \"step\", \"agent_id\", \"partner_id\"]\n    )\n    con = con[con[\"agent_id\"] != con[\"partner_id\"]]\n\n    fwd = con.rename(columns={\"agent_id\": \"a\", \"partner_id\": \"p\"})[[\"run_id\", \"step\", \"a\", \"p\"]]\n    bwd = con.rename(columns={\"partner_id\": \"a\", \"agent_id\": \"p\"})[[\"run_id\", \"step\", \"a\", \"p\"]]\n    edges = pd.concat([fwd, bwd], ignore_index=True)\n\n    groups = {}\n    for key, g in edges.groupby(\"run_id\", sort=False):\n        g = g.sort_values(\"step\")\n        groups[key] = (\n            g[\"step\"].to_numpy(dtype=\"int64\"),\n            g[\"a\"].to_numpy(),\n            g[\"p\"].to_numpy(),\n        )\n\n    out_steps = []\n    out_values = []\n    for run_id, step, agent_id in onsets.itertuples(index=False):\n        out_steps.append(step)\n        entry = groups.get(run_id)\n        if entry is None or pd.isna(agent_id):\n            out_values.append(np.nan)\n            continue\n        steps_arr, a_arr, p_arr = entry\n        lo = int(np.searchsorted(steps_arr, step - window, side=\"left\"))\n        hi = int(np.searchsorted(steps_arr, step - 1, side=\"right\"))\n        pre = pd.unique(p_arr[lo:hi][a_arr[lo:hi] == agent_id]) if hi > lo else np.array([])\n        lo2 = int(np.searchsorted(steps_arr, step + 1, side=\"left\"))\n        hi2 = int(np.searchsorted(steps_arr, step + window, side=\"right\"))\n        post = pd.unique(p_arr[lo2:hi2][a_arr[lo2:hi2] == agent_id]) if hi2 > lo2 else np.array([])\n        if len(pre) == 0:\n            out_values.append(np.nan)\n            continue\n        out_values.append(float(len(post)) / float(len(pre)))\n\n    frame = pd.DataFrame({\"step\": out_steps, \"value\": out_values})\n    series = frame.groupby(\"step\")[\"value\"].agg(aggregation).sort_index()\n    series.index = series.index.astype(\"int64\")\n    series.index.name = \"step\"\n    series.name = \"value\"\n    return series\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "icts_micro_quarantine_contact_ratio",
+      "code_file": "indicator_code/icts_micro_quarantine_contact_ratio.py",
+      "code_sha256": "aaf08aedfb0fffaac9184f092ab0ecba960129df080de1d1c00025e4eb1e0eff",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "3249f90463154305aed53504106b3dae": {
+          "status": "not_executed",
+          "reason": "explicit_generate_only"
+        }
+      }
+    },
+    {
+      "indicator_id": "icts_meso_layer_contact_change",
+      "phenomenon_id": "intervention_contact_trajectory_shift",
+      "name": "Layer contact-volume change around quarantine-count increase",
+      "scale": "meso",
+      "description": "Median within-layer change in mean per-step contact rows around steps where the model quarantine count increases.",
+      "mathematical_definition": "For run r and layer L, let Q_t=model_states.quarantined at step t. Let S={t: Q_t>Q_prev(t) with previous sampled step observed}. For each t in S, define C_pre(t)=mean over u in [t-W,t-1] intersect observed steps of # contacts rows with run_id=r, layer=L, step=u; C_post(t)=mean over u in [t+1,t+W] intersect observed steps of # contacts rows with run_id=r, layer=L, step=u. Indicator = median over t in S of (C_post(t)-C_pre(t)) when S and required pre/post steps exist; undefined if S is empty or no pre/post observed steps exist.",
+      "units": "contact rows per step",
+      "computation_notes": "Use run_id and step as join keys for model_states and contacts. Layer labels are taken exactly from contacts. W is pre-specified. If multiple quarantine increases occur, aggregate only their per-onset changes by median; do not pool runs. Contact rows are potential contact edges per sampled step, not realized transmissions.",
+      "required_data": {
+        "model_states": [
+          "run_id",
+          "step",
+          "quarantined"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "layer",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "required": {
+        "model_states": [
+          "step",
+          "quarantined"
+        ],
+        "contacts": [
+          "step",
+          "layer"
+        ]
+      },
+      "config": {
+        "window": 7,
+        "reduction": "median",
+        "units": "contact rows per step",
+        "reduction_rule": "Default 'median' reproduces the definition (one layer value per run) and reports it as a constant series over the observed step axis; 'per_onset' returns the per-onset-step quantity C_post(t)-C_pre(t) that the median is taken over, one row per qualifying onset step.",
+        "onset_rule": "Onsets are sampled steps where quarantined strictly exceeds the previous sampled step in model_states; the first sampled step has no previous observation and is never an onset.",
+        "missing_rule": "Onsets without at least one observed pre step and one observed post step in contacts are skipped; a layer absent at step u contributes count 0 for that observed step. Empty onset sets yield an empty step index.",
+        "note": "Assumes one run_id per execution; contacts rows are potential edges, not realized transmissions."
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef _empty(layers, steps):\n    return pd.DataFrame(\n        index=pd.Index(steps, name=\"step\", dtype=\"int64\"),\n        columns=layers,\n        dtype=\"float64\",\n    )\n\n\ndef compute_indicator(data, config):\n    window = int(config.get(\"window\", 7))\n    reduction = str(config.get(\"reduction\", \"median\"))\n    contacts = data[\"contacts\"]\n    model_states = data[\"model_states\"]\n\n    ms = model_states[[\"step\", \"quarantined\"]].dropna(subset=[\"step\", \"quarantined\"])\n    ms = ms.assign(step=ms[\"step\"].astype(\"int64\")).sort_values(\"step\")\n    if ms.empty:\n        return pd.DataFrame(index=pd.Index([], name=\"step\", dtype=\"int64\"))\n\n    q_vals = ms[\"quarantined\"].astype(\"float64\").to_numpy()\n    ms_steps = ms[\"step\"].to_numpy(dtype=\"int64\")\n    onset_steps = [int(ms_steps[i]) for i in range(1, len(ms_steps)) if q_vals[i] > q_vals[i - 1]]\n\n    con = contacts[[\"step\", \"layer\"]].dropna(subset=[\"step\", \"layer\"])\n    con = con.assign(step=con[\"step\"].astype(\"int64\"), layer=con[\"layer\"].astype(str))\n    counts = con.groupby([\"step\", \"layer\"]).size()\n    count_lookup = counts.to_dict()\n    observed_steps = set(int(s) for s in con[\"step\"].unique())\n    layers = sorted(con[\"layer\"].unique())\n    axis_steps = sorted(set(int(s) for s in ms_steps) | observed_steps)\n\n    if not layers or window < 1 or not onset_steps:\n        return _empty(layers, axis_steps)\n\n    def _count(u, layer):\n        return float(count_lookup.get((u, layer), 0.0))\n\n    per_onset = {}\n    for t in onset_steps:\n        pre = [u for u in range(t - window, t) if u in observed_steps]\n        post = [u for u in range(t + 1, t + window + 1) if u in observed_steps]\n        if not pre or not post:\n            continue\n        row = {}\n        for layer in layers:\n            c_pre = float(np.mean([_count(u, layer) for u in pre]))\n            c_post = float(np.mean([_count(u, layer) for u in post]))\n            row[layer] = c_post - c_pre\n        per_onset[t] = row\n\n    if not per_onset:\n        return _empty(layers, axis_steps)\n\n    frame = pd.DataFrame.from_dict(per_onset, orient=\"index\").reindex(columns=layers)\n    frame.index = pd.Index(sorted(frame.index), name=\"step\").astype(\"int64\")\n\n    if reduction == \"per_onset\":\n        return frame.sort_index()\n\n    medians = frame.median(axis=0, skipna=True)\n    return pd.DataFrame(\n        {layer: np.full(len(axis_steps), float(medians[layer]), dtype=\"float64\") for layer in layers},\n        index=pd.Index(axis_steps, name=\"step\", dtype=\"int64\"),\n    )\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "icts_meso_layer_contact_change",
+      "code_file": "indicator_code/icts_meso_layer_contact_change.py",
+      "code_sha256": "9dbb537969039edd56314a26dbbf68d722595056a4ea0d9e0ee866933f3d3943",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "3249f90463154305aed53504106b3dae": {
+          "status": "not_executed",
+          "reason": "explicit_generate_only"
+        }
+      }
+    },
+    {
+      "indicator_id": "icts_macro_city_contact_change_on_quarantine_increase",
+      "phenomenon_id": "intervention_contact_trajectory_shift",
+      "name": "City contact-volume change on quarantine-increase steps",
+      "scale": "macro",
+      "description": "Difference in mean step-to-step change of total city contact rows between steps with positive quarantine-count change and steps with zero quarantine-count change.",
+      "mathematical_definition": "For run r, let C_t=# contacts rows at step t; DeltaC_t=C_t-C_{t-1}; DeltaQ_t=Q_t-Q_{t-1} from model_states.quarantined. Let A=mean{DeltaC_t: DeltaQ_t>0 and both t and t-1 are observed}; B=mean{DeltaC_t: DeltaQ_t=0 and both t and t-1 are observed}. Indicator=A-B. Undefined if A or B has no members.",
+      "units": "contact rows per step",
+      "computation_notes": "Use run_id and step as join keys. Compute within each run separately; do not concatenate seeds. No lag is introduced; both DeltaC_t and DeltaQ_t use the same step transition. This describes co-movement in observed trajectories and is not causal evidence.",
+      "required_data": {
+        "model_states": [
+          "run_id",
+          "step",
+          "quarantined"
+        ],
+        "contacts": [
+          "run_id",
+          "step"
+        ]
+      },
+      "required": {
+        "contacts": [
+          "step"
+        ],
+        "model_states": [
+          "step",
+          "quarantined"
+        ]
+      },
+      "config": {
+        "mode": "scalar",
+        "units": "contact rows per step",
+        "mode_rule": "Default 'scalar' returns the run-level difference A-B reported as a constant series over the observed step axis; 'residual' reports DeltaC_t - B only at steps where DeltaQ_t>0 and NaN elsewhere, which are the terms entering A.",
+        "differencing_rule": "DeltaC_t is only defined when both t and t-1 appear as observed contact steps; DeltaQ_t is only defined when both t and t-1 appear as sampled model_states steps. No lag, interpolation or reindexing across missing steps is applied.",
+        "missing_rule": "If either the quarantine-increase group or the zero-change group is empty, the value is NaN (undefined) rather than zero.",
+        "note": "Assumes one run_id per execution; describes co-movement of observed trajectories, not a causal effect."
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef compute_indicator(data, config):\n    mode = str(config.get(\"mode\", \"scalar\"))\n    contacts = data[\"contacts\"]\n    model_states = data[\"model_states\"]\n\n    con = contacts[[\"step\"]].dropna(subset=[\"step\"])\n    con = con.assign(step=con[\"step\"].astype(\"int64\"))\n    c_counts = con.groupby(\"step\").size().sort_index()\n    c_steps = c_counts.index.to_numpy(dtype=\"int64\")\n    c_vals = c_counts.to_numpy(dtype=\"float64\")\n\n    ms = model_states[[\"step\", \"quarantined\"]].dropna(subset=[\"step\", \"quarantined\"])\n    ms = ms.assign(step=ms[\"step\"].astype(\"int64\")).sort_values(\"step\")\n    ms_steps = ms[\"step\"].to_numpy(dtype=\"int64\")\n    q_vals = ms[\"quarantined\"].astype(\"float64\").to_numpy()\n\n    axis_steps = np.array(\n        sorted(set(int(s) for s in c_steps) | set(int(s) for s in ms_steps)), dtype=\"int64\"\n    )\n    if axis_steps.size == 0:\n        return pd.Series(dtype=\"float64\", index=pd.Index([], name=\"step\", dtype=\"int64\"), name=\"value\")\n\n    delta_c = {}\n    for i in range(1, len(c_steps)):\n        if c_steps[i] - c_steps[i - 1] == 1:\n            delta_c[int(c_steps[i])] = float(c_vals[i] - c_vals[i - 1])\n\n    delta_q = {}\n    for i in range(1, len(ms_steps)):\n        if ms_steps[i] - ms_steps[i - 1] == 1:\n            delta_q[int(ms_steps[i])] = float(q_vals[i] - q_vals[i - 1])\n\n    increase_vals = []\n    zero_vals = []\n    increase_by_step = {}\n    for t, dc in delta_c.items():\n        dq = delta_q.get(t)\n        if dq is None:\n            continue\n        if dq > 0.0:\n            increase_vals.append(dc)\n            increase_by_step[t] = dc\n        elif dq == 0.0:\n            zero_vals.append(dc)\n\n    if not increase_vals or not zero_vals:\n        return pd.Series(\n            np.full(axis_steps.size, np.nan, dtype=\"float64\"),\n            index=pd.Index(axis_steps, name=\"step\"),\n            name=\"value\",\n        )\n\n    a_mean = float(np.mean(increase_vals))\n    b_mean = float(np.mean(zero_vals))\n\n    if mode == \"residual\":\n        values = np.full(axis_steps.size, np.nan, dtype=\"float64\")\n        for i, s in enumerate(axis_steps):\n            key = int(s)\n            if key in increase_by_step:\n                values[i] = increase_by_step[key] - b_mean\n        return pd.Series(values, index=pd.Index(axis_steps, name=\"step\"), name=\"value\")\n\n    return pd.Series(\n        np.full(axis_steps.size, a_mean - b_mean, dtype=\"float64\"),\n        index=pd.Index(axis_steps, name=\"step\"),\n        name=\"value\",\n    )\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "icts_macro_city_contact_change_on_quarantine_increase",
+      "code_file": "indicator_code/icts_macro_city_contact_change_on_quarantine_increase.py",
+      "code_sha256": "79529d5488de86c0f7fc2c67191c04e3448e94ae23270aa1f72d02b6b2db1870",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "3249f90463154305aed53504106b3dae": {
+          "status": "not_executed",
+          "reason": "explicit_generate_only"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "upward__edge_sic_micro_degree_to_meso_layer_ratio",
+      "source": "sic_micro_prior_setting_degree",
+      "target": "sic_meso_layer_infection_contact_ratio",
+      "scale_direction": "upward",
+      "semantic_rationale": "Infected agents with higher prior same-setting contact degree are more embedded in dense layer-specific contact structures; their subsequent interactions can generate more same-layer infection events per observed contact row, shifting the meso layer infection-to-contact ratio beyond simple event aggregation.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "setting_infection_clustering",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "edge_sic_micro_degree_to_meso_layer_ratio",
+          "row_index": 0
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__edge_icts_micro_quarantine_ratio_to_meso_layer_contact_change",
+      "source": "icts_micro_quarantine_contact_ratio",
+      "target": "icts_meso_layer_contact_change",
+      "scale_direction": "upward",
+      "semantic_rationale": "When quarantined agents retain a larger share of their pre-onset contacts, layer-level contact volume around quarantine-count increases declines less; widespread low post/pre contact ratios instead amplify layer contact-volume contraction.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "intervention_contact_trajectory_shift",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "edge_icts_micro_quarantine_ratio_to_meso_layer_contact_change",
+          "row_index": 1
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__edge_sic_meso_layer_ratio_to_macro_layer_entropy",
+      "source": "sic_meso_layer_infection_contact_ratio",
+      "target": "sic_macro_layer_entropy",
+      "scale_direction": "upward",
+      "semantic_rationale": "Differential infection-to-contact intensity across layers changes the relative share of infection events attributed to each layer; an elevated ratio in one layer can make city infection events more concentrated, while more balanced ratios across layers can diversify the city-level layer distribution.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "setting_infection_clustering",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "edge_sic_meso_layer_ratio_to_macro_layer_entropy",
+          "row_index": 2
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy",
+      "source": "icts_meso_layer_contact_change",
+      "target": "sic_macro_layer_entropy",
+      "scale_direction": "upward",
+      "semantic_rationale": "Quarantine-associated contact-volume contractions that differ by layer redistribute mixing opportunities among settings, which can shift transmission toward less-contracted layers and thereby reshape the city-level distribution of infection events across layers.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "edge_icts_meso_layer_contact_change_to_macro_layer_entropy",
+          "row_index": 3
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__edge_sic_micro_degree_to_macro_layer_entropy",
+      "source": "sic_micro_prior_setting_degree",
+      "target": "sic_macro_layer_entropy",
+      "scale_direction": "upward",
+      "semantic_rationale": "Heterogeneous prior contact embeddedness of infected agents across settings can create layer-specific infection clustering; when high-degree infections concentrate in particular layers, the city-wide infection-event distribution across layers can become more skewed, altering normalized layer entropy.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "setting_infection_clustering",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "edge_sic_micro_degree_to_macro_layer_entropy",
+          "row_index": 4
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__edge_icts_micro_quarantine_ratio_to_macro_city_contact_change",
+      "source": "icts_micro_quarantine_contact_ratio",
+      "target": "icts_macro_city_contact_change_on_quarantine_increase",
+      "scale_direction": "upward",
+      "semantic_rationale": "Individual contact retention after quarantine onset attenuates the aggregate city contact-volume decline on quarantine-increase steps; if many quarantined agents maintain contacts, the city-level differential contact change is less negative than when post-onset contacts drop sharply.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "intervention_contact_trajectory_shift",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "edge_icts_micro_quarantine_ratio_to_macro_city_contact_change",
+          "row_index": 5
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__edge_icts_micro_quarantine_ratio_to_meso_layer_infection_ratio",
+      "source": "icts_micro_quarantine_contact_ratio",
+      "target": "sic_meso_layer_infection_contact_ratio",
+      "scale_direction": "upward",
+      "semantic_rationale": "Quarantined agents who retain more contacts can continue to create infectious contact opportunities within their layer, potentially raising layer infection events per contact row; strong post-onset contact reduction instead lowers that layer-specific infection-to-contact ratio.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "edge_icts_micro_quarantine_ratio_to_meso_layer_infection_ratio",
+          "row_index": 6
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__macro_entropy_to_layer_infection_ratio",
+      "source": "sic_macro_layer_entropy",
+      "target": "sic_meso_layer_infection_contact_ratio",
+      "scale_direction": "downward",
+      "semantic_rationale": "Higher citywide layer entropy indicates infection events are spread across many activity layers; this changes which settings carry infectious persons, plausibly diluting or redistributing per-layer infection pressure and thereby affecting layer-specific infection events per contact edge.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "setting_infection_clustering",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "macro_entropy_to_layer_infection_ratio",
+          "row_index": 0
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__macro_city_contact_to_micro_quarantine_ratio",
+      "source": "icts_macro_city_contact_change_on_quarantine_increase",
+      "target": "icts_micro_quarantine_contact_ratio",
+      "scale_direction": "downward",
+      "semantic_rationale": "A citywide fall in contact rows on quarantine-increase steps creates a lower-opportunity contact environment; quarantined agents' post-onset contacts may fall relative to their pre-onset contacts, lowering the individual post/pre contact-degree ratio.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "intervention_contact_trajectory_shift",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "macro_city_contact_to_micro_quarantine_ratio",
+          "row_index": 1
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__macro_city_contact_to_micro_prior_degree",
+      "source": "icts_macro_city_contact_change_on_quarantine_increase",
+      "target": "sic_micro_prior_setting_degree",
+      "scale_direction": "downward",
+      "semantic_rationale": "Citywide contact contraction coincident with quarantine increases reduces the pool of available partners, so newly infected agents are plausibly less able to accumulate many distinct prior partners in their infection setting.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "macro_city_contact_to_micro_prior_degree",
+          "row_index": 2
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__macro_city_contact_to_layer_infection_ratio",
+      "source": "icts_macro_city_contact_change_on_quarantine_increase",
+      "target": "sic_meso_layer_infection_contact_ratio",
+      "scale_direction": "downward",
+      "semantic_rationale": "When citywide contacts contract on quarantine-increase steps, remaining contacts may concentrate in essential or household layers; this selective contact regime can raise or alter infection events per contact in those layers.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "macro_city_contact_to_layer_infection_ratio",
+          "row_index": 3
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__layer_infection_ratio_to_micro_prior_degree",
+      "source": "sic_meso_layer_infection_contact_ratio",
+      "target": "sic_micro_prior_setting_degree",
+      "scale_direction": "downward",
+      "semantic_rationale": "A layer with a higher infection-event-per-contact ratio presents a more intense exposure environment; agents infected in that layer plausibly had more prior distinct partners because repeated exposure opportunities increase infection likelihood.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "setting_infection_clustering",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "layer_infection_ratio_to_micro_prior_degree",
+          "row_index": 4
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__layer_contact_change_to_micro_quarantine_ratio",
+      "source": "icts_meso_layer_contact_change",
+      "target": "icts_micro_quarantine_contact_ratio",
+      "scale_direction": "downward",
+      "semantic_rationale": "Contraction of contact volume in a layer after quarantine-count increases reduces the partners available there; quarantined agents whose activity is concentrated in that layer may show a lower post/pre contact-degree ratio.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "intervention_contact_trajectory_shift",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "layer_contact_change_to_micro_quarantine_ratio",
+          "row_index": 5
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__layer_contact_change_to_micro_prior_degree",
+      "source": "icts_meso_layer_contact_change",
+      "target": "sic_micro_prior_setting_degree",
+      "scale_direction": "downward",
+      "semantic_rationale": "Layer-specific contact contraction around quarantine increases lowers the opportunity to meet distinct partners in that setting; newly infected agents in that layer plausibly have fewer prior distinct contacts before infection.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "layer_contact_change_to_micro_prior_degree",
+          "row_index": 6
+        }
+      ]
+    },
+    {
+      "edge_id": "intra_scale__micro_prior_degree_to_quarantine_ratio",
+      "source": "sic_micro_prior_setting_degree",
+      "target": "icts_micro_quarantine_contact_ratio",
+      "scale_direction": "intra_scale",
+      "semantic_rationale": "A newly infected agent's prior same-setting contact degree can shape how many contacts are available for notification and how the agent's behavior changes when later quarantined; greater prior connectedness may imply a larger pre-onset contact set and a different potential post-onset contact reduction, thereby affecting the observed post/pre contact ratio.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "setting_infection_clustering",
+      "target_phenomenon": "intervention_contact_trajectory_shift",
+      "generation_sources": [
+        {
+          "stage": "edges_intrascale",
+          "call": "generation/edges_intrascale/attempt_000",
+          "original_edge_id": "micro_prior_degree_to_quarantine_ratio",
+          "row_index": 0
+        }
+      ]
+    },
+    {
+      "edge_id": "intra_scale__micro_quarantine_to_prior_degree",
+      "source": "icts_micro_quarantine_contact_ratio",
+      "target": "sic_micro_prior_setting_degree",
+      "scale_direction": "intra_scale",
+      "semantic_rationale": "Quarantine onset and the associated reduction in an agent's contacts remove that agent from ongoing setting-level mixing; this changes the pool and connectivity of remaining contacts available to susceptible agents, altering the prior same-setting contact degree observed for later infection events in those settings.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_intrascale",
+          "call": "generation/edges_intrascale/attempt_000",
+          "original_edge_id": "micro_quarantine_to_prior_degree",
+          "row_index": 1
+        }
+      ]
+    },
+    {
+      "edge_id": "intra_scale__meso_infection_ratio_to_layer_contact_change",
+      "source": "sic_meso_layer_infection_contact_ratio",
+      "target": "icts_meso_layer_contact_change",
+      "scale_direction": "intra_scale",
+      "semantic_rationale": "A layer with more infection events per observed contact row can trigger more detection, tracing, and quarantine activity associated with that setting; when city quarantine counts rise, this can produce larger reductions in contact volume within that layer because more agents linked to the layer are removed or reduce activity.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "setting_infection_clustering",
+      "target_phenomenon": "intervention_contact_trajectory_shift",
+      "generation_sources": [
+        {
+          "stage": "edges_intrascale",
+          "call": "generation/edges_intrascale/attempt_000",
+          "original_edge_id": "meso_infection_ratio_to_layer_contact_change",
+          "row_index": 2
+        }
+      ]
+    },
+    {
+      "edge_id": "intra_scale__meso_layer_contact_change_to_infection_ratio",
+      "source": "icts_meso_layer_contact_change",
+      "target": "sic_meso_layer_infection_contact_ratio",
+      "scale_direction": "intra_scale",
+      "semantic_rationale": "Quarantine-associated reductions in a layer's contact volume change the density and mixing pattern of remaining contacts; this alters both the contact-row denominator and the likelihood that infection events occur per remaining contact row within that layer.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_intrascale",
+          "call": "generation/edges_intrascale/attempt_000",
+          "original_edge_id": "meso_layer_contact_change_to_infection_ratio",
+          "row_index": 3
+        }
+      ]
+    },
+    {
+      "edge_id": "intra_scale__macro_layer_entropy_to_city_contact_change",
+      "source": "sic_macro_layer_entropy",
+      "target": "icts_macro_city_contact_change_on_quarantine_increase",
+      "scale_direction": "intra_scale",
+      "semantic_rationale": "A more dispersed or concentrated distribution of infection events across layers indicates which settings are driving transmission; this changes which settings generate quarantine increases and how city-level contact volume changes when quarantine counts rise.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "setting_infection_clustering",
+      "target_phenomenon": "intervention_contact_trajectory_shift",
+      "generation_sources": [
+        {
+          "stage": "edges_intrascale",
+          "call": "generation/edges_intrascale/attempt_000",
+          "original_edge_id": "macro_layer_entropy_to_city_contact_change",
+          "row_index": 4
+        }
+      ]
+    },
+    {
+      "edge_id": "intra_scale__macro_city_contact_change_to_layer_entropy",
+      "source": "icts_macro_city_contact_change_on_quarantine_increase",
+      "target": "sic_macro_layer_entropy",
+      "scale_direction": "intra_scale",
+      "semantic_rationale": "City contact-volume changes on quarantine-increase steps can reduce contacts unevenly across layers; by suppressing mixing in some settings more than others, these changes reshape the relative occurrence of infection events across settings and therefore the layer entropy of infection events.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "intervention_contact_trajectory_shift",
+      "target_phenomenon": "setting_infection_clustering",
+      "generation_sources": [
+        {
+          "stage": "edges_intrascale",
+          "call": "generation/edges_intrascale/attempt_000",
+          "original_edge_id": "macro_city_contact_change_to_layer_entropy",
+          "row_index": 5
+        }
+      ]
+    }
+  ]
+}

@@ -13,9 +13,9 @@ from .fixtures import OfflineClient
 
 
 def test_prompt_boundary(settings):
-    context = {'phenomena': [], 'indicators': [], 'codes': ['SOURCE_SECRET'],
+    context = {'data_schema': {'schema_version':'2.0','tables':{}}, 'phenomena': [], 'indicators': [], 'codes': ['SOURCE_SECRET'],
                'field_catalog': 'CATALOG_SECRET', 'data': 'TRAJECTORY_SECRET'}
-    for stage in ('phenomena', 'indicators', 'codes', 'edges'):
+    for stage in ('phenomena', 'indicators', 'codes', 'edges_upward', 'edges_downward', 'edges_intrascale'):
         raw = json.dumps(build_messages(stage, 'ONLY CURRENT FIXED SCENARIO', context, settings))
         assert 'ONLY CURRENT FIXED SCENARIO' in raw
         assert not any(secret in raw for secret in ('SOURCE_SECRET', 'CATALOG_SECRET', 'TRAJECTORY_SECRET'))
@@ -29,6 +29,15 @@ def test_generation_cache_and_raw_response(tmp_path, settings):
     assert list(tmp_path.glob('generation/phenomena/attempt_*/response.txt'))
     with pytest.raises(ValueError, match='prompt mismatch'):
         generate_stage('phenomena', 'different scenario', {}, settings, client, tmp_path)
+
+
+def test_checkpoint_schema_identity_even_when_not_in_first_prompt(tmp_path, settings):
+    client = OfflineClient()
+    first = {'data_schema': {'schema_version': '2.0', 'tables': {}}}
+    generate_stage('phenomena', 'fixed', first, settings, client, tmp_path)
+    changed = {'data_schema': {'schema_version': '2.0', 'tables': {'new_table': {}}}}
+    with pytest.raises(ValueError, match='checkpoint prompt mismatch'):
+        generate_stage('phenomena', 'fixed', changed, settings, client, tmp_path)
 
 
 def test_invalid_json_retries_same_prompt(tmp_path, settings):

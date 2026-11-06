@@ -1,0 +1,44 @@
+{
+  "run_id": "3249f90463154305aed53504106b3dae",
+  "indicator_id": "sic_micro_prior_setting_degree",
+  "mode": "isolated",
+  "code_sha256": "0851a97e71f5a682d586c6eefd8a19b6404478d34b72ad688ad9921abefca2f5",
+  "generation_call": "generation/codes/attempt_000",
+  "required": {
+    "events": [
+      "run_id",
+      "step",
+      "agent_id",
+      "layer",
+      "event_type",
+      "state"
+    ],
+    "contacts": [
+      "run_id",
+      "step",
+      "layer",
+      "agent_id",
+      "partner_id"
+    ]
+  },
+  "started_at": "2026-11-06T14:48:11.577713+00:00",
+  "status": "failed",
+  "source_hashes": {
+    "agent_states.parquet": "f0cc6649623f48b79d92dd850987b46a266a4584e37f4fad1af5b19097a8fa4b",
+    "contacts.parquet": "0793defd7960a1fb81229dafb28f6d019c72cb143625319321f9e8ba479d7850",
+    "events.parquet": "9f09be38dd3c311a16fc24904f8cd037d5b571f0410882e0725037fbb5127799",
+    "field_catalog.json": "80c2f2ed8833ec82488512a6c86270d485e8d730bd9bdd535be8b49e45f9e0aa",
+    "manifest.json": "c4907977b6c355381d3926d6ff5ae9e8030cb8855fbe4edec37c72d665d637bd",
+    "model_states.parquet": "3b70d1eb6399a31cebc20cba5d29df257fead0f6453306ac95f60fbb02d9927b",
+    "native_parameters.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+    "native_parameters_final.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+    "resolved_config.yaml": "e3873431821277102ae58bc4a92d3a8fb694449d13abf07cbeb9dd7a76f0a9f3",
+    "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+  },
+  "data_contract_valid": true,
+  "execution_adapter_sha256": "c318c148102deb5c79b81c0424b5b2116e26ba28f4948229d77baef062141cc2",
+  "error_type": "execution_or_validation_error",
+  "error": "RuntimeError: Docker is unavailable; untrusted indicator was not executed",
+  "ended_at": "2026-11-06T14:48:11.666182+00:00",
+  "elapsed_seconds": 0.07799999999406282
+}

@@ -1,0 +1,1615 @@
+{
+  "schema_version": "2.0",
+  "scope": "common_fields_of_all_input_runs",
+  "tables": {
+    "agent_states": {
+      "purpose": "agent per sampled step",
+      "record_granularity": "agent per sampled step",
+      "time_coordinate": "step",
+      "time_unit": "platform update step",
+      "auxiliary_time_fields": {
+        "timestamp_or_sim_time": "Discrete sampling step, not wall time"
+      },
+      "agent_identifiers": {
+        "agent_id": "Actor ID; null for model states",
+        "target_id": "Shark target UID, -1 when absent"
+      },
+      "fields": {
+        "agent_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Actor ID; null for model states",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_index": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Cumulative attempted events in this run",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_type": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Record type",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "fright": {
+          "type": "double",
+          "catalog_type": "int64",
+          "description": "Native action episode: 0 ordinary, 1 direct, 2 social; same presentation as source",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "heading": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "heading",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_name": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Model identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Implementation version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "remaining": {
+          "type": "double",
+          "catalog_type": "int64",
+          "description": "Remaining fright steps after update",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "role": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "fish or shark",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "run_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Unique run identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_sha256": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "SHA-256 of fixed scenario bytes",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario text version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "seed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Random seed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "step": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Sampling step; initial state is zero",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "target_id": {
+          "type": "double",
+          "catalog_type": "int64",
+          "description": "Shark target UID, -1 when absent",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "timestamp_or_sim_time": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Discrete sampling step, not wall time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "vx": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "vx",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "vy": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "vy",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "x": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "x",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "y": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "y",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        }
+      }
+    },
+    "contacts": {
+      "purpose": "native recorded interaction/contact edge",
+      "record_granularity": "native recorded interaction/contact edge",
+      "time_coordinate": "step",
+      "time_unit": "platform update step",
+      "auxiliary_time_fields": {
+        "timestamp_or_sim_time": "Discrete sampling step, not wall time"
+      },
+      "agent_identifiers": {
+        "agent_id": "Actor ID; null for model states",
+        "partner_id": "Source neighbor UID"
+      },
+      "fields": {
+        "agent_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Actor ID; null for model states",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_index": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Cumulative attempted events in this run",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_type": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Record type",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_name": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Model identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Implementation version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "partner_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Source neighbor UID",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "run_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Unique run identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_sha256": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "SHA-256 of fixed scenario bytes",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario text version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "seed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Random seed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "source_episode": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Source fright episode at decision time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "step": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Sampling step; initial state is zero",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "timestamp_or_sim_time": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Discrete sampling step, not wall time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        }
+      }
+    },
+    "events": {
+      "purpose": "observed model event",
+      "record_granularity": "observed model event",
+      "time_coordinate": "step",
+      "time_unit": "platform update step",
+      "auxiliary_time_fields": {
+        "timestamp_or_sim_time": "Discrete sampling step, not wall time"
+      },
+      "agent_identifiers": {
+        "agent_id": "Actor ID; null for model states"
+      },
+      "fields": {
+        "agent_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Actor ID; null for model states",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "decision_json": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Lossless native individual decision fields and random draws",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values",
+          "json_structure": {
+            "types": [
+              "object"
+            ],
+            "properties": {
+              "angle_noise": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": false
+              },
+              "d": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "eligible": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "escape_direction": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "may_be_absent": true
+              },
+              "h": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "kappa": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "nearest_shark": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "o": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "phi": {
+                "types": [
+                  "null",
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "position_noise": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "may_be_absent": true
+              },
+              "r": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "remaining": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "requested_turn": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "s": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "social_direction": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "may_be_absent": true
+              },
+              "social_draw": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "speed": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": false
+              },
+              "target": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "trigger_d": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "trigger_s": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              },
+              "z": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": true
+              }
+            }
+          },
+          "json_inspection": {
+            "records_inspected": 3,
+            "row_selection": "first_middle_last_nonnull",
+            "array_items_per_level": 8,
+            "max_depth": 16,
+            "exhaustive": false,
+            "errors": [],
+            "semantics": "Nested names/types observed in sampled records; meanings unknown unless provided by catalog."
+          }
+        },
+        "event_index": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Cumulative attempted events in this run",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_type": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Record type",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "heading": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "heading",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_name": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Model identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Implementation version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "role": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "fish or shark",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "run_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Unique run identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_sha256": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "SHA-256 of fixed scenario bytes",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario text version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "seed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Random seed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "step": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Sampling step; initial state is zero",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "timestamp_or_sim_time": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Discrete sampling step, not wall time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "x_after": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "x_after",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "x_before": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "x_before",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "y_after": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "y_after",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "y_before": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "y_before",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        }
+      }
+    },
+    "model_states": {
+      "purpose": "one per sampled step",
+      "record_granularity": "one per sampled step",
+      "time_coordinate": "step",
+      "time_unit": "platform update step",
+      "auxiliary_time_fields": {
+        "timestamp_or_sim_time": "Discrete sampling step, not wall time"
+      },
+      "agent_identifiers": {
+        "agent_id": "Actor ID; null for model states"
+      },
+      "fields": {
+        "agent_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Actor ID; null for model states",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "catalog_only_no_nonnull_values"
+        },
+        "elapsed": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native elapsed model time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_index": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Cumulative attempted events in this run",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_type": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Record type",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_name": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Model identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Implementation version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "population": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Fish count",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "predators": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Shark count",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "run_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Unique run identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_sha256": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "SHA-256 of fixed scenario bytes",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario text version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "seed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Random seed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "step": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Sampling step; initial state is zero",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "timestamp_or_sim_time": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Discrete sampling step, not wall time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        }
+      }
+    },
+    "raw_frames": {
+      "purpose": "lossless native frame per sampled step",
+      "record_granularity": "lossless native frame per sampled step",
+      "time_coordinate": "step",
+      "time_unit": "platform update step",
+      "auxiliary_time_fields": {
+        "timestamp_or_sim_time": "Discrete sampling step, not wall time"
+      },
+      "agent_identifiers": {
+        "agent_id": "Actor ID; null for model states"
+      },
+      "fields": {
+        "agent_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Actor ID; null for model states",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "catalog_only_no_nonnull_values"
+        },
+        "event_index": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Cumulative attempted events in this run",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_type": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Record type",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "frame_json": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Exact native fish-3.0 raw_frame JSON",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values",
+          "json_structure": {
+            "types": [
+              "object"
+            ],
+            "properties": {
+              "contacts": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "array"
+                  ],
+                  "items": {
+                    "types": [
+                      "number"
+                    ]
+                  }
+                },
+                "may_be_absent": false
+              },
+              "decision_input": {
+                "types": [
+                  "null",
+                  "object"
+                ],
+                "properties": {
+                  "active": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "headings": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "positions": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "array"
+                      ],
+                      "items": {
+                        "types": [
+                          "number"
+                        ]
+                      }
+                    },
+                    "may_be_absent": true
+                  },
+                  "shark_positions": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "array"
+                      ],
+                      "items": {
+                        "types": [
+                          "number"
+                        ]
+                      }
+                    },
+                    "may_be_absent": true
+                  },
+                  "source": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "time": {
+                    "types": [
+                      "number"
+                    ],
+                    "may_be_absent": true
+                  }
+                },
+                "may_be_absent": false
+              },
+              "decisions": {
+                "types": [
+                  "object"
+                ],
+                "properties": {
+                  "angle_noise": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "d": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  },
+                  "eligible": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "escape_direction": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "array"
+                      ],
+                      "items": {
+                        "types": [
+                          "number"
+                        ]
+                      }
+                    },
+                    "may_be_absent": true
+                  },
+                  "kappa": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  },
+                  "nearest_shark": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "o": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  },
+                  "phi": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "null",
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  },
+                  "position_noise": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "array"
+                      ],
+                      "items": {
+                        "types": [
+                          "number"
+                        ]
+                      }
+                    },
+                    "may_be_absent": true
+                  },
+                  "r": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  },
+                  "remaining": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  },
+                  "requested_turn": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "s": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  },
+                  "social_direction": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "array"
+                      ],
+                      "items": {
+                        "types": [
+                          "number"
+                        ]
+                      }
+                    },
+                    "may_be_absent": true
+                  },
+                  "social_draw": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "speed": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "trigger_d": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  },
+                  "trigger_s": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  }
+                },
+                "may_be_absent": false
+              },
+              "headings": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "may_be_absent": false
+              },
+              "ids": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "may_be_absent": false
+              },
+              "positions": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "array"
+                  ],
+                  "items": {
+                    "types": [
+                      "number"
+                    ]
+                  }
+                },
+                "may_be_absent": false
+              },
+              "protocol": {
+                "types": [
+                  "string"
+                ],
+                "may_be_absent": false
+              },
+              "schema_version": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": false
+              },
+              "shark_decisions": {
+                "types": [
+                  "object"
+                ],
+                "properties": {
+                  "angle_noise": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "h": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  },
+                  "speed": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": true
+                  },
+                  "target": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  },
+                  "z": {
+                    "types": [
+                      "array"
+                    ],
+                    "items": {
+                      "types": [
+                        "number"
+                      ]
+                    },
+                    "may_be_absent": false
+                  }
+                },
+                "may_be_absent": false
+              },
+              "shark_headings": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "may_be_absent": false
+              },
+              "shark_ids": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "number"
+                  ]
+                },
+                "may_be_absent": false
+              },
+              "shark_positions": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "array"
+                  ],
+                  "items": {
+                    "types": [
+                      "number"
+                    ]
+                  }
+                },
+                "may_be_absent": false
+              },
+              "step": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": false
+              },
+              "time": {
+                "types": [
+                  "number"
+                ],
+                "may_be_absent": false
+              },
+              "velocities": {
+                "types": [
+                  "array"
+                ],
+                "items": {
+                  "types": [
+                    "array"
+                  ],
+                  "items": {
+                    "types": [
+                      "number"
+                    ]
+                  }
+                },
+                "may_be_absent": false
+              }
+            }
+          },
+          "json_inspection": {
+            "records_inspected": 3,
+            "row_selection": "first_middle_last_nonnull",
+            "array_items_per_level": 8,
+            "max_depth": 16,
+            "exhaustive": false,
+            "errors": [],
+            "semantics": "Nested names/types observed in sampled records; meanings unknown unless provided by catalog."
+          }
+        },
+        "model_name": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Model identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Implementation version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "run_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Unique run identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_sha256": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "SHA-256 of fixed scenario bytes",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario text version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "seed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Random seed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "step": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Sampling step; initial state is zero",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "timestamp_or_sim_time": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Discrete sampling step, not wall time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        }
+      }
+    }
+  },
+  "relationships": [
+    {
+      "source_table": "agent_states",
+      "target_table": "contacts",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "agent_states",
+      "target_table": "events",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "agent_states",
+      "target_table": "model_states",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "agent_states",
+      "target_table": "raw_frames",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "contacts",
+      "target_table": "events",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "contacts",
+      "target_table": "model_states",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "contacts",
+      "target_table": "raw_frames",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "events",
+      "target_table": "model_states",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "events",
+      "target_table": "raw_frames",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "model_states",
+      "target_table": "raw_frames",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "agent_states",
+      "source_field": "target_id",
+      "target_table": "agent_states",
+      "target_field": "agent_id",
+      "shared_keys": [
+        "run_id",
+        "step"
+      ],
+      "meaning": "Shark target UID, -1 when absent",
+      "constraint": "Potential endpoint lookup only; null/sentinel/unmatched IDs require explicit handling."
+    },
+    {
+      "source_table": "contacts",
+      "source_field": "partner_id",
+      "target_table": "agent_states",
+      "target_field": "agent_id",
+      "shared_keys": [
+        "run_id",
+        "step"
+      ],
+      "meaning": "Source neighbor UID",
+      "constraint": "Potential endpoint lookup only; null/sentinel/unmatched IDs require explicit handling."
+    }
+  ],
+  "time_contract": "Use platform step as output index; do not concatenate seeds. Auxiliary native dates are not necessarily observed event times.",
+  "values_included": false
+}

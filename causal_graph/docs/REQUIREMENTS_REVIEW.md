@@ -1,39 +1,17 @@
-# 第一阶段需求评审（2026-11-06）
+# 第一部分重构需求评审（2.0）
 
-## 已实际核查的代码与输入
+开发前 fetch 后本地和 origin/main 均为 99d081a4050e1bbbd53975e7260b9f3654e9c671。工作区已有本会话真实 API 测试引入的传输修复、配置与文档修改，均保留整合。未修改 simulations、固定 scenarios 或原始日志；历史实验与原始响应不覆盖。
 
-基线 HEAD 与 fetch 后 origin/main 均为 5d3ee5372b4fbb22fb0803ba6f521ed0cba70d18，原工作区干净。当前根目录 abms_lab 是指定 GitHub 仓库；旁边 pt 是另外的历史副本，不用于本次开发。GitNexus 现有索引仅包含 Mesa 与 Repast，没有本仓库，因此以实际源码、日志和测试为依据。
+重构前真实回归为 114 passed（含基准 107 项及 7 项流式传输测试），见 validation/pre_v2_baseline_114.xml。传输曾发生 402 余额不足、IncompleteRead、流中断及变量生成超时，均留在各原实验目录；不能把它们当成功生成。
 
-实际模型：fish/fish-3.0（迁移原生引擎），covasim/2.0.0（Python 3.10 独立环境），schelling_standard/1 与 schelling_extended/2.0（Mesa 3.5.2）。不修改这些实现。
+既有接口复用 simulations.common.trajectory_api.Trajectory 的 metadata/configuration/catalog/read/available_steps/source_fingerprints/compute/compute_isolated；不重建仿真平台。Fish 为 fish-3.0，默认 2000 鱼/5 鲨鱼；Covasim 为原生 2.0.0、独立 Python 3.10，记录实际个体状态、事件和接触。
 
-实际读取并核对三个已有运行的所有 Parquet SHA-256 与 manifest，一致：
+固定输入实查：Fish 运行 2a815b4dfe4f47b8ac2416fac04456e5（21 快照），想定 1.0、SHA-256 f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936；Covasim 运行 3249f90463154305aed53504106b3dae（61 快照），想定 2.0、SHA-256 50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde。此前原始数据审计在 validation/existing_inputs_audit.json。
 
-|模型|run_id|固定想定版本|实际状态快照|主体行|事件行|接触行|
-|---|---|---|---|---|---|---|
-|Fish|2a815b4dfe4f47b8ac2416fac04456e5|1.0|21（0–20）|42105|40100|393665|
-|Covasim|3249f90463154305aed53504106b3dae|2.0|61（0–60）|61000|5639|1078175|
-|Schelling extended|3b1b5e8b6f9a41d695988be12ab8c060|2.0|8（0–7，frozen）|67992|59493|不适用|
+本轮必须改变原先的两个约束：变量/代码阶段要获得完整真实公共 Schema；候选图不再限制向上完整路径。新增 Schema 与数据字典/嵌套 JSON 检查、字段需求一致性、三类独立边调用、去重来源、循环/孤立节点支持，并升级输出和检查点身份。
 
-Fish raw_frames 21 行，实际通过 read_frame(0) 回读原始字典，保留 decision_input/decisions/contacts 等字段。Covasim 实际事件为 481 次 infection、4957 次 state_transition、201 次 test；contacts 层为 h/s/w/c。不是未成功传播尝试。Covasim step 0 是 simulation_day -1，禁止将未来计划日期当作已发生事件。
+算法仍不读取模型决策源码作为提示词，不传原始日志数值，不加入固定指标或参考答案。第一轮仍只依据固定想定。三类边任务不互看边；本地不推断新增关系。
 
-固定想定来自 scenarios.protocol.load_scenario 注册表：Fish 1.0 SHA-256 f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936；Covasim 2.0 SHA-256 50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde。与运行目录 scenario.md 字节哈希一致；只将当前场景文本交给 LLM。
+当前机器无 Docker，默认策略保持拒绝不可信执行。真实 API 功能验证可采用 generate-only，生成与实际计算分别报告；可信模式需要真正的人工审查与代码哈希批准。现有 API Key 只在测试进程中从用户已有配置读取，不再次索要、不记录、不提交。
 
-## 复用接口与边界
-
-唯一数据访问入口 simulations.common.trajectory_api.Trajectory：metadata、configuration、catalog、read、available_steps、source_fingerprints、compute、compute_isolated。compute 接收经过审查的函数、required 表字段映射、config，data 是表名到 Pandas DataFrame 的映射；compute_isolated 接收代码文件，同一函数签名，Docker 默认拒绝回退。
-
-compute_isolated 已有禁网、只读挂载、非 root、能力剥离与资源限制。当前机器未找到 Docker；原报告也只验证缺少 Docker 时拒绝执行。新模块必须实际调用并记录该限制，不将普通子进程或 AST 检查称为隔离。可信模式必须显式选择并提供代码 SHA-256、审查者及审查说明；不会由流水线自动批准。
-
-## 开发前验证
-
-开发前原平台 tests 已实际重新执行：48 passed，89.95 秒，证据为 docs/validation/baseline_pytest.xml。该结果不是从旧报告抄录。测试覆盖单次 Fish/Covasim 的真实运行及日志读取；本轮另保存真实日志审计和双种子指标执行证据，见 VALIDATION_REPORT.md。未发现阻断性的仿真或数据接口错误。
-
-在当前论文工作目录（排除环境及历史平台副本）未发现论文 DOCX/TeX/PDF 正文；不得声称已经核对到旧稿。METHODS_ALIGNMENT.md 必须明确该限制，并列出固定 28 指标等旧设定与本次要求的差异。此次需求文本是实现规格，论文文件不改写。
-
-## 本次实现范围
-
-独立 causal_graph 包：固定场景验证 → LLM 现象 → 三尺度变量及数学定义 → 独立计算代码 → 语义候选边 → 严格 Schema/引用/路径/代码检查 → 隔离执行或明确审查的可信执行 → 数值完整性报告 → 原始图与可执行子图 → 完整实验溯源。
-
-LLM 不接收实际 field_catalog、日志、源码、已有指标、人工图或数据反馈。通用 data 契约可用于指定预计需要的表字段；缺失时记录失败，不自动映射或伪造。离线测试中的人工响应仅标为测试替身，不作为 LLM 科学结果。
-
-不实现统计边筛选、Granger、Bootstrap、时滞估计、参数干预或因果确认。可执行图只删除计算失败节点及其原有边，完整失败记录保留；多个运行的共同可执行图要求每条运行均成功，另提供每运行子图。
+论文工作目录未发现可逐句核对的正文，方法文档依据本轮用户确定的两部分结构；不声称与未提供的稿件完全一致。

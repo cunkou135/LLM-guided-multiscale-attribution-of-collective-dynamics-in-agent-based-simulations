@@ -1,5 +1,6 @@
 """Step 1: validate completed runs using public Trajectory and scenario APIs."""
 from pathlib import Path
+from pandas.api.types import is_integer_dtype
 
 from scenarios.protocol import load_scenario
 from simulations.common.trajectory_api import Trajectory
@@ -25,12 +26,16 @@ def inspect_run(path):
             raise ValueError(f'Incomplete run: missing {name} in {path}')
     t = Trajectory(path)
     meta, cfg = t.metadata(), t.configuration()
+    if not isinstance(meta, dict) or not isinstance(cfg, dict):
+        raise ValueError('Manifest and configuration must be mappings')
     if meta.get('status') not in {'max_steps', 'stable', 'frozen', 'all_happy'} or meta.get('error'):
         raise ValueError(f'Run is not successfully completed: {meta.get("status")}')
     required_meta = ('run_id', 'model_name', 'model_version', 'scenario_id', 'scenario_version', 'scenario_sha256',
                      'actual_steps', 'seed', 'checksums_sha256')
     if any(k not in meta for k in required_meta):
         raise ValueError('Incomplete manifest provenance')
+    if type(meta['actual_steps']) is not int or meta['actual_steps'] < 0:
+        raise ValueError('Invalid completed time range')
     if (not isinstance(meta['run_id'], str) or not meta['run_id'] or
             any(ch not in 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-' for ch in meta['run_id'])):
         raise ValueError('Unsafe run_id')
@@ -45,6 +50,8 @@ def inspect_run(path):
     checks = {'model': 'model_name', 'model_version': 'model_version', 'scenario_id': 'scenario_id', 'seed': 'seed'}
     if any(cfg.get(a) != meta[b] for a, b in checks.items()) or cfg.get('scenario_version', '1.0') != meta['scenario_version']:
         raise ValueError('Resolved configuration/manifest mismatch')
+    if cfg.get('parameters') != meta.get('parameters'):
+        raise ValueError('Resolved parameter provenance mismatch')
     checksums = meta['checksums_sha256']
     if not isinstance(checksums, dict) or not checksums:
         raise ValueError('Missing source checksums')
@@ -69,8 +76,10 @@ def inspect_run(path):
         for key in ('run_id', 'model_name', 'model_version', 'scenario_id', 'scenario_version', 'scenario_sha256', 'seed'):
             if key not in data or not data[key].eq(meta[key]).all():
                 raise ValueError(f'Row provenance mismatch: {name}/{key}')
-        if data.step.isna().any() or not data.step.between(0, meta['actual_steps']).all():
+        if not is_integer_dtype(data.step) or data.step.isna().any() or not data.step.between(0, meta['actual_steps']).all():
             raise ValueError(f'Invalid source time bounds: {name}')
+        if name == 'model_states' and data.step.duplicated().any():
+            raise ValueError('Duplicate model-state time indices')
         time_steps.update(int(s) for s in data.step.unique())
     steps = t.available_steps()
     if not steps or steps[0] != 0 or steps[-1] != meta['actual_steps'] or not rows['agent_states']:
@@ -82,6 +91,8 @@ def inspect_run(path):
 
 
 def inspect_runs(paths):
+    if not paths:
+        raise ValueError('Provide at least one completed input run')
     runs = [inspect_run(path) for path in paths]
     keys = ('model_name', 'model_version', 'scenario_id', 'scenario_version', 'scenario_sha256')
     identity = tuple(runs[0]['manifest'][k] for k in keys)

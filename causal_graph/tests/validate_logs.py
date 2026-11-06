@@ -66,7 +66,7 @@ def main(argv=None):
     llm = LLMConfig('offline_acceptance', 'openai_compatible', 'https://api.example.com/v1',
                     'offline-fixture-no-model-call', 'NO_KEY_USED')
     summary = {'started_at': now(), 'validation_type': 'offline_fixtures_on_real_logs',
-               'real_llm_validation': 'not_requested_user_requires_interface_only', 'models': []}
+               'real_llm_validation': 'not_part_of_this_offline_fixture_test', 'models': []}
     try:
         for model, field, seeds in [('fish', 'vx', [42, 43]), ('covasim', 'age', [8, 9])]:
             started = time.monotonic()
@@ -86,7 +86,7 @@ def main(argv=None):
             # Approval applies exclusively to these literal, known test double functions.
             review = {'reviewer': 'offline acceptance fixture author', 'reviewed_at': now(),
                       'notes': 'Reviewed handwritten fixture aggregations only; no LLM output executed.',
-                      'code_sha256': {n['indicator_id']: n['code_sha256'] for n in graph['nodes']}}
+                      'code_sha256': {n['indicator_id']: n['code_sha256'] for n in graph['nodes'] if n['code_sha256']}}
             save_json(root / f'{model}_fixture_review.json', review)
             run_pipeline(sources, llm, trusted, experiment, client=client, resume=True, approvals=review)
             reports = read_json(experiment / 'execution_report.json')
@@ -113,7 +113,7 @@ def main(argv=None):
                    'actual_steps': [r['manifest']['actual_steps'] for r in reviewed_inputs],
                    'populations': [r['manifest']['parameters'].get('population', {}).get('count',
                                    r['manifest']['parameters'].get('pop_size')) for r in reviewed_inputs],
-                   'successful_calculations': 6, 'expected_missing_field_failures': 2,
+                   'successful_calculations': 6, 'expected_unavailable_implementation_failures': 2,
                    'candidate_nodes': len(graph['nodes']),
                    'executable_nodes': len(read_json(experiment / 'executable_graph.json')['nodes']),
                    'fixture_only': True, 'raw_table_check': raw_check['status'],

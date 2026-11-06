@@ -1,0 +1,377 @@
+{
+  "schema_version": "2.0",
+  "evidence_status": "unvalidated_semantic_candidates",
+  "phenomena": [
+    {
+      "phenomenon_id": "school_fragmentation",
+      "name": "鱼群分裂与多簇共存",
+      "description": "在鲨鱼追逐过程中，鱼群的空间分布可能从单一连通群体转变为多个彼此分离的局部簇，并可能在不同时间步出现簇数增减、合并或持续多簇共存。该现象可由基于距离阈值的连通分量、簇数量及簇间间隔随时间的记录来描述，不预设其必然出现或由特定微观行为导致。"
+    },
+    {
+      "phenomenon_id": "school_elongation",
+      "name": "群体整体拉伸",
+      "description": "鱼群的空间占据范围可能沿某一方向被拉长，表现为个体位置协方差主轴长度比、最大成对距离或凸包长宽比等宏观形态指标的变化。该现象关注群体整体几何形态的拉伸程度及其时间变化，不预设拉伸方向、持续时间或与追逐行为的因果关系。"
+    }
+  ],
+  "nodes": [],
+  "edges": [],
+  "run_ids": [
+    "2a815b4dfe4f47b8ac2416fac04456e5"
+  ],
+  "execution_policy": "success_on_every_listed_run",
+  "excluded_nodes": [
+    {
+      "indicator_id": "frag_micro_nn_distance",
+      "run_status": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": "not_executed"
+      }
+    },
+    {
+      "indicator_id": "frag_meso_contact_component_count",
+      "run_status": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": "not_executed"
+      }
+    },
+    {
+      "indicator_id": "frag_macro_largest_component_fraction",
+      "run_status": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": "not_executed"
+      }
+    },
+    {
+      "indicator_id": "elong_micro_axis_alignment",
+      "run_status": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": "not_executed"
+      }
+    },
+    {
+      "indicator_id": "elong_meso_local_eigen_ratio",
+      "run_status": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": "not_executed"
+      }
+    },
+    {
+      "indicator_id": "elong_macro_global_eigen_ratio",
+      "run_status": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": "not_executed"
+      }
+    }
+  ],
+  "excluded_edges": [
+    {
+      "edge": {
+        "edge_id": "upward__frag_nn_to_components",
+        "source": "frag_micro_nn_distance",
+        "target": "frag_meso_contact_component_count",
+        "scale_direction": "upward",
+        "semantic_rationale": "局部最近邻间距改变鱼之间形成接触边的概率：当许多鱼彼此远离时，原生接触图更易断开，从而增加连通分量数；该关系依赖空间排布而非由定义直接决定。",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_fragmentation",
+        "target_phenomenon": "school_fragmentation",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "frag_nn_to_components",
+            "row_index": 0
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__frag_nn_to_largest_fraction",
+        "source": "frag_micro_nn_distance",
+        "target": "frag_macro_largest_component_fraction",
+        "scale_direction": "upward",
+        "semantic_rationale": "个体局部间距增大会削弱跨邻域接触链，使最大连通分量占比可能下降；但若存在少数稠密核心，影响可被缓冲，因此不是确定性聚合。",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_fragmentation",
+        "target_phenomenon": "school_fragmentation",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "frag_nn_to_largest_fraction",
+            "row_index": 1
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__frag_components_to_largest",
+        "source": "frag_meso_contact_component_count",
+        "target": "frag_macro_largest_component_fraction",
+        "scale_direction": "upward",
+        "semantic_rationale": "鱼群分裂为更多连通分量时，最大分量占比通常可能降低；但多分量可包含一个主导核心，故这是动态结构候选而非代数恒等。",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_fragmentation",
+        "target_phenomenon": "school_fragmentation",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "frag_components_to_largest",
+            "row_index": 2
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__elong_axis_to_local_ratio",
+        "source": "elong_micro_axis_alignment",
+        "target": "elong_meso_local_eigen_ratio",
+        "scale_direction": "upward",
+        "semantic_rationale": "个体朝向与群体主轴对齐会通过定向运动改变局部接触邻域的空间排布，使相邻鱼的位置协方差沿运动方向更易拉伸；局部邻域组成和转向限制使该效应非确定。",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_elongation",
+        "target_phenomenon": "school_elongation",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "elong_axis_to_local_ratio",
+            "row_index": 3
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__elong_axis_to_global_ratio",
+        "source": "elong_micro_axis_alignment",
+        "target": "elong_macro_global_eigen_ratio",
+        "scale_direction": "upward",
+        "semantic_rationale": "大量个体沿群体主轴对齐时，定向游动可能累积为整体位置分布的各向异性拉伸；个体转向上限和随机扰动使对齐不必然转化为等比例全局拉伸。",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_elongation",
+        "target_phenomenon": "school_elongation",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "elong_axis_to_global_ratio",
+            "row_index": 4
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__elong_local_to_global",
+        "source": "elong_meso_local_eigen_ratio",
+        "target": "elong_macro_global_eigen_ratio",
+        "scale_direction": "upward",
+        "semantic_rationale": "若多个局部接触邻域同时沿相近方向拉长，它们的空间各向异性可汇聚成全局伸长；若局部主轴方向分散则可能相互抵消，因此不是简单求和定义。",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_elongation",
+        "target_phenomenon": "school_elongation",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "elong_local_to_global",
+            "row_index": 5
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__elong_macro_to_local_eigen",
+        "source": "elong_macro_global_eigen_ratio",
+        "target": "elong_meso_local_eigen_ratio",
+        "scale_direction": "downward",
+        "semantic_rationale": "School-wide anisotropic stretching changes how local contact neighborhoods are embedded in the group: when the global position covariance is elongated, differential motion and contact rearrangement can transmit that anisotropy into local neighborhoods, making their covariance more elongated. This is not a deterministic aggregation because local contact sets and boundary effects vary independently.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_elongation",
+        "target_phenomenon": "school_elongation",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "elong_macro_to_local_eigen",
+            "row_index": 0
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__frag_macro_to_local_eigen",
+        "source": "frag_macro_largest_component_fraction",
+        "target": "elong_meso_local_eigen_ratio",
+        "scale_direction": "downward",
+        "semantic_rationale": "A high largest-component fraction indicates a cohesive connected school whose local contact neighborhoods are constrained by many neighboring fish, tending to reduce local anisotropic stretching. As the largest fraction falls and the school breaks into clusters, local neighborhoods near boundaries or isolated groups can stretch more freely, increasing local elongation ratios.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_fragmentation",
+        "target_phenomenon": "school_elongation",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "frag_macro_to_local_eigen",
+            "row_index": 1
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__elong_macro_to_frag_components",
+        "source": "elong_macro_global_eigen_ratio",
+        "target": "frag_meso_contact_component_count",
+        "scale_direction": "downward",
+        "semantic_rationale": "Global elongation along a principal axis can separate fish that were previously in contact, especially across the stretched direction, thereby breaking native contact links and increasing the number of contact-graph components. The effect is dynamic and not definitional because elongation does not determine which contacts persist.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_elongation",
+        "target_phenomenon": "school_fragmentation",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "elong_macro_to_frag_components",
+            "row_index": 2
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__frag_components_to_nn_distance",
+        "source": "frag_meso_contact_component_count",
+        "target": "frag_micro_nn_distance",
+        "scale_direction": "downward",
+        "semantic_rationale": "When the fish contact graph splits into more components, individual fish are less likely to be held within a dense common neighborhood; this can allow local nearest-neighbor spacing to increase as fish adjust to sparse or disconnected local groups. The relation is probabilistic because contact components and metric nearest-neighbor distances are not the same representation.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_fragmentation",
+        "target_phenomenon": "school_fragmentation",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "frag_components_to_nn_distance",
+            "row_index": 3
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__local_eigen_to_axis_alignment",
+        "source": "elong_meso_local_eigen_ratio",
+        "target": "elong_micro_axis_alignment",
+        "scale_direction": "downward",
+        "semantic_rationale": "An elongated local contact neighborhood provides a directional social configuration: alignment and attraction toward neighbors can bias a focal fish to head along the local stretch axis. Thus meso-level local anisotropy can influence micro-level heading alignment with the group principal axis, without making that alignment deterministic.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_elongation",
+        "target_phenomenon": "school_elongation",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "local_eigen_to_axis_alignment",
+            "row_index": 4
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__frag_macro_to_nn_distance",
+        "source": "frag_macro_largest_component_fraction",
+        "target": "frag_micro_nn_distance",
+        "scale_direction": "downward",
+        "semantic_rationale": "A declining largest-component fraction means the school is increasingly concentrated in smaller components or isolated groups; fish outside the dominant connected cluster experience weaker collective spacing constraints and can exhibit larger nearest-neighbor gaps. This is a plausible macro-to-micro dynamic effect rather than a direct definition, since nearest-neighbor distance is measured independently of graph membership.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_fragmentation",
+        "target_phenomenon": "school_fragmentation",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "frag_macro_to_nn_distance",
+            "row_index": 5
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "intra_scale__micro_nn_spacing_to_axis_alignment",
+        "source": "frag_micro_nn_distance",
+        "target": "elong_micro_axis_alignment",
+        "scale_direction": "intra_scale",
+        "semantic_rationale": "A fish with larger nearest-neighbor spacing has weaker local social constraint from nearby schoolmates; over subsequent steps its heading may be less entrained by the group's principal axis, so its absolute axis alignment can change. This is a dynamic micro-level candidate effect rather than a definitional aggregation.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_fragmentation",
+        "target_phenomenon": "school_elongation",
+        "generation_sources": [
+          {
+            "stage": "edges_intrascale",
+            "call": "generation/edges_intrascale/attempt_000",
+            "original_edge_id": "micro_nn_spacing_to_axis_alignment",
+            "row_index": 0
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "intra_scale__meso_local_stretch_to_component_count",
+        "source": "elong_meso_local_eigen_ratio",
+        "target": "frag_meso_contact_component_count",
+        "scale_direction": "intra_scale",
+        "semantic_rationale": "Anisotropic local contact-neighborhood geometry can reflect stretching along one direction that breaks lateral contacts; as local neighborhoods become more elongated, the contact graph may later split into more components. This is a plausible meso-level dynamic relation mediated by changing contacts, not a direct aggregation of the same quantity.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_elongation",
+        "target_phenomenon": "school_fragmentation",
+        "generation_sources": [
+          {
+            "stage": "edges_intrascale",
+            "call": "generation/edges_intrascale/attempt_000",
+            "original_edge_id": "meso_local_stretch_to_component_count",
+            "row_index": 1
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "intra_scale__macro_global_stretch_to_largest_component",
+        "source": "elong_macro_global_eigen_ratio",
+        "target": "frag_macro_largest_component_fraction",
+        "scale_direction": "intra_scale",
+        "semantic_rationale": "Greater global position elongation spreads fish along a major axis and can push some pairwise distances beyond contact range, which may reduce the fraction of fish remaining in the largest contact component. The candidate effect is mediated by contact formation and is not a definitional identity between the two macro indicators.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "school_elongation",
+        "target_phenomenon": "school_fragmentation",
+        "generation_sources": [
+          {
+            "stage": "edges_intrascale",
+            "call": "generation/edges_intrascale/attempt_000",
+            "original_edge_id": "macro_global_stretch_to_largest_component",
+            "row_index": 2
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    }
+  ]
+}

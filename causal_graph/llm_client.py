@@ -1,10 +1,12 @@
 """OpenAI-compatible chat transport, raw per-attempt audit, no model fallback."""
 import json
 import time
+from http.client import HTTPException, IncompleteRead
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 from .io import now, save_json
+from .streaming import read_stream
 
 
 class LLMClient:
@@ -17,6 +19,8 @@ class LLMClient:
         directory.mkdir(parents=True, exist_ok=False)
         c = self.config
         payload = {'model': c.model, 'messages': messages, 'max_tokens': c.max_tokens}
+        if c.stream:
+            payload['stream'] = True
         for name in ('temperature', 'top_p', 'reasoning_effort'):
             if getattr(c, name) is not None:
                 payload[name] = getattr(c, name)
@@ -42,9 +46,13 @@ class LLMClient:
                                   {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + key})
                 with urlopen(request, timeout=c.timeout) as response:
                     status = response.status
-                    raw = response.read().decode('utf-8')
-                (directory / f'transport_{attempt}.response.txt').write_text(redact(raw), encoding='utf-8')
-                body = json.loads(raw)
+                    if c.stream:
+                        body = read_stream(response, directory / f'transport_{attempt}.response.txt',
+                                           redact, started + c.timeout)
+                    else:
+                        raw = response.read().decode('utf-8')
+                        (directory / f'transport_{attempt}.response.txt').write_text(redact(raw), encoding='utf-8')
+                        body = json.loads(raw)
                 message = body['choices'][0]['message']['content']
                 if not isinstance(message, str) or not message.strip():
                     raise ValueError('Provider returned no textual message content')
@@ -58,16 +66,21 @@ class LLMClient:
                 if metadata['finish_reason'] in ('length', 'content_filter'):
                     raise ValueError(f'Incomplete response: {metadata["finish_reason"]}')
                 return redact(message)
-            except (HTTPError, URLError, TimeoutError, OSError, ValueError, KeyError, IndexError, TypeError) as exc:
+            except (HTTPException, HTTPError, URLError, TimeoutError, OSError, ValueError, KeyError, IndexError, TypeError) as exc:
                 if isinstance(exc, HTTPError):
                     status = exc.code
-                    raw = exc.read().decode('utf-8', errors='replace')
-                if raw:
+                    try:
+                        raw = exc.read().decode('utf-8', errors='replace')
+                    except HTTPException as read_error:
+                        raw = getattr(read_error, 'partial', b'').decode('utf-8', errors='replace')
+                elif isinstance(exc, IncompleteRead) and not c.stream:
+                    raw = exc.partial.decode('utf-8', errors='replace')
+                if raw or (isinstance(exc, IncompleteRead) and not c.stream):
                     (directory / f'transport_{attempt}.response.txt').write_text(redact(raw), encoding='utf-8')
                 save_json(directory / f'transport_{attempt}.error.json',
                           {'type': type(exc).__name__, 'error': redact(str(exc)), 'status': status,
                            'elapsed_seconds': time.monotonic() - started, 'ended_at': now()})
-                retryable = isinstance(exc, (URLError, TimeoutError, OSError))
+                retryable = isinstance(exc, (HTTPException, URLError, TimeoutError, OSError))
                 if isinstance(exc, HTTPError):
                     retryable = exc.code in (408, 429) or exc.code >= 500
                 if attempt == c.max_retries or not retryable:

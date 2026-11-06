@@ -1,30 +1,28 @@
-# 第一阶段流水线与错误处理
+# 第一部分 2.0：十二步、六类独立模型任务
 
-|步骤|输入|实现|输出与失败处理|
-|---|---|---|---|
-|1 固定想定|完成运行目录或 run_id|inputs.inspect_runs / inspect_run|核对 manifest、resolved_config、注册场景及字节哈希、Parquet 哈希、目录字段、行级来源和时间范围；不完整或混合版本直接拒绝|
-|2 宏观现象|当前场景自然语言|generation.identify_phenomena|生成 phenomena，数量由模型确定且受 YAML 上限约束|
-|3 变量定义|想定、本次现象|generation.define_indicators|indicators 含所属现象、三尺度、数学定义、单位、计算说明|
-|4 计算函数|想定、本次定义、通用 data 契约|generation.generate_codes|每指标独立 compute_indicator(data, config)、required、config；保存原始代码|
-|5 语义边|想定、本次语义定义|generation.propose_edges|semantic_candidate 边与逐边理由；不输入计算结果或统计证据|
-|6 结构检查|四份结构化输出|schemas.validate_stage / graph_export.assemble_graph|严格 Schema、唯一性、引用、尺度方向、完整路径、签名、语法和基本代码约束；任一节点须位于完整 micro→meso→macro 路径|
-|7 指标执行|通过检查的函数、实际轨迹|indicator_runner.execute_indicator|默认 Trajectory.compute_isolated；缺 Docker 拒绝，可信模式须明确批准代码哈希。失败逐指标保存，不影响其他指标计算|
-|8 计算有效性|返回 Series/DataFrame|indicator_runner.check_result|唯一且明确的整数 step、实际记录时间、数值列、有限值、观测数；常数及高缺失警告，不做相关筛选|
-|9 候选图导出|原始图与执行状态|graph_export.export_graphs|完整原始图、共同可执行诱导子图、每运行诱导子图；逐一记录失败节点与受影响的原始边|
-|10 实验记录|所有步骤|pipeline.run_pipeline / io.save_json|前后输入哈希校验、软件版本、源码/Git、提示词、原始响应、执行尝试、图、时间及产物哈希清单|
+|步骤|函数|输入与输出|
+|---|---|---|
+|1 运行与固定想定检查|inputs.inspect_runs / inspect_run|完成运行目录；核对模型、版本、种子、参数、场景固定 SHA-256、数据哈希、实际时间与来源|
+|2 公共数据 Schema|data_schema.build_data_schema|Trajectory.read/catalog；输出 data_schema.json 与 per-run 差异审计|
+|3 宏观现象|generation.identify_phenomena|仅固定想定；输出 generation/phenomena/parsed.json|
+|4 三尺度变量|generation.define_indicators|想定、现象、完整公共 Schema；输出语义、数学定义、单位、required_data|
+|5 独立计算函数|generation.generate_codes|想定、变量定义、公共 Schema、统一契约；输出 required/config/python_code 及实现状态|
+|6 向上边|generation.propose_upward_edges|想定及变量定义；micro→meso、meso→macro、micro→macro|
+|7 向下边|generation.propose_downward_edges|相同想定及定义；macro→meso、meso→micro、macro→micro|
+|8 同层边|generation.propose_intrascale_edges|相同想定及定义；同尺度不同节点间可单向或双向|
+|9 本地合并|graph_export.merge_candidate_edges|三份原始边集合；只合并去重、记录来源与预算，不增加关系|
+|10 校验及组装|schemas.validate_stage / graph_export.assemble_graph|严格 JSON、引用、尺度、自环、字段与代码检查；允许循环和孤立节点|
+|11 执行与数值检查|indicator_runner.execute_indicator / check_result|原函数、声明字段及真实运行；独立序列、完整失败或未执行记录|
+|12 导出与审计|graph_export.export_graphs / inputs.assert_unchanged|完整图、共同/逐运行可执行图、来源哈希与调用历史|
 
-## 实际数据契约
+每一步保存输入、输出、开始结束时间及错误，六类调用均保存完整提示词、原始响应、解析和元数据。变量/代码提示词附完整 Schema 与版本/哈希；三个边任务不互相读取边。不存在第七次综合改图调用。
 
-只通过 `simulations.common.trajectory_api.Trajectory` 访问数据。`required` 是 LLM 提议的表→字段映射，不包含模型事先提供的特定字段库。`Trajectory.compute` 和 `compute_isolated` 都把真实表副本作为 `data` 字典传入。约定表名为 `agent_states/events/contacts/raw_frames/model_states`；实际缺少某张表或某个字段时记录缺失，不补造。一个指标函数原样应用于所有输入随机种子，不针对运行重生成。
+Schema 仅含数据结构、原数据字典含义和检查范围，不含原始观测值。共同字段按全部运行交集及类型一致性确定；嵌套 JSON 的检查范围明确标注为采样，并对不同运行仅保留共同路径。关联键是可供本地 join 的字段信息，不是因果证据；函数需处理空值、哨兵值、连接基数和时间窗口。Covasim 计划日期不等于已经发生的事件。
 
-函数返回索引名为 `step` 的 Series，或含 `step` 列/索引的 DataFrame。多个数值列使用 `feature` 区分。最少非缺失观测数由 `min_observations` 控制（默认 3，只是工程底线，不代表足够做统计推断）；某一列不足即整个指标失败。无限值、重复/分数时间、未经记录时间点和非数值返回失败。常数不删除；缺失比例超过阈值仅警告。原始返回数据先保存，之后即便有效性失败仍可检查。返回值无时间说明时不会把默认整数索引猜作 step。
+静态检查报告可识别的访问、未解析的动态访问以及 required_data/required 差异。运行时仅向函数提供声明列。AST 和字段校验不证明数学实现或科研含义正确，也不是沙箱。实现不可用时保留定义、原因与原边。
 
-## 生成与恢复
+函数返回显式 step 的 Series/DataFrame；多列用 feature 区分。检查整数/实际时间索引、重复索引、有限数值及最少实际观测数。常数、高缺失发出警告；不做相关筛选。默认至少 3 个非缺失值是工程底线，不代表统计充分性。不同种子绝不拼接。
 
-每个阶段单独调用模型并保存 `prompt.json/response.txt/parsed.json/validation.json`。结构错误可按 YAML 重生成，重新请求仍使用相同想定与通用约束，不增加错误反馈、源码或真实答案。JSON 解析失败也保存原文和结构化错误。传输失败的每次供应商响应保留在 `transport` 下；不因错误格式丢弃 envelope。
+默认 Docker 缺失时拒绝执行。仅生成模式不执行可用函数；可信模式必须有人实际审查并批准精确 SHA-256。执行适配器只投影声明字段，原始模型代码不覆盖，适配器单独记录哈希。
 
-每个通过校验的阶段保存内容与请求哈希 checkpoint。恢复检查完整原响应、解析对象、模型/输入/源码指纹；不匹配时拒绝而不覆盖原来的成功实验状态。执行尝试在 `execution/<run>/<indicator>/attempt_NNN/` 追加；恢复会重新执行指标，当前序列指向最新成功计算，历史返回值和失败详情不删除。`invocations` 保留每次调用报告。
-
-## 解释边界
-
-字段校验和正确返回仅表明数据可读及计算有效；不能自动证明公式的科学意义、是否误用了未来计划日期、实现是否完全符合定义，或候选边的真实性。基本 AST 检查不是程序形式化验证，也不能替代隔离和人工科学审查。第一阶段不会实现统计关系检验或干预验证。共同可执行图要求每个节点在每条输入运行中成功；失败可使完整路径断裂，断裂节点显式列出而不修补边。
+检查点身份包含输入数据、模型档案、想定、公共 Schema SHA-256、模板、生成参数与源码。旧版身份不能在新版继续冒用；拒绝恢复也保存 proposed_identity 与错误，不覆盖原成功状态。原模型响应、解析哈希和代码修改均受到核对。历史执行追加 attempt_NNN，旧失败不删除。

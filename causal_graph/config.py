@@ -38,6 +38,7 @@ class LLMConfig:
     max_retries: int = 3
     reasoning_effort: str | None = None
     extra_body: dict = field(default_factory=dict)
+    stream: bool = False
 
     def summary(self):
         return asdict(self)
@@ -79,9 +80,15 @@ def load_llm(path, profile=None):
         raise ValueError('Invalid timeout or max_retries')
     if result.reasoning_effort is not None and not isinstance(result.reasoning_effort, str):
         raise ValueError('reasoning_effort must be a string or null')
+    if type(result.stream) is not bool:
+        raise ValueError('stream must be a boolean')
     # These are explicit adapters, not arbitrary request overrides or secret headers.
     _keys(result.extra_body, {'seed', 'response_format', 'max_completion_tokens',
-                             'verbosity', 'chat_template_kwargs', 'enable_thinking'})
+                             'verbosity', 'chat_template_kwargs', 'enable_thinking', 'stream_options'})
+    if 'stream_options' in result.extra_body:
+        _keys(result.extra_body['stream_options'], {'include_usage'})
+        if not result.stream or any(type(v) is not bool for v in result.extra_body['stream_options'].values()):
+            raise ValueError('stream_options requires stream=true and boolean include_usage')
     if 'max_completion_tokens' in result.extra_body and (
             type(result.extra_body['max_completion_tokens']) is not int or result.extra_body['max_completion_tokens'] < 1):
         raise ValueError('max_completion_tokens must be a positive integer')

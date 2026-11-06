@@ -1,0 +1,1174 @@
+{
+  "schema_version": "2.0",
+  "scope": "common_fields_of_all_input_runs",
+  "tables": {
+    "agent_states": {
+      "purpose": "agent per sampled step",
+      "record_granularity": "agent per sampled step",
+      "time_coordinate": "step",
+      "time_unit": "platform update step",
+      "auxiliary_time_fields": {
+        "timestamp_or_sim_time": "Discrete sampling step, not wall time",
+        "simulation_day": "Covasim day; -1 is initialized pre-day-zero state"
+      },
+      "agent_identifiers": {
+        "agent_id": "Actor ID; null for model states",
+        "uid": "Covasim person UID"
+      },
+      "fields": {
+        "age": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "age",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "agent_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Actor ID; null for model states",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "crit_prob": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "crit prob",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "critical": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim critical",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_critical": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_dead": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "catalog_only_no_nonnull_values"
+        },
+        "date_diagnosed": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_end_quarantine": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_exposed": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_infectious": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_known_contact": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_pos_test": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "catalog_only_no_nonnull_values"
+        },
+        "date_quarantined": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_recovered": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_severe": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_susceptible": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "catalog_only_no_nonnull_values"
+        },
+        "date_symptomatic": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "date_tested": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "dead": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim dead",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "death_prob": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "death prob",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "diagnosed": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim diagnosed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "dur_disease": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "dur_exp2inf": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "dur_inf2sym": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "dur_sev2crit": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "dur_sym2sev": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native Covasim day or duration; null when unset",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_index": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Cumulative attempted events in this run",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_type": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Record type",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "exposed": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim exposed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "infectious": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim infectious",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "known_contact": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim known_contact",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_name": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Model identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Implementation version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "quarantined": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim quarantined",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "recovered": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim recovered",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "rel_sus": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "rel sus",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "rel_trans": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "rel trans",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "run_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Unique run identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_sha256": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "SHA-256 of fixed scenario bytes",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario text version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "seed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Random seed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "severe": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim severe",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "severe_prob": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "severe prob",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "sex": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "sex",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "simulation_day": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Covasim day; -1 is initialized pre-day-zero state",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "step": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Sampling step; initial state is zero",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "susceptible": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim susceptible",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "symp_prob": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "symp prob",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "symptomatic": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim symptomatic",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "tested": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Native Covasim tested",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "timestamp_or_sim_time": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Discrete sampling step, not wall time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "uid": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Covasim person UID",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        }
+      }
+    },
+    "contacts": {
+      "purpose": "potential contact edge per sampled step",
+      "record_granularity": "potential contact edge per sampled step",
+      "time_coordinate": "step",
+      "time_unit": "platform update step",
+      "auxiliary_time_fields": {
+        "timestamp_or_sim_time": "Discrete sampling step, not wall time",
+        "simulation_day": "Covasim day; -1 is initialized pre-day-zero state"
+      },
+      "agent_identifiers": {
+        "agent_id": "Actor ID; null for model states",
+        "partner_id": "Second endpoint of potential contact edge"
+      },
+      "fields": {
+        "agent_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Actor ID; null for model states",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "beta": {
+          "type": "double",
+          "catalog_type": "double",
+          "description": "Native edge weight, not realized transmission probability",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_index": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Cumulative attempted events in this run",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_type": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Record type",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "layer": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Original contact layer",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_name": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Model identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Implementation version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "partner_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Second endpoint of potential contact edge",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "run_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Unique run identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_sha256": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "SHA-256 of fixed scenario bytes",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario text version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "seed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Random seed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "simulation_day": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Covasim day; -1 is initialized pre-day-zero state",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "step": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Sampling step; initial state is zero",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "timestamp_or_sim_time": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Discrete sampling step, not wall time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        }
+      }
+    },
+    "events": {
+      "purpose": "observed model event",
+      "record_granularity": "observed model event",
+      "time_coordinate": "step",
+      "time_unit": "platform update step",
+      "auxiliary_time_fields": {
+        "timestamp_or_sim_time": "Discrete sampling step, not wall time",
+        "simulation_day": "Covasim day; -1 is initialized pre-day-zero state"
+      },
+      "agent_identifiers": {
+        "agent_id": "Actor ID; null for model states",
+        "partner_id": "Infection source; null for seed/importation or status event"
+      },
+      "fields": {
+        "after": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "New boolean state",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "agent_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Actor ID; null for model states",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "before": {
+          "type": "bool",
+          "catalog_type": "bool",
+          "description": "Previous boolean state",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_index": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Cumulative attempted events in this run",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_type": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Record type",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "layer": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Original Covasim contact layer",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_name": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Model identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Implementation version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "partner_id": {
+          "type": "double",
+          "catalog_type": "int64",
+          "description": "Infection source; null for seed/importation or status event",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "run_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Unique run identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_sha256": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "SHA-256 of fixed scenario bytes",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario text version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "seed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Random seed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "simulation_day": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Covasim day; -1 is initialized pre-day-zero state",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "state": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Changed native state",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "observed_nonnull_values"
+        },
+        "step": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Sampling step; initial state is zero",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "timestamp_or_sim_time": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Discrete sampling step, not wall time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        }
+      }
+    },
+    "model_states": {
+      "purpose": "one per sampled step",
+      "record_granularity": "one per sampled step",
+      "time_coordinate": "step",
+      "time_unit": "platform update step",
+      "auxiliary_time_fields": {
+        "timestamp_or_sim_time": "Discrete sampling step, not wall time",
+        "simulation_day": "Covasim day; -1 is initialized pre-day-zero state"
+      },
+      "agent_identifiers": {
+        "agent_id": "Actor ID; null for model states"
+      },
+      "fields": {
+        "agent_id": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Actor ID; null for model states",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": true,
+          "type_observation": "catalog_only_no_nonnull_values"
+        },
+        "critical": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: critical",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "dead": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: dead",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "diagnosed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: diagnosed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_index": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Cumulative attempted events in this run",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "event_type": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Record type",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "exposed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: exposed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "infectious": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: infectious",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "known_contact": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: known_contact",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_name": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Model identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "model_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Implementation version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "population": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: population",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "quarantined": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: quarantined",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "recovered": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: recovered",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "run_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Unique run identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_id": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario identifier",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_sha256": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "SHA-256 of fixed scenario bytes",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "scenario_version": {
+          "type": "string",
+          "catalog_type": "string",
+          "description": "Fixed scenario text version",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "seed": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Random seed",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "severe": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: severe",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "simulation_day": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Covasim day; -1 is initialized pre-day-zero state",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "step": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Sampling step; initial state is zero",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "susceptible": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: susceptible",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "symptomatic": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: symptomatic",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "tested": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Unscaled simulated count: tested",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        },
+        "timestamp_or_sim_time": {
+          "type": "int64",
+          "catalog_type": "int64",
+          "description": "Discrete sampling step, not wall time",
+          "allows_missing": true,
+          "nullability_source": "public reader does not expose Parquet nullability; conservatively nullable",
+          "missing_observed": false,
+          "type_observation": "observed_nonnull_values"
+        }
+      }
+    }
+  },
+  "relationships": [
+    {
+      "source_table": "agent_states",
+      "target_table": "contacts",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "agent_states",
+      "target_table": "events",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "agent_states",
+      "target_table": "model_states",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "contacts",
+      "target_table": "events",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "contacts",
+      "target_table": "model_states",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "events",
+      "target_table": "model_states",
+      "shared_keys": [
+        "run_id",
+        "step",
+        "agent_id"
+      ],
+      "meaning": "Available shared key names/types; verify join cardinality locally, not a causal relation."
+    },
+    {
+      "source_table": "contacts",
+      "source_field": "partner_id",
+      "target_table": "agent_states",
+      "target_field": "agent_id",
+      "shared_keys": [
+        "run_id",
+        "step"
+      ],
+      "meaning": "Second endpoint of potential contact edge",
+      "constraint": "Potential endpoint lookup only; null/sentinel/unmatched IDs require explicit handling."
+    },
+    {
+      "source_table": "events",
+      "source_field": "partner_id",
+      "target_table": "agent_states",
+      "target_field": "agent_id",
+      "shared_keys": [
+        "run_id",
+        "step"
+      ],
+      "meaning": "Infection source; null for seed/importation or status event",
+      "constraint": "Potential endpoint lookup only; null/sentinel/unmatched IDs require explicit handling."
+    }
+  ],
+  "time_contract": "Use platform step as output index; do not concatenate seeds. Auxiliary native dates are not necessarily observed event times.",
+  "values_included": false
+}

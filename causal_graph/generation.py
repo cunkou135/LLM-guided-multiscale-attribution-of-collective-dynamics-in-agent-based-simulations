@@ -2,7 +2,8 @@
 from pathlib import Path
 
 from .io import digest, object_digest, read_json, save_json
-from .prompts import build_messages
+from .prompts import build_messages, TEMPLATE_VERSION
+from .schemas import EDGE_STAGES
 from .schemas import parse_response, validate_stage
 
 
@@ -10,7 +11,11 @@ def generate_stage(stage, scenario, context, limits, client, root):
     directory = Path(root) / 'generation' / stage
     directory.mkdir(parents=True, exist_ok=True)
     messages = build_messages(stage, scenario, context, limits)
-    request_hash = object_digest(messages)
+    schema = context.get('data_schema')
+    provenance = {'data_schema_version': schema['schema_version'] if schema else None,
+                  'data_schema_sha256': object_digest(schema) if schema else None,
+                  'schema_in_prompt': stage in ('indicators', 'codes'), 'template_version': TEMPLATE_VERSION}
+    request_hash = object_digest({'messages': messages, 'provenance': provenance})
     checkpoint = directory / 'checkpoint.json'
     if checkpoint.exists():
         saved = read_json(checkpoint)
@@ -28,6 +33,7 @@ def generate_stage(stage, scenario, context, limits, client, root):
         call = directory / f'attempt_{attempt:03d}'
         call.mkdir(exist_ok=False)
         save_json(call / 'prompt.json', messages)
+        save_json(call / 'input_provenance.json', provenance)
         # Transport persists every HTTP attempt under its own directory.
         try:
             raw = client.complete(messages, call / 'transport')
@@ -64,5 +70,13 @@ def generate_codes(scenario, context, limits, client, root):
     return generate_stage('codes', scenario, context, limits, client, root)
 
 
-def propose_edges(scenario, context, limits, client, root):
-    return generate_stage('edges', scenario, context, limits, client, root)
+def propose_upward_edges(scenario, context, limits, client, root):
+    return generate_stage('edges_upward', scenario, context, limits, client, root)
+
+
+def propose_downward_edges(scenario, context, limits, client, root):
+    return generate_stage('edges_downward', scenario, context, limits, client, root)
+
+
+def propose_intrascale_edges(scenario, context, limits, client, root):
+    return generate_stage('edges_intrascale', scenario, context, limits, client, root)

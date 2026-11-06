@@ -1,0 +1,9 @@
+max_phenomena: 2
+max_indicators: 6
+max_edges: 24
+generation_attempts: 2
+execution_mode: isolated
+image: abms-indicator:1
+indicator_timeout: 30
+min_observations: 3
+missing_fraction_warning: 0.2

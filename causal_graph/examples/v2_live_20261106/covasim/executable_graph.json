@@ -1,0 +1,482 @@
+{
+  "schema_version": "2.0",
+  "evidence_status": "unvalidated_semantic_candidates",
+  "phenomena": [
+    {
+      "phenomenon_id": "setting_infection_clustering",
+      "name": "活动场所感染聚集",
+      "description": "在城市不同家庭、学校、工作场所和社区活动环境中，新增感染事件在场所和时间上的分布不均衡，部分场所或场所类型出现相对集中的感染事件簇。"
+    },
+    {
+      "phenomenon_id": "intervention_contact_trajectory_shift",
+      "name": "干预伴随接触与感染轨迹变化",
+      "description": "随着病毒检测、感染者识别、密切接触者追踪、隔离以及居民减少社会活动等措施的实施，城市层面的接触活动、感染发现和新增感染时间轨迹呈现阶段性变化；不同实施时间、执行范围和居民遵守情况下，变化模式存在差异。"
+    }
+  ],
+  "nodes": [],
+  "edges": [],
+  "run_ids": [
+    "3249f90463154305aed53504106b3dae"
+  ],
+  "execution_policy": "success_on_every_listed_run",
+  "excluded_nodes": [
+    {
+      "indicator_id": "sic_micro_prior_setting_degree",
+      "run_status": {
+        "3249f90463154305aed53504106b3dae": "not_executed"
+      }
+    },
+    {
+      "indicator_id": "sic_meso_layer_infection_contact_ratio",
+      "run_status": {
+        "3249f90463154305aed53504106b3dae": "not_executed"
+      }
+    },
+    {
+      "indicator_id": "sic_macro_layer_entropy",
+      "run_status": {
+        "3249f90463154305aed53504106b3dae": "not_executed"
+      }
+    },
+    {
+      "indicator_id": "icts_micro_quarantine_contact_ratio",
+      "run_status": {
+        "3249f90463154305aed53504106b3dae": "not_executed"
+      }
+    },
+    {
+      "indicator_id": "icts_meso_layer_contact_change",
+      "run_status": {
+        "3249f90463154305aed53504106b3dae": "not_executed"
+      }
+    },
+    {
+      "indicator_id": "icts_macro_city_contact_change_on_quarantine_increase",
+      "run_status": {
+        "3249f90463154305aed53504106b3dae": "not_executed"
+      }
+    }
+  ],
+  "excluded_edges": [
+    {
+      "edge": {
+        "edge_id": "upward__edge_sic_micro_degree_to_meso_layer_ratio",
+        "source": "sic_micro_prior_setting_degree",
+        "target": "sic_meso_layer_infection_contact_ratio",
+        "scale_direction": "upward",
+        "semantic_rationale": "Infected agents with higher prior same-setting contact degree are more embedded in dense layer-specific contact structures; their subsequent interactions can generate more same-layer infection events per observed contact row, shifting the meso layer infection-to-contact ratio beyond simple event aggregation.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "setting_infection_clustering",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "edge_sic_micro_degree_to_meso_layer_ratio",
+            "row_index": 0
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__edge_icts_micro_quarantine_ratio_to_meso_layer_contact_change",
+        "source": "icts_micro_quarantine_contact_ratio",
+        "target": "icts_meso_layer_contact_change",
+        "scale_direction": "upward",
+        "semantic_rationale": "When quarantined agents retain a larger share of their pre-onset contacts, layer-level contact volume around quarantine-count increases declines less; widespread low post/pre contact ratios instead amplify layer contact-volume contraction.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "intervention_contact_trajectory_shift",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "edge_icts_micro_quarantine_ratio_to_meso_layer_contact_change",
+            "row_index": 1
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__edge_sic_meso_layer_ratio_to_macro_layer_entropy",
+        "source": "sic_meso_layer_infection_contact_ratio",
+        "target": "sic_macro_layer_entropy",
+        "scale_direction": "upward",
+        "semantic_rationale": "Differential infection-to-contact intensity across layers changes the relative share of infection events attributed to each layer; an elevated ratio in one layer can make city infection events more concentrated, while more balanced ratios across layers can diversify the city-level layer distribution.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "setting_infection_clustering",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "edge_sic_meso_layer_ratio_to_macro_layer_entropy",
+            "row_index": 2
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy",
+        "source": "icts_meso_layer_contact_change",
+        "target": "sic_macro_layer_entropy",
+        "scale_direction": "upward",
+        "semantic_rationale": "Quarantine-associated contact-volume contractions that differ by layer redistribute mixing opportunities among settings, which can shift transmission toward less-contracted layers and thereby reshape the city-level distribution of infection events across layers.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "edge_icts_meso_layer_contact_change_to_macro_layer_entropy",
+            "row_index": 3
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__edge_sic_micro_degree_to_macro_layer_entropy",
+        "source": "sic_micro_prior_setting_degree",
+        "target": "sic_macro_layer_entropy",
+        "scale_direction": "upward",
+        "semantic_rationale": "Heterogeneous prior contact embeddedness of infected agents across settings can create layer-specific infection clustering; when high-degree infections concentrate in particular layers, the city-wide infection-event distribution across layers can become more skewed, altering normalized layer entropy.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "setting_infection_clustering",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "edge_sic_micro_degree_to_macro_layer_entropy",
+            "row_index": 4
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__edge_icts_micro_quarantine_ratio_to_macro_city_contact_change",
+        "source": "icts_micro_quarantine_contact_ratio",
+        "target": "icts_macro_city_contact_change_on_quarantine_increase",
+        "scale_direction": "upward",
+        "semantic_rationale": "Individual contact retention after quarantine onset attenuates the aggregate city contact-volume decline on quarantine-increase steps; if many quarantined agents maintain contacts, the city-level differential contact change is less negative than when post-onset contacts drop sharply.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "intervention_contact_trajectory_shift",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "edge_icts_micro_quarantine_ratio_to_macro_city_contact_change",
+            "row_index": 5
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "upward__edge_icts_micro_quarantine_ratio_to_meso_layer_infection_ratio",
+        "source": "icts_micro_quarantine_contact_ratio",
+        "target": "sic_meso_layer_infection_contact_ratio",
+        "scale_direction": "upward",
+        "semantic_rationale": "Quarantined agents who retain more contacts can continue to create infectious contact opportunities within their layer, potentially raising layer infection events per contact row; strong post-onset contact reduction instead lowers that layer-specific infection-to-contact ratio.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_upward",
+            "call": "generation/edges_upward/attempt_000",
+            "original_edge_id": "edge_icts_micro_quarantine_ratio_to_meso_layer_infection_ratio",
+            "row_index": 6
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__macro_entropy_to_layer_infection_ratio",
+        "source": "sic_macro_layer_entropy",
+        "target": "sic_meso_layer_infection_contact_ratio",
+        "scale_direction": "downward",
+        "semantic_rationale": "Higher citywide layer entropy indicates infection events are spread across many activity layers; this changes which settings carry infectious persons, plausibly diluting or redistributing per-layer infection pressure and thereby affecting layer-specific infection events per contact edge.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "setting_infection_clustering",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "macro_entropy_to_layer_infection_ratio",
+            "row_index": 0
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__macro_city_contact_to_micro_quarantine_ratio",
+        "source": "icts_macro_city_contact_change_on_quarantine_increase",
+        "target": "icts_micro_quarantine_contact_ratio",
+        "scale_direction": "downward",
+        "semantic_rationale": "A citywide fall in contact rows on quarantine-increase steps creates a lower-opportunity contact environment; quarantined agents' post-onset contacts may fall relative to their pre-onset contacts, lowering the individual post/pre contact-degree ratio.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "intervention_contact_trajectory_shift",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "macro_city_contact_to_micro_quarantine_ratio",
+            "row_index": 1
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__macro_city_contact_to_micro_prior_degree",
+        "source": "icts_macro_city_contact_change_on_quarantine_increase",
+        "target": "sic_micro_prior_setting_degree",
+        "scale_direction": "downward",
+        "semantic_rationale": "Citywide contact contraction coincident with quarantine increases reduces the pool of available partners, so newly infected agents are plausibly less able to accumulate many distinct prior partners in their infection setting.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "macro_city_contact_to_micro_prior_degree",
+            "row_index": 2
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__macro_city_contact_to_layer_infection_ratio",
+        "source": "icts_macro_city_contact_change_on_quarantine_increase",
+        "target": "sic_meso_layer_infection_contact_ratio",
+        "scale_direction": "downward",
+        "semantic_rationale": "When citywide contacts contract on quarantine-increase steps, remaining contacts may concentrate in essential or household layers; this selective contact regime can raise or alter infection events per contact in those layers.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "macro_city_contact_to_layer_infection_ratio",
+            "row_index": 3
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__layer_infection_ratio_to_micro_prior_degree",
+        "source": "sic_meso_layer_infection_contact_ratio",
+        "target": "sic_micro_prior_setting_degree",
+        "scale_direction": "downward",
+        "semantic_rationale": "A layer with a higher infection-event-per-contact ratio presents a more intense exposure environment; agents infected in that layer plausibly had more prior distinct partners because repeated exposure opportunities increase infection likelihood.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "setting_infection_clustering",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "layer_infection_ratio_to_micro_prior_degree",
+            "row_index": 4
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__layer_contact_change_to_micro_quarantine_ratio",
+        "source": "icts_meso_layer_contact_change",
+        "target": "icts_micro_quarantine_contact_ratio",
+        "scale_direction": "downward",
+        "semantic_rationale": "Contraction of contact volume in a layer after quarantine-count increases reduces the partners available there; quarantined agents whose activity is concentrated in that layer may show a lower post/pre contact-degree ratio.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "intervention_contact_trajectory_shift",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "layer_contact_change_to_micro_quarantine_ratio",
+            "row_index": 5
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "downward__layer_contact_change_to_micro_prior_degree",
+        "source": "icts_meso_layer_contact_change",
+        "target": "sic_micro_prior_setting_degree",
+        "scale_direction": "downward",
+        "semantic_rationale": "Layer-specific contact contraction around quarantine increases lowers the opportunity to meet distinct partners in that setting; newly infected agents in that layer plausibly have fewer prior distinct contacts before infection.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_downward",
+            "call": "generation/edges_downward/attempt_000",
+            "original_edge_id": "layer_contact_change_to_micro_prior_degree",
+            "row_index": 6
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "intra_scale__micro_prior_degree_to_quarantine_ratio",
+        "source": "sic_micro_prior_setting_degree",
+        "target": "icts_micro_quarantine_contact_ratio",
+        "scale_direction": "intra_scale",
+        "semantic_rationale": "A newly infected agent's prior same-setting contact degree can shape how many contacts are available for notification and how the agent's behavior changes when later quarantined; greater prior connectedness may imply a larger pre-onset contact set and a different potential post-onset contact reduction, thereby affecting the observed post/pre contact ratio.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "setting_infection_clustering",
+        "target_phenomenon": "intervention_contact_trajectory_shift",
+        "generation_sources": [
+          {
+            "stage": "edges_intrascale",
+            "call": "generation/edges_intrascale/attempt_000",
+            "original_edge_id": "micro_prior_degree_to_quarantine_ratio",
+            "row_index": 0
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "intra_scale__micro_quarantine_to_prior_degree",
+        "source": "icts_micro_quarantine_contact_ratio",
+        "target": "sic_micro_prior_setting_degree",
+        "scale_direction": "intra_scale",
+        "semantic_rationale": "Quarantine onset and the associated reduction in an agent's contacts remove that agent from ongoing setting-level mixing; this changes the pool and connectivity of remaining contacts available to susceptible agents, altering the prior same-setting contact degree observed for later infection events in those settings.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_intrascale",
+            "call": "generation/edges_intrascale/attempt_000",
+            "original_edge_id": "micro_quarantine_to_prior_degree",
+            "row_index": 1
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "intra_scale__meso_infection_ratio_to_layer_contact_change",
+        "source": "sic_meso_layer_infection_contact_ratio",
+        "target": "icts_meso_layer_contact_change",
+        "scale_direction": "intra_scale",
+        "semantic_rationale": "A layer with more infection events per observed contact row can trigger more detection, tracing, and quarantine activity associated with that setting; when city quarantine counts rise, this can produce larger reductions in contact volume within that layer because more agents linked to the layer are removed or reduce activity.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "setting_infection_clustering",
+        "target_phenomenon": "intervention_contact_trajectory_shift",
+        "generation_sources": [
+          {
+            "stage": "edges_intrascale",
+            "call": "generation/edges_intrascale/attempt_000",
+            "original_edge_id": "meso_infection_ratio_to_layer_contact_change",
+            "row_index": 2
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "intra_scale__meso_layer_contact_change_to_infection_ratio",
+        "source": "icts_meso_layer_contact_change",
+        "target": "sic_meso_layer_infection_contact_ratio",
+        "scale_direction": "intra_scale",
+        "semantic_rationale": "Quarantine-associated reductions in a layer's contact volume change the density and mixing pattern of remaining contacts; this alters both the contact-row denominator and the likelihood that infection events occur per remaining contact row within that layer.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_intrascale",
+            "call": "generation/edges_intrascale/attempt_000",
+            "original_edge_id": "meso_layer_contact_change_to_infection_ratio",
+            "row_index": 3
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "intra_scale__macro_layer_entropy_to_city_contact_change",
+        "source": "sic_macro_layer_entropy",
+        "target": "icts_macro_city_contact_change_on_quarantine_increase",
+        "scale_direction": "intra_scale",
+        "semantic_rationale": "A more dispersed or concentrated distribution of infection events across layers indicates which settings are driving transmission; this changes which settings generate quarantine increases and how city-level contact volume changes when quarantine counts rise.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "setting_infection_clustering",
+        "target_phenomenon": "intervention_contact_trajectory_shift",
+        "generation_sources": [
+          {
+            "stage": "edges_intrascale",
+            "call": "generation/edges_intrascale/attempt_000",
+            "original_edge_id": "macro_layer_entropy_to_city_contact_change",
+            "row_index": 4
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    },
+    {
+      "edge": {
+        "edge_id": "intra_scale__macro_city_contact_change_to_layer_entropy",
+        "source": "icts_macro_city_contact_change_on_quarantine_increase",
+        "target": "sic_macro_layer_entropy",
+        "scale_direction": "intra_scale",
+        "semantic_rationale": "City contact-volume changes on quarantine-increase steps can reduce contacts unevenly across layers; by suppressing mixing in some settings more than others, these changes reshape the relative occurrence of infection events across settings and therefore the layer entropy of infection events.",
+        "relation_type": "semantic_candidate",
+        "source_phenomenon": "intervention_contact_trajectory_shift",
+        "target_phenomenon": "setting_infection_clustering",
+        "generation_sources": [
+          {
+            "stage": "edges_intrascale",
+            "call": "generation/edges_intrascale/attempt_000",
+            "original_edge_id": "macro_city_contact_change_to_layer_entropy",
+            "row_index": 5
+          }
+        ]
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    }
+  ]
+}

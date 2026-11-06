@@ -13,6 +13,7 @@ profiles:
     max_retries: 3
     reasoning_effort: null
     extra_body: {}
+    stream: false
   model_b:
     provider: openai_compatible
     base_url: https://api.example.com/v1
@@ -25,3 +26,4 @@ profiles:
     max_retries: 3
     reasoning_effort: null
     extra_body: {}
+    stream: false

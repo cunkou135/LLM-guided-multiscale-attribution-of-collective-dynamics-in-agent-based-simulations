@@ -99,6 +99,6 @@ t.export('exported_trajectory')
 全部日志、字段查询、导出和指标入口在 trajectory_api.py。compute 只接受经过审查的可信函数，传入数据副本；不可信代码必须用独立受限环境，compute_isolated 在没有 Docker 时拒绝执行，容器路径本机尚未端到端验证。参见 [数据 Schema](docs/DATA_SCHEMA.md)。
 
 实验、测试与限制详见 [验收报告](docs/VALIDATION_REPORT.md)、[复现说明](docs/REPRODUCIBILITY.md)、[ODD 规格](docs/MODEL_SPECIFICATIONS.md)、[固定想定协议](docs/SCENARIO_PROTOCOL.md)。results/ 默认不上传，experiments/ 中提供公开可复查的脚本与本次结果摘要。Deffuant 的代码与配置已移除，历史版本可从 Git 历史审计。
-# 第一阶段跨尺度候选图方法
+# 第一部分跨尺度候选图方法
 
-新增独立 [`causal_graph`](causal_graph/README.md)：仅根据固定想定调用可配置 LLM，自主生成现象、三尺度变量、数学定义、计算代码及候选边，通过现有 Trajectory 接口执行并输出 JSON/GraphML 与真实时间序列。安装使用 `python -m pip install -e ".[test,causal]"`，入口 `python -m causal_graph --help`。不包含统计因果检验或参数干预；完整边界、配置、恢复和验收见模块说明。
+独立 [`causal_graph`](causal_graph/README.md) 2.0：固定想定识别现象，结合实际公共数据 Schema 自主生成三尺度变量及计算代码，分别调用 LLM 判断向上、向下和同层候选边，再本地合并；允许反馈环、跨现象联系与孤立节点。使用现有 Trajectory 计算，输出完整/可执行 JSON 与 GraphML、独立运行时间序列及审计。安装 `python -m pip install -e ".[test,causal]"`，入口 `python -m causal_graph --help`。论文第二部分为以后进行的数据因果判别；本轮不实现统计检验，也不设置独立干预验证阶段。

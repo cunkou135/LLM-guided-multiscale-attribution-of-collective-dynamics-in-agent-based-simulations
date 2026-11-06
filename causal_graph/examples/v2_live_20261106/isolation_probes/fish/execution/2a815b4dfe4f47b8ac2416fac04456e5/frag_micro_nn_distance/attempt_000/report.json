@@ -1,0 +1,36 @@
+{
+  "run_id": "2a815b4dfe4f47b8ac2416fac04456e5",
+  "indicator_id": "frag_micro_nn_distance",
+  "mode": "isolated",
+  "code_sha256": "5df1cecd3fca53a0c25e1708c0971b7444b6c061c32633bb3d211693e21a25dc",
+  "generation_call": "generation/codes/attempt_000",
+  "required": {
+    "agent_states": [
+      "run_id",
+      "step",
+      "agent_id",
+      "role",
+      "x",
+      "y"
+    ]
+  },
+  "started_at": "2026-11-06T14:48:10.651818+00:00",
+  "status": "failed",
+  "source_hashes": {
+    "agent_states.parquet": "473797b9f364cd8c17f7a9a5d5a483c2cc27dabe4662bff1ec1b8a06e1843a74",
+    "contacts.parquet": "43831bd9c732c2cf1c6a241edec9e11d630fd390ce9808c8910166a46d77367c",
+    "events.parquet": "5868a97e01062c5e84987e65f3511dbb3f58d7ca19972467092e8ce60626588a",
+    "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+    "manifest.json": "a97874746d636d9402ecacef576525f5bc048162047e04e430b9bbdc151f0007",
+    "model_states.parquet": "84f80dc65b6cf989bd637e8418625546726429d9dd960ba7f026347d8c28e18f",
+    "raw_frames.parquet": "0cd5cb6fbfe13b583aa00dc246dcd0f6b0c8153cca17e5b66b056a01a8fd1f29",
+    "resolved_config.yaml": "eba1bdd053688ed00230263b3ffdfbac446babcd94c106c7ba5293609ba12e25",
+    "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+  },
+  "data_contract_valid": true,
+  "execution_adapter_sha256": "a4767f1a34aa331054ee36b7f1adfd341ef1561eef25b83182eca8431394a5aa",
+  "error_type": "execution_or_validation_error",
+  "error": "RuntimeError: Docker is unavailable; untrusted indicator was not executed",
+  "ended_at": "2026-11-06T14:48:10.735511+00:00",
+  "elapsed_seconds": 0.07800000000133878
+}

@@ -9,7 +9,7 @@ from causal_graph.graph_export import assemble_graph
 from causal_graph.indicator_runner import check_result, execute_indicator, load_approvals
 from causal_graph.inputs import inspect_run
 from causal_graph.io import save_json
-from .fixtures import fixture_outputs
+from .fixtures import fixture_outputs, fixture_context
 
 
 @pytest.mark.parametrize('result,error', [
@@ -34,7 +34,7 @@ def test_constants_missing_and_multiple_features(settings):
 
 def make_nodes(tmp_path):
     fixture = fixture_outputs(failing=True)
-    context = {k: v for value in fixture.values() for k, v in value.items()}
+    context = fixture_context(fixture)
     return assemble_graph(context, 'offline_fixture', tmp_path)['nodes']
 
 

@@ -1,0 +1,409 @@
+{
+  "tested_at": "2026-11-06T14:48:10.138113+00:00",
+  "model": "deepseek-flash",
+  "mode": "real_LLM_generate_only",
+  "schema_version": "2.0",
+  "parameters": {
+    "temperature": 0.3,
+    "max_tokens": 32768,
+    "reasoning_effort": "low",
+    "timeout": 600,
+    "max_retries": 1,
+    "stream": true
+  },
+  "generation_limits": {
+    "max_phenomena": 2,
+    "max_indicators": 6,
+    "max_edges": 24
+  },
+  "scenes": [
+    {
+      "scene": "fish",
+      "phenomena": 2,
+      "variables": 6,
+      "phenomenon_names": [
+        "鱼群分裂与多簇共存",
+        "群体整体拉伸"
+      ],
+      "variables_by_scale": {
+        "micro": 2,
+        "meso": 2,
+        "macro": 2
+      },
+      "edges_by_direction": {
+        "upward": 6,
+        "downward": 6,
+        "intra_scale": 3
+      },
+      "edges": 15,
+      "contains_feedback_cycle": true,
+      "code_implemented_and_structurally_valid": 6,
+      "code_unavailable": 0,
+      "execution_success": 0,
+      "execution_failed": 0,
+      "execution_not_executed": 6,
+      "executable_nodes": 0,
+      "schema_tables": 5,
+      "schema_fields": 82,
+      "data_schema_sha256": "47b2cca8d8c2438fec1a772f2e19879ece5c0d08ebd233230c37ce7100ad290e",
+      "pipeline_status": "generated_only",
+      "candidate_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\candidate_graph.json",
+      "executable_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\executable_graph.json",
+      "isolation_probe": {
+        "run_id": "2a815b4dfe4f47b8ac2416fac04456e5",
+        "indicator_id": "frag_micro_nn_distance",
+        "mode": "isolated",
+        "code_sha256": "5df1cecd3fca53a0c25e1708c0971b7444b6c061c32633bb3d211693e21a25dc",
+        "generation_call": "generation/codes/attempt_000",
+        "required": {
+          "agent_states": [
+            "run_id",
+            "step",
+            "agent_id",
+            "role",
+            "x",
+            "y"
+          ]
+        },
+        "started_at": "2026-11-06T14:48:10.651818+00:00",
+        "status": "failed",
+        "source_hashes": {
+          "agent_states.parquet": "473797b9f364cd8c17f7a9a5d5a483c2cc27dabe4662bff1ec1b8a06e1843a74",
+          "contacts.parquet": "43831bd9c732c2cf1c6a241edec9e11d630fd390ce9808c8910166a46d77367c",
+          "events.parquet": "5868a97e01062c5e84987e65f3511dbb3f58d7ca19972467092e8ce60626588a",
+          "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+          "manifest.json": "a97874746d636d9402ecacef576525f5bc048162047e04e430b9bbdc151f0007",
+          "model_states.parquet": "84f80dc65b6cf989bd637e8418625546726429d9dd960ba7f026347d8c28e18f",
+          "raw_frames.parquet": "0cd5cb6fbfe13b583aa00dc246dcd0f6b0c8153cca17e5b66b056a01a8fd1f29",
+          "resolved_config.yaml": "eba1bdd053688ed00230263b3ffdfbac446babcd94c106c7ba5293609ba12e25",
+          "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+        },
+        "data_contract_valid": true,
+        "execution_adapter_sha256": "a4767f1a34aa331054ee36b7f1adfd341ef1561eef25b83182eca8431394a5aa",
+        "error_type": "execution_or_validation_error",
+        "error": "RuntimeError: Docker is unavailable; untrusted indicator was not executed",
+        "ended_at": "2026-11-06T14:48:10.735511+00:00",
+        "elapsed_seconds": 0.07800000000133878
+      },
+      "calls": [
+        {
+          "stage": "phenomena",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 28.0940000000046,
+          "usage": {
+            "prompt_tokens": 1014,
+            "completion_tokens": 503,
+            "total_tokens": 1517,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 317
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 1014
+          },
+          "call": "generation/phenomena/attempt_000"
+        },
+        {
+          "stage": "indicators",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 129.625,
+          "usage": {
+            "prompt_tokens": 10800,
+            "completion_tokens": 5550,
+            "total_tokens": 16350,
+            "prompt_tokens_details": {
+              "cached_tokens": 128
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 3948
+            },
+            "prompt_cache_hit_tokens": 128,
+            "prompt_cache_miss_tokens": 10672
+          },
+          "call": "generation/indicators/attempt_000"
+        },
+        {
+          "stage": "codes",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 38.26600000000326,
+          "usage": {
+            "prompt_tokens": 12770,
+            "completion_tokens": 7990,
+            "total_tokens": 20760,
+            "prompt_tokens_details": {
+              "cached_tokens": 9984
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 4370
+            },
+            "prompt_cache_hit_tokens": 9984,
+            "prompt_cache_miss_tokens": 2786
+          },
+          "call": "generation/codes/attempt_000"
+        },
+        {
+          "stage": "edges_upward",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 22.35899999999674,
+          "usage": {
+            "prompt_tokens": 3134,
+            "completion_tokens": 3283,
+            "total_tokens": 6417,
+            "prompt_tokens_details": {
+              "cached_tokens": 2944
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 2696
+            },
+            "prompt_cache_hit_tokens": 2944,
+            "prompt_cache_miss_tokens": 190
+          },
+          "call": "generation/edges_upward/attempt_000"
+        },
+        {
+          "stage": "edges_downward",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 18.29699999999866,
+          "usage": {
+            "prompt_tokens": 3134,
+            "completion_tokens": 2443,
+            "total_tokens": 5577,
+            "prompt_tokens_details": {
+              "cached_tokens": 640
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 1742
+            },
+            "prompt_cache_hit_tokens": 640,
+            "prompt_cache_miss_tokens": 2494
+          },
+          "call": "generation/edges_downward/attempt_000"
+        },
+        {
+          "stage": "edges_intrascale",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 27.07800000000134,
+          "usage": {
+            "prompt_tokens": 3138,
+            "completion_tokens": 3776,
+            "total_tokens": 6914,
+            "prompt_tokens_details": {
+              "cached_tokens": 640
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 3414
+            },
+            "prompt_cache_hit_tokens": 640,
+            "prompt_cache_miss_tokens": 2498
+          },
+          "call": "generation/edges_intrascale/attempt_000"
+        }
+      ],
+      "transport_errors": [
+        {
+          "type": "StreamInterrupted",
+          "error": "Stream ended without [DONE] and a finish_reason",
+          "status": 200,
+          "elapsed_seconds": 182.82800000000134,
+          "ended_at": "2026-11-06T14:45:05.075968+00:00"
+        }
+      ]
+    },
+    {
+      "scene": "covasim",
+      "phenomena": 2,
+      "variables": 6,
+      "phenomenon_names": [
+        "活动场所感染聚集",
+        "干预伴随接触与感染轨迹变化"
+      ],
+      "variables_by_scale": {
+        "micro": 2,
+        "meso": 2,
+        "macro": 2
+      },
+      "edges_by_direction": {
+        "upward": 7,
+        "downward": 7,
+        "intra_scale": 6
+      },
+      "edges": 20,
+      "contains_feedback_cycle": true,
+      "code_implemented_and_structurally_valid": 6,
+      "code_unavailable": 0,
+      "execution_success": 0,
+      "execution_failed": 0,
+      "execution_not_executed": 6,
+      "executable_nodes": 0,
+      "schema_tables": 4,
+      "schema_fields": 113,
+      "data_schema_sha256": "c2c055378bf7d291bf0f0cdecb865a3ca6ab0c562551bb12fd2bf2b1c2dd35a0",
+      "pipeline_status": "generated_only",
+      "candidate_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\candidate_graph.json",
+      "executable_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\executable_graph.json",
+      "isolation_probe": {
+        "run_id": "3249f90463154305aed53504106b3dae",
+        "indicator_id": "sic_micro_prior_setting_degree",
+        "mode": "isolated",
+        "code_sha256": "0851a97e71f5a682d586c6eefd8a19b6404478d34b72ad688ad9921abefca2f5",
+        "generation_call": "generation/codes/attempt_000",
+        "required": {
+          "events": [
+            "run_id",
+            "step",
+            "agent_id",
+            "layer",
+            "event_type",
+            "state"
+          ],
+          "contacts": [
+            "run_id",
+            "step",
+            "layer",
+            "agent_id",
+            "partner_id"
+          ]
+        },
+        "started_at": "2026-11-06T14:48:11.577713+00:00",
+        "status": "failed",
+        "source_hashes": {
+          "agent_states.parquet": "f0cc6649623f48b79d92dd850987b46a266a4584e37f4fad1af5b19097a8fa4b",
+          "contacts.parquet": "0793defd7960a1fb81229dafb28f6d019c72cb143625319321f9e8ba479d7850",
+          "events.parquet": "9f09be38dd3c311a16fc24904f8cd037d5b571f0410882e0725037fbb5127799",
+          "field_catalog.json": "80c2f2ed8833ec82488512a6c86270d485e8d730bd9bdd535be8b49e45f9e0aa",
+          "manifest.json": "c4907977b6c355381d3926d6ff5ae9e8030cb8855fbe4edec37c72d665d637bd",
+          "model_states.parquet": "3b70d1eb6399a31cebc20cba5d29df257fead0f6453306ac95f60fbb02d9927b",
+          "native_parameters.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+          "native_parameters_final.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+          "resolved_config.yaml": "e3873431821277102ae58bc4a92d3a8fb694449d13abf07cbeb9dd7a76f0a9f3",
+          "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+        },
+        "data_contract_valid": true,
+        "execution_adapter_sha256": "c318c148102deb5c79b81c0424b5b2116e26ba28f4948229d77baef062141cc2",
+        "error_type": "execution_or_validation_error",
+        "error": "RuntimeError: Docker is unavailable; untrusted indicator was not executed",
+        "ended_at": "2026-11-06T14:48:11.666182+00:00",
+        "elapsed_seconds": 0.07799999999406282
+      },
+      "calls": [
+        {
+          "stage": "phenomena",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 9.062999999994645,
+          "usage": {
+            "prompt_tokens": 696,
+            "completion_tokens": 417,
+            "total_tokens": 1113,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 272
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 696
+          },
+          "call": "generation/phenomena/attempt_000"
+        },
+        {
+          "stage": "indicators",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 46.04699999999866,
+          "usage": {
+            "prompt_tokens": 10844,
+            "completion_tokens": 7128,
+            "total_tokens": 17972,
+            "prompt_tokens_details": {
+              "cached_tokens": 0
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 5213
+            },
+            "prompt_cache_hit_tokens": 0,
+            "prompt_cache_miss_tokens": 10844
+          },
+          "call": "generation/indicators/attempt_000"
+        },
+        {
+          "stage": "codes",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 306.07800000000134,
+          "usage": {
+            "prompt_tokens": 13128,
+            "completion_tokens": 23962,
+            "total_tokens": 37090,
+            "prompt_tokens_details": {
+              "cached_tokens": 9984
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 16906
+            },
+            "prompt_cache_hit_tokens": 9984,
+            "prompt_cache_miss_tokens": 3144
+          },
+          "call": "generation/codes/attempt_000"
+        },
+        {
+          "stage": "edges_upward",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 23.234000000004016,
+          "usage": {
+            "prompt_tokens": 3089,
+            "completion_tokens": 3541,
+            "total_tokens": 6630,
+            "prompt_tokens_details": {
+              "cached_tokens": 256
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 2738
+            },
+            "prompt_cache_hit_tokens": 256,
+            "prompt_cache_miss_tokens": 2833
+          },
+          "call": "generation/edges_upward/attempt_000"
+        },
+        {
+          "stage": "edges_downward",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 28.20300000000134,
+          "usage": {
+            "prompt_tokens": 3089,
+            "completion_tokens": 4372,
+            "total_tokens": 7461,
+            "prompt_tokens_details": {
+              "cached_tokens": 256
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 3624
+            },
+            "prompt_cache_hit_tokens": 256,
+            "prompt_cache_miss_tokens": 2833
+          },
+          "call": "generation/edges_downward/attempt_000"
+        },
+        {
+          "stage": "edges_intrascale",
+          "actual_model": "deepseek-flash",
+          "elapsed_seconds_successful_attempt": 22.031999999999243,
+          "usage": {
+            "prompt_tokens": 3093,
+            "completion_tokens": 3049,
+            "total_tokens": 6142,
+            "prompt_tokens_details": {
+              "cached_tokens": 256
+            },
+            "completion_tokens_details": {
+              "reasoning_tokens": 2347
+            },
+            "prompt_cache_hit_tokens": 256,
+            "prompt_cache_miss_tokens": 2837
+          },
+          "call": "generation/edges_intrascale/attempt_000"
+        }
+      ],
+      "transport_errors": []
+    }
+  ]
+}

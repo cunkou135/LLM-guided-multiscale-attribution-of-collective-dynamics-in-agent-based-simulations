@@ -1,39 +1,33 @@
-# 第一阶段输出契约（1.0）
+# 第一部分输出契约 2.0
 
-机器可用 JSON Schema 定义在 `schemas.py` 的 `SCHEMAS`、`GRAPH_SCHEMA` 和 `EXECUTABLE_SCHEMA`，每次实验另外导出 `schemas.json`。生成 Schema 的对象均拒绝额外字段，尤其不会接受伪造的 p 值、强度、时滞和干预等级。
+机器结构在 schemas.py 的 SCHEMAS、GRAPH_SCHEMA、EXECUTABLE_SCHEMA；每个实验保存 schemas.json。模板版本为 observed-schema-three-directions/2.0，包版本为 2.0.0。旧 1.0 输出不自动转换或覆盖。
 
 |文件|含义|
 |---|---|
-|experiment.json|实验 ID、场景及版本/哈希、供应商与模型配置、客户端模式、源码/依赖/Git、身份指纹、开始结束时间、调用历史|
-|inputs.json|每条输入绝对路径、manifest、真实行数、实际快照/事件步及每个数据/元数据文件的 SHA-256|
-|scenario.md|仅当前固定场景的文本副本；原始字节哈希在来源中保存（文本副本可能使用平台换行）|
-|generation/phenomena/parsed.json|`phenomena: [{phenomenon_id, name, description}]`|
-|generation/indicators/parsed.json|`indicators: [{indicator_id, phenomenon_id, name, scale, description, mathematical_definition, units, computation_notes}]`|
-|generation/codes/parsed.json|`codes: [{indicator_id, required, config, python_code}]`|
-|generation/edges/parsed.json|`edges: [{edge_id, source, target, semantic_rationale, relation_type}]`|
-|generation/*/attempt_NNN/|完整实际提示词、原始响应、解析对象、结构检查、供应商 transport 请求/原始 envelope/用量/实际模型/耗时及错误|
-|candidate_graph.json|完整候选图，含 schema_version、evidence_status、phenomena、nodes、edges；不因执行失败删除原节点/边|
-|candidate_graph.graphml|与完整候选图一致的节点与边，供简单检查|
-|indicator_code/<id>.py|实际模型生成代码，节点保存其 SHA-256 与来源调用|
-|execution/<run>/<id>/attempt_NNN/|指标模式、来源数据哈希、代码哈希、审查记录（若有）、原始返回 Parquet、执行错误与数值检查|
-|indicator_series/<run>/<id>.parquet|成功计算结果，列为 run_id, indicator_id, step（int64）, feature（string）, value（numeric，可缺失）|
-|execution_report.json|所有输入运行×所有指标的最新状态，包括 success/failed/not_executed，无选择性删失败|
-|executable_graph.json/.graphml|在所有输入运行均成功的节点及其原有边；额外保存 run_ids、execution_policy、excluded_nodes、excluded_edges、nodes_without_complete_path|
-|per_run/<run>/executable_graph.json/.graphml|只要求本运行计算成功的子图|
-|structure_report.json|通过的结构检查项目与各阶段原始调用路径；失败的逐尝试检查始终在 generation 内|
-|pipeline_report.json|本次十步输入、输出、状态、错误及时间；完整历史在 invocations/<invocation_id>/|
-|artifact_hashes.json|最终产物 SHA-256（清单本身不自引用）|
+|experiment.json|实验 ID、模型与场景、Schema 版本/哈希、配置、依赖/源码/Git、调用历史与状态|
+|inputs.json / scenario.md|真实来源目录、manifest、行数、时间范围、输入哈希与固定想定|
+|data_schema.json|全部输入运行公共且类型一致的原始表/字段、字典说明、标识、时间粒度、关联键、缺失状态及已检查的 JSON 结构；无观测值|
+|data_schema_audit.json|每运行 Schema、独有字段/类型/含义/嵌套结构差异和共同 Schema 哈希|
+|generation/phenomena/|phenomena: phenomenon_id/name/description|
+|generation/indicators/|indicators: indicator_id/phenomenon_id/name/scale/description/mathematical_definition/units/computation_notes/required_data|
+|generation/codes/|codes: indicator_id/required/config/python_code/implementation_status/failure_reason|
+|generation/edges_upward/、edges_downward/、edges_intrascale/|独立原始 edges 集合，可为空|
+|generation/*/attempt_NNN/|实际 prompt、response、parsed、validation、input_provenance；transport 保存每次请求及完整原 envelope 或 SSE、用量、模型、耗时及错误|
+|edge_merge_report.json|原始/去重数量与每个重复项来源|
+|indicator_code/<id>.py|原始生成函数，仅已实现变量有文件，不写入人工替代代码|
+|execution/<run>/<id>/attempt_NNN/|原始返回、执行模式、数据/代码/适配器哈希、审查（若有）和失败详情|
+|indicator_series/<run>/<id>.parquet|run_id、indicator_id、step、feature、value；每运行独立|
+|candidate_graph.json/.graphml|所有原始定义及候选关系，包括不可用和执行失败变量|
+|executable_graph.json/.graphml|所有指定运行计算成功节点及原有边；excluded_nodes/edges 保存排除原因|
+|per_run/<run>/executable_graph.*|单运行成功子图|
+|structure_report.json|引用、方向、字段、代码与全部阶段结构检查|
+|execution_report.json / pipeline_report.json|所有变量×运行状态、十二步状态；invocations 保存历史|
+|artifact_hashes.json|产物 SHA-256（不自引用）；不存在的结果不会补造|
 
-## 节点、路径和后续阶段读取
+节点 node_id==indicator_id，保留全部定义与代码字段，额外 code_file/code_sha256/generation_call/execution。不可实现时 python_code/code_file/code_sha256 为 null，implementation_status=unavailable 且有具体原因；已实现时 failure_reason=null。execution 按 run_id 记录 success、failed、not_executed 及序列或错误。数据 Schema 以 type_observation 和 nullability_source 说明何者实际可确认，未知语义为 unknown；嵌套结构明确采样范围及非穷举。
 
-节点 `node_id == indicator_id`，其余字段保留所有定义、数学式、代码、`required/config`、`code_file/code_sha256/generation_call`。ID 限 ASCII 字母开头，后续字母、数字、下划线或连字符，最长 80 字符，不能包含路径。所有边 `relation_type="semantic_candidate"`。全图 `evidence_status="unvalidated_semantic_candidates"`。
+原始边必含 edge_id、source、target、scale_direction（upward/downward/intra_scale）、semantic_rationale、relation_type=semantic_candidate。合并边额外保存 source_phenomenon、target_phenomenon、generation_sources（stage/call/original_edge_id/row_index）。相同端点只合并来源，不产生新作用；反向边独立保留。自环拒绝，循环不拒绝。不要求完整路径或单一现象内连接。
 
-对某现象 e，使用 `phenomenon_id` 过滤节点，取得 V_e；在这些节点间过滤 `edges` 得到 A_e^0，组成完整 T_e。不同现象不跨接。尺度仅为 micro、meso、macro；当前候选图只支持 micro→meso 和 meso→macro，不能把尺度层次当作统计时序或生物学结论。
+可执行图允许零节点或零边。第二部分直接读取 nodes/edges 和 execution 中的 series_file，按 (run_id, indicator_id, feature, step) 取数，不重新解析自然语言，不将不同种子拼接。边始终 evidence_status=unvalidated_semantic_candidates，不含 p 值、时滞、强度或干预证据。
 
-第二阶段从 `executable_graph.json` 的 nodes/edges 读取机器结构，依据 `execution_report.json` 的 `series_file` 定位每个输入运行的数值，按 `(run_id, indicator_id, feature, step)` 对齐。不同运行不得拼成一条连续时间序列；多 feature 节点须显式选择或联合分析。不得把 `quality.constant` 或可执行状态解释为因果支持。`candidate_graph.json` 保留执行失败的完整假设以供失败审计。
-
-## 保留与限制
-
-原始请求日志不含 Authorization header，配置仅有密钥环境变量名。若供应商响应原文包含精确 API Key，会将该字符串替换为标记并优先避免泄露；不保存密钥。离线替身实验明确记录 client_mode，不填真实模型标识或伪造 token 用量。
-
-代码与图不允许静默人工覆盖；若用户后续进行人工改稿，应另存原版本、修改记录和人工修订身份，不能仍标注纯 LLM 生成。当前模块不提供自动“修正成正确答案”的功能。
+原始 SSE 逐行保留；没有 [DONE] 或终止原因就视为中断，不把残缺 JSON 当完整响应。请求不记录 Authorization。精确 API Key 若出现在返回中会脱敏，配置仅保存环境变量名。人工修订须另存原版本及修改身份；不能覆盖原始代码后仍标作自动生成。

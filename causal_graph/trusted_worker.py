@@ -20,7 +20,10 @@ def main(path):
     spec = importlib.util.spec_from_file_location('reviewed_indicator', code)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    result = Trajectory(request['run_dir']).compute(module.compute_indicator, request['required'], request['config'])
+    def projected_compute(data, config):
+        projected = {name: data[name].loc[:, fields].copy(deep=True) for name, fields in request['required'].items()}
+        return module.compute_indicator(projected, config)
+    result = Trajectory(request['run_dir']).compute(projected_compute, request['required'], request['config'])
     if isinstance(result, pd.Series):
         result = result.to_frame(name='value')
     result.to_parquet(request['output'])

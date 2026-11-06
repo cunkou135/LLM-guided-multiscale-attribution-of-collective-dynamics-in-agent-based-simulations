@@ -1,70 +1,65 @@
-# 第一阶段方法代码中文验收报告
+# 第一部分方法 2.0 中文验收报告
 
-日期：2026-11-06。工作仓库 `abms_lab`；开发前本地与 fetch 后 GitHub 最新 main 同为 `5d3ee5372b4fbb22fb0803ba6f521ed0cba70d18`。最终发布提交以 Git 历史及交付回复为准。实验在提交前执行，manifest/experiment 记录当时基准提交和 dirty 状态，未伪装成提交后运行；方法源码逐文件 SHA-256 已核对归档。
+日期：2026-11-06。基准及开发前远端最新提交为 99d081a4050e1bbbd53975e7260b9f3654e9c671。保留本会话已有传输修复和旧实验，没有覆盖仿真源码、固定想定或原始日志。初版验收原文保留于 validation/v1_validation_99d081a.md；本报告描述新版。
 
-## 已交付功能
+## 实现及论文边界
 
-- 独立 `causal_graph` 包、`python -m causal_graph` 入口、双模型档案 YAML 与严格配置校验。
-- 四次可检查的模型生成步骤：候选现象、三尺度变量与数学定义、每指标 Python 函数、语义边。没有固定 28 指标库或预设科学答案。
-- 仅向模型提供固定想定、通用约束/Schema 与本次此前生成的语义定义；不传实际字段目录、日志、源码或旧候选图。
-- 输入完整性/场景固定版本及 SHA-256/数据校验和/行级来源校验；支持 run_id、目录及同场景多个轨迹。
-- JSON Schema、唯一性、引用、尺度方向、完整路径、签名与语法检查；非法响应、重生成和失败原文保留。
-- 默认公开 Trajectory Docker 隔离接口；明确审查及代码哈希批准后可选可信进程模式；默认不回退。
-- 真实指标时间序列、数值/时间/缺失/常数检查；完整原始候选图、共同可执行图、每运行子图及 JSON/GraphML。
-- 调用配置、完整提示词、原始供应商响应、实际模型标识/usage/耗时（若供应商提供）、代码及数据哈希、执行状态、十步报告、中断恢复和逐尝试历史。
-- README、安装说明、可复现命令、Schema、方法对应与明确标记的离线示例。
+第一部分生成候选图，第二部分以后做数据因果判别；不再设置独立干预阶段。本轮没有实现时滞估计、显著性筛选、Granger、Bootstrap、因果强度、主动实验或参数干预。
 
-## 实际测试结果
+十二步：运行/想定检查 → 从真实记录构建公共 Schema → 现象 → 变量/数学定义 → Python 函数 → 向上边 → 向下边 → 同层边 → 本地合并 → 结构/代码检查 → 执行及数值检查 → 完整图/可执行图/独立序列与来源导出。
 
-|检查|真实结果|证据|
+正常六类独立 LLM 任务；第一类仅想定，变量/代码类含完整真实 Schema，三类关系不互看边、不经第七次综合调用。候选图允许直接跨尺度、跨现象、双向关系、反馈环和孤立节点；自环拒绝，重复端点去重并保留全部来源。没有补边或为完整路径删除节点。
+
+公共 Schema 来源于 Trajectory 的实际字段、类型和数据字典；不同运行字段或类型差异单独审计，不把独有字段当公共字段。嵌套 JSON 只报告实际检查范围的结构，明确非穷举；未知语义如实保留。字段声明、可识别的代码访问和运行时字段投影分别检查，required_data/required 差异不隐藏。
+
+## 实际自动化验收
+
+|检查|实际结果|证据|
 |---|---|---|
-|开发前原平台回归|48 passed，89.95 秒|docs/validation/baseline_pytest.xml|
-|首次完成的新模块测试|56 passed，9.25 秒|开发时实际 pytest 输出；随后增加真实日志与超时检查|
-|最终全套回归|107 passed，109.74 秒，0 失败|docs/validation/full_regression_final.xml|
-|其中新增测试|59 项，包含实际 Fish/Covasim 日志、缺失字段、可信执行、超时/异常、结构错误、配置、模型切换、HTTP 离线替身、原文保存、恢复和图导出|causal_graph/tests/|
-|独立双种子真实日志验收|passed；Fish/Covasim 各 6 次测试函数成功、2 次预期缺字段失败|examples/offline_acceptance_20261106/validation_summary.json|
-|额外原始数据访问|Fish raw_frames、Covasim events 的已审查测试函数实际执行成功，与直接读取值相同|示例中的 *_additional_raw_check/|
-|隔离能力实测|调用 compute_isolated 明确失败：Docker unavailable；未执行不可信代码|示例中的 *_isolation_probe/|
-|安装与入口|可编辑安装成功；独立命令行帮助正常；科学依赖可导入|实际 pip install、--help 与运行记录|
-|产物与源码追溯|两份示例逐项产物哈希通过，方法源码 SHA-256 与归档 software.source_sha256 一致|artifact_hashes.json、experiment.json|
+|重构前基线（含原 107 项）|114 passed|validation/pre_v2_baseline_114.xml|
+|重构后首轮模块测试|66 passed，26.55 秒|实际 pytest 记录，随后新增 Schema/反馈与恢复测试|
+|新规则全套首轮回归|126 passed，109.97 秒|causal_graph/results/v2_regression.xml|
+|最终全套回归|126 passed，112.80 秒，0 失败|validation/v2_regression_126.xml|
+|Fish/Covasim 双种子真实日志离线验收|passed；每模型 6 次已审查测试函数成功，2 次预期不可实现记录；原始帧/事件检查通过|causal_graph/results/v2_offline_release_20261106/validation_summary.json|
+|真实模型六任务|两个场景全部完成；逐调用返回 deepseek-flash|LIVE_LLM_TEST_REPORT.md、examples/v2_live_20261106/|
+|独立 CLI 缓存恢复|两个真实实验均 --resume --generate-only 成功，未新增 API 请求|每实验第二个 invocation|
+|默认隔离边界|实际调用后拒绝执行：Docker unavailable，无宿主回退|真实示例 isolation_probes/|
+|历史兼容及追溯|旧 1.0 归档未改；模型/想定/Schema/源码变化拒绝错误复用；图和产物哈希核对|测试、原始归档与 artifact_hashes|
 
-最终回归命令：
+自动化覆盖字段交集和类型差异、实际 Fish/Covasim 字段及嵌套结构、第一轮提示词边界、第二三轮完整 Schema、字段声明及实际访问、三类方向、直接跨尺度、双向/循环/孤立节点、自环、重复来源、无效引用、代码不可实现、执行失败保边、多种子独立计算、Schema 身份变化与恢复、JSON/GraphML、原文/用量/传输失败保存。没有删除失败用例以通过测试；原完整路径和重复端点规则按用户新规格更新为对应的新行为断言。
+
+## 真实模型结果与执行限制
+
+|场景|现象|变量|向上/向下/同层边|通过生成代码检查|实际指标执行|
+|---|---|---|---|---|---|
+|Fish|2|6，三尺度各 2|6 / 6 / 3|6 成功，0 失败|0 成功，6 未执行|
+|Covasim|2|6，三尺度各 2|7 / 7 / 6|6 成功，0 失败|0 成功，6 未执行|
+
+真实配置：deepseek-flash，temperature=0.3，max_tokens=32768，reasoning_effort=low，timeout=600，max_retries=1，stream=true。功能验证仅设上限 2 现象/6 变量/24 合并边，不作正式实验规模或模型性能比较。全部原结果由真实模型生成且未经人工改写。两图均保留实际反馈环。
+
+当前结果状态为 generated_only。没有 Docker，所以未执行这 12 个真实模型生成函数，也未生成对应真实数值序列；可执行图各为零节点。不能把结构有效或实现状态 implemented 称为计算已验证。两次实际隔离探测明确拒绝执行，不是函数计算失败。未来数值验收需要隔离环境或真正的人工审查及精确代码哈希批准。
+
+离线双种子执行使用明确标注的人工测试替身，只证明软件契约和真实数据访问；不冒充上述 LLM 代码执行。数学定义及实现科研质量也不由 AST/字段检查自动证明。所有候选边仍为未经统计验证的语义假设。
+
+## 核心改动
+
+- inputs.py：保留原检查并增加参数来源、整数时间及重复模型快照校验。
+- data_schema.py（新增）：实际公共字段、原字典、嵌套 JSON 结构、多运行差异及 Schema 哈希。
+- prompts.py、schemas.py：2.0 六类任务、required_data、实现状态、三类方向与非 DAG 结构。
+- code_contract.py（新增）：静态实际访问、声明字段及未解析访问报告。
+- generation.py、pipeline.py：六类独立调用、十二步状态、Schema 身份、恢复与完整来源。
+- graph_export.py：三类边合并/去重来源、反馈/孤立节点、逐运行状态与诱导子图。
+- indicator_runner.py、trusted_worker.py：仅投影声明列，保留原生成代码和适配器哈希；不改变安全默认。
+- config.py、llm_client.py、streaming.py：可选 SSE、完整/残缺响应保留、连接中断重试及严格配置。
+
+## 复现、归档与提交
 
 ```powershell
-python -m pytest -q --junitxml=causal_graph/results/full_regression_final.xml
+python -m pytest -q --junitxml=causal_graph/results/v2_regression_final.xml
+python -m causal_graph.tests.validate_logs --output causal_graph/results/new_v2_offline
+python -m causal_graph --config causal_graph/configs/deepseek_flash.yaml --pipeline-config causal_graph/results/v2_live_20261106/pipeline.yaml --run-dir results/<run_id> --generate-only
 ```
 
-独立验收命令（不需要 API Key，不会调用真实模型）：
+真实调用本机完整输出在 causal_graph/results/v2_live_20261106/{fish,covasim}/；公开便览和完整压缩归档在 causal_graph/examples/v2_live_20261106/，包含原始 SSE、所有提示词、解析、代码、Schema、调用元数据、检查点、图和缓存恢复。压缩前核对全部产物哈希及方法源码哈希；不含真实密钥。详细每阶段耗时、Token 与旧失败记录区分见 LIVE_LLM_TEST_REPORT.md。
 
-```powershell
-python -m causal_graph.tests.validate_logs --output causal_graph/results/acceptance_release_20261106
-```
-
-该输出目录已存在时应改为新目录名，不覆盖历史实验。
-
-## 本次新建的真实运行
-
-|模型|种子|run_id|规模|真实更新步|
-|---|---|---|---|---|
-|Fish/fish-3.0|42|24795f0cb68a4c7e8817283112c75322|2000 鱼、5 鲨鱼|5|
-|Fish/fish-3.0|43|6ac1b06bafbf43a7b699c9e0914e2ea0|2000 鱼、5 鲨鱼|5|
-|Covasim/2.0.0|8|85b0484a757140c9a5ec99924b2f8ef1|1000 人、原生 hybrid|5|
-|Covasim/2.0.0|9|5c3641986b124557bcf5d88d16c1eb6e|1000 人、原生 hybrid|5|
-
-Fish 整套双种子工程验收约 11.719 秒，Covasim 约 22.234 秒，包含运行、日志检查、生成替身、可信执行与输出；不是 LLM 性能或仿真性能基准。Schelling 保留兼容性测试，且实际检查已有 8 快照运行。混合 Fish/Covasim 输入会在生成前拒绝。
-
-所有场景均复用原平台 `RunSession/run` 与 `Trajectory`；没有修改 simulations、scenarios、logging 的核心规则。5 步是工程验证预算，不能称为默认 1000 步鱼群或 60 天 Covasim 的完整科学实验。既有 20 步 Fish 和 60 步 Covasim 原始日志另在需求评审阶段核对，见 existing_inputs_audit.json。
-
-## 修复过的开发问题
-
-首次新测试发现 2 个失败：Series 转长表时数值列名 `value` 与 Pandas melt 参数冲突；已改为明确构造长表，并完成回归。首次全目录收集发现 4 个模块名冲突：运行产物中的 `test_*.py` 被 pytest 误收集；已将 pytest 默认范围限定为正式测试目录，同时从安装包排除运行与示例目录，避免生成代码被测试或打包工具误加载。所有最终结果以上表真实复跑为准。
-
-可信工作进程禁用代码缓存写入，源码/归档设置字节保留，避免跨平台换行或临时缓存破坏代码与产物的哈希审计。中断调用、非法 JSON、缺字段、代码异常、超时及审查哈希不匹配均有自动化验证；失败记录不通过补零、指标替换或新增边消除。
-
-## 验收边界
-
-按用户本轮指示，只留好真实 LLM API 配置与调用接口，**未进行真实供应商/模型端到端验证**。HTTP 行为采用离线响应测试；原始示例 `actual_model=null`，不伪造模型标识、token 或生成结果。示例中的人工响应、变量和图只验证软件契约，不是科学发现、第一阶段方法效果或模型优劣证据。
-
-当前机器无 Docker，因此容器成功执行与安全隔离效果尚未端到端验证。默认模式已实际验证拒绝执行。可信模式仅用于已逐份审查的人工测试代码；普通子进程、超时和 AST 检查不等同安全沙箱。科学指标定义、公式实现与模型生成质量仍需真实研究实验及人工审读；通过数值检查不证明因果关系。
-
-工作目录没有可核对的当前论文正文，因此 METHODS_ALIGNMENT.md 给出对象对应和旧设定应改写项目，未声称与某份稿件逐句完全一致。本轮没有实现或修改第二、第三阶段算法。
+实验在提交前真实执行，元数据保留当时基准提交、dirty 状态和逐文件源码 SHA-256；没有伪装成最终提交后复跑。最终提交以 Git 和交付回复为准。工作区没有可逐句核对的论文正文，方法文档对应本轮确认的两部分结构，不宣称已与未提供稿件逐句一致。
