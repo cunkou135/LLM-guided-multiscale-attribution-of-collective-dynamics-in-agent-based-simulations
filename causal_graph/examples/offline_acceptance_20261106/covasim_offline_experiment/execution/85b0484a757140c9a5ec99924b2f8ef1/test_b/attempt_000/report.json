@@ -1,0 +1,60 @@
+{
+  "run_id": "85b0484a757140c9a5ec99924b2f8ef1",
+  "indicator_id": "test_b",
+  "mode": "trusted_reviewed",
+  "code_sha256": "a99d41fada89eac38b27da7b5076a20fd98d05e24eccb534e264e4c5a5e79f49",
+  "generation_call": "generation/codes/attempt_000",
+  "required": {
+    "agent_states": [
+      "step",
+      "age"
+    ]
+  },
+  "started_at": "2026-11-06T13:27:46.912058+00:00",
+  "status": "success",
+  "source_hashes": {
+    "agent_states.parquet": "26af7116bf9e117657a2a9e6b86c77f85621dd5f445b9a250fc9abb7dac4eea6",
+    "contacts.parquet": "33352c34819d471ac39ff837b87edb6737b6ecc0dcce89bc713a0d4a33c2d7eb",
+    "events.parquet": "ae7568c32d985fee9a683c8e0586cdea2c99788f6e84da4d48787f6910dc294f",
+    "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+    "manifest.json": "6942d0082c2c7bd30ba0e823b698c9082854819d82227138de7108a67a459518",
+    "model_states.parquet": "b41da91f9f4a19a81cde131d69879fddf30a4f0dfa5c67c4d56fd58529ae45be",
+    "native_parameters.json": "505dcd18a5f5a22eff7a8f06b2913afc2d6405baf6bddcd406cd68787ed6d37f",
+    "native_parameters_final.json": "505dcd18a5f5a22eff7a8f06b2913afc2d6405baf6bddcd406cd68787ed6d37f",
+    "resolved_config.yaml": "93e893b0f3dc6f56462fbf2183913e46586ddd9388451c9b7458400ef096c133",
+    "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+  },
+  "data_contract_valid": true,
+  "human_review": {
+    "reviewer": "offline acceptance fixture author",
+    "reviewed_at": "2026-11-06T13:27:45.393052+00:00",
+    "notes": "Reviewed handwritten fixture aggregations only; no LLM output executed."
+  },
+  "series_file": "indicator_series/85b0484a757140c9a5ec99924b2f8ef1/test_b.parquet",
+  "series_sha256": "573ccf997a701a47a80aba8108f3c5778948c74be70a4e23aee77584466f1dcb",
+  "quality": {
+    "rows": 6,
+    "columns": {
+      "value": {
+        "finite_observations": 6,
+        "missing_fraction": 0.0,
+        "constant": true
+      }
+    },
+    "warnings": [
+      "value: constant series; retained without causal claims"
+    ],
+    "start_step": 0,
+    "end_step": 5,
+    "observed_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "ended_at": "2026-11-06T13:27:47.941145+00:00",
+  "elapsed_seconds": 1.0309999999990396
+}

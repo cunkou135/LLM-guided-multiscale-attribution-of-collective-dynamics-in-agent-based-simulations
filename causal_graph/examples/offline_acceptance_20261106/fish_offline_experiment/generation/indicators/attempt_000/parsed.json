@@ -1,0 +1,44 @@
+{
+  "indicators": [
+    {
+      "indicator_id": "test_a",
+      "phenomenon_id": "test_E",
+      "name": "Test-only mean",
+      "scale": "micro",
+      "description": "Interface-test mean of raw vx.",
+      "mathematical_definition": "mean(vx_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only."
+    },
+    {
+      "indicator_id": "test_b",
+      "phenomenon_id": "test_E",
+      "name": "Test-only var",
+      "scale": "meso",
+      "description": "Interface-test var of raw vx.",
+      "mathematical_definition": "var(vx_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only."
+    },
+    {
+      "indicator_id": "test_c",
+      "phenomenon_id": "test_E",
+      "name": "Test-only sum",
+      "scale": "macro",
+      "description": "Interface-test sum of raw vx.",
+      "mathematical_definition": "sum(vx_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only."
+    },
+    {
+      "indicator_id": "test_missing",
+      "phenomenon_id": "test_E",
+      "name": "Intentionally unavailable test variable",
+      "scale": "micro",
+      "description": "Interface-test mean of raw vx.",
+      "mathematical_definition": "mean(vx_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only."
+    }
+  ]
+}

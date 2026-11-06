@@ -1,0 +1,274 @@
+[
+  {
+    "directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\fish\\24795f0cb68a4c7e8817283112c75322",
+    "manifest": {
+      "run_id": "24795f0cb68a4c7e8817283112c75322",
+      "model_name": "fish",
+      "model_version": "fish-3.0",
+      "seed": 42,
+      "scenario_id": "SCENARIO-FISH-001",
+      "scenario_version": "1.0",
+      "scenario_sha256": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+      "scenario_file": "scenarios/fish.md",
+      "model_source": "User-provided collective_motion_lab fish-3.0; unmodified core",
+      "parameters": {
+        "simulation": {
+          "dt": 0.08
+        },
+        "population": {
+          "count": 2000,
+          "distribution": "disk",
+          "spawn_x": 0.0,
+          "spawn_y": 0.0,
+          "spawn_radius": 40.0,
+          "initial_heading_deg": 0.0,
+          "heading_spread_deg": 30.0
+        },
+        "predator": {
+          "max_turn_deg": 100.0,
+          "spawn_distance": 48.0,
+          "spawn_angle_deg": 180.0
+        },
+        "fish": {
+          "N_p": 5,
+          "R_h": 55.0,
+          "mu_p": 9.0,
+          "sigma_p": 1.0,
+          "R_p": 14.0,
+          "r_r": 1.0,
+          "r_a": 5.0,
+          "R_s": 12.0,
+          "p_s": 0.12,
+          "tau_f": 20,
+          "w": 0.65,
+          "Omega": 130.0,
+          "mu_f": 6.0,
+          "sigma_f": 0.6,
+          "eta_theta": 3.0,
+          "eta_x": 0.02
+        }
+      },
+      "requested_steps": 5,
+      "sampling": {
+        "frequency": 1
+      },
+      "started_at": "2026-11-06T13:27:19.437770+00:00",
+      "ended_at": "2026-11-06T13:27:20.671232+00:00",
+      "actual_steps": 5,
+      "status": "max_steps",
+      "error": null,
+      "python": "3.12.3",
+      "mesa": "3.5.2",
+      "software_versions": {
+        "mesa": "3.5.2",
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "pyarrow": "21.0.0",
+        "pyyaml": "6.0.2"
+      },
+      "git_commit": "5d3ee5372b4fbb22fb0803ba6f521ed0cba70d18",
+      "git_dirty": true,
+      "missing_data": [],
+      "checksums_sha256": {
+        "agent_states.parquet": "4e7db1ce66eafd2319b5130b082c07398eb4101db067807f91dd9478824215c5",
+        "events.parquet": "354ddf8796cdafcd6ac12fd3eb90074ab3b3827819de68bd90c8b06095dfa6b0",
+        "contacts.parquet": "d270ab480996caee35a30ade8c04ecbefba1bc25b50baa40170f61c25f9001c8",
+        "raw_frames.parquet": "88abdf3957486e629f41e4e1d6ea64d8959540b4ee3b536597c86e0f5f06842c",
+        "model_states.parquet": "f66e1fde8be16ee5b8cfe83e022c9f55d2a096c8cd595aadfa65d070465bef73"
+      },
+      "engine_versions": {
+        "protocol": "fish-3.0",
+        "source": "user-provided collective_motion_lab"
+      },
+      "historical_reproduction": false,
+      "logging": {
+        "format": "parquet",
+        "batch_size": 1024,
+        "compression": "zstd",
+        "agent_states": true,
+        "events": true,
+        "model_states": true,
+        "level": "INFO",
+        "contacts": true
+      },
+      "scenario_integrity_verified": true,
+      "recording_mode": "full_observable"
+    },
+    "rows": {
+      "agent_states": 12030,
+      "events": 10025,
+      "contacts": 16643,
+      "raw_frames": 6,
+      "model_states": 6
+    },
+    "snapshot_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "allowed_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "data_hashes": {
+      "agent_states.parquet": "4e7db1ce66eafd2319b5130b082c07398eb4101db067807f91dd9478824215c5",
+      "contacts.parquet": "d270ab480996caee35a30ade8c04ecbefba1bc25b50baa40170f61c25f9001c8",
+      "events.parquet": "354ddf8796cdafcd6ac12fd3eb90074ab3b3827819de68bd90c8b06095dfa6b0",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "c286016768ff263175d8bb5f011b1eb01dbc57736b1d538ef0f9785d2e5d7dc1",
+      "model_states.parquet": "f66e1fde8be16ee5b8cfe83e022c9f55d2a096c8cd595aadfa65d070465bef73",
+      "raw_frames.parquet": "88abdf3957486e629f41e4e1d6ea64d8959540b4ee3b536597c86e0f5f06842c",
+      "resolved_config.yaml": "69d371d0eee7194d66deec09fad56a2e58ace471b0d4f0b5c0ea200f2a27cf1d",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "scenario": {
+      "scenario_id": "SCENARIO-FISH-001",
+      "scenario_version": "1.0",
+      "scenario_sha256": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+      "scenario_file": "scenarios/fish.md"
+    }
+  },
+  {
+    "directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\fish\\6ac1b06bafbf43a7b699c9e0914e2ea0",
+    "manifest": {
+      "run_id": "6ac1b06bafbf43a7b699c9e0914e2ea0",
+      "model_name": "fish",
+      "model_version": "fish-3.0",
+      "seed": 43,
+      "scenario_id": "SCENARIO-FISH-001",
+      "scenario_version": "1.0",
+      "scenario_sha256": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+      "scenario_file": "scenarios/fish.md",
+      "model_source": "User-provided collective_motion_lab fish-3.0; unmodified core",
+      "parameters": {
+        "simulation": {
+          "dt": 0.08
+        },
+        "population": {
+          "count": 2000,
+          "distribution": "disk",
+          "spawn_x": 0.0,
+          "spawn_y": 0.0,
+          "spawn_radius": 40.0,
+          "initial_heading_deg": 0.0,
+          "heading_spread_deg": 30.0
+        },
+        "predator": {
+          "max_turn_deg": 100.0,
+          "spawn_distance": 48.0,
+          "spawn_angle_deg": 180.0
+        },
+        "fish": {
+          "N_p": 5,
+          "R_h": 55.0,
+          "mu_p": 9.0,
+          "sigma_p": 1.0,
+          "R_p": 14.0,
+          "r_r": 1.0,
+          "r_a": 5.0,
+          "R_s": 12.0,
+          "p_s": 0.12,
+          "tau_f": 20,
+          "w": 0.65,
+          "Omega": 130.0,
+          "mu_f": 6.0,
+          "sigma_f": 0.6,
+          "eta_theta": 3.0,
+          "eta_x": 0.02
+        }
+      },
+      "requested_steps": 5,
+      "sampling": {
+        "frequency": 1
+      },
+      "started_at": "2026-11-06T13:27:20.710193+00:00",
+      "ended_at": "2026-11-06T13:27:21.926845+00:00",
+      "actual_steps": 5,
+      "status": "max_steps",
+      "error": null,
+      "python": "3.12.3",
+      "mesa": "3.5.2",
+      "software_versions": {
+        "mesa": "3.5.2",
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "pyarrow": "21.0.0",
+        "pyyaml": "6.0.2"
+      },
+      "git_commit": "5d3ee5372b4fbb22fb0803ba6f521ed0cba70d18",
+      "git_dirty": true,
+      "missing_data": [],
+      "checksums_sha256": {
+        "agent_states.parquet": "12e47680082dd2660ff62c7a76c74494ad0a1a6bec429f736007aea1def891df",
+        "events.parquet": "875517a9ac0d2aaebf69de402958936ba077cc5ce6d24f048d968bfea79aa856",
+        "contacts.parquet": "28f99acefcba953ffc1d2c2dcebb31df130c8eba1b25e07fc0b280d23c7155d6",
+        "raw_frames.parquet": "bc0a996330f169dc3d1c61134cc73bd986b7eeaf3f04e2abc9591f4721165f5d",
+        "model_states.parquet": "65a984ff7305c5f65073d77919399ab9c0e3f41055899f311492d94979c9e2c0"
+      },
+      "engine_versions": {
+        "protocol": "fish-3.0",
+        "source": "user-provided collective_motion_lab"
+      },
+      "historical_reproduction": false,
+      "logging": {
+        "format": "parquet",
+        "batch_size": 1024,
+        "compression": "zstd",
+        "agent_states": true,
+        "events": true,
+        "model_states": true,
+        "level": "INFO",
+        "contacts": true
+      },
+      "scenario_integrity_verified": true,
+      "recording_mode": "full_observable"
+    },
+    "rows": {
+      "agent_states": 12030,
+      "events": 10025,
+      "contacts": 16283,
+      "raw_frames": 6,
+      "model_states": 6
+    },
+    "snapshot_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "allowed_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "data_hashes": {
+      "agent_states.parquet": "12e47680082dd2660ff62c7a76c74494ad0a1a6bec429f736007aea1def891df",
+      "contacts.parquet": "28f99acefcba953ffc1d2c2dcebb31df130c8eba1b25e07fc0b280d23c7155d6",
+      "events.parquet": "875517a9ac0d2aaebf69de402958936ba077cc5ce6d24f048d968bfea79aa856",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "b546f998a1b4432a433aefc302448fab509ffe5aaed9bf8ec9eb1a883a15da7a",
+      "model_states.parquet": "65a984ff7305c5f65073d77919399ab9c0e3f41055899f311492d94979c9e2c0",
+      "raw_frames.parquet": "bc0a996330f169dc3d1c61134cc73bd986b7eeaf3f04e2abc9591f4721165f5d",
+      "resolved_config.yaml": "5c58eb56e44b2d514b210a939dd37d42b5df4232410abc6eae5fd3b03ca8ec4a",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "scenario": {
+      "scenario_id": "SCENARIO-FISH-001",
+      "scenario_version": "1.0",
+      "scenario_sha256": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+      "scenario_file": "scenarios/fish.md"
+    }
+  }
+]

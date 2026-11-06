@@ -1,0 +1,120 @@
+{
+  "schema_version": "1.0",
+  "evidence_status": "unvalidated_semantic_candidates",
+  "phenomena": [
+    {
+      "phenomenon_id": "test_E",
+      "name": "OFFLINE INTERFACE TEST ONLY",
+      "description": "Artificial test double; not a model-generated scientific phenomenon."
+    }
+  ],
+  "nodes": [
+    {
+      "indicator_id": "test_a",
+      "phenomenon_id": "test_E",
+      "name": "Test-only mean",
+      "scale": "micro",
+      "description": "Interface-test mean of raw vx.",
+      "mathematical_definition": "mean(vx_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only.",
+      "required": {
+        "agent_states": [
+          "step",
+          "vx"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['vx'].mean()\n",
+      "node_id": "test_a",
+      "code_file": "indicator_code/test_a.py",
+      "code_sha256": "9447ccff84905e2a21a70c08e64c91361612291c95f6aebcbab2cba26d838ae4",
+      "generation_call": "generation/codes/attempt_000"
+    },
+    {
+      "indicator_id": "test_b",
+      "phenomenon_id": "test_E",
+      "name": "Test-only var",
+      "scale": "meso",
+      "description": "Interface-test var of raw vx.",
+      "mathematical_definition": "var(vx_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only.",
+      "required": {
+        "agent_states": [
+          "step",
+          "vx"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['vx'].var()\n",
+      "node_id": "test_b",
+      "code_file": "indicator_code/test_b.py",
+      "code_sha256": "acb808ea65870719991dafd7ee6d277db78e83d071732c5339facf947ba45f8e",
+      "generation_call": "generation/codes/attempt_000"
+    },
+    {
+      "indicator_id": "test_c",
+      "phenomenon_id": "test_E",
+      "name": "Test-only sum",
+      "scale": "macro",
+      "description": "Interface-test sum of raw vx.",
+      "mathematical_definition": "sum(vx_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only.",
+      "required": {
+        "agent_states": [
+          "step",
+          "vx"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['vx'].sum()\n",
+      "node_id": "test_c",
+      "code_file": "indicator_code/test_c.py",
+      "code_sha256": "ef8e701dcdfd24e8101550818ae61c9c201c34221dd807d182b187796f92b95c",
+      "generation_call": "generation/codes/attempt_000"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "test_ab",
+      "source": "test_a",
+      "target": "test_b",
+      "relation_type": "semantic_candidate",
+      "semantic_rationale": "Artificial structural fixture, no scientific claim."
+    },
+    {
+      "edge_id": "test_bc",
+      "source": "test_b",
+      "target": "test_c",
+      "relation_type": "semantic_candidate",
+      "semantic_rationale": "Artificial structural fixture, no scientific claim."
+    }
+  ],
+  "run_ids": [
+    "24795f0cb68a4c7e8817283112c75322"
+  ],
+  "execution_policy": "success_on_every_listed_run",
+  "excluded_nodes": [
+    {
+      "indicator_id": "test_missing",
+      "run_status": {
+        "24795f0cb68a4c7e8817283112c75322": "failed"
+      }
+    }
+  ],
+  "excluded_edges": [
+    {
+      "edge": {
+        "edge_id": "test_missing_b",
+        "source": "test_missing",
+        "target": "test_b",
+        "relation_type": "semantic_candidate",
+        "semantic_rationale": "Artificial structural fixture, no scientific claim."
+      },
+      "reason": "source_or_target_not_successful_on_every_run"
+    }
+  ],
+  "nodes_without_complete_path": []
+}

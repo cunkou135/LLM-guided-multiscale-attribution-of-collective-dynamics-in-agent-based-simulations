@@ -1,0 +1,124 @@
+{
+  "schema_version": "1.0",
+  "evidence_status": "unvalidated_semantic_candidates",
+  "phenomena": [
+    {
+      "phenomenon_id": "test_E",
+      "name": "OFFLINE INTERFACE TEST ONLY",
+      "description": "Artificial test double; not a model-generated scientific phenomenon."
+    }
+  ],
+  "nodes": [
+    {
+      "indicator_id": "test_a",
+      "phenomenon_id": "test_E",
+      "name": "Test-only mean",
+      "scale": "micro",
+      "description": "Interface-test mean of raw age.",
+      "mathematical_definition": "mean(age_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only.",
+      "required": {
+        "agent_states": [
+          "step",
+          "age"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['age'].mean()\n",
+      "node_id": "test_a",
+      "code_file": "indicator_code/test_a.py",
+      "code_sha256": "09ffd3df9842ddbd9f134da8ff3f21679007150dbe963aa76481b374bc80cbe7",
+      "generation_call": "generation/codes/attempt_000"
+    },
+    {
+      "indicator_id": "test_b",
+      "phenomenon_id": "test_E",
+      "name": "Test-only var",
+      "scale": "meso",
+      "description": "Interface-test var of raw age.",
+      "mathematical_definition": "var(age_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only.",
+      "required": {
+        "agent_states": [
+          "step",
+          "age"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['age'].var()\n",
+      "node_id": "test_b",
+      "code_file": "indicator_code/test_b.py",
+      "code_sha256": "a99d41fada89eac38b27da7b5076a20fd98d05e24eccb534e264e4c5a5e79f49",
+      "generation_call": "generation/codes/attempt_000"
+    },
+    {
+      "indicator_id": "test_c",
+      "phenomenon_id": "test_E",
+      "name": "Test-only sum",
+      "scale": "macro",
+      "description": "Interface-test sum of raw age.",
+      "mathematical_definition": "sum(age_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only.",
+      "required": {
+        "agent_states": [
+          "step",
+          "age"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['age'].sum()\n",
+      "node_id": "test_c",
+      "code_file": "indicator_code/test_c.py",
+      "code_sha256": "ffa02e5018732794a1a9499f0c903692e3edb2a336702a21a76bf2ed5b7c4d9c",
+      "generation_call": "generation/codes/attempt_000"
+    },
+    {
+      "indicator_id": "test_missing",
+      "phenomenon_id": "test_E",
+      "name": "Intentionally unavailable test variable",
+      "scale": "micro",
+      "description": "Interface-test mean of raw age.",
+      "mathematical_definition": "mean(age_i(t)) over recorded agents at step t",
+      "units": "test units",
+      "computation_notes": "No scientific scale interpretation; fixture only.",
+      "required": {
+        "agent_states": [
+          "step",
+          "intentionally_absent"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['intentionally_absent'].mean()\n",
+      "node_id": "test_missing",
+      "code_file": "indicator_code/test_missing.py",
+      "code_sha256": "017eef04e314e63924e3aa7c83b4f5219a7c9f1f00c6820224571e2be3200895",
+      "generation_call": "generation/codes/attempt_000"
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "test_ab",
+      "source": "test_a",
+      "target": "test_b",
+      "relation_type": "semantic_candidate",
+      "semantic_rationale": "Artificial structural fixture, no scientific claim."
+    },
+    {
+      "edge_id": "test_bc",
+      "source": "test_b",
+      "target": "test_c",
+      "relation_type": "semantic_candidate",
+      "semantic_rationale": "Artificial structural fixture, no scientific claim."
+    },
+    {
+      "edge_id": "test_missing_b",
+      "source": "test_missing",
+      "target": "test_b",
+      "relation_type": "semantic_candidate",
+      "semantic_rationale": "Artificial structural fixture, no scientific claim."
+    }
+  ]
+}

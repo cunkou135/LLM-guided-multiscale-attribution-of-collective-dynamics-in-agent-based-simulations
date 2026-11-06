@@ -1,0 +1,404 @@
+[
+  {
+    "run_id": "24795f0cb68a4c7e8817283112c75322",
+    "indicator_id": "test_a",
+    "mode": "trusted_reviewed",
+    "code_sha256": "9447ccff84905e2a21a70c08e64c91361612291c95f6aebcbab2cba26d838ae4",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "step",
+        "vx"
+      ]
+    },
+    "started_at": "2026-11-06T13:27:23.746958+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "4e7db1ce66eafd2319b5130b082c07398eb4101db067807f91dd9478824215c5",
+      "contacts.parquet": "d270ab480996caee35a30ade8c04ecbefba1bc25b50baa40170f61c25f9001c8",
+      "events.parquet": "354ddf8796cdafcd6ac12fd3eb90074ab3b3827819de68bd90c8b06095dfa6b0",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "c286016768ff263175d8bb5f011b1eb01dbc57736b1d538ef0f9785d2e5d7dc1",
+      "model_states.parquet": "f66e1fde8be16ee5b8cfe83e022c9f55d2a096c8cd595aadfa65d070465bef73",
+      "raw_frames.parquet": "88abdf3957486e629f41e4e1d6ea64d8959540b4ee3b536597c86e0f5f06842c",
+      "resolved_config.yaml": "69d371d0eee7194d66deec09fad56a2e58ace471b0d4f0b5c0ea200f2a27cf1d",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "data_contract_valid": true,
+    "human_review": {
+      "reviewer": "offline acceptance fixture author",
+      "reviewed_at": "2026-11-06T13:27:23.040209+00:00",
+      "notes": "Reviewed handwritten fixture aggregations only; no LLM output executed."
+    },
+    "series_file": "indicator_series/24795f0cb68a4c7e8817283112c75322/test_a.parquet",
+    "series_sha256": "49925e332049cd1c9375739c333a3e0a3f1e353fecc28af32be62e995a97f5f5",
+    "quality": {
+      "rows": 6,
+      "columns": {
+        "value": {
+          "finite_observations": 6,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 5,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "ended_at": "2026-11-06T13:27:24.716746+00:00",
+    "elapsed_seconds": 0.9679999999971187
+  },
+  {
+    "run_id": "24795f0cb68a4c7e8817283112c75322",
+    "indicator_id": "test_b",
+    "mode": "trusted_reviewed",
+    "code_sha256": "acb808ea65870719991dafd7ee6d277db78e83d071732c5339facf947ba45f8e",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "step",
+        "vx"
+      ]
+    },
+    "started_at": "2026-11-06T13:27:24.723745+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "4e7db1ce66eafd2319b5130b082c07398eb4101db067807f91dd9478824215c5",
+      "contacts.parquet": "d270ab480996caee35a30ade8c04ecbefba1bc25b50baa40170f61c25f9001c8",
+      "events.parquet": "354ddf8796cdafcd6ac12fd3eb90074ab3b3827819de68bd90c8b06095dfa6b0",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "c286016768ff263175d8bb5f011b1eb01dbc57736b1d538ef0f9785d2e5d7dc1",
+      "model_states.parquet": "f66e1fde8be16ee5b8cfe83e022c9f55d2a096c8cd595aadfa65d070465bef73",
+      "raw_frames.parquet": "88abdf3957486e629f41e4e1d6ea64d8959540b4ee3b536597c86e0f5f06842c",
+      "resolved_config.yaml": "69d371d0eee7194d66deec09fad56a2e58ace471b0d4f0b5c0ea200f2a27cf1d",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "data_contract_valid": true,
+    "human_review": {
+      "reviewer": "offline acceptance fixture author",
+      "reviewed_at": "2026-11-06T13:27:23.040209+00:00",
+      "notes": "Reviewed handwritten fixture aggregations only; no LLM output executed."
+    },
+    "series_file": "indicator_series/24795f0cb68a4c7e8817283112c75322/test_b.parquet",
+    "series_sha256": "f64a84982b16805d5c70d273acfabb7526d33f4fa5413abeb80ac47318191ee4",
+    "quality": {
+      "rows": 6,
+      "columns": {
+        "value": {
+          "finite_observations": 6,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 5,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "ended_at": "2026-11-06T13:27:25.675765+00:00",
+    "elapsed_seconds": 0.9540000000015425
+  },
+  {
+    "run_id": "24795f0cb68a4c7e8817283112c75322",
+    "indicator_id": "test_c",
+    "mode": "trusted_reviewed",
+    "code_sha256": "ef8e701dcdfd24e8101550818ae61c9c201c34221dd807d182b187796f92b95c",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "step",
+        "vx"
+      ]
+    },
+    "started_at": "2026-11-06T13:27:25.681765+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "4e7db1ce66eafd2319b5130b082c07398eb4101db067807f91dd9478824215c5",
+      "contacts.parquet": "d270ab480996caee35a30ade8c04ecbefba1bc25b50baa40170f61c25f9001c8",
+      "events.parquet": "354ddf8796cdafcd6ac12fd3eb90074ab3b3827819de68bd90c8b06095dfa6b0",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "c286016768ff263175d8bb5f011b1eb01dbc57736b1d538ef0f9785d2e5d7dc1",
+      "model_states.parquet": "f66e1fde8be16ee5b8cfe83e022c9f55d2a096c8cd595aadfa65d070465bef73",
+      "raw_frames.parquet": "88abdf3957486e629f41e4e1d6ea64d8959540b4ee3b536597c86e0f5f06842c",
+      "resolved_config.yaml": "69d371d0eee7194d66deec09fad56a2e58ace471b0d4f0b5c0ea200f2a27cf1d",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "data_contract_valid": true,
+    "human_review": {
+      "reviewer": "offline acceptance fixture author",
+      "reviewed_at": "2026-11-06T13:27:23.040209+00:00",
+      "notes": "Reviewed handwritten fixture aggregations only; no LLM output executed."
+    },
+    "series_file": "indicator_series/24795f0cb68a4c7e8817283112c75322/test_c.parquet",
+    "series_sha256": "816ac657211232aa38e66848a86c5501ec9bf369b994208e1da798bbdb7be090",
+    "quality": {
+      "rows": 6,
+      "columns": {
+        "value": {
+          "finite_observations": 6,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 5,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "ended_at": "2026-11-06T13:27:26.646460+00:00",
+    "elapsed_seconds": 0.9530000000013388
+  },
+  {
+    "run_id": "24795f0cb68a4c7e8817283112c75322",
+    "indicator_id": "test_missing",
+    "mode": "trusted_reviewed",
+    "code_sha256": "017eef04e314e63924e3aa7c83b4f5219a7c9f1f00c6820224571e2be3200895",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "step",
+        "intentionally_absent"
+      ]
+    },
+    "started_at": "2026-11-06T13:27:26.652460+00:00",
+    "status": "failed",
+    "source_hashes": {
+      "agent_states.parquet": "4e7db1ce66eafd2319b5130b082c07398eb4101db067807f91dd9478824215c5",
+      "contacts.parquet": "d270ab480996caee35a30ade8c04ecbefba1bc25b50baa40170f61c25f9001c8",
+      "events.parquet": "354ddf8796cdafcd6ac12fd3eb90074ab3b3827819de68bd90c8b06095dfa6b0",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "c286016768ff263175d8bb5f011b1eb01dbc57736b1d538ef0f9785d2e5d7dc1",
+      "model_states.parquet": "f66e1fde8be16ee5b8cfe83e022c9f55d2a096c8cd595aadfa65d070465bef73",
+      "raw_frames.parquet": "88abdf3957486e629f41e4e1d6ea64d8959540b4ee3b536597c86e0f5f06842c",
+      "resolved_config.yaml": "69d371d0eee7194d66deec09fad56a2e58ace471b0d4f0b5c0ea200f2a27cf1d",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "error_type": "unavailable_data",
+    "error": "LookupError: agent_states: missing fields ['intentionally_absent']",
+    "ended_at": "2026-11-06T13:27:26.652460+00:00",
+    "elapsed_seconds": 0.0
+  },
+  {
+    "run_id": "6ac1b06bafbf43a7b699c9e0914e2ea0",
+    "indicator_id": "test_a",
+    "mode": "trusted_reviewed",
+    "code_sha256": "9447ccff84905e2a21a70c08e64c91361612291c95f6aebcbab2cba26d838ae4",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "step",
+        "vx"
+      ]
+    },
+    "started_at": "2026-11-06T13:27:26.659476+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "12e47680082dd2660ff62c7a76c74494ad0a1a6bec429f736007aea1def891df",
+      "contacts.parquet": "28f99acefcba953ffc1d2c2dcebb31df130c8eba1b25e07fc0b280d23c7155d6",
+      "events.parquet": "875517a9ac0d2aaebf69de402958936ba077cc5ce6d24f048d968bfea79aa856",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "b546f998a1b4432a433aefc302448fab509ffe5aaed9bf8ec9eb1a883a15da7a",
+      "model_states.parquet": "65a984ff7305c5f65073d77919399ab9c0e3f41055899f311492d94979c9e2c0",
+      "raw_frames.parquet": "bc0a996330f169dc3d1c61134cc73bd986b7eeaf3f04e2abc9591f4721165f5d",
+      "resolved_config.yaml": "5c58eb56e44b2d514b210a939dd37d42b5df4232410abc6eae5fd3b03ca8ec4a",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "data_contract_valid": true,
+    "human_review": {
+      "reviewer": "offline acceptance fixture author",
+      "reviewed_at": "2026-11-06T13:27:23.040209+00:00",
+      "notes": "Reviewed handwritten fixture aggregations only; no LLM output executed."
+    },
+    "series_file": "indicator_series/6ac1b06bafbf43a7b699c9e0914e2ea0/test_a.parquet",
+    "series_sha256": "de39d81a3248b38d7c8aeda65f2a23b2d6483f5b22b8321599b7dbb6841ccba1",
+    "quality": {
+      "rows": 6,
+      "columns": {
+        "value": {
+          "finite_observations": 6,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 5,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "ended_at": "2026-11-06T13:27:27.618567+00:00",
+    "elapsed_seconds": 0.9530000000013388
+  },
+  {
+    "run_id": "6ac1b06bafbf43a7b699c9e0914e2ea0",
+    "indicator_id": "test_b",
+    "mode": "trusted_reviewed",
+    "code_sha256": "acb808ea65870719991dafd7ee6d277db78e83d071732c5339facf947ba45f8e",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "step",
+        "vx"
+      ]
+    },
+    "started_at": "2026-11-06T13:27:27.624566+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "12e47680082dd2660ff62c7a76c74494ad0a1a6bec429f736007aea1def891df",
+      "contacts.parquet": "28f99acefcba953ffc1d2c2dcebb31df130c8eba1b25e07fc0b280d23c7155d6",
+      "events.parquet": "875517a9ac0d2aaebf69de402958936ba077cc5ce6d24f048d968bfea79aa856",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "b546f998a1b4432a433aefc302448fab509ffe5aaed9bf8ec9eb1a883a15da7a",
+      "model_states.parquet": "65a984ff7305c5f65073d77919399ab9c0e3f41055899f311492d94979c9e2c0",
+      "raw_frames.parquet": "bc0a996330f169dc3d1c61134cc73bd986b7eeaf3f04e2abc9591f4721165f5d",
+      "resolved_config.yaml": "5c58eb56e44b2d514b210a939dd37d42b5df4232410abc6eae5fd3b03ca8ec4a",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "data_contract_valid": true,
+    "human_review": {
+      "reviewer": "offline acceptance fixture author",
+      "reviewed_at": "2026-11-06T13:27:23.040209+00:00",
+      "notes": "Reviewed handwritten fixture aggregations only; no LLM output executed."
+    },
+    "series_file": "indicator_series/6ac1b06bafbf43a7b699c9e0914e2ea0/test_b.parquet",
+    "series_sha256": "c7104545e1de876b1a0c24e3c43a248e94fd9d53eb2d44187fdf52fe9139f6df",
+    "quality": {
+      "rows": 6,
+      "columns": {
+        "value": {
+          "finite_observations": 6,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 5,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "ended_at": "2026-11-06T13:27:28.560557+00:00",
+    "elapsed_seconds": 0.9369999999980791
+  },
+  {
+    "run_id": "6ac1b06bafbf43a7b699c9e0914e2ea0",
+    "indicator_id": "test_c",
+    "mode": "trusted_reviewed",
+    "code_sha256": "ef8e701dcdfd24e8101550818ae61c9c201c34221dd807d182b187796f92b95c",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "step",
+        "vx"
+      ]
+    },
+    "started_at": "2026-11-06T13:27:28.566551+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "12e47680082dd2660ff62c7a76c74494ad0a1a6bec429f736007aea1def891df",
+      "contacts.parquet": "28f99acefcba953ffc1d2c2dcebb31df130c8eba1b25e07fc0b280d23c7155d6",
+      "events.parquet": "875517a9ac0d2aaebf69de402958936ba077cc5ce6d24f048d968bfea79aa856",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "b546f998a1b4432a433aefc302448fab509ffe5aaed9bf8ec9eb1a883a15da7a",
+      "model_states.parquet": "65a984ff7305c5f65073d77919399ab9c0e3f41055899f311492d94979c9e2c0",
+      "raw_frames.parquet": "bc0a996330f169dc3d1c61134cc73bd986b7eeaf3f04e2abc9591f4721165f5d",
+      "resolved_config.yaml": "5c58eb56e44b2d514b210a939dd37d42b5df4232410abc6eae5fd3b03ca8ec4a",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "data_contract_valid": true,
+    "human_review": {
+      "reviewer": "offline acceptance fixture author",
+      "reviewed_at": "2026-11-06T13:27:23.040209+00:00",
+      "notes": "Reviewed handwritten fixture aggregations only; no LLM output executed."
+    },
+    "series_file": "indicator_series/6ac1b06bafbf43a7b699c9e0914e2ea0/test_c.parquet",
+    "series_sha256": "ff1a3ae31e21bee0db5a91b7f9d4145db80b87bdf2d129f2e106e564ed0f82ca",
+    "quality": {
+      "rows": 6,
+      "columns": {
+        "value": {
+          "finite_observations": 6,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 5,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    "ended_at": "2026-11-06T13:27:29.514801+00:00",
+    "elapsed_seconds": 0.9530000000013388
+  },
+  {
+    "run_id": "6ac1b06bafbf43a7b699c9e0914e2ea0",
+    "indicator_id": "test_missing",
+    "mode": "trusted_reviewed",
+    "code_sha256": "017eef04e314e63924e3aa7c83b4f5219a7c9f1f00c6820224571e2be3200895",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "step",
+        "intentionally_absent"
+      ]
+    },
+    "started_at": "2026-11-06T13:27:29.522508+00:00",
+    "status": "failed",
+    "source_hashes": {
+      "agent_states.parquet": "12e47680082dd2660ff62c7a76c74494ad0a1a6bec429f736007aea1def891df",
+      "contacts.parquet": "28f99acefcba953ffc1d2c2dcebb31df130c8eba1b25e07fc0b280d23c7155d6",
+      "events.parquet": "875517a9ac0d2aaebf69de402958936ba077cc5ce6d24f048d968bfea79aa856",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "b546f998a1b4432a433aefc302448fab509ffe5aaed9bf8ec9eb1a883a15da7a",
+      "model_states.parquet": "65a984ff7305c5f65073d77919399ab9c0e3f41055899f311492d94979c9e2c0",
+      "raw_frames.parquet": "bc0a996330f169dc3d1c61134cc73bd986b7eeaf3f04e2abc9591f4721165f5d",
+      "resolved_config.yaml": "5c58eb56e44b2d514b210a939dd37d42b5df4232410abc6eae5fd3b03ca8ec4a",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "error_type": "unavailable_data",
+    "error": "LookupError: agent_states: missing fields ['intentionally_absent']",
+    "ended_at": "2026-11-06T13:27:29.522508+00:00",
+    "elapsed_seconds": 0.0
+  }
+]

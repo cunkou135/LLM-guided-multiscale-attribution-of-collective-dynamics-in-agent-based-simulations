@@ -1,0 +1,16 @@
+# Stage-one scientific runtime (Python 3.12.3). Base simulator: pip install -e '.[test]'
+numpy==1.26.4
+pandas==2.2.3
+pyarrow==21.0.0
+scipy==1.15.2
+networkx==3.4.2
+PyYAML==6.0.2
+jsonschema==4.23.0
+attrs==24.2.0
+referencing==0.35.1
+rpds-py==0.22.3
+jsonschema-specifications==2024.10.1
+python-dateutil==2.9.0.post0
+six==1.17.0
+pytz==2024.2
+tzdata==2024.2

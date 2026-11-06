@@ -1,0 +1,48 @@
+{
+  "codes": [
+    {
+      "indicator_id": "test_a",
+      "required": {
+        "agent_states": [
+          "step",
+          "vx"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['vx'].mean()\n"
+    },
+    {
+      "indicator_id": "test_b",
+      "required": {
+        "agent_states": [
+          "step",
+          "vx"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['vx'].var()\n"
+    },
+    {
+      "indicator_id": "test_c",
+      "required": {
+        "agent_states": [
+          "step",
+          "vx"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['vx'].sum()\n"
+    },
+    {
+      "indicator_id": "test_missing",
+      "required": {
+        "agent_states": [
+          "step",
+          "intentionally_absent"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    return data['agent_states'].groupby('step')['intentionally_absent'].mean()\n"
+    }
+  ]
+}

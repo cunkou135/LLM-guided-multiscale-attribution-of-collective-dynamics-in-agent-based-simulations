@@ -10,14 +10,18 @@ dependencies = ["mesa[viz]==3.5.2", "PyYAML>=6,<7", "pyarrow>=18,<23", "pandas>=
 
 [project.optional-dependencies]
 test = ["pytest>=8,<10", "psutil>=5.9,<8"]
+causal = ["jsonschema>=4.23,<5"]
 
 [tool.setuptools.packages.find]
-include = ["simulations*", "visualization*", "examples*", "experiments*", "scenarios*"]
+include = ["simulations*", "visualization*", "examples*", "experiments*", "scenarios*", "causal_graph*"]
+exclude = ["causal_graph.results*", "causal_graph.examples*", "causal_graph.docs*", "causal_graph.sandbox*"]
 namespaces = true
 
 [tool.setuptools.package-data]
 scenarios = ["*.md", "*.yaml", "SHA256SUMS", "v2/*.md"]
 visualization = ["*.vue", "*.css"]
+causal_graph = ["configs/*.yaml", "docs/*.md", "sandbox/Dockerfile", "requirements-lock.txt", "README.md"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
+testpaths = ["tests", "causal_graph/tests"]

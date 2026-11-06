@@ -1,0 +1,276 @@
+[
+  {
+    "directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\fish\\24795f0cb68a4c7e8817283112c75322",
+    "manifest": {
+      "run_id": "24795f0cb68a4c7e8817283112c75322",
+      "model_name": "fish",
+      "model_version": "fish-3.0",
+      "seed": 42,
+      "scenario_id": "SCENARIO-FISH-001",
+      "scenario_version": "1.0",
+      "scenario_sha256": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+      "scenario_file": "scenarios/fish.md",
+      "model_source": "User-provided collective_motion_lab fish-3.0; unmodified core",
+      "parameters": {
+        "simulation": {
+          "dt": 0.08
+        },
+        "population": {
+          "count": 2000,
+          "distribution": "disk",
+          "spawn_x": 0.0,
+          "spawn_y": 0.0,
+          "spawn_radius": 40.0,
+          "initial_heading_deg": 0.0,
+          "heading_spread_deg": 30.0
+        },
+        "predator": {
+          "max_turn_deg": 100.0,
+          "spawn_distance": 48.0,
+          "spawn_angle_deg": 180.0
+        },
+        "fish": {
+          "N_p": 5,
+          "R_h": 55.0,
+          "mu_p": 9.0,
+          "sigma_p": 1.0,
+          "R_p": 14.0,
+          "r_r": 1.0,
+          "r_a": 5.0,
+          "R_s": 12.0,
+          "p_s": 0.12,
+          "tau_f": 20,
+          "w": 0.65,
+          "Omega": 130.0,
+          "mu_f": 6.0,
+          "sigma_f": 0.6,
+          "eta_theta": 3.0,
+          "eta_x": 0.02
+        }
+      },
+      "requested_steps": 5,
+      "sampling": {
+        "frequency": 1
+      },
+      "started_at": "2026-11-06T13:27:19.437770+00:00",
+      "ended_at": "2026-11-06T13:27:20.671232+00:00",
+      "actual_steps": 5,
+      "status": "max_steps",
+      "error": null,
+      "python": "3.12.3",
+      "mesa": "3.5.2",
+      "software_versions": {
+        "mesa": "3.5.2",
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "pyarrow": "21.0.0",
+        "pyyaml": "6.0.2"
+      },
+      "git_commit": "5d3ee5372b4fbb22fb0803ba6f521ed0cba70d18",
+      "git_dirty": true,
+      "missing_data": [],
+      "checksums_sha256": {
+        "agent_states.parquet": "4e7db1ce66eafd2319b5130b082c07398eb4101db067807f91dd9478824215c5",
+        "events.parquet": "354ddf8796cdafcd6ac12fd3eb90074ab3b3827819de68bd90c8b06095dfa6b0",
+        "contacts.parquet": "d270ab480996caee35a30ade8c04ecbefba1bc25b50baa40170f61c25f9001c8",
+        "raw_frames.parquet": "88abdf3957486e629f41e4e1d6ea64d8959540b4ee3b536597c86e0f5f06842c",
+        "model_states.parquet": "f66e1fde8be16ee5b8cfe83e022c9f55d2a096c8cd595aadfa65d070465bef73"
+      },
+      "engine_versions": {
+        "protocol": "fish-3.0",
+        "source": "user-provided collective_motion_lab"
+      },
+      "historical_reproduction": false,
+      "logging": {
+        "format": "parquet",
+        "batch_size": 1024,
+        "compression": "zstd",
+        "agent_states": true,
+        "events": true,
+        "model_states": true,
+        "level": "INFO",
+        "contacts": true
+      },
+      "scenario_integrity_verified": true,
+      "recording_mode": "full_observable"
+    },
+    "rows": {
+      "agent_states": 12030,
+      "events": 10025,
+      "contacts": 16643,
+      "raw_frames": 6,
+      "model_states": 6
+    },
+    "snapshot_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "allowed_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "data_hashes": {
+      "agent_states.parquet": "4e7db1ce66eafd2319b5130b082c07398eb4101db067807f91dd9478824215c5",
+      "contacts.parquet": "d270ab480996caee35a30ade8c04ecbefba1bc25b50baa40170f61c25f9001c8",
+      "events.parquet": "354ddf8796cdafcd6ac12fd3eb90074ab3b3827819de68bd90c8b06095dfa6b0",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "c286016768ff263175d8bb5f011b1eb01dbc57736b1d538ef0f9785d2e5d7dc1",
+      "model_states.parquet": "f66e1fde8be16ee5b8cfe83e022c9f55d2a096c8cd595aadfa65d070465bef73",
+      "raw_frames.parquet": "88abdf3957486e629f41e4e1d6ea64d8959540b4ee3b536597c86e0f5f06842c",
+      "resolved_config.yaml": "69d371d0eee7194d66deec09fad56a2e58ace471b0d4f0b5c0ea200f2a27cf1d",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "scenario_text": "仿真在二维开放水域中展开，研究鱼群受到鲨鱼追逐时的集体运动与群体结构变化。鱼根据附近同伴和鲨鱼的信息调整运动，鲨鱼根据感知范围内鱼的位置进行追逐。\n研究重点是个体的局部避让、方向跟随和受惊响应如何影响群体状态，观察鱼群持续分裂、整体拉伸、方向协调和局部个体离群等现象。仿真记录个体行为与群体运动过程，为后续分析微观行为、介观结构和宏观状态之间的候选因果关系提供数据。上述现象不预设为必然出现。\n系统包含鱼和鲨鱼两类 Agent。默认设置为 2000 条鱼和 5 条鲨鱼，数量可以调整。\n鱼和鲨鱼的速度均在每一步独立采样，服从由平均速度和标准差描述的对数正态分布。鱼没有统一指挥者，鲨鱼之间不设置协同追逐规则。\n时间推进与初始化。 仿真采用离散时间驱动，默认时间步长为 0.08 个模型时间单位。鱼初始分布在圆盘区域内，朝向在给定方向附近随机取值，鲨鱼初始位于鱼群外围。每一步以步初状态为共同依据，计算各主体的决策和运动，再形成下一时刻的系统状态。\n鱼的社会交互。 鱼将同伴感知范围划分为排斥区、对齐区和吸引区。排斥区内存在同伴时，鱼优先朝远离这些同伴的方向运动。没有过近同伴时，鱼合成对齐区内同伴的平均朝向与吸引区内指向同伴的方向，形成社会方向。没有有效社会方向时，鱼保持当前朝向。\n直接受惊与社会性受惊。 未处于受惊持续期的鱼，在感知范围内发现鲨鱼时直接受惊，逃离方向为背离最近鲨鱼。没有直接感知鲨鱼，但在对齐区外径以内发现受惊同伴时，鱼以给定概率受惊，逃离方向取这些受惊同伴的平均朝向。传播依据步初的受惊状态，同一步内不发生连续多跳传播。\n受惊持续与方向选择。 每次受惊持续指定步数，期间再次接触受惊同伴不重新计时，解除后下一步可以再次受惊。受惊期间直接感知鲨鱼时，鱼更新逃离方向。未受惊时，鱼采用社会方向；受惊时，鱼按固定权重合成逃离方向与社会方向，因此避捕不会完全压制社会交互。\n鲨鱼追逐。 鲨鱼每步选择感知范围内最近的鱼作为追逐目标；范围内没有鱼时，保持原方向。当前模型不执行捕获和个体移除，鱼与鲨鱼的数量在一次运行中保持不变。\n运动与环境。 鱼和鲨鱼的目标方向加入随机角度扰动，实际转向受各自转向上限约束，然后根据当步速度更新位置。鱼的位置更新另外加入独立的小幅随机扰动。环境不设置障碍物、水流场或边界反弹。空间距离和时间采用模型单位，页面镜头移动不影响主体运动。\n每步更新后，系统可以记录位置、朝向、行为决策和追逐目标，并据此计算不同尺度的观测变量。不同随机种子的重复运行用于比较群体状态及候选关系的数据表现。",
+    "scenario": {
+      "scenario_id": "SCENARIO-FISH-001",
+      "scenario_version": "1.0",
+      "scenario_sha256": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+      "scenario_file": "scenarios/fish.md"
+    }
+  },
+  {
+    "directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\fish\\6ac1b06bafbf43a7b699c9e0914e2ea0",
+    "manifest": {
+      "run_id": "6ac1b06bafbf43a7b699c9e0914e2ea0",
+      "model_name": "fish",
+      "model_version": "fish-3.0",
+      "seed": 43,
+      "scenario_id": "SCENARIO-FISH-001",
+      "scenario_version": "1.0",
+      "scenario_sha256": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+      "scenario_file": "scenarios/fish.md",
+      "model_source": "User-provided collective_motion_lab fish-3.0; unmodified core",
+      "parameters": {
+        "simulation": {
+          "dt": 0.08
+        },
+        "population": {
+          "count": 2000,
+          "distribution": "disk",
+          "spawn_x": 0.0,
+          "spawn_y": 0.0,
+          "spawn_radius": 40.0,
+          "initial_heading_deg": 0.0,
+          "heading_spread_deg": 30.0
+        },
+        "predator": {
+          "max_turn_deg": 100.0,
+          "spawn_distance": 48.0,
+          "spawn_angle_deg": 180.0
+        },
+        "fish": {
+          "N_p": 5,
+          "R_h": 55.0,
+          "mu_p": 9.0,
+          "sigma_p": 1.0,
+          "R_p": 14.0,
+          "r_r": 1.0,
+          "r_a": 5.0,
+          "R_s": 12.0,
+          "p_s": 0.12,
+          "tau_f": 20,
+          "w": 0.65,
+          "Omega": 130.0,
+          "mu_f": 6.0,
+          "sigma_f": 0.6,
+          "eta_theta": 3.0,
+          "eta_x": 0.02
+        }
+      },
+      "requested_steps": 5,
+      "sampling": {
+        "frequency": 1
+      },
+      "started_at": "2026-11-06T13:27:20.710193+00:00",
+      "ended_at": "2026-11-06T13:27:21.926845+00:00",
+      "actual_steps": 5,
+      "status": "max_steps",
+      "error": null,
+      "python": "3.12.3",
+      "mesa": "3.5.2",
+      "software_versions": {
+        "mesa": "3.5.2",
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "pyarrow": "21.0.0",
+        "pyyaml": "6.0.2"
+      },
+      "git_commit": "5d3ee5372b4fbb22fb0803ba6f521ed0cba70d18",
+      "git_dirty": true,
+      "missing_data": [],
+      "checksums_sha256": {
+        "agent_states.parquet": "12e47680082dd2660ff62c7a76c74494ad0a1a6bec429f736007aea1def891df",
+        "events.parquet": "875517a9ac0d2aaebf69de402958936ba077cc5ce6d24f048d968bfea79aa856",
+        "contacts.parquet": "28f99acefcba953ffc1d2c2dcebb31df130c8eba1b25e07fc0b280d23c7155d6",
+        "raw_frames.parquet": "bc0a996330f169dc3d1c61134cc73bd986b7eeaf3f04e2abc9591f4721165f5d",
+        "model_states.parquet": "65a984ff7305c5f65073d77919399ab9c0e3f41055899f311492d94979c9e2c0"
+      },
+      "engine_versions": {
+        "protocol": "fish-3.0",
+        "source": "user-provided collective_motion_lab"
+      },
+      "historical_reproduction": false,
+      "logging": {
+        "format": "parquet",
+        "batch_size": 1024,
+        "compression": "zstd",
+        "agent_states": true,
+        "events": true,
+        "model_states": true,
+        "level": "INFO",
+        "contacts": true
+      },
+      "scenario_integrity_verified": true,
+      "recording_mode": "full_observable"
+    },
+    "rows": {
+      "agent_states": 12030,
+      "events": 10025,
+      "contacts": 16283,
+      "raw_frames": 6,
+      "model_states": 6
+    },
+    "snapshot_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "allowed_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "data_hashes": {
+      "agent_states.parquet": "12e47680082dd2660ff62c7a76c74494ad0a1a6bec429f736007aea1def891df",
+      "contacts.parquet": "28f99acefcba953ffc1d2c2dcebb31df130c8eba1b25e07fc0b280d23c7155d6",
+      "events.parquet": "875517a9ac0d2aaebf69de402958936ba077cc5ce6d24f048d968bfea79aa856",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "b546f998a1b4432a433aefc302448fab509ffe5aaed9bf8ec9eb1a883a15da7a",
+      "model_states.parquet": "65a984ff7305c5f65073d77919399ab9c0e3f41055899f311492d94979c9e2c0",
+      "raw_frames.parquet": "bc0a996330f169dc3d1c61134cc73bd986b7eeaf3f04e2abc9591f4721165f5d",
+      "resolved_config.yaml": "5c58eb56e44b2d514b210a939dd37d42b5df4232410abc6eae5fd3b03ca8ec4a",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "scenario_text": "仿真在二维开放水域中展开，研究鱼群受到鲨鱼追逐时的集体运动与群体结构变化。鱼根据附近同伴和鲨鱼的信息调整运动，鲨鱼根据感知范围内鱼的位置进行追逐。\n研究重点是个体的局部避让、方向跟随和受惊响应如何影响群体状态，观察鱼群持续分裂、整体拉伸、方向协调和局部个体离群等现象。仿真记录个体行为与群体运动过程，为后续分析微观行为、介观结构和宏观状态之间的候选因果关系提供数据。上述现象不预设为必然出现。\n系统包含鱼和鲨鱼两类 Agent。默认设置为 2000 条鱼和 5 条鲨鱼，数量可以调整。\n鱼和鲨鱼的速度均在每一步独立采样，服从由平均速度和标准差描述的对数正态分布。鱼没有统一指挥者，鲨鱼之间不设置协同追逐规则。\n时间推进与初始化。 仿真采用离散时间驱动，默认时间步长为 0.08 个模型时间单位。鱼初始分布在圆盘区域内，朝向在给定方向附近随机取值，鲨鱼初始位于鱼群外围。每一步以步初状态为共同依据，计算各主体的决策和运动，再形成下一时刻的系统状态。\n鱼的社会交互。 鱼将同伴感知范围划分为排斥区、对齐区和吸引区。排斥区内存在同伴时，鱼优先朝远离这些同伴的方向运动。没有过近同伴时，鱼合成对齐区内同伴的平均朝向与吸引区内指向同伴的方向，形成社会方向。没有有效社会方向时，鱼保持当前朝向。\n直接受惊与社会性受惊。 未处于受惊持续期的鱼，在感知范围内发现鲨鱼时直接受惊，逃离方向为背离最近鲨鱼。没有直接感知鲨鱼，但在对齐区外径以内发现受惊同伴时，鱼以给定概率受惊，逃离方向取这些受惊同伴的平均朝向。传播依据步初的受惊状态，同一步内不发生连续多跳传播。\n受惊持续与方向选择。 每次受惊持续指定步数，期间再次接触受惊同伴不重新计时，解除后下一步可以再次受惊。受惊期间直接感知鲨鱼时，鱼更新逃离方向。未受惊时，鱼采用社会方向；受惊时，鱼按固定权重合成逃离方向与社会方向，因此避捕不会完全压制社会交互。\n鲨鱼追逐。 鲨鱼每步选择感知范围内最近的鱼作为追逐目标；范围内没有鱼时，保持原方向。当前模型不执行捕获和个体移除，鱼与鲨鱼的数量在一次运行中保持不变。\n运动与环境。 鱼和鲨鱼的目标方向加入随机角度扰动，实际转向受各自转向上限约束，然后根据当步速度更新位置。鱼的位置更新另外加入独立的小幅随机扰动。环境不设置障碍物、水流场或边界反弹。空间距离和时间采用模型单位，页面镜头移动不影响主体运动。\n每步更新后，系统可以记录位置、朝向、行为决策和追逐目标，并据此计算不同尺度的观测变量。不同随机种子的重复运行用于比较群体状态及候选关系的数据表现。",
+    "scenario": {
+      "scenario_id": "SCENARIO-FISH-001",
+      "scenario_version": "1.0",
+      "scenario_sha256": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+      "scenario_file": "scenarios/fish.md"
+    }
+  }
+]

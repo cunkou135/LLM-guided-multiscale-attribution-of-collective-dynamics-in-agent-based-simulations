@@ -1,0 +1,723 @@
+{
+  "generation": {
+    "phenomena": {
+      "type": "object",
+      "properties": {
+        "phenomena": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "phenomenon_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": [
+              "phenomenon_id",
+              "name",
+              "description"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "phenomena"
+      ],
+      "additionalProperties": false
+    },
+    "indicators": {
+      "type": "object",
+      "properties": {
+        "indicators": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "indicator_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+              },
+              "phenomenon_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+              },
+              "name": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "scale": {
+                "enum": [
+                  "micro",
+                  "meso",
+                  "macro"
+                ]
+              },
+              "description": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "mathematical_definition": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "units": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "computation_notes": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": [
+              "indicator_id",
+              "phenomenon_id",
+              "name",
+              "scale",
+              "description",
+              "mathematical_definition",
+              "units",
+              "computation_notes"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "indicators"
+      ],
+      "additionalProperties": false
+    },
+    "codes": {
+      "type": "object",
+      "properties": {
+        "codes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "indicator_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+              },
+              "required": {
+                "type": "object",
+                "minProperties": 1,
+                "propertyNames": {
+                  "enum": [
+                    "agent_states",
+                    "events",
+                    "contacts",
+                    "raw_frames",
+                    "model_states"
+                  ]
+                },
+                "additionalProperties": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "minItems": 1
+                }
+              },
+              "config": {
+                "type": "object"
+              },
+              "python_code": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              }
+            },
+            "required": [
+              "indicator_id",
+              "required",
+              "config",
+              "python_code"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "codes"
+      ],
+      "additionalProperties": false
+    },
+    "edges": {
+      "type": "object",
+      "properties": {
+        "edges": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "edge_id": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+              },
+              "source": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+              },
+              "target": {
+                "type": "string",
+                "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+              },
+              "semantic_rationale": {
+                "type": "string",
+                "minLength": 1,
+                "pattern": "\\S"
+              },
+              "relation_type": {
+                "const": "semantic_candidate"
+              }
+            },
+            "required": [
+              "edge_id",
+              "source",
+              "target",
+              "semantic_rationale",
+              "relation_type"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "edges"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "candidate_graph": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "evidence_status": {
+        "const": "unvalidated_semantic_candidates"
+      },
+      "phenomena": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "phenomenon_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "phenomenon_id",
+            "name",
+            "description"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1
+      },
+      "nodes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "indicator_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "phenomenon_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "scale": {
+              "enum": [
+                "micro",
+                "meso",
+                "macro"
+              ]
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "mathematical_definition": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "units": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "computation_notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "node_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "required": {
+              "type": "object",
+              "minProperties": 1,
+              "propertyNames": {
+                "enum": [
+                  "agent_states",
+                  "events",
+                  "contacts",
+                  "raw_frames",
+                  "model_states"
+                ]
+              },
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "minItems": 1
+              }
+            },
+            "config": {
+              "type": "object"
+            },
+            "python_code": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "code_file": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "code_sha256": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "generation_call": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "indicator_id",
+            "phenomenon_id",
+            "name",
+            "scale",
+            "description",
+            "mathematical_definition",
+            "units",
+            "computation_notes",
+            "node_id",
+            "required",
+            "config",
+            "python_code",
+            "code_file",
+            "code_sha256",
+            "generation_call"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1
+      },
+      "edges": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "edge_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "source": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "semantic_rationale": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "relation_type": {
+              "const": "semantic_candidate"
+            }
+          },
+          "required": [
+            "edge_id",
+            "source",
+            "target",
+            "semantic_rationale",
+            "relation_type"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1
+      }
+    },
+    "required": [
+      "schema_version",
+      "evidence_status",
+      "phenomena",
+      "nodes",
+      "edges"
+    ],
+    "additionalProperties": false
+  },
+  "executable_graph": {
+    "type": "object",
+    "properties": {
+      "schema_version": {
+        "const": "1.0"
+      },
+      "evidence_status": {
+        "const": "unvalidated_semantic_candidates"
+      },
+      "phenomena": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "phenomenon_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "phenomenon_id",
+            "name",
+            "description"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 1
+      },
+      "nodes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "indicator_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "phenomenon_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "scale": {
+              "enum": [
+                "micro",
+                "meso",
+                "macro"
+              ]
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "mathematical_definition": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "units": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "computation_notes": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "node_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "required": {
+              "type": "object",
+              "minProperties": 1,
+              "propertyNames": {
+                "enum": [
+                  "agent_states",
+                  "events",
+                  "contacts",
+                  "raw_frames",
+                  "model_states"
+                ]
+              },
+              "additionalProperties": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "minItems": 1
+              }
+            },
+            "config": {
+              "type": "object"
+            },
+            "python_code": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "code_file": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "code_sha256": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "generation_call": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "indicator_id",
+            "phenomenon_id",
+            "name",
+            "scale",
+            "description",
+            "mathematical_definition",
+            "units",
+            "computation_notes",
+            "node_id",
+            "required",
+            "config",
+            "python_code",
+            "code_file",
+            "code_sha256",
+            "generation_call"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 0
+      },
+      "edges": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "edge_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "source": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "target": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "semantic_rationale": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            },
+            "relation_type": {
+              "const": "semantic_candidate"
+            }
+          },
+          "required": [
+            "edge_id",
+            "source",
+            "target",
+            "semantic_rationale",
+            "relation_type"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 0
+      },
+      "run_ids": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "minItems": 1
+      },
+      "execution_policy": {
+        "const": "success_on_every_listed_run"
+      },
+      "excluded_nodes": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "indicator_id": {
+              "type": "string",
+              "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+            },
+            "run_status": {
+              "type": "object",
+              "additionalProperties": {
+                "enum": [
+                  "success",
+                  "failed",
+                  "not_executed"
+                ]
+              }
+            }
+          },
+          "required": [
+            "indicator_id",
+            "run_status"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 0
+      },
+      "excluded_edges": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "edge": {
+              "type": "object",
+              "properties": {
+                "edge_id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+                },
+                "source": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+                },
+                "target": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+                },
+                "semantic_rationale": {
+                  "type": "string",
+                  "minLength": 1,
+                  "pattern": "\\S"
+                },
+                "relation_type": {
+                  "const": "semantic_candidate"
+                }
+              },
+              "required": [
+                "edge_id",
+                "source",
+                "target",
+                "semantic_rationale",
+                "relation_type"
+              ],
+              "additionalProperties": false
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "pattern": "\\S"
+            }
+          },
+          "required": [
+            "edge",
+            "reason"
+          ],
+          "additionalProperties": false
+        },
+        "minItems": 0
+      },
+      "nodes_without_complete_path": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,79}$"
+        },
+        "minItems": 0
+      }
+    },
+    "required": [
+      "schema_version",
+      "evidence_status",
+      "phenomena",
+      "nodes",
+      "edges",
+      "run_ids",
+      "execution_policy",
+      "excluded_nodes",
+      "excluded_edges",
+      "nodes_without_complete_path"
+    ],
+    "additionalProperties": false
+  }
+}

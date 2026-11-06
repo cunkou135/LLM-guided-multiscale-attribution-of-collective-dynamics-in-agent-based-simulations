@@ -1,0 +1,27 @@
+# Replace these placeholders with your own provider configuration. No API key here.
+default_profile: model_a
+profiles:
+  model_a:
+    provider: openai_compatible
+    base_url: https://api.example.com/v1
+    model: example-model-a
+    api_key_env: LLM_API_KEY_A
+    temperature: 0.0
+    top_p: 1.0
+    max_tokens: 8192
+    timeout: 120
+    max_retries: 3
+    reasoning_effort: null
+    extra_body: {}
+  model_b:
+    provider: openai_compatible
+    base_url: https://api.example.com/v1
+    model: example-model-b
+    api_key_env: LLM_API_KEY_B
+    temperature: 0.0
+    top_p: null
+    max_tokens: 8192
+    timeout: 120
+    max_retries: 3
+    reasoning_effort: null
+    extra_body: {}

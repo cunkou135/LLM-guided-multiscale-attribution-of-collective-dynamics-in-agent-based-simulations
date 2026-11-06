@@ -1,0 +1,149 @@
+{
+  "experiment_id": "a6f836d259344c779fcaf05c246fa295",
+  "started_at": "2026-11-06T13:27:45.111949+00:00",
+  "status": "completed_with_failures",
+  "model_name": "covasim",
+  "model_version": "2.0.0",
+  "scenario": {
+    "scenario_id": "SCENARIO-COVASIM-001",
+    "scenario_version": "2.0",
+    "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+    "scenario_file": "scenarios/v2/covasim.md"
+  },
+  "llm": {
+    "profile": "offline_acceptance",
+    "provider": "openai_compatible",
+    "base_url": "https://api.example.com/v1",
+    "model": "offline-fixture-no-model-call",
+    "api_key_env": "NO_KEY_USED",
+    "temperature": 0.0,
+    "top_p": null,
+    "max_tokens": 8192,
+    "timeout": 120,
+    "max_retries": 3,
+    "reasoning_effort": null,
+    "extra_body": {}
+  },
+  "client_mode": "offline_fixture_not_model_generated",
+  "software": {
+    "package_version": "1.0.0",
+    "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:42:21) [MSC v.1916 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "source_sha256": {
+      "__init__.py": "ebeb9f48ef351afb9db4687d564caa5da829be90b0fde0b8eed37a87ae9d965e",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "cli.py": "982e9aa158be64c8e822b423d2254c415b9837f05fef92b30635078572b5d1e3",
+      "config.py": "c6b2068d483dfc536f8e53c9cda448f25732272acb4c09932c38220f6c308a56",
+      "generation.py": "db12afb674c96d39d16eb50c75f63beb7f0e1493a055970dcf5c3e17346b552f",
+      "graph_export.py": "08ab8e2d39688914ba4f48d9193a6899c536b12767217da707178def48b15d86",
+      "indicator_runner.py": "9f4ad2d85f589b10bc25bc241dd3328d7e6c4ac504be748ab37047d3cfcac836",
+      "inputs.py": "c86281aeedee6f7f95509e4af99dbfeb6025fb8ba2d6072354fb5d3b00595100",
+      "io.py": "1468804f514f50c29ead84048671e44661a94f9f831dc4ae0879c765c1867773",
+      "llm_client.py": "30fc05638d35f90ce90a10b964b7c18d9c97c8d5b2effbf97aacbea2542f80c9",
+      "pipeline.py": "0cd8542250f9ccb59dbb0d972d5b2b930e5e8ce6a2af7f0275c79eaa60d81f98",
+      "prompts.py": "bb27a0c7bc78271ee25327bc0a3ca8146343532a1053b7e51cfb63f339072a30",
+      "schemas.py": "f66919df5a029bb76bcb5933c3aaa09a8effd4b7173db0c580f0f1ca47a44c15",
+      "trusted_worker.py": "990b84922f9339e20206a06dcf3064d5720c845375599c3b7b1c754a648118e3"
+    },
+    "versions": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "pyarrow": "21.0.0",
+      "scipy": "1.15.2",
+      "networkx": "3.4.2",
+      "PyYAML": "6.0.2",
+      "jsonschema": "4.23.0"
+    },
+    "git_commit": "5d3ee5372b4fbb22fb0803ba6f521ed0cba70d18",
+    "git_dirty": true
+  },
+  "identity": {
+    "inputs": [
+      {
+        "directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\covasim\\85b0484a757140c9a5ec99924b2f8ef1",
+        "data_hashes": {
+          "agent_states.parquet": "26af7116bf9e117657a2a9e6b86c77f85621dd5f445b9a250fc9abb7dac4eea6",
+          "contacts.parquet": "33352c34819d471ac39ff837b87edb6737b6ecc0dcce89bc713a0d4a33c2d7eb",
+          "events.parquet": "ae7568c32d985fee9a683c8e0586cdea2c99788f6e84da4d48787f6910dc294f",
+          "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+          "manifest.json": "6942d0082c2c7bd30ba0e823b698c9082854819d82227138de7108a67a459518",
+          "model_states.parquet": "b41da91f9f4a19a81cde131d69879fddf30a4f0dfa5c67c4d56fd58529ae45be",
+          "native_parameters.json": "505dcd18a5f5a22eff7a8f06b2913afc2d6405baf6bddcd406cd68787ed6d37f",
+          "native_parameters_final.json": "505dcd18a5f5a22eff7a8f06b2913afc2d6405baf6bddcd406cd68787ed6d37f",
+          "resolved_config.yaml": "93e893b0f3dc6f56462fbf2183913e46586ddd9388451c9b7458400ef096c133",
+          "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+        }
+      },
+      {
+        "directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\covasim\\5c3641986b124557bcf5d88d16c1eb6e",
+        "data_hashes": {
+          "agent_states.parquet": "55d7fedc9194da08e29ea63a3f38fe6950e761ef47acf43753b2caa32aafc13d",
+          "contacts.parquet": "be6f11c2d8d4d8473688b4e447f4905f39e5e1c58beaff1a58f5b9fd752ea87f",
+          "events.parquet": "f185468504a12079c3e87dfef5598465ff2f6364ca354b01cbafa734660fe7d8",
+          "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+          "manifest.json": "3945bdbf34eb488017b34b86d1d4dc1903b91c2ae3fc54c8ffe651ed97a45e03",
+          "model_states.parquet": "a2b3070bf812c6374c2bd701dc039630901dabcf3ae56ce1a6d60dbbabafbfbf",
+          "native_parameters.json": "854ac9b8c6748a2523eec1705a1c0347d9bd939bc616893c5ddd791daa36582d",
+          "native_parameters_final.json": "854ac9b8c6748a2523eec1705a1c0347d9bd939bc616893c5ddd791daa36582d",
+          "resolved_config.yaml": "60cc7abfd254b6d5370aecaa83bdf39367393ad3701c7fc000f136a502624f5d",
+          "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+        }
+      }
+    ],
+    "llm": {
+      "profile": "offline_acceptance",
+      "provider": "openai_compatible",
+      "base_url": "https://api.example.com/v1",
+      "model": "offline-fixture-no-model-call",
+      "api_key_env": "NO_KEY_USED",
+      "temperature": 0.0,
+      "top_p": null,
+      "max_tokens": 8192,
+      "timeout": 120,
+      "max_retries": 3,
+      "reasoning_effort": null,
+      "extra_body": {}
+    },
+    "generation_settings": {
+      "max_phenomena": 6,
+      "max_indicators": 36,
+      "max_edges": 144,
+      "generation_attempts": 2
+    },
+    "prompt_version": "scenario-only-stage1/1.0",
+    "source_sha256": {
+      "__init__.py": "ebeb9f48ef351afb9db4687d564caa5da829be90b0fde0b8eed37a87ae9d965e",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "cli.py": "982e9aa158be64c8e822b423d2254c415b9837f05fef92b30635078572b5d1e3",
+      "config.py": "c6b2068d483dfc536f8e53c9cda448f25732272acb4c09932c38220f6c308a56",
+      "generation.py": "db12afb674c96d39d16eb50c75f63beb7f0e1493a055970dcf5c3e17346b552f",
+      "graph_export.py": "08ab8e2d39688914ba4f48d9193a6899c536b12767217da707178def48b15d86",
+      "indicator_runner.py": "9f4ad2d85f589b10bc25bc241dd3328d7e6c4ac504be748ab37047d3cfcac836",
+      "inputs.py": "c86281aeedee6f7f95509e4af99dbfeb6025fb8ba2d6072354fb5d3b00595100",
+      "io.py": "1468804f514f50c29ead84048671e44661a94f9f831dc4ae0879c765c1867773",
+      "llm_client.py": "30fc05638d35f90ce90a10b964b7c18d9c97c8d5b2effbf97aacbea2542f80c9",
+      "pipeline.py": "0cd8542250f9ccb59dbb0d972d5b2b930e5e8ce6a2af7f0275c79eaa60d81f98",
+      "prompts.py": "bb27a0c7bc78271ee25327bc0a3ca8146343532a1053b7e51cfb63f339072a30",
+      "schemas.py": "f66919df5a029bb76bcb5933c3aaa09a8effd4b7173db0c580f0f1ca47a44c15",
+      "trusted_worker.py": "990b84922f9339e20206a06dcf3064d5720c845375599c3b7b1c754a648118e3"
+    },
+    "client_mode": "offline_fixture_not_model_generated"
+  },
+  "identity_sha256": "4c02a2f2ad6b8abd4e647cb66b46e396caccf4675efc0db158bc7cca6fc59c88",
+  "invocations": [
+    "invocations/f5b014d31e254073b711df5b3ba8232f",
+    "invocations/e207e3f20fc045ac92a670a966838ab7"
+  ],
+  "pipeline_config": {
+    "max_phenomena": 6,
+    "max_indicators": 36,
+    "max_edges": 144,
+    "generation_attempts": 2,
+    "execution_mode": "trusted_reviewed",
+    "image": "abms-indicator:1",
+    "indicator_timeout": 30,
+    "min_observations": 3,
+    "missing_fraction_warning": 0.2
+  },
+  "ended_at": "2026-11-06T13:27:51.920421+00:00"
+}

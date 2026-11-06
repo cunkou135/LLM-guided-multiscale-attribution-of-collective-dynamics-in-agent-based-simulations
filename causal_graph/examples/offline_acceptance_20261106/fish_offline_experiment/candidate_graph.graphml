@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d10" for="edge" attr.name="relation_type" attr.type="string"/>
+<key id="d9" for="edge" attr.name="semantic_rationale" attr.type="string"/>
+<key id="d8" for="edge" attr.name="edge_id" attr.type="string"/>
+<key id="d7" for="node" attr.name="units" attr.type="string"/>
+<key id="d6" for="node" attr.name="mathematical_definition" attr.type="string"/>
+<key id="d5" for="node" attr.name="description" attr.type="string"/>
+<key id="d4" for="node" attr.name="phenomenon_id" attr.type="string"/>
+<key id="d3" for="node" attr.name="scale" attr.type="string"/>
+<key id="d2" for="node" attr.name="name" attr.type="string"/>
+<key id="d1" for="graph" attr.name="schema_version" attr.type="string"/>
+<key id="d0" for="graph" attr.name="evidence_status" attr.type="string"/>
+<graph edgedefault="directed"><data key="d0">unvalidated_semantic_candidates</data>
+<data key="d1">1.0</data>
+<node id="test_a">
+  <data key="d2">Test-only mean</data>
+  <data key="d3">micro</data>
+  <data key="d4">test_E</data>
+  <data key="d5">Interface-test mean of raw vx.</data>
+  <data key="d6">mean(vx_i(t)) over recorded agents at step t</data>
+  <data key="d7">test units</data>
+</node>
+<node id="test_b">
+  <data key="d2">Test-only var</data>
+  <data key="d3">meso</data>
+  <data key="d4">test_E</data>
+  <data key="d5">Interface-test var of raw vx.</data>
+  <data key="d6">var(vx_i(t)) over recorded agents at step t</data>
+  <data key="d7">test units</data>
+</node>
+<node id="test_c">
+  <data key="d2">Test-only sum</data>
+  <data key="d3">macro</data>
+  <data key="d4">test_E</data>
+  <data key="d5">Interface-test sum of raw vx.</data>
+  <data key="d6">sum(vx_i(t)) over recorded agents at step t</data>
+  <data key="d7">test units</data>
+</node>
+<node id="test_missing">
+  <data key="d2">Intentionally unavailable test variable</data>
+  <data key="d3">micro</data>
+  <data key="d4">test_E</data>
+  <data key="d5">Interface-test mean of raw vx.</data>
+  <data key="d6">mean(vx_i(t)) over recorded agents at step t</data>
+  <data key="d7">test units</data>
+</node>
+<edge source="test_a" target="test_b">
+  <data key="d8">test_ab</data>
+  <data key="d9">Artificial structural fixture, no scientific claim.</data>
+  <data key="d10">semantic_candidate</data>
+</edge>
+<edge source="test_b" target="test_c">
+  <data key="d8">test_bc</data>
+  <data key="d9">Artificial structural fixture, no scientific claim.</data>
+  <data key="d10">semantic_candidate</data>
+</edge>
+<edge source="test_missing" target="test_b">
+  <data key="d8">test_missing_b</data>
+  <data key="d9">Artificial structural fixture, no scientific claim.</data>
+  <data key="d10">semantic_candidate</data>
+</edge>
+</graph></graphml>

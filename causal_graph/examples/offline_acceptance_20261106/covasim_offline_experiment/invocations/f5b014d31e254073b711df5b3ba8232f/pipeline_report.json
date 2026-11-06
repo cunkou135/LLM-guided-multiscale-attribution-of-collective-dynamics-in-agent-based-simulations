@@ -1,0 +1,158 @@
+{
+  "started_at": "2026-11-06T13:27:44.646766+00:00",
+  "status": "generated_only",
+  "steps": [
+    {
+      "number": 1,
+      "name": "read_fixed_scenario_and_verify_runs",
+      "inputs": [
+        "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\covasim\\85b0484a757140c9a5ec99924b2f8ef1",
+        "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\covasim\\5c3641986b124557bcf5d88d16c1eb6e"
+      ],
+      "outputs": [
+        "inputs.json",
+        "scenario.md"
+      ],
+      "started_at": "2026-11-06T13:27:44.648756+00:00",
+      "status": "success",
+      "ended_at": "2026-11-06T13:27:44.884756+00:00"
+    },
+    {
+      "number": 2,
+      "name": "generate_phenomena",
+      "inputs": [
+        "scenario.md"
+      ],
+      "outputs": [
+        "generation/phenomena/parsed.json"
+      ],
+      "started_at": "2026-11-06T13:27:45.122950+00:00",
+      "status": "success",
+      "ended_at": "2026-11-06T13:27:45.145949+00:00"
+    },
+    {
+      "number": 3,
+      "name": "generate_indicators",
+      "inputs": [
+        "scenario.md",
+        "phenomena"
+      ],
+      "outputs": [
+        "generation/indicators/parsed.json"
+      ],
+      "started_at": "2026-11-06T13:27:45.148340+00:00",
+      "status": "success",
+      "ended_at": "2026-11-06T13:27:45.170014+00:00"
+    },
+    {
+      "number": 4,
+      "name": "generate_codes",
+      "inputs": [
+        "scenario.md",
+        "phenomena",
+        "indicators"
+      ],
+      "outputs": [
+        "generation/codes/parsed.json"
+      ],
+      "started_at": "2026-11-06T13:27:45.172012+00:00",
+      "status": "success",
+      "ended_at": "2026-11-06T13:27:45.195013+00:00"
+    },
+    {
+      "number": 5,
+      "name": "generate_edges",
+      "inputs": [
+        "scenario.md",
+        "phenomena",
+        "indicators",
+        "codes"
+      ],
+      "outputs": [
+        "generation/edges/parsed.json"
+      ],
+      "started_at": "2026-11-06T13:27:45.197012+00:00",
+      "status": "success",
+      "ended_at": "2026-11-06T13:27:45.219011+00:00"
+    },
+    {
+      "number": 6,
+      "name": "validate_and_assemble_candidate",
+      "inputs": [
+        "generation/*/parsed.json"
+      ],
+      "outputs": [
+        "candidate_graph.json",
+        "indicator_code/",
+        "structure_report.json"
+      ],
+      "started_at": "2026-11-06T13:27:45.221012+00:00",
+      "status": "success",
+      "ended_at": "2026-11-06T13:27:45.237052+00:00"
+    },
+    {
+      "number": 7,
+      "name": "execute_indicators",
+      "inputs": [
+        "indicator_code/",
+        "inputs.json"
+      ],
+      "outputs": [
+        "execution/",
+        "indicator_series/"
+      ],
+      "started_at": "2026-11-06T13:27:45.243012+00:00",
+      "status": "success",
+      "ended_at": "2026-11-06T13:27:45.263012+00:00"
+    },
+    {
+      "number": 8,
+      "name": "report_computational_validity",
+      "inputs": [
+        "execution/"
+      ],
+      "outputs": [
+        "execution_report.json"
+      ],
+      "started_at": "2026-11-06T13:27:45.265012+00:00",
+      "status": "success",
+      "ended_at": "2026-11-06T13:27:45.269017+00:00"
+    },
+    {
+      "number": 9,
+      "name": "export_semantic_and_executable_graphs",
+      "inputs": [
+        "candidate_graph.json",
+        "execution_report.json"
+      ],
+      "outputs": [
+        "candidate_graph.graphml",
+        "executable_graph.json",
+        "executable_graph.graphml",
+        "per_run/"
+      ],
+      "started_at": "2026-11-06T13:27:45.271017+00:00",
+      "status": "success",
+      "ended_at": "2026-11-06T13:27:45.289531+00:00"
+    },
+    {
+      "number": 10,
+      "name": "finalize_provenance",
+      "inputs": [
+        "inputs.json"
+      ],
+      "outputs": [
+        "experiment.json",
+        "artifact_hashes.json"
+      ],
+      "started_at": "2026-11-06T13:27:45.291531+00:00",
+      "status": "success",
+      "ended_at": "2026-11-06T13:27:45.311045+00:00"
+    }
+  ],
+  "resumed": false,
+  "successful_calculations": 0,
+  "total_calculations": 8,
+  "executable_nodes": 0,
+  "ended_at": "2026-11-06T13:27:45.314045+00:00"
+}

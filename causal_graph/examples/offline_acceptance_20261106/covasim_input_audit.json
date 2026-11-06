@@ -1,0 +1,286 @@
+[
+  {
+    "directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\covasim\\85b0484a757140c9a5ec99924b2f8ef1",
+    "manifest": {
+      "run_id": "85b0484a757140c9a5ec99924b2f8ef1",
+      "model_name": "covasim",
+      "model_version": "2.0.0",
+      "seed": 8,
+      "scenario_id": "SCENARIO-COVASIM-001",
+      "scenario_version": "2.0",
+      "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+      "scenario_file": "scenarios/v2/covasim.md",
+      "model_source": "Native Covasim 2.0.0; uncalibrated hybrid demonstration",
+      "parameters": {
+        "pop_size": 1000,
+        "pop_infected": 10,
+        "pop_type": "hybrid",
+        "start_day": "2020-01-27",
+        "beta": 0.016,
+        "pop_scale": 1,
+        "rescale": false,
+        "interventions": [
+          {
+            "type": "test_prob",
+            "start_day": 20,
+            "symp_prob": 0.15,
+            "asymp_prob": 0.0,
+            "test_delay": 0
+          },
+          {
+            "type": "contact_tracing",
+            "start_day": 20,
+            "trace_probs": {
+              "h": 0.7,
+              "s": 0.1,
+              "w": 0.1,
+              "c": 0.0
+            },
+            "trace_time": 0
+          }
+        ]
+      },
+      "requested_steps": 5,
+      "sampling": {
+        "frequency": 1
+      },
+      "started_at": "2026-11-06T13:27:31.133576+00:00",
+      "ended_at": "2026-11-06T13:27:37.742670+00:00",
+      "actual_steps": 5,
+      "status": "max_steps",
+      "error": null,
+      "python": "3.12.3",
+      "mesa": "3.5.2",
+      "software_versions": {
+        "mesa": "3.5.2",
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "pyarrow": "21.0.0",
+        "pyyaml": "6.0.2"
+      },
+      "git_commit": "5d3ee5372b4fbb22fb0803ba6f521ed0cba70d18",
+      "git_dirty": true,
+      "missing_data": [
+        "unrealized transmission attempts are not exposed by native engine",
+        "within-day repeated testing of same person is not individually exposed",
+        "historical calibration and LTCF layer not present in demonstration"
+      ],
+      "checksums_sha256": {
+        "agent_states.parquet": "26af7116bf9e117657a2a9e6b86c77f85621dd5f445b9a250fc9abb7dac4eea6",
+        "events.parquet": "ae7568c32d985fee9a683c8e0586cdea2c99788f6e84da4d48787f6910dc294f",
+        "model_states.parquet": "b41da91f9f4a19a81cde131d69879fddf30a4f0dfa5c67c4d56fd58529ae45be",
+        "contacts.parquet": "33352c34819d471ac39ff837b87edb6737b6ecc0dcce89bc713a0d4a33c2d7eb",
+        "native_parameters.json": "505dcd18a5f5a22eff7a8f06b2913afc2d6405baf6bddcd406cd68787ed6d37f",
+        "native_parameters_final.json": "505dcd18a5f5a22eff7a8f06b2913afc2d6405baf6bddcd406cd68787ed6d37f"
+      },
+      "engine_versions": {
+        "python": "3.10.2",
+        "covasim": "2.0.0",
+        "numpy": "1.23.5",
+        "sciris": "1.1.1",
+        "numba": "0.56.4",
+        "scipy": "1.10.1",
+        "pandas": "1.5.3",
+        "pyarrow": "17.0.0",
+        "matplotlib": "3.6.3",
+        "PyYAML": "6.0.3"
+      },
+      "historical_reproduction": false,
+      "logging": {
+        "format": "parquet",
+        "batch_size": 1024,
+        "compression": "zstd",
+        "agent_states": true,
+        "events": true,
+        "model_states": true,
+        "contacts": true,
+        "level": "INFO"
+      },
+      "scenario_integrity_verified": true,
+      "recording_mode": "full_observable"
+    },
+    "rows": {
+      "agent_states": 6000,
+      "events": 29,
+      "model_states": 6,
+      "contacts": 106050
+    },
+    "snapshot_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "allowed_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "data_hashes": {
+      "agent_states.parquet": "26af7116bf9e117657a2a9e6b86c77f85621dd5f445b9a250fc9abb7dac4eea6",
+      "contacts.parquet": "33352c34819d471ac39ff837b87edb6737b6ecc0dcce89bc713a0d4a33c2d7eb",
+      "events.parquet": "ae7568c32d985fee9a683c8e0586cdea2c99788f6e84da4d48787f6910dc294f",
+      "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+      "manifest.json": "6942d0082c2c7bd30ba0e823b698c9082854819d82227138de7108a67a459518",
+      "model_states.parquet": "b41da91f9f4a19a81cde131d69879fddf30a4f0dfa5c67c4d56fd58529ae45be",
+      "native_parameters.json": "505dcd18a5f5a22eff7a8f06b2913afc2d6405baf6bddcd406cd68787ed6d37f",
+      "native_parameters_final.json": "505dcd18a5f5a22eff7a8f06b2913afc2d6405baf6bddcd406cd68787ed6d37f",
+      "resolved_config.yaml": "93e893b0f3dc6f56462fbf2183913e46586ddd9388451c9b7458400ef096c133",
+      "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+    },
+    "scenario_text": "### 城市传染病传播与公共卫生干预想定\n\n某人口规模较大的城市出现了一种具有呼吸道传播特征的传染病。城市居民具有不同的年龄、健康状态和社会活动方式。居民的日常生活涉及家庭、学校、工作场所和社区活动，不同居民在这些环境中与其他人发生接触的机会存在差异。\n\n疫情开始后，部分居民受到感染。感染者可能在不同时间出现症状，并经历不同的疾病发展过程。部分感染者在疾病发展过程中仍然与其他居民保持社会接触，从而使感染事件在城市内部持续发生。不同居民的健康状态和社会活动情况会影响其感染及后续传播过程。\n\n城市中的居民通过多种社会活动建立联系。家庭成员之间存在较为持续的日常接触，学校和工作场所中的人员具有相对固定的活动关系，社区活动则使不同居民之间发生更加广泛的联系。随着感染者在这些社会环境中活动，疫情可能在不同人群和区域之间逐渐扩展。\n\n随着疫情发展，公共卫生部门陆续开展病毒检测、感染者识别、密切接触者追踪以及隔离等防控工作。部分居民在被发现感染或与感染者存在密切接触后，可能暂时减少正常社会活动。不同防控措施的实施时间、执行范围及居民遵守情况存在差异，因此可能对后续传播过程产生不同影响。\n\n在持续传播和公共卫生干预过程中，城市内部的感染活动不断变化。部分社会活动环境可能出现较为集中的感染事件，不同人群的疾病状态也会随时间发生变化。城市整体的疫情规模、感染增长过程和疾病发展趋势受到这些活动的共同影响。\n\n公共卫生研究部门希望了解城市疫情在不同社会活动和防控条件下的演化情况，关注居民感染与接触活动、不同社会环境中的传播过程，以及城市整体疫情的发展与变化。\n",
+    "scenario": {
+      "scenario_id": "SCENARIO-COVASIM-001",
+      "scenario_version": "2.0",
+      "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+      "scenario_file": "scenarios/v2/covasim.md"
+    }
+  },
+  {
+    "directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\covasim\\5c3641986b124557bcf5d88d16c1eb6e",
+    "manifest": {
+      "run_id": "5c3641986b124557bcf5d88d16c1eb6e",
+      "model_name": "covasim",
+      "model_version": "2.0.0",
+      "seed": 9,
+      "scenario_id": "SCENARIO-COVASIM-001",
+      "scenario_version": "2.0",
+      "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+      "scenario_file": "scenarios/v2/covasim.md",
+      "model_source": "Native Covasim 2.0.0; uncalibrated hybrid demonstration",
+      "parameters": {
+        "pop_size": 1000,
+        "pop_infected": 10,
+        "pop_type": "hybrid",
+        "start_day": "2020-01-27",
+        "beta": 0.016,
+        "pop_scale": 1,
+        "rescale": false,
+        "interventions": [
+          {
+            "type": "test_prob",
+            "start_day": 20,
+            "symp_prob": 0.15,
+            "asymp_prob": 0.0,
+            "test_delay": 0
+          },
+          {
+            "type": "contact_tracing",
+            "start_day": 20,
+            "trace_probs": {
+              "h": 0.7,
+              "s": 0.1,
+              "w": 0.1,
+              "c": 0.0
+            },
+            "trace_time": 0
+          }
+        ]
+      },
+      "requested_steps": 5,
+      "sampling": {
+        "frequency": 1
+      },
+      "started_at": "2026-11-06T13:27:37.758674+00:00",
+      "ended_at": "2026-11-06T13:27:44.385676+00:00",
+      "actual_steps": 5,
+      "status": "max_steps",
+      "error": null,
+      "python": "3.12.3",
+      "mesa": "3.5.2",
+      "software_versions": {
+        "mesa": "3.5.2",
+        "numpy": "1.26.4",
+        "pandas": "2.2.3",
+        "pyarrow": "21.0.0",
+        "pyyaml": "6.0.2"
+      },
+      "git_commit": "5d3ee5372b4fbb22fb0803ba6f521ed0cba70d18",
+      "git_dirty": true,
+      "missing_data": [
+        "unrealized transmission attempts are not exposed by native engine",
+        "within-day repeated testing of same person is not individually exposed",
+        "historical calibration and LTCF layer not present in demonstration"
+      ],
+      "checksums_sha256": {
+        "agent_states.parquet": "55d7fedc9194da08e29ea63a3f38fe6950e761ef47acf43753b2caa32aafc13d",
+        "events.parquet": "f185468504a12079c3e87dfef5598465ff2f6364ca354b01cbafa734660fe7d8",
+        "model_states.parquet": "a2b3070bf812c6374c2bd701dc039630901dabcf3ae56ce1a6d60dbbabafbfbf",
+        "contacts.parquet": "be6f11c2d8d4d8473688b4e447f4905f39e5e1c58beaff1a58f5b9fd752ea87f",
+        "native_parameters.json": "854ac9b8c6748a2523eec1705a1c0347d9bd939bc616893c5ddd791daa36582d",
+        "native_parameters_final.json": "854ac9b8c6748a2523eec1705a1c0347d9bd939bc616893c5ddd791daa36582d"
+      },
+      "engine_versions": {
+        "python": "3.10.2",
+        "covasim": "2.0.0",
+        "numpy": "1.23.5",
+        "sciris": "1.1.1",
+        "numba": "0.56.4",
+        "scipy": "1.10.1",
+        "pandas": "1.5.3",
+        "pyarrow": "17.0.0",
+        "matplotlib": "3.6.3",
+        "PyYAML": "6.0.3"
+      },
+      "historical_reproduction": false,
+      "logging": {
+        "format": "parquet",
+        "batch_size": 1024,
+        "compression": "zstd",
+        "agent_states": true,
+        "events": true,
+        "model_states": true,
+        "contacts": true,
+        "level": "INFO"
+      },
+      "scenario_integrity_verified": true,
+      "recording_mode": "full_observable"
+    },
+    "rows": {
+      "agent_states": 6000,
+      "events": 18,
+      "model_states": 6,
+      "contacts": 106410
+    },
+    "snapshot_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "allowed_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "data_hashes": {
+      "agent_states.parquet": "55d7fedc9194da08e29ea63a3f38fe6950e761ef47acf43753b2caa32aafc13d",
+      "contacts.parquet": "be6f11c2d8d4d8473688b4e447f4905f39e5e1c58beaff1a58f5b9fd752ea87f",
+      "events.parquet": "f185468504a12079c3e87dfef5598465ff2f6364ca354b01cbafa734660fe7d8",
+      "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+      "manifest.json": "3945bdbf34eb488017b34b86d1d4dc1903b91c2ae3fc54c8ffe651ed97a45e03",
+      "model_states.parquet": "a2b3070bf812c6374c2bd701dc039630901dabcf3ae56ce1a6d60dbbabafbfbf",
+      "native_parameters.json": "854ac9b8c6748a2523eec1705a1c0347d9bd939bc616893c5ddd791daa36582d",
+      "native_parameters_final.json": "854ac9b8c6748a2523eec1705a1c0347d9bd939bc616893c5ddd791daa36582d",
+      "resolved_config.yaml": "60cc7abfd254b6d5370aecaa83bdf39367393ad3701c7fc000f136a502624f5d",
+      "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+    },
+    "scenario_text": "### 城市传染病传播与公共卫生干预想定\n\n某人口规模较大的城市出现了一种具有呼吸道传播特征的传染病。城市居民具有不同的年龄、健康状态和社会活动方式。居民的日常生活涉及家庭、学校、工作场所和社区活动，不同居民在这些环境中与其他人发生接触的机会存在差异。\n\n疫情开始后，部分居民受到感染。感染者可能在不同时间出现症状，并经历不同的疾病发展过程。部分感染者在疾病发展过程中仍然与其他居民保持社会接触，从而使感染事件在城市内部持续发生。不同居民的健康状态和社会活动情况会影响其感染及后续传播过程。\n\n城市中的居民通过多种社会活动建立联系。家庭成员之间存在较为持续的日常接触，学校和工作场所中的人员具有相对固定的活动关系，社区活动则使不同居民之间发生更加广泛的联系。随着感染者在这些社会环境中活动，疫情可能在不同人群和区域之间逐渐扩展。\n\n随着疫情发展，公共卫生部门陆续开展病毒检测、感染者识别、密切接触者追踪以及隔离等防控工作。部分居民在被发现感染或与感染者存在密切接触后，可能暂时减少正常社会活动。不同防控措施的实施时间、执行范围及居民遵守情况存在差异，因此可能对后续传播过程产生不同影响。\n\n在持续传播和公共卫生干预过程中，城市内部的感染活动不断变化。部分社会活动环境可能出现较为集中的感染事件，不同人群的疾病状态也会随时间发生变化。城市整体的疫情规模、感染增长过程和疾病发展趋势受到这些活动的共同影响。\n\n公共卫生研究部门希望了解城市疫情在不同社会活动和防控条件下的演化情况，关注居民感染与接触活动、不同社会环境中的传播过程，以及城市整体疫情的发展与变化。\n",
+    "scenario": {
+      "scenario_id": "SCENARIO-COVASIM-001",
+      "scenario_version": "2.0",
+      "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+      "scenario_file": "scenarios/v2/covasim.md"
+    }
+  }
+]

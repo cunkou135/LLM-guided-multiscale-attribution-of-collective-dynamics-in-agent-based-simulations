@@ -3,3 +3,5 @@ scenarios/v2/*.md text eol=lf
 scenarios/fish.md -text
 simulations/fish/engine.py -text
 scenarios/SHA256SUMS text eol=lf
+# Preserve content-addressed method sources and archived experiment bytes.
+causal_graph/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

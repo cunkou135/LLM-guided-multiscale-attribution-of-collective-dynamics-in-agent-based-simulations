@@ -1,0 +1,147 @@
+{
+  "experiment_id": "9c9b351ee5cf4a3aab78aad42b901a08",
+  "started_at": "2026-11-06T13:27:22.738638+00:00",
+  "status": "completed_with_failures",
+  "model_name": "fish",
+  "model_version": "fish-3.0",
+  "scenario": {
+    "scenario_id": "SCENARIO-FISH-001",
+    "scenario_version": "1.0",
+    "scenario_sha256": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936",
+    "scenario_file": "scenarios/fish.md"
+  },
+  "llm": {
+    "profile": "offline_acceptance",
+    "provider": "openai_compatible",
+    "base_url": "https://api.example.com/v1",
+    "model": "offline-fixture-no-model-call",
+    "api_key_env": "NO_KEY_USED",
+    "temperature": 0.0,
+    "top_p": null,
+    "max_tokens": 8192,
+    "timeout": 120,
+    "max_retries": 3,
+    "reasoning_effort": null,
+    "extra_body": {}
+  },
+  "client_mode": "offline_fixture_not_model_generated",
+  "software": {
+    "package_version": "1.0.0",
+    "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:42:21) [MSC v.1916 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26300-SP0",
+    "source_sha256": {
+      "__init__.py": "ebeb9f48ef351afb9db4687d564caa5da829be90b0fde0b8eed37a87ae9d965e",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "cli.py": "982e9aa158be64c8e822b423d2254c415b9837f05fef92b30635078572b5d1e3",
+      "config.py": "c6b2068d483dfc536f8e53c9cda448f25732272acb4c09932c38220f6c308a56",
+      "generation.py": "db12afb674c96d39d16eb50c75f63beb7f0e1493a055970dcf5c3e17346b552f",
+      "graph_export.py": "08ab8e2d39688914ba4f48d9193a6899c536b12767217da707178def48b15d86",
+      "indicator_runner.py": "9f4ad2d85f589b10bc25bc241dd3328d7e6c4ac504be748ab37047d3cfcac836",
+      "inputs.py": "c86281aeedee6f7f95509e4af99dbfeb6025fb8ba2d6072354fb5d3b00595100",
+      "io.py": "1468804f514f50c29ead84048671e44661a94f9f831dc4ae0879c765c1867773",
+      "llm_client.py": "30fc05638d35f90ce90a10b964b7c18d9c97c8d5b2effbf97aacbea2542f80c9",
+      "pipeline.py": "0cd8542250f9ccb59dbb0d972d5b2b930e5e8ce6a2af7f0275c79eaa60d81f98",
+      "prompts.py": "bb27a0c7bc78271ee25327bc0a3ca8146343532a1053b7e51cfb63f339072a30",
+      "schemas.py": "f66919df5a029bb76bcb5933c3aaa09a8effd4b7173db0c580f0f1ca47a44c15",
+      "trusted_worker.py": "990b84922f9339e20206a06dcf3064d5720c845375599c3b7b1c754a648118e3"
+    },
+    "versions": {
+      "numpy": "1.26.4",
+      "pandas": "2.2.3",
+      "pyarrow": "21.0.0",
+      "scipy": "1.15.2",
+      "networkx": "3.4.2",
+      "PyYAML": "6.0.2",
+      "jsonschema": "4.23.0"
+    },
+    "git_commit": "5d3ee5372b4fbb22fb0803ba6f521ed0cba70d18",
+    "git_dirty": true
+  },
+  "identity": {
+    "inputs": [
+      {
+        "directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\fish\\24795f0cb68a4c7e8817283112c75322",
+        "data_hashes": {
+          "agent_states.parquet": "4e7db1ce66eafd2319b5130b082c07398eb4101db067807f91dd9478824215c5",
+          "contacts.parquet": "d270ab480996caee35a30ade8c04ecbefba1bc25b50baa40170f61c25f9001c8",
+          "events.parquet": "354ddf8796cdafcd6ac12fd3eb90074ab3b3827819de68bd90c8b06095dfa6b0",
+          "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+          "manifest.json": "c286016768ff263175d8bb5f011b1eb01dbc57736b1d538ef0f9785d2e5d7dc1",
+          "model_states.parquet": "f66e1fde8be16ee5b8cfe83e022c9f55d2a096c8cd595aadfa65d070465bef73",
+          "raw_frames.parquet": "88abdf3957486e629f41e4e1d6ea64d8959540b4ee3b536597c86e0f5f06842c",
+          "resolved_config.yaml": "69d371d0eee7194d66deec09fad56a2e58ace471b0d4f0b5c0ea200f2a27cf1d",
+          "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+        }
+      },
+      {
+        "directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\acceptance_release_20261106\\simulation_runs\\fish\\6ac1b06bafbf43a7b699c9e0914e2ea0",
+        "data_hashes": {
+          "agent_states.parquet": "12e47680082dd2660ff62c7a76c74494ad0a1a6bec429f736007aea1def891df",
+          "contacts.parquet": "28f99acefcba953ffc1d2c2dcebb31df130c8eba1b25e07fc0b280d23c7155d6",
+          "events.parquet": "875517a9ac0d2aaebf69de402958936ba077cc5ce6d24f048d968bfea79aa856",
+          "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+          "manifest.json": "b546f998a1b4432a433aefc302448fab509ffe5aaed9bf8ec9eb1a883a15da7a",
+          "model_states.parquet": "65a984ff7305c5f65073d77919399ab9c0e3f41055899f311492d94979c9e2c0",
+          "raw_frames.parquet": "bc0a996330f169dc3d1c61134cc73bd986b7eeaf3f04e2abc9591f4721165f5d",
+          "resolved_config.yaml": "5c58eb56e44b2d514b210a939dd37d42b5df4232410abc6eae5fd3b03ca8ec4a",
+          "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+        }
+      }
+    ],
+    "llm": {
+      "profile": "offline_acceptance",
+      "provider": "openai_compatible",
+      "base_url": "https://api.example.com/v1",
+      "model": "offline-fixture-no-model-call",
+      "api_key_env": "NO_KEY_USED",
+      "temperature": 0.0,
+      "top_p": null,
+      "max_tokens": 8192,
+      "timeout": 120,
+      "max_retries": 3,
+      "reasoning_effort": null,
+      "extra_body": {}
+    },
+    "generation_settings": {
+      "max_phenomena": 6,
+      "max_indicators": 36,
+      "max_edges": 144,
+      "generation_attempts": 2
+    },
+    "prompt_version": "scenario-only-stage1/1.0",
+    "source_sha256": {
+      "__init__.py": "ebeb9f48ef351afb9db4687d564caa5da829be90b0fde0b8eed37a87ae9d965e",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d",
+      "cli.py": "982e9aa158be64c8e822b423d2254c415b9837f05fef92b30635078572b5d1e3",
+      "config.py": "c6b2068d483dfc536f8e53c9cda448f25732272acb4c09932c38220f6c308a56",
+      "generation.py": "db12afb674c96d39d16eb50c75f63beb7f0e1493a055970dcf5c3e17346b552f",
+      "graph_export.py": "08ab8e2d39688914ba4f48d9193a6899c536b12767217da707178def48b15d86",
+      "indicator_runner.py": "9f4ad2d85f589b10bc25bc241dd3328d7e6c4ac504be748ab37047d3cfcac836",
+      "inputs.py": "c86281aeedee6f7f95509e4af99dbfeb6025fb8ba2d6072354fb5d3b00595100",
+      "io.py": "1468804f514f50c29ead84048671e44661a94f9f831dc4ae0879c765c1867773",
+      "llm_client.py": "30fc05638d35f90ce90a10b964b7c18d9c97c8d5b2effbf97aacbea2542f80c9",
+      "pipeline.py": "0cd8542250f9ccb59dbb0d972d5b2b930e5e8ce6a2af7f0275c79eaa60d81f98",
+      "prompts.py": "bb27a0c7bc78271ee25327bc0a3ca8146343532a1053b7e51cfb63f339072a30",
+      "schemas.py": "f66919df5a029bb76bcb5933c3aaa09a8effd4b7173db0c580f0f1ca47a44c15",
+      "trusted_worker.py": "990b84922f9339e20206a06dcf3064d5720c845375599c3b7b1c754a648118e3"
+    },
+    "client_mode": "offline_fixture_not_model_generated"
+  },
+  "identity_sha256": "c8b6169f07f5e052723cb246538bbc792db1089be2563b2e8875f02d8003f426",
+  "invocations": [
+    "invocations/d34b454b2daf4b9284218d42f7037505",
+    "invocations/d32714f2ea48499e97c414a684fa9446"
+  ],
+  "pipeline_config": {
+    "max_phenomena": 6,
+    "max_indicators": 36,
+    "max_edges": 144,
+    "generation_attempts": 2,
+    "execution_mode": "trusted_reviewed",
+    "image": "abms-indicator:1",
+    "indicator_timeout": 30,
+    "min_observations": 3,
+    "missing_fraction_warning": 0.2
+  },
+  "ended_at": "2026-11-06T13:27:29.581022+00:00"
+}

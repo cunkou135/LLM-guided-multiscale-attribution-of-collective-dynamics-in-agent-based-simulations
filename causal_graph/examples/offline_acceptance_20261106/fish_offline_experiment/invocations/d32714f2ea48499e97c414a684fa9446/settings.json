@@ -1,0 +1,25 @@
+{
+  "pipeline": {
+    "max_phenomena": 6,
+    "max_indicators": 36,
+    "max_edges": 144,
+    "generation_attempts": 2,
+    "execution_mode": "trusted_reviewed",
+    "image": "abms-indicator:1",
+    "indicator_timeout": 30,
+    "min_observations": 3,
+    "missing_fraction_warning": 0.2
+  },
+  "generate_only": false,
+  "review": {
+    "reviewer": "offline acceptance fixture author",
+    "reviewed_at": "2026-11-06T13:27:23.040209+00:00",
+    "notes": "Reviewed handwritten fixture aggregations only; no LLM output executed.",
+    "code_sha256": {
+      "test_a": "9447ccff84905e2a21a70c08e64c91361612291c95f6aebcbab2cba26d838ae4",
+      "test_b": "acb808ea65870719991dafd7ee6d277db78e83d071732c5339facf947ba45f8e",
+      "test_c": "ef8e701dcdfd24e8101550818ae61c9c201c34221dd807d182b187796f92b95c",
+      "test_missing": "017eef04e314e63924e3aa7c83b4f5219a7c9f1f00c6820224571e2be3200895"
+    }
+  }
+}

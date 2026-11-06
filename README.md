@@ -1,6 +1,6 @@
 # 群体动力学实验室：Schelling、Covasim与鱼群
 
-平台提供100×100异质偏好/有限迁居的扩展Schelling、Mesa 3.5.2标准Schelling，以及原生Covasim 2.0.0。支持实时交互、真实历史回放、批量干预、完整轨迹与论文图版导出。固定想定1.0原文保持原路径和哈希，新增scenarios/v2/下2.0版，默认研究配置使用2.0；其文本、编号和SHA-256不随参数实验改变。LLM、因果发现、Bootstrap 和证据融合不在本项目范围内。
+平台提供100×100异质偏好/有限迁居的扩展Schelling、Mesa 3.5.2标准Schelling，以及原生Covasim 2.0.0。支持实时交互、真实历史回放、批量干预、完整轨迹与论文图版导出。固定想定1.0原文保持原路径和哈希，新增scenarios/v2/下2.0版，默认研究配置使用2.0；其文本、编号和SHA-256不随参数实验改变。独立的 causal_graph 模块提供第一阶段 LLM 候选结构生成；统计因果检验、Bootstrap 和证据融合仍不在本轮实现范围内。
 
 Covasim 默认配置是**未完成金县历史校准的 hybrid 演示**，没有 LTCF 层。论文的 Figure 3 小规模公开基准已作缓存对照；这不表示原研究的金县人口和疫情校准已经复现。模型、数据与许可来源见 [来源核查](docs/MODEL_SOURCES.md)。
 
@@ -99,3 +99,6 @@ t.export('exported_trajectory')
 全部日志、字段查询、导出和指标入口在 trajectory_api.py。compute 只接受经过审查的可信函数，传入数据副本；不可信代码必须用独立受限环境，compute_isolated 在没有 Docker 时拒绝执行，容器路径本机尚未端到端验证。参见 [数据 Schema](docs/DATA_SCHEMA.md)。
 
 实验、测试与限制详见 [验收报告](docs/VALIDATION_REPORT.md)、[复现说明](docs/REPRODUCIBILITY.md)、[ODD 规格](docs/MODEL_SPECIFICATIONS.md)、[固定想定协议](docs/SCENARIO_PROTOCOL.md)。results/ 默认不上传，experiments/ 中提供公开可复查的脚本与本次结果摘要。Deffuant 的代码与配置已移除，历史版本可从 Git 历史审计。
+# 第一阶段跨尺度候选图方法
+
+新增独立 [`causal_graph`](causal_graph/README.md)：仅根据固定想定调用可配置 LLM，自主生成现象、三尺度变量、数学定义、计算代码及候选边，通过现有 Trajectory 接口执行并输出 JSON/GraphML 与真实时间序列。安装使用 `python -m pip install -e ".[test,causal]"`，入口 `python -m causal_graph --help`。不包含统计因果检验或参数干预；完整边界、配置、恢复和验收见模块说明。

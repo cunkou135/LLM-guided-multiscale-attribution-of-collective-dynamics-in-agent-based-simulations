@@ -1,0 +1,57 @@
+{
+  "run_id": "6ac1b06bafbf43a7b699c9e0914e2ea0",
+  "indicator_id": "test_c",
+  "mode": "trusted_reviewed",
+  "code_sha256": "ef8e701dcdfd24e8101550818ae61c9c201c34221dd807d182b187796f92b95c",
+  "generation_call": "generation/codes/attempt_000",
+  "required": {
+    "agent_states": [
+      "step",
+      "vx"
+    ]
+  },
+  "started_at": "2026-11-06T13:27:28.566551+00:00",
+  "status": "success",
+  "source_hashes": {
+    "agent_states.parquet": "12e47680082dd2660ff62c7a76c74494ad0a1a6bec429f736007aea1def891df",
+    "contacts.parquet": "28f99acefcba953ffc1d2c2dcebb31df130c8eba1b25e07fc0b280d23c7155d6",
+    "events.parquet": "875517a9ac0d2aaebf69de402958936ba077cc5ce6d24f048d968bfea79aa856",
+    "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+    "manifest.json": "b546f998a1b4432a433aefc302448fab509ffe5aaed9bf8ec9eb1a883a15da7a",
+    "model_states.parquet": "65a984ff7305c5f65073d77919399ab9c0e3f41055899f311492d94979c9e2c0",
+    "raw_frames.parquet": "bc0a996330f169dc3d1c61134cc73bd986b7eeaf3f04e2abc9591f4721165f5d",
+    "resolved_config.yaml": "5c58eb56e44b2d514b210a939dd37d42b5df4232410abc6eae5fd3b03ca8ec4a",
+    "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+  },
+  "data_contract_valid": true,
+  "human_review": {
+    "reviewer": "offline acceptance fixture author",
+    "reviewed_at": "2026-11-06T13:27:23.040209+00:00",
+    "notes": "Reviewed handwritten fixture aggregations only; no LLM output executed."
+  },
+  "series_file": "indicator_series/6ac1b06bafbf43a7b699c9e0914e2ea0/test_c.parquet",
+  "series_sha256": "ff1a3ae31e21bee0db5a91b7f9d4145db80b87bdf2d129f2e106e564ed0f82ca",
+  "quality": {
+    "rows": 6,
+    "columns": {
+      "value": {
+        "finite_observations": 6,
+        "missing_fraction": 0.0,
+        "constant": false
+      }
+    },
+    "warnings": [],
+    "start_step": 0,
+    "end_step": 5,
+    "observed_steps": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  "ended_at": "2026-11-06T13:27:29.514801+00:00",
+  "elapsed_seconds": 0.9530000000013388
+}

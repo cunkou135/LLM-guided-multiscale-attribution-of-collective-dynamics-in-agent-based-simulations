@@ -1,0 +1,31 @@
+{
+  "run_id": "24795f0cb68a4c7e8817283112c75322",
+  "indicator_id": "test_a",
+  "mode": "isolated",
+  "code_sha256": "9447ccff84905e2a21a70c08e64c91361612291c95f6aebcbab2cba26d838ae4",
+  "generation_call": "generation/codes/attempt_000",
+  "required": {
+    "agent_states": [
+      "step",
+      "vx"
+    ]
+  },
+  "started_at": "2026-11-06T13:27:29.732001+00:00",
+  "status": "failed",
+  "source_hashes": {
+    "agent_states.parquet": "4e7db1ce66eafd2319b5130b082c07398eb4101db067807f91dd9478824215c5",
+    "contacts.parquet": "d270ab480996caee35a30ade8c04ecbefba1bc25b50baa40170f61c25f9001c8",
+    "events.parquet": "354ddf8796cdafcd6ac12fd3eb90074ab3b3827819de68bd90c8b06095dfa6b0",
+    "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+    "manifest.json": "c286016768ff263175d8bb5f011b1eb01dbc57736b1d538ef0f9785d2e5d7dc1",
+    "model_states.parquet": "f66e1fde8be16ee5b8cfe83e022c9f55d2a096c8cd595aadfa65d070465bef73",
+    "raw_frames.parquet": "88abdf3957486e629f41e4e1d6ea64d8959540b4ee3b536597c86e0f5f06842c",
+    "resolved_config.yaml": "69d371d0eee7194d66deec09fad56a2e58ace471b0d4f0b5c0ea200f2a27cf1d",
+    "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+  },
+  "data_contract_valid": true,
+  "error_type": "execution_or_validation_error",
+  "error": "RuntimeError: Docker is unavailable; untrusted indicator was not executed",
+  "ended_at": "2026-11-06T13:27:29.805002+00:00",
+  "elapsed_seconds": 0.06299999999828287
+}

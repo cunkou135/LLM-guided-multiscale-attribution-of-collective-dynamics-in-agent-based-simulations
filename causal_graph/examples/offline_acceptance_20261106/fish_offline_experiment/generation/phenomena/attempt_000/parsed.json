@@ -1,0 +1,9 @@
+{
+  "phenomena": [
+    {
+      "phenomenon_id": "test_E",
+      "name": "OFFLINE INTERFACE TEST ONLY",
+      "description": "Artificial test double; not a model-generated scientific phenomenon."
+    }
+  ]
+}

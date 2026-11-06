@@ -1,0 +1,19 @@
+{
+  "valid": true,
+  "checks": [
+    "JSON Schema",
+    "unique IDs/names",
+    "references",
+    "scale direction",
+    "complete paths",
+    "function signatures",
+    "Python syntax",
+    "code constraints"
+  ],
+  "generation_calls": {
+    "phenomena": "generation/phenomena/attempt_000",
+    "indicators": "generation/indicators/attempt_000",
+    "codes": "generation/codes/attempt_000",
+    "edges": "generation/edges/attempt_000"
+  }
+}
