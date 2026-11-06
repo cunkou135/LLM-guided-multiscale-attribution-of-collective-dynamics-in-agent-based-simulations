@@ -1,0 +1,181 @@
+{
+  "scene": "covasim",
+  "reviewed_at": "2026-11-06T15:33:04.241366+00:00",
+  "semantic_graph_sha256": "8e6b7a3fd46eca6631b978f0033e483cd318700b609b36b855452e36a32ea948",
+  "reviews": [
+    {
+      "indicator_id": "sic_micro_prior_setting_degree",
+      "code_sha256": "0851a97e71f5a682d586c6eefd8a19b6404478d34b72ad688ad9921abefca2f5",
+      "decision": "rejected",
+      "mathematical_review": "The mathematical definition specifies D(e) for each infection event. The function returns a per-step mean, so event-level observations and variation are discarded; the later config note does not preserve the original observation unit. It also lacks the specified negative-sentinel filter (the supplied contacts contain no negative IDs). Original code is retained and not executed.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "events": [
+            "agent_id",
+            "layer",
+            "run_id",
+            "step"
+          ],
+          "contacts": [
+            "agent_id",
+            "layer",
+            "partner_id",
+            "run_id",
+            "step"
+          ]
+        },
+        "unresolved_access": [
+          "contacts: dynamic indexing or boolean/positional selection"
+        ],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "5810302cc9ed417d288a7984a2c1906d41318cb386dd88fa54b02cad5866ca63",
+      "config_sha256": "2e89d012af3b76385e93b06b4db9f4e906a6e3c117ae6135cb70ee294c8364f0",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    },
+    {
+      "indicator_id": "sic_meso_layer_infection_contact_ratio",
+      "code_sha256": "69fead8868c708841bd9966f947ecc31f8fcbe17235b3e6dad397f5010f7b8ba",
+      "decision": "approved",
+      "mathematical_review": "Fixed window=1; observed infection labels/layers and potential-contact row denominator. Zero counts are actual event counts; zero denominators are NaN. Four layer columns must be retained as separate features.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "events": [
+            "layer",
+            "step"
+          ],
+          "contacts": [
+            "layer",
+            "step"
+          ]
+        },
+        "unresolved_access": [],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "6905e4d2c1eb89f9e219878a762f609a66891afab04721f4dd094fd52f276e04",
+      "config_sha256": "a8000f782caf2271c59502bf95eb51749b5e8a7ab4fc2d5b87defb44b94c0cf4",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    },
+    {
+      "indicator_id": "sic_macro_layer_entropy",
+      "code_sha256": "8d5f83024770e0e245dc396ff43421371e83ce0b9c59647ada859c073fb7d9d8",
+      "decision": "approved",
+      "mathematical_review": "Normalized entropy of actual infection-layer counts with K from observed layers; no infection events means NaN, not zero. Actual event/contact layer domains agree in this run.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "events": [
+            "layer",
+            "step"
+          ],
+          "contacts": [
+            "layer",
+            "step"
+          ]
+        },
+        "unresolved_access": [],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "ab32dabeac86572a96f807d43a72ef66bcf857e80f477ee6d02cf6f168e16f4d",
+      "config_sha256": "19f82dcff50e410c3e0fe2fe25e0dcf56fe950c615fcdd0eada48fd089cf7b43",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    },
+    {
+      "indicator_id": "icts_micro_quarantine_contact_ratio",
+      "code_sha256": "aaf08aedfb0fffaac9184f092ab0ecba960129df080de1d1c00025e4eb1e0eff",
+      "decision": "rejected",
+      "mathematical_review": "The definition specifies a ratio for each quarantine-onset event, but the function collapses onsets to a per-step mean. In addition, missing before values become false and can qualify as onsets despite the config rule, and negative sentinels are not explicitly excluded. The supplied onset/contacts data do not trigger the latter conditions; the observation-unit mismatch remains. Not executed.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "events": [
+            "after",
+            "agent_id",
+            "before",
+            "run_id",
+            "state",
+            "step"
+          ],
+          "contacts": [
+            "agent_id",
+            "partner_id",
+            "run_id",
+            "step"
+          ]
+        },
+        "unresolved_access": [
+          "contacts: dynamic indexing or boolean/positional selection"
+        ],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "32762ee7c00e4c0ce36a567221b0e772613741832897eb958c34db5d866006b9",
+      "config_sha256": "6aabca5639107f413116a861682671ddfdb64e95eb9d5f415a4e8821043db4d7",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    },
+    {
+      "indicator_id": "icts_meso_layer_contact_change",
+      "code_sha256": "9dbb537969039edd56314a26dbbf68d722595056a4ea0d9e0ee866933f3d3943",
+      "decision": "approved",
+      "mathematical_review": "Median of observed pre/post layer contact-count changes at strict quarantine-count increases. The generated config explicitly broadcasts this run-level, data-derived statistic. This is one independent run-level estimate, not 61 independent temporal observations; retain a constant-series warning.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "contacts": [
+            "layer",
+            "step"
+          ],
+          "model_states": [
+            "quarantined",
+            "step"
+          ]
+        },
+        "unresolved_access": [
+          "model_states: dynamic indexing or boolean/positional selection"
+        ],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "f53b30ec73edbcaa6ec30bd2bacd5ac264fde0f230ebfdfb3700028ab691f228",
+      "config_sha256": "1ea5028f66a197b5359151dfbcd3c18b44e268171b481420bb412f40ce765769",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    },
+    {
+      "indicator_id": "icts_macro_city_contact_change_on_quarantine_increase",
+      "code_sha256": "79529d5488de86c0f7fc2c67191c04e3448e94ae23270aa1f72d02b6b2db1870",
+      "decision": "approved",
+      "mathematical_review": "A-B uses actual consecutive-step contact-count differences partitioned by positive versus zero quarantine-count change. Config broadcasts the data-derived run-level scalar. Record one independent estimate and constant-series warning; no causal-effect claim.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "contacts": [
+            "step"
+          ],
+          "model_states": [
+            "quarantined",
+            "step"
+          ]
+        },
+        "unresolved_access": [
+          "model_states: dynamic indexing or boolean/positional selection"
+        ],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "a6790550bb1d83dca622024268a95bca474e81bf1a70962950cfe52df9a45def",
+      "config_sha256": "85cfdddbb0110644774c452e5b539b81607221a8b929cdc95de78be8a5fdc9a4",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    }
+  ]
+}

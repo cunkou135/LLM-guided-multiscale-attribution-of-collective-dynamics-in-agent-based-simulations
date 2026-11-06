@@ -47,7 +47,8 @@ def assemble_graph(context, code_call, root):
             file=folder/f'{definition["indicator_id"]}.py'
             if file.exists() and file.read_text(encoding='utf-8')!=code['python_code']:
                 raise ValueError(f'Generated code modified outside generation: {file.name}')
-            file.write_text(code['python_code'],encoding='utf-8')
+            if not file.exists():
+                file.write_text(code['python_code'],encoding='utf-8')
         nodes.append({**definition,**{k:v for k,v in code.items() if k!='indicator_id'},
                       'node_id':definition['indicator_id'],'code_file':file.relative_to(root).as_posix() if file else None,
                       'code_sha256':digest(file) if file else None,'generation_call':code_call,'execution':{}})

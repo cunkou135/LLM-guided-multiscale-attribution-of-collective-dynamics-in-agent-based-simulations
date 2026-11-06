@@ -30,13 +30,9 @@ python -m causal_graph --profile model_a --run-dir results/<run_a> --run-dir res
 
 ## 执行、恢复及输出
 
-默认调用已有 Trajectory.compute_isolated，必须预先具备 Docker 及镜像：
+本项目的本地科研执行路径不要求 Docker 或容器。先生成、逐份审查代码并批准精确 SHA-256，再显式选择 configs/local_trusted.yaml 或 --execution-mode trusted_reviewed，在当前 Python 环境的独立子进程中计算。原隔离接口保留为兼容选项，但本次不使用、不安装。
 
-```powershell
-docker build -t abms-indicator:1 causal_graph/sandbox
-```
-
-没有 Docker 时不回退到宿主 Python。可先 --generate-only 保存模型原始代码。可信模式需要实际人工审查和精确哈希批准：review-file 包含 reviewer、reviewed_at、notes、code_sha256（指标 ID 到代码 SHA-256 的映射），然后明确使用 --execution-mode trusted_reviewed --review-file <file>。普通工作进程、AST 检查与超时不是不可信代码沙箱。无法实现的定义保留 implementation_status=unavailable、failure_reason，不生成替代函数。
+可先 --generate-only 保存原始代码。审核文件包含 reviewer、reviewed_at、notes、code_sha256（通过代码的精确 SHA-256），可选 rejections 为未通过函数记录具体原因及哈希。未批准、哈希变化或被拒绝的函数不执行。本次审核由用户明确授权的 Codex 逐份完成，记录实际审核身份，不冒称人工签名。子进程保留超时、完整 stdout/stderr、请求配置、返回值及异常；它是可信代码执行方式，不宣称安全沙箱。
 
 candidate_graph.json/.graphml 保留全部假设、实现及逐运行状态；executable_graph.json/.graphml 只保留所有指定运行都计算成功的节点及原有边；per_run/<run_id>/ 保留每运行子图。成功序列为 indicator_series/<run_id>/<indicator_id>.parquet，包含 run_id、indicator_id、step、feature、value。节点 node_id==indicator_id，执行成功不等于因果关系获得验证。
 
@@ -54,3 +50,28 @@ python -m causal_graph.tests.validate_logs --output causal_graph/results/new_off
 ```
 
 离线测试替身与真实模型测试严格区分。当前真实调用证据及执行限制见 [验收报告](docs/VALIDATION_REPORT.md) 和 [真实模型测试报告](docs/LIVE_LLM_TEST_REPORT.md)；方法、步骤、格式分别见 docs/METHODS_ALIGNMENT.md、PIPELINE.md、OUTPUT_SCHEMA.md。
+
+## 只恢复本地计算，不调用模型
+
+--execute-only 必须配合 --resume，禁止模型调用。它复用并验证全部六类检查点，确认原变量、数学定义、函数和边未变化；允许执行器源码升级，原生成身份和源码记录保留，另存当前 execution_software.json。输入、模型配置、想定、数据 Schema、模板、生成上限或原始响应变化仍拒绝复用；缺少检查点直接失败，不补发模型请求。
+
+本次原实验的完整运行命令（没有 API Key 也可恢复，复用旧生成上限配置）：
+
+```powershell
+python -m causal_graph --config causal_graph/results/v2_live_20261106/llm.yaml --pipeline-config causal_graph/results/local_execution_final_20261106/pipeline_local.yaml --run-dir results/2a815b4dfe4f47b8ac2416fac04456e5 --resume causal_graph/results/v2_live_20261106/fish --execute-only --review-file causal_graph/results/local_execution_final_20261106/fish/review.json
+python -m causal_graph.tests.validate_reviewed --audit-root causal_graph/results/new_reviewed_validation
+```
+
+后一个命令重做 12 份固定原代码的审查记录、执行及独立数学验算，不调用 LLM；审查规则只适用于这批已发布的精确源文件，不能自动批准未来代码。普通 --resume 仍执行原来的严格源码一致性检查。审核需结合数学定义；config 的新增聚合说明不能静默改变原定义的观测单位。
+
+微观输出支持 (step, agent_id) 等命名 MultiIndex，保存为包含 entity_id 的长表；不擅自取均值。entity_id 为原主体键的 JSON 对象字符串。后续按 (run_id, indicator_id, entity_id, feature, step) 读取，不能将不同主体混成重复时间或把主体编号当测量值。
+
+独立验算是检查，绝不替代模型函数输出。当前 12 个指标中 8 个通过、2 个审核拒绝、2 个结果验收未通过；严格数值容差和原始缺失列保留。报告详见 docs/LOCAL_EXECUTION_REPORT.md。
+
+## 可视化所有真实因果图
+
+```powershell
+python -m causal_graph.visualize_graphs --experiment causal_graph/results/v2_live_20261106/fish --experiment causal_graph/results/v2_live_20261106/covasim --output causal_graph/results/new_graph_views
+```
+
+导出每场景的完整候选图、可执行图、三类方向分图和逐运行图，共 12 个 SVG/PNG；overview.png 对照四个主图，index.html 可切换视图并点选定义/边理由。绘图不修改原图，不添加关系；边颜色/线型只表示方向类别。执行失败节点在完整图中仍保留并标注，所有边仍未经统计因果检验。图形依赖使用本机现有 Matplotlib/Pillow，另提供可选安装项 .[graphs]。

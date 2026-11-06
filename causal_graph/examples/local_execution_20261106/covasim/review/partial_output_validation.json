@@ -1,0 +1,27 @@
+{
+  "valid": false,
+  "reference": "independent calculation from original Trajectory records; not substituted output",
+  "coordinates_checked": 305,
+  "finite_values_checked": 244,
+  "max_absolute_error": 0.0,
+  "rtol": 1e-07,
+  "atol": 1e-09,
+  "formula_matches_definition": true,
+  "numeric_series_valid": false,
+  "reason": "The seed_infection feature has zero finite observations; no column was removed to bypass validation.",
+  "returned_result": "execution\\3249f90463154305aed53504106b3dae\\sic_meso_layer_infection_contact_ratio\\attempt_001\\returned_result.parquet",
+  "finite_by_feature": {
+    "c": 61,
+    "h": 61,
+    "s": 61,
+    "seed_infection": 0,
+    "w": 61
+  },
+  "missing_by_feature": {
+    "c": 0,
+    "h": 0,
+    "s": 0,
+    "seed_infection": 61,
+    "w": 0
+  }
+}

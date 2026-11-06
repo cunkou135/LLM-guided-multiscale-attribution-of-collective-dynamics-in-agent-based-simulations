@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-11-06T15:48:19.835998+00:00",
+  "llm_requests": 0,
+  "original_generation_and_code_files_unchanged": true,
+  "original_candidate_edges": {
+    "fish": 15,
+    "covasim": 20
+  },
+  "original_functions": 12,
+  "new_series_are_generated_code_outputs_not_references": true
+}

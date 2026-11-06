@@ -1,0 +1,51 @@
+{
+  "frag_micro_nn_distance": {
+    "valid": true,
+    "reference": "independent calculation from original Trajectory records; not substituted output",
+    "coordinates_checked": 42000,
+    "finite_values_checked": 42000,
+    "max_absolute_error": 0.0,
+    "rtol": 1e-07,
+    "atol": 1e-09
+  },
+  "frag_meso_contact_component_count": {
+    "valid": true,
+    "reference": "independent calculation from original Trajectory records; not substituted output",
+    "coordinates_checked": 21,
+    "finite_values_checked": 21,
+    "max_absolute_error": 0.0,
+    "rtol": 1e-07,
+    "atol": 1e-09
+  },
+  "frag_macro_largest_component_fraction": {
+    "valid": true,
+    "reference": "independent calculation from original Trajectory records; not substituted output",
+    "coordinates_checked": 21,
+    "finite_values_checked": 21,
+    "max_absolute_error": 0.0,
+    "rtol": 1e-07,
+    "atol": 1e-09
+  },
+  "elong_micro_axis_alignment": {
+    "valid": true,
+    "reference": "independent calculation from original Trajectory records; not substituted output",
+    "coordinates_checked": 42000,
+    "finite_values_checked": 42000,
+    "max_absolute_error": 3.3688329903469594e-14,
+    "rtol": 1e-07,
+    "atol": 1e-09
+  },
+  "elong_meso_local_eigen_ratio": {
+    "valid": false,
+    "error": "\nNot equal to tolerance rtol=1e-07, atol=1e-09\n\nMismatched elements: 1 / 21 (4.76%)\nMax absolute difference: 6.99494838\nMax relative difference: 3.21743644e-07\n x: array([         nan,          nan, 6.327701e+00, 1.075033e+02,\n       7.271408e+00, 5.043703e+00, 2.663191e+02, 3.323982e+00,\n       2.084087e+02, 5.796471e+00, 3.364291e+00, 4.354002e+02,...\n y: array([         nan,          nan, 6.327701e+00, 1.075033e+02,\n       7.271408e+00, 5.043703e+00, 2.663191e+02, 3.323982e+00,\n       2.084087e+02, 5.796471e+00, 3.364291e+00, 4.354002e+02,..."
+  },
+  "elong_macro_global_eigen_ratio": {
+    "valid": true,
+    "reference": "independent calculation from original Trajectory records; not substituted output",
+    "coordinates_checked": 21,
+    "finite_values_checked": 21,
+    "max_absolute_error": 1.7763568394002505e-15,
+    "rtol": 1e-07,
+    "atol": 1e-09
+  }
+}

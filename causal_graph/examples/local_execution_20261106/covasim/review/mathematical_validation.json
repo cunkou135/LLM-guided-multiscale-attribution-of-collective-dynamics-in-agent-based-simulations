@@ -1,0 +1,35 @@
+{
+  "sic_macro_layer_entropy": {
+    "valid": true,
+    "reference": "independent calculation from original Trajectory records; not substituted output",
+    "coordinates_checked": 61,
+    "finite_values_checked": 57,
+    "max_absolute_error": 0.0,
+    "rtol": 1e-07,
+    "atol": 1e-09
+  },
+  "icts_meso_layer_contact_change": {
+    "valid": true,
+    "reference": "independent calculation from original Trajectory records; not substituted output",
+    "coordinates_checked": 244,
+    "finite_values_checked": 244,
+    "max_absolute_error": 0.0,
+    "rtol": 1e-07,
+    "atol": 1e-09,
+    "quantity_scope": "run_level_scalar_broadcast",
+    "independent_estimates_per_feature": 1,
+    "warning": "Repeated rows are the same data-derived run-level estimate, not independent temporal observations."
+  },
+  "icts_macro_city_contact_change_on_quarantine_increase": {
+    "valid": true,
+    "reference": "independent calculation from original Trajectory records; not substituted output",
+    "coordinates_checked": 61,
+    "finite_values_checked": 61,
+    "max_absolute_error": 0.0,
+    "rtol": 1e-07,
+    "atol": 1e-09,
+    "quantity_scope": "run_level_scalar_broadcast",
+    "independent_estimates_per_feature": 1,
+    "warning": "Repeated rows are the same data-derived run-level estimate, not independent temporal observations."
+  }
+}

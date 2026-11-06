@@ -1,0 +1,19 @@
+{
+  "indicator_id": "elong_meso_local_eigen_ratio",
+  "step": 13,
+  "generated_value": 21740757.806902323,
+  "independent_reference": 21740750.81195394,
+  "absolute_difference": 6.994948383420706,
+  "relative_difference": 3.217436437188085e-07,
+  "rtol": 1e-07,
+  "atol": 1e-09,
+  "decision": "failed; tolerance not relaxed and generated values not altered",
+  "cause": "Near-collinear three-fish neighborhood with highly conditioned covariance; rounding/order sensitivity in a positive small eigenvalue.",
+  "worst_neighborhood_agent_id": 1532,
+  "neighborhood_size": 3,
+  "eigenvalues": [
+    1.7253209971812566e-10,
+    4.88001921117746
+  ],
+  "condition_number": 28284703073.51613
+}

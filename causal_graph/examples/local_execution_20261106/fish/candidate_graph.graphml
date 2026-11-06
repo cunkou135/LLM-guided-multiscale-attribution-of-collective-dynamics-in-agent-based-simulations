@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d13" for="edge" attr.name="target_phenomenon" attr.type="string"/>
+<key id="d12" for="edge" attr.name="source_phenomenon" attr.type="string"/>
+<key id="d11" for="edge" attr.name="relation_type" attr.type="string"/>
+<key id="d10" for="edge" attr.name="semantic_rationale" attr.type="string"/>
+<key id="d9" for="edge" attr.name="scale_direction" attr.type="string"/>
+<key id="d8" for="edge" attr.name="edge_id" attr.type="string"/>
+<key id="d7" for="node" attr.name="units" attr.type="string"/>
+<key id="d6" for="node" attr.name="mathematical_definition" attr.type="string"/>
+<key id="d5" for="node" attr.name="description" attr.type="string"/>
+<key id="d4" for="node" attr.name="phenomenon_id" attr.type="string"/>
+<key id="d3" for="node" attr.name="scale" attr.type="string"/>
+<key id="d2" for="node" attr.name="name" attr.type="string"/>
+<key id="d1" for="graph" attr.name="schema_version" attr.type="string"/>
+<key id="d0" for="graph" attr.name="evidence_status" attr.type="string"/>
+<graph edgedefault="directed"><data key="d0">unvalidated_semantic_candidates</data>
+<data key="d1">2.0</data>
+<node id="frag_micro_nn_distance">
+  <data key="d2">Focal fish nearest-neighbor distance</data>
+  <data key="d3">micro</data>
+  <data key="d4">school_fragmentation</data>
+  <data key="d5">Per-fish Euclidean distance to the closest other fish at the same run and step; a local spacing proxy for fragmentation.</data>
+  <data key="d6">For run r and step t, let V_t={i: role_i(t)='fish'}. For i in V_t, d_i(t)=min_{j in V_t, j!=i} sqrt((x_i(t)-x_j(t))^2+(y_i(t)-y_j(t))^2). If |V_t|&lt;2, d_i(t)=NaN.</data>
+  <data key="d7">model length units</data>
+</node>
+<node id="frag_meso_contact_component_count">
+  <data key="d2">Fish contact-graph component count</data>
+  <data key="d3">meso</data>
+  <data key="d4">school_fragmentation</data>
+  <data key="d5">Number of connected components of the undirected contact graph among fish at a sampled step; higher values indicate more spatial separation as recorded by native contacts.</data>
+  <data key="d6">At (r,t), build G_t=(V_t,E_t) with V_t={i: role_i(t)='fish'} and E_t={{i,j}: i,j in V_t, i!=j, and (agent_id=i, partner_id=j) or (agent_id=j, partner_id=i) appears in contacts at (r,t)}. Let C_1(t),...,C_{K(t)}(t) be the connected components of G_t. K(t)=number of components.</data>
+  <data key="d7">count</data>
+</node>
+<node id="frag_macro_largest_component_fraction">
+  <data key="d2">Largest fish contact-component fraction</data>
+  <data key="d3">macro</data>
+  <data key="d4">school_fragmentation</data>
+  <data key="d5">Fraction of fish in the largest connected component of the native contact graph at a sampled step; decreases as the school fragments into multiple components.</data>
+  <data key="d6">Using G_t and components C_k(t) from the contact graph at (r,t), L(t)=max_k |C_k(t)|/|V_t|, with L(t)=NaN if |V_t|=0.</data>
+  <data key="d7">dimensionless</data>
+</node>
+<node id="elong_micro_axis_alignment">
+  <data key="d2">Focal fish heading alignment with group principal axis</data>
+  <data key="d3">micro</data>
+  <data key="d4">school_elongation</data>
+  <data key="d5">Per-fish absolute cosine between its heading vector and the first principal axis of all fish positions at the same run and step; values near 1 mean the individual is oriented along the group elongation axis.</data>
+  <data key="d6">For run r and step t, let V_t={i: role_i(t)='fish'}. Let mu(t)=(1/|V_t|) sum_{j in V_t} p_j(t) and Sigma(t)=(1/(|V_t|-1)) sum_{j in V_t} (p_j(t)-mu(t))(p_j(t)-mu(t))^T with p_j=(x_j,y_j). Let lambda1&gt;=lambda2 be eigenvalues of Sigma(t) and u1(t) a unit eigenvector for lambda1. For i in V_t, h_i(t)=(cos heading_i(t), sin heading_i(t)); a_i(t)=|h_i(t) dot u1(t)|. If |V_t|&lt;3 or lambda1=lambda2, set a_i(t)=NaN.</data>
+  <data key="d7">dimensionless</data>
+</node>
+<node id="elong_meso_local_eigen_ratio">
+  <data key="d2">Mean contact-neighborhood elongation ratio</data>
+  <data key="d3">meso</data>
+  <data key="d4">school_elongation</data>
+  <data key="d5">Average eigenvalue ratio of the position covariance of each fish's native contact neighborhood; captures local anisotropic stretching around individuals without a distance threshold.</data>
+  <data key="d6">At (r,t), for fish i let N_i(t)={j: {i,j} in E_t} and S_i(t)={i} union N_i(t). If |S_i(t)|&gt;=3 and lambda2_i(t)&gt;0, define R_i(t)=lambda1_i(t)/lambda2_i(t) from the sample covariance of positions in S_i(t). The meso indicator is the mean of R_i(t) over eligible i. If no eligible i, NaN.</data>
+  <data key="d7">dimensionless</data>
+</node>
+<node id="elong_macro_global_eigen_ratio">
+  <data key="d2">Global fish position eigenvalue ratio</data>
+  <data key="d3">macro</data>
+  <data key="d4">school_elongation</data>
+  <data key="d5">Ratio of the largest to second-largest eigenvalue of the covariance of all fish positions at a sampled step; a direct measure of school-wide elongation.</data>
+  <data key="d6">For V_t={i: role_i(t)='fish'} at (r,t), let mu(t)=(1/|V_t|) sum_{j in V_t} p_j(t) and Sigma(t)=(1/(|V_t|-1)) sum_{j in V_t} (p_j(t)-mu(t))(p_j(t)-mu(t))^T. Let lambda1(t)&gt;=lambda2(t)&gt;=0 be eigenvalues of Sigma(t). R(t)=lambda1(t)/lambda2(t) if lambda2(t)&gt;0; NaN if lambda2(t)=0 or |V_t|&lt;3.</data>
+  <data key="d7">dimensionless</data>
+</node>
+<edge source="frag_micro_nn_distance" target="frag_meso_contact_component_count">
+  <data key="d8">upward__frag_nn_to_components</data>
+  <data key="d9">upward</data>
+  <data key="d10">局部最近邻间距改变鱼之间形成接触边的概率：当许多鱼彼此远离时，原生接触图更易断开，从而增加连通分量数；该关系依赖空间排布而非由定义直接决定。</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_fragmentation</data>
+  <data key="d13">school_fragmentation</data>
+</edge>
+<edge source="frag_micro_nn_distance" target="frag_macro_largest_component_fraction">
+  <data key="d8">upward__frag_nn_to_largest_fraction</data>
+  <data key="d9">upward</data>
+  <data key="d10">个体局部间距增大会削弱跨邻域接触链，使最大连通分量占比可能下降；但若存在少数稠密核心，影响可被缓冲，因此不是确定性聚合。</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_fragmentation</data>
+  <data key="d13">school_fragmentation</data>
+</edge>
+<edge source="frag_micro_nn_distance" target="elong_micro_axis_alignment">
+  <data key="d8">intra_scale__micro_nn_spacing_to_axis_alignment</data>
+  <data key="d9">intra_scale</data>
+  <data key="d10">A fish with larger nearest-neighbor spacing has weaker local social constraint from nearby schoolmates; over subsequent steps its heading may be less entrained by the group's principal axis, so its absolute axis alignment can change. This is a dynamic micro-level candidate effect rather than a definitional aggregation.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_fragmentation</data>
+  <data key="d13">school_elongation</data>
+</edge>
+<edge source="frag_meso_contact_component_count" target="frag_macro_largest_component_fraction">
+  <data key="d8">upward__frag_components_to_largest</data>
+  <data key="d9">upward</data>
+  <data key="d10">鱼群分裂为更多连通分量时，最大分量占比通常可能降低；但多分量可包含一个主导核心，故这是动态结构候选而非代数恒等。</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_fragmentation</data>
+  <data key="d13">school_fragmentation</data>
+</edge>
+<edge source="frag_meso_contact_component_count" target="frag_micro_nn_distance">
+  <data key="d8">downward__frag_components_to_nn_distance</data>
+  <data key="d9">downward</data>
+  <data key="d10">When the fish contact graph splits into more components, individual fish are less likely to be held within a dense common neighborhood; this can allow local nearest-neighbor spacing to increase as fish adjust to sparse or disconnected local groups. The relation is probabilistic because contact components and metric nearest-neighbor distances are not the same representation.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_fragmentation</data>
+  <data key="d13">school_fragmentation</data>
+</edge>
+<edge source="frag_macro_largest_component_fraction" target="elong_meso_local_eigen_ratio">
+  <data key="d8">downward__frag_macro_to_local_eigen</data>
+  <data key="d9">downward</data>
+  <data key="d10">A high largest-component fraction indicates a cohesive connected school whose local contact neighborhoods are constrained by many neighboring fish, tending to reduce local anisotropic stretching. As the largest fraction falls and the school breaks into clusters, local neighborhoods near boundaries or isolated groups can stretch more freely, increasing local elongation ratios.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_fragmentation</data>
+  <data key="d13">school_elongation</data>
+</edge>
+<edge source="frag_macro_largest_component_fraction" target="frag_micro_nn_distance">
+  <data key="d8">downward__frag_macro_to_nn_distance</data>
+  <data key="d9">downward</data>
+  <data key="d10">A declining largest-component fraction means the school is increasingly concentrated in smaller components or isolated groups; fish outside the dominant connected cluster experience weaker collective spacing constraints and can exhibit larger nearest-neighbor gaps. This is a plausible macro-to-micro dynamic effect rather than a direct definition, since nearest-neighbor distance is measured independently of graph membership.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_fragmentation</data>
+  <data key="d13">school_fragmentation</data>
+</edge>
+<edge source="elong_micro_axis_alignment" target="elong_meso_local_eigen_ratio">
+  <data key="d8">upward__elong_axis_to_local_ratio</data>
+  <data key="d9">upward</data>
+  <data key="d10">个体朝向与群体主轴对齐会通过定向运动改变局部接触邻域的空间排布，使相邻鱼的位置协方差沿运动方向更易拉伸；局部邻域组成和转向限制使该效应非确定。</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_elongation</data>
+  <data key="d13">school_elongation</data>
+</edge>
+<edge source="elong_micro_axis_alignment" target="elong_macro_global_eigen_ratio">
+  <data key="d8">upward__elong_axis_to_global_ratio</data>
+  <data key="d9">upward</data>
+  <data key="d10">大量个体沿群体主轴对齐时，定向游动可能累积为整体位置分布的各向异性拉伸；个体转向上限和随机扰动使对齐不必然转化为等比例全局拉伸。</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_elongation</data>
+  <data key="d13">school_elongation</data>
+</edge>
+<edge source="elong_meso_local_eigen_ratio" target="elong_macro_global_eigen_ratio">
+  <data key="d8">upward__elong_local_to_global</data>
+  <data key="d9">upward</data>
+  <data key="d10">若多个局部接触邻域同时沿相近方向拉长，它们的空间各向异性可汇聚成全局伸长；若局部主轴方向分散则可能相互抵消，因此不是简单求和定义。</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_elongation</data>
+  <data key="d13">school_elongation</data>
+</edge>
+<edge source="elong_meso_local_eigen_ratio" target="elong_micro_axis_alignment">
+  <data key="d8">downward__local_eigen_to_axis_alignment</data>
+  <data key="d9">downward</data>
+  <data key="d10">An elongated local contact neighborhood provides a directional social configuration: alignment and attraction toward neighbors can bias a focal fish to head along the local stretch axis. Thus meso-level local anisotropy can influence micro-level heading alignment with the group principal axis, without making that alignment deterministic.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_elongation</data>
+  <data key="d13">school_elongation</data>
+</edge>
+<edge source="elong_meso_local_eigen_ratio" target="frag_meso_contact_component_count">
+  <data key="d8">intra_scale__meso_local_stretch_to_component_count</data>
+  <data key="d9">intra_scale</data>
+  <data key="d10">Anisotropic local contact-neighborhood geometry can reflect stretching along one direction that breaks lateral contacts; as local neighborhoods become more elongated, the contact graph may later split into more components. This is a plausible meso-level dynamic relation mediated by changing contacts, not a direct aggregation of the same quantity.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_elongation</data>
+  <data key="d13">school_fragmentation</data>
+</edge>
+<edge source="elong_macro_global_eigen_ratio" target="elong_meso_local_eigen_ratio">
+  <data key="d8">downward__elong_macro_to_local_eigen</data>
+  <data key="d9">downward</data>
+  <data key="d10">School-wide anisotropic stretching changes how local contact neighborhoods are embedded in the group: when the global position covariance is elongated, differential motion and contact rearrangement can transmit that anisotropy into local neighborhoods, making their covariance more elongated. This is not a deterministic aggregation because local contact sets and boundary effects vary independently.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_elongation</data>
+  <data key="d13">school_elongation</data>
+</edge>
+<edge source="elong_macro_global_eigen_ratio" target="frag_meso_contact_component_count">
+  <data key="d8">downward__elong_macro_to_frag_components</data>
+  <data key="d9">downward</data>
+  <data key="d10">Global elongation along a principal axis can separate fish that were previously in contact, especially across the stretched direction, thereby breaking native contact links and increasing the number of contact-graph components. The effect is dynamic and not definitional because elongation does not determine which contacts persist.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_elongation</data>
+  <data key="d13">school_fragmentation</data>
+</edge>
+<edge source="elong_macro_global_eigen_ratio" target="frag_macro_largest_component_fraction">
+  <data key="d8">intra_scale__macro_global_stretch_to_largest_component</data>
+  <data key="d9">intra_scale</data>
+  <data key="d10">Greater global position elongation spreads fish along a major axis and can push some pairwise distances beyond contact range, which may reduce the fraction of fish remaining in the largest contact component. The candidate effect is mediated by contact formation and is not a definitional identity between the two macro indicators.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">school_elongation</data>
+  <data key="d13">school_fragmentation</data>
+</edge>
+</graph></graphml>

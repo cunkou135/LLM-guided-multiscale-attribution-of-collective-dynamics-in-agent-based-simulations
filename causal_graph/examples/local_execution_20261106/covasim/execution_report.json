@@ -1,0 +1,558 @@
+[
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "sic_micro_prior_setting_degree",
+    "mode": "trusted_reviewed",
+    "code_sha256": "0851a97e71f5a682d586c6eefd8a19b6404478d34b72ad688ad9921abefca2f5",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "events": [
+        "run_id",
+        "step",
+        "agent_id",
+        "layer",
+        "event_type",
+        "state"
+      ],
+      "contacts": [
+        "run_id",
+        "step",
+        "layer",
+        "agent_id",
+        "partner_id"
+      ]
+    },
+    "started_at": "2026-11-06T15:33:06.824073+00:00",
+    "status": "failed",
+    "source_hashes": {
+      "agent_states.parquet": "f0cc6649623f48b79d92dd850987b46a266a4584e37f4fad1af5b19097a8fa4b",
+      "contacts.parquet": "0793defd7960a1fb81229dafb28f6d019c72cb143625319321f9e8ba479d7850",
+      "events.parquet": "9f09be38dd3c311a16fc24904f8cd037d5b571f0410882e0725037fbb5127799",
+      "field_catalog.json": "80c2f2ed8833ec82488512a6c86270d485e8d730bd9bdd535be8b49e45f9e0aa",
+      "manifest.json": "c4907977b6c355381d3926d6ff5ae9e8030cb8855fbe4edec37c72d665d637bd",
+      "model_states.parquet": "3b70d1eb6399a31cebc20cba5d29df257fead0f6453306ac95f60fbb02d9927b",
+      "native_parameters.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "native_parameters_final.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "resolved_config.yaml": "e3873431821277102ae58bc4a92d3a8fb694449d13abf07cbeb9dd7a76f0a9f3",
+      "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+    },
+    "execution_started": false,
+    "data_contract_valid": true,
+    "error_type": "review_rejected",
+    "error": "ReviewRejected: The mathematical definition specifies D(e) for each infection event. The function returns a per-step mean, so event-level observations and variation are discarded; the later config note does not preserve the original observation unit. It also lacks the specified negative-sentinel filter (the supplied contacts contain no negative IDs). Original code is retained and not executed.",
+    "ended_at": "2026-11-06T15:33:06.827074+00:00",
+    "elapsed_seconds": 0.0
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "sic_meso_layer_infection_contact_ratio",
+    "mode": "trusted_reviewed",
+    "code_sha256": "69fead8868c708841bd9966f947ecc31f8fcbe17235b3e6dad397f5010f7b8ba",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "events": [
+        "step",
+        "layer",
+        "event_type",
+        "state"
+      ],
+      "contacts": [
+        "step",
+        "layer"
+      ]
+    },
+    "started_at": "2026-11-06T15:33:06.836075+00:00",
+    "status": "failed",
+    "source_hashes": {
+      "agent_states.parquet": "f0cc6649623f48b79d92dd850987b46a266a4584e37f4fad1af5b19097a8fa4b",
+      "contacts.parquet": "0793defd7960a1fb81229dafb28f6d019c72cb143625319321f9e8ba479d7850",
+      "events.parquet": "9f09be38dd3c311a16fc24904f8cd037d5b571f0410882e0725037fbb5127799",
+      "field_catalog.json": "80c2f2ed8833ec82488512a6c86270d485e8d730bd9bdd535be8b49e45f9e0aa",
+      "manifest.json": "c4907977b6c355381d3926d6ff5ae9e8030cb8855fbe4edec37c72d665d637bd",
+      "model_states.parquet": "3b70d1eb6399a31cebc20cba5d29df257fead0f6453306ac95f60fbb02d9927b",
+      "native_parameters.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "native_parameters_final.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "resolved_config.yaml": "e3873431821277102ae58bc4a92d3a8fb694449d13abf07cbeb9dd7a76f0a9f3",
+      "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+    },
+    "execution_started": true,
+    "data_contract_valid": true,
+    "code_review": {
+      "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+      "reviewed_at": "2026-11-06T15:33:04.241366+00:00",
+      "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature."
+    },
+    "error_type": "execution_or_validation_error",
+    "error": "ValueError: seed_infection: insufficient actual observations (0 < 3)",
+    "ended_at": "2026-11-06T15:33:08.983643+00:00",
+    "elapsed_seconds": 2.1559999999954016
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "sic_macro_layer_entropy",
+    "mode": "trusted_reviewed",
+    "code_sha256": "8d5f83024770e0e245dc396ff43421371e83ce0b9c59647ada859c073fb7d9d8",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "events": [
+        "step",
+        "layer",
+        "event_type",
+        "state"
+      ],
+      "contacts": [
+        "step",
+        "layer"
+      ]
+    },
+    "started_at": "2026-11-06T15:33:08.989644+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "f0cc6649623f48b79d92dd850987b46a266a4584e37f4fad1af5b19097a8fa4b",
+      "contacts.parquet": "0793defd7960a1fb81229dafb28f6d019c72cb143625319321f9e8ba479d7850",
+      "events.parquet": "9f09be38dd3c311a16fc24904f8cd037d5b571f0410882e0725037fbb5127799",
+      "field_catalog.json": "80c2f2ed8833ec82488512a6c86270d485e8d730bd9bdd535be8b49e45f9e0aa",
+      "manifest.json": "c4907977b6c355381d3926d6ff5ae9e8030cb8855fbe4edec37c72d665d637bd",
+      "model_states.parquet": "3b70d1eb6399a31cebc20cba5d29df257fead0f6453306ac95f60fbb02d9927b",
+      "native_parameters.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "native_parameters_final.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "resolved_config.yaml": "e3873431821277102ae58bc4a92d3a8fb694449d13abf07cbeb9dd7a76f0a9f3",
+      "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+    },
+    "execution_started": true,
+    "data_contract_valid": true,
+    "code_review": {
+      "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+      "reviewed_at": "2026-11-06T15:33:04.241366+00:00",
+      "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature."
+    },
+    "series_file": "indicator_series/3249f90463154305aed53504106b3dae/sic_macro_layer_entropy.parquet",
+    "series_sha256": "2fe88bd2ce1f3d64edf52698b4ee1921b855a23581fd11a7bbeb1e9a4a583ec0",
+    "quality": {
+      "rows": 61,
+      "time_steps": 61,
+      "entity_fields": [],
+      "entities": 1,
+      "columns": {
+        "value": {
+          "finite_observations": 57,
+          "minimum_observations_per_entity": 57,
+          "missing_fraction": 0.06557377049180328,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 60,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "ended_at": "2026-11-06T15:33:11.052951+00:00",
+    "elapsed_seconds": 2.063000000001921,
+    "mathematical_validation": {
+      "valid": true,
+      "reference": "independent calculation from original Trajectory records; not substituted output",
+      "coordinates_checked": 61,
+      "finite_values_checked": 57,
+      "max_absolute_error": 0.0,
+      "rtol": 1e-07,
+      "atol": 1e-09
+    }
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "icts_micro_quarantine_contact_ratio",
+    "mode": "trusted_reviewed",
+    "code_sha256": "aaf08aedfb0fffaac9184f092ab0ecba960129df080de1d1c00025e4eb1e0eff",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "events": [
+        "run_id",
+        "step",
+        "agent_id",
+        "state",
+        "before",
+        "after"
+      ],
+      "contacts": [
+        "run_id",
+        "step",
+        "agent_id",
+        "partner_id"
+      ]
+    },
+    "started_at": "2026-11-06T15:33:11.059473+00:00",
+    "status": "failed",
+    "source_hashes": {
+      "agent_states.parquet": "f0cc6649623f48b79d92dd850987b46a266a4584e37f4fad1af5b19097a8fa4b",
+      "contacts.parquet": "0793defd7960a1fb81229dafb28f6d019c72cb143625319321f9e8ba479d7850",
+      "events.parquet": "9f09be38dd3c311a16fc24904f8cd037d5b571f0410882e0725037fbb5127799",
+      "field_catalog.json": "80c2f2ed8833ec82488512a6c86270d485e8d730bd9bdd535be8b49e45f9e0aa",
+      "manifest.json": "c4907977b6c355381d3926d6ff5ae9e8030cb8855fbe4edec37c72d665d637bd",
+      "model_states.parquet": "3b70d1eb6399a31cebc20cba5d29df257fead0f6453306ac95f60fbb02d9927b",
+      "native_parameters.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "native_parameters_final.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "resolved_config.yaml": "e3873431821277102ae58bc4a92d3a8fb694449d13abf07cbeb9dd7a76f0a9f3",
+      "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+    },
+    "execution_started": false,
+    "data_contract_valid": true,
+    "error_type": "review_rejected",
+    "error": "ReviewRejected: The definition specifies a ratio for each quarantine-onset event, but the function collapses onsets to a per-step mean. In addition, missing before values become false and can qualify as onsets despite the config rule, and negative sentinels are not explicitly excluded. The supplied onset/contacts data do not trigger the latter conditions; the observation-unit mismatch remains. Not executed.",
+    "ended_at": "2026-11-06T15:33:11.062472+00:00",
+    "elapsed_seconds": 0.0
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "icts_meso_layer_contact_change",
+    "mode": "trusted_reviewed",
+    "code_sha256": "9dbb537969039edd56314a26dbbf68d722595056a4ea0d9e0ee866933f3d3943",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "model_states": [
+        "step",
+        "quarantined"
+      ],
+      "contacts": [
+        "step",
+        "layer"
+      ]
+    },
+    "started_at": "2026-11-06T15:33:11.068479+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "f0cc6649623f48b79d92dd850987b46a266a4584e37f4fad1af5b19097a8fa4b",
+      "contacts.parquet": "0793defd7960a1fb81229dafb28f6d019c72cb143625319321f9e8ba479d7850",
+      "events.parquet": "9f09be38dd3c311a16fc24904f8cd037d5b571f0410882e0725037fbb5127799",
+      "field_catalog.json": "80c2f2ed8833ec82488512a6c86270d485e8d730bd9bdd535be8b49e45f9e0aa",
+      "manifest.json": "c4907977b6c355381d3926d6ff5ae9e8030cb8855fbe4edec37c72d665d637bd",
+      "model_states.parquet": "3b70d1eb6399a31cebc20cba5d29df257fead0f6453306ac95f60fbb02d9927b",
+      "native_parameters.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "native_parameters_final.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "resolved_config.yaml": "e3873431821277102ae58bc4a92d3a8fb694449d13abf07cbeb9dd7a76f0a9f3",
+      "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+    },
+    "execution_started": true,
+    "data_contract_valid": true,
+    "code_review": {
+      "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+      "reviewed_at": "2026-11-06T15:33:04.241366+00:00",
+      "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature."
+    },
+    "series_file": "indicator_series/3249f90463154305aed53504106b3dae/icts_meso_layer_contact_change.parquet",
+    "series_sha256": "934dfd6236571bae46827252f2c92b21559b1122e23d155b7b080b99b7fbd537",
+    "quality": {
+      "rows": 61,
+      "time_steps": 61,
+      "entity_fields": [],
+      "entities": 1,
+      "columns": {
+        "c": {
+          "finite_observations": 61,
+          "minimum_observations_per_entity": 61,
+          "missing_fraction": 0.0,
+          "constant": true
+        },
+        "h": {
+          "finite_observations": 61,
+          "minimum_observations_per_entity": 61,
+          "missing_fraction": 0.0,
+          "constant": true
+        },
+        "s": {
+          "finite_observations": 61,
+          "minimum_observations_per_entity": 61,
+          "missing_fraction": 0.0,
+          "constant": true
+        },
+        "w": {
+          "finite_observations": 61,
+          "minimum_observations_per_entity": 61,
+          "missing_fraction": 0.0,
+          "constant": true
+        }
+      },
+      "warnings": [
+        "c: constant series; retained without causal claims",
+        "h: constant series; retained without causal claims",
+        "s: constant series; retained without causal claims",
+        "w: constant series; retained without causal claims"
+      ],
+      "start_step": 0,
+      "end_step": 60,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "ended_at": "2026-11-06T15:33:13.185744+00:00",
+    "elapsed_seconds": 2.125,
+    "mathematical_validation": {
+      "valid": true,
+      "reference": "independent calculation from original Trajectory records; not substituted output",
+      "coordinates_checked": 244,
+      "finite_values_checked": 244,
+      "max_absolute_error": 0.0,
+      "rtol": 1e-07,
+      "atol": 1e-09,
+      "quantity_scope": "run_level_scalar_broadcast",
+      "independent_estimates_per_feature": 1,
+      "warning": "Repeated rows are the same data-derived run-level estimate, not independent temporal observations."
+    }
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "icts_macro_city_contact_change_on_quarantine_increase",
+    "mode": "trusted_reviewed",
+    "code_sha256": "79529d5488de86c0f7fc2c67191c04e3448e94ae23270aa1f72d02b6b2db1870",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "contacts": [
+        "step"
+      ],
+      "model_states": [
+        "step",
+        "quarantined"
+      ]
+    },
+    "started_at": "2026-11-06T15:33:13.192745+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "f0cc6649623f48b79d92dd850987b46a266a4584e37f4fad1af5b19097a8fa4b",
+      "contacts.parquet": "0793defd7960a1fb81229dafb28f6d019c72cb143625319321f9e8ba479d7850",
+      "events.parquet": "9f09be38dd3c311a16fc24904f8cd037d5b571f0410882e0725037fbb5127799",
+      "field_catalog.json": "80c2f2ed8833ec82488512a6c86270d485e8d730bd9bdd535be8b49e45f9e0aa",
+      "manifest.json": "c4907977b6c355381d3926d6ff5ae9e8030cb8855fbe4edec37c72d665d637bd",
+      "model_states.parquet": "3b70d1eb6399a31cebc20cba5d29df257fead0f6453306ac95f60fbb02d9927b",
+      "native_parameters.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "native_parameters_final.json": "5234a89ddd41ec9e91355ac7e865d492011d45b63dec2b610b821f866f790780",
+      "resolved_config.yaml": "e3873431821277102ae58bc4a92d3a8fb694449d13abf07cbeb9dd7a76f0a9f3",
+      "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+    },
+    "execution_started": true,
+    "data_contract_valid": true,
+    "code_review": {
+      "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+      "reviewed_at": "2026-11-06T15:33:04.241366+00:00",
+      "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature."
+    },
+    "series_file": "indicator_series/3249f90463154305aed53504106b3dae/icts_macro_city_contact_change_on_quarantine_increase.parquet",
+    "series_sha256": "5ffb1143ae8a5b522622133849a128734395e95a7c5789b7c9f0fa07875de63c",
+    "quality": {
+      "rows": 61,
+      "time_steps": 61,
+      "entity_fields": [],
+      "entities": 1,
+      "columns": {
+        "value": {
+          "finite_observations": 61,
+          "minimum_observations_per_entity": 61,
+          "missing_fraction": 0.0,
+          "constant": true
+        }
+      },
+      "warnings": [
+        "value: constant series; retained without causal claims"
+      ],
+      "start_step": 0,
+      "end_step": 60,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60
+      ]
+    },
+    "ended_at": "2026-11-06T15:33:15.179415+00:00",
+    "elapsed_seconds": 1.985000000000582,
+    "mathematical_validation": {
+      "valid": true,
+      "reference": "independent calculation from original Trajectory records; not substituted output",
+      "coordinates_checked": 61,
+      "finite_values_checked": 61,
+      "max_absolute_error": 0.0,
+      "rtol": 1e-07,
+      "atol": 1e-09,
+      "quantity_scope": "run_level_scalar_broadcast",
+      "independent_estimates_per_feature": 1,
+      "warning": "Repeated rows are the same data-derived run-level estimate, not independent temporal observations."
+    }
+  }
+]

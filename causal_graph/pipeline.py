@@ -25,6 +25,15 @@ class PipelineFailure(RuntimeError):
     pass
 
 
+class _CachedOnlyClient:
+    """Execution-only resume must never issue a model request."""
+    def __init__(self, mode):
+        self.mode = mode
+
+    def complete(self, messages, directory):
+        raise ValueError('Execution-only resume cannot call the LLM; a valid generation checkpoint is required')
+
+
 def software_provenance():
     root = Path(__file__).resolve().parent
     hashes = {p.name: digest(p) for p in sorted(root.glob('*.py'))}
@@ -39,7 +48,9 @@ def software_provenance():
 
 
 def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=False,
-                 generate_only=False, approvals=None):
+                 generate_only=False, approvals=None, execute_only=False):
+    if execute_only and (not resume or generate_only):
+        raise ValueError('execute_only requires resume and cannot be combined with generate_only')
     output = Path(output).resolve()
     if any(output.is_relative_to(Path(p).resolve()) or Path(p).resolve().is_relative_to(output) for p in paths):
         raise ValueError('Experiment output and input run directories must be disjoint')
@@ -59,6 +70,8 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
     invocation = output / 'invocations' / uuid.uuid4().hex
     invocation.mkdir(parents=True)
     client = client or LLMClient(llm_config)
+    if execute_only:
+        client = _CachedOnlyClient(client.mode)
     metadata = None
 
     def step(number, name, inputs, outputs, action):
@@ -94,8 +107,21 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
         save_json(invocation / 'proposed_identity.json', identity)
         if resume:
             metadata = read_json(output / 'experiment.json')
-            if metadata['identity_sha256'] != object_digest(identity):
+            if object_digest(metadata['identity']) != metadata['identity_sha256']:
+                raise ValueError('Stored generation identity hash mismatch')
+            expected = metadata['identity']
+            comparison = identity
+            if execute_only:
+                # Generation provenance stays immutable. A new execution implementation
+                # may consume the exact old hypotheses, never regenerate them.
+                expected = {k: v for k, v in expected.items() if k != 'source_sha256'}
+                comparison = {k: v for k, v in identity.items() if k != 'source_sha256'}
+            if object_digest(expected) != object_digest(comparison):
                 raise ValueError('Resume identity mismatch: inputs/model/config/prompts/source/mode changed')
+            if execute_only:
+                original_graph = read_json(output / 'candidate_graph.json')
+                save_json(invocation / 'input_candidate_graph.json', original_graph)
+                save_json(invocation / 'execution_software.json', software)
         else:
             manifest = runs[0]['manifest']
             metadata = {'experiment_id': uuid.uuid4().hex, 'started_at': now(), 'status': 'running',
@@ -113,12 +139,14 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
         save_json(output / 'schemas.json', {'generation': SCHEMAS, 'candidate_graph': GRAPH_SCHEMA,
                                           'executable_graph': EXECUTABLE_SCHEMA})
         save_json(invocation / 'settings.json', {'pipeline': asdict(settings), 'generate_only': generate_only,
-                                               'review': approvals})
+                                               'execute_only': execute_only, 'review': approvals})
         context, calls = {'data_schema': data_schema}, {}
         tasks = ((3, 'phenomena', identify_phenomena), (4, 'indicators', define_indicators),
                  (5, 'codes', generate_codes), (6, 'edges_upward', propose_upward_edges),
                  (7, 'edges_downward', propose_downward_edges), (8, 'edges_intrascale', propose_intrascale_edges))
         for number, name, action in tasks:
+            if execute_only and not (output / 'generation' / name / 'checkpoint.json').is_file():
+                raise ValueError(f'Execution-only resume: missing {name} checkpoint; no LLM request was made')
             parsed, call = step(number, f'generate_{name}', ['scenario.md', 'data_schema.json' if name in ('indicators','codes') else 'generated definitions'],
                                 [f'generation/{name}/parsed.json'],
                                 lambda fn=action: fn(runs[0]['scenario_text'], context, settings, client, output))
@@ -134,6 +162,11 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
         graph = step(10, 'validate_and_assemble_candidate', ['generation/*/parsed.json'],
                      ['candidate_graph.json', 'indicator_code/', 'structure_report.json'],
                      lambda: assemble_graph(context, calls['codes'], output))
+        if execute_only:
+            def semantic_part(g):
+                return {**g, 'nodes': [{k: v for k, v in n.items() if k != 'execution'} for n in g['nodes']]}
+            if semantic_part(graph) != semantic_part(original_graph):
+                raise ValueError('Execution-only resume: original candidate definitions/edges changed')
         save_json(output / 'candidate_graph.json', graph)
         save_json(output / 'structure_report.json', {'valid': True, 'checks': [
             'JSON Schema 2.0', 'unique node IDs/names', 'references', 'three scale directions',

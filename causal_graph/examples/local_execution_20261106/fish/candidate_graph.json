@@ -1,0 +1,617 @@
+{
+  "schema_version": "2.0",
+  "evidence_status": "unvalidated_semantic_candidates",
+  "phenomena": [
+    {
+      "phenomenon_id": "school_fragmentation",
+      "name": "鱼群分裂与多簇共存",
+      "description": "在鲨鱼追逐过程中，鱼群的空间分布可能从单一连通群体转变为多个彼此分离的局部簇，并可能在不同时间步出现簇数增减、合并或持续多簇共存。该现象可由基于距离阈值的连通分量、簇数量及簇间间隔随时间的记录来描述，不预设其必然出现或由特定微观行为导致。"
+    },
+    {
+      "phenomenon_id": "school_elongation",
+      "name": "群体整体拉伸",
+      "description": "鱼群的空间占据范围可能沿某一方向被拉长，表现为个体位置协方差主轴长度比、最大成对距离或凸包长宽比等宏观形态指标的变化。该现象关注群体整体几何形态的拉伸程度及其时间变化，不预设拉伸方向、持续时间或与追逐行为的因果关系。"
+    }
+  ],
+  "nodes": [
+    {
+      "indicator_id": "frag_micro_nn_distance",
+      "phenomenon_id": "school_fragmentation",
+      "name": "Focal fish nearest-neighbor distance",
+      "scale": "micro",
+      "description": "Per-fish Euclidean distance to the closest other fish at the same run and step; a local spacing proxy for fragmentation.",
+      "mathematical_definition": "For run r and step t, let V_t={i: role_i(t)='fish'}. For i in V_t, d_i(t)=min_{j in V_t, j!=i} sqrt((x_i(t)-x_j(t))^2+(y_i(t)-y_j(t))^2). If |V_t|<2, d_i(t)=NaN.",
+      "units": "model length units",
+      "computation_notes": "Compute within each (run_id, step) group using agent_states rows with role='fish'. Exclude sharks and rows with null agent_id. Do not use target_id. If fewer than two fish at a step, set to NaN. Report per agent_id per step.",
+      "required_data": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role",
+          "x",
+          "y"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role",
+          "x",
+          "y"
+        ]
+      },
+      "config": {
+        "role_filter": "fish",
+        "distance": "euclidean",
+        "output": "per_fish_per_step"
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\nfrom scipy.spatial.distance import cdist\n\n\ndef compute_indicator(data, config):\n    st = data['agent_states'][['run_id', 'step', 'agent_id', 'role', 'x', 'y']].copy()\n    role = st['role'].astype(str).str.lower()\n    st = st[role == str(config.get('role_filter', 'fish')).lower()]\n    st = st.dropna(subset=['agent_id', 'x', 'y'])\n\n    steps = []\n    aids = []\n    vals = []\n\n    for (rid, step), g in st.groupby(['run_id', 'step'], sort=True):\n        ids = g['agent_id'].astype('int64').to_numpy()\n        p = g[['x', 'y']].to_numpy(dtype=float)\n        n = len(ids)\n\n        if n < 2:\n            d = np.full(n, np.nan)\n        else:\n            D = cdist(p, p, metric='euclidean')\n            np.fill_diagonal(D, np.inf)\n            d = D.min(axis=1)\n            d[~np.isfinite(d)] = np.nan\n\n        steps.extend([step] * n)\n        aids.extend(ids.tolist())\n        vals.extend(d.tolist())\n\n    out = pd.DataFrame({'step': steps, 'agent_id': aids, 'value': vals})\n    out = out.set_index(['step', 'agent_id'])\n    return out\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "frag_micro_nn_distance",
+      "code_file": "indicator_code/frag_micro_nn_distance.py",
+      "code_sha256": "5df1cecd3fca53a0c25e1708c0971b7444b6c061c32633bb3d211693e21a25dc",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": {
+          "status": "success",
+          "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/frag_micro_nn_distance.parquet",
+          "series_sha256": "3b312a81989834692e765b861953bf4b9777d72a81fc4c895e38399e387bb2c4"
+        }
+      }
+    },
+    {
+      "indicator_id": "frag_meso_contact_component_count",
+      "phenomenon_id": "school_fragmentation",
+      "name": "Fish contact-graph component count",
+      "scale": "meso",
+      "description": "Number of connected components of the undirected contact graph among fish at a sampled step; higher values indicate more spatial separation as recorded by native contacts.",
+      "mathematical_definition": "At (r,t), build G_t=(V_t,E_t) with V_t={i: role_i(t)='fish'} and E_t={{i,j}: i,j in V_t, i!=j, and (agent_id=i, partner_id=j) or (agent_id=j, partner_id=i) appears in contacts at (r,t)}. Let C_1(t),...,C_{K(t)}(t) be the connected components of G_t. K(t)=number of components.",
+      "units": "count",
+      "computation_notes": "Join contacts to agent_states on run_id, step, and agent_id/partner_id to verify both endpoints are fish. Drop edges with unmatched partner_id or non-fish endpoint. Isolated fish count as components. Use union-find per (run_id, step).",
+      "required_data": {
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ],
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "config": {
+        "role_filter": "fish",
+        "graph": "undirected_contact_graph",
+        "output": "per_step"
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\nfrom collections import Counter\n\n\ndef _components(n, edges):\n    parent = list(range(n))\n\n    def find(a):\n        while parent[a] != a:\n            parent[a] = parent[parent[a]]\n            a = parent[a]\n        return a\n\n    for a, b in edges:\n        ra, rb = find(a), find(b)\n        if ra != rb:\n            parent[ra] = rb\n\n    return Counter(find(i) for i in range(n))\n\n\ndef compute_indicator(data, config):\n    st = data['agent_states'][['run_id', 'step', 'agent_id', 'role']].copy()\n    ct = data['contacts'][['run_id', 'step', 'agent_id', 'partner_id']].copy()\n\n    role = st['role'].astype(str).str.lower()\n    st = st[role == str(config.get('role_filter', 'fish')).lower()]\n    st = st.dropna(subset=['agent_id'])\n    ct = ct.dropna(subset=['agent_id', 'partner_id'])\n\n    contact_groups = {}\n    for key, g in ct.groupby(['run_id', 'step']):\n        contact_groups[key] = g[['agent_id', 'partner_id']].astype('int64').to_numpy()\n\n    idx = []\n    vals = []\n\n    for (rid, step), g in st.groupby(['run_id', 'step'], sort=True):\n        ids = g['agent_id'].astype('int64').to_numpy()\n        n = len(ids)\n        index_map = {int(a): i for i, a in enumerate(ids)}\n\n        edges = []\n        for a, b in contact_groups.get((rid, step), np.empty((0, 2), dtype='int64')):\n            ia = index_map.get(int(a))\n            ib = index_map.get(int(b))\n            if ia is not None and ib is not None and ia != ib:\n                edges.append((ia, ib))\n\n        comps = _components(n, edges)\n        idx.append(step)\n        vals.append(len(comps))\n\n    return pd.Series(vals, index=pd.Index(idx, name='step'), name='value')\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "frag_meso_contact_component_count",
+      "code_file": "indicator_code/frag_meso_contact_component_count.py",
+      "code_sha256": "df26b7f73331416bf6cad5452bf99f06f75170639199e3507707ecb8d813c244",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": {
+          "status": "success",
+          "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/frag_meso_contact_component_count.parquet",
+          "series_sha256": "4cf060754c76c46cddf0dad5ff306bca23e6bc940786dc3b57db2221359e5811"
+        }
+      }
+    },
+    {
+      "indicator_id": "frag_macro_largest_component_fraction",
+      "phenomenon_id": "school_fragmentation",
+      "name": "Largest fish contact-component fraction",
+      "scale": "macro",
+      "description": "Fraction of fish in the largest connected component of the native contact graph at a sampled step; decreases as the school fragments into multiple components.",
+      "mathematical_definition": "Using G_t and components C_k(t) from the contact graph at (r,t), L(t)=max_k |C_k(t)|/|V_t|, with L(t)=NaN if |V_t|=0.",
+      "units": "dimensionless",
+      "computation_notes": "Use the same contact graph construction as frag_meso_contact_component_count. Compute one value per (run_id, step). If no fish are present at a step, return NaN rather than zero.",
+      "required_data": {
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ],
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "config": {
+        "role_filter": "fish",
+        "graph": "undirected_contact_graph",
+        "output": "per_step"
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\nfrom collections import Counter\n\n\ndef _components(n, edges):\n    parent = list(range(n))\n\n    def find(a):\n        while parent[a] != a:\n            parent[a] = parent[parent[a]]\n            a = parent[a]\n        return a\n\n    for a, b in edges:\n        ra, rb = find(a), find(b)\n        if ra != rb:\n            parent[ra] = rb\n\n    return Counter(find(i) for i in range(n))\n\n\ndef compute_indicator(data, config):\n    st = data['agent_states'][['run_id', 'step', 'agent_id', 'role']].copy()\n    ct = data['contacts'][['run_id', 'step', 'agent_id', 'partner_id']].copy()\n\n    role = st['role'].astype(str).str.lower()\n    st = st[role == str(config.get('role_filter', 'fish')).lower()]\n    st = st.dropna(subset=['agent_id'])\n    ct = ct.dropna(subset=['agent_id', 'partner_id'])\n\n    contact_groups = {}\n    for key, g in ct.groupby(['run_id', 'step']):\n        contact_groups[key] = g[['agent_id', 'partner_id']].astype('int64').to_numpy()\n\n    idx = []\n    vals = []\n\n    for (rid, step), g in st.groupby(['run_id', 'step'], sort=True):\n        ids = g['agent_id'].astype('int64').to_numpy()\n        n = len(ids)\n        index_map = {int(a): i for i, a in enumerate(ids)}\n\n        edges = []\n        for a, b in contact_groups.get((rid, step), np.empty((0, 2), dtype='int64')):\n            ia = index_map.get(int(a))\n            ib = index_map.get(int(b))\n            if ia is not None and ib is not None and ia != ib:\n                edges.append((ia, ib))\n\n        comps = _components(n, edges)\n        idx.append(step)\n        if n == 0:\n            vals.append(np.nan)\n        else:\n            vals.append(max(comps.values()) / n)\n\n    return pd.Series(vals, index=pd.Index(idx, name='step'), name='value')\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "frag_macro_largest_component_fraction",
+      "code_file": "indicator_code/frag_macro_largest_component_fraction.py",
+      "code_sha256": "1de57ee2467d7b479bf31d95a7d5eefbc40b465ed9e9ecdc6915fd9c723a5381",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": {
+          "status": "success",
+          "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/frag_macro_largest_component_fraction.parquet",
+          "series_sha256": "af054b1af64809a55d82042106e5256b6011bcf86158bf17e0519d738b10a0ba"
+        }
+      }
+    },
+    {
+      "indicator_id": "elong_micro_axis_alignment",
+      "phenomenon_id": "school_elongation",
+      "name": "Focal fish heading alignment with group principal axis",
+      "scale": "micro",
+      "description": "Per-fish absolute cosine between its heading vector and the first principal axis of all fish positions at the same run and step; values near 1 mean the individual is oriented along the group elongation axis.",
+      "mathematical_definition": "For run r and step t, let V_t={i: role_i(t)='fish'}. Let mu(t)=(1/|V_t|) sum_{j in V_t} p_j(t) and Sigma(t)=(1/(|V_t|-1)) sum_{j in V_t} (p_j(t)-mu(t))(p_j(t)-mu(t))^T with p_j=(x_j,y_j). Let lambda1>=lambda2 be eigenvalues of Sigma(t) and u1(t) a unit eigenvector for lambda1. For i in V_t, h_i(t)=(cos heading_i(t), sin heading_i(t)); a_i(t)=|h_i(t) dot u1(t)|. If |V_t|<3 or lambda1=lambda2, set a_i(t)=NaN.",
+      "units": "dimensionless",
+      "computation_notes": "Compute u1(t) from all fish positions at the same run_id and step. Use absolute value because the principal-axis sign is arbitrary. Exclude sharks and rows with null agent_id. Report per agent_id per step.",
+      "required_data": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role",
+          "x",
+          "y",
+          "heading"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role",
+          "x",
+          "y",
+          "heading"
+        ]
+      },
+      "config": {
+        "role_filter": "fish",
+        "axis": "first_principal_axis",
+        "output": "per_fish_per_step"
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef compute_indicator(data, config):\n    st = data['agent_states'][['run_id', 'step', 'agent_id', 'role', 'x', 'y', 'heading']].copy()\n    role = st['role'].astype(str).str.lower()\n    st = st[role == str(config.get('role_filter', 'fish')).lower()]\n    st = st.dropna(subset=['agent_id', 'x', 'y', 'heading'])\n\n    steps = []\n    aids = []\n    vals = []\n\n    for (rid, step), g in st.groupby(['run_id', 'step'], sort=True):\n        ids = g['agent_id'].astype('int64').to_numpy()\n        p = g[['x', 'y']].to_numpy(dtype=float)\n        h = g['heading'].to_numpy(dtype=float)\n        n = len(ids)\n\n        if n < 3:\n            a = np.full(n, np.nan)\n        else:\n            mu = p.mean(axis=0)\n            d = p - mu\n            cov = (d.T @ d) / (n - 1)\n            w, v = np.linalg.eigh(cov)\n            if w[1] <= 0 or np.isclose(w[1], w[0]):\n                a = np.full(n, np.nan)\n            else:\n                u = v[:, 1]\n                a = np.abs(np.cos(h) * u[0] + np.sin(h) * u[1])\n\n        steps.extend([step] * n)\n        aids.extend(ids.tolist())\n        vals.extend(a.tolist())\n\n    out = pd.DataFrame({'step': steps, 'agent_id': aids, 'value': vals})\n    out = out.set_index(['step', 'agent_id'])\n    return out\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "elong_micro_axis_alignment",
+      "code_file": "indicator_code/elong_micro_axis_alignment.py",
+      "code_sha256": "3f8c935ce96b328763621da9ddc0ea9a6c0e35d3f810cdbe2f04033502ced1a5",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": {
+          "status": "success",
+          "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/elong_micro_axis_alignment.parquet",
+          "series_sha256": "42ac8d51aeba9ef44e2d72ab20454b4af12dac3ef6056aec2a23c1cfd979cdcc"
+        }
+      }
+    },
+    {
+      "indicator_id": "elong_meso_local_eigen_ratio",
+      "phenomenon_id": "school_elongation",
+      "name": "Mean contact-neighborhood elongation ratio",
+      "scale": "meso",
+      "description": "Average eigenvalue ratio of the position covariance of each fish's native contact neighborhood; captures local anisotropic stretching around individuals without a distance threshold.",
+      "mathematical_definition": "At (r,t), for fish i let N_i(t)={j: {i,j} in E_t} and S_i(t)={i} union N_i(t). If |S_i(t)|>=3 and lambda2_i(t)>0, define R_i(t)=lambda1_i(t)/lambda2_i(t) from the sample covariance of positions in S_i(t). The meso indicator is the mean of R_i(t) over eligible i. If no eligible i, NaN.",
+      "units": "dimensionless",
+      "computation_notes": "Use the same contact graph E_t as the fragmentation indicators. Require at least three points and non-degenerate covariance. Do not impute missing neighborhoods. Report one value per (run_id, step).",
+      "required_data": {
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ],
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role",
+          "x",
+          "y"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role",
+          "x",
+          "y"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "config": {
+        "role_filter": "fish",
+        "neighborhood": "contact_graph_closed_neighborhood",
+        "min_neighborhood_size": 3,
+        "output": "per_step_mean_over_fish"
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef compute_indicator(data, config):\n    st = data['agent_states'][['run_id', 'step', 'agent_id', 'role', 'x', 'y']].copy()\n    ct = data['contacts'][['run_id', 'step', 'agent_id', 'partner_id']].copy()\n\n    role = st['role'].astype(str).str.lower()\n    st = st[role == str(config.get('role_filter', 'fish')).lower()]\n    st = st.dropna(subset=['agent_id', 'x', 'y'])\n    ct = ct.dropna(subset=['agent_id', 'partner_id'])\n    min_size = int(config.get('min_neighborhood_size', 3))\n\n    contact_groups = {}\n    for key, g in ct.groupby(['run_id', 'step']):\n        contact_groups[key] = g[['agent_id', 'partner_id']].astype('int64').to_numpy()\n\n    idx = []\n    vals = []\n\n    for (rid, step), g in st.groupby(['run_id', 'step'], sort=True):\n        ids = g['agent_id'].astype('int64').to_numpy()\n        p = g[['x', 'y']].to_numpy(dtype=float)\n        n = len(ids)\n        index_map = {int(a): i for i, a in enumerate(ids)}\n        adj = {i: set() for i in range(n)}\n\n        for a, b in contact_groups.get((rid, step), np.empty((0, 2), dtype='int64')):\n            ia = index_map.get(int(a))\n            ib = index_map.get(int(b))\n            if ia is not None and ib is not None and ia != ib:\n                adj[ia].add(ib)\n                adj[ib].add(ia)\n\n        ratios = []\n        for i in range(n):\n            S = [i] + list(adj[i])\n            if len(S) < min_size:\n                continue\n            q = p[S]\n            mu = q.mean(axis=0)\n            d = q - mu\n            cov = (d.T @ d) / (len(S) - 1)\n            w = np.linalg.eigvalsh(cov)\n            if w[0] > 0:\n                ratios.append(w[1] / w[0])\n\n        idx.append(step)\n        vals.append(float(np.mean(ratios)) if ratios else np.nan)\n\n    return pd.Series(vals, index=pd.Index(idx, name='step'), name='value')\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "elong_meso_local_eigen_ratio",
+      "code_file": "indicator_code/elong_meso_local_eigen_ratio.py",
+      "code_sha256": "273d711be8c95d1919abbba46920c4df2997bd6e92173599a141ec24400a3735",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": {
+          "status": "failed",
+          "error_type": "mathematical_validation_error",
+          "error": "\nNot equal to tolerance rtol=1e-07, atol=1e-09\n\nMismatched elements: 1 / 21 (4.76%)\nMax absolute difference: 6.99494838\nMax relative difference: 3.21743644e-07\n x: array([         nan,          nan, 6.327701e+00, 1.075033e+02,\n       7.271408e+00, 5.043703e+00, 2.663191e+02, 3.323982e+00,\n       2.084087e+02, 5.796471e+00, 3.364291e+00, 4.354002e+02,...\n y: array([         nan,          nan, 6.327701e+00, 1.075033e+02,\n       7.271408e+00, 5.043703e+00, 2.663191e+02, 3.323982e+00,\n       2.084087e+02, 5.796471e+00, 3.364291e+00, 4.354002e+02,...",
+          "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/elong_meso_local_eigen_ratio.parquet",
+          "series_sha256": "31712f0d49ec4bf5dbbc28aa1cd90a7a2a479b399de4307c5d41beb5547e477d"
+        }
+      }
+    },
+    {
+      "indicator_id": "elong_macro_global_eigen_ratio",
+      "phenomenon_id": "school_elongation",
+      "name": "Global fish position eigenvalue ratio",
+      "scale": "macro",
+      "description": "Ratio of the largest to second-largest eigenvalue of the covariance of all fish positions at a sampled step; a direct measure of school-wide elongation.",
+      "mathematical_definition": "For V_t={i: role_i(t)='fish'} at (r,t), let mu(t)=(1/|V_t|) sum_{j in V_t} p_j(t) and Sigma(t)=(1/(|V_t|-1)) sum_{j in V_t} (p_j(t)-mu(t))(p_j(t)-mu(t))^T. Let lambda1(t)>=lambda2(t)>=0 be eigenvalues of Sigma(t). R(t)=lambda1(t)/lambda2(t) if lambda2(t)>0; NaN if lambda2(t)=0 or |V_t|<3.",
+      "units": "dimensionless",
+      "computation_notes": "Use all fish positions at the same run_id and step; exclude sharks and rows with null agent_id. Report one value per (run_id, step).",
+      "required_data": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role",
+          "x",
+          "y"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role",
+          "x",
+          "y"
+        ]
+      },
+      "config": {
+        "role_filter": "fish",
+        "covariance": "sample_covariance",
+        "output": "per_step"
+      },
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef compute_indicator(data, config):\n    st = data['agent_states'][['run_id', 'step', 'agent_id', 'role', 'x', 'y']].copy()\n    role = st['role'].astype(str).str.lower()\n    st = st[role == str(config.get('role_filter', 'fish')).lower()]\n    st = st.dropna(subset=['agent_id', 'x', 'y'])\n\n    idx = []\n    vals = []\n\n    for (rid, step), g in st.groupby(['run_id', 'step'], sort=True):\n        p = g[['x', 'y']].to_numpy(dtype=float)\n        n = len(p)\n        idx.append(step)\n\n        if n < 3:\n            vals.append(np.nan)\n            continue\n\n        mu = p.mean(axis=0)\n        d = p - mu\n        cov = (d.T @ d) / (n - 1)\n        w = np.linalg.eigvalsh(cov)\n        if w[0] > 0:\n            vals.append(float(w[1] / w[0]))\n        else:\n            vals.append(np.nan)\n\n    return pd.Series(vals, index=pd.Index(idx, name='step'), name='value')\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "elong_macro_global_eigen_ratio",
+      "code_file": "indicator_code/elong_macro_global_eigen_ratio.py",
+      "code_sha256": "d465960e16dcc13a6c12a533d7bdc2004d36c5dcdbbabaef7ee5cd6af4bdaf85",
+      "generation_call": "generation/codes/attempt_000",
+      "execution": {
+        "2a815b4dfe4f47b8ac2416fac04456e5": {
+          "status": "success",
+          "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/elong_macro_global_eigen_ratio.parquet",
+          "series_sha256": "5791da491ba8b3f12157e370812b190a52b31cf43b3eeb25b2fb2be46ee22554"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "upward__frag_nn_to_components",
+      "source": "frag_micro_nn_distance",
+      "target": "frag_meso_contact_component_count",
+      "scale_direction": "upward",
+      "semantic_rationale": "局部最近邻间距改变鱼之间形成接触边的概率：当许多鱼彼此远离时，原生接触图更易断开，从而增加连通分量数；该关系依赖空间排布而非由定义直接决定。",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_fragmentation",
+      "target_phenomenon": "school_fragmentation",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "frag_nn_to_components",
+          "row_index": 0
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__frag_nn_to_largest_fraction",
+      "source": "frag_micro_nn_distance",
+      "target": "frag_macro_largest_component_fraction",
+      "scale_direction": "upward",
+      "semantic_rationale": "个体局部间距增大会削弱跨邻域接触链，使最大连通分量占比可能下降；但若存在少数稠密核心，影响可被缓冲，因此不是确定性聚合。",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_fragmentation",
+      "target_phenomenon": "school_fragmentation",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "frag_nn_to_largest_fraction",
+          "row_index": 1
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__frag_components_to_largest",
+      "source": "frag_meso_contact_component_count",
+      "target": "frag_macro_largest_component_fraction",
+      "scale_direction": "upward",
+      "semantic_rationale": "鱼群分裂为更多连通分量时，最大分量占比通常可能降低；但多分量可包含一个主导核心，故这是动态结构候选而非代数恒等。",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_fragmentation",
+      "target_phenomenon": "school_fragmentation",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "frag_components_to_largest",
+          "row_index": 2
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__elong_axis_to_local_ratio",
+      "source": "elong_micro_axis_alignment",
+      "target": "elong_meso_local_eigen_ratio",
+      "scale_direction": "upward",
+      "semantic_rationale": "个体朝向与群体主轴对齐会通过定向运动改变局部接触邻域的空间排布，使相邻鱼的位置协方差沿运动方向更易拉伸；局部邻域组成和转向限制使该效应非确定。",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_elongation",
+      "target_phenomenon": "school_elongation",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "elong_axis_to_local_ratio",
+          "row_index": 3
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__elong_axis_to_global_ratio",
+      "source": "elong_micro_axis_alignment",
+      "target": "elong_macro_global_eigen_ratio",
+      "scale_direction": "upward",
+      "semantic_rationale": "大量个体沿群体主轴对齐时，定向游动可能累积为整体位置分布的各向异性拉伸；个体转向上限和随机扰动使对齐不必然转化为等比例全局拉伸。",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_elongation",
+      "target_phenomenon": "school_elongation",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "elong_axis_to_global_ratio",
+          "row_index": 4
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__elong_local_to_global",
+      "source": "elong_meso_local_eigen_ratio",
+      "target": "elong_macro_global_eigen_ratio",
+      "scale_direction": "upward",
+      "semantic_rationale": "若多个局部接触邻域同时沿相近方向拉长，它们的空间各向异性可汇聚成全局伸长；若局部主轴方向分散则可能相互抵消，因此不是简单求和定义。",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_elongation",
+      "target_phenomenon": "school_elongation",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "generation/edges_upward/attempt_000",
+          "original_edge_id": "elong_local_to_global",
+          "row_index": 5
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__elong_macro_to_local_eigen",
+      "source": "elong_macro_global_eigen_ratio",
+      "target": "elong_meso_local_eigen_ratio",
+      "scale_direction": "downward",
+      "semantic_rationale": "School-wide anisotropic stretching changes how local contact neighborhoods are embedded in the group: when the global position covariance is elongated, differential motion and contact rearrangement can transmit that anisotropy into local neighborhoods, making their covariance more elongated. This is not a deterministic aggregation because local contact sets and boundary effects vary independently.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_elongation",
+      "target_phenomenon": "school_elongation",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "elong_macro_to_local_eigen",
+          "row_index": 0
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__frag_macro_to_local_eigen",
+      "source": "frag_macro_largest_component_fraction",
+      "target": "elong_meso_local_eigen_ratio",
+      "scale_direction": "downward",
+      "semantic_rationale": "A high largest-component fraction indicates a cohesive connected school whose local contact neighborhoods are constrained by many neighboring fish, tending to reduce local anisotropic stretching. As the largest fraction falls and the school breaks into clusters, local neighborhoods near boundaries or isolated groups can stretch more freely, increasing local elongation ratios.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_fragmentation",
+      "target_phenomenon": "school_elongation",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "frag_macro_to_local_eigen",
+          "row_index": 1
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__elong_macro_to_frag_components",
+      "source": "elong_macro_global_eigen_ratio",
+      "target": "frag_meso_contact_component_count",
+      "scale_direction": "downward",
+      "semantic_rationale": "Global elongation along a principal axis can separate fish that were previously in contact, especially across the stretched direction, thereby breaking native contact links and increasing the number of contact-graph components. The effect is dynamic and not definitional because elongation does not determine which contacts persist.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_elongation",
+      "target_phenomenon": "school_fragmentation",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "elong_macro_to_frag_components",
+          "row_index": 2
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__frag_components_to_nn_distance",
+      "source": "frag_meso_contact_component_count",
+      "target": "frag_micro_nn_distance",
+      "scale_direction": "downward",
+      "semantic_rationale": "When the fish contact graph splits into more components, individual fish are less likely to be held within a dense common neighborhood; this can allow local nearest-neighbor spacing to increase as fish adjust to sparse or disconnected local groups. The relation is probabilistic because contact components and metric nearest-neighbor distances are not the same representation.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_fragmentation",
+      "target_phenomenon": "school_fragmentation",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "frag_components_to_nn_distance",
+          "row_index": 3
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__local_eigen_to_axis_alignment",
+      "source": "elong_meso_local_eigen_ratio",
+      "target": "elong_micro_axis_alignment",
+      "scale_direction": "downward",
+      "semantic_rationale": "An elongated local contact neighborhood provides a directional social configuration: alignment and attraction toward neighbors can bias a focal fish to head along the local stretch axis. Thus meso-level local anisotropy can influence micro-level heading alignment with the group principal axis, without making that alignment deterministic.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_elongation",
+      "target_phenomenon": "school_elongation",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "local_eigen_to_axis_alignment",
+          "row_index": 4
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__frag_macro_to_nn_distance",
+      "source": "frag_macro_largest_component_fraction",
+      "target": "frag_micro_nn_distance",
+      "scale_direction": "downward",
+      "semantic_rationale": "A declining largest-component fraction means the school is increasingly concentrated in smaller components or isolated groups; fish outside the dominant connected cluster experience weaker collective spacing constraints and can exhibit larger nearest-neighbor gaps. This is a plausible macro-to-micro dynamic effect rather than a direct definition, since nearest-neighbor distance is measured independently of graph membership.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_fragmentation",
+      "target_phenomenon": "school_fragmentation",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "generation/edges_downward/attempt_000",
+          "original_edge_id": "frag_macro_to_nn_distance",
+          "row_index": 5
+        }
+      ]
+    },
+    {
+      "edge_id": "intra_scale__micro_nn_spacing_to_axis_alignment",
+      "source": "frag_micro_nn_distance",
+      "target": "elong_micro_axis_alignment",
+      "scale_direction": "intra_scale",
+      "semantic_rationale": "A fish with larger nearest-neighbor spacing has weaker local social constraint from nearby schoolmates; over subsequent steps its heading may be less entrained by the group's principal axis, so its absolute axis alignment can change. This is a dynamic micro-level candidate effect rather than a definitional aggregation.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_fragmentation",
+      "target_phenomenon": "school_elongation",
+      "generation_sources": [
+        {
+          "stage": "edges_intrascale",
+          "call": "generation/edges_intrascale/attempt_000",
+          "original_edge_id": "micro_nn_spacing_to_axis_alignment",
+          "row_index": 0
+        }
+      ]
+    },
+    {
+      "edge_id": "intra_scale__meso_local_stretch_to_component_count",
+      "source": "elong_meso_local_eigen_ratio",
+      "target": "frag_meso_contact_component_count",
+      "scale_direction": "intra_scale",
+      "semantic_rationale": "Anisotropic local contact-neighborhood geometry can reflect stretching along one direction that breaks lateral contacts; as local neighborhoods become more elongated, the contact graph may later split into more components. This is a plausible meso-level dynamic relation mediated by changing contacts, not a direct aggregation of the same quantity.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_elongation",
+      "target_phenomenon": "school_fragmentation",
+      "generation_sources": [
+        {
+          "stage": "edges_intrascale",
+          "call": "generation/edges_intrascale/attempt_000",
+          "original_edge_id": "meso_local_stretch_to_component_count",
+          "row_index": 1
+        }
+      ]
+    },
+    {
+      "edge_id": "intra_scale__macro_global_stretch_to_largest_component",
+      "source": "elong_macro_global_eigen_ratio",
+      "target": "frag_macro_largest_component_fraction",
+      "scale_direction": "intra_scale",
+      "semantic_rationale": "Greater global position elongation spreads fish along a major axis and can push some pairwise distances beyond contact range, which may reduce the fraction of fish remaining in the largest contact component. The candidate effect is mediated by contact formation and is not a definitional identity between the two macro indicators.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "school_elongation",
+      "target_phenomenon": "school_fragmentation",
+      "generation_sources": [
+        {
+          "stage": "edges_intrascale",
+          "call": "generation/edges_intrascale/attempt_000",
+          "original_edge_id": "macro_global_stretch_to_largest_component",
+          "row_index": 2
+        }
+      ]
+    }
+  ]
+}

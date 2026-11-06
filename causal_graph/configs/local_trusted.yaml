@@ -1,0 +1,9 @@
+# Explicit local execution after reviewing exact generated code hashes. No Docker.
+max_phenomena: 6
+max_indicators: 36
+max_edges: 144
+generation_attempts: 2
+execution_mode: trusted_reviewed
+indicator_timeout: 180
+min_observations: 3
+missing_fraction_warning: 0.2

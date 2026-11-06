@@ -1,0 +1,14 @@
+{
+  "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+  "reviewed_at": "2026-11-06T15:32:48.714379+00:00",
+  "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature.",
+  "code_sha256": {
+    "frag_micro_nn_distance": "5df1cecd3fca53a0c25e1708c0971b7444b6c061c32633bb3d211693e21a25dc",
+    "frag_meso_contact_component_count": "df26b7f73331416bf6cad5452bf99f06f75170639199e3507707ecb8d813c244",
+    "frag_macro_largest_component_fraction": "1de57ee2467d7b479bf31d95a7d5eefbc40b465ed9e9ecdc6915fd9c723a5381",
+    "elong_micro_axis_alignment": "3f8c935ce96b328763621da9ddc0ea9a6c0e35d3f810cdbe2f04033502ced1a5",
+    "elong_meso_local_eigen_ratio": "273d711be8c95d1919abbba46920c4df2997bd6e92173599a141ec24400a3735",
+    "elong_macro_global_eigen_ratio": "d465960e16dcc13a6c12a533d7bdc2004d36c5dcdbbabaef7ee5cd6af4bdaf85"
+  },
+  "rejections": {}
+}

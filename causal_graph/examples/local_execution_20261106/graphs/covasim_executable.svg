@@ -1,0 +1,140 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:ns2="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" width="720pt" height="468pt" viewBox="0 0 720 468" version="1.1">
+ <metadata>
+  <rdf:RDF>
+   <ns2:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+    <dc:date>2026-11-06T07:42:59.480256</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <ns2:Agent>
+      <dc:title>Matplotlib v3.9.3, https://matplotlib.org/</dc:title>
+     </ns2:Agent>
+    </dc:creator>
+   </ns2:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 468  L 720 468  L 720 0  L 0 0  z " style="fill: #ffffff" />
+  </g>
+  <g id="axes_1">
+   <g id="edge_upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy" class="inspectable">
+    <path d="M 450.545839 253.9508  Q 502.952268 222.659292 544.486913 178.389737  " clip-path="url(#pf646646e6f)" style="fill: none; stroke: #27667b; stroke-linecap: round" />
+    <path d="M 539.871936 180.093259  L 544.486913 178.389737  L 543.080744 183.103832  z " clip-path="url(#pf646646e6f)" style="fill: #27667b; stroke: #27667b; stroke-linecap: round" />
+   <title>icts_meso_layer_contact_change → sic_macro_layer_entropy
+upward
+Quarantine-associated contact-volume contractions that differ by layer redistribute mixing opportunities among settings, which can shift transmission toward less-contracted layers and thereby reshape the city-level distribution of infection events across layers.</title></g>
+   <g id="edge_intra_scale__macro_layer_entropy_to_city_contact_change" class="inspectable">
+    <path d="M 567.633683 178.553408  Q 560.725714 213.577883 567.417224 247.505456  " clip-path="url(#pf646646e6f)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #6e648d; stroke-linecap: round" />
+    <path d="M 568.724237 242.762912  L 567.417224 247.505456  L 564.407397 243.61432  z " clip-path="url(#pf646646e6f)" style="fill: #6e648d; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #6e648d; stroke-linecap: round" />
+   <title>sic_macro_layer_entropy → icts_macro_city_contact_change_on_quarantine_increase
+intra_scale
+A more dispersed or concentrated distribution of infection events across layers indicates which settings are driving transmission; this changes which settings generate quarantine increases and how city-level contact volume changes when quarantine counts rise.</title></g>
+   <g id="edge_intra_scale__macro_city_contact_change_to_layer_entropy" class="inspectable">
+    <path d="M 598.3018 248.602956  Q 605.20977 213.57848 598.51826 179.650908  " clip-path="url(#pf646646e6f)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #6e648d; stroke-linecap: round" />
+    <path d="M 597.211247 184.393451  L 598.51826 179.650908  L 601.528087 183.542044  z " clip-path="url(#pf646646e6f)" style="fill: #6e648d; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #6e648d; stroke-linecap: round" />
+   <title>icts_macro_city_contact_change_on_quarantine_increase → sic_macro_layer_entropy
+intra_scale
+City contact-volume changes on quarantine-increase steps can reduce contacts unevenly across layers; by suppressing mixing in some settings more than others, these changes reshape the relative occurrence of infection events across settings and therefore the layer entropy of infection events.</title></g>
+   <g id="line2d_1">
+    <path d="M 58.993548 406.360145  L 99.127742 406.360145  " clip-path="url(#pf646646e6f)" style="fill: none; stroke: #27667b; stroke-width: 1.4; stroke-linecap: square" />
+   </g>
+   <g id="line2d_2">
+    <path d="M 286.420645 406.360145  L 326.554839 406.360145  " clip-path="url(#pf646646e6f)" style="fill: none; stroke-dasharray: 5.18,2.24; stroke-dashoffset: 0; stroke: #b3653b; stroke-width: 1.4" />
+   </g>
+   <g id="line2d_3">
+    <path d="M 513.847742 406.360145  L 553.981935 406.360145  " clip-path="url(#pf646646e6f)" style="fill: none; stroke-dasharray: 1.4,2.31; stroke-dashoffset: 0; stroke: #6e648d; stroke-width: 1.4" />
+   </g>
+   <g id="node_sic_macro_layer_entropy" tabindex="0" class="inspectable">
+    <path d="M 500.469677 174.041542  L 665.465806 174.041542  Q 669.479226 174.041542 669.479226 171.1008  L 669.479226 92.681018  Q 669.479226 89.740276 665.465806 89.740276  L 500.469677 89.740276  Q 496.456258 89.740276 496.456258 92.681018  L 496.456258 171.1008  Q 496.456258 174.041542 500.469677 174.041542  z " clip-path="url(#pf646646e6f)" style="fill: #ffffff; stroke: #444444; stroke-width: 1.2; stroke-linejoin: miter" />
+   <title>N3 | sic_macro_layer_entropy
+City infection-event layer entropy
+Scale: macro | Phenomenon: setting_infection_clustering
+Definition: For run r and window [s,s+W-1], let n_L = # infection-transition events with layer L for each non-null layer label L observed in r; N=sum_L n_L; p_L=n_L/N; K=# non-null layer labels observed in r in contacts or events; H = -(sum_L p_L log p_L)/log K if N&gt;0 and K&gt;1; undefined otherwise.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'success', 'series_file': 'indicator_series/3249f90463154305aed53504106b3dae/sic_macro_layer_entropy.parquet', 'series_sha256': '2fe88bd2ce1f3d64edf52698b4ee1921b855a23581fd11a7bbeb1e9a4a583ec0'}}</title></g>
+   <g id="node_icts_meso_layer_contact_change" tabindex="0" class="inspectable">
+    <path d="M 277.501935 337.416087  L 442.498065 337.416087  Q 446.511484 337.416087 446.511484 334.475345  L 446.511484 256.055564  Q 446.511484 253.114822 442.498065 253.114822  L 277.501935 253.114822  Q 273.488516 253.114822 273.488516 256.055564  L 273.488516 334.475345  Q 273.488516 337.416087 277.501935 337.416087  z " clip-path="url(#pf646646e6f)" style="fill: #ffffff; stroke: #444444; stroke-width: 1.2; stroke-linejoin: miter" />
+   <title>N5 | icts_meso_layer_contact_change
+Layer contact-volume change around quarantine-count increase
+Scale: meso | Phenomenon: intervention_contact_trajectory_shift
+Definition: For run r and layer L, let Q_t=model_states.quarantined at step t. Let S={t: Q_t&gt;Q_prev(t) with previous sampled step observed}. For each t in S, define C_pre(t)=mean over u in [t-W,t-1] intersect observed steps of # contacts rows with run_id=r, layer=L, step=u; C_post(t)=mean over u in [t+1,t+W] intersect observed steps of # contacts rows with run_id=r, layer=L, step=u. Indicator = median over t in S of (C_post(t)-C_pre(t)) when S and required pre/post steps exist; undefined if S is empty or no pre/post observed steps exist.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'success', 'series_file': 'indicator_series/3249f90463154305aed53504106b3dae/icts_meso_layer_contact_change.parquet', 'series_sha256': '934dfd6236571bae46827252f2c92b21559b1122e23d155b7b080b99b7fbd537'}}</title></g>
+   <g id="node_icts_macro_city_contact_change_on_quarantine_increase" tabindex="0" class="inspectable">
+    <path d="M 500.469677 337.416087  L 665.465806 337.416087  Q 669.479226 337.416087 669.479226 334.475345  L 669.479226 256.055564  Q 669.479226 253.114822 665.465806 253.114822  L 500.469677 253.114822  Q 496.456258 253.114822 496.456258 256.055564  L 496.456258 334.475345  Q 496.456258 337.416087 500.469677 337.416087  z " clip-path="url(#pf646646e6f)" style="fill: #ffffff; stroke: #444444; stroke-width: 1.2; stroke-linejoin: miter" />
+   <title>N6 | icts_macro_city_contact_change_on_quarantine_increase
+City contact-volume change on quarantine-increase steps
+Scale: macro | Phenomenon: intervention_contact_trajectory_shift
+Definition: For run r, let C_t=# contacts rows at step t; DeltaC_t=C_t-C_{t-1}; DeltaQ_t=Q_t-Q_{t-1} from model_states.quarantined. Let A=mean{DeltaC_t: DeltaQ_t&gt;0 and both t and t-1 are observed}; B=mean{DeltaC_t: DeltaQ_t=0 and both t and t-1 are observed}. Indicator=A-B. Undefined if A or B has no members.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'success', 'series_file': 'indicator_series/3249f90463154305aed53504106b3dae/icts_macro_city_contact_change_on_quarantine_increase.parquet', 'series_sha256': '5ffb1143ae8a5b522622133849a128734395e95a7c5789b7c9f0fa07875de63c'}}</title></g>
+   <g id="text_1">
+    <text style="font: 12px 'Times New Roman', 'DejaVu Serif'; text-anchor: middle" x="137.032258" y="37.133673" transform="rotate(-0 137.032258 37.133673)">Micro</text>
+   </g>
+   <g id="text_2">
+    <text style="fill: #777777; font: 9px 'Times New Roman', 'DejaVu Serif'; text-anchor: middle" x="137.032258" y="219.007782" transform="rotate(-0 137.032258 219.007782)">No executable nodes</text>
+   </g>
+   <g id="text_3">
+    <text style="font: 12px 'Times New Roman', 'DejaVu Serif'; text-anchor: middle" x="360" y="37.133673" transform="rotate(-0 360 37.133673)">Meso</text>
+   </g>
+   <g id="text_4">
+    <text style="font: 12px 'Times New Roman', 'DejaVu Serif'; text-anchor: middle" x="582.967742" y="37.133673" transform="rotate(-0 582.967742 37.133673)">Macro</text>
+   </g>
+   <g id="text_5">
+    <text style="font: 13px 'Times New Roman', 'DejaVu Serif'; text-anchor: start" x="21.089032" y="26.555602" transform="rotate(-0 21.089032 26.555602)">Covasim | Executable hypotheses</text>
+   </g>
+   <g id="text_6">
+    <text style="font: 9px 'Times New Roman', 'DejaVu Serif'; text-anchor: end" x="698.910968" y="23.778102" transform="rotate(-0 698.910968 23.778102)">3 nodes / 3 edges</text>
+   </g>
+   <g id="text_7">
+    <text style="font: 9px 'Times New Roman', 'DejaVu Serif'; text-anchor: start" x="108.046452" y="408.522255" transform="rotate(-0 108.046452 408.522255)">Upward</text>
+   </g>
+   <g id="text_8">
+    <text style="font: 9px 'Times New Roman', 'DejaVu Serif'; text-anchor: start" x="335.473548" y="408.522255" transform="rotate(-0 335.473548 408.522255)">Downward</text>
+   </g>
+   <g id="text_9">
+    <text style="font: 9px 'Times New Roman', 'DejaVu Serif'; text-anchor: start" x="562.900645" y="408.522255" transform="rotate(-0 562.900645 408.522255)">Same scale</text>
+   </g>
+   <g id="text_10">
+    <text style="fill: #555555; font: 8px 'Times New Roman', 'DejaVu Serif'; text-anchor: middle" x="360" y="439.315684" transform="rotate(-0 360 439.315684)">Unvalidated semantic hypotheses. Executability is not causal evidence.</text>
+   </g>
+   <g id="label_sic_macro_layer_entropy" tabindex="0" class="inspectable">
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(577.162351 124.735064)">N3</text>
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(544.846765 134.155323)">City infection-event</text>
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(557.777156 143.593395)">layer entropy</text>
+   <title>N3 | sic_macro_layer_entropy
+City infection-event layer entropy
+Scale: macro | Phenomenon: setting_infection_clustering
+Definition: For run r and window [s,s+W-1], let n_L = # infection-transition events with layer L for each non-null layer label L observed in r; N=sum_L n_L; p_L=n_L/N; K=# non-null layer labels observed in r in contacts or events; H = -(sum_L p_L log p_L)/log K if N&gt;0 and K&gt;1; undefined otherwise.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'success', 'series_file': 'indicator_series/3249f90463154305aed53504106b3dae/sic_macro_layer_entropy.parquet', 'series_sha256': '2fe88bd2ce1f3d64edf52698b4ee1921b855a23581fd11a7bbeb1e9a4a583ec0'}}</title></g>
+   <g id="label_icts_meso_layer_contact_change" tabindex="0" class="inspectable">
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(354.194609 278.68935)">N5</text>
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(318.19332 288.109609)">Layer contact-volume</text>
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(332.17168 297.547681)">change around</text>
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(327.81875 306.985753)">quarantine-count</text>
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(344.440781 316.406012)">increase</text>
+   <title>N5 | icts_meso_layer_contact_change
+Layer contact-volume change around quarantine-count increase
+Scale: meso | Phenomenon: intervention_contact_trajectory_shift
+Definition: For run r and layer L, let Q_t=model_states.quarantined at step t. Let S={t: Q_t&gt;Q_prev(t) with previous sampled step observed}. For each t in S, define C_pre(t)=mean over u in [t-W,t-1] intersect observed steps of # contacts rows with run_id=r, layer=L, step=u; C_post(t)=mean over u in [t+1,t+W] intersect observed steps of # contacts rows with run_id=r, layer=L, step=u. Indicator = median over t in S of (C_post(t)-C_pre(t)) when S and required pre/post steps exist; undefined if S is empty or no pre/post observed steps exist.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'success', 'series_file': 'indicator_series/3249f90463154305aed53504106b3dae/icts_meso_layer_contact_change.parquet', 'series_sha256': '934dfd6236571bae46827252f2c92b21559b1122e23d155b7b080b99b7fbd537'}}</title></g>
+   <g id="label_icts_macro_city_contact_change_on_quarantine_increase" tabindex="0" class="inspectable">
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(577.162351 283.39948)">N6</text>
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(544.053367 292.819739)">City contact-volume</text>
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(540.763992 302.257811)">change on quarantine-</text>
+    <text style="font: 9.5px 'Times New Roman', 'DejaVu Serif'" transform="translate(556.720281 311.695883)">increase steps</text>
+   <title>N6 | icts_macro_city_contact_change_on_quarantine_increase
+City contact-volume change on quarantine-increase steps
+Scale: macro | Phenomenon: intervention_contact_trajectory_shift
+Definition: For run r, let C_t=# contacts rows at step t; DeltaC_t=C_t-C_{t-1}; DeltaQ_t=Q_t-Q_{t-1} from model_states.quarantined. Let A=mean{DeltaC_t: DeltaQ_t&gt;0 and both t and t-1 are observed}; B=mean{DeltaC_t: DeltaQ_t=0 and both t and t-1 are observed}. Indicator=A-B. Undefined if A or B has no members.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'success', 'series_file': 'indicator_series/3249f90463154305aed53504106b3dae/icts_macro_city_contact_change_on_quarantine_increase.parquet', 'series_sha256': '5ffb1143ae8a5b522622133849a128734395e95a7c5789b7c9f0fa07875de63c'}}</title></g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pf646646e6f">
+   <rect x="14.4" y="9.36" width="691.2" height="449.28" />
+  </clipPath>
+ </defs>
+</svg>

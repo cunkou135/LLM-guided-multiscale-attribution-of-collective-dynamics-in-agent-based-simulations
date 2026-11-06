@@ -4,7 +4,6 @@ import os
 from pathlib import Path
 import subprocess
 import sys
-import tempfile
 import time
 
 import numpy as np
@@ -16,16 +15,29 @@ from .io import digest, now, read_json, save_json
 from .schemas import code_errors
 
 
+class ReviewRejected(PermissionError):
+    pass
+
+
 def check_result(result, run_id, indicator_id, allowed_steps, settings):
     if isinstance(result, pd.Series):
         result = result.to_frame(name='value')
     if not isinstance(result, pd.DataFrame) or result.empty:
         raise ValueError('Output must be a nonempty Pandas Series/DataFrame')
     result = result.copy()
+    entity_fields = []
+    if isinstance(result.index, pd.MultiIndex):
+        names = list(result.index.names)
+        if 'step' not in names or any(not isinstance(n, str) or not n for n in names) or len(names) != len(set(names)):
+            raise ValueError('MultiIndex requires uniquely named levels including step')
+        entity_fields = [n for n in names if n != 'step']
+        result = result.reset_index()
     if 'step' in result.columns:
         if result.index.name == 'step':
             raise ValueError('Ambiguous time: both step index and column')
         steps = result.pop('step')
+        if not entity_fields:
+            entity_fields = [n for n in ('agent_id', 'group_id', 'event_id') if n in result.columns]
     elif result.index.name == 'step':
         steps = pd.Series(result.index.to_numpy())
     else:
@@ -34,10 +46,21 @@ def check_result(result, run_id, indicator_id, allowed_steps, settings):
             steps.isna().any() or not np.isfinite(steps.to_numpy()).all() or
             not (steps.to_numpy() == np.floor(steps.to_numpy())).all()):
         raise ValueError('Time indices must be finite integral steps')
-    if steps.duplicated().any():
-        raise ValueError('Duplicate time index')
-    if not set(steps.tolist()) <= set(allowed_steps):
+    times = steps.to_numpy(dtype=np.int64)
+    if not set(times.tolist()) <= set(allowed_steps):
         raise ValueError('Output includes unrecorded time steps')
+    entity_keys = None
+    if entity_fields:
+        entities = result[entity_fields]
+        if entities.isna().any().any():
+            raise ValueError('Missing entity identifier')
+        entity_keys = [json.dumps(dict(zip(entity_fields, row)), sort_keys=True, ensure_ascii=False, allow_nan=False,
+                                  default=lambda value: value.item())
+                       for row in entities.itertuples(index=False, name=None)]
+        result = result.drop(columns=entity_fields)
+    keys = pd.DataFrame({'step': times, 'entity': entity_keys if entity_keys is not None else ''})
+    if keys.duplicated().any():
+        raise ValueError('Duplicate time index within the same entity')
     if not result.columns.is_unique or len(result.columns) == 0:
         raise ValueError('Output needs unique numeric value columns')
     if any(not isinstance(c, str) or not c for c in result.columns):
@@ -49,35 +72,46 @@ def check_result(result, run_id, indicator_id, allowed_steps, settings):
         raise ValueError('Infinite indicator value')
     warnings, columns = [], {}
     for column in result:
-        series = result[column]
+        series = result[column].reset_index(drop=True)
         finite = int(series.notna().sum())
         missing = float(series.isna().mean())
         constant = bool(series.nunique(dropna=True) <= 1 and finite > 0)
-        columns[column] = {'finite_observations': finite, 'missing_fraction': missing, 'constant': constant}
-        if finite < settings.min_observations:
-            raise ValueError(f'{column}: insufficient actual observations ({finite} < {settings.min_observations})')
+        minimum = finite
+        if entity_keys is not None:
+            minimum = int(series.notna().groupby(entity_keys).sum().min())
+        columns[column] = {'finite_observations': finite, 'minimum_observations_per_entity': minimum,
+                           'missing_fraction': missing, 'constant': constant}
+        if minimum < settings.min_observations:
+            raise ValueError(f'{column}: insufficient actual observations ({minimum} < {settings.min_observations})')
         if constant:
             warnings.append(f'{column}: constant series; retained without causal claims')
         if missing > settings.missing_fraction_warning:
             warnings.append(f'{column}: high missing fraction {missing:.3f}')
-    result = result.astype(float)
-    result.index = steps.to_numpy(dtype=np.int64)
-    result.index.name = 'step'
-    result = result.sort_index()
-    long = pd.concat([pd.DataFrame({'step': result.index.to_numpy(), 'feature': column,
-                                    'value': result[column].to_numpy()}) for column in result], ignore_index=True)
+    order = keys.sort_values(['step', 'entity'], kind='stable').index.to_numpy()
+    result = result.astype(float).iloc[order].reset_index(drop=True)
+    times = times[order]
+    sorted_entities = np.asarray(entity_keys)[order] if entity_keys is not None else None
+    pieces = []
+    for column in result:
+        frame = pd.DataFrame({'step': times, 'feature': column, 'value': result[column].to_numpy()})
+        if sorted_entities is not None:
+            frame.insert(1, 'entity_id', sorted_entities)
+        pieces.append(frame)
+    long = pd.concat(pieces, ignore_index=True)
     long.insert(0, 'indicator_id', indicator_id)
     long.insert(0, 'run_id', run_id)
-    return long, {'rows': len(result), 'columns': columns, 'warnings': warnings,
-                  'start_step': int(result.index.min()), 'end_step': int(result.index.max()),
-                  'observed_steps': result.index.tolist()}
+    return long, {'rows': len(result), 'time_steps': int(len(set(times))),
+                  'entity_fields': entity_fields, 'entities': len(set(entity_keys)) if entity_keys is not None else 1,
+                  'columns': columns, 'warnings': warnings, 'start_step': int(times.min()),
+                  'end_step': int(times.max()), 'observed_steps': sorted(set(times.tolist()))}
 
 
 def load_approvals(path):
     if path is None:
         return None
     root = read_json(path)
-    if not isinstance(root, dict) or set(root) != {'reviewer', 'reviewed_at', 'notes', 'code_sha256'}:
+    required = {'reviewer', 'reviewed_at', 'notes', 'code_sha256'}
+    if not isinstance(root, dict) or not required <= set(root) or set(root) - required - {'rejections'}:
         raise ValueError('Review file requires reviewer, reviewed_at, notes, code_sha256')
     if any(not isinstance(root[k], str) or not root[k].strip() for k in ('reviewer', 'reviewed_at', 'notes')):
         raise ValueError('Review identity/date/notes cannot be empty')
@@ -85,27 +119,43 @@ def load_approvals(path):
     if not isinstance(hashes, dict) or any(not isinstance(k, str) or not isinstance(v, str) or
                                          len(v) != 64 or any(ch not in '0123456789abcdef' for ch in v) for k, v in hashes.items()):
         raise ValueError('Review code_sha256 must map indicator IDs to SHA-256 strings')
+    rejections = root.get('rejections', {})
+    if not isinstance(rejections, dict) or set(rejections) & set(hashes):
+        raise ValueError('Rejected and approved indicator IDs must be disjoint mappings')
+    for iid, review in rejections.items():
+        if (not isinstance(iid, str) or not isinstance(review, dict) or set(review) != {'reason', 'code_sha256'} or
+                not isinstance(review['reason'], str) or not review['reason'].strip() or
+                not isinstance(review['code_sha256'], str) or len(review['code_sha256']) != 64 or
+                any(c not in '0123456789abcdef' for c in review['code_sha256'])):
+            raise ValueError('Each rejection requires a reason and exact code SHA-256')
     return root
 
 
-def _trusted_compute(trajectory, node, code_file, settings):
+def _trusted_compute(trajectory, node, code_file, settings, folder):
     """Reviewed-only subprocess; explicitly NOT a sandbox. No API credentials passed."""
-    with tempfile.TemporaryDirectory(prefix='reviewed_indicator_') as tmp:
-        request = Path(tmp) / 'request.json'
-        output = Path(tmp) / 'result.parquet'
-        save_json(request, {'run_dir': str(trajectory.directory.resolve()), 'code_file': str(code_file.resolve()),
-                            'code_sha256': node['code_sha256'], 'required': node['required'],
-                            'config': node['config'], 'output': str(output)})
-        keep = {'SYSTEMROOT', 'WINDIR', 'PATH', 'TEMP', 'TMP', 'USERPROFILE', 'LOCALAPPDATA',
-                'APPDATA', 'PROGRAMDATA', 'CONDA_PREFIX', 'VIRTUAL_ENV'}
-        env = {k: v for k, v in os.environ.items() if k.upper() in keep}
-        env.update(OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', PYTHONUTF8='1', PYTHONDONTWRITEBYTECODE='1')
-        proc = subprocess.run([sys.executable, '-m', 'causal_graph.trusted_worker', str(request)],
-                              cwd=Path(__file__).resolve().parents[1], env=env, capture_output=True,
-                              timeout=settings.indicator_timeout)
-        if proc.returncode:
-            raise RuntimeError(proc.stderr.decode('utf-8', errors='replace')[-3000:])
-        return pd.read_parquet(output)
+    request = folder / 'worker_request.json'
+    output = folder / 'returned_result.parquet'
+    save_json(request, {'run_dir': str(trajectory.directory.resolve()), 'code_file': str(code_file.resolve()),
+                        'code_sha256': node['code_sha256'], 'required': node['required'],
+                        'config': node['config'], 'output': str(output)})
+    keep = {'SYSTEMROOT', 'WINDIR', 'PATH', 'TEMP', 'TMP', 'USERPROFILE', 'LOCALAPPDATA',
+            'APPDATA', 'PROGRAMDATA', 'CONDA_PREFIX', 'VIRTUAL_ENV'}
+    env = {k: v for k, v in os.environ.items() if k.upper() in keep}
+    env.update(OPENBLAS_NUM_THREADS='1', OMP_NUM_THREADS='1', PYTHONUTF8='1', PYTHONDONTWRITEBYTECODE='1')
+    command = [sys.executable, '-m', 'causal_graph.trusted_worker', str(request.resolve())]
+    save_json(folder / 'process.json', {'command': command, 'timeout_seconds': settings.indicator_timeout,
+                                       'started_at': now(), 'mode': 'reviewed_local_subprocess'})
+    with (folder / 'stdout.log').open('wb') as stdout, (folder / 'stderr.log').open('wb') as stderr:
+        try:
+            proc = subprocess.run(command, cwd=Path(__file__).resolve().parents[1], env=env,
+                                  stdout=stdout, stderr=stderr, timeout=settings.indicator_timeout)
+        except subprocess.TimeoutExpired:
+            save_json(folder / 'process_result.json', {'status': 'timeout', 'ended_at': now()})
+            raise
+    save_json(folder / 'process_result.json', {'returncode': proc.returncode, 'ended_at': now()})
+    if proc.returncode:
+        raise RuntimeError((folder / 'stderr.log').read_text(encoding='utf-8', errors='replace')[-3000:])
+    return pd.read_parquet(output)
 
 
 def execute_indicator(node, run, root, settings, approvals=None):
@@ -118,6 +168,7 @@ def execute_indicator(node, run, root, settings, approvals=None):
               'code_sha256': node['code_sha256'], 'generation_call': node['generation_call'],
               'required': node['required'], 'started_at': now(), 'status': 'failed',
               'source_hashes': run['data_hashes']}
+    report['execution_started'] = False
     started = time.monotonic()
     try:
         if node.get('implementation_status') == 'unavailable':
@@ -146,10 +197,16 @@ def execute_indicator(node, run, root, settings, approvals=None):
             result = trajectory.compute_isolated(adapter, node['required'], node['config'],
                                                   image=settings.image, timeout=settings.indicator_timeout)
         else:
+            rejection = (approvals or {}).get('rejections', {}).get(iid)
+            if rejection is not None:
+                if rejection['code_sha256'] != node['code_sha256']:
+                    raise PermissionError('Rejection review does not match current code SHA-256')
+                raise ReviewRejected(rejection['reason'])
             if approvals is None or approvals['code_sha256'].get(iid) != node['code_sha256']:
-                raise PermissionError('Explicit human review with matching code SHA-256 required')
-            report['human_review'] = {k: approvals[k] for k in ('reviewer', 'reviewed_at', 'notes')}
-            result = _trusted_compute(trajectory, node, code, settings)
+                raise PermissionError('Explicit code review with matching code SHA-256 required')
+            report['code_review'] = {k: approvals[k] for k in ('reviewer', 'reviewed_at', 'notes')}
+            report['execution_started'] = True
+            result = _trusted_compute(trajectory, node, code, settings, folder)
         # Keep returned data even when numerical/time validation subsequently fails.
         if isinstance(result, pd.Series):
             result = result.to_frame(name='value')
@@ -162,7 +219,7 @@ def execute_indicator(node, run, root, settings, approvals=None):
         report.update(status='success', series_file=destination.relative_to(root).as_posix(),
                       series_sha256=digest(destination), quality=quality)
     except Exception as exc:
-        kind = 'unavailable_data' if isinstance(exc, LookupError) else 'review_required' if isinstance(exc, PermissionError) else 'execution_or_validation_error'
+        kind = 'review_rejected' if isinstance(exc, ReviewRejected) else 'unavailable_data' if isinstance(exc, LookupError) else 'review_required' if isinstance(exc, PermissionError) else 'execution_or_validation_error'
         report.update(error_type=kind, error=f'{type(exc).__name__}: {exc}')
     report.update(ended_at=now(), elapsed_seconds=time.monotonic() - started)
     save_json(folder / 'report.json', report)

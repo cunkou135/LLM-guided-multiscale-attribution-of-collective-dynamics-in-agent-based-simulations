@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d13" for="edge" attr.name="target_phenomenon" attr.type="string"/>
+<key id="d12" for="edge" attr.name="source_phenomenon" attr.type="string"/>
+<key id="d11" for="edge" attr.name="relation_type" attr.type="string"/>
+<key id="d10" for="edge" attr.name="semantic_rationale" attr.type="string"/>
+<key id="d9" for="edge" attr.name="scale_direction" attr.type="string"/>
+<key id="d8" for="edge" attr.name="edge_id" attr.type="string"/>
+<key id="d7" for="node" attr.name="units" attr.type="string"/>
+<key id="d6" for="node" attr.name="mathematical_definition" attr.type="string"/>
+<key id="d5" for="node" attr.name="description" attr.type="string"/>
+<key id="d4" for="node" attr.name="phenomenon_id" attr.type="string"/>
+<key id="d3" for="node" attr.name="scale" attr.type="string"/>
+<key id="d2" for="node" attr.name="name" attr.type="string"/>
+<key id="d1" for="graph" attr.name="schema_version" attr.type="string"/>
+<key id="d0" for="graph" attr.name="evidence_status" attr.type="string"/>
+<graph edgedefault="directed"><data key="d0">unvalidated_semantic_candidates</data>
+<data key="d1">2.0</data>
+<node id="sic_macro_layer_entropy">
+  <data key="d2">City infection-event layer entropy</data>
+  <data key="d3">macro</data>
+  <data key="d4">setting_infection_clustering</data>
+  <data key="d5">Normalized entropy of infection-transition events across observed contact layers for each run and time window.</data>
+  <data key="d6">For run r and window [s,s+W-1], let n_L = # infection-transition events with layer L for each non-null layer label L observed in r; N=sum_L n_L; p_L=n_L/N; K=# non-null layer labels observed in r in contacts or events; H = -(sum_L p_L log p_L)/log K if N&gt;0 and K&gt;1; undefined otherwise.</data>
+  <data key="d7">dimensionless normalized entropy</data>
+</node>
+<node id="icts_meso_layer_contact_change">
+  <data key="d2">Layer contact-volume change around quarantine-count increase</data>
+  <data key="d3">meso</data>
+  <data key="d4">intervention_contact_trajectory_shift</data>
+  <data key="d5">Median within-layer change in mean per-step contact rows around steps where the model quarantine count increases.</data>
+  <data key="d6">For run r and layer L, let Q_t=model_states.quarantined at step t. Let S={t: Q_t&gt;Q_prev(t) with previous sampled step observed}. For each t in S, define C_pre(t)=mean over u in [t-W,t-1] intersect observed steps of # contacts rows with run_id=r, layer=L, step=u; C_post(t)=mean over u in [t+1,t+W] intersect observed steps of # contacts rows with run_id=r, layer=L, step=u. Indicator = median over t in S of (C_post(t)-C_pre(t)) when S and required pre/post steps exist; undefined if S is empty or no pre/post observed steps exist.</data>
+  <data key="d7">contact rows per step</data>
+</node>
+<node id="icts_macro_city_contact_change_on_quarantine_increase">
+  <data key="d2">City contact-volume change on quarantine-increase steps</data>
+  <data key="d3">macro</data>
+  <data key="d4">intervention_contact_trajectory_shift</data>
+  <data key="d5">Difference in mean step-to-step change of total city contact rows between steps with positive quarantine-count change and steps with zero quarantine-count change.</data>
+  <data key="d6">For run r, let C_t=# contacts rows at step t; DeltaC_t=C_t-C_{t-1}; DeltaQ_t=Q_t-Q_{t-1} from model_states.quarantined. Let A=mean{DeltaC_t: DeltaQ_t&gt;0 and both t and t-1 are observed}; B=mean{DeltaC_t: DeltaQ_t=0 and both t and t-1 are observed}. Indicator=A-B. Undefined if A or B has no members.</data>
+  <data key="d7">contact rows per step</data>
+</node>
+<edge source="sic_macro_layer_entropy" target="icts_macro_city_contact_change_on_quarantine_increase">
+  <data key="d8">intra_scale__macro_layer_entropy_to_city_contact_change</data>
+  <data key="d9">intra_scale</data>
+  <data key="d10">A more dispersed or concentrated distribution of infection events across layers indicates which settings are driving transmission; this changes which settings generate quarantine increases and how city-level contact volume changes when quarantine counts rise.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">setting_infection_clustering</data>
+  <data key="d13">intervention_contact_trajectory_shift</data>
+</edge>
+<edge source="icts_meso_layer_contact_change" target="sic_macro_layer_entropy">
+  <data key="d8">upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy</data>
+  <data key="d9">upward</data>
+  <data key="d10">Quarantine-associated contact-volume contractions that differ by layer redistribute mixing opportunities among settings, which can shift transmission toward less-contracted layers and thereby reshape the city-level distribution of infection events across layers.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">intervention_contact_trajectory_shift</data>
+  <data key="d13">setting_infection_clustering</data>
+</edge>
+<edge source="icts_macro_city_contact_change_on_quarantine_increase" target="sic_macro_layer_entropy">
+  <data key="d8">intra_scale__macro_city_contact_change_to_layer_entropy</data>
+  <data key="d9">intra_scale</data>
+  <data key="d10">City contact-volume changes on quarantine-increase steps can reduce contacts unevenly across layers; by suppressing mixing in some settings more than others, these changes reshape the relative occurrence of infection events across settings and therefore the layer entropy of infection events.</data>
+  <data key="d11">semantic_candidate</data>
+  <data key="d12">intervention_contact_trajectory_shift</data>
+  <data key="d13">setting_infection_clustering</data>
+</edge>
+</graph></graphml>

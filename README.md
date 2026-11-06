@@ -102,3 +102,6 @@ t.export('exported_trajectory')
 # 第一部分跨尺度候选图方法
 
 独立 [`causal_graph`](causal_graph/README.md) 2.0：固定想定识别现象，结合实际公共数据 Schema 自主生成三尺度变量及计算代码，分别调用 LLM 判断向上、向下和同层候选边，再本地合并；允许反馈环、跨现象联系与孤立节点。使用现有 Trajectory 计算，输出完整/可执行 JSON 与 GraphML、独立运行时间序列及审计。安装 `python -m pip install -e ".[test,causal]"`，入口 `python -m causal_graph --help`。论文第二部分为以后进行的数据因果判别；本轮不实现统计检验，也不设置独立干预验证阶段。
+
+
+本地科研执行不要求 Docker：明确审查生成代码后，使用 trusted_reviewed 与 --execute-only --resume，在现有 Python 子进程中计算，保留 SHA-256 审核、日志和失败状态，不重新调用 LLM。当前原 12 个函数中 8 项通过、4 项未通过；详见 [本地执行验收](causal_graph/docs/LOCAL_EXECUTION_REPORT.md) 与 [全部真实因果图视图](causal_graph/examples/local_execution_20261106/graphs/index.html)。

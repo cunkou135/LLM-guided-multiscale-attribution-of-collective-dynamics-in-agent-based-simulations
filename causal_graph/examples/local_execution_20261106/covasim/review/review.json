@@ -1,0 +1,21 @@
+{
+  "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+  "reviewed_at": "2026-11-06T15:33:04.241366+00:00",
+  "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature.",
+  "code_sha256": {
+    "sic_meso_layer_infection_contact_ratio": "69fead8868c708841bd9966f947ecc31f8fcbe17235b3e6dad397f5010f7b8ba",
+    "sic_macro_layer_entropy": "8d5f83024770e0e245dc396ff43421371e83ce0b9c59647ada859c073fb7d9d8",
+    "icts_meso_layer_contact_change": "9dbb537969039edd56314a26dbbf68d722595056a4ea0d9e0ee866933f3d3943",
+    "icts_macro_city_contact_change_on_quarantine_increase": "79529d5488de86c0f7fc2c67191c04e3448e94ae23270aa1f72d02b6b2db1870"
+  },
+  "rejections": {
+    "sic_micro_prior_setting_degree": {
+      "code_sha256": "0851a97e71f5a682d586c6eefd8a19b6404478d34b72ad688ad9921abefca2f5",
+      "reason": "The mathematical definition specifies D(e) for each infection event. The function returns a per-step mean, so event-level observations and variation are discarded; the later config note does not preserve the original observation unit. It also lacks the specified negative-sentinel filter (the supplied contacts contain no negative IDs). Original code is retained and not executed."
+    },
+    "icts_micro_quarantine_contact_ratio": {
+      "code_sha256": "aaf08aedfb0fffaac9184f092ab0ecba960129df080de1d1c00025e4eb1e0eff",
+      "reason": "The definition specifies a ratio for each quarantine-onset event, but the function collapses onsets to a per-step mean. In addition, missing before values become false and can qualify as onsets despite the config rule, and negative sentinels are not explicitly excluded. The supplied onset/contacts data do not trigger the latter conditions; the observation-unit mismatch remains. Not executed."
+    }
+  }
+}

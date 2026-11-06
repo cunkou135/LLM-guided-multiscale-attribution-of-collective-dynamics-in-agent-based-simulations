@@ -1,0 +1,190 @@
+{
+  "scene": "fish",
+  "reviewed_at": "2026-11-06T15:32:48.714379+00:00",
+  "semantic_graph_sha256": "002cea2a2cdaf4ddd9d9acaf3b25586b04c6ea43c98968f660f0cdc5f6d5732e",
+  "reviews": [
+    {
+      "indicator_id": "frag_micro_nn_distance",
+      "code_sha256": "5df1cecd3fca53a0c25e1708c0971b7444b6c061c32633bb3d211693e21a25dc",
+      "decision": "approved",
+      "mathematical_review": "Euclidean all-fish nearest-neighbor distance; diagonal exclusion is correct. Preserve the (step, agent_id) observation unit; no temporal or population aggregation.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "agent_states": [
+            "agent_id",
+            "role",
+            "run_id",
+            "step",
+            "x",
+            "y"
+          ]
+        },
+        "unresolved_access": [
+          "agent_states: dynamic indexing or boolean/positional selection"
+        ],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "dd5632b414d9249f75142bd8ec178d985594bbdeeba207c2526bf542afa3ddc9",
+      "config_sha256": "69f81d4a95d62b2fe19074964e4c1b50107878a48372a16dea398222774d660b",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    },
+    {
+      "indicator_id": "frag_meso_contact_component_count",
+      "code_sha256": "df26b7f73331416bf6cad5452bf99f06f75170639199e3507707ecb8d813c244",
+      "decision": "approved",
+      "mathematical_review": "Union-find on the declared undirected recorded-contact graph includes isolated fish and rejects non-fish, unmatched and self endpoints. Recorded alarm contacts are not the complete spatial-neighbor network.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "contacts": [
+            "agent_id",
+            "partner_id",
+            "run_id",
+            "step"
+          ],
+          "agent_states": [
+            "agent_id",
+            "role",
+            "run_id",
+            "step"
+          ]
+        },
+        "unresolved_access": [
+          "agent_states: dynamic indexing or boolean/positional selection"
+        ],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "7ab946e16ef7d33199a6e85c10efc2684d01493f32da1f486031c4fb14d102af",
+      "config_sha256": "1a0d00d483d573be1a713b80bea474542fbb3c7f113da49d7c51906a33655d63",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    },
+    {
+      "indicator_id": "frag_macro_largest_component_fraction",
+      "code_sha256": "1de57ee2467d7b479bf31d95a7d5eefbc40b465ed9e9ecdc6915fd9c723a5381",
+      "decision": "approved",
+      "mathematical_review": "Largest union-find component divided by recorded fish population matches the definition; zero-population is undefined.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "contacts": [
+            "agent_id",
+            "partner_id",
+            "run_id",
+            "step"
+          ],
+          "agent_states": [
+            "agent_id",
+            "role",
+            "run_id",
+            "step"
+          ]
+        },
+        "unresolved_access": [
+          "agent_states: dynamic indexing or boolean/positional selection"
+        ],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "e4c750ca6df69cc67f7a9a42bd6a05561797a839a00d00293d856543eb3507e0",
+      "config_sha256": "1a0d00d483d573be1a713b80bea474542fbb3c7f113da49d7c51906a33655d63",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    },
+    {
+      "indicator_id": "elong_micro_axis_alignment",
+      "code_sha256": "3f8c935ce96b328763621da9ddc0ea9a6c0e35d3f810cdbe2f04033502ced1a5",
+      "decision": "approved",
+      "mathematical_review": "Absolute heading projection on the first positional principal axis. Native Fish headings are radians (engine initialization uses deg2rad). np.isclose is a numerical isotropy tolerance; the original run has no affected near-isotropic frame. Keep per-fish observations.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "agent_states": [
+            "agent_id",
+            "heading",
+            "role",
+            "run_id",
+            "step",
+            "x",
+            "y"
+          ]
+        },
+        "unresolved_access": [
+          "agent_states: dynamic indexing or boolean/positional selection"
+        ],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "d81c220cb183841d2fbb62f8c09a10b2fe102618bd5027ac3ca5f2376dd79434",
+      "config_sha256": "1d96c871b5e61053100056596a8f7d8c40a7c951845ce6f696ade94982ef7975",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    },
+    {
+      "indicator_id": "elong_meso_local_eigen_ratio",
+      "code_sha256": "273d711be8c95d1919abbba46920c4df2997bd6e92173599a141ec24400a3735",
+      "decision": "approved",
+      "mathematical_review": "Closed undirected contact neighborhoods, sample covariance and positive-small-eigenvalue eligibility match the definition. No eligible neighborhood remains NaN. Floating-point sensitivity near degeneracy is checked against an independent reference.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "contacts": [
+            "agent_id",
+            "partner_id",
+            "run_id",
+            "step"
+          ],
+          "agent_states": [
+            "agent_id",
+            "role",
+            "run_id",
+            "step",
+            "x",
+            "y"
+          ]
+        },
+        "unresolved_access": [
+          "agent_states: dynamic indexing or boolean/positional selection"
+        ],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "05839c2a53ec56600d1ec3cac8a5664bb5f366483a6e99f914befe5e76bd4223",
+      "config_sha256": "f028e9cc5cc483fee3e26ba72db01fd421bee894d861af78ff34772a2126fefe",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    },
+    {
+      "indicator_id": "elong_macro_global_eigen_ratio",
+      "code_sha256": "d465960e16dcc13a6c12a533d7bdc2004d36c5dcdbbabaef7ee5cd6af4bdaf85",
+      "decision": "approved",
+      "mathematical_review": "All-fish sample-covariance eigenvalue ratio; degenerate/small populations remain undefined. No artificial data or result constants.",
+      "syntax_and_basic_safety_errors": [],
+      "field_access_review": {
+        "errors": [],
+        "statically_observed_access": {
+          "agent_states": [
+            "agent_id",
+            "role",
+            "run_id",
+            "step",
+            "x",
+            "y"
+          ]
+        },
+        "unresolved_access": [
+          "agent_states: dynamic indexing or boolean/positional selection"
+        ],
+        "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+      },
+      "definition_sha256": "24662c954bc3ea8f667efec0fc5119d437f3215ec7c9fa7c7ccbb8384eb58877",
+      "config_sha256": "264c95002f0a041b2f767764b2e73e60a8912014c93e80894a72166ed0b7c6dc",
+      "dangerous_operations": [],
+      "safety_review": "All imports/calls and module top-level statements inspected: scientific data processing only; no file/network/process/environment access, dynamic exec/eval or random observation generation. Local subprocess timeout applies."
+    }
+  ]
+}

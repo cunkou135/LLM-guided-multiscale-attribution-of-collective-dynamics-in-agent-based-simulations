@@ -1,0 +1,558 @@
+[
+  {
+    "run_id": "2a815b4dfe4f47b8ac2416fac04456e5",
+    "indicator_id": "frag_micro_nn_distance",
+    "mode": "trusted_reviewed",
+    "code_sha256": "5df1cecd3fca53a0c25e1708c0971b7444b6c061c32633bb3d211693e21a25dc",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "run_id",
+        "step",
+        "agent_id",
+        "role",
+        "x",
+        "y"
+      ]
+    },
+    "started_at": "2026-11-06T15:32:50.421759+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "473797b9f364cd8c17f7a9a5d5a483c2cc27dabe4662bff1ec1b8a06e1843a74",
+      "contacts.parquet": "43831bd9c732c2cf1c6a241edec9e11d630fd390ce9808c8910166a46d77367c",
+      "events.parquet": "5868a97e01062c5e84987e65f3511dbb3f58d7ca19972467092e8ce60626588a",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "a97874746d636d9402ecacef576525f5bc048162047e04e430b9bbdc151f0007",
+      "model_states.parquet": "84f80dc65b6cf989bd637e8418625546726429d9dd960ba7f026347d8c28e18f",
+      "raw_frames.parquet": "0cd5cb6fbfe13b583aa00dc246dcd0f6b0c8153cca17e5b66b056a01a8fd1f29",
+      "resolved_config.yaml": "eba1bdd053688ed00230263b3ffdfbac446babcd94c106c7ba5293609ba12e25",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "execution_started": true,
+    "data_contract_valid": true,
+    "code_review": {
+      "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+      "reviewed_at": "2026-11-06T15:32:48.714379+00:00",
+      "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature."
+    },
+    "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/frag_micro_nn_distance.parquet",
+    "series_sha256": "3b312a81989834692e765b861953bf4b9777d72a81fc4c895e38399e387bb2c4",
+    "quality": {
+      "rows": 42000,
+      "time_steps": 21,
+      "entity_fields": [
+        "agent_id"
+      ],
+      "entities": 2000,
+      "columns": {
+        "value": {
+          "finite_observations": 42000,
+          "minimum_observations_per_entity": 21,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 20,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "ended_at": "2026-11-06T15:32:52.351584+00:00",
+    "elapsed_seconds": 1.9210000000020955,
+    "mathematical_validation": {
+      "valid": true,
+      "reference": "independent calculation from original Trajectory records; not substituted output",
+      "coordinates_checked": 42000,
+      "finite_values_checked": 42000,
+      "max_absolute_error": 0.0,
+      "rtol": 1e-07,
+      "atol": 1e-09
+    }
+  },
+  {
+    "run_id": "2a815b4dfe4f47b8ac2416fac04456e5",
+    "indicator_id": "frag_meso_contact_component_count",
+    "mode": "trusted_reviewed",
+    "code_sha256": "df26b7f73331416bf6cad5452bf99f06f75170639199e3507707ecb8d813c244",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "run_id",
+        "step",
+        "agent_id",
+        "role"
+      ],
+      "contacts": [
+        "run_id",
+        "step",
+        "agent_id",
+        "partner_id"
+      ]
+    },
+    "started_at": "2026-11-06T15:32:52.360577+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "473797b9f364cd8c17f7a9a5d5a483c2cc27dabe4662bff1ec1b8a06e1843a74",
+      "contacts.parquet": "43831bd9c732c2cf1c6a241edec9e11d630fd390ce9808c8910166a46d77367c",
+      "events.parquet": "5868a97e01062c5e84987e65f3511dbb3f58d7ca19972467092e8ce60626588a",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "a97874746d636d9402ecacef576525f5bc048162047e04e430b9bbdc151f0007",
+      "model_states.parquet": "84f80dc65b6cf989bd637e8418625546726429d9dd960ba7f026347d8c28e18f",
+      "raw_frames.parquet": "0cd5cb6fbfe13b583aa00dc246dcd0f6b0c8153cca17e5b66b056a01a8fd1f29",
+      "resolved_config.yaml": "eba1bdd053688ed00230263b3ffdfbac446babcd94c106c7ba5293609ba12e25",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "execution_started": true,
+    "data_contract_valid": true,
+    "code_review": {
+      "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+      "reviewed_at": "2026-11-06T15:32:48.714379+00:00",
+      "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature."
+    },
+    "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/frag_meso_contact_component_count.parquet",
+    "series_sha256": "4cf060754c76c46cddf0dad5ff306bca23e6bc940786dc3b57db2221359e5811",
+    "quality": {
+      "rows": 21,
+      "time_steps": 21,
+      "entity_fields": [],
+      "entities": 1,
+      "columns": {
+        "value": {
+          "finite_observations": 21,
+          "minimum_observations_per_entity": 21,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 20,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "ended_at": "2026-11-06T15:32:54.318152+00:00",
+    "elapsed_seconds": 1.9530000000013388,
+    "mathematical_validation": {
+      "valid": true,
+      "reference": "independent calculation from original Trajectory records; not substituted output",
+      "coordinates_checked": 21,
+      "finite_values_checked": 21,
+      "max_absolute_error": 0.0,
+      "rtol": 1e-07,
+      "atol": 1e-09
+    }
+  },
+  {
+    "run_id": "2a815b4dfe4f47b8ac2416fac04456e5",
+    "indicator_id": "frag_macro_largest_component_fraction",
+    "mode": "trusted_reviewed",
+    "code_sha256": "1de57ee2467d7b479bf31d95a7d5eefbc40b465ed9e9ecdc6915fd9c723a5381",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "run_id",
+        "step",
+        "agent_id",
+        "role"
+      ],
+      "contacts": [
+        "run_id",
+        "step",
+        "agent_id",
+        "partner_id"
+      ]
+    },
+    "started_at": "2026-11-06T15:32:54.324323+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "473797b9f364cd8c17f7a9a5d5a483c2cc27dabe4662bff1ec1b8a06e1843a74",
+      "contacts.parquet": "43831bd9c732c2cf1c6a241edec9e11d630fd390ce9808c8910166a46d77367c",
+      "events.parquet": "5868a97e01062c5e84987e65f3511dbb3f58d7ca19972467092e8ce60626588a",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "a97874746d636d9402ecacef576525f5bc048162047e04e430b9bbdc151f0007",
+      "model_states.parquet": "84f80dc65b6cf989bd637e8418625546726429d9dd960ba7f026347d8c28e18f",
+      "raw_frames.parquet": "0cd5cb6fbfe13b583aa00dc246dcd0f6b0c8153cca17e5b66b056a01a8fd1f29",
+      "resolved_config.yaml": "eba1bdd053688ed00230263b3ffdfbac446babcd94c106c7ba5293609ba12e25",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "execution_started": true,
+    "data_contract_valid": true,
+    "code_review": {
+      "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+      "reviewed_at": "2026-11-06T15:32:48.714379+00:00",
+      "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature."
+    },
+    "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/frag_macro_largest_component_fraction.parquet",
+    "series_sha256": "af054b1af64809a55d82042106e5256b6011bcf86158bf17e0519d738b10a0ba",
+    "quality": {
+      "rows": 21,
+      "time_steps": 21,
+      "entity_fields": [],
+      "entities": 1,
+      "columns": {
+        "value": {
+          "finite_observations": 21,
+          "minimum_observations_per_entity": 21,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 20,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "ended_at": "2026-11-06T15:32:56.244053+00:00",
+    "elapsed_seconds": 1.9059999999954016,
+    "mathematical_validation": {
+      "valid": true,
+      "reference": "independent calculation from original Trajectory records; not substituted output",
+      "coordinates_checked": 21,
+      "finite_values_checked": 21,
+      "max_absolute_error": 0.0,
+      "rtol": 1e-07,
+      "atol": 1e-09
+    }
+  },
+  {
+    "run_id": "2a815b4dfe4f47b8ac2416fac04456e5",
+    "indicator_id": "elong_micro_axis_alignment",
+    "mode": "trusted_reviewed",
+    "code_sha256": "3f8c935ce96b328763621da9ddc0ea9a6c0e35d3f810cdbe2f04033502ced1a5",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "run_id",
+        "step",
+        "agent_id",
+        "role",
+        "x",
+        "y",
+        "heading"
+      ]
+    },
+    "started_at": "2026-11-06T15:32:56.250980+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "473797b9f364cd8c17f7a9a5d5a483c2cc27dabe4662bff1ec1b8a06e1843a74",
+      "contacts.parquet": "43831bd9c732c2cf1c6a241edec9e11d630fd390ce9808c8910166a46d77367c",
+      "events.parquet": "5868a97e01062c5e84987e65f3511dbb3f58d7ca19972467092e8ce60626588a",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "a97874746d636d9402ecacef576525f5bc048162047e04e430b9bbdc151f0007",
+      "model_states.parquet": "84f80dc65b6cf989bd637e8418625546726429d9dd960ba7f026347d8c28e18f",
+      "raw_frames.parquet": "0cd5cb6fbfe13b583aa00dc246dcd0f6b0c8153cca17e5b66b056a01a8fd1f29",
+      "resolved_config.yaml": "eba1bdd053688ed00230263b3ffdfbac446babcd94c106c7ba5293609ba12e25",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "execution_started": true,
+    "data_contract_valid": true,
+    "code_review": {
+      "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+      "reviewed_at": "2026-11-06T15:32:48.714379+00:00",
+      "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature."
+    },
+    "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/elong_micro_axis_alignment.parquet",
+    "series_sha256": "42ac8d51aeba9ef44e2d72ab20454b4af12dac3ef6056aec2a23c1cfd979cdcc",
+    "quality": {
+      "rows": 42000,
+      "time_steps": 21,
+      "entity_fields": [
+        "agent_id"
+      ],
+      "entities": 2000,
+      "columns": {
+        "value": {
+          "finite_observations": 42000,
+          "minimum_observations_per_entity": 21,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 20,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "ended_at": "2026-11-06T15:32:57.644243+00:00",
+    "elapsed_seconds": 1.389999999999418,
+    "mathematical_validation": {
+      "valid": true,
+      "reference": "independent calculation from original Trajectory records; not substituted output",
+      "coordinates_checked": 42000,
+      "finite_values_checked": 42000,
+      "max_absolute_error": 3.3688329903469594e-14,
+      "rtol": 1e-07,
+      "atol": 1e-09
+    }
+  },
+  {
+    "run_id": "2a815b4dfe4f47b8ac2416fac04456e5",
+    "indicator_id": "elong_meso_local_eigen_ratio",
+    "mode": "trusted_reviewed",
+    "code_sha256": "273d711be8c95d1919abbba46920c4df2997bd6e92173599a141ec24400a3735",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "run_id",
+        "step",
+        "agent_id",
+        "role",
+        "x",
+        "y"
+      ],
+      "contacts": [
+        "run_id",
+        "step",
+        "agent_id",
+        "partner_id"
+      ]
+    },
+    "started_at": "2026-11-06T15:32:57.651698+00:00",
+    "status": "failed",
+    "source_hashes": {
+      "agent_states.parquet": "473797b9f364cd8c17f7a9a5d5a483c2cc27dabe4662bff1ec1b8a06e1843a74",
+      "contacts.parquet": "43831bd9c732c2cf1c6a241edec9e11d630fd390ce9808c8910166a46d77367c",
+      "events.parquet": "5868a97e01062c5e84987e65f3511dbb3f58d7ca19972467092e8ce60626588a",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "a97874746d636d9402ecacef576525f5bc048162047e04e430b9bbdc151f0007",
+      "model_states.parquet": "84f80dc65b6cf989bd637e8418625546726429d9dd960ba7f026347d8c28e18f",
+      "raw_frames.parquet": "0cd5cb6fbfe13b583aa00dc246dcd0f6b0c8153cca17e5b66b056a01a8fd1f29",
+      "resolved_config.yaml": "eba1bdd053688ed00230263b3ffdfbac446babcd94c106c7ba5293609ba12e25",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "execution_started": true,
+    "data_contract_valid": true,
+    "code_review": {
+      "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+      "reviewed_at": "2026-11-06T15:32:48.714379+00:00",
+      "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature."
+    },
+    "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/elong_meso_local_eigen_ratio.parquet",
+    "series_sha256": "31712f0d49ec4bf5dbbc28aa1cd90a7a2a479b399de4307c5d41beb5547e477d",
+    "quality": {
+      "rows": 21,
+      "time_steps": 21,
+      "entity_fields": [],
+      "entities": 1,
+      "columns": {
+        "value": {
+          "finite_observations": 19,
+          "minimum_observations_per_entity": 19,
+          "missing_fraction": 0.09523809523809523,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 20,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "ended_at": "2026-11-06T15:33:00.127617+00:00",
+    "elapsed_seconds": 2.4690000000045984,
+    "error_type": "mathematical_validation_error",
+    "error": "\nNot equal to tolerance rtol=1e-07, atol=1e-09\n\nMismatched elements: 1 / 21 (4.76%)\nMax absolute difference: 6.99494838\nMax relative difference: 3.21743644e-07\n x: array([         nan,          nan, 6.327701e+00, 1.075033e+02,\n       7.271408e+00, 5.043703e+00, 2.663191e+02, 3.323982e+00,\n       2.084087e+02, 5.796471e+00, 3.364291e+00, 4.354002e+02,...\n y: array([         nan,          nan, 6.327701e+00, 1.075033e+02,\n       7.271408e+00, 5.043703e+00, 2.663191e+02, 3.323982e+00,\n       2.084087e+02, 5.796471e+00, 3.364291e+00, 4.354002e+02,...",
+    "mathematical_validation": {
+      "valid": false,
+      "error": "\nNot equal to tolerance rtol=1e-07, atol=1e-09\n\nMismatched elements: 1 / 21 (4.76%)\nMax absolute difference: 6.99494838\nMax relative difference: 3.21743644e-07\n x: array([         nan,          nan, 6.327701e+00, 1.075033e+02,\n       7.271408e+00, 5.043703e+00, 2.663191e+02, 3.323982e+00,\n       2.084087e+02, 5.796471e+00, 3.364291e+00, 4.354002e+02,...\n y: array([         nan,          nan, 6.327701e+00, 1.075033e+02,\n       7.271408e+00, 5.043703e+00, 2.663191e+02, 3.323982e+00,\n       2.084087e+02, 5.796471e+00, 3.364291e+00, 4.354002e+02,..."
+    }
+  },
+  {
+    "run_id": "2a815b4dfe4f47b8ac2416fac04456e5",
+    "indicator_id": "elong_macro_global_eigen_ratio",
+    "mode": "trusted_reviewed",
+    "code_sha256": "d465960e16dcc13a6c12a533d7bdc2004d36c5dcdbbabaef7ee5cd6af4bdaf85",
+    "generation_call": "generation/codes/attempt_000",
+    "required": {
+      "agent_states": [
+        "run_id",
+        "step",
+        "agent_id",
+        "role",
+        "x",
+        "y"
+      ]
+    },
+    "started_at": "2026-11-06T15:33:00.134617+00:00",
+    "status": "success",
+    "source_hashes": {
+      "agent_states.parquet": "473797b9f364cd8c17f7a9a5d5a483c2cc27dabe4662bff1ec1b8a06e1843a74",
+      "contacts.parquet": "43831bd9c732c2cf1c6a241edec9e11d630fd390ce9808c8910166a46d77367c",
+      "events.parquet": "5868a97e01062c5e84987e65f3511dbb3f58d7ca19972467092e8ce60626588a",
+      "field_catalog.json": "6b1f14764cd8a5b828880f73e9112ad883d32a935cc0589ad3806ad3803974aa",
+      "manifest.json": "a97874746d636d9402ecacef576525f5bc048162047e04e430b9bbdc151f0007",
+      "model_states.parquet": "84f80dc65b6cf989bd637e8418625546726429d9dd960ba7f026347d8c28e18f",
+      "raw_frames.parquet": "0cd5cb6fbfe13b583aa00dc246dcd0f6b0c8153cca17e5b66b056a01a8fd1f29",
+      "resolved_config.yaml": "eba1bdd053688ed00230263b3ffdfbac446babcd94c106c7ba5293609ba12e25",
+      "scenario.md": "f2714fa2fd10ebc949f2f91843387ad5965f6eca75a4cb60496a4f6c7642a936"
+    },
+    "execution_started": true,
+    "data_contract_valid": true,
+    "code_review": {
+      "reviewer": "Codex code review explicitly authorized by the user, 2026-11-06",
+      "reviewed_at": "2026-11-06T15:32:48.714379+00:00",
+      "notes": "Specific immutable 30d65e1 outputs reviewed against their mathematical definitions, config and original logs. See code_review_report.json. Agent-authored review, not a claimed human signature."
+    },
+    "series_file": "indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/elong_macro_global_eigen_ratio.parquet",
+    "series_sha256": "5791da491ba8b3f12157e370812b190a52b31cf43b3eeb25b2fb2be46ee22554",
+    "quality": {
+      "rows": 21,
+      "time_steps": 21,
+      "entity_fields": [],
+      "entities": 1,
+      "columns": {
+        "value": {
+          "finite_observations": 21,
+          "minimum_observations_per_entity": 21,
+          "missing_fraction": 0.0,
+          "constant": false
+        }
+      },
+      "warnings": [],
+      "start_step": 0,
+      "end_step": 20,
+      "observed_steps": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ]
+    },
+    "ended_at": "2026-11-06T15:33:01.152353+00:00",
+    "elapsed_seconds": 1.0309999999954016,
+    "mathematical_validation": {
+      "valid": true,
+      "reference": "independent calculation from original Trajectory records; not substituted output",
+      "coordinates_checked": 21,
+      "finite_values_checked": 21,
+      "max_absolute_error": 1.7763568394002505e-15,
+      "rtol": 1e-07,
+      "atol": 1e-09
+    }
+  }
+]
