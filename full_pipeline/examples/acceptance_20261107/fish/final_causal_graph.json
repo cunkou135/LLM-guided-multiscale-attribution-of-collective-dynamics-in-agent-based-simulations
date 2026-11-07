@@ -1,0 +1,357 @@
+{
+  "schema_version": "causal-discovery/1.0",
+  "source_graph": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\stage1_graph.json",
+  "weight_semantics": "primary_lag_in_simulation_steps",
+  "evidence_scope": "observational directed predictive dependence and joint information, not structural causal truth",
+  "nodes": [
+    {
+      "indicator_id": "fish_contact_fragmentation_meso",
+      "phenomenon_id": "school_fission_stretch",
+      "name": "Fish contact-graph fragmentation index",
+      "scale": "meso",
+      "description": "Mesoscale fragmentation of the fish interaction graph, measured as one minus the fraction of fish in the largest connected component formed by native contact edges at the same step.",
+      "mathematical_definition": "For each run_id r and step t, let V_{r,t} = {i : role_i = 'fish' at (r,t)}. Build an undirected graph G_{r,t} = (V_{r,t}, E_{r,t}), where E_{r,t} contains an unordered pair {a,b} if and only if a,b are in V_{r,t} and there exists a contacts row at (r,t) with {agent_id, partner_id} = {a,b}; duplicate edges are collapsed. Let components C_1,...,C_k be the connected components of G_{r,t}, and let M_{r,t} = max_m |C_m|. Define fragmentation F_{r,t} = 1 - M_{r,t}/|V_{r,t}| when |V_{r,t}| > 0; if |V_{r,t}| = 0, F_{r,t} is undefined.",
+      "units": "dimensionless",
+      "computation_notes": "Computed per run_id and step as a snapshot of the native contact edge list. Vertices are fish agents present in agent_states at that step; contacts rows are retained only when both endpoints are fish at the same run_id and step. Edges are treated as undirected and deduplicated. Missing or sentinel identifiers are excluded. No external group IDs are introduced; connected components are derived only from recorded edges.",
+      "required_data": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "step",
+          "agent_id",
+          "role"
+        ],
+        "contacts": [
+          "step",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "config": {},
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef _fragmentation(fish_ids, edges):\n    n = len(fish_ids)\n    if n == 0:\n        return np.nan\n    parent = {i: i for i in fish_ids}\n    size = {i: 1 for i in fish_ids}\n\n    def find(x):\n        root = x\n        while parent[root] != root:\n            root = parent[root]\n        while parent[x] != x:\n            p = parent[x]\n            parent[x] = root\n            x = p\n        return root\n\n    def union(a, b):\n        ra = find(a)\n        rb = find(b)\n        if ra == rb:\n            return\n        if size[ra] < size[rb]:\n            ra, rb = rb, ra\n        parent[rb] = ra\n        size[ra] += size[rb]\n\n    for a, b in edges:\n        if a in parent and b in parent:\n            union(a, b)\n\n    counts = {}\n    for i in fish_ids:\n        r = find(i)\n        counts[r] = counts.get(r, 0) + 1\n    largest = max(counts.values())\n    return 1.0 - float(largest) / float(n)\n\n\ndef compute_indicator(data, config):\n    agents = data['agent_states']\n    contacts = data['contacts']\n\n    role = agents['role'].astype(str).str.strip()\n    fish_mask = role.eq('fish') & agents['agent_id'].notna()\n    fish_df = agents.loc[fish_mask, ['step', 'agent_id']].copy()\n    if len(fish_df):\n        fish_df['step'] = fish_df['step'].astype('int64')\n        fish_df['agent_id'] = fish_df['agent_id'].astype('int64')\n\n    c = contacts[['step', 'agent_id', 'partner_id']].dropna(\n        subset=['step', 'agent_id', 'partner_id']\n    ).copy()\n    if len(c):\n        c['step'] = c['step'].astype('int64')\n        c['agent_id'] = c['agent_id'].astype('int64')\n        c['partner_id'] = c['partner_id'].astype('int64')\n\n    fish_by_step = {}\n    for step, g in fish_df.groupby('step', sort=False):\n        fish_by_step[step] = set(g['agent_id'].tolist())\n\n    edges_by_step = {}\n    for step, a, b in c[['step', 'agent_id', 'partner_id']].itertuples(\n        index=False, name=None\n    ):\n        edges_by_step.setdefault(step, []).append((a, b))\n\n    all_steps = sorted(agents['step'].dropna().astype('int64').unique().tolist())\n    values = {}\n    for step in all_steps:\n        values[step] = _fragmentation(\n            fish_by_step.get(step, set()),\n            edges_by_step.get(step, []),\n        )\n\n    series = pd.Series(\n        values,\n        name='fish_contact_fragmentation_meso',\n        dtype='float64',\n    )\n    series.index.name = 'step'\n    return series.sort_index()\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "fish_contact_fragmentation_meso",
+      "code_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\stage1\\builds\\84e6aaa8ed4e0764c65dfbc60067eabac5a26619d330815bbc513df48ba7e479\\indicator_code\\fish_contact_fragmentation_meso.py",
+      "code_sha256": "a6d94eb040efb18ed0098ffebcb1d3cf1ac515643fc3b6c03da8a1bffae30080",
+      "generation_call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\checkpoints\\code_fish_contact_fragmentation_meso\\d81a1b4f58e75dfbcf226d3627a917590d527ffb08f7b65d2ce27ace148d5b51\\attempt_001\\generation\\codes\\attempt_000",
+      "execution": {
+        "3ce050930f4442b08a05a5b14176ccaf": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\stage1\\builds\\84e6aaa8ed4e0764c65dfbc60067eabac5a26619d330815bbc513df48ba7e479\\indicator_series\\3ce050930f4442b08a05a5b14176ccaf\\fish_contact_fragmentation_meso.parquet",
+          "series_sha256": "3673071b7fadf644ec9632ad2eb6c75c4fe634dc83f1d337b19423c58b0b2026"
+        },
+        "4bcd21be36354f3e818535268e541688": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\stage1\\builds\\84e6aaa8ed4e0764c65dfbc60067eabac5a26619d330815bbc513df48ba7e479\\indicator_series\\4bcd21be36354f3e818535268e541688\\fish_contact_fragmentation_meso.parquet",
+          "series_sha256": "4dbd7903bf2de45c8a8480b899f2ec45682ff217d98663377b72271645f0e43b"
+        },
+        "a07fe67a223d47688e450fadda55a2f0": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\stage1\\builds\\84e6aaa8ed4e0764c65dfbc60067eabac5a26619d330815bbc513df48ba7e479\\indicator_series\\a07fe67a223d47688e450fadda55a2f0\\fish_contact_fragmentation_meso.parquet",
+          "series_sha256": "a70b4346e5ac6dfb250c839837aaa53b099f2c20850797dd40134e15ff0243ea"
+        },
+        "52095f2a15244a07961c25ad23a9daa2": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\stage1\\builds\\84e6aaa8ed4e0764c65dfbc60067eabac5a26619d330815bbc513df48ba7e479\\indicator_series\\52095f2a15244a07961c25ad23a9daa2\\fish_contact_fragmentation_meso.parquet",
+          "series_sha256": "1efc216d1a02d5df2be517490ec419e269bbc1040ad09a8e13921cf69a82b15b"
+        }
+      },
+      "analysis_transformations": {
+        "3ce050930f4442b08a05a5b14176ccaf": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "4bcd21be36354f3e818535268e541688": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "a07fe67a223d47688e450fadda55a2f0": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "52095f2a15244a07961c25ad23a9daa2": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        }
+      }
+    },
+    {
+      "indicator_id": "fish_school_elongation_macro",
+      "phenomenon_id": "school_fission_stretch",
+      "name": "Fish school elongation index",
+      "scale": "macro",
+      "description": "Macroscopic anisotropy of the fish school's spatial distribution at each step, measured from the principal eigenvalues of the fish position covariance matrix as an overall stretching indicator.",
+      "mathematical_definition": "For each run_id r and step t, let P_{r,t} = {(x_i(t), y_i(t)) : role_i = 'fish' with finite coordinates} and N = |P_{r,t}|. If N >= 2, define the centroid μ = (1/N) Σ_{p in P_{r,t}} p and covariance C = (1/N) Σ_{p in P_{r,t}} (p-μ)(p-μ)^T. Let λ1 >= λ2 >= 0 be the eigenvalues of C. Define elongation E_{r,t} = sqrt(λ1/λ2) when λ2 > 0; if λ2 = 0 or N < 2, E_{r,t} is undefined.",
+      "units": "dimensionless",
+      "computation_notes": "Computed per run_id and step on fish positions only; shark positions are excluded. The covariance uses denominator N (population form) to preserve the stated definition. Each sampled step is a separate snapshot; no temporal smoothing or event window is applied. Missing or non-finite coordinates are excluded before computing the centroid and covariance. No group IDs or hidden clustering are used.",
+      "required_data": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "role",
+          "x",
+          "y"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "role",
+          "x",
+          "y"
+        ]
+      },
+      "config": {},
+      "python_code": "import numpy as np\nimport pandas as pd\n\n\ndef compute_indicator(data, config):\n    _ = config\n    df = data['agent_states']\n    cols = ['run_id', 'step', 'role', 'x', 'y']\n    missing = [c for c in cols if c not in df.columns]\n    if missing:\n        raise KeyError(f'agent_states missing required columns: {missing}')\n    d = df.loc[:, cols].copy()\n    d = d[d['role'].astype(str) == 'fish'].copy()\n    d['x'] = pd.to_numeric(d['x'], errors='coerce')\n    d['y'] = pd.to_numeric(d['y'], errors='coerce')\n    d['step'] = pd.to_numeric(d['step'], errors='coerce')\n    d = d.dropna(subset=['run_id', 'step', 'x', 'y'])\n    d = d[np.isfinite(d['x']) & np.isfinite(d['y']) & np.isfinite(d['step'])]\n    d = d[d['step'] == np.floor(d['step'])].copy()\n    d['step'] = d['step'].astype('int64')\n    rows = []\n    if len(d):\n        for (run_id, step), g in d.groupby(['run_id', 'step'], sort=False):\n            n = len(g)\n            if n < 2:\n                val = np.nan\n            else:\n                x = g['x'].to_numpy(dtype=float)\n                y = g['y'].to_numpy(dtype=float)\n                dx = x - x.mean()\n                dy = y - y.mean()\n                cxx = float(np.mean(dx * dx))\n                cyy = float(np.mean(dy * dy))\n                cxy = float(np.mean(dx * dy))\n                tr = cxx + cyy\n                disc = float(np.sqrt(max((cxx - cyy) ** 2 + 4.0 * cxy * cxy, 0.0)))\n                lam1 = (tr + disc) / 2.0\n                lam2 = (tr - disc) / 2.0\n                if lam2 > 0.0:\n                    val = float(np.sqrt(lam1 / lam2))\n                else:\n                    val = np.nan\n            rows.append((run_id, int(step), val))\n    if not rows:\n        return pd.Series(dtype=float, name='fish_school_elongation_macro').rename_axis('step')\n    res = pd.DataFrame(rows, columns=['run_id', 'step', 'fish_school_elongation_macro'])\n    run_ids = res['run_id'].unique()\n    if len(run_ids) == 1:\n        out = res.set_index('step')['fish_school_elongation_macro'].sort_index()\n        out.index.name = 'step'\n        out.name = 'fish_school_elongation_macro'\n        return out\n    out = res.pivot(index='step', columns='run_id', values='fish_school_elongation_macro').sort_index()\n    out.index.name = 'step'\n    return out\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "fish_school_elongation_macro",
+      "code_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\stage1\\builds\\84e6aaa8ed4e0764c65dfbc60067eabac5a26619d330815bbc513df48ba7e479\\indicator_code\\fish_school_elongation_macro.py",
+      "code_sha256": "490c35666852b446b718daed9678f6ef364ffd29c6fcebf36ceea144a0da3ff2",
+      "generation_call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\checkpoints\\code_fish_school_elongation_macro\\05db6f08fcbdbc9b5b7606b48012799dfe4f0fc843b415631fb0a94f81371e37\\attempt_000\\generation\\codes\\attempt_000",
+      "execution": {
+        "3ce050930f4442b08a05a5b14176ccaf": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\stage1\\builds\\84e6aaa8ed4e0764c65dfbc60067eabac5a26619d330815bbc513df48ba7e479\\indicator_series\\3ce050930f4442b08a05a5b14176ccaf\\fish_school_elongation_macro.parquet",
+          "series_sha256": "cd482578c4e50f84342afd50ba069451aa85e6eccd6f384e08b59eb574e3e317"
+        },
+        "4bcd21be36354f3e818535268e541688": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\stage1\\builds\\84e6aaa8ed4e0764c65dfbc60067eabac5a26619d330815bbc513df48ba7e479\\indicator_series\\4bcd21be36354f3e818535268e541688\\fish_school_elongation_macro.parquet",
+          "series_sha256": "a342c377ba81a5500a3eb6a768e1d5fbc894dbe159613fe1b567a55a8ccd6241"
+        },
+        "a07fe67a223d47688e450fadda55a2f0": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\stage1\\builds\\84e6aaa8ed4e0764c65dfbc60067eabac5a26619d330815bbc513df48ba7e479\\indicator_series\\a07fe67a223d47688e450fadda55a2f0\\fish_school_elongation_macro.parquet",
+          "series_sha256": "f049906ff19a0a4174e7b4b1a3b7d1c846609e04ab3915a46f0f1f5b923331ac"
+        },
+        "52095f2a15244a07961c25ad23a9daa2": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\stage1\\builds\\84e6aaa8ed4e0764c65dfbc60067eabac5a26619d330815bbc513df48ba7e479\\indicator_series\\52095f2a15244a07961c25ad23a9daa2\\fish_school_elongation_macro.parquet",
+          "series_sha256": "1f69fce9668c9039b845986fbabdd7ff59798f953cf465810b2b374310a4eca5"
+        }
+      },
+      "analysis_transformations": {
+        "3ce050930f4442b08a05a5b14176ccaf": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "4bcd21be36354f3e818535268e541688": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "a07fe67a223d47688e450fadda55a2f0": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "52095f2a15244a07961c25ad23a9daa2": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "self_memory__fish_contact_fragmentation_meso",
+      "source": "fish_contact_fragmentation_meso",
+      "target": "fish_contact_fragmentation_meso",
+      "weight": 1,
+      "lags": [
+        1,
+        2,
+        3
+      ],
+      "relation_type": "self_memory",
+      "scale_direction": "intra_scale",
+      "method": "rnn_lag",
+      "status": "accepted",
+      "evidence": [
+        {
+          "kind": "self_memory",
+          "method": "rnn_lag",
+          "status": "accepted",
+          "lag": 1,
+          "calibration": {
+            "method": "centered_moving_block_bootstrap",
+            "null": "expected heldout predictive score gain <= 0",
+            "p_value": 0.002,
+            "p_value_valid": true,
+            "assumptions": [
+              "held-out predictions fixed before evaluation",
+              "weakly stationary, weakly dependent score differences within runs",
+              "independent random-seed runs when more than one run is resampled"
+            ],
+            "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+            "repeats": 499,
+            "block_length": 8,
+            "run_count": 1,
+            "gain": 0.08487890648305606,
+            "block_mean_shift_sd": [
+              1.4870127082262514
+            ],
+            "confidence_interval": [
+              0.04620416933377007,
+              0.13106240545507747
+            ],
+            "finite_samples": 157,
+            "seed": 1184175340
+          },
+          "validation_gain": 0.08582856506109238,
+          "adjusted_p_value": 0.011
+        },
+        {
+          "kind": "self_memory",
+          "method": "rnn_lag",
+          "status": "accepted",
+          "lag": 2,
+          "calibration": {
+            "method": "centered_moving_block_bootstrap",
+            "null": "expected heldout predictive score gain <= 0",
+            "p_value": 0.014,
+            "p_value_valid": true,
+            "assumptions": [
+              "held-out predictions fixed before evaluation",
+              "weakly stationary, weakly dependent score differences within runs",
+              "independent random-seed runs when more than one run is resampled"
+            ],
+            "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+            "repeats": 499,
+            "block_length": 8,
+            "run_count": 1,
+            "gain": 0.029582312843720815,
+            "block_mean_shift_sd": [
+              1.3188258196168274
+            ],
+            "confidence_interval": [
+              0.00840425078978074,
+              0.050031615179781004
+            ],
+            "finite_samples": 157,
+            "seed": 1425273851
+          },
+          "validation_gain": 0.02923683635890484,
+          "adjusted_p_value": 0.0385
+        },
+        {
+          "kind": "self_memory",
+          "method": "rnn_lag",
+          "status": "accepted",
+          "lag": 3,
+          "calibration": {
+            "method": "centered_moving_block_bootstrap",
+            "null": "expected heldout predictive score gain <= 0",
+            "p_value": 0.026,
+            "p_value_valid": true,
+            "assumptions": [
+              "held-out predictions fixed before evaluation",
+              "weakly stationary, weakly dependent score differences within runs",
+              "independent random-seed runs when more than one run is resampled"
+            ],
+            "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+            "repeats": 499,
+            "block_length": 8,
+            "run_count": 1,
+            "gain": 0.013819645014632297,
+            "block_mean_shift_sd": [
+              1.1779969745281331
+            ],
+            "confidence_interval": [
+              0.00033412606098168614,
+              0.027303904852394065
+            ],
+            "finite_samples": 157,
+            "seed": 1821268941
+          },
+          "validation_gain": 0.014008283149451017,
+          "adjusted_p_value": 0.04766666666666666
+        }
+      ]
+    }
+  ],
+  "run_ids": [
+    "3ce050930f4442b08a05a5b14176ccaf",
+    "4bcd21be36354f3e818535268e541688",
+    "a07fe67a223d47688e450fadda55a2f0",
+    "52095f2a15244a07961c25ad23a9daa2"
+  ],
+  "source_graph_sha256": "e373e4fbc78ca5d1a49e84134bcfad9358055ea80a9076b86d1910bcb9b46792",
+  "multiplicity": {
+    "method": "by",
+    "valid_tests": 3
+  },
+  "provenance": {
+    "input_graph_sha256": "e373e4fbc78ca5d1a49e84134bcfad9358055ea80a9076b86d1910bcb9b46792",
+    "data_origin": "actual_parquet",
+    "algorithm_config_sha256": "c4a85140187d392fdfcd61077186ea4a8153e3328a34af649fcf320d7f1109ef",
+    "llm_calls": 0,
+    "audit_directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_fish_20261107\\internal\\checkpoints\\stage2\\a161677d98c7e01a54ec50947c4ad3d58a39d71765ab7296889166f875eaa89b\\attempt_000\\final_causal_graph_audit",
+    "source_modules_sha256": {
+      "m1_data.py": "f4370ea62beb3f365030c1f9de73897a270640e7578ea5f9978cdb91bd69cfc8",
+      "m2_lag_rnn.py": "c6ca86d0626c030e63b9897aad34f76aa44227c1257a2f550c5f9276c49aa4ca",
+      "m3_granger.py": "c05e02d33e279e98edb4a8cd1abe99e5ef23f8ae996032e00156f06b6e8917d0",
+      "m4_pid.py": "9049c71a94457318439577b8684f22efa51062933c94b99af43fde516753f610",
+      "m5_graph.py": "47628eb255618d12e8298fd4ba33c8f3d978e768d64d00a6ca312dce22521a4d",
+      "pipeline.py": "8ad52cad9f44fd86a22a1e3f4f6b59b350025a5da1b8e5af8b45e0fb560b83aa",
+      "_common.py": "32ee99e2e3e679f69d0a8a75c2a2257fa2061a758760b3162cae32d13c7a3dba",
+      "_rnn.py": "adf6580abddb0423af18ebe6f48218003eb9d239752b17afe41ad2d043023a6f",
+      "__init__.py": "6b1e7518163871a324e510bafba9ccc0b19ca8bf22e1cf81007a4cdf09d73f9d",
+      "__main__.py": "68ed0673af76f0c56fb056b3e1757942484ccb8366b075985a3cdfca42d6d96f"
+    }
+  }
+}

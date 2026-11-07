@@ -13,10 +13,11 @@ test = ["pytest>=8,<10", "psutil>=5.9,<8"]
 causal = ["jsonschema>=4.23,<5"]
 graphs = ["matplotlib>=3.9,<4", "Pillow>=10,<12"]
 discovery = ["torch>=2.5,<3", "jsonschema>=4.23,<5"]
+full = ["torch>=2.5,<3", "jsonschema>=4.23,<5", "psutil>=5.9,<8"]
 
 [tool.setuptools.packages.find]
-include = ["simulations*", "visualization*", "examples*", "experiments*", "scenarios*", "causal_graph*", "causal_discovery*"]
-exclude = ["causal_graph.results*", "causal_graph.examples*", "causal_graph.docs*", "causal_graph.sandbox*", "causal_discovery.results*", "causal_discovery.examples*", "causal_discovery.docs*", "causal_discovery.tests*"]
+include = ["simulations*", "visualization*", "examples*", "experiments*", "scenarios*", "causal_graph*", "causal_discovery*", "full_pipeline*"]
+exclude = ["causal_graph.results*", "causal_graph.examples*", "causal_graph.docs*", "causal_graph.sandbox*", "causal_discovery.results*", "causal_discovery.examples*", "causal_discovery.docs*", "causal_discovery.tests*", "full_pipeline.results*", "full_pipeline.examples*", "full_pipeline.tests*"]
 namespaces = true
 
 [tool.setuptools.package-data]
@@ -24,7 +25,8 @@ scenarios = ["*.md", "*.yaml", "SHA256SUMS", "v2/*.md"]
 visualization = ["*.vue", "*.css"]
 causal_graph = ["configs/*.yaml", "docs/*.md", "sandbox/Dockerfile", "requirements-lock.txt", "README.md"]
 causal_discovery = ["config.yaml", "final_graph.schema.json", "README.md"]
+full_pipeline = ["config.yaml", "README.md"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
-testpaths = ["tests", "causal_graph/tests", "causal_discovery/tests"]
+testpaths = ["tests", "causal_graph/tests", "causal_discovery/tests", "full_pipeline/tests"]

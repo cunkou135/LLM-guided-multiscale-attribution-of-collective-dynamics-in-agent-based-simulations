@@ -1,0 +1,998 @@
+{
+  "schema_version": "2.0",
+  "evidence_status": "unvalidated_semantic_candidates",
+  "phenomena": [
+    {
+      "phenomenon_id": "social_contact_outbreak_heterogeneity",
+      "name": "社会接触结构异质性下的疫情扩散分化",
+      "description": "城市居民在家庭、学校、工作场所和社区活动中形成不同持续性与范围的社会接触关系，感染者在这些环境中的活动使感染事件在不同人群和区域间呈现不均衡扩展，并随检测、追踪、隔离及居民活动减少等公共卫生干预的执行差异而发生变化。"
+    }
+  ],
+  "nodes": [
+    {
+      "indicator_id": "micro_infectious_contact_degree",
+      "phenomenon_id": "social_contact_outbreak_heterogeneity",
+      "name": "Per-agent infectious-contact partner count",
+      "scale": "micro",
+      "description": "For each agent at a sampled step, counts the distinct contact partners in the recorded contact data for which at least one endpoint is infectious. This captures agent-level differences in potentially infectious social exposure within the contact structure.",
+      "mathematical_definition": "For each run_id and step t, for each focal agent i: D(i,t) = |{ p : there exists a contacts record with run_id=run, step=t, agent_id=i, partner_id=p, p is not null/unmatched, and (agent_states(i,t).infectious = true or agent_states(p,t).infectious = true) }|. Distinct partner_id values are counted once per focal agent-step; if the focal agent is infectious, all valid partners are included; otherwise only partners that are infectious are included.",
+      "units": "distinct partners per agent-step",
+      "computation_notes": "Group by run_id, step and agent_id. Expand contacts to the partner endpoint, join agent_states on (run_id, step, agent_id) for the focal agent and on (run_id, step, agent_id = partner_id) for the partner endpoint. Treat infectious=true as 1. Exclude null, sentinel, and unmatched partner_id values explicitly; do not impute missing partner states. Compute each run separately; do not concatenate seeds.",
+      "required_data": {
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ],
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "infectious"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "infectious"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "config": {},
+      "python_code": "def compute_indicator(data, config):\n    import pandas as pd\n\n    ag = data['agent_states'][['run_id', 'step', 'agent_id', 'infectious']].copy()\n    ct = data['contacts'][['run_id', 'step', 'agent_id', 'partner_id']].copy()\n\n    ag = ag.dropna(subset=['run_id', 'step', 'agent_id'])\n    ct = ct.dropna(subset=['run_id', 'step', 'agent_id', 'partner_id'])\n\n    # Focal agents must have a known infectious state; do not impute unknown states as false.\n    focal = ag.dropna(subset=['infectious'])[\n        ['run_id', 'step', 'agent_id', 'infectious']\n    ].rename(columns={'infectious': 'focal_infectious'})\n\n    # Partner presence is any valid agent identifier in agent_states at the same run/step.\n    partner_presence = ag[['run_id', 'step', 'agent_id']].drop_duplicates().rename(\n        columns={'agent_id': 'partner_id'}\n    )\n\n    # Partner infectious state is only available when non-null; unknowns are not treated as false.\n    partner_inf = ag.dropna(subset=['infectious'])[\n        ['run_id', 'step', 'agent_id', 'infectious']\n    ].rename(columns={'agent_id': 'partner_id', 'infectious': 'partner_infectious'})\n\n    base = focal[['run_id', 'step', 'agent_id']].drop_duplicates()\n\n    if len(ct) == 0 or len(focal) == 0:\n        counts = base.copy()\n        counts['value'] = 0\n    else:\n        edges = ct.merge(focal, on=['run_id', 'step', 'agent_id'], how='inner')\n        edges = edges.merge(partner_presence, on=['run_id', 'step', 'partner_id'], how='inner')\n        edges = edges.merge(partner_inf, on=['run_id', 'step', 'partner_id'], how='left')\n\n        # Include an edge when the focal agent is infectious, or when the partner is known infectious.\n        # Unknown partner infectious states are excluded unless the focal agent is infectious.\n        focal_true = edges['focal_infectious'].eq(True)\n        partner_true = edges['partner_infectious'].eq(True)\n        edges_q = edges[focal_true | partner_true]\n\n        # Count distinct contact partners per focal agent-step.\n        edges_q = edges_q.drop_duplicates(subset=['run_id', 'step', 'agent_id', 'partner_id'])\n        counts = (\n            edges_q.groupby(['run_id', 'step', 'agent_id'], dropna=False)\n            .size()\n            .rename('value')\n            .reset_index()\n        )\n        counts = base.merge(counts, on=['run_id', 'step', 'agent_id'], how='left')\n        counts['value'] = counts['value'].fillna(0).astype(int)\n\n    out = counts[['step', 'agent_id', 'value']].copy()\n    out = out.sort_values(['step', 'agent_id']).reset_index(drop=True)\n    out = out.set_index(['step', 'agent_id'])\n    out.index.names = ['step', 'agent_id']\n    out = out.rename(columns={'value': 'micro_infectious_contact_degree'})\n    return out\n",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "micro_infectious_contact_degree",
+      "code_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_code\\micro_infectious_contact_degree.py",
+      "code_sha256": "6ff18ee9cf772f60c6367bba29127aa76677fc0db75622f5cfa6d7453dc7e439",
+      "generation_call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\code_micro_infectious_contact_degree\\e9a07c67d4b2fe5147885aaf24188e4d46f5e5d2d3f624d7b121cd876e234cb1\\attempt_001\\generation\\codes\\attempt_000",
+      "execution": {
+        "a83b6e4508fb485ea538f3ef655a73ca": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\a83b6e4508fb485ea538f3ef655a73ca\\micro_infectious_contact_degree.parquet",
+          "series_sha256": "ac46a85f43f197c6f6475fe3df1e456c209780eba159e4857710eded355c9858"
+        },
+        "a8917f7b1232413288c7cf7656df3a40": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\a8917f7b1232413288c7cf7656df3a40\\micro_infectious_contact_degree.parquet",
+          "series_sha256": "b30e420cc9238e566f1061c13527f0f7723ba8a94be5f6fd907edd7581fd1dc8"
+        },
+        "8d37ed3832aa483e90174e05baaec46d": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\8d37ed3832aa483e90174e05baaec46d\\micro_infectious_contact_degree.parquet",
+          "series_sha256": "a50c3ff3b942b0f830cc366342e083f32486e170a279cdbd5158d7d71282b10f"
+        },
+        "88d28bcebb6b4f60aff173b033d5c01c": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\88d28bcebb6b4f60aff173b033d5c01c\\micro_infectious_contact_degree.parquet",
+          "series_sha256": "0c5bc0fcc96ba307209e7cdfe6fad6e52618fb73d4538656c067b1ae465b0c41"
+        },
+        "772ec28674634e32a08f072b26ad4545": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\772ec28674634e32a08f072b26ad4545\\micro_infectious_contact_degree.parquet",
+          "series_sha256": "1200bc2f8dc6155a5c7281a7fdfbf4731db4bdc3c02ff35af5eade6b5dbe81aa"
+        },
+        "ea045a78dc914afda35859c23242f087": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\ea045a78dc914afda35859c23242f087\\micro_infectious_contact_degree.parquet",
+          "series_sha256": "e35332dceba81551ceda34b9f90e7a7b4083f44eb119cb14143e2e492c0e0407"
+        },
+        "2604710748154ad2996f188b01e3be28": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\2604710748154ad2996f188b01e3be28\\micro_infectious_contact_degree.parquet",
+          "series_sha256": "59d0aca9a6778596ffbdd362d88c57531a4b3de3c32f9e96bcdcc60ba0fe04a0"
+        }
+      }
+    },
+    {
+      "indicator_id": "meso_layer_infectious_edge_fraction",
+      "phenomenon_id": "social_contact_outbreak_heterogeneity",
+      "name": "Contact-layer infectious edge fraction",
+      "scale": "meso",
+      "description": "At the level of each observed contact layer and sampled step, measures the fraction of recorded contact edges that involve at least one infectious endpoint. This describes how infectious-contact activity is distributed across family, school, workplace, community, or other observed layers without inventing new group identifiers.",
+      "mathematical_definition": "For each run_id, step t, and observed contacts.layer value L: F(t,L) = N_inf(t,L) / N(t,L), where N(t,L) is the number of contacts records at (run_id, step=t, layer=L), and N_inf(t,L) is the number of those records whose agent_id endpoint or partner_id endpoint has agent_states.infectious = true at (run_id, step=t). If N(t,L)=0, F(t,L) is undefined and is reported as null rather than zero.",
+      "units": "proportion of contact edges",
+      "computation_notes": "Group contacts by run_id, step and layer. Join agent_states to both endpoints on (run_id, step, agent_id). Count a contact record in the numerator if either endpoint has infectious=true. Retain only observed layer values; handle missing layer explicitly as missing, not as a newly named layer. Do not infer unobserved layers. Compute per run separately.",
+      "required_data": {
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id",
+          "layer"
+        ],
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "infectious"
+        ]
+      },
+      "required": {
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id",
+          "layer"
+        ],
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "infectious"
+        ]
+      },
+      "config": {},
+      "python_code": "import pandas as pd\nimport numpy as np\n\ndef compute_indicator(data, config):\n    contacts = data['contacts'][['run_id','step','agent_id','partner_id','layer']].copy()\n    agent_states = data['agent_states'][['run_id','step','agent_id','infectious']].copy()\n    \n    contacts = contacts[contacts['layer'].notna()]\n    \n    contacts['step'] = contacts['step'].astype(int)\n    agent_states['step'] = agent_states['step'].astype(int)\n    \n    agent_states_agent = agent_states.rename(columns={'infectious':'agent_inf'})\n    agent_states_partner = agent_states.rename(columns={'infectious':'partner_inf'})\n    \n    merged = contacts.merge(agent_states_agent, on=['run_id','step','agent_id'], how='left')\n    merged = merged.merge(\n        agent_states_partner,\n        left_on=['run_id','step','partner_id'],\n        right_on=['run_id','step','agent_id'],\n        how='left',\n        suffixes=('','_partner')\n    )\n    merged = merged.drop(columns=['agent_id_partner'], errors='ignore')\n    \n    agent_inf_true = merged['agent_inf'].eq(True)\n    partner_inf_true = merged['partner_inf'].eq(True)\n    any_inf = agent_inf_true | partner_inf_true\n    \n    agent_missing = merged['agent_inf'].isna() & merged['agent_id'].notna()\n    partner_missing = merged['partner_inf'].isna() & merged['partner_id'].notna()\n    unresolved = (~any_inf) & (agent_missing | partner_missing)\n    \n    merged['any_inf'] = any_inf\n    merged['unresolved'] = unresolved\n    \n    grouped = merged.groupby(['run_id','step','layer'], dropna=False).agg(\n        N=('any_inf','size'),\n        N_inf=('any_inf','sum'),\n        unresolved_count=('unresolved','sum')\n    ).reset_index()\n    \n    grouped['fraction'] = np.where(\n        (grouped['N'] > 0) & (grouped['unresolved_count'] == 0),\n        grouped['N_inf'] / grouped['N'],\n        np.nan\n    )\n    \n    if grouped.empty:\n        return pd.DataFrame(index=pd.Index([], name='step'))\n    \n    pivot = grouped.pivot_table(\n        index='step',\n        columns=['run_id','layer'],\n        values='fraction',\n        aggfunc='first'\n    )\n    pivot.columns = [f\"{run_id}__{layer}\" for run_id, layer in pivot.columns]\n    pivot.index.name = 'step'\n    return pivot",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "meso_layer_infectious_edge_fraction",
+      "code_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_code\\meso_layer_infectious_edge_fraction.py",
+      "code_sha256": "0e06834ea46bfc4075209f7a2a8568797c0309d40aa88b989fc66bdc5ccb4bd2",
+      "generation_call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\code_meso_layer_infectious_edge_fraction\\5463f0eb8d7f2868e08fd579d622f5a0f0c3c9a0747a35511b1dc5d85c8ba596\\attempt_001\\generation\\codes\\attempt_000",
+      "execution": {
+        "a83b6e4508fb485ea538f3ef655a73ca": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\a83b6e4508fb485ea538f3ef655a73ca\\meso_layer_infectious_edge_fraction.parquet",
+          "series_sha256": "fc08ead911aaccbde922ab60981ae6d38f892c39c5e0c6dc1e18974586eff002"
+        },
+        "a8917f7b1232413288c7cf7656df3a40": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\a8917f7b1232413288c7cf7656df3a40\\meso_layer_infectious_edge_fraction.parquet",
+          "series_sha256": "3a6075726e14e9a41eb93082dce07c8a4f394d86d5f68d9aa6707b50d606dbb2"
+        },
+        "8d37ed3832aa483e90174e05baaec46d": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\8d37ed3832aa483e90174e05baaec46d\\meso_layer_infectious_edge_fraction.parquet",
+          "series_sha256": "8c869435fa3944f95730e0b6beaf74bfa4c9ba8aad388cc45c9066cb405c5d4f"
+        },
+        "88d28bcebb6b4f60aff173b033d5c01c": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\88d28bcebb6b4f60aff173b033d5c01c\\meso_layer_infectious_edge_fraction.parquet",
+          "series_sha256": "bf6b686c1168e16fc12d4d08a081a2878bbab730f95a35da8f3e06e8b761a3a9"
+        },
+        "772ec28674634e32a08f072b26ad4545": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\772ec28674634e32a08f072b26ad4545\\meso_layer_infectious_edge_fraction.parquet",
+          "series_sha256": "62ef59f8ba0698ea61fd857bd5ea42eb69d678a78d961074890bf7fc08f31df0"
+        },
+        "ea045a78dc914afda35859c23242f087": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\ea045a78dc914afda35859c23242f087\\meso_layer_infectious_edge_fraction.parquet",
+          "series_sha256": "ecd6f930c03172bff1ed83ffb026a0fc307b9c99fe255ed87fef0c0ca7c667dc"
+        },
+        "2604710748154ad2996f188b01e3be28": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\2604710748154ad2996f188b01e3be28\\meso_layer_infectious_edge_fraction.parquet",
+          "series_sha256": "270ff32cbb5b42a8be53a7c848052048fd19ed54dd62660fdee9946437696a42"
+        }
+      }
+    },
+    {
+      "indicator_id": "macro_contact_active_infectious_count",
+      "phenomenon_id": "social_contact_outbreak_heterogeneity",
+      "name": "City-level contact-active infectious agent count",
+      "scale": "macro",
+      "description": "For the whole modeled city at each sampled step, counts distinct agents that are infectious and also appear in at least one recorded contact edge as either endpoint. This summarizes the city-level size of the infectious population that remains socially contact-active.",
+      "mathematical_definition": "For each run_id and step t: A(t) = |{ i : agent_states(i,t).infectious = true and there exists a contacts record at (run_id, step=t) such that agent_id=i or partner_id=i, with valid non-null/non-unmatched endpoint identifiers }|. Count each qualifying agent_id once per run-step.",
+      "units": "agents",
+      "computation_notes": "Build the set of valid agent identifiers appearing in contacts at each (run_id, step) as the union of agent_id and partner_id, excluding null, sentinel, and unmatched identifiers. Intersect this set with agent_states records where infectious=true at the same run_id and step. Count distinct agents; do not scale by population. Compute each run separately; do not concatenate seeds.",
+      "required_data": {
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ],
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "infectious"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "infectious"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "config": {
+        "aggregation": "mean",
+        "sentinel_ids": [
+          -1
+        ]
+      },
+      "python_code": "import pandas as pd\n\ndef compute_indicator(data, config):\n    '''Per (run_id, step): count distinct agents that are infectious in agent_states\n    and also appear as either endpoint in contacts at the same (run_id, step),\n    after excluding null, sentinel, and unmatched endpoint identifiers.\n    Returns a pandas Series indexed by step, aggregated across runs.\n    '''\n    if 'agent_states' not in data or 'contacts' not in data:\n        raise ValueError('required tables agent_states and contacts are missing')\n    states = data['agent_states']\n    contacts = data['contacts']\n\n    required_state_cols = ['run_id', 'step', 'agent_id', 'infectious']\n    required_contact_cols = ['run_id', 'step', 'agent_id', 'partner_id']\n    missing_state = [c for c in required_state_cols if c not in states.columns]\n    missing_contact = [c for c in required_contact_cols if c not in contacts.columns]\n    if missing_state or missing_contact:\n        raise ValueError('missing required columns: ' + str(missing_state + missing_contact))\n\n    s = states[required_state_cols].copy()\n    c = contacts[required_contact_cols].copy()\n\n    for df in (s, c):\n        df['step'] = pd.to_numeric(df['step'], errors='coerce')\n        df['run_id'] = df['run_id'].astype('string')\n    s = s.dropna(subset=['run_id', 'step'])\n    c = c.dropna(subset=['run_id', 'step'])\n    s['step'] = s['step'].astype('int64')\n    c['step'] = c['step'].astype('int64')\n\n    s['agent_id'] = pd.to_numeric(s['agent_id'], errors='coerce')\n    c['agent_id'] = pd.to_numeric(c['agent_id'], errors='coerce')\n    c['partner_id'] = pd.to_numeric(c['partner_id'], errors='coerce')\n\n    s['infectious'] = s['infectious'].fillna(False).astype(bool)\n\n    valid = s.dropna(subset=['agent_id'])[['run_id', 'step', 'agent_id']].drop_duplicates()\n    valid['agent_id'] = valid['agent_id'].astype('int64')\n\n    inf = s.loc[s['infectious'], ['run_id', 'step', 'agent_id']].dropna(subset=['agent_id']).drop_duplicates()\n    inf['agent_id'] = inf['agent_id'].astype('int64')\n\n    ep1 = c[['run_id', 'step', 'agent_id']].rename(columns={'agent_id': 'endpoint_id'})\n    ep2 = c[['run_id', 'step', 'partner_id']].rename(columns={'partner_id': 'endpoint_id'})\n    endpoints = pd.concat([ep1, ep2], ignore_index=True)\n    endpoints = endpoints.dropna(subset=['endpoint_id'])\n    endpoints['endpoint_id'] = endpoints['endpoint_id'].astype('int64')\n\n    sentinel_ids = config.get('sentinel_ids', [-1]) if isinstance(config, dict) else [-1]\n    if sentinel_ids:\n        endpoints = endpoints[~endpoints['endpoint_id'].isin(sentinel_ids)]\n\n    endpoints_valid = endpoints.merge(\n        valid,\n        left_on=['run_id', 'step', 'endpoint_id'],\n        right_on=['run_id', 'step', 'agent_id'],\n        how='inner'\n    )\n    endpoints_valid = endpoints_valid.drop_duplicates(subset=['run_id', 'step', 'endpoint_id'])\n\n    qualifying = endpoints_valid.merge(\n        inf,\n        left_on=['run_id', 'step', 'endpoint_id'],\n        right_on=['run_id', 'step', 'agent_id'],\n        how='inner',\n        suffixes=('', '_inf')\n    )\n\n    counts = qualifying.groupby(['run_id', 'step'], as_index=False)['endpoint_id'].nunique()\n    counts = counts.rename(columns={'endpoint_id': 'count'})\n\n    grid = s[['run_id', 'step']].drop_duplicates()\n    per_run = grid.merge(counts, on=['run_id', 'step'], how='left')\n    per_run['count'] = per_run['count'].fillna(0).astype('int64')\n\n    agg = 'mean'\n    if isinstance(config, dict):\n        agg = config.get('aggregation', 'mean')\n    if agg not in ('mean', 'median', 'sum', 'min', 'max'):\n        agg = 'mean'\n\n    result = per_run.groupby('step')['count'].agg(agg).sort_index()\n    result.name = 'macro_contact_active_infectious_count'\n    result.index.name = 'step'\n    return result",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "macro_contact_active_infectious_count",
+      "code_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_code\\macro_contact_active_infectious_count.py",
+      "code_sha256": "46976f200e682fe19942ed207dc9a22dcb3055a0b3f18338c78612595314fccc",
+      "generation_call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\code_macro_contact_active_infectious_count\\ed1eedd9cd02ea30d8a3cd03615e5bb6ef1a91d9f142557a29940d789e5625e4\\attempt_000\\generation\\codes\\attempt_000",
+      "execution": {
+        "a83b6e4508fb485ea538f3ef655a73ca": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\a83b6e4508fb485ea538f3ef655a73ca\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "9096de6a28ebfdcfed0e62bdf7c2621546641c3a3caf39c286c0fc326049c843"
+        },
+        "a8917f7b1232413288c7cf7656df3a40": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\a8917f7b1232413288c7cf7656df3a40\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "24ac981db5ba1cf12e28b4d519f1e9f37c05658ab00bedffc9e3dfb13949c7f2"
+        },
+        "8d37ed3832aa483e90174e05baaec46d": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\8d37ed3832aa483e90174e05baaec46d\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "d4379e46bb9c3d32ea323ff6dcb77294d3eb69489b21d34eae7c74dc1d10322c"
+        },
+        "88d28bcebb6b4f60aff173b033d5c01c": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\88d28bcebb6b4f60aff173b033d5c01c\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "f783dd88777a9120be4f636afce67fced570d937a6421bcf245bbb8af8f3371a"
+        },
+        "772ec28674634e32a08f072b26ad4545": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\772ec28674634e32a08f072b26ad4545\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "a96e418182c94fa0ad60f4e3f39760679a3d107fd0b7b16af8d34eba912299a8"
+        },
+        "ea045a78dc914afda35859c23242f087": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\ea045a78dc914afda35859c23242f087\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "42133b86f33969f8a6b8b6cc9ab99db8c730193f43c5a0b145f7518be09ba1a2"
+        },
+        "2604710748154ad2996f188b01e3be28": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\2604710748154ad2996f188b01e3be28\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "6a1da910e6ef3a638fc4f34a22d48938fed9e1af7b576bb24874a92f347122ec"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "upward__edge_micro_infectious_degree_to_meso_layer_fraction",
+      "source": "micro_infectious_contact_degree",
+      "target": "meso_layer_infectious_edge_fraction",
+      "scale_direction": "upward",
+      "semantic_rationale": "Agents with more infectious contact partners concentrate potential transmission around themselves; when such agents participate in a contact layer, a larger share of that layer's recorded edges may involve at least one infectious endpoint. This is not a deterministic sum of individual degrees because layer denominator size, partner overlap, and mixing patterns also shape the edge-level fraction.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "social_contact_outbreak_heterogeneity",
+      "target_phenomenon": "social_contact_outbreak_heterogeneity",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\edges_upward\\14916759118f419de7229da1642f62ca6fd061347d87f68d51b79f90eca9eb76\\attempt_000\\generation\\edges_upward\\attempt_000",
+          "original_edge_id": "edge_micro_infectious_degree_to_meso_layer_fraction",
+          "row_index": 0
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__edge_meso_layer_fraction_to_macro_contact_active_count",
+      "source": "meso_layer_infectious_edge_fraction",
+      "target": "macro_contact_active_infectious_count",
+      "scale_direction": "upward",
+      "semantic_rationale": "Layers with a higher fraction of infectious contact edges may act as sustained transmission venues; onward infections can produce additional agents who become infectious while still socially contact-active, raising the city-level count of contact-active infectious agents. Detection, isolation, and layer closure can weaken this dynamic, so the macro count is not definitionally determined by the meso fraction.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "social_contact_outbreak_heterogeneity",
+      "target_phenomenon": "social_contact_outbreak_heterogeneity",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\edges_upward\\14916759118f419de7229da1642f62ca6fd061347d87f68d51b79f90eca9eb76\\attempt_000\\generation\\edges_upward\\attempt_000",
+          "original_edge_id": "edge_meso_layer_fraction_to_macro_contact_active_count",
+          "row_index": 1
+        }
+      ]
+    },
+    {
+      "edge_id": "upward__edge_micro_infectious_degree_to_macro_contact_active_count",
+      "source": "micro_infectious_contact_degree",
+      "target": "macro_contact_active_infectious_count",
+      "scale_direction": "upward",
+      "semantic_rationale": "Higher per-agent infectious-contact degree increases opportunities for onward infection among socially active agents, which may eventually enlarge the set of infectious agents who still appear in recorded contacts. The macro variable counts distinct contact-active infectious agents rather than summing individual degrees, so this is a dynamic infection-and-activity pathway, not a direct aggregation.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "social_contact_outbreak_heterogeneity",
+      "target_phenomenon": "social_contact_outbreak_heterogeneity",
+      "generation_sources": [
+        {
+          "stage": "edges_upward",
+          "call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\edges_upward\\14916759118f419de7229da1642f62ca6fd061347d87f68d51b79f90eca9eb76\\attempt_000\\generation\\edges_upward\\attempt_000",
+          "original_edge_id": "edge_micro_infectious_degree_to_macro_contact_active_count",
+          "row_index": 2
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__edge_macro_contact_active_to_meso_layer_infectious_fraction",
+      "source": "macro_contact_active_infectious_count",
+      "target": "meso_layer_infectious_edge_fraction",
+      "scale_direction": "downward",
+      "semantic_rationale": "A larger city-level count of infectious agents who remain socially contact-active can raise the fraction of recorded contact edges involving an infectious endpoint within particular contact layers, because those agents contribute infectious endpoints where they participate. This is a plausible dynamic compositional effect of macro-level infectious presence on layer-level contact-edge composition, not a deterministic aggregation of the meso indicator.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "social_contact_outbreak_heterogeneity",
+      "target_phenomenon": "social_contact_outbreak_heterogeneity",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\edges_downward\\d675bf6ddda2d67301c08d3cb21993163f42d3f89ec5708d3cf1a1398cec87ca\\attempt_000\\generation\\edges_downward\\attempt_000",
+          "original_edge_id": "edge_macro_contact_active_to_meso_layer_infectious_fraction",
+          "row_index": 0
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__edge_macro_contact_active_to_micro_infectious_contact_degree",
+      "source": "macro_contact_active_infectious_count",
+      "target": "micro_infectious_contact_degree",
+      "scale_direction": "downward",
+      "semantic_rationale": "When more infectious agents remain contact-active at the city level, the ambient opportunity for a focal agent to encounter infectious partners across the contact network may increase, thereby tending to raise that agent's distinct infectious-contact partner count. The effect is conditional on mixing and overlap between the focal agent's contacts and the contact-active infectious population, so it is a semantic dynamic candidate rather than a definitional relation.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "social_contact_outbreak_heterogeneity",
+      "target_phenomenon": "social_contact_outbreak_heterogeneity",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\edges_downward\\d675bf6ddda2d67301c08d3cb21993163f42d3f89ec5708d3cf1a1398cec87ca\\attempt_000\\generation\\edges_downward\\attempt_000",
+          "original_edge_id": "edge_macro_contact_active_to_micro_infectious_contact_degree",
+          "row_index": 1
+        }
+      ]
+    },
+    {
+      "edge_id": "downward__edge_meso_layer_infectious_fraction_to_micro_infectious_contact_degree",
+      "source": "meso_layer_infectious_edge_fraction",
+      "target": "micro_infectious_contact_degree",
+      "scale_direction": "downward",
+      "semantic_rationale": "A higher infectious-edge fraction in a contact layer implies that a larger share of recorded edges in that layer involve an infectious endpoint. For a focal agent whose partners are drawn from that layer, this can increase the chance that its distinct partners include infectious individuals, plausibly raising its per-agent infectious-contact partner count. The relation is mechanistic and contextual, not a deterministic count conversion.",
+      "relation_type": "semantic_candidate",
+      "source_phenomenon": "social_contact_outbreak_heterogeneity",
+      "target_phenomenon": "social_contact_outbreak_heterogeneity",
+      "generation_sources": [
+        {
+          "stage": "edges_downward",
+          "call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\edges_downward\\d675bf6ddda2d67301c08d3cb21993163f42d3f89ec5708d3cf1a1398cec87ca\\attempt_000\\generation\\edges_downward\\attempt_000",
+          "original_edge_id": "edge_meso_layer_infectious_fraction_to_micro_infectious_contact_degree",
+          "row_index": 2
+        }
+      ]
+    }
+  ],
+  "run_ids": [
+    "a83b6e4508fb485ea538f3ef655a73ca",
+    "a8917f7b1232413288c7cf7656df3a40",
+    "8d37ed3832aa483e90174e05baaec46d",
+    "88d28bcebb6b4f60aff173b033d5c01c",
+    "772ec28674634e32a08f072b26ad4545",
+    "ea045a78dc914afda35859c23242f087",
+    "2604710748154ad2996f188b01e3be28"
+  ],
+  "execution_policy": "success_on_every_listed_run",
+  "excluded_nodes": [],
+  "excluded_edges": [],
+  "provenance": {
+    "scenario": {
+      "scenario_id": "SCENARIO-COVASIM-001",
+      "scenario_version": "2.0",
+      "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+      "scenario_file": "scenarios/v2/covasim.md",
+      "model": "covasim"
+    },
+    "original_scenario": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\input\\scenario.md",
+    "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+    "client_mode": "live_api",
+    "llm": {
+      "profile": "deepseek_flash",
+      "provider": "openai_compatible",
+      "base_url": "https://api.deepseek.com",
+      "model": "deepseek-flash",
+      "api_key_env": "DEEPSEEK_API_KEY",
+      "temperature": 0.3,
+      "top_p": null,
+      "max_tokens": 32768,
+      "timeout": 600,
+      "max_retries": 1,
+      "reasoning_effort": "low",
+      "extra_body": {
+        "stream_options": {
+          "include_usage": true
+        }
+      },
+      "stream": true
+    },
+    "run_records": [
+      {
+        "identity": {
+          "model": "covasim",
+          "model_version": "2.0.0",
+          "scenario_id": "SCENARIO-COVASIM-001",
+          "seed": 11,
+          "steps": 60,
+          "engine": {
+            "python": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\.covasim-venv\\Scripts\\python.exe",
+            "experiment_class": "uncalibrated_demonstration"
+          },
+          "parameters": {
+            "pop_size": 1000,
+            "pop_infected": 10,
+            "pop_type": "hybrid",
+            "start_day": "2020-01-27",
+            "beta": 0.016,
+            "pop_scale": 1,
+            "rescale": false,
+            "interventions": [
+              {
+                "type": "test_prob",
+                "start_day": 20,
+                "symp_prob": 0.15,
+                "asymp_prob": 0.0,
+                "test_delay": 0
+              },
+              {
+                "type": "contact_tracing",
+                "start_day": 20,
+                "trace_probs": {
+                  "h": 0.7,
+                  "s": 0.1,
+                  "w": 0.1,
+                  "c": 0.0
+                },
+                "trace_time": 0
+              }
+            ]
+          },
+          "sampling": {
+            "frequency": 1
+          },
+          "logging": {
+            "format": "parquet",
+            "batch_size": 1024,
+            "compression": "zstd",
+            "agent_states": true,
+            "events": true,
+            "model_states": true,
+            "contacts": true,
+            "level": "INFO"
+          },
+          "scenario_version": "2.0",
+          "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+          "sources": {
+            "simulations/common/runner.py": "f9a32fdf2b8a2624eb17adcdec60b20e4d5a6bf89137bbc7af8ba7a2af9385a9",
+            "simulations/common/trajectory_api.py": "cbaea232f6d6fa3f887e621cf5e01a28b576791c812ba69cf5407812ade9ab02",
+            "simulations/covasim/adapter.py": "597524aa269b22ab558890b3824a81fe9445b2c4cd10b95d784df605525b61cf"
+          }
+        },
+        "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\simulation\\a83b6e4508fb485ea538f3ef655a73ca",
+        "data_hashes": {
+          "agent_states.parquet": "05de5618340c464639c659d6319d87a63a3f5f9aa6dadefa20d284231db20217",
+          "contacts.parquet": "ee56ba8967cfc3bfa60e65e171c303aaa8e3390fdb777082387fb5f8b698bc9c",
+          "events.parquet": "06dc3b8e9b8fa355e46e6803a14f77edc4148a04ec51d471686bc4ffb142aae7",
+          "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+          "manifest.json": "d58cd5d5f26531570f91714c678c87cfbf0801ee6c64287b2f341378f3731b8e",
+          "model_states.parquet": "766060cd5977a35656bc9cb8aac8b6f1639a413f70d1d2a46512353a100a0341",
+          "native_parameters.json": "d0b4e5b6968597180f6008b638e725882c598bc75ffaa2e8f14c893ec59403fc",
+          "native_parameters_final.json": "d0b4e5b6968597180f6008b638e725882c598bc75ffaa2e8f14c893ec59403fc",
+          "resolved_config.yaml": "7108ceb676774bf2df3c674ec0cbf292585e7c869bfca9c8dcc6d9e7371d2bb1",
+          "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+        },
+        "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+        "seed": 11,
+        "reused": false
+      },
+      {
+        "identity": {
+          "model": "covasim",
+          "model_version": "2.0.0",
+          "scenario_id": "SCENARIO-COVASIM-001",
+          "seed": 22,
+          "steps": 60,
+          "engine": {
+            "python": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\.covasim-venv\\Scripts\\python.exe",
+            "experiment_class": "uncalibrated_demonstration"
+          },
+          "parameters": {
+            "pop_size": 1000,
+            "pop_infected": 10,
+            "pop_type": "hybrid",
+            "start_day": "2020-01-27",
+            "beta": 0.016,
+            "pop_scale": 1,
+            "rescale": false,
+            "interventions": [
+              {
+                "type": "test_prob",
+                "start_day": 20,
+                "symp_prob": 0.15,
+                "asymp_prob": 0.0,
+                "test_delay": 0
+              },
+              {
+                "type": "contact_tracing",
+                "start_day": 20,
+                "trace_probs": {
+                  "h": 0.7,
+                  "s": 0.1,
+                  "w": 0.1,
+                  "c": 0.0
+                },
+                "trace_time": 0
+              }
+            ]
+          },
+          "sampling": {
+            "frequency": 1
+          },
+          "logging": {
+            "format": "parquet",
+            "batch_size": 1024,
+            "compression": "zstd",
+            "agent_states": true,
+            "events": true,
+            "model_states": true,
+            "contacts": true,
+            "level": "INFO"
+          },
+          "scenario_version": "2.0",
+          "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+          "sources": {
+            "simulations/common/runner.py": "f9a32fdf2b8a2624eb17adcdec60b20e4d5a6bf89137bbc7af8ba7a2af9385a9",
+            "simulations/common/trajectory_api.py": "cbaea232f6d6fa3f887e621cf5e01a28b576791c812ba69cf5407812ade9ab02",
+            "simulations/covasim/adapter.py": "597524aa269b22ab558890b3824a81fe9445b2c4cd10b95d784df605525b61cf"
+          }
+        },
+        "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\simulation\\a8917f7b1232413288c7cf7656df3a40",
+        "data_hashes": {
+          "agent_states.parquet": "2549db55d9f69fe75ff9b3d7de8306b94dca4ad92737d1c513f1c75625fa424c",
+          "contacts.parquet": "264f45554d8883c5990e8ff2a2f1fb2580d286c58e12faa3c2e1fbae0482bc9a",
+          "events.parquet": "580f120ed76762b6c97adeedb8562d8cb24e46cb155b4f7b42a37eec555fe4af",
+          "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+          "manifest.json": "eb918b82a37964039ec7b9c528c56ad3ddeb5fb1f2f2d5665238666fefe1dce3",
+          "model_states.parquet": "99444505ef340f76e24d5b8cb418350de83902c6363ef645bb286429a9065ec8",
+          "native_parameters.json": "d1a53151772314de4a5ede6111b854687f8c92e63ab9acd8fef8b088b6eb0dd6",
+          "native_parameters_final.json": "d1a53151772314de4a5ede6111b854687f8c92e63ab9acd8fef8b088b6eb0dd6",
+          "resolved_config.yaml": "740627222c2ca5c9b0d73b29f6d15f1e2ff321afb343d223ecefd4f8a6635868",
+          "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+        },
+        "run_id": "a8917f7b1232413288c7cf7656df3a40",
+        "seed": 22,
+        "reused": false
+      },
+      {
+        "identity": {
+          "model": "covasim",
+          "model_version": "2.0.0",
+          "scenario_id": "SCENARIO-COVASIM-001",
+          "seed": 33,
+          "steps": 60,
+          "engine": {
+            "python": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\.covasim-venv\\Scripts\\python.exe",
+            "experiment_class": "uncalibrated_demonstration"
+          },
+          "parameters": {
+            "pop_size": 1000,
+            "pop_infected": 10,
+            "pop_type": "hybrid",
+            "start_day": "2020-01-27",
+            "beta": 0.016,
+            "pop_scale": 1,
+            "rescale": false,
+            "interventions": [
+              {
+                "type": "test_prob",
+                "start_day": 20,
+                "symp_prob": 0.15,
+                "asymp_prob": 0.0,
+                "test_delay": 0
+              },
+              {
+                "type": "contact_tracing",
+                "start_day": 20,
+                "trace_probs": {
+                  "h": 0.7,
+                  "s": 0.1,
+                  "w": 0.1,
+                  "c": 0.0
+                },
+                "trace_time": 0
+              }
+            ]
+          },
+          "sampling": {
+            "frequency": 1
+          },
+          "logging": {
+            "format": "parquet",
+            "batch_size": 1024,
+            "compression": "zstd",
+            "agent_states": true,
+            "events": true,
+            "model_states": true,
+            "contacts": true,
+            "level": "INFO"
+          },
+          "scenario_version": "2.0",
+          "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+          "sources": {
+            "simulations/common/runner.py": "f9a32fdf2b8a2624eb17adcdec60b20e4d5a6bf89137bbc7af8ba7a2af9385a9",
+            "simulations/common/trajectory_api.py": "cbaea232f6d6fa3f887e621cf5e01a28b576791c812ba69cf5407812ade9ab02",
+            "simulations/covasim/adapter.py": "597524aa269b22ab558890b3824a81fe9445b2c4cd10b95d784df605525b61cf"
+          }
+        },
+        "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\simulation\\8d37ed3832aa483e90174e05baaec46d",
+        "data_hashes": {
+          "agent_states.parquet": "fc142b72cf9c5975d5204f37d7218921c562e05b428d9c0d8679a58c2477abca",
+          "contacts.parquet": "4b7aeecd2deb8b2db508c5652146d2886648faabc33fae8a3132fe80fd694a88",
+          "events.parquet": "a0b438c2d04bd27710c18ba4af4db6352b2f3a6995ebfd05811ca1b088e22a78",
+          "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+          "manifest.json": "4ea6d6057cb1f0892c9f93c125157363520e561f64a2e43da90e7468e3039ff0",
+          "model_states.parquet": "953aa096abbd0dd990fc8b94ac3da35d8f61e5f8b79eb46a791485572bb06572",
+          "native_parameters.json": "0ceb666b5d2d288e3666130cda343c5347b532659b075a77a825beeb243e91dc",
+          "native_parameters_final.json": "0ceb666b5d2d288e3666130cda343c5347b532659b075a77a825beeb243e91dc",
+          "resolved_config.yaml": "b70ac867b8333747e02f14e3904e29ec5f9dd4b619e5e27d344a311a480edb40",
+          "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+        },
+        "run_id": "8d37ed3832aa483e90174e05baaec46d",
+        "seed": 33,
+        "reused": false
+      },
+      {
+        "identity": {
+          "model": "covasim",
+          "model_version": "2.0.0",
+          "scenario_id": "SCENARIO-COVASIM-001",
+          "seed": 44,
+          "steps": 60,
+          "engine": {
+            "python": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\.covasim-venv\\Scripts\\python.exe",
+            "experiment_class": "uncalibrated_demonstration"
+          },
+          "parameters": {
+            "pop_size": 1000,
+            "pop_infected": 10,
+            "pop_type": "hybrid",
+            "start_day": "2020-01-27",
+            "beta": 0.016,
+            "pop_scale": 1,
+            "rescale": false,
+            "interventions": [
+              {
+                "type": "test_prob",
+                "start_day": 20,
+                "symp_prob": 0.15,
+                "asymp_prob": 0.0,
+                "test_delay": 0
+              },
+              {
+                "type": "contact_tracing",
+                "start_day": 20,
+                "trace_probs": {
+                  "h": 0.7,
+                  "s": 0.1,
+                  "w": 0.1,
+                  "c": 0.0
+                },
+                "trace_time": 0
+              }
+            ]
+          },
+          "sampling": {
+            "frequency": 1
+          },
+          "logging": {
+            "format": "parquet",
+            "batch_size": 1024,
+            "compression": "zstd",
+            "agent_states": true,
+            "events": true,
+            "model_states": true,
+            "contacts": true,
+            "level": "INFO"
+          },
+          "scenario_version": "2.0",
+          "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+          "sources": {
+            "simulations/common/runner.py": "f9a32fdf2b8a2624eb17adcdec60b20e4d5a6bf89137bbc7af8ba7a2af9385a9",
+            "simulations/common/trajectory_api.py": "cbaea232f6d6fa3f887e621cf5e01a28b576791c812ba69cf5407812ade9ab02",
+            "simulations/covasim/adapter.py": "597524aa269b22ab558890b3824a81fe9445b2c4cd10b95d784df605525b61cf"
+          }
+        },
+        "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\simulation\\88d28bcebb6b4f60aff173b033d5c01c",
+        "data_hashes": {
+          "agent_states.parquet": "1b344c6e66054618512daf642810f13e518d69e2d39a534e497fd7714e4551b3",
+          "contacts.parquet": "29758f6378773f9c59c3d28e432619ed774a9d381fcecdeb18c7342b4b1c0431",
+          "events.parquet": "38a626415d51abaff98f2e9de0649e9fa54f2380754e903f878c620b67fac1b1",
+          "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+          "manifest.json": "a69147f4f715e69e9e46c1bde94a9fea08017a676da842350bc09fb87856d1cb",
+          "model_states.parquet": "8e70f985d7abae9b086dc5e4e6d7f3e56f697e0bd9e9d9cdd971e232fe421bf3",
+          "native_parameters.json": "ad7753b7edfb4929cf67a1326aa2ceb0c48b62543785a84284e3226a8d689439",
+          "native_parameters_final.json": "ad7753b7edfb4929cf67a1326aa2ceb0c48b62543785a84284e3226a8d689439",
+          "resolved_config.yaml": "5ea85a02b134cad3ca6e2f1c694592343a90e1736e662d593b4d305a42ef0965",
+          "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+        },
+        "run_id": "88d28bcebb6b4f60aff173b033d5c01c",
+        "seed": 44,
+        "reused": false
+      },
+      {
+        "identity": {
+          "model": "covasim",
+          "model_version": "2.0.0",
+          "scenario_id": "SCENARIO-COVASIM-001",
+          "seed": 55,
+          "steps": 60,
+          "engine": {
+            "python": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\.covasim-venv\\Scripts\\python.exe",
+            "experiment_class": "uncalibrated_demonstration"
+          },
+          "parameters": {
+            "pop_size": 1000,
+            "pop_infected": 10,
+            "pop_type": "hybrid",
+            "start_day": "2020-01-27",
+            "beta": 0.016,
+            "pop_scale": 1,
+            "rescale": false,
+            "interventions": [
+              {
+                "type": "test_prob",
+                "start_day": 20,
+                "symp_prob": 0.15,
+                "asymp_prob": 0.0,
+                "test_delay": 0
+              },
+              {
+                "type": "contact_tracing",
+                "start_day": 20,
+                "trace_probs": {
+                  "h": 0.7,
+                  "s": 0.1,
+                  "w": 0.1,
+                  "c": 0.0
+                },
+                "trace_time": 0
+              }
+            ]
+          },
+          "sampling": {
+            "frequency": 1
+          },
+          "logging": {
+            "format": "parquet",
+            "batch_size": 1024,
+            "compression": "zstd",
+            "agent_states": true,
+            "events": true,
+            "model_states": true,
+            "contacts": true,
+            "level": "INFO"
+          },
+          "scenario_version": "2.0",
+          "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+          "sources": {
+            "simulations/common/runner.py": "f9a32fdf2b8a2624eb17adcdec60b20e4d5a6bf89137bbc7af8ba7a2af9385a9",
+            "simulations/common/trajectory_api.py": "cbaea232f6d6fa3f887e621cf5e01a28b576791c812ba69cf5407812ade9ab02",
+            "simulations/covasim/adapter.py": "597524aa269b22ab558890b3824a81fe9445b2c4cd10b95d784df605525b61cf"
+          }
+        },
+        "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\simulation\\772ec28674634e32a08f072b26ad4545",
+        "data_hashes": {
+          "agent_states.parquet": "226759418c4c023c8b32c29eba54b96f8e2550ab12368cc682107778a8e29b68",
+          "contacts.parquet": "9663e3afce94e664d855af1aab28fd593962e8bbe897bf2dbb401d88114e3349",
+          "events.parquet": "7a6b5c67237ce9377659ad39df9ca570aa3cd7cbbdabaae155e4d36ee1b858e4",
+          "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+          "manifest.json": "6805d4a3a09c41e5642d9881a0d5b0011370763017fb5994a24eeba0b89a4b5a",
+          "model_states.parquet": "f886d26a4d1542e9f708b965f03c789284178dda9c29bd7001728432bc40af01",
+          "native_parameters.json": "4ec359fd92a2d383754920d1f7a5e7424974c5d2b3e8d27053d3746cca798b5b",
+          "native_parameters_final.json": "4ec359fd92a2d383754920d1f7a5e7424974c5d2b3e8d27053d3746cca798b5b",
+          "resolved_config.yaml": "0f832384834b0f15ffd70827ff72338bff3fc1ee1a4bedbe6362d25041b9a625",
+          "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+        },
+        "run_id": "772ec28674634e32a08f072b26ad4545",
+        "seed": 55,
+        "reused": false
+      },
+      {
+        "identity": {
+          "model": "covasim",
+          "model_version": "2.0.0",
+          "scenario_id": "SCENARIO-COVASIM-001",
+          "seed": 66,
+          "steps": 60,
+          "engine": {
+            "python": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\.covasim-venv\\Scripts\\python.exe",
+            "experiment_class": "uncalibrated_demonstration"
+          },
+          "parameters": {
+            "pop_size": 1000,
+            "pop_infected": 10,
+            "pop_type": "hybrid",
+            "start_day": "2020-01-27",
+            "beta": 0.016,
+            "pop_scale": 1,
+            "rescale": false,
+            "interventions": [
+              {
+                "type": "test_prob",
+                "start_day": 20,
+                "symp_prob": 0.15,
+                "asymp_prob": 0.0,
+                "test_delay": 0
+              },
+              {
+                "type": "contact_tracing",
+                "start_day": 20,
+                "trace_probs": {
+                  "h": 0.7,
+                  "s": 0.1,
+                  "w": 0.1,
+                  "c": 0.0
+                },
+                "trace_time": 0
+              }
+            ]
+          },
+          "sampling": {
+            "frequency": 1
+          },
+          "logging": {
+            "format": "parquet",
+            "batch_size": 1024,
+            "compression": "zstd",
+            "agent_states": true,
+            "events": true,
+            "model_states": true,
+            "contacts": true,
+            "level": "INFO"
+          },
+          "scenario_version": "2.0",
+          "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+          "sources": {
+            "simulations/common/runner.py": "f9a32fdf2b8a2624eb17adcdec60b20e4d5a6bf89137bbc7af8ba7a2af9385a9",
+            "simulations/common/trajectory_api.py": "cbaea232f6d6fa3f887e621cf5e01a28b576791c812ba69cf5407812ade9ab02",
+            "simulations/covasim/adapter.py": "597524aa269b22ab558890b3824a81fe9445b2c4cd10b95d784df605525b61cf"
+          }
+        },
+        "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\simulation\\ea045a78dc914afda35859c23242f087",
+        "data_hashes": {
+          "agent_states.parquet": "434e9daf311976916d820f20a5a7e6e1b5dea09c2bea134db61adbb529a0d2b0",
+          "contacts.parquet": "c967a56af7fa8b674bb7d7ecebe91e49bfeecd00af11ff8aa6c53c30a2b164d5",
+          "events.parquet": "d700a3903c668ecc3972116d120af29d95c07e7e5ab86432622ae1d7e69eeead",
+          "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+          "manifest.json": "b91edf459ff05827cf8ea7100fb6bddd7c4a15452688945dbd2787ca58b35b01",
+          "model_states.parquet": "788148118858f346ccf8e8ca86e1f576a9d85991bfd73eb63ea2b6dc9005fb96",
+          "native_parameters.json": "fc339a279a9ec88790431942bab14f943f827b22beca32f3c3c54f51a457a854",
+          "native_parameters_final.json": "fc339a279a9ec88790431942bab14f943f827b22beca32f3c3c54f51a457a854",
+          "resolved_config.yaml": "99e1984054e11630dc2d635102622d15d4f410cd4a16b6e363de3816952d2267",
+          "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+        },
+        "run_id": "ea045a78dc914afda35859c23242f087",
+        "seed": 66,
+        "reused": false
+      },
+      {
+        "identity": {
+          "model": "covasim",
+          "model_version": "2.0.0",
+          "scenario_id": "SCENARIO-COVASIM-001",
+          "seed": 77,
+          "steps": 60,
+          "engine": {
+            "python": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\.covasim-venv\\Scripts\\python.exe",
+            "experiment_class": "uncalibrated_demonstration"
+          },
+          "parameters": {
+            "pop_size": 1000,
+            "pop_infected": 10,
+            "pop_type": "hybrid",
+            "start_day": "2020-01-27",
+            "beta": 0.016,
+            "pop_scale": 1,
+            "rescale": false,
+            "interventions": [
+              {
+                "type": "test_prob",
+                "start_day": 20,
+                "symp_prob": 0.15,
+                "asymp_prob": 0.0,
+                "test_delay": 0
+              },
+              {
+                "type": "contact_tracing",
+                "start_day": 20,
+                "trace_probs": {
+                  "h": 0.7,
+                  "s": 0.1,
+                  "w": 0.1,
+                  "c": 0.0
+                },
+                "trace_time": 0
+              }
+            ]
+          },
+          "sampling": {
+            "frequency": 1
+          },
+          "logging": {
+            "format": "parquet",
+            "batch_size": 1024,
+            "compression": "zstd",
+            "agent_states": true,
+            "events": true,
+            "model_states": true,
+            "contacts": true,
+            "level": "INFO"
+          },
+          "scenario_version": "2.0",
+          "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+          "sources": {
+            "simulations/common/runner.py": "f9a32fdf2b8a2624eb17adcdec60b20e4d5a6bf89137bbc7af8ba7a2af9385a9",
+            "simulations/common/trajectory_api.py": "cbaea232f6d6fa3f887e621cf5e01a28b576791c812ba69cf5407812ade9ab02",
+            "simulations/covasim/adapter.py": "597524aa269b22ab558890b3824a81fe9445b2c4cd10b95d784df605525b61cf"
+          }
+        },
+        "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\simulation\\2604710748154ad2996f188b01e3be28",
+        "data_hashes": {
+          "agent_states.parquet": "c9de8de82d0b03575398587e82b9f666e3049bf6cb34ee88e9be054d8b6cec95",
+          "contacts.parquet": "2a9728b39b974df24aa8b26e65c81d4df34fb35ab5493462591e9102cd5db226",
+          "events.parquet": "46c498111919a0418ea50485da77d0d366c8dafa11312e0447bba38afede0a6a",
+          "field_catalog.json": "58ed54c2d4574fa0daf7549a1fb8af388ef465471115f0e8c28d084294b7c901",
+          "manifest.json": "9a6aa8dca84549ca7f407628bcdbc9fee3f183889b81aef224a409c6199bfbef",
+          "model_states.parquet": "f165631a562cbb78121a34ff6fb2652c7a5a5c21badf4c19b39ed88f4dfacb1e",
+          "native_parameters.json": "6d38344eedd90fc9f4d7d2afbfc3eaf411a54ae4ff170e0c71549452e6f4a150",
+          "native_parameters_final.json": "6d38344eedd90fc9f4d7d2afbfc3eaf411a54ae4ff170e0c71549452e6f4a150",
+          "resolved_config.yaml": "44768a5f8f064cc63f397f9c53f0bd3972d74fadd6935b4577ccab1987d02958",
+          "scenario.md": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde"
+        },
+        "run_id": "2604710748154ad2996f188b01e3be28",
+        "seed": 77,
+        "reused": false
+      }
+    ],
+    "candidate_graph": {
+      "path": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\candidate_graph.json",
+      "sha256": "b9902bf455b49e82d00c0db0a6769545d137cd8b7e3fa1a452deff57a4b3fcf3"
+    },
+    "review_file": {
+      "path": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\review.json",
+      "sha256": "668117e3f466cd7ab84c498597ece59c18eb7d6d2d79cc1e2970b01dc70bd1b3"
+    },
+    "stage1_algorithms": {
+      "cli.py": "5feadd86b08f34ecaa92636c169f8e751397f56f0a4a1278b565b0d231fa821a",
+      "code_contract.py": "beb6dae4765bfd406cc9b6064db039eb691ba617cb41dabf5fb9165791ff34a6",
+      "config.py": "25956bb7f4590bf17ec2c3c4328073b1ee1e159cd1b42bca1c1ac7b8cd6f45be",
+      "data_schema.py": "f49546ef306ac9d04d227fddd863873d88655941bbf05eb417208b2f377ab789",
+      "generation.py": "fae3a688aaab39c32e8271096679d610242300f41a489cab2d7f1014ab4aba85",
+      "graph_export.py": "32e5f3b85c593440d1c431e96833242fb6d15e53568b3f89a3ed81d6278b6dbd",
+      "indicator_runner.py": "2054d83c18eb3b6a4ffb8788c07583ce65cf9610a1bfb4333cd886566bf770de",
+      "inputs.py": "751bed460896bb0cca07ed690e3518167fdc2eb30268973658c234aae434240b",
+      "io.py": "1468804f514f50c29ead84048671e44661a94f9f831dc4ae0879c765c1867773",
+      "llm_client.py": "ea57a454deb6c7cb7644bf4c21717944a4c14075f267ffd2d7961c862d133266",
+      "pipeline.py": "4850f7fce91d515163ef3d569f609c8db4226fa3ce1e7636c1a3478f29878fe9",
+      "prompts.py": "ec80e4732aa470ef5991230908db0bab17f4432e5cbd9b3eb547265ce49046c7",
+      "schemas.py": "76018fa773904a96ecb579a3293c6c47fce23871c0f85730229e28ad000b597a",
+      "streaming.py": "b3c66885506b29939cdaf2e7194c61d342153a98d52564dd766adba509595cbd",
+      "trusted_worker.py": "b88d0dfd611f5532d7ae457352ced2db8a3b7db71799cdeca4edaa952d97b174",
+      "visualize_graphs.py": "7730128f651a81b706d4d8dc87a714a00636f775923d3c12afae6707be956da9",
+      "__init__.py": "d26fb71b5b56e03b61f2c37fba4282a843ac124d8a98183cb2b4779b620243ec",
+      "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+    }
+  }
+}

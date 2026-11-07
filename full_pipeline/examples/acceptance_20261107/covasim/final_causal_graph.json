@@ -1,0 +1,278 @@
+{
+  "schema_version": "causal-discovery/1.0",
+  "source_graph": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\stage1_graph.json",
+  "weight_semantics": "primary_lag_in_simulation_steps",
+  "evidence_scope": "observational directed predictive dependence and joint information, not structural causal truth",
+  "nodes": [
+    {
+      "indicator_id": "macro_contact_active_infectious_count",
+      "phenomenon_id": "social_contact_outbreak_heterogeneity",
+      "name": "City-level contact-active infectious agent count",
+      "scale": "macro",
+      "description": "For the whole modeled city at each sampled step, counts distinct agents that are infectious and also appear in at least one recorded contact edge as either endpoint. This summarizes the city-level size of the infectious population that remains socially contact-active.",
+      "mathematical_definition": "For each run_id and step t: A(t) = |{ i : agent_states(i,t).infectious = true and there exists a contacts record at (run_id, step=t) such that agent_id=i or partner_id=i, with valid non-null/non-unmatched endpoint identifiers }|. Count each qualifying agent_id once per run-step.",
+      "units": "agents",
+      "computation_notes": "Build the set of valid agent identifiers appearing in contacts at each (run_id, step) as the union of agent_id and partner_id, excluding null, sentinel, and unmatched identifiers. Intersect this set with agent_states records where infectious=true at the same run_id and step. Count distinct agents; do not scale by population. Compute each run separately; do not concatenate seeds.",
+      "required_data": {
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ],
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "infectious"
+        ]
+      },
+      "required": {
+        "agent_states": [
+          "run_id",
+          "step",
+          "agent_id",
+          "infectious"
+        ],
+        "contacts": [
+          "run_id",
+          "step",
+          "agent_id",
+          "partner_id"
+        ]
+      },
+      "config": {
+        "aggregation": "mean",
+        "sentinel_ids": [
+          -1
+        ]
+      },
+      "python_code": "import pandas as pd\n\ndef compute_indicator(data, config):\n    '''Per (run_id, step): count distinct agents that are infectious in agent_states\n    and also appear as either endpoint in contacts at the same (run_id, step),\n    after excluding null, sentinel, and unmatched endpoint identifiers.\n    Returns a pandas Series indexed by step, aggregated across runs.\n    '''\n    if 'agent_states' not in data or 'contacts' not in data:\n        raise ValueError('required tables agent_states and contacts are missing')\n    states = data['agent_states']\n    contacts = data['contacts']\n\n    required_state_cols = ['run_id', 'step', 'agent_id', 'infectious']\n    required_contact_cols = ['run_id', 'step', 'agent_id', 'partner_id']\n    missing_state = [c for c in required_state_cols if c not in states.columns]\n    missing_contact = [c for c in required_contact_cols if c not in contacts.columns]\n    if missing_state or missing_contact:\n        raise ValueError('missing required columns: ' + str(missing_state + missing_contact))\n\n    s = states[required_state_cols].copy()\n    c = contacts[required_contact_cols].copy()\n\n    for df in (s, c):\n        df['step'] = pd.to_numeric(df['step'], errors='coerce')\n        df['run_id'] = df['run_id'].astype('string')\n    s = s.dropna(subset=['run_id', 'step'])\n    c = c.dropna(subset=['run_id', 'step'])\n    s['step'] = s['step'].astype('int64')\n    c['step'] = c['step'].astype('int64')\n\n    s['agent_id'] = pd.to_numeric(s['agent_id'], errors='coerce')\n    c['agent_id'] = pd.to_numeric(c['agent_id'], errors='coerce')\n    c['partner_id'] = pd.to_numeric(c['partner_id'], errors='coerce')\n\n    s['infectious'] = s['infectious'].fillna(False).astype(bool)\n\n    valid = s.dropna(subset=['agent_id'])[['run_id', 'step', 'agent_id']].drop_duplicates()\n    valid['agent_id'] = valid['agent_id'].astype('int64')\n\n    inf = s.loc[s['infectious'], ['run_id', 'step', 'agent_id']].dropna(subset=['agent_id']).drop_duplicates()\n    inf['agent_id'] = inf['agent_id'].astype('int64')\n\n    ep1 = c[['run_id', 'step', 'agent_id']].rename(columns={'agent_id': 'endpoint_id'})\n    ep2 = c[['run_id', 'step', 'partner_id']].rename(columns={'partner_id': 'endpoint_id'})\n    endpoints = pd.concat([ep1, ep2], ignore_index=True)\n    endpoints = endpoints.dropna(subset=['endpoint_id'])\n    endpoints['endpoint_id'] = endpoints['endpoint_id'].astype('int64')\n\n    sentinel_ids = config.get('sentinel_ids', [-1]) if isinstance(config, dict) else [-1]\n    if sentinel_ids:\n        endpoints = endpoints[~endpoints['endpoint_id'].isin(sentinel_ids)]\n\n    endpoints_valid = endpoints.merge(\n        valid,\n        left_on=['run_id', 'step', 'endpoint_id'],\n        right_on=['run_id', 'step', 'agent_id'],\n        how='inner'\n    )\n    endpoints_valid = endpoints_valid.drop_duplicates(subset=['run_id', 'step', 'endpoint_id'])\n\n    qualifying = endpoints_valid.merge(\n        inf,\n        left_on=['run_id', 'step', 'endpoint_id'],\n        right_on=['run_id', 'step', 'agent_id'],\n        how='inner',\n        suffixes=('', '_inf')\n    )\n\n    counts = qualifying.groupby(['run_id', 'step'], as_index=False)['endpoint_id'].nunique()\n    counts = counts.rename(columns={'endpoint_id': 'count'})\n\n    grid = s[['run_id', 'step']].drop_duplicates()\n    per_run = grid.merge(counts, on=['run_id', 'step'], how='left')\n    per_run['count'] = per_run['count'].fillna(0).astype('int64')\n\n    agg = 'mean'\n    if isinstance(config, dict):\n        agg = config.get('aggregation', 'mean')\n    if agg not in ('mean', 'median', 'sum', 'min', 'max'):\n        agg = 'mean'\n\n    result = per_run.groupby('step')['count'].agg(agg).sort_index()\n    result.name = 'macro_contact_active_infectious_count'\n    result.index.name = 'step'\n    return result",
+      "implementation_status": "implemented",
+      "failure_reason": null,
+      "node_id": "macro_contact_active_infectious_count",
+      "code_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_code\\macro_contact_active_infectious_count.py",
+      "code_sha256": "46976f200e682fe19942ed207dc9a22dcb3055a0b3f18338c78612595314fccc",
+      "generation_call": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\code_macro_contact_active_infectious_count\\ed1eedd9cd02ea30d8a3cd03615e5bb6ef1a91d9f142557a29940d789e5625e4\\attempt_000\\generation\\codes\\attempt_000",
+      "execution": {
+        "a83b6e4508fb485ea538f3ef655a73ca": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\a83b6e4508fb485ea538f3ef655a73ca\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "9096de6a28ebfdcfed0e62bdf7c2621546641c3a3caf39c286c0fc326049c843"
+        },
+        "a8917f7b1232413288c7cf7656df3a40": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\a8917f7b1232413288c7cf7656df3a40\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "24ac981db5ba1cf12e28b4d519f1e9f37c05658ab00bedffc9e3dfb13949c7f2"
+        },
+        "8d37ed3832aa483e90174e05baaec46d": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\8d37ed3832aa483e90174e05baaec46d\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "d4379e46bb9c3d32ea323ff6dcb77294d3eb69489b21d34eae7c74dc1d10322c"
+        },
+        "88d28bcebb6b4f60aff173b033d5c01c": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\88d28bcebb6b4f60aff173b033d5c01c\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "f783dd88777a9120be4f636afce67fced570d937a6421bcf245bbb8af8f3371a"
+        },
+        "772ec28674634e32a08f072b26ad4545": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\772ec28674634e32a08f072b26ad4545\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "a96e418182c94fa0ad60f4e3f39760679a3d107fd0b7b16af8d34eba912299a8"
+        },
+        "ea045a78dc914afda35859c23242f087": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\ea045a78dc914afda35859c23242f087\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "42133b86f33969f8a6b8b6cc9ab99db8c730193f43c5a0b145f7518be09ba1a2"
+        },
+        "2604710748154ad2996f188b01e3be28": {
+          "status": "success",
+          "series_file": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\2604710748154ad2996f188b01e3be28\\macro_contact_active_infectious_count.parquet",
+          "series_sha256": "6a1da910e6ef3a638fc4f34a22d48938fed9e1af7b576bb24874a92f347122ec"
+        }
+      },
+      "analysis_transformations": {
+        "a83b6e4508fb485ea538f3ef655a73ca": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "a8917f7b1232413288c7cf7656df3a40": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "8d37ed3832aa483e90174e05baaec46d": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "88d28bcebb6b4f60aff173b033d5c01c": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "772ec28674634e32a08f072b26ad4545": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "ea045a78dc914afda35859c23242f087": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "2604710748154ad2996f188b01e3be28": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "self_memory__macro_contact_active_infectious_count",
+      "source": "macro_contact_active_infectious_count",
+      "target": "macro_contact_active_infectious_count",
+      "weight": 1,
+      "lags": [
+        1,
+        2
+      ],
+      "relation_type": "self_memory",
+      "scale_direction": "intra_scale",
+      "method": "rnn_lag",
+      "status": "accepted",
+      "evidence": [
+        {
+          "kind": "self_memory",
+          "method": "rnn_lag",
+          "status": "accepted",
+          "lag": 1,
+          "calibration": {
+            "method": "centered_moving_block_bootstrap",
+            "null": "expected heldout predictive score gain <= 0",
+            "p_value": 0.004,
+            "p_value_valid": true,
+            "assumptions": [
+              "held-out predictions fixed before evaluation",
+              "weakly stationary, weakly dependent score differences within runs",
+              "independent random-seed runs when more than one run is resampled"
+            ],
+            "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+            "repeats": 499,
+            "block_length": 8,
+            "run_count": 1,
+            "gain": 0.069869237395898,
+            "block_mean_shift_sd": [
+              1.1921715077418382
+            ],
+            "confidence_interval": [
+              0.010020296687154066,
+              0.10761424112274097
+            ],
+            "finite_samples": 57,
+            "seed": 1837263778
+          },
+          "validation_gain": 0.06347545981407166,
+          "adjusted_p_value": 0.022
+        },
+        {
+          "kind": "self_memory",
+          "method": "rnn_lag",
+          "status": "accepted",
+          "lag": 2,
+          "calibration": {
+            "method": "centered_moving_block_bootstrap",
+            "null": "expected heldout predictive score gain <= 0",
+            "p_value": 0.018,
+            "p_value_valid": true,
+            "assumptions": [
+              "held-out predictions fixed before evaluation",
+              "weakly stationary, weakly dependent score differences within runs",
+              "independent random-seed runs when more than one run is resampled"
+            ],
+            "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+            "repeats": 499,
+            "block_length": 8,
+            "run_count": 1,
+            "gain": 0.02663361322820971,
+            "block_mean_shift_sd": [
+              1.2797963123379141
+            ],
+            "confidence_interval": [
+              -0.008067091437375272,
+              0.05064282352063937
+            ],
+            "finite_samples": 57,
+            "seed": 3226348947
+          },
+          "validation_gain": 0.026419016532599926,
+          "adjusted_p_value": 0.04949999999999999
+        }
+      ]
+    }
+  ],
+  "run_ids": [
+    "a83b6e4508fb485ea538f3ef655a73ca",
+    "a8917f7b1232413288c7cf7656df3a40",
+    "8d37ed3832aa483e90174e05baaec46d",
+    "88d28bcebb6b4f60aff173b033d5c01c",
+    "772ec28674634e32a08f072b26ad4545",
+    "ea045a78dc914afda35859c23242f087",
+    "2604710748154ad2996f188b01e3be28"
+  ],
+  "source_graph_sha256": "c4c00f68f16c62c16d92c65ea918277ea9536b924643673017e79b5e98d5bdcc",
+  "multiplicity": {
+    "method": "by",
+    "valid_tests": 3
+  },
+  "provenance": {
+    "input_graph_sha256": "c4c00f68f16c62c16d92c65ea918277ea9536b924643673017e79b5e98d5bdcc",
+    "data_origin": "actual_parquet",
+    "algorithm_config_sha256": "c4a85140187d392fdfcd61077186ea4a8153e3328a34af649fcf320d7f1109ef",
+    "llm_calls": 0,
+    "audit_directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\stage2\\86ccb2ebc392e63c2ed8d082ab4d6aa99e481689d59f231dbdb8aa312e455c58\\attempt_000\\final_causal_graph_audit",
+    "source_modules_sha256": {
+      "m1_data.py": "f4370ea62beb3f365030c1f9de73897a270640e7578ea5f9978cdb91bd69cfc8",
+      "m2_lag_rnn.py": "c6ca86d0626c030e63b9897aad34f76aa44227c1257a2f550c5f9276c49aa4ca",
+      "m3_granger.py": "c05e02d33e279e98edb4a8cd1abe99e5ef23f8ae996032e00156f06b6e8917d0",
+      "m4_pid.py": "9049c71a94457318439577b8684f22efa51062933c94b99af43fde516753f610",
+      "m5_graph.py": "47628eb255618d12e8298fd4ba33c8f3d978e768d64d00a6ca312dce22521a4d",
+      "pipeline.py": "8ad52cad9f44fd86a22a1e3f4f6b59b350025a5da1b8e5af8b45e0fb560b83aa",
+      "_common.py": "32ee99e2e3e679f69d0a8a75c2a2257fa2061a758760b3162cae32d13c7a3dba",
+      "_rnn.py": "adf6580abddb0423af18ebe6f48218003eb9d239752b17afe41ad2d043023a6f",
+      "__init__.py": "6b1e7518163871a324e510bafba9ccc0b19ca8bf22e1cf81007a4cdf09d73f9d",
+      "__main__.py": "68ed0673af76f0c56fb056b3e1757942484ccb8366b075985a3cdfca42d6d96f"
+    }
+  }
+}

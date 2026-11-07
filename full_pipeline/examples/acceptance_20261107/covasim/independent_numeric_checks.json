@@ -1,0 +1,201 @@
+{
+  "status": "passed",
+  "purpose": "independent spot checks of saved acceptance definitions, not production indicators",
+  "source_graph_sha256": "c4c00f68f16c62c16d92c65ea918277ea9536b924643673017e79b5e98d5bdcc",
+  "source_checker_sha256": "659b37e84716ee77981a1286b21816ed54823c53ea0e8adee1da007b8092425d",
+  "checks": [
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 0,
+      "indicator_id": "micro_infectious_contact_degree",
+      "compared_values": 1000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 0,
+      "indicator_id": "meso_layer_infectious_edge_fraction",
+      "compared_values": 4,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 0,
+      "indicator_id": "macro_contact_active_infectious_count",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 1,
+      "indicator_id": "micro_infectious_contact_degree",
+      "compared_values": 1000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 1,
+      "indicator_id": "meso_layer_infectious_edge_fraction",
+      "compared_values": 4,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 1,
+      "indicator_id": "macro_contact_active_infectious_count",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 30,
+      "indicator_id": "micro_infectious_contact_degree",
+      "compared_values": 1000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 30,
+      "indicator_id": "meso_layer_infectious_edge_fraction",
+      "compared_values": 4,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 30,
+      "indicator_id": "macro_contact_active_infectious_count",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 60,
+      "indicator_id": "micro_infectious_contact_degree",
+      "compared_values": 1000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 60,
+      "indicator_id": "meso_layer_infectious_edge_fraction",
+      "compared_values": 4,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "a83b6e4508fb485ea538f3ef655a73ca",
+      "seed": 11,
+      "step": 60,
+      "indicator_id": "macro_contact_active_infectious_count",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 0,
+      "indicator_id": "micro_infectious_contact_degree",
+      "compared_values": 1000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 0,
+      "indicator_id": "meso_layer_infectious_edge_fraction",
+      "compared_values": 4,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 0,
+      "indicator_id": "macro_contact_active_infectious_count",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 1,
+      "indicator_id": "micro_infectious_contact_degree",
+      "compared_values": 1000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 1,
+      "indicator_id": "meso_layer_infectious_edge_fraction",
+      "compared_values": 4,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 1,
+      "indicator_id": "macro_contact_active_infectious_count",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 30,
+      "indicator_id": "micro_infectious_contact_degree",
+      "compared_values": 1000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 30,
+      "indicator_id": "meso_layer_infectious_edge_fraction",
+      "compared_values": 4,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 30,
+      "indicator_id": "macro_contact_active_infectious_count",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 60,
+      "indicator_id": "micro_infectious_contact_degree",
+      "compared_values": 1000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 60,
+      "indicator_id": "meso_layer_infectious_edge_fraction",
+      "compared_values": 4,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "2604710748154ad2996f188b01e3be28",
+      "seed": 77,
+      "step": 60,
+      "indicator_id": "macro_contact_active_infectious_count",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    }
+  ],
+  "compared_values": 8040
+}

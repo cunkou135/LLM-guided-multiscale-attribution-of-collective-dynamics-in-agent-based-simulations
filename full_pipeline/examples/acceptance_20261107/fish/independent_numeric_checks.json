@@ -1,0 +1,201 @@
+{
+  "status": "passed",
+  "purpose": "independent spot checks of saved acceptance definitions, not production indicators",
+  "source_graph_sha256": "e373e4fbc78ca5d1a49e84134bcfad9358055ea80a9076b86d1910bcb9b46792",
+  "source_checker_sha256": "659b37e84716ee77981a1286b21816ed54823c53ea0e8adee1da007b8092425d",
+  "checks": [
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 0,
+      "indicator_id": "fish_nn_distance_micro",
+      "compared_values": 2000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 0,
+      "indicator_id": "fish_contact_fragmentation_meso",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 0,
+      "indicator_id": "fish_school_elongation_macro",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 1,
+      "indicator_id": "fish_nn_distance_micro",
+      "compared_values": 2000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 1,
+      "indicator_id": "fish_contact_fragmentation_meso",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 1,
+      "indicator_id": "fish_school_elongation_macro",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 80,
+      "indicator_id": "fish_nn_distance_micro",
+      "compared_values": 2000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 80,
+      "indicator_id": "fish_contact_fragmentation_meso",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 80,
+      "indicator_id": "fish_school_elongation_macro",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 160,
+      "indicator_id": "fish_nn_distance_micro",
+      "compared_values": 2000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 160,
+      "indicator_id": "fish_contact_fragmentation_meso",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "3ce050930f4442b08a05a5b14176ccaf",
+      "seed": 11,
+      "step": 160,
+      "indicator_id": "fish_school_elongation_macro",
+      "compared_values": 1,
+      "maximum_absolute_error": 4.440892098500626e-16
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 0,
+      "indicator_id": "fish_nn_distance_micro",
+      "compared_values": 2000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 0,
+      "indicator_id": "fish_contact_fragmentation_meso",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 0,
+      "indicator_id": "fish_school_elongation_macro",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 1,
+      "indicator_id": "fish_nn_distance_micro",
+      "compared_values": 2000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 1,
+      "indicator_id": "fish_contact_fragmentation_meso",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 1,
+      "indicator_id": "fish_school_elongation_macro",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 80,
+      "indicator_id": "fish_nn_distance_micro",
+      "compared_values": 2000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 80,
+      "indicator_id": "fish_contact_fragmentation_meso",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 80,
+      "indicator_id": "fish_school_elongation_macro",
+      "compared_values": 1,
+      "maximum_absolute_error": 2.220446049250313e-16
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 160,
+      "indicator_id": "fish_nn_distance_micro",
+      "compared_values": 2000,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 160,
+      "indicator_id": "fish_contact_fragmentation_meso",
+      "compared_values": 1,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "run_id": "52095f2a15244a07961c25ad23a9daa2",
+      "seed": 44,
+      "step": 160,
+      "indicator_id": "fish_school_elongation_macro",
+      "compared_values": 1,
+      "maximum_absolute_error": 6.661338147750939e-16
+    }
+  ],
+  "compared_values": 16016
+}

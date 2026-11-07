@@ -1,0 +1,486 @@
+{
+  "status": "completed",
+  "updated_at": "2026-11-07T11:55:10.431602+00:00",
+  "invocation_elapsed_seconds": 3.3429999999971187,
+  "total_active_seconds": 592.6089999999967,
+  "llm_generation_calls": 10,
+  "llm_call_records": [
+    {
+      "stage": "indicators",
+      "client_mode": "live_api",
+      "started_at": "2026-11-07T10:21:41.154234+00:00",
+      "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\indicators\\cef7793a03a555c2d40fc9711de04defc07c78d3a06a2df55b0c8887934b570e\\attempt_000\\generation\\indicators\\attempt_000\\transport",
+      "repair": false,
+      "status": "success",
+      "ended_at": "2026-11-07T10:22:09.308932+00:00"
+    },
+    {
+      "stage": "edges_intrascale",
+      "client_mode": "live_api",
+      "started_at": "2026-11-07T11:45:14.627109+00:00",
+      "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\edges_intrascale\\235b8f7d7c454280e2caa1eb7bc099f3cb4419b9683b2b79f48243b8e8083137\\attempt_000\\generation\\edges_intrascale\\attempt_000\\transport",
+      "repair": false,
+      "status": "success",
+      "ended_at": "2026-11-07T11:45:17.267527+00:00"
+    },
+    {
+      "stage": "code_micro_infectious_contact_degree",
+      "client_mode": "live_api",
+      "started_at": "2026-11-07T11:37:13.983737+00:00",
+      "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\code_micro_infectious_contact_degree\\e9a07c67d4b2fe5147885aaf24188e4d46f5e5d2d3f624d7b121cd876e234cb1\\attempt_001\\generation\\codes\\attempt_000\\transport",
+      "repair": true,
+      "status": "success",
+      "ended_at": "2026-11-07T11:37:57.058735+00:00"
+    },
+    {
+      "stage": "phenomena",
+      "client_mode": "live_api",
+      "started_at": "2026-11-07T10:21:36.948461+00:00",
+      "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\phenomena\\a8a9a35511f77947142277b3d84dc48213f44b6cb4a02ca81c293f0f0cf2be1c\\attempt_000\\generation\\phenomena\\attempt_000\\transport",
+      "repair": false,
+      "status": "success",
+      "ended_at": "2026-11-07T10:21:41.081116+00:00"
+    },
+    {
+      "stage": "edges_upward",
+      "client_mode": "live_api",
+      "started_at": "2026-11-07T11:44:53.928928+00:00",
+      "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\edges_upward\\14916759118f419de7229da1642f62ca6fd061347d87f68d51b79f90eca9eb76\\attempt_000\\generation\\edges_upward\\attempt_000\\transport",
+      "repair": false,
+      "status": "success",
+      "ended_at": "2026-11-07T11:45:05.691813+00:00"
+    },
+    {
+      "stage": "code_macro_contact_active_infectious_count",
+      "client_mode": "live_api",
+      "started_at": "2026-11-07T10:22:53.648629+00:00",
+      "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\code_macro_contact_active_infectious_count\\ed1eedd9cd02ea30d8a3cd03615e5bb6ef1a91d9f142557a29940d789e5625e4\\attempt_000\\generation\\codes\\attempt_000\\transport",
+      "repair": false,
+      "status": "success",
+      "ended_at": "2026-11-07T10:23:37.297513+00:00"
+    },
+    {
+      "stage": "code_meso_layer_infectious_edge_fraction",
+      "client_mode": "live_api",
+      "started_at": "2026-11-07T10:22:26.252506+00:00",
+      "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\code_meso_layer_infectious_edge_fraction\\5463f0eb8d7f2868e08fd579d622f5a0f0c3c9a0747a35511b1dc5d85c8ba596\\attempt_000\\generation\\codes\\attempt_000\\transport",
+      "repair": false,
+      "status": "success",
+      "ended_at": "2026-11-07T10:22:53.356942+00:00"
+    },
+    {
+      "stage": "edges_downward",
+      "client_mode": "live_api",
+      "started_at": "2026-11-07T11:45:05.768584+00:00",
+      "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\edges_downward\\d675bf6ddda2d67301c08d3cb21993163f42d3f89ec5708d3cf1a1398cec87ca\\attempt_000\\generation\\edges_downward\\attempt_000\\transport",
+      "repair": false,
+      "status": "success",
+      "ended_at": "2026-11-07T11:45:14.553840+00:00"
+    },
+    {
+      "stage": "code_meso_layer_infectious_edge_fraction",
+      "client_mode": "live_api",
+      "started_at": "2026-11-07T11:37:57.177817+00:00",
+      "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\code_meso_layer_infectious_edge_fraction\\5463f0eb8d7f2868e08fd579d622f5a0f0c3c9a0747a35511b1dc5d85c8ba596\\attempt_001\\generation\\codes\\attempt_000\\transport",
+      "repair": true,
+      "status": "success",
+      "ended_at": "2026-11-07T11:38:44.067216+00:00"
+    },
+    {
+      "stage": "code_micro_infectious_contact_degree",
+      "client_mode": "live_api",
+      "started_at": "2026-11-07T10:22:09.390406+00:00",
+      "directory": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\checkpoints\\code_micro_infectious_contact_degree\\e9a07c67d4b2fe5147885aaf24188e4d46f5e5d2d3f624d7b121cd876e234cb1\\attempt_000\\generation\\codes\\attempt_000\\transport",
+      "repair": false,
+      "status": "success",
+      "ended_at": "2026-11-07T10:22:26.160687+00:00"
+    }
+  ],
+  "http_attempts": 10,
+  "retry_attempts": 2,
+  "stage_attempts": [
+    {
+      "task": "code_macro_contact_active_infectious_count",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:22:53.588112+00:00",
+      "ended_at": "2026-11-07T10:23:37.340514+00:00",
+      "issues": null
+    },
+    {
+      "task": "code_meso_layer_infectious_edge_fraction",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:22:26.236990+00:00",
+      "ended_at": "2026-11-07T10:22:53.464922+00:00",
+      "issues": null
+    },
+    {
+      "task": "code_meso_layer_infectious_edge_fraction",
+      "attempt": 2,
+      "status": "passed",
+      "started_at": "2026-11-07T11:37:57.162527+00:00",
+      "ended_at": "2026-11-07T11:38:44.101803+00:00",
+      "issues": null
+    },
+    {
+      "task": "code_micro_infectious_contact_degree",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:22:09.375214+00:00",
+      "ended_at": "2026-11-07T10:22:26.189992+00:00",
+      "issues": null
+    },
+    {
+      "task": "code_micro_infectious_contact_degree",
+      "attempt": 2,
+      "status": "passed",
+      "started_at": "2026-11-07T11:37:13.967948+00:00",
+      "ended_at": "2026-11-07T11:37:57.093722+00:00",
+      "issues": null
+    },
+    {
+      "task": "edges_downward",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:05.756582+00:00",
+      "ended_at": "2026-11-07T11:45:14.572466+00:00",
+      "issues": null
+    },
+    {
+      "task": "edges_intrascale",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:14.615116+00:00",
+      "ended_at": "2026-11-07T11:45:17.288618+00:00",
+      "issues": null
+    },
+    {
+      "task": "edges_upward",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:44:53.914927+00:00",
+      "ended_at": "2026-11-07T11:45:05.712815+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_macro_contact_active_infectious_count_2604710748154ad2996f188b01e3be28",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:46:18.479714+00:00",
+      "ended_at": "2026-11-07T11:46:21.880076+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_macro_contact_active_infectious_count_772ec28674634e32a08f072b26ad4545",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:57.621737+00:00",
+      "ended_at": "2026-11-07T11:46:00.918944+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_macro_contact_active_infectious_count_88d28bcebb6b4f60aff173b033d5c01c",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:49.033762+00:00",
+      "ended_at": "2026-11-07T11:45:52.116180+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_macro_contact_active_infectious_count_8d37ed3832aa483e90174e05baaec46d",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:40.556339+00:00",
+      "ended_at": "2026-11-07T11:45:43.550653+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_macro_contact_active_infectious_count_a83b6e4508fb485ea538f3ef655a73ca",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:23.893794+00:00",
+      "ended_at": "2026-11-07T11:45:26.968692+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_macro_contact_active_infectious_count_a8917f7b1232413288c7cf7656df3a40",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:32.258056+00:00",
+      "ended_at": "2026-11-07T11:45:35.232073+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_macro_contact_active_infectious_count_ea045a78dc914afda35859c23242f087",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:46:09.178914+00:00",
+      "ended_at": "2026-11-07T11:46:12.522537+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_meso_layer_infectious_edge_fraction_2604710748154ad2996f188b01e3be28",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:46:15.581876+00:00",
+      "ended_at": "2026-11-07T11:46:18.465519+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_meso_layer_infectious_edge_fraction_772ec28674634e32a08f072b26ad4545",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:54.977609+00:00",
+      "ended_at": "2026-11-07T11:45:57.611650+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_meso_layer_infectious_edge_fraction_88d28bcebb6b4f60aff173b033d5c01c",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:46.368331+00:00",
+      "ended_at": "2026-11-07T11:45:49.023768+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_meso_layer_infectious_edge_fraction_8d37ed3832aa483e90174e05baaec46d",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:38.014455+00:00",
+      "ended_at": "2026-11-07T11:45:40.546894+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_meso_layer_infectious_edge_fraction_a83b6e4508fb485ea538f3ef655a73ca",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:21.232382+00:00",
+      "ended_at": "2026-11-07T11:45:23.879815+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_meso_layer_infectious_edge_fraction_a8917f7b1232413288c7cf7656df3a40",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:29.716203+00:00",
+      "ended_at": "2026-11-07T11:45:32.248776+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_meso_layer_infectious_edge_fraction_ea045a78dc914afda35859c23242f087",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:46:06.105982+00:00",
+      "ended_at": "2026-11-07T11:46:09.167282+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_micro_infectious_contact_degree_2604710748154ad2996f188b01e3be28",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:46:12.534158+00:00",
+      "ended_at": "2026-11-07T11:46:15.571899+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_micro_infectious_contact_degree_772ec28674634e32a08f072b26ad4545",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:52.126180+00:00",
+      "ended_at": "2026-11-07T11:45:54.966607+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_micro_infectious_contact_degree_88d28bcebb6b4f60aff173b033d5c01c",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:43.560594+00:00",
+      "ended_at": "2026-11-07T11:45:46.357288+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_micro_infectious_contact_degree_8d37ed3832aa483e90174e05baaec46d",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:35.243410+00:00",
+      "ended_at": "2026-11-07T11:45:38.003487+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_micro_infectious_contact_degree_a83b6e4508fb485ea538f3ef655a73ca",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:17.353624+00:00",
+      "ended_at": "2026-11-07T11:45:21.220307+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_micro_infectious_contact_degree_a8917f7b1232413288c7cf7656df3a40",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:45:26.979475+00:00",
+      "ended_at": "2026-11-07T11:45:29.705199+00:00",
+      "issues": null
+    },
+    {
+      "task": "execute_micro_infectious_contact_degree_ea045a78dc914afda35859c23242f087",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:46:00.931939+00:00",
+      "ended_at": "2026-11-07T11:46:06.093982+00:00",
+      "issues": null
+    },
+    {
+      "task": "indicators",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:21:41.140226+00:00",
+      "ended_at": "2026-11-07T10:22:09.328546+00:00",
+      "issues": null
+    },
+    {
+      "task": "inspect_inputs",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:44:47.635376+00:00",
+      "ended_at": "2026-11-07T11:44:53.503401+00:00",
+      "issues": null
+    },
+    {
+      "task": "observed_schema",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:44:53.516440+00:00",
+      "ended_at": "2026-11-07T11:44:53.545201+00:00",
+      "issues": null
+    },
+    {
+      "task": "phenomena",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:21:36.936451+00:00",
+      "ended_at": "2026-11-07T10:21:41.099114+00:00",
+      "issues": null
+    },
+    {
+      "task": "simulation_11",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:17:44.654797+00:00",
+      "ended_at": "2026-11-07T10:18:12.928721+00:00",
+      "issues": null
+    },
+    {
+      "task": "simulation_22",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:18:12.949893+00:00",
+      "ended_at": "2026-11-07T10:18:40.871923+00:00",
+      "issues": null
+    },
+    {
+      "task": "simulation_33",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:18:40.894536+00:00",
+      "ended_at": "2026-11-07T10:19:08.454106+00:00",
+      "issues": null
+    },
+    {
+      "task": "simulation_44",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:19:08.477862+00:00",
+      "ended_at": "2026-11-07T10:19:36.069949+00:00",
+      "issues": null
+    },
+    {
+      "task": "simulation_55",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:19:39.245203+00:00",
+      "ended_at": "2026-11-07T10:20:07.852665+00:00",
+      "issues": null
+    },
+    {
+      "task": "simulation_66",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:20:11.832924+00:00",
+      "ended_at": "2026-11-07T10:20:41.625101+00:00",
+      "issues": null
+    },
+    {
+      "task": "simulation_77",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T10:20:46.009491+00:00",
+      "ended_at": "2026-11-07T10:21:12.642165+00:00",
+      "issues": null
+    },
+    {
+      "task": "stage2",
+      "attempt": 1,
+      "status": "passed",
+      "started_at": "2026-11-07T11:46:22.731185+00:00",
+      "ended_at": "2026-11-07T11:46:26.534764+00:00",
+      "issues": null
+    }
+  ],
+  "scenario": {
+    "scenario_id": "SCENARIO-COVASIM-001",
+    "scenario_version": "2.0",
+    "scenario_sha256": "50bcd64c7fbd6ca511fa899e452450013a0a59db3ec235b5b7350ec53f381cde",
+    "scenario_file": "scenarios/v2/covasim.md",
+    "model": "covasim"
+  },
+  "seeds": [
+    11,
+    22,
+    33,
+    44,
+    55,
+    66,
+    77
+  ],
+  "stage2_outcome": "completed",
+  "invalid_nodes": {
+    "micro_infectious_contact_degree": {
+      "reason": "ValueError: Entity observations require explicit entity_mode=select/aggregate/features; no automatic mean",
+      "report": {
+        "runs": {},
+        "source_files": {
+          "a83b6e4508fb485ea538f3ef655a73ca": {
+            "path": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\a83b6e4508fb485ea538f3ef655a73ca\\micro_infectious_contact_degree.parquet",
+            "sha256": "ac46a85f43f197c6f6475fe3df1e456c209780eba159e4857710eded355c9858",
+            "raw_rows": 61000
+          }
+        }
+      }
+    },
+    "meso_layer_infectious_edge_fraction": {
+      "reason": "ValueError: Multiple features require an explicit feature/features selection",
+      "report": {
+        "runs": {},
+        "source_files": {
+          "a83b6e4508fb485ea538f3ef655a73ca": {
+            "path": "\\\\?\\E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\full_pipeline\\results\\live_covasim_20261107\\internal\\stage1\\builds\\770cb3e85fd6c236a0ec5a45ff8e900bd5b64bf5ad16174e6222e31f7b9b229e\\indicator_series\\a83b6e4508fb485ea538f3ef655a73ca\\meso_layer_infectious_edge_fraction.parquet",
+            "sha256": "fc08ead911aaccbde922ab60981ae6d38f892c39c5e0c6dc1e18974586eff002",
+            "raw_rows": 244
+          }
+        }
+      }
+    }
+  },
+  "raw_candidate_nodes": 3,
+  "raw_candidate_edges": 6,
+  "actual_valid_nodes": 1,
+  "scientific_scope": "observational predictive and joint information; not structural causal truth",
+  "stage1_nodes": 3,
+  "stage1_edges": 6,
+  "stage1_sha256": "c4c00f68f16c62c16d92c65ea918277ea9536b924643673017e79b5e98d5bdcc",
+  "final_nodes": 1,
+  "final_edges": 1,
+  "final_sha256": "e716326e7b56a48848f6be156a0204ed6ac748eb5989d91ed01d090a316c91e4"
+}

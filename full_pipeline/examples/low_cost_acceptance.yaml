@@ -1,0 +1,11 @@
+# Real registered models and default statistical thresholds; smaller generation budget only.
+simulation:
+  seeds: [11, 22, 33, 44]
+  additional_seeds: [55, 66, 77, 88]
+  max_total_runs: 8
+  steps: {fish: 160, covasim: 60}
+stage1:
+  pipeline_overrides:
+    max_phenomena: 1
+    max_indicators: 3
+    max_edges: 12

@@ -1,0 +1,92 @@
+{
+  "status": "verified",
+  "experiments": [
+    {
+      "raw_candidate_nodes": 3,
+      "raw_candidate_edges": 6,
+      "stage1_nodes": 3,
+      "stage1_edges": 6,
+      "actual_valid_nodes": 2,
+      "final_nodes": 2,
+      "final_edges": 1,
+      "llm_generation_calls": 10,
+      "http_attempts": 10,
+      "retry_attempts": 2,
+      "seeds": [
+        11,
+        22,
+        33,
+        44
+      ],
+      "total_active_seconds": 1341.8749999999927,
+      "scene": "fish",
+      "successful_executions": 12,
+      "total_executions": 12,
+      "actual_models": 4,
+      "numerical_spot_checks": 24,
+      "numerical_values_compared": 16016,
+      "external_accepted_edges": 0,
+      "final_weights": [
+        {
+          "source": "fish_contact_fragmentation_meso",
+          "target": "fish_contact_fragmentation_meso",
+          "weight": 1,
+          "relation_type": "self_memory"
+        }
+      ],
+      "excluded_from_analysis": {
+        "fish_nn_distance_micro": "ValueError: Entity observations require explicit entity_mode=select/aggregate/features; no automatic mean"
+      }
+    },
+    {
+      "raw_candidate_nodes": 3,
+      "raw_candidate_edges": 6,
+      "stage1_nodes": 3,
+      "stage1_edges": 6,
+      "actual_valid_nodes": 1,
+      "final_nodes": 1,
+      "final_edges": 1,
+      "llm_generation_calls": 10,
+      "http_attempts": 10,
+      "retry_attempts": 2,
+      "seeds": [
+        11,
+        22,
+        33,
+        44,
+        55,
+        66,
+        77
+      ],
+      "total_active_seconds": 592.6089999999967,
+      "scene": "covasim",
+      "successful_executions": 21,
+      "total_executions": 21,
+      "actual_models": 2,
+      "numerical_spot_checks": 24,
+      "numerical_values_compared": 8040,
+      "external_accepted_edges": 0,
+      "final_weights": [
+        {
+          "source": "macro_contact_active_infectious_count",
+          "target": "macro_contact_active_infectious_count",
+          "weight": 1,
+          "relation_type": "self_memory"
+        }
+      ],
+      "excluded_from_analysis": {
+        "micro_infectious_contact_degree": "ValueError: Entity observations require explicit entity_mode=select/aggregate/features; no automatic mean",
+        "meso_layer_infectious_edge_fraction": "ValueError: Multiple features require an explicit feature/features selection"
+      }
+    }
+  ],
+  "full_pipeline_sources": {
+    "main.py": "c36352728f7ec817f1375f453ff2987650fa920e6f167146b2260ddbe7392c92",
+    "scenario_adapter.py": "9380b716bb8f94529c04bfbc3e6f8c36d0cb51e287aeb064fa580c771d19f91f",
+    "stage_manager.py": "d8c8f38258af6579f1b5a66f768f39818b6fdc4af1d3527bb3c3084baa548568",
+    "validators.py": "c6d0d208b01e505e6798427c5f947d2ce4bbf3b81fe1b0fa6bd09e854307473a",
+    "__init__.py": "8b8ede0e9342c3c495f09f236f804cf98e9a7ba8d3d41b7470bf853ee207a828",
+    "__main__.py": "2496da9ad5bca99eaaedc32bb293f3d3fc42761dd566a64690f3ad862ee97379"
+  },
+  "boundary": "Actual LLM and simulation results; no structural causal truth claim. Raw simulation Parquet is retained locally, not duplicated in this archive."
+}

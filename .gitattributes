@@ -6,3 +6,4 @@ scenarios/SHA256SUMS text eol=lf
 # Preserve content-addressed method sources and archived experiment bytes.
 causal_graph/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 causal_discovery/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+full_pipeline/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

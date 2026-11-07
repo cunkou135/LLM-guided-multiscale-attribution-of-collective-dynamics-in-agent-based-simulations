@@ -1,0 +1,27 @@
+simulation:
+  use_registered_scenario: true
+  reuse_matching_runs: true
+  seeds: [11, 22, 33, 44]
+  additional_seeds: [55, 66, 77, 88]
+  sampling_frequency: 1
+  max_total_runs: 8
+  supplement_for_coverage: true
+  steps: {fish: null, covasim: null}
+  configs: {fish: configs/fish.yaml, covasim: configs/covasim.yaml}
+stage1:
+  llm_config: causal_graph/configs/deepseek_flash.yaml
+  pipeline_config: causal_graph/configs/pipeline.yaml
+  pipeline_overrides: {}
+  execution_mode: trusted_reviewed
+  review_file: null
+  credential_file: null
+stage2:
+  config: causal_discovery/config.yaml
+  overrides: {}
+retry:
+  max_attempts_per_stage: 3
+  retry_invalid_json: true
+  retry_invalid_schema: true
+  retry_invalid_code: true
+output:
+  root: full_pipeline/results

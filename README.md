@@ -4,6 +4,8 @@
 
 Covasim 默认配置是**未完成金县历史校准的 hybrid 演示**，没有 LTCF 层。论文的 Figure 3 小规模公开基准已作缓存对照；这不表示原研究的金县人口和疫情校准已经复现。模型、数据与许可来源见 [来源核查](docs/MODEL_SOURCES.md)。
 
+新增 [full_pipeline 全流程入口](full_pipeline/README.md)：`python -m full_pipeline --scenario scenarios/fish.md`。它自动匹配已注册想定、准备独立种子仿真、调用两个既有研究模块，并发布 `stage1_graph.json` 与 `final_causal_graph.json`。支持分阶段审核、局部修复及 `--resume`；审核未完成或统计数据不足时保留明确状态和原因。
+
 ## 安装
 
 主环境使用 Python 3.12：
