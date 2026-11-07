@@ -1,0 +1,255 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1423pt" height="1068pt" viewBox="0.00 0.00 1423.00 1068.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 503.89)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-503.89 674.34,-503.89 674.34,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-470" font-family="Times New Roman" font-size="17.00">Fish | phenomenon_5</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-447.5" font-family="Times New Roman" font-size="12.00">9 nodes / 18 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-423.35" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-423.35" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-423.35" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-423.35" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-423.35" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="8,-145.5 8,-401.5 221.65,-401.5 221.65,-145.5 8,-145.5" />
+<text xml:space="preserve" text-anchor="middle" x="35.12" y="-382.3" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="231.65,-145.5 231.65,-401.5 438.55,-401.5 438.55,-145.5 231.65,-145.5" />
+<text xml:space="preserve" text-anchor="middle" x="258.03" y="-382.3" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="448.55,-27.5 448.55,-300.5 657.7,-300.5 657.7,-27.5 448.55,-27.5" />
+<text xml:space="preserve" text-anchor="middle" x="477.93" y="-281.3" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_intra_scale__b00_r0016" class="inspectable" data-source="pol_micro_heading_deviation" data-target="pol_micro_neighbor_alignment">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M114.83,-301.27C114.83,-300.62 114.83,-299.97 114.83,-299.32" />
+<polygon fill="#6e648d" stroke="#6e648d" points="117.28,-299.38 114.83,-292.38 112.38,-299.38 117.28,-299.38" />
+<title>pol_micro_heading_deviation → pol_micro_neighbor_alignment
+intra_scale
+Deviation from the global school heading makes a fish more likely to be misaligned with its local contact neighbors as well.</title></g>
+
+<g id="edge_upward__b00_r0018" class="inspectable" data-source="pol_micro_heading_deviation" data-target="pol_meso_component_mean_deviation">
+<path fill="none" stroke="#27667b" d="M211.25,-332.5C220.74,-332.5 230.37,-332.5 239.86,-332.5" />
+<polygon fill="#27667b" stroke="#27667b" points="239.63,-334.95 246.63,-332.5 239.63,-330.05 239.63,-334.95" />
+<title>pol_micro_heading_deviation → pol_meso_component_mean_deviation
+upward
+A deviant fish can influence neighbors through social alignment, but since alignment pulls toward the group, the net effect may be to increase local heterogeneity, raising component mean deviation.</title></g>
+
+<g id="edge_upward__b01_r0008" class="inspectable" data-source="pol_micro_neighbor_alignment" data-target="pol_meso_component_away_shark_alignment">
+<path fill="none" stroke="#27667b" d="M212.2,-259.5C219.18,-259.5 226.22,-259.5 233.23,-259.5" />
+<polygon fill="#27667b" stroke="#27667b" points="232.9,-261.95 239.9,-259.5 232.9,-257.05 232.9,-261.95" />
+<title>pol_micro_neighbor_alignment → pol_meso_component_away_shark_alignment
+upward
+When individual fish align with their contact neighbors, a locally shared escape heading can spread across the component; this social alignment can turn component mean heading toward the away-from-shark direction.</title></g>
+
+<g id="edge_upward__b02_r0030" class="inspectable" data-source="pol_micro_shark_proximity" data-target="pol_meso_component_polarization">
+<path fill="none" stroke="#27667b" d="M198.03,-186.5C209.41,-186.5 221.21,-186.5 232.88,-186.5" />
+<polygon fill="#27667b" stroke="#27667b" points="232.84,-188.95 239.84,-186.5 232.84,-184.05 232.84,-188.95" />
+<title>pol_micro_shark_proximity → pol_meso_component_polarization
+upward
+Fish closer to a shark experience stronger threat and may align their headings with nearby escaping fish, increasing polarization within their contact component.</title></g>
+
+<g id="edge_upward__b02_r0031" class="inspectable" data-source="pol_micro_shark_proximity" data-target="pol_meso_component_away_shark_alignment">
+<path fill="none" stroke="#27667b" d="M198.03,-213.99C209.63,-217.87 221.66,-221.89 233.56,-225.87" />
+<polygon fill="#27667b" stroke="#27667b" points="232.5,-228.1 239.91,-228 234.05,-223.45 232.5,-228.1" />
+<title>pol_micro_shark_proximity → pol_meso_component_away_shark_alignment
+upward
+High shark proximity for component members can bias component mean heading away from the nearest shark, raising meso away-from-shark alignment.</title></g>
+
+<g id="edge_upward__b02_r0033" class="inspectable" data-source="pol_micro_shark_proximity" data-target="pol_macro_school_polarization">
+<path fill="none" stroke="#27667b" d="M188.56,-155.05C202.61,-150.26 217.4,-146.06 231.65,-143.5 311.82,-129.1 404.98,-136.04 470.13,-144.65" />
+<polygon fill="#27667b" stroke="#27667b" points="469.56,-147.04 476.83,-145.56 470.22,-142.19 469.56,-147.04" />
+<title>pol_micro_shark_proximity → pol_macro_school_polarization
+upward
+If many fish are simultaneously close to sharks, their shared escape alignment can raise whole-school heading polarization.</title></g>
+
+<g id="edge_upward__b02_r0034" class="inspectable" data-source="pol_micro_shark_proximity" data-target="pol_macro_polarization_proximity_cov">
+<path fill="none" stroke="#27667b" d="M176.59,-155.16C194.01,-147.15 213.28,-139.2 231.65,-133.5 308.08,-109.77 398.08,-95.15 463.21,-86.83" />
+<polygon fill="#27667b" stroke="#27667b" points="463.29,-89.29 469.93,-85.98 462.68,-84.43 463.29,-89.29" />
+<title>pol_micro_shark_proximity → pol_macro_polarization_proximity_cov
+upward
+Individual proximity responses contribute to how school polarization varies with mean proximity across time, making micro proximity a plausible input to the run-level macro covariance.</title></g>
+
+<g id="edge_intra_scale__b03_r0030" class="inspectable" data-source="pol_meso_component_polarization" data-target="pol_meso_component_away_shark_alignment">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M335.1,-217.86C335.1,-218.52 335.1,-219.17 335.1,-219.82" />
+<polygon fill="#6e648d" stroke="#6e648d" points="332.65,-219.76 335.1,-226.76 337.55,-219.76 332.65,-219.76" />
+<title>pol_meso_component_polarization → pol_meso_component_away_shark_alignment
+intra_scale
+A polarized component heading can align with the away-from-shark direction under escape bias.</title></g>
+
+<g id="edge_upward__b03_r0043" class="inspectable" data-source="pol_meso_component_polarization" data-target="pol_macro_school_polarization">
+<path fill="none" stroke="#27667b" d="M428.97,-178.55C442.7,-176.84 456.76,-174.99 470.25,-173.13" />
+<polygon fill="#27667b" stroke="#27667b" points="470.47,-175.57 477.07,-172.17 469.79,-170.72 470.47,-175.57" />
+<title>pol_meso_component_polarization → pol_macro_school_polarization
+upward
+Heading alignment within contact components contributes to the global alignment of fish headings.</title></g>
+
+<g id="edge_upward__b03_r0044" class="inspectable" data-source="pol_meso_component_polarization" data-target="pol_macro_polarization_change">
+<path fill="none" stroke="#27667b" d="M428.97,-205.84C435.95,-207.3 443.03,-208.77 450.07,-210.24" />
+<polygon fill="#27667b" stroke="#27667b" points="449.47,-212.62 456.82,-211.65 450.47,-207.82 449.47,-212.62" />
+<title>pol_meso_component_polarization → pol_macro_polarization_change
+upward
+Step changes in component polarization can drive changes in whole-school polarization.</title></g>
+
+<g id="edge_downward__b03_r0032" class="inspectable" data-source="pol_macro_school_polarization" data-target="pol_micro_heading_deviation">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M478.52,-143.4C395.05,-128.22 266.06,-111.28 231.65,-143.5 206.94,-166.63 242.14,-268.55 221.65,-295.5 220.31,-297.26 218.88,-298.94 217.37,-300.54" />
+<polygon fill="#b3653b" stroke="#b3653b" points="215.73,-298.72 212.29,-305.29 219.07,-302.3 215.73,-298.72" />
+<title>pol_macro_school_polarization → pol_micro_heading_deviation
+downward
+A polarized collective heading can constrain individual headings, plausibly reducing focal deviation from the school mean.</title></g>
+
+<g id="edge_downward__b03_r0031" class="inspectable" data-source="pol_macro_school_polarization" data-target="pol_micro_neighbor_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M478.5,-144.42C467.05,-139.24 456.42,-132.17 448.55,-122.5 427.03,-96.08 464.16,-68.96 438.55,-46.5 369.42,14.14 298.49,16.65 231.65,-46.5 217.41,-59.95 233.44,-206.85 221.65,-222.5 220.51,-224.01 219.3,-225.47 218.03,-226.86" />
+<polygon fill="#b3653b" stroke="#b3653b" points="216.52,-224.92 213.2,-231.55 219.93,-228.44 216.52,-224.92" />
+<title>pol_macro_school_polarization → pol_micro_neighbor_alignment
+downward
+School-level polarization implies more similar headings across neighbors, plausibly increasing a focal fish's alignment with its contact neighbors.</title></g>
+
+<g id="edge_downward__b03_r0029" class="inspectable" data-source="pol_macro_school_polarization" data-target="pol_meso_component_polarization">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M478.56,-164.1C465.23,-165.67 451.12,-167.44 437.16,-169.28" />
+<polygon fill="#b3653b" stroke="#b3653b" points="437.08,-166.82 430.47,-170.17 437.73,-171.68 437.08,-166.82" />
+<title>pol_macro_school_polarization → pol_meso_component_polarization
+downward
+A highly polarized school provides a strong common heading field that can raise polarization within contact components.</title></g>
+
+<g id="edge_downward__b03_r0030" class="inspectable" data-source="pol_macro_school_polarization" data-target="pol_meso_component_mean_deviation">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M478.48,-172.98C466.96,-178.3 456.31,-185.57 448.55,-195.5 421.03,-230.68 466,-260.27 438.55,-295.5 435.64,-299.23 432.33,-302.58 428.71,-305.6" />
+<polygon fill="#b3653b" stroke="#b3653b" points="427.26,-303.62 423.11,-309.77 430.19,-307.55 427.26,-303.62" />
+<title>pol_macro_school_polarization → pol_meso_component_mean_deviation
+downward
+When school-wide polarization is high, component headings are plausibly drawn toward the common direction, reducing mean component heading deviation.</title></g>
+
+<g id="edge_downward__b00_r0020" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="pol_meso_component_polarization">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M471.16,-111.67C463.47,-115.22 455.83,-118.86 448.55,-122.5 431.06,-131.24 412.46,-141.44 395.53,-151.1" />
+<polygon fill="#b3653b" stroke="#b3653b" points="394.55,-148.83 389.69,-154.44 396.98,-153.08 394.55,-148.83" />
+<title>pol_macro_polarization_proximity_cov → pol_meso_component_polarization
+downward
+The run-level polarization-proximity coupling sets how much local components align during threat, so component-level polarization can vary with this global coupling regime.</title></g>
+
+<g id="edge_intra_scale__b03_r0050" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="pol_macro_school_polarization">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M553.12,-117.36C553.12,-117.88 553.12,-118.4 553.12,-118.92" />
+<polygon fill="#6e648d" stroke="#6e648d" points="550.68,-118.81 553.13,-125.81 555.58,-118.81 550.68,-118.81" />
+<title>pol_macro_polarization_proximity_cov → pol_macro_school_polarization
+intra_scale
+Runs where polarization tracks shark proximity can exhibit higher polarization during threat periods.</title></g>
+
+<g id="edge_intra_scale__b03_r0049" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="pol_macro_polarization_change">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M471.32,-108.58C463.36,-112.8 455.63,-117.45 448.55,-122.5 445.86,-124.42 444.74,-124.92 443.55,-128 438.66,-140.64 438.66,-176.35 443.55,-189 445.68,-194.5 448.72,-199.29 452.44,-203.48" />
+<polygon fill="#6e648d" stroke="#6e648d" points="450.53,-205.04 457.27,-208.14 453.93,-201.51 450.53,-205.04" />
+<title>pol_macro_polarization_proximity_cov → pol_macro_polarization_change
+intra_scale
+Threat-coupled polarization indicates responsiveness to shark proximity, affecting step changes in polarization.</title></g>
+
+<g id="edge_downward__b01_r0009" class="inspectable" data-source="pol_macro_polarization_change" data-target="pol_meso_component_mean_deviation">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M500.77,-262.83C481.61,-273.88 459.43,-285.92 438.55,-295.5 435.76,-296.77 432.92,-298.04 430.04,-299.29" />
+<polygon fill="#b3653b" stroke="#b3653b" points="429.22,-296.97 423.72,-301.95 431.13,-301.49 429.22,-296.97" />
+<title>pol_macro_polarization_change → pol_meso_component_mean_deviation
+downward
+An increase in whole-school heading polarization reflects stronger collective alignment, which can propagate into components and reduce the mean angular deviation of component headings.</title></g>
+
+<g id="node_pol_micro_heading_deviation" class="inspectable" tabindex="0" data-node-id="pol_micro_heading_deviation">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M198.9,-363.41C198.9,-363.41 30.75,-363.41 30.75,-363.41 24.75,-363.41 18.75,-357.41 18.75,-351.41 18.75,-351.41 18.75,-313.58 18.75,-313.58 18.75,-307.58 24.75,-301.58 30.75,-301.58 30.75,-301.58 198.9,-301.58 198.9,-301.58 204.9,-301.58 210.9,-307.58 210.9,-313.58 210.9,-313.58 210.9,-351.41 210.9,-351.41 210.9,-357.41 204.9,-363.41 198.9,-363.41" />
+<text xml:space="preserve" text-anchor="middle" x="114.83" y="-345.07" font-family="Times New Roman" font-size="14.00">N37</text>
+<text xml:space="preserve" text-anchor="middle" x="114.83" y="-327.82" font-family="Times New Roman" font-size="14.00">Focal heading deviation from</text>
+<text xml:space="preserve" text-anchor="middle" x="114.83" y="-310.57" font-family="Times New Roman" font-size="14.00">school mean</text>
+<title>N37 | pol_micro_heading_deviation
+Focal heading deviation from school mean
+Scale: micro | Phenomenon: threat_induced_polarization
+Definition: Let Theta=atan2(mean_i sin theta_i, mean_i cos theta_i). Indicator=|atan2(sin(theta_i-Theta), cos(theta_i-Theta))|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_micro_neighbor_alignment" class="inspectable" tabindex="0" data-node-id="pol_micro_neighbor_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M199.65,-290.41C199.65,-290.41 30,-290.41 30,-290.41 24,-290.41 18,-284.41 18,-278.41 18,-278.41 18,-240.58 18,-240.58 18,-234.58 24,-228.58 30,-228.58 30,-228.58 199.65,-228.58 199.65,-228.58 205.65,-228.58 211.65,-234.58 211.65,-240.58 211.65,-240.58 211.65,-278.41 211.65,-278.41 211.65,-284.41 205.65,-290.41 199.65,-290.41" />
+<text xml:space="preserve" text-anchor="middle" x="114.83" y="-272.07" font-family="Times New Roman" font-size="14.00">N38</text>
+<text xml:space="preserve" text-anchor="middle" x="114.83" y="-254.82" font-family="Times New Roman" font-size="14.00">Focal heading alignment with</text>
+<text xml:space="preserve" text-anchor="middle" x="114.83" y="-237.57" font-family="Times New Roman" font-size="14.00">contact neighbors</text>
+<title>N38 | pol_micro_neighbor_alignment
+Focal heading alignment with contact neighbors
+Scale: micro | Phenomenon: threat_induced_polarization
+Definition: For fish i, let N_i(t) be contact neighbors. Let theta_N=atan2(mean_{j in N_i} sin theta_j, mean_{j in N_i} cos theta_j). Indicator=cos(theta_i-theta_N).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_micro_shark_proximity" class="inspectable" tabindex="0" data-node-id="pol_micro_shark_proximity">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M185.78,-217.41C185.78,-217.41 43.88,-217.41 43.88,-217.41 37.88,-217.41 31.88,-211.41 31.88,-205.41 31.88,-205.41 31.88,-167.58 31.88,-167.58 31.88,-161.58 37.88,-155.58 43.88,-155.58 43.88,-155.58 185.78,-155.58 185.78,-155.58 191.78,-155.58 197.78,-161.58 197.78,-167.58 197.78,-167.58 197.78,-205.41 197.78,-205.41 197.78,-211.41 191.78,-217.41 185.78,-217.41" />
+<text xml:space="preserve" text-anchor="middle" x="114.83" y="-199.07" font-family="Times New Roman" font-size="14.00">N39</text>
+<text xml:space="preserve" text-anchor="middle" x="114.83" y="-181.82" font-family="Times New Roman" font-size="14.00">Focal inverse distance to</text>
+<text xml:space="preserve" text-anchor="middle" x="114.83" y="-164.57" font-family="Times New Roman" font-size="14.00">nearest shark</text>
+<title>N39 | pol_micro_shark_proximity
+Focal inverse distance to nearest shark
+Scale: micro | Phenomenon: threat_induced_polarization
+Definition: Indicator=1/d_i(t), where d_i(t)=min_{s in sharks} ||p_i(t)-p_s(t)||&gt;0.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_meso_component_polarization" class="inspectable" tabindex="0" data-node-id="pol_meso_component_polarization">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M416.55,-217.41C416.55,-217.41 253.65,-217.41 253.65,-217.41 247.65,-217.41 241.65,-211.41 241.65,-205.41 241.65,-205.41 241.65,-167.58 241.65,-167.58 241.65,-161.58 247.65,-155.58 253.65,-155.58 253.65,-155.58 416.55,-155.58 416.55,-155.58 422.55,-155.58 428.55,-161.58 428.55,-167.58 428.55,-167.58 428.55,-205.41 428.55,-205.41 428.55,-211.41 422.55,-217.41 416.55,-217.41" />
+<text xml:space="preserve" text-anchor="middle" x="335.1" y="-199.07" font-family="Times New Roman" font-size="14.00">N40</text>
+<text xml:space="preserve" text-anchor="middle" x="335.1" y="-181.82" font-family="Times New Roman" font-size="14.00">Contact-component heading</text>
+<text xml:space="preserve" text-anchor="middle" x="335.1" y="-164.57" font-family="Times New Roman" font-size="14.00">polarization</text>
+<title>N40 | pol_meso_component_polarization
+Contact-component heading polarization
+Scale: meso | Phenomenon: threat_induced_polarization
+Definition: For component C_k, indicator=sqrt((sum_i cos theta_i)^2+(sum_i sin theta_i)^2)/|C_k|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_meso_component_mean_deviation" class="inspectable" tabindex="0" data-node-id="pol_meso_component_mean_deviation">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M409.8,-363.41C409.8,-363.41 260.4,-363.41 260.4,-363.41 254.4,-363.41 248.4,-357.41 248.4,-351.41 248.4,-351.41 248.4,-313.58 248.4,-313.58 248.4,-307.58 254.4,-301.58 260.4,-301.58 260.4,-301.58 409.8,-301.58 409.8,-301.58 415.8,-301.58 421.8,-307.58 421.8,-313.58 421.8,-313.58 421.8,-351.41 421.8,-351.41 421.8,-357.41 415.8,-363.41 409.8,-363.41" />
+<text xml:space="preserve" text-anchor="middle" x="335.1" y="-345.07" font-family="Times New Roman" font-size="14.00">N41</text>
+<text xml:space="preserve" text-anchor="middle" x="335.1" y="-327.82" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="335.1" y="-310.57" font-family="Times New Roman" font-size="14.00">heading deviation</text>
+<title>N41 | pol_meso_component_mean_deviation
+Contact-component mean heading deviation
+Scale: meso | Phenomenon: threat_induced_polarization
+Definition: Let Theta_C=atan2(mean_{i in C} sin theta_i, mean_{i in C} cos theta_i). Indicator=(1/|C|) sum_{i in C} |atan2(sin(theta_i-Theta_C), cos(theta_i-Theta_C))|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_meso_component_away_shark_alignment" class="inspectable" tabindex="0" data-node-id="pol_meso_component_away_shark_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M416.55,-290.41C416.55,-290.41 253.65,-290.41 253.65,-290.41 247.65,-290.41 241.65,-284.41 241.65,-278.41 241.65,-278.41 241.65,-240.58 241.65,-240.58 241.65,-234.58 247.65,-228.58 253.65,-228.58 253.65,-228.58 416.55,-228.58 416.55,-228.58 422.55,-228.58 428.55,-234.58 428.55,-240.58 428.55,-240.58 428.55,-278.41 428.55,-278.41 428.55,-284.41 422.55,-290.41 416.55,-290.41" />
+<text xml:space="preserve" text-anchor="middle" x="335.1" y="-272.07" font-family="Times New Roman" font-size="14.00">N42</text>
+<text xml:space="preserve" text-anchor="middle" x="335.1" y="-254.82" font-family="Times New Roman" font-size="14.00">Contact-component heading</text>
+<text xml:space="preserve" text-anchor="middle" x="335.1" y="-237.57" font-family="Times New Roman" font-size="14.00">away-from-shark alignment</text>
+<title>N42 | pol_meso_component_away_shark_alignment
+Contact-component heading away-from-shark alignment
+Scale: meso | Phenomenon: threat_induced_polarization
+Definition: Let Theta_C be component mean heading and c_C its centroid. Let s* be the nearest shark to c_C and a=(c_C-p_s*)/||c_C-p_s*||. Indicator=cos(Theta_C)·a_x+sin(Theta_C)·a_y.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_macro_school_polarization" class="inspectable" tabindex="0" data-node-id="pol_macro_school_polarization">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M615.45,-189.41C615.45,-189.41 490.8,-189.41 490.8,-189.41 484.8,-189.41 478.8,-183.41 478.8,-177.41 478.8,-177.41 478.8,-139.58 478.8,-139.58 478.8,-133.58 484.8,-127.58 490.8,-127.58 490.8,-127.58 615.45,-127.58 615.45,-127.58 621.45,-127.58 627.45,-133.58 627.45,-139.58 627.45,-139.58 627.45,-177.41 627.45,-177.41 627.45,-183.41 621.45,-189.41 615.45,-189.41" />
+<text xml:space="preserve" text-anchor="middle" x="553.12" y="-171.07" font-family="Times New Roman" font-size="14.00">N43</text>
+<text xml:space="preserve" text-anchor="middle" x="553.12" y="-153.82" font-family="Times New Roman" font-size="14.00">Whole-school heading</text>
+<text xml:space="preserve" text-anchor="middle" x="553.12" y="-136.57" font-family="Times New Roman" font-size="14.00">polarization</text>
+<title>N43 | pol_macro_school_polarization
+Whole-school heading polarization
+Scale: macro | Phenomenon: threat_induced_polarization
+Definition: Indicator=sqrt((sum_i cos theta_i)^2+(sum_i sin theta_i)^2)/N_t.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_macro_polarization_proximity_cov" class="inspectable" tabindex="0" data-node-id="pol_macro_polarization_proximity_cov">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M622.58,-117.04C622.58,-117.04 483.68,-117.04 483.68,-117.04 477.68,-117.04 471.68,-111.04 471.68,-105.04 471.68,-105.04 471.68,-49.96 471.68,-49.96 471.68,-43.96 477.68,-37.96 483.68,-37.96 483.68,-37.96 622.58,-37.96 622.58,-37.96 628.58,-37.96 634.58,-43.96 634.58,-49.96 634.58,-49.96 634.58,-105.04 634.58,-105.04 634.58,-111.04 628.58,-117.04 622.58,-117.04" />
+<text xml:space="preserve" text-anchor="middle" x="553.12" y="-98.7" font-family="Times New Roman" font-size="14.00">N44</text>
+<text xml:space="preserve" text-anchor="middle" x="553.12" y="-81.45" font-family="Times New Roman" font-size="14.00">Run-level polarization vs</text>
+<text xml:space="preserve" text-anchor="middle" x="553.12" y="-64.2" font-family="Times New Roman" font-size="14.00">mean shark proximity</text>
+<text xml:space="preserve" text-anchor="middle" x="553.12" y="-46.95" font-family="Times New Roman" font-size="14.00">covariance</text>
+<title>N44 | pol_macro_polarization_proximity_cov
+Run-level polarization vs mean shark proximity covariance
+Scale: macro | Phenomenon: threat_induced_polarization
+Definition: Let R(t) be school polarization and q(t)=(1/N_t) sum_i 1/d_i(t). Indicator=(1/T) sum_t (R(t)-mean R)(q(t)-mean q) over steps with both defined.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_macro_polarization_change" class="inspectable" tabindex="0" data-node-id="pol_macro_polarization_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M635.7,-262.41C635.7,-262.41 470.55,-262.41 470.55,-262.41 464.55,-262.41 458.55,-256.41 458.55,-250.41 458.55,-250.41 458.55,-212.58 458.55,-212.58 458.55,-206.58 464.55,-200.58 470.55,-200.58 470.55,-200.58 635.7,-200.58 635.7,-200.58 641.7,-200.58 647.7,-206.58 647.7,-212.58 647.7,-212.58 647.7,-250.41 647.7,-250.41 647.7,-256.41 641.7,-262.41 635.7,-262.41" />
+<text xml:space="preserve" text-anchor="middle" x="553.12" y="-244.07" font-family="Times New Roman" font-size="14.00">N45</text>
+<text xml:space="preserve" text-anchor="middle" x="553.12" y="-226.82" font-family="Times New Roman" font-size="14.00">Step change in whole-school</text>
+<text xml:space="preserve" text-anchor="middle" x="553.12" y="-209.57" font-family="Times New Roman" font-size="14.00">polarization</text>
+<title>N45 | pol_macro_polarization_change
+Step change in whole-school polarization
+Scale: macro | Phenomenon: threat_induced_polarization
+Definition: Indicator(t)=R(t)-R(t-1), where R(t) is the whole-school heading polarization.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

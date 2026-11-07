@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1415pt" height="865pt" viewBox="0.00 0.00 1415.00 865.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 406.54)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-406.54 670.59,-406.54 670.59,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-372.65" font-family="Times New Roman" font-size="17.00">Covasim | phenomenon_2</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-350.15" font-family="Times New Roman" font-size="12.00">8 nodes / 16 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-326" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-326" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-326" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-326" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-326" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="8,-48.15 8,-304.15 214.9,-304.15 214.9,-48.15 8,-48.15" />
+<text xml:space="preserve" text-anchor="middle" x="35.12" y="-284.95" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="224.9,-48.15 224.9,-304.15 439.3,-304.15 439.3,-48.15 224.9,-48.15" />
+<text xml:space="preserve" text-anchor="middle" x="251.28" y="-284.95" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="449.3,-15.15 449.3,-198.15 653.95,-198.15 653.95,-15.15 449.3,-15.15" />
+<text xml:space="preserve" text-anchor="middle" x="478.68" y="-178.95" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_intra_scale__b03_r0000" class="inspectable" data-source="p2_micro_layer_degree" data-target="p2_micro_layer_exposure_flag">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M111.45,-120.52C111.45,-121.17 111.45,-121.82 111.45,-122.47" />
+<polygon fill="#6e648d" stroke="#6e648d" points="109,-122.41 111.45,-129.41 113.9,-122.41 109,-122.41" />
+<title>p2_micro_layer_degree → p2_micro_layer_exposure_flag
+intra_scale
+Agents with more incident edges in a layer have more opportunities for exposure transitions attributed to that layer, so per-layer degree can raise the likelihood of a layer-attributed exposure event.</title></g>
+
+<g id="edge_upward__b01_r0003" class="inspectable" data-source="p2_micro_layer_degree" data-target="p2_meso_layer_incidence_per_edge">
+<path fill="none" stroke="#27667b" d="M205.18,-89.15C212.12,-89.15 219.16,-89.15 226.17,-89.15" />
+<polygon fill="#27667b" stroke="#27667b" points="225.87,-91.6 232.87,-89.15 225.87,-86.7 225.87,-91.6" />
+<title>p2_micro_layer_degree → p2_meso_layer_incidence_per_edge
+upward
+Higher per-agent contact degree in a layer increases exposure opportunities along recorded edges, raising the layer-level exposure incidence per edge.</title></g>
+
+<g id="edge_upward__b01_r0004" class="inspectable" data-source="p2_micro_layer_degree" data-target="p2_meso_layer_active_run">
+<path fill="none" stroke="#27667b" d="M205.33,-116.55C208.82,-119.44 212.04,-122.63 214.9,-126.15 235.24,-151.25 204.42,-173.17 224.9,-198.15 229.26,-203.47 234.43,-208.02 240.11,-211.92" />
+<polygon fill="#27667b" stroke="#27667b" points="238.46,-213.79 245.7,-215.41 241.05,-209.63 238.46,-213.79" />
+<title>p2_micro_layer_degree → p2_meso_layer_active_run
+upward
+Agents with many contacts in a layer can sustain transmission chains across consecutive sampled steps, lengthening the layer's active exposure run.</title></g>
+
+<g id="edge_upward__b01_r0005" class="inspectable" data-source="p2_micro_layer_degree" data-target="p2_macro_layer_incidence_entropy">
+<path fill="none" stroke="#27667b" d="M171.42,-57.77C242.86,-24.55 363.1,15.26 439.3,-46.15 455.59,-59.28 435.55,-76.39 449.3,-92.15 450.41,-93.42 451.56,-94.65 452.76,-95.83" />
+<polygon fill="#27667b" stroke="#27667b" points="451.08,-97.62 457.95,-100.41 454.32,-93.94 451.08,-97.62" />
+<title>p2_micro_layer_degree → p2_macro_layer_incidence_entropy
+upward
+Heterogeneous per-agent degree across layers concentrates exposure activity in high-degree settings, shifting the cross-layer entropy of attributed exposures.</title></g>
+
+<g id="edge_intra_scale__b01_r0003" class="inspectable" data-source="p2_micro_layer_beta_load" data-target="p2_micro_layer_exposure_flag">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M111.45,-203.93C111.45,-203.28 111.45,-202.63 111.45,-201.98" />
+<polygon fill="#6e648d" stroke="#6e648d" points="113.9,-202.03 111.45,-195.03 109,-202.03 113.9,-202.03" />
+<title>p2_micro_layer_beta_load → p2_micro_layer_exposure_flag
+intra_scale
+A larger per-layer weight load can make exposures more likely to be attributed to that same contact layer.</title></g>
+
+<g id="edge_downward__b01_r0024" class="inspectable" data-source="p2_meso_layer_incidence_per_edge" data-target="p2_micro_layer_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M236.98,-120.58C226.38,-124.11 215.6,-127.71 205.02,-131.24" />
+<polygon fill="#b3653b" stroke="#b3653b" points="204.29,-128.91 198.42,-133.45 205.84,-133.56 204.29,-128.91" />
+<title>p2_meso_layer_incidence_per_edge → p2_micro_layer_exposure_flag
+downward
+Higher per-edge exposure incidence in a layer indicates more active transmission there, increasing the chance that a new exposure event is attributed to that layer rather than to another setting.</title></g>
+
+<g id="edge_downward__b02_r0004" class="inspectable" data-source="p2_meso_layer_degree_dispersion" data-target="p2_micro_layer_beta_load">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M264.18,-184.49C243.7,-191.33 220.88,-198.95 199.28,-206.16" />
+<polygon fill="#b3653b" stroke="#b3653b" points="198.69,-203.78 192.82,-208.32 200.24,-208.42 198.69,-203.78" />
+<title>p2_meso_layer_degree_dispersion → p2_micro_layer_beta_load
+downward
+Uneven degree distribution within a contact layer can place a subset of agents under much heavier contact-weight load, shaping their per-layer beta load.</title></g>
+
+<g id="edge_intra_scale__b03_r0032" class="inspectable" data-source="p2_meso_layer_degree_dispersion" data-target="p2_meso_layer_incidence_per_edge">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M332.1,-130.93C332.1,-130.28 332.1,-129.63 332.1,-128.98" />
+<polygon fill="#6e648d" stroke="#6e648d" points="334.55,-129.03 332.1,-122.03 329.65,-129.03 334.55,-129.03" />
+<title>p2_meso_layer_degree_dispersion → p2_meso_layer_incidence_per_edge
+intra_scale
+Concentration of layer degree among few agents can raise exposure incidence per edge by concentrating contact opportunities.</title></g>
+
+<g id="edge_intra_scale__b03_r0033" class="inspectable" data-source="p2_meso_layer_degree_dispersion" data-target="p2_meso_layer_active_run">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M332.1,-193.52C332.1,-194.17 332.1,-194.82 332.1,-195.47" />
+<polygon fill="#6e648d" stroke="#6e648d" points="329.65,-195.41 332.1,-202.41 334.55,-195.41 329.65,-195.41" />
+<title>p2_meso_layer_degree_dispersion → p2_meso_layer_active_run
+intra_scale
+Highly uneven layer degree can sustain repeated attributed exposures in a layer by repeatedly involving high-degree agents.</title></g>
+
+<g id="edge_upward__b01_r0010" class="inspectable" data-source="p2_meso_layer_degree_dispersion" data-target="p2_macro_layer_incidence_entropy">
+<path fill="none" stroke="#27667b" d="M400.14,-151.98C416.12,-149.56 433.53,-146.92 450.64,-144.32" />
+<polygon fill="#27667b" stroke="#27667b" points="450.95,-146.75 457.51,-143.28 450.22,-141.91 450.95,-146.75" />
+<title>p2_meso_layer_degree_dispersion → p2_macro_layer_incidence_entropy
+upward
+Within-layer degree dispersion creates core-periphery contact patterns that make some layers dominate exposure production, changing cross-layer incidence entropy.</title></g>
+
+<g id="edge_downward__b03_r0001" class="inspectable" data-source="p2_meso_layer_active_run" data-target="p2_micro_layer_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M246.79,-207C233.01,-202.4 218.66,-197.61 204.7,-192.95" />
+<polygon fill="#b3653b" stroke="#b3653b" points="205.84,-190.75 198.42,-190.85 204.29,-195.4 205.84,-190.75" />
+<title>p2_meso_layer_active_run → p2_micro_layer_exposure_flag
+downward
+A layer that has sustained consecutive active exposure steps creates a locally infectious setting, increasing the chance that an individual's new exposure is attributed to that layer through repeated opportunities for contact within it.</title></g>
+
+<g id="edge_intra_scale__b00_r0034" class="inspectable" data-source="p2_meso_layer_active_run" data-target="p2_meso_layer_incidence_per_edge">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M246.89,-221C234.87,-214.65 224.89,-205.57 219.9,-192.65 215.01,-180.01 215.01,-144.29 219.9,-131.65 221.09,-128.57 222.14,-127.97 224.9,-126.15 225.66,-125.65 226.43,-125.16 227.2,-124.67" />
+<polygon fill="#6e648d" stroke="#6e648d" points="228.28,-126.88 233.05,-121.2 225.78,-122.66 228.28,-126.88" />
+<title>p2_meso_layer_active_run → p2_meso_layer_incidence_per_edge
+intra_scale
+A layer that has been active for consecutive steps may accumulate susceptible depletion, changing the per-edge incidence rate in that setting.</title></g>
+
+<g id="edge_downward__b00_r0002" class="inspectable" data-source="p2_macro_layer_edge_turnover" data-target="p2_meso_layer_incidence_per_edge">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M472.51,-68C461.36,-69.69 449.74,-71.46 438.18,-73.21" />
+<polygon fill="#b3653b" stroke="#b3653b" points="437.83,-70.79 431.27,-74.26 438.56,-75.63 437.83,-70.79" />
+<title>p2_macro_layer_edge_turnover → p2_meso_layer_incidence_per_edge
+downward
+High edge-set turnover breaks contact continuity within a setting, reducing the chance that any recorded edge repeatedly carries transmission and thereby lowering attributed exposure incidence per edge in that layer.</title></g>
+
+<g id="edge_intra_scale__b01_r0040" class="inspectable" data-source="p2_macro_layer_edge_turnover" data-target="p2_macro_layer_incidence_entropy">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M551.62,-87.52C551.62,-88.17 551.62,-88.82 551.62,-89.47" />
+<polygon fill="#6e648d" stroke="#6e648d" points="549.18,-89.41 551.63,-96.41 554.08,-89.41 549.18,-89.41" />
+<title>p2_macro_layer_edge_turnover → p2_macro_layer_incidence_entropy
+intra_scale
+High edge turnover redistributes contact opportunities across layers, plausibly changing how evenly exposures are spread across settings.</title></g>
+
+<g id="edge_downward__b01_r0001" class="inspectable" data-source="p2_macro_layer_incidence_entropy" data-target="p2_micro_layer_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M459.08,-101.41C455.55,-98.62 452.25,-95.54 449.3,-92.15 435.55,-76.39 455.59,-59.28 439.3,-46.15 365.11,13.64 296.39,16.86 224.9,-46.15 198.35,-69.55 237.02,-97.52 214.9,-125.15 211.64,-129.22 207.9,-132.84 203.81,-136.07" />
+<polygon fill="#b3653b" stroke="#b3653b" points="202.65,-133.89 198.36,-139.93 205.49,-137.88 202.65,-133.89" />
+<title>p2_macro_layer_incidence_entropy → p2_micro_layer_exposure_flag
+downward
+When exposures are more evenly distributed across layers (higher entropy), the probability that a given new exposure is attributed to any particular layer falls, because no layer dominates the exposure mix.</title></g>
+
+<g id="edge_downward__b01_r0000" class="inspectable" data-source="p2_macro_layer_incidence_entropy" data-target="p2_meso_layer_active_run">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M505.06,-160.55C485.39,-173.26 461.77,-187.43 439.3,-198.15 434.67,-200.36 429.88,-202.5 425,-204.57" />
+<polygon fill="#b3653b" stroke="#b3653b" points="424.21,-202.25 418.68,-207.18 426.08,-206.77 424.21,-202.25" />
+<title>p2_macro_layer_incidence_entropy → p2_meso_layer_active_run
+downward
+Higher entropy means exposure activity is spread across more contact layers; this dilution reduces the likelihood that any single layer sustains consecutive active exposure steps, shortening its active run.</title></g>
+
+<g id="node_p2_micro_layer_degree" class="inspectable" tabindex="0" data-node-id="p2_micro_layer_degree">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M192.9,-120.07C192.9,-120.07 30,-120.07 30,-120.07 24,-120.07 18,-114.07 18,-108.07 18,-108.07 18,-70.24 18,-70.24 18,-64.24 24,-58.24 30,-58.24 30,-58.24 192.9,-58.24 192.9,-58.24 198.9,-58.24 204.9,-64.24 204.9,-70.24 204.9,-70.24 204.9,-108.07 204.9,-108.07 204.9,-114.07 198.9,-120.07 192.9,-120.07" />
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-101.73" font-family="Times New Roman" font-size="14.00">N8</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-84.48" font-family="Times New Roman" font-size="14.00">Agent contact degree within</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-67.23" font-family="Times New Roman" font-size="14.00">a contact layer</text>
+<title>N8 | p2_micro_layer_degree
+Agent contact degree within a contact layer
+Scale: micro | Phenomenon: setting_specific_cluster_persistence
+Definition: d_i,l(t) = number of distinct contact records at step t in layer l with agent_id = i plus those with partner_id = i, de-duplicated by unordered pair so that a reciprocal pair counts once; undefined if agent i is not observed at step t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_micro_layer_exposure_flag" class="inspectable" tabindex="0" data-node-id="p2_micro_layer_exposure_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M184.65,-193.07C184.65,-193.07 38.25,-193.07 38.25,-193.07 32.25,-193.07 26.25,-187.07 26.25,-181.07 26.25,-181.07 26.25,-143.24 26.25,-143.24 26.25,-137.24 32.25,-131.24 38.25,-131.24 38.25,-131.24 184.65,-131.24 184.65,-131.24 190.65,-131.24 196.65,-137.24 196.65,-143.24 196.65,-143.24 196.65,-181.07 196.65,-181.07 196.65,-187.07 190.65,-193.07 184.65,-193.07" />
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-174.73" font-family="Times New Roman" font-size="14.00">N9</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-157.48" font-family="Times New Roman" font-size="14.00">Agent exposure transition</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-140.23" font-family="Times New Roman" font-size="14.00">attributed to a layer</text>
+<title>N9 | p2_micro_layer_exposure_flag
+Agent exposure transition attributed to a layer
+Scale: micro | Phenomenon: setting_specific_cluster_persistence
+Definition: E_i,l(t) = 1 if X_i(t) = 1 and the layer recorded on the exposure event for that agent and step equals l; 0 if X_i(t) = 1 and the recorded layer is non-null and different from l; undefined if X_i(t) = 0, if the recorded layer is null, or if no exposure event can be matched.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_micro_layer_beta_load" class="inspectable" tabindex="0" data-node-id="p2_micro_layer_beta_load">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M179.03,-266.07C179.03,-266.07 43.88,-266.07 43.88,-266.07 37.88,-266.07 31.88,-260.07 31.88,-254.07 31.88,-254.07 31.88,-216.24 31.88,-216.24 31.88,-210.24 37.88,-204.24 43.88,-204.24 43.88,-204.24 179.03,-204.24 179.03,-204.24 185.03,-204.24 191.03,-210.24 191.03,-216.24 191.03,-216.24 191.03,-254.07 191.03,-254.07 191.03,-260.07 185.03,-266.07 179.03,-266.07" />
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-247.73" font-family="Times New Roman" font-size="14.00">N10</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-230.48" font-family="Times New Roman" font-size="14.00">Agent per-layer contact</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-213.23" font-family="Times New Roman" font-size="14.00">weight load</text>
+<title>N10 | p2_micro_layer_beta_load
+Agent per-layer contact weight load
+Scale: micro | Phenomenon: setting_specific_cluster_persistence
+Definition: W_i,l(t) = sum of beta over the undirected contact edges at step t in layer l incident to agent i; undefined if agent i is not observed at step t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_meso_layer_incidence_per_edge" class="inspectable" tabindex="0" data-node-id="p2_meso_layer_incidence_per_edge">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M417.3,-120.07C417.3,-120.07 246.9,-120.07 246.9,-120.07 240.9,-120.07 234.9,-114.07 234.9,-108.07 234.9,-108.07 234.9,-70.24 234.9,-70.24 234.9,-64.24 240.9,-58.24 246.9,-58.24 246.9,-58.24 417.3,-58.24 417.3,-58.24 423.3,-58.24 429.3,-64.24 429.3,-70.24 429.3,-70.24 429.3,-108.07 429.3,-108.07 429.3,-114.07 423.3,-120.07 417.3,-120.07" />
+<text xml:space="preserve" text-anchor="middle" x="332.1" y="-101.73" font-family="Times New Roman" font-size="14.00">N11</text>
+<text xml:space="preserve" text-anchor="middle" x="332.1" y="-84.48" font-family="Times New Roman" font-size="14.00">Layer exposure incidence per</text>
+<text xml:space="preserve" text-anchor="middle" x="332.1" y="-67.23" font-family="Times New Roman" font-size="14.00">contact edge</text>
+<title>N11 | p2_meso_layer_incidence_per_edge
+Layer exposure incidence per contact edge
+Scale: meso | Phenomenon: setting_specific_cluster_persistence
+Definition: lambda_l(t) = (sum over agents i of E_i,l(t)) / N_l(t), where N_l(t) is the number of distinct undirected edges recorded in layer l at step t; undefined when N_l(t) = 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_meso_layer_degree_dispersion" class="inspectable" tabindex="0" data-node-id="p2_meso_layer_degree_dispersion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M387.68,-193.07C387.68,-193.07 276.53,-193.07 276.53,-193.07 270.53,-193.07 264.53,-187.07 264.53,-181.07 264.53,-181.07 264.53,-143.24 264.53,-143.24 264.53,-137.24 270.53,-131.24 276.53,-131.24 276.53,-131.24 387.68,-131.24 387.68,-131.24 393.68,-131.24 399.68,-137.24 399.68,-143.24 399.68,-143.24 399.68,-181.07 399.68,-181.07 399.68,-187.07 393.68,-193.07 387.68,-193.07" />
+<text xml:space="preserve" text-anchor="middle" x="332.1" y="-174.73" font-family="Times New Roman" font-size="14.00">N12</text>
+<text xml:space="preserve" text-anchor="middle" x="332.1" y="-157.48" font-family="Times New Roman" font-size="14.00">Within-layer degree</text>
+<text xml:space="preserve" text-anchor="middle" x="332.1" y="-140.23" font-family="Times New Roman" font-size="14.00">dispersion</text>
+<title>N12 | p2_meso_layer_degree_dispersion
+Within-layer degree dispersion
+Scale: meso | Phenomenon: setting_specific_cluster_persistence
+Definition: CV_l(t) = SD_i(d_i,l(t)) / mean_i(d_i,l(t)) over agents observed at step t in layer l; undefined when fewer than two agents have defined degree or when the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_meso_layer_active_run" class="inspectable" tabindex="0" data-node-id="p2_meso_layer_active_run">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M404.93,-266.07C404.93,-266.07 259.28,-266.07 259.28,-266.07 253.28,-266.07 247.28,-260.07 247.28,-254.07 247.28,-254.07 247.28,-216.24 247.28,-216.24 247.28,-210.24 253.28,-204.24 259.28,-204.24 259.28,-204.24 404.93,-204.24 404.93,-204.24 410.93,-204.24 416.93,-210.24 416.93,-216.24 416.93,-216.24 416.93,-254.07 416.93,-254.07 416.93,-260.07 410.93,-266.07 404.93,-266.07" />
+<text xml:space="preserve" text-anchor="middle" x="332.1" y="-247.73" font-family="Times New Roman" font-size="14.00">N13</text>
+<text xml:space="preserve" text-anchor="middle" x="332.1" y="-230.48" font-family="Times New Roman" font-size="14.00">Layer consecutive active-</text>
+<text xml:space="preserve" text-anchor="middle" x="332.1" y="-213.23" font-family="Times New Roman" font-size="14.00">step run length</text>
+<title>N13 | p2_meso_layer_active_run
+Layer consecutive active-step run length
+Scale: meso | Phenomenon: setting_specific_cluster_persistence
+Definition: L_l(t) = k where k is the largest integer such that for every observed step s in the k consecutive observed steps ending at t, sum over i of E_i,l(s) &gt; 0; L_l(t) = 0 if the layer has no attributed exposure at t; undefined if step t is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_macro_layer_edge_turnover" class="inspectable" tabindex="0" data-node-id="p2_macro_layer_edge_turnover">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M618.45,-87.07C618.45,-87.07 484.8,-87.07 484.8,-87.07 478.8,-87.07 472.8,-81.07 472.8,-75.07 472.8,-75.07 472.8,-37.24 472.8,-37.24 472.8,-31.24 478.8,-25.24 484.8,-25.24 484.8,-25.24 618.45,-25.24 618.45,-25.24 624.45,-25.24 630.45,-31.24 630.45,-37.24 630.45,-37.24 630.45,-75.07 630.45,-75.07 630.45,-81.07 624.45,-87.07 618.45,-87.07" />
+<text xml:space="preserve" text-anchor="middle" x="551.62" y="-68.73" font-family="Times New Roman" font-size="14.00">N14</text>
+<text xml:space="preserve" text-anchor="middle" x="551.62" y="-51.48" font-family="Times New Roman" font-size="14.00">Layer edge-set Jaccard</text>
+<text xml:space="preserve" text-anchor="middle" x="551.62" y="-34.23" font-family="Times New Roman" font-size="14.00">turnover</text>
+<title>N14 | p2_macro_layer_edge_turnover
+Layer edge-set Jaccard turnover
+Scale: macro | Phenomenon: setting_specific_cluster_persistence
+Definition: J_l(t) = 1 - |A_l(t) intersect A_l(t-1)| / |A_l(t) union A_l(t-1)|, where A_l(t) is the set of unordered agent pairs recorded as edges in layer l at step t; undefined when the union is empty or t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_macro_layer_incidence_entropy" class="inspectable" tabindex="0" data-node-id="p2_macro_layer_incidence_entropy">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M631.95,-160.07C631.95,-160.07 471.3,-160.07 471.3,-160.07 465.3,-160.07 459.3,-154.07 459.3,-148.07 459.3,-148.07 459.3,-110.24 459.3,-110.24 459.3,-104.24 465.3,-98.24 471.3,-98.24 471.3,-98.24 631.95,-98.24 631.95,-98.24 637.95,-98.24 643.95,-104.24 643.95,-110.24 643.95,-110.24 643.95,-148.07 643.95,-148.07 643.95,-154.07 637.95,-160.07 631.95,-160.07" />
+<text xml:space="preserve" text-anchor="middle" x="551.62" y="-141.73" font-family="Times New Roman" font-size="14.00">N15</text>
+<text xml:space="preserve" text-anchor="middle" x="551.62" y="-124.48" font-family="Times New Roman" font-size="14.00">Normalised entropy of layer</text>
+<text xml:space="preserve" text-anchor="middle" x="551.62" y="-107.23" font-family="Times New Roman" font-size="14.00">exposure shares</text>
+<title>N15 | p2_macro_layer_incidence_entropy
+Normalised entropy of layer exposure shares
+Scale: macro | Phenomenon: setting_specific_cluster_persistence
+Definition: H(t) = -(sum over layers l of p_l(t) * ln p_l(t)) / ln(n(t)), where p_l(t) is the share of layer-attributed exposure transitions at t falling in layer l and n(t) is the number of layers with non-zero share; undefined when n(t) &lt; 2.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

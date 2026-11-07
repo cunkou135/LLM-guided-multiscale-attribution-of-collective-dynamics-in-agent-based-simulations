@@ -1,0 +1,238 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1476pt" height="902pt" viewBox="0.00 0.00 1476.00 902.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 424.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-424.39 699.84,-424.39 699.84,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-390.5" font-family="Times New Roman" font-size="17.00">Fish | phenomenon_1</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-368" font-family="Times New Roman" font-size="12.00">9 nodes / 16 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-343.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-343.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-343.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-343.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-343.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="8,-66 8,-322 217.9,-322 217.9,-66 8,-66" />
+<text xml:space="preserve" text-anchor="middle" x="35.12" y="-302.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="227.9,-84 227.9,-322 445.3,-322 445.3,-84 227.9,-84" />
+<text xml:space="preserve" text-anchor="middle" x="254.28" y="-302.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="455.3,-8 455.3,-246 683.2,-246 683.2,-8 455.3,-8" />
+<text xml:space="preserve" text-anchor="middle" x="484.68" y="-226.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_upward__b00_r0000" class="inspectable" data-source="frag_micro_component_size" data-target="frag_meso_component_size_entropy">
+<path fill="none" stroke="#27667b" d="M202.19,-253C217.06,-253 232.5,-253 247.37,-253" />
+<polygon fill="#27667b" stroke="#27667b" points="247.05,-255.45 254.05,-253 247.05,-250.55 247.05,-255.45" />
+<title>frag_micro_component_size → frag_meso_component_size_entropy
+upward
+Fish in larger contact components exert stronger social attraction, promoting further aggregation and reducing the number of small components, which lowers component-size entropy.</title></g>
+
+<g id="edge_upward__b01_r0000" class="inspectable" data-source="frag_micro_isolate" data-target="frag_meso_centroid_pair_distance">
+<path fill="none" stroke="#27667b" d="M201.23,-180C216.67,-180 232.74,-180 248.18,-180" />
+<polygon fill="#27667b" stroke="#27667b" points="248.17,-182.45 255.17,-180 248.17,-177.55 248.17,-182.45" />
+<title>frag_micro_isolate → frag_meso_centroid_pair_distance
+upward
+Isolated fish can act as outlying singleton components when local avoidance or escape separates them from neighbors; their centroids then sit farther from the main component centroids, raising the mean distance between component centroids at the meso scale.</title></g>
+
+<g id="edge_intra_scale__b02_r0000" class="inspectable" data-source="frag_micro_component_shark_distance" data-target="frag_micro_isolate">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M112.95,-138.37C112.95,-139.02 112.95,-139.67 112.95,-140.32" />
+<polygon fill="#6e648d" stroke="#6e648d" points="110.5,-140.26 112.95,-147.26 115.4,-140.26 110.5,-140.26" />
+<title>frag_micro_component_shark_distance → frag_micro_isolate
+intra_scale
+A component centroid closer to a shark can intensify local avoidance and detachment of fringe fish, making focal contact isolation more likely.</title></g>
+
+<g id="edge_upward__b02_r0000" class="inspectable" data-source="frag_micro_component_shark_distance" data-target="frag_meso_component_size_entropy">
+<path fill="none" stroke="#27667b" d="M208.18,-134.3C211.72,-137.21 215,-140.44 217.9,-144 238.3,-169.05 207.36,-191.06 227.9,-216 233.58,-222.89 240.6,-228.51 248.33,-233.08" />
+<polygon fill="#27667b" stroke="#27667b" points="246.94,-235.11 254.27,-236.27 249.26,-230.8 246.94,-235.11" />
+<title>frag_micro_component_shark_distance → frag_meso_component_size_entropy
+upward
+Components whose centroids are near a shark experience stronger escape pressure; this can cause uneven local splitting or merging across the school, changing how fish counts are distributed among components and thus component-size entropy.</title></g>
+
+<g id="edge_upward__b02_r0001" class="inspectable" data-source="frag_micro_component_shark_distance" data-target="frag_meso_centroid_pair_distance">
+<path fill="none" stroke="#27667b" d="M208.27,-138.06C221.76,-142.51 235.59,-147.06 248.93,-151.46" />
+<polygon fill="#27667b" stroke="#27667b" points="247.87,-153.68 255.28,-153.55 249.4,-149.03 247.87,-153.68" />
+<title>frag_micro_component_shark_distance → frag_meso_centroid_pair_distance
+upward
+When some components are much closer to the shark than others, differential escape responses can push their centroids apart or pull them together, altering the mean separation between component centroids.</title></g>
+
+<g id="edge_upward__b02_r0003" class="inspectable" data-source="frag_micro_component_shark_distance" data-target="frag_macro_component_count">
+<path fill="none" stroke="#27667b" d="M208.2,-84.68C214.84,-83.61 221.46,-82.7 227.9,-82 323.96,-71.59 349.7,-67.97 445.3,-82 449.89,-82.67 450.82,-83.77 455.3,-85 459.06,-86.03 462.9,-87.06 466.77,-88.09" />
+<polygon fill="#27667b" stroke="#27667b" points="465.92,-90.4 473.32,-89.82 467.17,-85.67 465.92,-90.4" />
+<title>frag_micro_component_shark_distance → frag_macro_component_count
+upward
+Many local component-shark encounters can induce localized breakaways and regrouping, which aggregate into changes in the number of connected components across the whole school.</title></g>
+
+<g id="edge_upward__b02_r0004" class="inspectable" data-source="frag_micro_component_shark_distance" data-target="frag_macro_largest_fraction">
+<path fill="none" stroke="#27667b" d="M207.08,-75.59C214.07,-73.84 221.07,-72.28 227.9,-71 313.33,-54.99 412.68,-50.11 481.91,-48.85" />
+<polygon fill="#27667b" stroke="#27667b" points="481.73,-51.31 488.69,-48.74 481.65,-46.41 481.73,-51.31" />
+<title>frag_micro_component_shark_distance → frag_macro_largest_fraction
+upward
+If components near sharks split off or are stretched away from the main body, the share of fish in the largest component can shrink; thus local threat distance can shape macro fragmentation.</title></g>
+
+<g id="edge_intra_scale__b03_r0020" class="inspectable" data-source="frag_meso_mean_component_size" data-target="frag_meso_component_size_entropy">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M237.61,-130.19C231.17,-135.12 226.02,-141.44 222.9,-149.5 218.01,-162.14 218.01,-197.86 222.9,-210.5 224.09,-213.58 225.14,-214.19 227.9,-216 234.14,-220.09 240.89,-223.78 247.85,-227.1" />
+<polygon fill="#6e648d" stroke="#6e648d" points="246.71,-229.27 254.1,-229.92 248.73,-224.81 246.71,-229.27" />
+<title>frag_meso_mean_component_size → frag_meso_component_size_entropy
+intra_scale
+Larger mean components concentrate fish counts into fewer groups, altering component-size entropy.</title></g>
+
+<g id="edge_upward__b03_r0024" class="inspectable" data-source="frag_meso_mean_component_size" data-target="frag_macro_component_count">
+<path fill="none" stroke="#27667b" d="M435.75,-118.81C442.71,-118.75 449.76,-118.67 456.79,-118.57" />
+<polygon fill="#27667b" stroke="#27667b" points="456.55,-121.03 463.51,-118.47 456.47,-116.13 456.55,-121.03" />
+<title>frag_meso_mean_component_size → frag_macro_component_count
+upward
+For a fixed number of fish, larger mean contact-component size implies that the school is divided into fewer components.</title></g>
+
+<g id="edge_upward__b03_r0025" class="inspectable" data-source="frag_meso_mean_component_size" data-target="frag_macro_largest_fraction">
+<path fill="none" stroke="#27667b" d="M430.09,-93.19C447.37,-88.28 465.36,-83.04 482.43,-77.93" />
+<polygon fill="#27667b" stroke="#27667b" points="482.75,-80.39 488.75,-76.03 481.34,-75.7 482.75,-80.39" />
+<title>frag_meso_mean_component_size → frag_macro_largest_fraction
+upward
+When contact components are larger on average, a smaller number of components can contain a larger share of fish, raising largest-component fraction.</title></g>
+
+<g id="edge_downward__b03_r0003" class="inspectable" data-source="frag_macro_component_count" data-target="frag_micro_isolate">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M474.78,-90.2C468.18,-88.48 461.63,-86.73 455.3,-85 450.82,-83.77 449.89,-82.67 445.3,-82 349.7,-67.97 301.54,-19.45 227.9,-82 206.96,-99.79 235.51,-121.91 217.9,-143 214.91,-146.58 211.54,-149.82 207.9,-152.75" />
+<polygon fill="#b3653b" stroke="#b3653b" points="206.54,-150.7 202.3,-156.79 209.41,-154.68 206.54,-150.7" />
+<title>frag_macro_component_count → frag_micro_isolate
+downward
+Fragmentation can leave marginal fish outside dense subgroups, making individual contact isolation more likely through changed local neighbor availability.</title></g>
+
+<g id="edge_downward__b03_r0000" class="inspectable" data-source="frag_macro_component_count" data-target="frag_meso_mean_component_size">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M465.02,-110.24C458.03,-110.31 450.97,-110.39 443.96,-110.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="444.22,-108.05 437.26,-110.61 444.3,-112.95 444.22,-108.05" />
+<title>frag_macro_component_count → frag_meso_mean_component_size
+downward
+More contact components change the local grouping context in which fish merge or split, plausibly lowering the average component size observed at the meso level.</title></g>
+
+<g id="edge_downward__b03_r0001" class="inspectable" data-source="frag_macro_component_count" data-target="frag_meso_component_size_entropy">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M465.09,-132.11C461.55,-134.74 458.26,-137.69 455.3,-141 432.87,-166.06 466.61,-189.98 445.3,-216 439.64,-222.91 432.63,-228.53 424.91,-233.11" />
+<polygon fill="#b3653b" stroke="#b3653b" points="423.98,-230.83 418.98,-236.3 426.3,-235.14 423.98,-230.83" />
+<title>frag_macro_component_count → frag_meso_component_size_entropy
+downward
+A higher number of components can redistribute fish among subgroups, plausibly raising the entropy of component sizes through repeated splitting and partial re-merging.</title></g>
+
+<g id="edge_intra_scale__b02_r0038" class="inspectable" data-source="frag_macro_component_count" data-target="frag_macro_largest_fraction">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M569.25,-90.23C569.25,-89.71 569.25,-89.19 569.25,-88.67" />
+<polygon fill="#6e648d" stroke="#6e648d" points="571.7,-88.76 569.25,-81.76 566.8,-88.76 571.7,-88.76" />
+<title>frag_macro_component_count → frag_macro_largest_fraction
+intra_scale
+A larger number of contact components tends to reduce the share of fish in any single largest component.</title></g>
+
+<g id="edge_downward__b00_r0000" class="inspectable" data-source="frag_macro_largest_fraction" data-target="frag_meso_mean_component_size">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M489.93,-67.82C464.44,-74.95 436.25,-83.16 411.12,-90.77" />
+<polygon fill="#b3653b" stroke="#b3653b" points="410.51,-88.39 404.53,-92.78 411.94,-93.08 410.51,-88.39" />
+<title>frag_macro_largest_fraction → frag_meso_mean_component_size
+downward
+When the largest connected fraction grows or shrinks through merging and splitting, the remaining small components are redistributed, so the mean component size can shift dynamically rather than being a fixed identity.</title></g>
+
+<g id="edge_downward__b01_r0000" class="inspectable" data-source="frag_macro_component_count_change" data-target="frag_meso_component_size_entropy">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M488.76,-203.19C468.37,-209.91 446.31,-217.18 425.52,-224.03" />
+<polygon fill="#b3653b" stroke="#b3653b" points="424.94,-221.64 419.06,-226.16 426.48,-226.29 424.94,-221.64" />
+<title>frag_macro_component_count_change → frag_meso_component_size_entropy
+downward
+Stepwise splitting or merging of contact components redistributes fish among component sizes, so a macro change in component count can alter the meso entropy of component sizes through the same fragmentation dynamics.</title></g>
+
+<g id="node_frag_micro_component_size" class="inspectable" tabindex="0" data-node-id="frag_micro_component_size">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M189.9,-283.92C189.9,-283.92 36,-283.92 36,-283.92 30,-283.92 24,-277.92 24,-271.92 24,-271.92 24,-234.09 24,-234.09 24,-228.09 30,-222.09 36,-222.09 36,-222.09 189.9,-222.09 189.9,-222.09 195.9,-222.09 201.9,-228.09 201.9,-234.09 201.9,-234.09 201.9,-271.92 201.9,-271.92 201.9,-277.92 195.9,-283.92 189.9,-283.92" />
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-265.57" font-family="Times New Roman" font-size="14.00">N1</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-248.32" font-family="Times New Roman" font-size="14.00">Contact-component size of</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-231.07" font-family="Times New Roman" font-size="14.00">focal fish</text>
+<title>N1 | frag_micro_component_size
+Contact-component size of focal fish
+Scale: micro | Phenomenon: school_fragmentation
+Definition: For run r and step t, let G_t=(V_t,E_t) be the undirected graph with fish nodes V_t from agent_states role='fish' and edges E_t from contacts pairs {agent_id,partner_id} at (r,t). For focal fish i in V_t, let C_t(i) be its connected component in G_t. Indicator = |C_t(i)|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_micro_isolate" class="inspectable" tabindex="0" data-node-id="frag_micro_isolate">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M188.78,-210.91C188.78,-210.91 37.13,-210.91 37.13,-210.91 31.13,-210.91 25.13,-204.91 25.13,-198.91 25.13,-198.91 25.13,-161.09 25.13,-161.09 25.13,-155.09 31.13,-149.09 37.13,-149.09 37.13,-149.09 188.78,-149.09 188.78,-149.09 194.78,-149.09 200.78,-155.09 200.78,-161.09 200.78,-161.09 200.78,-198.91 200.78,-198.91 200.78,-204.91 194.78,-210.91 188.78,-210.91" />
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-192.57" font-family="Times New Roman" font-size="14.00">N2</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-175.32" font-family="Times New Roman" font-size="14.00">Focal fish contact isolation</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-158.07" font-family="Times New Roman" font-size="14.00">flag</text>
+<title>N2 | frag_micro_isolate
+Focal fish contact isolation flag
+Scale: micro | Phenomenon: school_fragmentation
+Definition: For fish i at (r,t), let k_i(t)=|{j: (i,j) in E_t or (j,i) in E_t}|. Indicator = 1 if k_i(t)=0, else 0.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_micro_component_shark_distance" class="inspectable" tabindex="0" data-node-id="frag_micro_component_shark_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M195.9,-137.91C195.9,-137.91 30,-137.91 30,-137.91 24,-137.91 18,-131.91 18,-125.91 18,-125.91 18,-88.09 18,-88.09 18,-82.09 24,-76.09 30,-76.09 30,-76.09 195.9,-76.09 195.9,-76.09 201.9,-76.09 207.9,-82.09 207.9,-88.09 207.9,-88.09 207.9,-125.91 207.9,-125.91 207.9,-131.91 201.9,-137.91 195.9,-137.91" />
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-119.58" font-family="Times New Roman" font-size="14.00">N3</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-102.33" font-family="Times New Roman" font-size="14.00">Focal component centroid to</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-85.08" font-family="Times New Roman" font-size="14.00">nearest shark distance</text>
+<title>N3 | frag_micro_component_shark_distance
+Focal component centroid to nearest shark distance
+Scale: micro | Phenomenon: school_fragmentation
+Definition: Let c_C(t)=mean_{j in C_t(i)} p_j(t) for focal fish i. Let D_i(t)=min_{s in sharks at t} ||c_C(t)-p_s(t)||. Indicator = D_i(t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_meso_mean_component_size" class="inspectable" tabindex="0" data-node-id="frag_meso_mean_component_size">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M423.3,-138.29C423.3,-138.29 249.9,-138.29 249.9,-138.29 243.9,-138.29 237.9,-132.29 237.9,-126.29 237.9,-126.29 237.9,-105.71 237.9,-105.71 237.9,-99.71 243.9,-93.71 249.9,-93.71 249.9,-93.71 423.3,-93.71 423.3,-93.71 429.3,-93.71 435.3,-99.71 435.3,-105.71 435.3,-105.71 435.3,-126.29 435.3,-126.29 435.3,-132.29 429.3,-138.29 423.3,-138.29" />
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-119.95" font-family="Times New Roman" font-size="14.00">N4</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-102.7" font-family="Times New Roman" font-size="14.00">Mean contact-component size</text>
+<title>N4 | frag_meso_mean_component_size
+Mean contact-component size
+Scale: meso | Phenomenon: school_fragmentation
+Definition: Let components of G_t be C_1,...,C_m. Indicator = (1/m) sum_{k=1}^m |C_k|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_meso_component_size_entropy" class="inspectable" tabindex="0" data-node-id="frag_meso_component_size_entropy">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M405.3,-283.92C405.3,-283.92 267.9,-283.92 267.9,-283.92 261.9,-283.92 255.9,-277.92 255.9,-271.92 255.9,-271.92 255.9,-234.09 255.9,-234.09 255.9,-228.09 261.9,-222.09 267.9,-222.09 267.9,-222.09 405.3,-222.09 405.3,-222.09 411.3,-222.09 417.3,-228.09 417.3,-234.09 417.3,-234.09 417.3,-271.92 417.3,-271.92 417.3,-277.92 411.3,-283.92 405.3,-283.92" />
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-265.57" font-family="Times New Roman" font-size="14.00">N5</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-248.32" font-family="Times New Roman" font-size="14.00">Contact-component size</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-231.07" font-family="Times New Roman" font-size="14.00">entropy</text>
+<title>N5 | frag_meso_component_size_entropy
+Contact-component size entropy
+Scale: meso | Phenomenon: school_fragmentation
+Definition: Let p_k=|C_k|/N_t for N_t=sum_j |C_j|. Indicator = -sum_k p_k log2(p_k), with 0 log2 0 treated as 0.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_meso_centroid_pair_distance" class="inspectable" tabindex="0" data-node-id="frag_meso_centroid_pair_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M404.18,-210.91C404.18,-210.91 269.03,-210.91 269.03,-210.91 263.03,-210.91 257.03,-204.91 257.03,-198.91 257.03,-198.91 257.03,-161.09 257.03,-161.09 257.03,-155.09 263.03,-149.09 269.03,-149.09 269.03,-149.09 404.18,-149.09 404.18,-149.09 410.18,-149.09 416.18,-155.09 416.18,-161.09 416.18,-161.09 416.18,-198.91 416.18,-198.91 416.18,-204.91 410.18,-210.91 404.18,-210.91" />
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-192.57" font-family="Times New Roman" font-size="14.00">N6</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-175.32" font-family="Times New Roman" font-size="14.00">Mean distance between</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-158.07" font-family="Times New Roman" font-size="14.00">component centroids</text>
+<title>N6 | frag_meso_centroid_pair_distance
+Mean distance between component centroids
+Scale: meso | Phenomenon: school_fragmentation
+Definition: Let c_k be the position centroid of component C_k. Indicator = (2/(m(m-1))) sum_{a&lt;b} ||c_a-c_b|| for m components; undefined if m&lt;2.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_macro_component_count" class="inspectable" tabindex="0" data-node-id="frag_macro_component_count">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M661.2,-135.29C661.2,-135.29 477.3,-135.29 477.3,-135.29 471.3,-135.29 465.3,-129.29 465.3,-123.29 465.3,-123.29 465.3,-102.71 465.3,-102.71 465.3,-96.71 471.3,-90.71 477.3,-90.71 477.3,-90.71 661.2,-90.71 661.2,-90.71 667.2,-90.71 673.2,-96.71 673.2,-102.71 673.2,-102.71 673.2,-123.29 673.2,-123.29 673.2,-129.29 667.2,-135.29 661.2,-135.29" />
+<text xml:space="preserve" text-anchor="middle" x="569.25" y="-116.95" font-family="Times New Roman" font-size="14.00">N7</text>
+<text xml:space="preserve" text-anchor="middle" x="569.25" y="-99.7" font-family="Times New Roman" font-size="14.00">Number of contact components</text>
+<title>N7 | frag_macro_component_count
+Number of contact components
+Scale: macro | Phenomenon: school_fragmentation
+Definition: Indicator = m, the number of connected components of G_t.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_macro_largest_fraction" class="inspectable" tabindex="0" data-node-id="frag_macro_largest_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M636.08,-79.91C636.08,-79.91 502.43,-79.91 502.43,-79.91 496.43,-79.91 490.43,-73.91 490.43,-67.91 490.43,-67.91 490.43,-30.09 490.43,-30.09 490.43,-24.08 496.43,-18.09 502.43,-18.09 502.43,-18.09 636.08,-18.09 636.08,-18.09 642.08,-18.09 648.08,-24.09 648.08,-30.09 648.08,-30.09 648.08,-67.91 648.08,-67.91 648.08,-73.91 642.08,-79.91 636.08,-79.91" />
+<text xml:space="preserve" text-anchor="middle" x="569.25" y="-61.58" font-family="Times New Roman" font-size="14.00">N8</text>
+<text xml:space="preserve" text-anchor="middle" x="569.25" y="-44.33" font-family="Times New Roman" font-size="14.00">Largest component fish</text>
+<text xml:space="preserve" text-anchor="middle" x="569.25" y="-27.07" font-family="Times New Roman" font-size="14.00">fraction</text>
+<title>N8 | frag_macro_largest_fraction
+Largest component fish fraction
+Scale: macro | Phenomenon: school_fragmentation
+Definition: Indicator = max_k |C_k| / N_t, where N_t=sum_j |C_j|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_macro_component_count_change" class="inspectable" tabindex="0" data-node-id="frag_macro_component_count_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M637.2,-207.91C637.2,-207.91 501.3,-207.91 501.3,-207.91 495.3,-207.91 489.3,-201.91 489.3,-195.91 489.3,-195.91 489.3,-158.09 489.3,-158.09 489.3,-152.09 495.3,-146.09 501.3,-146.09 501.3,-146.09 637.2,-146.09 637.2,-146.09 643.2,-146.09 649.2,-152.09 649.2,-158.09 649.2,-158.09 649.2,-195.91 649.2,-195.91 649.2,-201.91 643.2,-207.91 637.2,-207.91" />
+<text xml:space="preserve" text-anchor="middle" x="569.25" y="-189.57" font-family="Times New Roman" font-size="14.00">N9</text>
+<text xml:space="preserve" text-anchor="middle" x="569.25" y="-172.32" font-family="Times New Roman" font-size="14.00">Step change in contact-</text>
+<text xml:space="preserve" text-anchor="middle" x="569.25" y="-155.07" font-family="Times New Roman" font-size="14.00">component count</text>
+<title>N9 | frag_macro_component_count_change
+Step change in contact-component count
+Scale: macro | Phenomenon: school_fragmentation
+Definition: Indicator(t)=m(t)-m(t-1), where m(t) is the number of connected components of G_t.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

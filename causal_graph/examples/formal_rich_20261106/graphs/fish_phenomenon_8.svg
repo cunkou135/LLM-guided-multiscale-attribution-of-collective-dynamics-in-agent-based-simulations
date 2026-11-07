@@ -1,0 +1,304 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1421pt" height="977pt" viewBox="0.00 0.00 1421.00 977.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 460.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-460.39 673.59,-460.39 673.59,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-426.5" font-family="Times New Roman" font-size="17.00">Fish | phenomenon_8</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-404" font-family="Times New Roman" font-size="12.00">9 nodes / 25 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-379.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-379.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-379.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-379.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-379.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="8,-48 8,-304 204.4,-304 204.4,-48 8,-48" />
+<text xml:space="preserve" text-anchor="middle" x="35.12" y="-284.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="214.4,-85 214.4,-358 433.3,-358 433.3,-85 214.4,-85" />
+<text xml:space="preserve" text-anchor="middle" x="240.78" y="-338.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="443.3,-8 443.3,-264 656.95,-264 656.95,-8 443.3,-8" />
+<text xml:space="preserve" text-anchor="middle" x="472.68" y="-244.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_upward__b02_r0050" class="inspectable" data-source="lead_micro_lagged_alignment" data-target="lead_meso_component_lagged_alignment">
+<path fill="none" stroke="#27667b" d="M194.81,-190.19C198.26,-192.87 201.48,-195.8 204.4,-199 215.58,-211.27 203.4,-222.56 214.4,-235 218.96,-240.16 224.21,-244.74 229.88,-248.8" />
+<polygon fill="#27667b" stroke="#27667b" points="228.27,-250.67 235.46,-252.51 230.98,-246.59 228.27,-250.67" />
+<title>lead_micro_lagged_alignment → lead_meso_component_lagged_alignment
+upward
+Individual lagged alignment between a fish's turn and its neighbors' prior turns is the elementary propagation event that defines component mean lagged alignment.</title></g>
+
+<g id="edge_upward__b02_r0051" class="inspectable" data-source="lead_micro_lagged_alignment" data-target="lead_meso_component_cascade_fraction">
+<path fill="none" stroke="#27667b" d="M194.91,-181.11C206.17,-183.11 217.74,-185.11 229.09,-187.01" />
+<polygon fill="#27667b" stroke="#27667b" points="228.51,-189.39 235.82,-188.12 229.31,-184.56 228.51,-189.39" />
+<title>lead_micro_lagged_alignment → lead_meso_component_cascade_fraction
+upward
+Fish whose own heading changes align with previous neighbor changes help make component turns sign-matched, raising the component cascade fraction.</title></g>
+
+<g id="edge_upward__b02_r0052" class="inspectable" data-source="lead_micro_lagged_alignment" data-target="lead_meso_component_influence_variance">
+<path fill="none" stroke="#27667b" d="M194.91,-147.36C201.79,-146.21 208.77,-145.04 215.75,-143.88" />
+<polygon fill="#27667b" stroke="#27667b" points="215.95,-146.33 222.45,-142.76 215.14,-141.5 215.95,-146.33" />
+<title>lead_micro_lagged_alignment → lead_meso_component_influence_variance
+upward
+Heterogeneity in individual lagged alignment indicates uneven leader-follower roles, which can increase variance of influence scores within a component.</title></g>
+
+<g id="edge_upward__b02_r0053" class="inspectable" data-source="lead_micro_lagged_alignment" data-target="lead_macro_school_lagged_alignment">
+<path fill="none" stroke="#27667b" d="M194.53,-134.28C198.1,-131.48 201.42,-128.39 204.4,-125 217.06,-110.58 199.34,-94.89 214.4,-83 252.57,-52.85 385.3,-75.14 433.3,-83 438.27,-83.81 445.38,-85.67 453.66,-88.15" />
+<polygon fill="#27667b" stroke="#27667b" points="452.72,-90.42 460.13,-90.14 454.16,-85.74 452.72,-90.42" />
+<title>lead_micro_lagged_alignment → lead_macro_school_lagged_alignment
+upward
+The school-level lagged alignment is the collective expression of many individual fish responding to prior neighbor turns; widespread micro alignment supports the macro value.</title></g>
+
+<g id="edge_upward__b02_r0054" class="inspectable" data-source="lead_micro_lagged_alignment" data-target="lead_macro_school_cascade_fraction">
+<path fill="none" stroke="#27667b" d="M194.8,-134.51C198.3,-131.65 201.54,-128.49 204.4,-125 221.28,-104.45 194.52,-83.67 214.4,-66 248.12,-36.02 363.83,-36.12 449.81,-40.87" />
+<polygon fill="#27667b" stroke="#27667b" points="449.66,-43.31 456.79,-41.27 449.94,-38.42 449.66,-43.31" />
+<title>lead_micro_lagged_alignment → lead_macro_school_cascade_fraction
+upward
+If individual heading changes frequently match earlier neighbor changes, the overall sign-matched cascade fraction across the school can rise.</title></g>
+
+<g id="edge_upward__b03_r0020" class="inspectable" data-source="lead_micro_influence_score" data-target="lead_meso_component_cascade_fraction">
+<path fill="none" stroke="#27667b" d="M180.98,-113.74C189.71,-118.48 197.83,-124.29 204.4,-131.5 215.58,-143.77 203,-155.42 214.4,-167.5 218.96,-172.33 224.18,-176.53 229.8,-180.17" />
+<polygon fill="#27667b" stroke="#27667b" points="228.54,-182.28 235.82,-183.72 231.03,-178.06 228.54,-182.28" />
+<title>lead_micro_influence_score → lead_meso_component_cascade_fraction
+upward
+Influential fish can initiate heading changes that neighbors follow, increasing sign-matched cascades within a component.</title></g>
+
+<g id="edge_upward__b03_r0019" class="inspectable" data-source="lead_micro_influence_score" data-target="lead_meso_component_influence_variance">
+<path fill="none" stroke="#27667b" d="M181.41,-101.73C192.6,-103.65 204.32,-105.66 216.03,-107.67" />
+<polygon fill="#27667b" stroke="#27667b" points="215.32,-110.04 222.63,-108.81 216.15,-105.21 215.32,-110.04" />
+<title>lead_micro_influence_score → lead_meso_component_influence_variance
+upward
+Heterogeneous individual influence scores produce variance in influence among fish belonging to the same contact component.</title></g>
+
+<g id="edge_upward__b03_r0022" class="inspectable" data-source="lead_micro_influence_score" data-target="lead_macro_school_cascade_fraction">
+<path fill="none" stroke="#27667b" d="M161.14,-57.63C177.69,-49.6 196.31,-42.08 214.4,-38 292.2,-20.44 382.73,-24.85 450.01,-32.74" />
+<polygon fill="#27667b" stroke="#27667b" points="449.35,-35.13 456.59,-33.53 449.94,-30.26 449.35,-35.13" />
+<title>lead_micro_influence_score → lead_macro_school_cascade_fraction
+upward
+Individual influence scores summarize who leads local turns, and aggregated leader effects can shape school-wide cascade fraction.</title></g>
+
+<g id="edge_intra_scale__b02_r0036" class="inspectable" data-source="lead_meso_component_lagged_alignment" data-target="lead_meso_component_cascade_fraction">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M323.85,-240.03C323.85,-239.62 323.85,-239.22 323.85,-238.81" />
+<polygon fill="#6e648d" stroke="#6e648d" points="326.3,-238.84 323.85,-231.84 321.4,-238.84 326.3,-238.84" />
+<title>lead_meso_component_lagged_alignment → lead_meso_component_cascade_fraction
+intra_scale
+When current component heading changes align with prior neighbor heading changes, sign-matched cascades across the component become more likely.</title></g>
+
+<g id="edge_downward__b03_r0048" class="inspectable" data-source="lead_meso_component_cascade_fraction" data-target="lead_micro_lagged_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M237.31,-180.28C226.09,-178.27 214.54,-176.27 203.16,-174.36" />
+<polygon fill="#b3653b" stroke="#b3653b" points="203.71,-171.97 196.41,-173.24 202.91,-176.8 203.71,-171.97" />
+<title>lead_meso_component_cascade_fraction → lead_micro_lagged_alignment
+downward
+A component with many sign-matched cascades provides a stronger lagged turning context, plausibly increasing focal alignment with previous neighbor heading changes.</title></g>
+
+<g id="edge_downward__b03_r0049" class="inspectable" data-source="lead_meso_component_cascade_fraction" data-target="lead_micro_influence_score">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M237.12,-173.56C228.7,-168.97 220.89,-163.37 214.4,-156.5 203,-144.42 215.58,-132.77 204.4,-120.5 199.68,-115.32 194.16,-110.86 188.18,-107.04" />
+<polygon fill="#b3653b" stroke="#b3653b" points="189.57,-105.02 182.29,-103.61 187.11,-109.25 189.57,-105.02" />
+<title>lead_meso_component_cascade_fraction → lead_micro_influence_score
+downward
+Cascade-rich components can amplify some individuals' turns, plausibly raising the run-level lagged influence score of a focal fish.</title></g>
+
+<g id="edge_intra_scale__b03_r0037" class="inspectable" data-source="lead_meso_component_cascade_fraction" data-target="lead_meso_component_influence_variance">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M323.85,-167.78C323.85,-167.12 323.85,-166.47 323.85,-165.82" />
+<polygon fill="#6e648d" stroke="#6e648d" points="326.3,-165.88 323.85,-158.88 321.4,-165.88 326.3,-165.88" />
+<title>lead_meso_component_cascade_fraction → lead_meso_component_influence_variance
+intra_scale
+Cascades concentrated in some fish create heterogeneity in lagged influence across the component.</title></g>
+
+<g id="edge_upward__b02_r0056" class="inspectable" data-source="lead_meso_component_cascade_fraction" data-target="lead_macro_school_lagged_alignment">
+<path fill="none" stroke="#27667b" d="M410.7,-169.74C418.34,-167.13 425.96,-164.52 433.3,-162 439.31,-159.94 445.5,-157.81 451.74,-155.66" />
+<polygon fill="#27667b" stroke="#27667b" points="452.41,-158.02 458.23,-153.43 450.81,-153.39 452.41,-158.02" />
+<title>lead_meso_component_cascade_fraction → lead_macro_school_lagged_alignment
+upward
+When component turns propagate as signed cascades, individual turns become more consistent with prior neighbor changes, raising school-level lagged alignment.</title></g>
+
+<g id="edge_upward__b02_r0055" class="inspectable" data-source="lead_meso_component_cascade_fraction" data-target="lead_macro_school_cascade_fraction">
+<path fill="none" stroke="#27667b" d="M410.52,-180.48C419.18,-175.67 427.06,-169.62 433.3,-162 454.89,-135.65 421.81,-112.43 443.3,-86 445.85,-82.86 448.69,-79.99 451.74,-77.36" />
+<polygon fill="#27667b" stroke="#27667b" points="453.06,-79.44 457.1,-73.22 450.06,-75.56 453.06,-79.44" />
+<title>lead_meso_component_cascade_fraction → lead_macro_school_cascade_fraction
+upward
+Components with many sign-matched cascade turns can collectively produce a higher whole-school fraction of fish matching the prior mean turn direction.</title></g>
+
+<g id="edge_upward__b02_r0057" class="inspectable" data-source="lead_meso_component_cascade_fraction" data-target="lead_macro_school_influence_variance">
+<path fill="none" stroke="#27667b" d="M410.6,-201.49C421.74,-201.38 433.26,-201.21 444.66,-200.98" />
+<polygon fill="#27667b" stroke="#27667b" points="444.49,-203.43 451.43,-200.84 444.38,-198.54 444.49,-203.43" />
+<title>lead_meso_component_cascade_fraction → lead_macro_school_influence_variance
+upward
+Uneven cascade fractions across components imply unequal leader-follower influence, which can increase school-wide variance of influence scores.</title></g>
+
+<g id="edge_upward__b03_r0058" class="inspectable" data-source="lead_meso_component_influence_variance" data-target="lead_macro_school_cascade_fraction">
+<path fill="none" stroke="#27667b" d="M416.39,-94.57C427.61,-90.72 439.12,-86.77 450.44,-82.88" />
+<polygon fill="#27667b" stroke="#27667b" points="450.98,-85.29 456.8,-80.7 449.39,-80.65 450.98,-85.29" />
+<title>lead_meso_component_influence_variance → lead_macro_school_cascade_fraction
+upward
+Components with heterogeneous influence can generate uneven turn propagation, affecting the school-wide cascade fraction.</title></g>
+
+<g id="edge_upward__b03_r0057" class="inspectable" data-source="lead_meso_component_influence_variance" data-target="lead_macro_school_influence_variance">
+<path fill="none" stroke="#27667b" d="M413.81,-157.42C424.04,-160.63 434.55,-163.89 444.96,-167.07" />
+<polygon fill="#27667b" stroke="#27667b" points="444.04,-169.35 451.45,-169.04 445.46,-164.66 444.04,-169.35" />
+<title>lead_meso_component_influence_variance → lead_macro_school_influence_variance
+upward
+Variance in influence among component members contributes to the overall variance of influence scores across the school.</title></g>
+
+<g id="edge_downward__b02_r0009" class="inspectable" data-source="lead_macro_school_cascade_fraction" data-target="lead_meso_component_lagged_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M458.39,-71.66C452.69,-75.69 447.54,-80.43 443.3,-86 423.2,-112.4 452.64,-208.03 433.3,-235 428.94,-241.08 423.59,-246.35 417.64,-250.9" />
+<polygon fill="#b3653b" stroke="#b3653b" points="416.54,-248.68 412.21,-254.7 419.35,-252.7 416.54,-248.68" />
+<title>lead_macro_school_cascade_fraction → lead_meso_component_lagged_alignment
+downward
+A high global cascade fraction indicates widespread sign-matched heading changes, which can amplify local lagged alignment within components.</title></g>
+
+<g id="edge_downward__b03_r0056" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_micro_lagged_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M453.18,-167.84C449.58,-164.89 446.25,-161.62 443.3,-158 422.06,-131.93 458.6,-105.15 433.3,-83 360.1,-18.91 290.75,-22.7 214.4,-83 199.34,-94.89 217.06,-110.58 204.4,-125 203.28,-126.27 202.12,-127.5 200.91,-128.69" />
+<polygon fill="#b3653b" stroke="#b3653b" points="199.32,-126.82 195.66,-133.28 202.55,-130.51 199.32,-126.82" />
+<title>lead_macro_school_influence_variance → lead_micro_lagged_alignment
+downward
+When influence is highly variable school-wide, a focal fish's current turn is plausibly more or less aligned with earlier neighbor turns depending on its local leaders.</title></g>
+
+<g id="edge_downward__b03_r0055" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_micro_influence_score">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M452.95,-168.02C449.4,-165.03 446.15,-161.7 443.3,-158 426.41,-136.12 453.62,-52.75 433.3,-34 360.58,33.09 237.99,-15.07 165.63,-53.72" />
+<polygon fill="#b3653b" stroke="#b3653b" points="164.67,-51.45 159.68,-56.94 167.01,-55.75 164.67,-51.45" />
+<title>lead_macro_school_influence_variance → lead_micro_influence_score
+downward
+A wide school-level influence distribution implies that a focal fish's lagged influence score is shaped by uneven leader-follower dynamics.</title></g>
+
+<g id="edge_downward__b03_r0052" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_meso_component_lagged_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M466.24,-226.41C450.74,-232.29 434.44,-238.47 418.63,-244.46" />
+<polygon fill="#b3653b" stroke="#b3653b" points="418.01,-242.07 412.33,-246.84 419.75,-246.65 418.01,-242.07" />
+<title>lead_macro_school_influence_variance → lead_meso_component_lagged_alignment
+downward
+High variance in influence scores creates uneven leader-follower roles, plausibly altering component mean lagged heading-change alignment.</title></g>
+
+<g id="edge_downward__b03_r0053" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_meso_component_cascade_fraction">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M452.94,-192.63C441.73,-192.77 430.29,-192.98 419.1,-193.24" />
+<polygon fill="#b3653b" stroke="#b3653b" points="419.05,-190.79 412.11,-193.41 419.17,-195.69 419.05,-190.79" />
+<title>lead_macro_school_influence_variance → lead_meso_component_cascade_fraction
+downward
+A school-wide spread of influential individuals can produce more sign-matched turning sequences, plausibly raising component cascade fraction.</title></g>
+
+<g id="edge_downward__b03_r0054" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_meso_component_influence_variance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M460.27,-163.62C450.85,-160.65 441.19,-157.66 431.59,-154.72" />
+<polygon fill="#b3653b" stroke="#b3653b" points="432.4,-152.41 424.99,-152.71 430.98,-157.09 432.4,-152.41" />
+<title>lead_macro_school_influence_variance → lead_meso_component_influence_variance
+downward
+Global heterogeneity in influence scores can concentrate or disperse leadership within components, plausibly changing component influence variance.</title></g>
+
+<g id="edge_intra_scale__b03_r0056" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_macro_school_lagged_alignment">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M550.12,-163.78C550.12,-163.12 550.12,-162.47 550.12,-161.82" />
+<polygon fill="#6e648d" stroke="#6e648d" points="552.58,-161.88 550.13,-154.88 547.68,-161.88 552.58,-161.88" />
+<title>lead_macro_school_influence_variance → lead_macro_school_lagged_alignment
+intra_scale
+Heterogeneous influence can reduce average lagged alignment when followers receive conflicting leads.</title></g>
+
+<g id="edge_intra_scale__b03_r0057" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_macro_school_cascade_fraction">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M452.94,-172.61C446.57,-167.25 441.45,-160.64 438.3,-152.5 433.41,-139.86 433.41,-104.14 438.3,-91.5 439.49,-88.42 440.54,-87.82 443.3,-86 445.78,-84.36 448.34,-82.79 450.96,-81.28" />
+<polygon fill="#6e648d" stroke="#6e648d" points="451.73,-83.65 456.71,-78.15 449.39,-79.35 451.73,-83.65" />
+<title>lead_macro_school_influence_variance → lead_macro_school_cascade_fraction
+intra_scale
+Variance in influence changes how many fish follow a common turn sign, affecting cascade fraction.</title></g>
+
+<g id="node_lead_micro_lagged_alignment" class="inspectable" tabindex="0" data-node-id="lead_micro_lagged_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M182.4,-192.91C182.4,-192.91 30,-192.91 30,-192.91 24,-192.91 18,-186.91 18,-180.91 18,-180.91 18,-143.09 18,-143.09 18,-137.09 24,-131.09 30,-131.09 30,-131.09 182.4,-131.09 182.4,-131.09 188.4,-131.09 194.4,-137.09 194.4,-143.09 194.4,-143.09 194.4,-180.91 194.4,-180.91 194.4,-186.91 188.4,-192.91 182.4,-192.91" />
+<text xml:space="preserve" text-anchor="middle" x="106.2" y="-174.57" font-family="Times New Roman" font-size="14.00">N64</text>
+<text xml:space="preserve" text-anchor="middle" x="106.2" y="-157.32" font-family="Times New Roman" font-size="14.00">Focal lagged neighbor</text>
+<text xml:space="preserve" text-anchor="middle" x="106.2" y="-140.07" font-family="Times New Roman" font-size="14.00">heading-change alignment</text>
+<title>N64 | lead_micro_lagged_alignment
+Focal lagged neighbor heading-change alignment
+Scale: micro | Phenomenon: leader_follower_cascade
+Definition: Let Delta theta_i(t)=atan2(sin(theta_i(t)-theta_i(t-1)), cos(theta_i(t)-theta_i(t-1))). For N_i(t-1), let m_i(t-1)=mean_{j in N_i(t-1)} Delta theta_j(t-1). Indicator=cos(Delta theta_i(t)-m_i(t-1)).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_micro_influence_score" class="inspectable" tabindex="0" data-node-id="lead_micro_influence_score">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M168.9,-119.91C168.9,-119.91 43.5,-119.91 43.5,-119.91 37.5,-119.91 31.5,-113.91 31.5,-107.91 31.5,-107.91 31.5,-70.09 31.5,-70.09 31.5,-64.08 37.5,-58.09 43.5,-58.09 43.5,-58.09 168.9,-58.09 168.9,-58.09 174.9,-58.09 180.9,-64.09 180.9,-70.09 180.9,-70.09 180.9,-107.91 180.9,-107.91 180.9,-113.91 174.9,-119.91 168.9,-119.91" />
+<text xml:space="preserve" text-anchor="middle" x="106.2" y="-101.58" font-family="Times New Roman" font-size="14.00">N65</text>
+<text xml:space="preserve" text-anchor="middle" x="106.2" y="-84.33" font-family="Times New Roman" font-size="14.00">Focal run-level lagged</text>
+<text xml:space="preserve" text-anchor="middle" x="106.2" y="-67.08" font-family="Times New Roman" font-size="14.00">influence score</text>
+<title>N65 | lead_micro_influence_score
+Focal run-level lagged influence score
+Scale: micro | Phenomenon: leader_follower_cascade
+Definition: For fish i, let x_t=Delta theta_i(t) and y_t=mean_{j in N_i(t)} Delta theta_j(t+1). Indicator=corr(x_t,y_t) over valid t in the run.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_micro_influence_percentile" class="inspectable" tabindex="0" data-node-id="lead_micro_influence_percentile">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M176.03,-265.92C176.03,-265.92 36.38,-265.92 36.38,-265.92 30.38,-265.92 24.38,-259.92 24.38,-253.92 24.38,-253.92 24.38,-216.09 24.38,-216.09 24.38,-210.09 30.38,-204.09 36.38,-204.09 36.38,-204.09 176.03,-204.09 176.03,-204.09 182.03,-204.09 188.03,-210.09 188.03,-216.09 188.03,-216.09 188.03,-253.92 188.03,-253.92 188.03,-259.92 182.03,-265.92 176.03,-265.92" />
+<text xml:space="preserve" text-anchor="middle" x="106.2" y="-247.57" font-family="Times New Roman" font-size="14.00">N66</text>
+<text xml:space="preserve" text-anchor="middle" x="106.2" y="-230.32" font-family="Times New Roman" font-size="14.00">Focal run-level influence</text>
+<text xml:space="preserve" text-anchor="middle" x="106.2" y="-213.07" font-family="Times New Roman" font-size="14.00">percentile</text>
+<title>N66 | lead_micro_influence_percentile
+Focal run-level influence percentile
+Scale: micro | Phenomenon: leader_follower_cascade
+Definition: Indicator=100*(rank(s_i)-0.5)/M, where s_i is the influence score and M is the number of fish with defined scores in the run.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_meso_component_lagged_alignment" class="inspectable" tabindex="0" data-node-id="lead_meso_component_lagged_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M398.55,-319.54C398.55,-319.54 249.15,-319.54 249.15,-319.54 243.15,-319.54 237.15,-313.54 237.15,-307.54 237.15,-307.54 237.15,-252.46 237.15,-252.46 237.15,-246.46 243.15,-240.46 249.15,-240.46 249.15,-240.46 398.55,-240.46 398.55,-240.46 404.55,-240.46 410.55,-246.46 410.55,-252.46 410.55,-252.46 410.55,-307.54 410.55,-307.54 410.55,-313.54 404.55,-319.54 398.55,-319.54" />
+<text xml:space="preserve" text-anchor="middle" x="323.85" y="-301.2" font-family="Times New Roman" font-size="14.00">N67</text>
+<text xml:space="preserve" text-anchor="middle" x="323.85" y="-283.95" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="323.85" y="-266.7" font-family="Times New Roman" font-size="14.00">lagged heading-change</text>
+<text xml:space="preserve" text-anchor="middle" x="323.85" y="-249.45" font-family="Times New Roman" font-size="14.00">alignment</text>
+<title>N67 | lead_meso_component_lagged_alignment
+Contact-component mean lagged heading-change alignment
+Scale: meso | Phenomenon: leader_follower_cascade
+Definition: For component C_k, indicator=(1/n_k) sum_{i in C_k} cos(Delta theta_i(t)-m_i(t-1)), with m_i(t-1) the mean previous-step neighbor heading change.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_meso_component_cascade_fraction" class="inspectable" tabindex="0" data-node-id="lead_meso_component_cascade_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M398.18,-229.91C398.18,-229.91 249.53,-229.91 249.53,-229.91 243.53,-229.91 237.53,-223.91 237.53,-217.91 237.53,-217.91 237.53,-180.09 237.53,-180.09 237.53,-174.09 243.53,-168.09 249.53,-168.09 249.53,-168.09 398.18,-168.09 398.18,-168.09 404.18,-168.09 410.18,-174.09 410.18,-180.09 410.18,-180.09 410.18,-217.91 410.18,-217.91 410.18,-223.91 404.18,-229.91 398.18,-229.91" />
+<text xml:space="preserve" text-anchor="middle" x="323.85" y="-211.57" font-family="Times New Roman" font-size="14.00">N68</text>
+<text xml:space="preserve" text-anchor="middle" x="323.85" y="-194.32" font-family="Times New Roman" font-size="14.00">Contact-component sign-</text>
+<text xml:space="preserve" text-anchor="middle" x="323.85" y="-177.07" font-family="Times New Roman" font-size="14.00">matched cascade fraction</text>
+<title>N68 | lead_meso_component_cascade_fraction
+Contact-component sign-matched cascade fraction
+Scale: meso | Phenomenon: leader_follower_cascade
+Definition: Let M_C(t-1)=mean_{j in C_k(t-1)} Delta theta_j(t-1). Indicator=(1/n_k) sum_{i in C_k(t)} 1[sign(Delta theta_i(t))=sign(M_C(t-1))].
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_meso_component_influence_variance" class="inspectable" tabindex="0" data-node-id="lead_meso_component_influence_variance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M411.3,-156.91C411.3,-156.91 236.4,-156.91 236.4,-156.91 230.4,-156.91 224.4,-150.91 224.4,-144.91 224.4,-144.91 224.4,-107.09 224.4,-107.09 224.4,-101.09 230.4,-95.09 236.4,-95.09 236.4,-95.09 411.3,-95.09 411.3,-95.09 417.3,-95.09 423.3,-101.09 423.3,-107.09 423.3,-107.09 423.3,-144.91 423.3,-144.91 423.3,-150.91 417.3,-156.91 411.3,-156.91" />
+<text xml:space="preserve" text-anchor="middle" x="323.85" y="-138.57" font-family="Times New Roman" font-size="14.00">N69</text>
+<text xml:space="preserve" text-anchor="middle" x="323.85" y="-121.33" font-family="Times New Roman" font-size="14.00">Contact-component influence-</text>
+<text xml:space="preserve" text-anchor="middle" x="323.85" y="-104.08" font-family="Times New Roman" font-size="14.00">score variance</text>
+<title>N69 | lead_meso_component_influence_variance
+Contact-component influence-score variance
+Scale: meso | Phenomenon: leader_follower_cascade
+Definition: For component C_k, indicator=(1/n_k) sum_{i in C_k} (s_i-mean_{j in C_k} s_j)^2, where s_i is the run-level lagged influence score.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_macro_school_lagged_alignment" class="inspectable" tabindex="0" data-node-id="lead_macro_school_lagged_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M628.2,-152.91C628.2,-152.91 472.05,-152.91 472.05,-152.91 466.05,-152.91 460.05,-146.91 460.05,-140.91 460.05,-140.91 460.05,-103.09 460.05,-103.09 460.05,-97.09 466.05,-91.09 472.05,-91.09 472.05,-91.09 628.2,-91.09 628.2,-91.09 634.2,-91.09 640.2,-97.09 640.2,-103.09 640.2,-103.09 640.2,-140.91 640.2,-140.91 640.2,-146.91 634.2,-152.91 628.2,-152.91" />
+<text xml:space="preserve" text-anchor="middle" x="550.12" y="-134.57" font-family="Times New Roman" font-size="14.00">N70</text>
+<text xml:space="preserve" text-anchor="middle" x="550.12" y="-117.33" font-family="Times New Roman" font-size="14.00">Whole-school mean lagged</text>
+<text xml:space="preserve" text-anchor="middle" x="550.12" y="-100.08" font-family="Times New Roman" font-size="14.00">heading-change alignment</text>
+<title>N70 | lead_macro_school_lagged_alignment
+Whole-school mean lagged heading-change alignment
+Scale: macro | Phenomenon: leader_follower_cascade
+Definition: Indicator=(1/N_t^d) sum_i cos(Delta theta_i(t)-m_i(t-1)) over fish with defined lagged alignment.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_macro_school_cascade_fraction" class="inspectable" tabindex="0" data-node-id="lead_macro_school_cascade_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M629.7,-79.91C629.7,-79.91 470.55,-79.91 470.55,-79.91 464.55,-79.91 458.55,-73.91 458.55,-67.91 458.55,-67.91 458.55,-30.09 458.55,-30.09 458.55,-24.08 464.55,-18.09 470.55,-18.09 470.55,-18.09 629.7,-18.09 629.7,-18.09 635.7,-18.09 641.7,-24.09 641.7,-30.09 641.7,-30.09 641.7,-67.91 641.7,-67.91 641.7,-73.91 635.7,-79.91 629.7,-79.91" />
+<text xml:space="preserve" text-anchor="middle" x="550.12" y="-61.58" font-family="Times New Roman" font-size="14.00">N71</text>
+<text xml:space="preserve" text-anchor="middle" x="550.12" y="-44.33" font-family="Times New Roman" font-size="14.00">Whole-school sign-matched</text>
+<text xml:space="preserve" text-anchor="middle" x="550.12" y="-27.07" font-family="Times New Roman" font-size="14.00">cascade fraction</text>
+<title>N71 | lead_macro_school_cascade_fraction
+Whole-school sign-matched cascade fraction
+Scale: macro | Phenomenon: leader_follower_cascade
+Definition: Let M(t-1)=mean_j Delta theta_j(t-1). Indicator=(1/N_t) sum_i 1[sign(Delta theta_i(t))=sign(M(t-1))].
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_macro_school_influence_variance" class="inspectable" tabindex="0" data-node-id="lead_macro_school_influence_variance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M634.95,-225.91C634.95,-225.91 465.3,-225.91 465.3,-225.91 459.3,-225.91 453.3,-219.91 453.3,-213.91 453.3,-213.91 453.3,-176.09 453.3,-176.09 453.3,-170.09 459.3,-164.09 465.3,-164.09 465.3,-164.09 634.95,-164.09 634.95,-164.09 640.95,-164.09 646.95,-170.09 646.95,-176.09 646.95,-176.09 646.95,-213.91 646.95,-213.91 646.95,-219.91 640.95,-225.91 634.95,-225.91" />
+<text xml:space="preserve" text-anchor="middle" x="550.12" y="-207.57" font-family="Times New Roman" font-size="14.00">N72</text>
+<text xml:space="preserve" text-anchor="middle" x="550.12" y="-190.32" font-family="Times New Roman" font-size="14.00">Whole-school influence-score</text>
+<text xml:space="preserve" text-anchor="middle" x="550.12" y="-173.07" font-family="Times New Roman" font-size="14.00">variance</text>
+<title>N72 | lead_macro_school_influence_variance
+Whole-school influence-score variance
+Scale: macro | Phenomenon: leader_follower_cascade
+Definition: Indicator=(1/M) sum_i (s_i-mean_j s_j)^2 over fish i with defined run-level influence score s_i.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

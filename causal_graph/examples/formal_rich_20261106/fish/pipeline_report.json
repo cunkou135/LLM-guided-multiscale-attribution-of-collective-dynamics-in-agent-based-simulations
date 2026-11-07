@@ -1,0 +1,184 @@
+{
+  "started_at": "2026-11-07T06:58:55.201216+00:00",
+  "status": "generated_only",
+  "steps": [
+    {
+      "number": 1,
+      "name": "read_fixed_scenario_and_verify_runs",
+      "inputs": [
+        "results\\2a815b4dfe4f47b8ac2416fac04456e5"
+      ],
+      "outputs": [
+        "inputs.json",
+        "scenario.md"
+      ],
+      "started_at": "2026-11-07T06:58:55.202215+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T06:58:55.777704+00:00"
+    },
+    {
+      "number": 2,
+      "name": "build_observed_data_schema",
+      "inputs": [
+        "inputs/field_catalog.json",
+        "Trajectory.read"
+      ],
+      "outputs": [
+        "data_schema.json",
+        "data_schema_audit.json"
+      ],
+      "started_at": "2026-11-07T06:58:55.780781+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T06:58:56.586182+00:00"
+    },
+    {
+      "number": 3,
+      "name": "generate_phenomena",
+      "inputs": [
+        "scenario.md",
+        "generated definitions"
+      ],
+      "outputs": [
+        "generation/phenomena/parsed.json"
+      ],
+      "started_at": "2026-11-07T06:58:56.975685+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T06:58:56.982680+00:00"
+    },
+    {
+      "number": 4,
+      "name": "generate_indicators",
+      "inputs": [
+        "scenario.md",
+        "data_schema.json"
+      ],
+      "outputs": [
+        "generation/indicators/parsed.json"
+      ],
+      "started_at": "2026-11-07T06:58:56.984680+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T06:58:57.002830+00:00"
+    },
+    {
+      "number": 5,
+      "name": "generate_codes",
+      "inputs": [
+        "scenario.md",
+        "data_schema.json"
+      ],
+      "outputs": [
+        "generation/codes/parsed.json"
+      ],
+      "started_at": "2026-11-07T06:58:57.005064+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T06:58:57.569767+00:00"
+    },
+    {
+      "number": 6,
+      "name": "generate_edges_upward",
+      "inputs": [
+        "scenario.md",
+        "generated definitions"
+      ],
+      "outputs": [
+        "generation/edges_upward/parsed.json"
+      ],
+      "started_at": "2026-11-07T06:58:57.573098+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T06:58:57.657584+00:00"
+    },
+    {
+      "number": 7,
+      "name": "generate_edges_downward",
+      "inputs": [
+        "scenario.md",
+        "generated definitions"
+      ],
+      "outputs": [
+        "generation/edges_downward/parsed.json"
+      ],
+      "started_at": "2026-11-07T06:58:57.660584+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T06:59:56.647032+00:00"
+    },
+    {
+      "number": 8,
+      "name": "generate_edges_intrascale",
+      "inputs": [
+        "scenario.md",
+        "generated definitions"
+      ],
+      "outputs": [
+        "generation/edges_intrascale/parsed.json"
+      ],
+      "started_at": "2026-11-07T06:59:56.650325+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T07:01:17.519436+00:00"
+    },
+    {
+      "number": 9,
+      "name": "merge_candidate_directions",
+      "inputs": [
+        "generation/edges_*/parsed.json"
+      ],
+      "outputs": [
+        "edge_merge_report.json"
+      ],
+      "started_at": "2026-11-07T07:01:17.522439+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T07:01:17.551042+00:00"
+    },
+    {
+      "number": 10,
+      "name": "validate_and_assemble_candidate",
+      "inputs": [
+        "generation/*/parsed.json"
+      ],
+      "outputs": [
+        "candidate_graph.json",
+        "indicator_code/",
+        "structure_report.json"
+      ],
+      "started_at": "2026-11-07T07:01:17.556043+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T07:01:17.961890+00:00"
+    },
+    {
+      "number": 11,
+      "name": "execute_and_validate_indicators",
+      "inputs": [
+        "indicator_code/",
+        "inputs.json"
+      ],
+      "outputs": [
+        "execution/",
+        "indicator_series/"
+      ],
+      "started_at": "2026-11-07T07:01:17.989371+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T07:01:18.170727+00:00"
+    },
+    {
+      "number": 12,
+      "name": "export_graphs_and_finalize_provenance",
+      "inputs": [
+        "candidate_graph.json",
+        "execution_report.json"
+      ],
+      "outputs": [
+        "candidate_graph.graphml",
+        "executable_graph.json",
+        "executable_graph.graphml",
+        "per_run/"
+      ],
+      "started_at": "2026-11-07T07:01:18.175752+00:00",
+      "status": "success",
+      "ended_at": "2026-11-07T07:01:18.494750+00:00"
+    }
+  ],
+  "resumed": true,
+  "successful_calculations": 0,
+  "total_calculations": 72,
+  "executable_nodes": 0,
+  "ended_at": "2026-11-07T07:01:18.497150+00:00"
+}

@@ -1,0 +1,357 @@
+{
+  "views": [
+    {
+      "name": "Fish | Candidate hypotheses",
+      "file": "fish_candidate",
+      "nodes": 6,
+      "edges": 15,
+      "node_ids": [
+        "frag_micro_nn_distance",
+        "frag_meso_contact_component_count",
+        "frag_macro_largest_component_fraction",
+        "elong_micro_axis_alignment",
+        "elong_meso_local_eigen_ratio",
+        "elong_macro_global_eigen_ratio"
+      ],
+      "edge_ids": [
+        "upward__frag_nn_to_components",
+        "upward__frag_nn_to_largest_fraction",
+        "upward__frag_components_to_largest",
+        "upward__elong_axis_to_local_ratio",
+        "upward__elong_axis_to_global_ratio",
+        "upward__elong_local_to_global",
+        "downward__elong_macro_to_local_eigen",
+        "downward__frag_macro_to_local_eigen",
+        "downward__elong_macro_to_frag_components",
+        "downward__frag_components_to_nn_distance",
+        "downward__local_eigen_to_axis_alignment",
+        "downward__frag_macro_to_nn_distance",
+        "intra_scale__micro_nn_spacing_to_axis_alignment",
+        "intra_scale__meso_local_stretch_to_component_count",
+        "intra_scale__macro_global_stretch_to_largest_component"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\candidate_graph.json",
+      "source_graph_sha256": "7c10f3dc321552537fa2867bce257ea7bb908ae6df1fb491edd7086f881d2135",
+      "edge_filter": null,
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Fish | Executable hypotheses",
+      "file": "fish_executable",
+      "nodes": 5,
+      "edges": 9,
+      "node_ids": [
+        "frag_micro_nn_distance",
+        "frag_meso_contact_component_count",
+        "frag_macro_largest_component_fraction",
+        "elong_micro_axis_alignment",
+        "elong_macro_global_eigen_ratio"
+      ],
+      "edge_ids": [
+        "upward__frag_nn_to_components",
+        "upward__frag_nn_to_largest_fraction",
+        "upward__frag_components_to_largest",
+        "upward__elong_axis_to_global_ratio",
+        "downward__elong_macro_to_frag_components",
+        "downward__frag_components_to_nn_distance",
+        "downward__frag_macro_to_nn_distance",
+        "intra_scale__micro_nn_spacing_to_axis_alignment",
+        "intra_scale__macro_global_stretch_to_largest_component"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\executable_graph.json",
+      "source_graph_sha256": "f0c6c245707756cedb032b0d73d91036ca5d29082a603996c470971542e7a542",
+      "edge_filter": null,
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Fish | upward",
+      "file": "fish_upward",
+      "nodes": 6,
+      "edges": 6,
+      "node_ids": [
+        "frag_micro_nn_distance",
+        "frag_meso_contact_component_count",
+        "frag_macro_largest_component_fraction",
+        "elong_micro_axis_alignment",
+        "elong_meso_local_eigen_ratio",
+        "elong_macro_global_eigen_ratio"
+      ],
+      "edge_ids": [
+        "upward__frag_nn_to_components",
+        "upward__frag_nn_to_largest_fraction",
+        "upward__frag_components_to_largest",
+        "upward__elong_axis_to_local_ratio",
+        "upward__elong_axis_to_global_ratio",
+        "upward__elong_local_to_global"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\candidate_graph.json",
+      "source_graph_sha256": "7c10f3dc321552537fa2867bce257ea7bb908ae6df1fb491edd7086f881d2135",
+      "edge_filter": "upward",
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Fish | downward",
+      "file": "fish_downward",
+      "nodes": 6,
+      "edges": 6,
+      "node_ids": [
+        "frag_micro_nn_distance",
+        "frag_meso_contact_component_count",
+        "frag_macro_largest_component_fraction",
+        "elong_micro_axis_alignment",
+        "elong_meso_local_eigen_ratio",
+        "elong_macro_global_eigen_ratio"
+      ],
+      "edge_ids": [
+        "downward__elong_macro_to_local_eigen",
+        "downward__frag_macro_to_local_eigen",
+        "downward__elong_macro_to_frag_components",
+        "downward__frag_components_to_nn_distance",
+        "downward__local_eigen_to_axis_alignment",
+        "downward__frag_macro_to_nn_distance"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\candidate_graph.json",
+      "source_graph_sha256": "7c10f3dc321552537fa2867bce257ea7bb908ae6df1fb491edd7086f881d2135",
+      "edge_filter": "downward",
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Fish | intra_scale",
+      "file": "fish_intra_scale",
+      "nodes": 6,
+      "edges": 3,
+      "node_ids": [
+        "frag_micro_nn_distance",
+        "frag_meso_contact_component_count",
+        "frag_macro_largest_component_fraction",
+        "elong_micro_axis_alignment",
+        "elong_meso_local_eigen_ratio",
+        "elong_macro_global_eigen_ratio"
+      ],
+      "edge_ids": [
+        "intra_scale__micro_nn_spacing_to_axis_alignment",
+        "intra_scale__meso_local_stretch_to_component_count",
+        "intra_scale__macro_global_stretch_to_largest_component"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\candidate_graph.json",
+      "source_graph_sha256": "7c10f3dc321552537fa2867bce257ea7bb908ae6df1fb491edd7086f881d2135",
+      "edge_filter": "intra_scale",
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Fish | run_2a815b4dfe",
+      "file": "fish_run_2a815b4dfe",
+      "nodes": 5,
+      "edges": 9,
+      "node_ids": [
+        "frag_micro_nn_distance",
+        "frag_meso_contact_component_count",
+        "frag_macro_largest_component_fraction",
+        "elong_micro_axis_alignment",
+        "elong_macro_global_eigen_ratio"
+      ],
+      "edge_ids": [
+        "upward__frag_nn_to_components",
+        "upward__frag_nn_to_largest_fraction",
+        "upward__frag_components_to_largest",
+        "upward__elong_axis_to_global_ratio",
+        "downward__elong_macro_to_frag_components",
+        "downward__frag_components_to_nn_distance",
+        "downward__frag_macro_to_nn_distance",
+        "intra_scale__micro_nn_spacing_to_axis_alignment",
+        "intra_scale__macro_global_stretch_to_largest_component"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\per_run\\2a815b4dfe4f47b8ac2416fac04456e5\\executable_graph.json",
+      "source_graph_sha256": "f0c6c245707756cedb032b0d73d91036ca5d29082a603996c470971542e7a542",
+      "edge_filter": null,
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Covasim | Candidate hypotheses",
+      "file": "covasim_candidate",
+      "nodes": 6,
+      "edges": 20,
+      "node_ids": [
+        "sic_micro_prior_setting_degree",
+        "sic_meso_layer_infection_contact_ratio",
+        "sic_macro_layer_entropy",
+        "icts_micro_quarantine_contact_ratio",
+        "icts_meso_layer_contact_change",
+        "icts_macro_city_contact_change_on_quarantine_increase"
+      ],
+      "edge_ids": [
+        "upward__edge_sic_micro_degree_to_meso_layer_ratio",
+        "upward__edge_icts_micro_quarantine_ratio_to_meso_layer_contact_change",
+        "upward__edge_sic_meso_layer_ratio_to_macro_layer_entropy",
+        "upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy",
+        "upward__edge_sic_micro_degree_to_macro_layer_entropy",
+        "upward__edge_icts_micro_quarantine_ratio_to_macro_city_contact_change",
+        "upward__edge_icts_micro_quarantine_ratio_to_meso_layer_infection_ratio",
+        "downward__macro_entropy_to_layer_infection_ratio",
+        "downward__macro_city_contact_to_micro_quarantine_ratio",
+        "downward__macro_city_contact_to_micro_prior_degree",
+        "downward__macro_city_contact_to_layer_infection_ratio",
+        "downward__layer_infection_ratio_to_micro_prior_degree",
+        "downward__layer_contact_change_to_micro_quarantine_ratio",
+        "downward__layer_contact_change_to_micro_prior_degree",
+        "intra_scale__micro_prior_degree_to_quarantine_ratio",
+        "intra_scale__micro_quarantine_to_prior_degree",
+        "intra_scale__meso_infection_ratio_to_layer_contact_change",
+        "intra_scale__meso_layer_contact_change_to_infection_ratio",
+        "intra_scale__macro_layer_entropy_to_city_contact_change",
+        "intra_scale__macro_city_contact_change_to_layer_entropy"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\candidate_graph.json",
+      "source_graph_sha256": "7a7ed5cd12f51a82d299a72b18a9eef8c5365bb9e941d1d95a32764275b0a541",
+      "edge_filter": null,
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Covasim | Executable hypotheses",
+      "file": "covasim_executable",
+      "nodes": 3,
+      "edges": 3,
+      "node_ids": [
+        "sic_macro_layer_entropy",
+        "icts_meso_layer_contact_change",
+        "icts_macro_city_contact_change_on_quarantine_increase"
+      ],
+      "edge_ids": [
+        "upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy",
+        "intra_scale__macro_layer_entropy_to_city_contact_change",
+        "intra_scale__macro_city_contact_change_to_layer_entropy"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\executable_graph.json",
+      "source_graph_sha256": "9c34f79897ee6dea731cdad7e7945538f4e5a7c33ac8396ccb6ee8b2f34b14db",
+      "edge_filter": null,
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Covasim | upward",
+      "file": "covasim_upward",
+      "nodes": 6,
+      "edges": 7,
+      "node_ids": [
+        "sic_micro_prior_setting_degree",
+        "sic_meso_layer_infection_contact_ratio",
+        "sic_macro_layer_entropy",
+        "icts_micro_quarantine_contact_ratio",
+        "icts_meso_layer_contact_change",
+        "icts_macro_city_contact_change_on_quarantine_increase"
+      ],
+      "edge_ids": [
+        "upward__edge_sic_micro_degree_to_meso_layer_ratio",
+        "upward__edge_icts_micro_quarantine_ratio_to_meso_layer_contact_change",
+        "upward__edge_sic_meso_layer_ratio_to_macro_layer_entropy",
+        "upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy",
+        "upward__edge_sic_micro_degree_to_macro_layer_entropy",
+        "upward__edge_icts_micro_quarantine_ratio_to_macro_city_contact_change",
+        "upward__edge_icts_micro_quarantine_ratio_to_meso_layer_infection_ratio"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\candidate_graph.json",
+      "source_graph_sha256": "7a7ed5cd12f51a82d299a72b18a9eef8c5365bb9e941d1d95a32764275b0a541",
+      "edge_filter": "upward",
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Covasim | downward",
+      "file": "covasim_downward",
+      "nodes": 6,
+      "edges": 7,
+      "node_ids": [
+        "sic_micro_prior_setting_degree",
+        "sic_meso_layer_infection_contact_ratio",
+        "sic_macro_layer_entropy",
+        "icts_micro_quarantine_contact_ratio",
+        "icts_meso_layer_contact_change",
+        "icts_macro_city_contact_change_on_quarantine_increase"
+      ],
+      "edge_ids": [
+        "downward__macro_entropy_to_layer_infection_ratio",
+        "downward__macro_city_contact_to_micro_quarantine_ratio",
+        "downward__macro_city_contact_to_micro_prior_degree",
+        "downward__macro_city_contact_to_layer_infection_ratio",
+        "downward__layer_infection_ratio_to_micro_prior_degree",
+        "downward__layer_contact_change_to_micro_quarantine_ratio",
+        "downward__layer_contact_change_to_micro_prior_degree"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\candidate_graph.json",
+      "source_graph_sha256": "7a7ed5cd12f51a82d299a72b18a9eef8c5365bb9e941d1d95a32764275b0a541",
+      "edge_filter": "downward",
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Covasim | intra_scale",
+      "file": "covasim_intra_scale",
+      "nodes": 6,
+      "edges": 6,
+      "node_ids": [
+        "sic_micro_prior_setting_degree",
+        "sic_meso_layer_infection_contact_ratio",
+        "sic_macro_layer_entropy",
+        "icts_micro_quarantine_contact_ratio",
+        "icts_meso_layer_contact_change",
+        "icts_macro_city_contact_change_on_quarantine_increase"
+      ],
+      "edge_ids": [
+        "intra_scale__micro_prior_degree_to_quarantine_ratio",
+        "intra_scale__micro_quarantine_to_prior_degree",
+        "intra_scale__meso_infection_ratio_to_layer_contact_change",
+        "intra_scale__meso_layer_contact_change_to_infection_ratio",
+        "intra_scale__macro_layer_entropy_to_city_contact_change",
+        "intra_scale__macro_city_contact_change_to_layer_entropy"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\candidate_graph.json",
+      "source_graph_sha256": "7a7ed5cd12f51a82d299a72b18a9eef8c5365bb9e941d1d95a32764275b0a541",
+      "edge_filter": "intra_scale",
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    },
+    {
+      "name": "Covasim | run_3249f90463",
+      "file": "covasim_run_3249f90463",
+      "nodes": 3,
+      "edges": 3,
+      "node_ids": [
+        "sic_macro_layer_entropy",
+        "icts_meso_layer_contact_change",
+        "icts_macro_city_contact_change_on_quarantine_increase"
+      ],
+      "edge_ids": [
+        "upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy",
+        "intra_scale__macro_layer_entropy_to_city_contact_change",
+        "intra_scale__macro_city_contact_change_to_layer_entropy"
+      ],
+      "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\per_run\\3249f90463154305aed53504106b3dae\\executable_graph.json",
+      "source_graph_sha256": "9c34f79897ee6dea731cdad7e7945538f4e5a7c33ac8396ccb6ee8b2f34b14db",
+      "edge_filter": null,
+      "layout_engine": "graphviz_dot",
+      "node_font_points": 14
+    }
+  ],
+  "graph_semantics_changed": false,
+  "direction_encoding": {
+    "upward": {
+      "color": "#27667b",
+      "line_style": "solid"
+    },
+    "downward": {
+      "color": "#b3653b",
+      "line_style": "dashed"
+    },
+    "intra_scale": {
+      "color": "#6e648d",
+      "line_style": "dotted"
+    }
+  }
+}

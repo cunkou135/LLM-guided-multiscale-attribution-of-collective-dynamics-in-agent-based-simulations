@@ -1,0 +1,47 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Fish | phenomenon_7</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">9 nodes / 20 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"mill_micro_angular_velocity" [id="node_mill_micro_angular_velocity", label="N55\nFocal angular velocity\naround school centroid", style="rounded,filled", fillcolor="white"];
+"mill_micro_tangential_speed" [id="node_mill_micro_tangential_speed", label="N56\nFocal signed tangential\nspeed", style="rounded,filled", fillcolor="white"];
+"mill_micro_radial_velocity" [id="node_mill_micro_radial_velocity", label="N57\nFocal radial velocity", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"mill_meso_component_angular_velocity" [id="node_mill_meso_component_angular_velocity", label="N58\nContact-component mean\nangular velocity", style="rounded,filled", fillcolor="white"];
+"mill_meso_component_rotational_order" [id="node_mill_meso_component_rotational_order", label="N59\nContact-component rotational\norder", style="rounded,filled", fillcolor="white"];
+"mill_meso_component_angular_momentum" [id="node_mill_meso_component_angular_momentum", label="N60\nContact-component mean\nangular momentum", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"mill_macro_school_angular_velocity" [id="node_mill_macro_school_angular_velocity", label="N61\nWhole-school mean angular\nvelocity", style="rounded,filled", fillcolor="white"];
+"mill_macro_school_rotational_order" [id="node_mill_macro_school_rotational_order", label="N62\nWhole-school rotational\norder", style="rounded,filled", fillcolor="white"];
+"mill_macro_school_angular_momentum" [id="node_mill_macro_school_angular_momentum", label="N63\nWhole-school mean angular\nmomentum", style="rounded,filled", fillcolor="white"];
+}
+"mill_micro_angular_velocity" -> "mill_meso_component_rotational_order" [id="edge_upward__b00_r0027", color="#27667b", style="solid", constraint=true];
+"mill_micro_tangential_speed" -> "mill_meso_component_angular_momentum" [id="edge_upward__b01_r0015", color="#27667b", style="solid", constraint=true];
+"mill_micro_radial_velocity" -> "mill_meso_component_rotational_order" [id="edge_upward__b02_r0045", color="#27667b", style="solid", constraint=true];
+"mill_micro_radial_velocity" -> "mill_meso_component_angular_velocity" [id="edge_upward__b02_r0046", color="#27667b", style="solid", constraint=true];
+"mill_micro_radial_velocity" -> "mill_meso_component_angular_momentum" [id="edge_upward__b02_r0047", color="#27667b", style="solid", constraint=true];
+"mill_micro_radial_velocity" -> "mill_macro_school_rotational_order" [id="edge_upward__b02_r0048", color="#27667b", style="solid", constraint=true];
+"mill_micro_radial_velocity" -> "mill_macro_school_angular_momentum" [id="edge_upward__b02_r0049", color="#27667b", style="solid", constraint=true];
+"mill_meso_component_angular_velocity" -> "mill_macro_school_angular_velocity" [id="edge_upward__b03_r0053", color="#27667b", style="solid", constraint=true];
+"mill_meso_component_angular_velocity" -> "mill_macro_school_rotational_order" [id="edge_upward__b03_r0054", color="#27667b", style="solid", constraint=true];
+"mill_meso_component_angular_velocity" -> "mill_macro_school_angular_momentum" [id="edge_upward__b03_r0055", color="#27667b", style="solid", constraint=true];
+"mill_macro_school_rotational_order" -> "mill_meso_component_angular_velocity" [id="edge_downward__b00_r0030", color="#b3653b", style="dashed", constraint=false];
+"mill_macro_school_angular_momentum" -> "mill_meso_component_rotational_order" [id="edge_downward__b01_r0011", color="#b3653b", style="dashed", constraint=false];
+"mill_macro_school_angular_velocity" -> "mill_meso_component_angular_velocity" [id="edge_downward__b03_r0043", color="#b3653b", style="dashed", constraint=false];
+"mill_macro_school_angular_velocity" -> "mill_meso_component_rotational_order" [id="edge_downward__b03_r0044", color="#b3653b", style="dashed", constraint=false];
+"mill_macro_school_angular_velocity" -> "mill_micro_angular_velocity" [id="edge_downward__b03_r0045", color="#b3653b", style="dashed", constraint=false];
+"mill_macro_school_angular_velocity" -> "mill_micro_tangential_speed" [id="edge_downward__b03_r0046", color="#b3653b", style="dashed", constraint=false];
+"mill_macro_school_angular_velocity" -> "mill_micro_radial_velocity" [id="edge_downward__b03_r0047", color="#b3653b", style="dashed", constraint=false];
+"mill_meso_component_rotational_order" -> "mill_meso_component_angular_velocity" [id="edge_intra_scale__b02_r0033", color="#6e648d", style="dotted", constraint=false];
+"mill_macro_school_angular_momentum" -> "mill_macro_school_rotational_order" [id="edge_intra_scale__b02_r0051", color="#6e648d", style="dotted", constraint=false];
+"mill_meso_component_angular_momentum" -> "mill_meso_component_rotational_order" [id="edge_intra_scale__b03_r0034", color="#6e648d", style="dotted", constraint=false];
+}

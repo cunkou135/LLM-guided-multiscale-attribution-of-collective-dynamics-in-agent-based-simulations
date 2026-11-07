@@ -1,0 +1,36 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Covasim | phenomenon_1</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">7 nodes / 11 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"p1_micro_new_exposure_flag" [id="node_p1_micro_new_exposure_flag", label="N1\nAgent new-exposure\ntransition indicator", style="rounded,filled", fillcolor="white"];
+"p1_micro_ever_exposed_state" [id="node_p1_micro_ever_exposed_state", label="N2\nAgent cumulative ever-\nexposed indicator", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"p1_meso_band_exposure_hazard" [id="node_p1_meso_band_exposure_hazard", label="N3\nAge-band exposure hazard per\nsusceptible person-step", style="rounded,filled", fillcolor="white"];
+"p1_meso_band_attack_ratio" [id="node_p1_meso_band_attack_ratio", label="N4\nAge-band cumulative attack\nratio", style="rounded,filled", fillcolor="white"];
+"p1_meso_band_hazard_dispersion" [id="node_p1_meso_band_hazard_dispersion", label="N5\nCross-band dispersion of\nexposure hazard", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"p1_macro_band_attack_range" [id="node_p1_macro_band_attack_range", label="N6\nAge-band attack ratio range", style="rounded,filled", fillcolor="white"];
+"p1_macro_band_composition_mismatch" [id="node_p1_macro_band_composition_mismatch", label="N7\nExposure-share versus\nsusceptible-person-time\nmismatch", style="rounded,filled", fillcolor="white"];
+}
+"p1_micro_new_exposure_flag" -> "p1_meso_band_hazard_dispersion" [id="edge_upward__b00_r0002", color="#27667b", style="solid", constraint=true];
+"p1_meso_band_exposure_hazard" -> "p1_micro_new_exposure_flag" [id="edge_downward__b00_r0000", color="#b3653b", style="dashed", constraint=false];
+"p1_macro_band_composition_mismatch" -> "p1_meso_band_exposure_hazard" [id="edge_downward__b00_r0001", color="#b3653b", style="dashed", constraint=false];
+"p1_meso_band_attack_ratio" -> "p1_micro_new_exposure_flag" [id="edge_downward__b01_r0023", color="#b3653b", style="dashed", constraint=false];
+"p1_meso_band_hazard_dispersion" -> "p1_micro_new_exposure_flag" [id="edge_downward__b02_r0000", color="#b3653b", style="dashed", constraint=false];
+"p1_meso_band_hazard_dispersion" -> "p1_micro_ever_exposed_state" [id="edge_downward__b02_r0001", color="#b3653b", style="dashed", constraint=false];
+"p1_macro_band_attack_range" -> "p1_meso_band_hazard_dispersion" [id="edge_downward__b03_r0000", color="#b3653b", style="dashed", constraint=false];
+"p1_meso_band_hazard_dispersion" -> "p1_meso_band_attack_ratio" [id="edge_intra_scale__b00_r0030", color="#6e648d", style="dotted", constraint=false];
+"p1_macro_band_attack_range" -> "p1_macro_band_composition_mismatch" [id="edge_intra_scale__b01_r0035", color="#6e648d", style="dotted", constraint=false];
+"p1_meso_band_attack_ratio" -> "p1_meso_band_exposure_hazard" [id="edge_intra_scale__b03_r0028", color="#6e648d", style="dotted", constraint=false];
+"p1_meso_band_attack_ratio" -> "p1_meso_band_hazard_dispersion" [id="edge_intra_scale__b03_r0029", color="#6e648d", style="dotted", constraint=false];
+}

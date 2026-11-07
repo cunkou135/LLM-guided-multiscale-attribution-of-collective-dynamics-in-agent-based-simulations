@@ -1,0 +1,268 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1523pt" height="900pt" viewBox="0.00 0.00 1523.00 900.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 423.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-423.39 722.23,-423.39 722.23,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-389.5" font-family="Times New Roman" font-size="17.00">Fish | phenomenon_3</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-367" font-family="Times New Roman" font-size="12.00">9 nodes / 20 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-342.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-342.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-342.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-342.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-342.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="26.64,-65 26.64,-321 240.29,-321 240.29,-65 26.64,-65" />
+<text xml:space="preserve" text-anchor="middle" x="53.77" y="-301.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="250.29,-65 250.29,-321 475.19,-321 475.19,-65 250.29,-65" />
+<text xml:space="preserve" text-anchor="middle" x="276.67" y="-301.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="485.19,-8 485.19,-264 705.59,-264 705.59,-8 485.19,-8" />
+<text xml:space="preserve" text-anchor="middle" x="514.57" y="-244.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_intra_scale__b02_r0008" class="inspectable" data-source="wave_micro_escape_alignment" data-target="wave_micro_heading_change">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M36.23,-231.57C26.61,-225.9 18.06,-218.68 11.64,-209.5 -3.88,-187.27 -3.88,-170.73 11.64,-148.5 18.2,-139.12 26.99,-131.79 36.86,-126.06" />
+<polygon fill="#6e648d" stroke="#6e648d" points="37.84,-128.31 42.89,-122.88 35.55,-123.98 37.84,-128.31" />
+<title>wave_micro_escape_alignment → wave_micro_heading_change
+intra_scale
+When a fish heading is misaligned with its recorded escape direction, the needed adjustment implies a larger step heading change.</title></g>
+
+<g id="edge_upward__b00_r0009" class="inspectable" data-source="wave_micro_escape_alignment" data-target="wave_meso_component_mean_escape_alignment">
+<path fill="none" stroke="#27667b" d="M230.52,-252C242.53,-252 254.81,-252 266.8,-252" />
+<polygon fill="#27667b" stroke="#27667b" points="266.54,-254.45 273.54,-252 266.54,-249.55 266.54,-254.45" />
+<title>wave_micro_escape_alignment → wave_meso_component_mean_escape_alignment
+upward
+A fish aligned with its escape direction can socially influence neighbors to also align, amplifying the component mean escape alignment beyond simple averaging.</title></g>
+
+<g id="edge_intra_scale__b03_r0004" class="inspectable" data-source="wave_micro_requested_turn_abs" data-target="wave_micro_escape_alignment">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M133.47,-210.37C133.47,-211.02 133.47,-211.67 133.47,-212.32" />
+<polygon fill="#6e648d" stroke="#6e648d" points="131.02,-212.26 133.47,-219.26 135.92,-212.26 131.02,-212.26" />
+<title>wave_micro_requested_turn_abs → wave_micro_escape_alignment
+intra_scale
+Large requested turns can rotate heading toward or away from the recorded escape direction, changing escape alignment.</title></g>
+
+<g id="edge_intra_scale__b03_r0003" class="inspectable" data-source="wave_micro_requested_turn_abs" data-target="wave_micro_heading_change">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M68.15,-147.78C67.81,-147.12 67.53,-146.47 67.31,-145.82" />
+<polygon fill="#6e648d" stroke="#6e648d" points="69.75,-146.07 67.94,-138.87 64.87,-145.62 69.75,-146.07" />
+<title>wave_micro_requested_turn_abs → wave_micro_heading_change
+intra_scale
+Requested turn sets the desired rotation; actual heading change results after turn-rate limits and random perturbation.</title></g>
+
+<g id="edge_upward__b01_r0001" class="inspectable" data-source="wave_micro_requested_turn_abs" data-target="wave_meso_component_turn_variance">
+<path fill="none" stroke="#27667b" d="M217.48,-179C228.61,-179 240.15,-179 251.65,-179" />
+<polygon fill="#27667b" stroke="#27667b" points="251.49,-181.45 258.49,-179 251.49,-176.55 251.49,-181.45" />
+<title>wave_micro_requested_turn_abs → wave_meso_component_turn_variance
+upward
+Individual requested turn magnitudes are the behavioral inputs that generate within-component variation in requested turns; stronger and more heterogeneous individual turn requests can increase the variance of requested turns across fish in a contact component.</title></g>
+
+<g id="edge_intra_scale__b00_r0007" class="inspectable" data-source="wave_micro_heading_change" data-target="wave_micro_requested_turn_abs">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M198.86,-137.37C199.2,-138.02 199.47,-138.67 199.67,-139.32" />
+<polygon fill="#6e648d" stroke="#6e648d" points="197.24,-139.05 198.94,-146.27 202.11,-139.56 197.24,-139.05" />
+<title>wave_micro_heading_change → wave_micro_requested_turn_abs
+intra_scale
+A larger requested turn magnitude is the decision-level driver that produces a larger realized heading change, subject to turning limits.</title></g>
+
+<g id="edge_upward__b02_r0015" class="inspectable" data-source="wave_micro_heading_change" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#27667b" d="M222.66,-106C235.15,-106 248.07,-106 260.78,-106" />
+<polygon fill="#27667b" stroke="#27667b" points="260.57,-108.45 267.57,-106 260.57,-103.55 260.57,-108.45" />
+<title>wave_micro_heading_change → wave_meso_component_escape_coherence
+upward
+Individual heading changes are the elementary turns that, when coordinated within a contact component, produce coherent component escape directions.</title></g>
+
+<g id="edge_upward__b02_r0016" class="inspectable" data-source="wave_micro_heading_change" data-target="wave_meso_component_mean_escape_alignment">
+<path fill="none" stroke="#27667b" d="M222.81,-127.71C229.39,-131.93 235.36,-136.98 240.29,-143 260.76,-167.99 229.63,-190.17 250.29,-215 255.23,-220.93 261.13,-225.91 267.62,-230.1" />
+<polygon fill="#27667b" stroke="#27667b" points="266.28,-232.15 273.56,-233.57 268.76,-227.92 266.28,-232.15" />
+<title>wave_micro_heading_change → wave_meso_component_mean_escape_alignment
+upward
+Fish that turn toward their escape directions raise the component mean heading-escape alignment; heterogeneous turns weaken that meso alignment.</title></g>
+
+<g id="edge_upward__b02_r0017" class="inspectable" data-source="wave_micro_heading_change" data-target="wave_meso_component_turn_variance">
+<path fill="none" stroke="#27667b" d="M222.66,-134.33C233.51,-137.81 244.68,-141.4 255.75,-144.96" />
+<polygon fill="#27667b" stroke="#27667b" points="254.93,-147.27 262.35,-147.07 256.43,-142.6 254.93,-147.27" />
+<title>wave_micro_heading_change → wave_meso_component_turn_variance
+upward
+Variation among individual heading changes directly contributes to the spread of requested turn behavior recorded at the component level.</title></g>
+
+<g id="edge_upward__b02_r0019" class="inspectable" data-source="wave_micro_heading_change" data-target="wave_macro_school_escape_coherence">
+<path fill="none" stroke="#27667b" d="M208.54,-74.6C222.21,-69.93 236.52,-65.76 250.29,-63 338.59,-45.28 442.11,-43.56 512.37,-45.16" />
+<polygon fill="#27667b" stroke="#27667b" points="512.2,-47.6 519.26,-45.33 512.32,-42.7 512.2,-47.6" />
+<title>wave_micro_heading_change → wave_macro_school_escape_coherence
+upward
+Many small individual turns can collectively synchronize or scatter escape directions, affecting whole-school escape coherence.</title></g>
+
+<g id="edge_upward__b03_r0034" class="inspectable" data-source="wave_meso_component_escape_coherence" data-target="wave_macro_school_escape_coherence">
+<path fill="none" stroke="#27667b" d="M456.56,-87.12C475.01,-82.67 494.27,-77.89 512.33,-73.25" />
+<polygon fill="#27667b" stroke="#27667b" points="512.91,-75.63 519.07,-71.51 511.68,-70.88 512.91,-75.63" />
+<title>wave_meso_component_escape_coherence → wave_macro_school_escape_coherence
+upward
+When component members share escape directions, the aggregation across components can raise whole-school escape-direction coherence.</title></g>
+
+<g id="edge_upward__b03_r0035" class="inspectable" data-source="wave_meso_component_escape_coherence" data-target="wave_macro_escape_coherence_change">
+<path fill="none" stroke="#27667b" d="M456.55,-131.29C463.14,-134.73 469.44,-138.61 475.19,-143 481.56,-147.86 478.84,-153.12 485.19,-158 488.72,-160.7 492.45,-163.22 496.33,-165.55" />
+<polygon fill="#27667b" stroke="#27667b" points="494.84,-167.52 502.14,-168.83 497.24,-163.26 494.84,-167.52" />
+<title>wave_meso_component_escape_coherence → wave_macro_escape_coherence_change
+upward
+Changes in component escape coherence propagate to step-to-step changes in school-wide escape-direction coherence.</title></g>
+
+<g id="edge_intra_scale__b02_r0022" class="inspectable" data-source="wave_meso_component_mean_escape_alignment" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M275.02,-228.16C266.37,-224.34 257.97,-219.98 250.29,-215 247.52,-213.2 246.48,-212.58 245.29,-209.5 240.4,-196.86 240.4,-161.14 245.29,-148.5 248.77,-139.52 254.57,-132.37 261.79,-126.7" />
+<polygon fill="#6e648d" stroke="#6e648d" points="263.16,-128.73 267.54,-122.75 260.38,-124.69 263.16,-128.73" />
+<title>wave_meso_component_mean_escape_alignment → wave_meso_component_escape_coherence
+intra_scale
+Shared heading-escape alignment can support more coherent escape-direction vectors across component fish.</title></g>
+
+<g id="edge_intra_scale__b03_r0023" class="inspectable" data-source="wave_meso_component_turn_variance" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M362.74,-147.78C362.74,-147.12 362.74,-146.47 362.74,-145.82" />
+<polygon fill="#6e648d" stroke="#6e648d" points="365.19,-145.88 362.74,-138.88 360.29,-145.88 365.19,-145.88" />
+<title>wave_meso_component_turn_variance → wave_meso_component_escape_coherence
+intra_scale
+Heterogeneous requested turns within a component disrupt a shared escape direction and lower coherence.</title></g>
+
+<g id="edge_downward__b03_r0017" class="inspectable" data-source="wave_macro_school_escape_coherence" data-target="wave_micro_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M520.62,-41.04C431.03,-33.17 287.26,-26.94 250.29,-63 226.06,-86.63 260.78,-188.05 240.29,-215 239.14,-216.51 237.93,-217.96 236.66,-219.35" />
+<polygon fill="#b3653b" stroke="#b3653b" points="235.14,-217.41 231.8,-224.03 238.54,-220.93 235.14,-217.41" />
+<title>wave_macro_school_escape_coherence → wave_micro_escape_alignment
+downward
+School-level escape coherence acts as a shared directional context that can increase individual heading alignment with own escape direction.</title></g>
+
+<g id="edge_downward__b03_r0018" class="inspectable" data-source="wave_macro_school_escape_coherence" data-target="wave_micro_heading_change">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M520.53,-25.37C449.44,-6.53 339.82,12.15 250.29,-18 220.01,-28.2 191.38,-49.81 170.15,-69.06" />
+<polygon fill="#b3653b" stroke="#b3653b" points="168.67,-67.09 165.2,-73.65 172,-70.69 168.67,-67.09" />
+<title>wave_macro_school_escape_coherence → wave_micro_heading_change
+downward
+As a coherent escape wave passes, individual fish are plausibly induced to turn, changing step heading-change magnitudes.</title></g>
+
+<g id="edge_downward__b03_r0015" class="inspectable" data-source="wave_macro_school_escape_coherence" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M520.54,-63.37C502.73,-67.55 483.4,-72.26 464.58,-76.98" />
+<polygon fill="#b3653b" stroke="#b3653b" points="464.22,-74.55 458.03,-78.64 465.41,-79.3 464.22,-74.55" />
+<title>wave_macro_school_escape_coherence → wave_meso_component_escape_coherence
+downward
+High school-wide escape-direction coherence provides a common directional drive that can increase coherence within contact components.</title></g>
+
+<g id="edge_downward__b03_r0016" class="inspectable" data-source="wave_macro_school_escape_coherence" data-target="wave_meso_component_mean_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M520.79,-60.89C507.07,-66.39 494.22,-74.38 485.19,-86 467.55,-108.7 492.91,-192.35 475.19,-215 470.25,-221.32 464.19,-226.58 457.47,-230.94" />
+<polygon fill="#b3653b" stroke="#b3653b" points="456.65,-228.58 451.86,-234.24 459.13,-232.8 456.65,-228.58" />
+<title>wave_macro_school_escape_coherence → wave_meso_component_mean_escape_alignment
+downward
+A coherent school escape wave can align component fish headings with their escape directions, plausibly raising component mean alignment.</title></g>
+
+<g id="edge_downward__b00_r0010" class="inspectable" data-source="wave_macro_heading_change_shark_cov" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M494.98,-115.1C485.01,-114.41 474.89,-113.71 464.9,-113.02" />
+<polygon fill="#b3653b" stroke="#b3653b" points="465.22,-110.58 458.07,-112.54 464.88,-115.47 465.22,-110.58" />
+<title>wave_macro_heading_change_shark_cov → wave_meso_component_escape_coherence
+downward
+A strong global covariance between turning and proximity implies coordinated threat response; this can align escape directions inside components and raise component escape coherence.</title></g>
+
+<g id="edge_downward__b01_r0005" class="inspectable" data-source="wave_macro_escape_coherence_change" data-target="wave_meso_component_mean_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M503.37,-217.49C488.71,-221.12 473.5,-224.88 458.75,-228.52" />
+<polygon fill="#b3653b" stroke="#b3653b" points="458.29,-226.11 452.08,-230.17 459.47,-230.87 458.29,-226.11" />
+<title>wave_macro_escape_coherence_change → wave_meso_component_mean_escape_alignment
+downward
+A rising school-wide escape-direction coherence propagates into contact components, making component fish more likely to share a common escape heading and raising component mean heading-escape alignment.</title></g>
+
+<g id="node_wave_micro_escape_alignment" class="inspectable" tabindex="0" data-node-id="wave_micro_escape_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M218.29,-282.92C218.29,-282.92 48.64,-282.92 48.64,-282.92 42.64,-282.92 36.64,-276.92 36.64,-270.92 36.64,-270.92 36.64,-233.09 36.64,-233.09 36.64,-227.09 42.64,-221.09 48.64,-221.09 48.64,-221.09 218.29,-221.09 218.29,-221.09 224.29,-221.09 230.29,-227.09 230.29,-233.09 230.29,-233.09 230.29,-270.92 230.29,-270.92 230.29,-276.92 224.29,-282.92 218.29,-282.92" />
+<text xml:space="preserve" text-anchor="middle" x="133.47" y="-264.57" font-family="Times New Roman" font-size="14.00">N19</text>
+<text xml:space="preserve" text-anchor="middle" x="133.47" y="-247.32" font-family="Times New Roman" font-size="14.00">Focal heading alignment with</text>
+<text xml:space="preserve" text-anchor="middle" x="133.47" y="-230.07" font-family="Times New Roman" font-size="14.00">own escape direction</text>
+<title>N19 | wave_micro_escape_alignment
+Focal heading alignment with own escape direction
+Scale: micro | Phenomenon: coordinated_escape_wave
+Definition: For fish i with heading theta_i(t) and decision_json.escape_direction e_i(t)=(e_x,e_y), indicator=cos(theta_i(t)-atan2(e_y,e_x)).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_micro_requested_turn_abs" class="inspectable" tabindex="0" data-node-id="wave_micro_requested_turn_abs">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M205.17,-209.91C205.17,-209.91 61.77,-209.91 61.77,-209.91 55.77,-209.91 49.77,-203.91 49.77,-197.91 49.77,-197.91 49.77,-160.09 49.77,-160.09 49.77,-154.09 55.77,-148.09 61.77,-148.09 61.77,-148.09 205.17,-148.09 205.17,-148.09 211.17,-148.09 217.17,-154.09 217.17,-160.09 217.17,-160.09 217.17,-197.91 217.17,-197.91 217.17,-203.91 211.17,-209.91 205.17,-209.91" />
+<text xml:space="preserve" text-anchor="middle" x="133.47" y="-191.57" font-family="Times New Roman" font-size="14.00">N20</text>
+<text xml:space="preserve" text-anchor="middle" x="133.47" y="-174.32" font-family="Times New Roman" font-size="14.00">Focal absolute requested</text>
+<text xml:space="preserve" text-anchor="middle" x="133.47" y="-157.07" font-family="Times New Roman" font-size="14.00">turn</text>
+<title>N20 | wave_micro_requested_turn_abs
+Focal absolute requested turn
+Scale: micro | Phenomenon: coordinated_escape_wave
+Definition: Indicator=|decision_json.requested_turn| for fish i at (r,t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_micro_heading_change" class="inspectable" tabindex="0" data-node-id="wave_micro_heading_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M210.42,-136.91C210.42,-136.91 56.52,-136.91 56.52,-136.91 50.52,-136.91 44.52,-130.91 44.52,-124.91 44.52,-124.91 44.52,-87.09 44.52,-87.09 44.52,-81.09 50.52,-75.09 56.52,-75.09 56.52,-75.09 210.42,-75.09 210.42,-75.09 216.42,-75.09 222.42,-81.09 222.42,-87.09 222.42,-87.09 222.42,-124.91 222.42,-124.91 222.42,-130.91 216.42,-136.91 210.42,-136.91" />
+<text xml:space="preserve" text-anchor="middle" x="133.47" y="-118.58" font-family="Times New Roman" font-size="14.00">N21</text>
+<text xml:space="preserve" text-anchor="middle" x="133.47" y="-101.33" font-family="Times New Roman" font-size="14.00">Focal step heading change</text>
+<text xml:space="preserve" text-anchor="middle" x="133.47" y="-84.08" font-family="Times New Roman" font-size="14.00">magnitude</text>
+<title>N21 | wave_micro_heading_change
+Focal step heading change magnitude
+Scale: micro | Phenomenon: coordinated_escape_wave
+Definition: Indicator=|atan2(sin(theta_i(t)-theta_i(t-1)), cos(theta_i(t)-theta_i(t-1)))|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_meso_component_escape_coherence" class="inspectable" tabindex="0" data-node-id="wave_meso_component_escape_coherence">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M444.19,-136.91C444.19,-136.91 281.29,-136.91 281.29,-136.91 275.29,-136.91 269.29,-130.91 269.29,-124.91 269.29,-124.91 269.29,-87.09 269.29,-87.09 269.29,-81.09 275.29,-75.09 281.29,-75.09 281.29,-75.09 444.19,-75.09 444.19,-75.09 450.19,-75.09 456.19,-81.09 456.19,-87.09 456.19,-87.09 456.19,-124.91 456.19,-124.91 456.19,-130.91 450.19,-136.91 444.19,-136.91" />
+<text xml:space="preserve" text-anchor="middle" x="362.74" y="-118.58" font-family="Times New Roman" font-size="14.00">N22</text>
+<text xml:space="preserve" text-anchor="middle" x="362.74" y="-101.33" font-family="Times New Roman" font-size="14.00">Contact-component escape-</text>
+<text xml:space="preserve" text-anchor="middle" x="362.74" y="-84.08" font-family="Times New Roman" font-size="14.00">direction coherence</text>
+<title>N22 | wave_meso_component_escape_coherence
+Contact-component escape-direction coherence
+Scale: meso | Phenomenon: coordinated_escape_wave
+Definition: For component C_k, let e_i be unit escape_direction for fish i in C_k with non-null escape_direction. Indicator=|sum_i e_i|/n_k.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_meso_component_mean_escape_alignment" class="inspectable" tabindex="0" data-node-id="wave_meso_component_mean_escape_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M438.19,-282.92C438.19,-282.92 287.29,-282.92 287.29,-282.92 281.29,-282.92 275.29,-276.92 275.29,-270.92 275.29,-270.92 275.29,-233.09 275.29,-233.09 275.29,-227.09 281.29,-221.09 287.29,-221.09 287.29,-221.09 438.19,-221.09 438.19,-221.09 444.19,-221.09 450.19,-227.09 450.19,-233.09 450.19,-233.09 450.19,-270.92 450.19,-270.92 450.19,-276.92 444.19,-282.92 438.19,-282.92" />
+<text xml:space="preserve" text-anchor="middle" x="362.74" y="-264.57" font-family="Times New Roman" font-size="14.00">N23</text>
+<text xml:space="preserve" text-anchor="middle" x="362.74" y="-247.32" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="362.74" y="-230.07" font-family="Times New Roman" font-size="14.00">heading-escape alignment</text>
+<title>N23 | wave_meso_component_mean_escape_alignment
+Contact-component mean heading-escape alignment
+Scale: meso | Phenomenon: coordinated_escape_wave
+Definition: For component C_k, indicator=(1/n_k) sum_i cos(theta_i-atan2(e_i_y,e_i_x)) over fish with non-null escape_direction.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_meso_component_turn_variance" class="inspectable" tabindex="0" data-node-id="wave_meso_component_turn_variance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M453.19,-209.91C453.19,-209.91 272.29,-209.91 272.29,-209.91 266.29,-209.91 260.29,-203.91 260.29,-197.91 260.29,-197.91 260.29,-160.09 260.29,-160.09 260.29,-154.09 266.29,-148.09 272.29,-148.09 272.29,-148.09 453.19,-148.09 453.19,-148.09 459.19,-148.09 465.19,-154.09 465.19,-160.09 465.19,-160.09 465.19,-197.91 465.19,-197.91 465.19,-203.91 459.19,-209.91 453.19,-209.91" />
+<text xml:space="preserve" text-anchor="middle" x="362.74" y="-191.57" font-family="Times New Roman" font-size="14.00">N24</text>
+<text xml:space="preserve" text-anchor="middle" x="362.74" y="-174.32" font-family="Times New Roman" font-size="14.00">Contact-component requested-</text>
+<text xml:space="preserve" text-anchor="middle" x="362.74" y="-157.07" font-family="Times New Roman" font-size="14.00">turn variance</text>
+<title>N24 | wave_meso_component_turn_variance
+Contact-component requested-turn variance
+Scale: meso | Phenomenon: coordinated_escape_wave
+Definition: For component C_k, indicator=(1/n_k) sum_i (tau_i - mean_j tau_j)^2, where tau_i=decision_json.requested_turn.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_macro_school_escape_coherence" class="inspectable" tabindex="0" data-node-id="wave_macro_school_escape_coherence">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M657.72,-79.91C657.72,-79.91 533.07,-79.91 533.07,-79.91 527.07,-79.91 521.07,-73.91 521.07,-67.91 521.07,-67.91 521.07,-30.09 521.07,-30.09 521.07,-24.08 527.07,-18.09 533.07,-18.09 533.07,-18.09 657.72,-18.09 657.72,-18.09 663.72,-18.09 669.72,-24.09 669.72,-30.09 669.72,-30.09 669.72,-67.91 669.72,-67.91 669.72,-73.91 663.72,-79.91 657.72,-79.91" />
+<text xml:space="preserve" text-anchor="middle" x="595.39" y="-61.58" font-family="Times New Roman" font-size="14.00">N25</text>
+<text xml:space="preserve" text-anchor="middle" x="595.39" y="-44.33" font-family="Times New Roman" font-size="14.00">Whole-school escape-</text>
+<text xml:space="preserve" text-anchor="middle" x="595.39" y="-27.07" font-family="Times New Roman" font-size="14.00">direction coherence</text>
+<title>N25 | wave_macro_school_escape_coherence
+Whole-school escape-direction coherence
+Scale: macro | Phenomenon: coordinated_escape_wave
+Definition: Indicator=|sum_i e_i|/n, over fish with non-null escape_direction at (r,t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_macro_heading_change_shark_cov" class="inspectable" tabindex="0" data-node-id="wave_macro_heading_change_shark_cov">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M683.59,-152.91C683.59,-152.91 507.19,-152.91 507.19,-152.91 501.19,-152.91 495.19,-146.91 495.19,-140.91 495.19,-140.91 495.19,-103.09 495.19,-103.09 495.19,-97.09 501.19,-91.09 507.19,-91.09 507.19,-91.09 683.59,-91.09 683.59,-91.09 689.59,-91.09 695.59,-97.09 695.59,-103.09 695.59,-103.09 695.59,-140.91 695.59,-140.91 695.59,-146.91 689.59,-152.91 683.59,-152.91" />
+<text xml:space="preserve" text-anchor="middle" x="595.39" y="-134.57" font-family="Times New Roman" font-size="14.00">N26</text>
+<text xml:space="preserve" text-anchor="middle" x="595.39" y="-117.33" font-family="Times New Roman" font-size="14.00">Heading-change magnitude vs</text>
+<text xml:space="preserve" text-anchor="middle" x="595.39" y="-100.08" font-family="Times New Roman" font-size="14.00">shark proximity covariance</text>
+<title>N26 | wave_macro_heading_change_shark_cov
+Heading-change magnitude vs shark proximity covariance
+Scale: macro | Phenomenon: coordinated_escape_wave
+Definition: For fish i at (r,t) with d_i&gt;0, let x_i=|Delta theta_i| and y_i=1/d_i. Indicator=(1/n) sum_i (x_i-mean x)(y_i-mean y).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_macro_escape_coherence_change" class="inspectable" tabindex="0" data-node-id="wave_macro_escape_coherence_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M674.97,-225.91C674.97,-225.91 515.82,-225.91 515.82,-225.91 509.82,-225.91 503.82,-219.91 503.82,-213.91 503.82,-213.91 503.82,-176.09 503.82,-176.09 503.82,-170.09 509.82,-164.09 515.82,-164.09 515.82,-164.09 674.97,-164.09 674.97,-164.09 680.97,-164.09 686.97,-170.09 686.97,-176.09 686.97,-176.09 686.97,-213.91 686.97,-213.91 686.97,-219.91 680.97,-225.91 674.97,-225.91" />
+<text xml:space="preserve" text-anchor="middle" x="595.39" y="-207.57" font-family="Times New Roman" font-size="14.00">N27</text>
+<text xml:space="preserve" text-anchor="middle" x="595.39" y="-190.32" font-family="Times New Roman" font-size="14.00">Step change in school</text>
+<text xml:space="preserve" text-anchor="middle" x="595.39" y="-173.07" font-family="Times New Roman" font-size="14.00">escape-direction coherence</text>
+<title>N27 | wave_macro_escape_coherence_change
+Step change in school escape-direction coherence
+Scale: macro | Phenomenon: coordinated_escape_wave
+Definition: Indicator(t)=R(t)-R(t-1), where R(t)=|sum_i e_i(t)|/n(t) over non-null escape directions.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

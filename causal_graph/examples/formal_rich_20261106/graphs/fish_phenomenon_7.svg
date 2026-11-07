@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1354pt" height="1055pt" viewBox="0.00 0.00 1354.00 1055.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 497.94)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-497.94 641.34,-497.94 641.34,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-464.05" font-family="Times New Roman" font-size="17.00">Fish | phenomenon_7</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-441.55" font-family="Times New Roman" font-size="12.00">9 nodes / 20 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-417.4" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-417.4" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-417.4" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-417.4" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-417.4" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="8,-157.55 8,-395.55 182.65,-395.55 182.65,-157.55 8,-157.55" />
+<text xml:space="preserve" text-anchor="middle" x="35.12" y="-376.35" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="192.65,-139.55 192.65,-395.55 409.3,-395.55 409.3,-139.55 192.65,-139.55" />
+<text xml:space="preserve" text-anchor="middle" x="219.03" y="-376.35" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="419.3,-59.55 419.3,-315.55 624.7,-315.55 624.7,-59.55 419.3,-59.55" />
+<text xml:space="preserve" text-anchor="middle" x="448.68" y="-296.35" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_upward__b00_r0027" class="inspectable" data-source="mill_micro_angular_velocity" data-target="mill_meso_component_rotational_order">
+<path fill="none" stroke="#27667b" d="M172.74,-326.55C179.63,-326.55 186.69,-326.55 193.78,-326.55" />
+<polygon fill="#27667b" stroke="#27667b" points="193.6,-329 200.6,-326.55 193.6,-324.1 193.6,-329" />
+<title>mill_micro_angular_velocity → mill_meso_component_rotational_order
+upward
+Fish with high angular velocity contribute directly to the component's rotational order by moving tangentially.</title></g>
+
+<g id="edge_upward__b01_r0015" class="inspectable" data-source="mill_micro_tangential_speed" data-target="mill_meso_component_angular_momentum">
+<path fill="none" stroke="#27667b" d="M173.03,-253.55C183.63,-253.55 194.62,-253.55 205.5,-253.55" />
+<polygon fill="#27667b" stroke="#27667b" points="205.27,-256 212.27,-253.55 205.27,-251.1 205.27,-256" />
+<title>mill_micro_tangential_speed → mill_meso_component_angular_momentum
+upward
+Individual tangential speeds around the school centroid are the micro-level motion ingredients that, when expressed around a component centroid, aggregate into nonzero component mean angular momentum.</title></g>
+
+<g id="edge_upward__b02_r0046" class="inspectable" data-source="mill_micro_radial_velocity" data-target="mill_meso_component_angular_velocity">
+<path fill="none" stroke="#27667b" d="M163.29,-186.6C176.86,-186 191.36,-185.35 205.67,-184.72" />
+<polygon fill="#27667b" stroke="#27667b" points="205.67,-187.17 212.55,-184.42 205.45,-182.28 205.67,-187.17" />
+<title>mill_micro_radial_velocity → mill_meso_component_angular_velocity
+upward
+Radial velocity changes fish distance from the component centroid and hence the weight of tangential motion, influencing mean component angular velocity.</title></g>
+
+<g id="edge_upward__b02_r0045" class="inspectable" data-source="mill_micro_radial_velocity" data-target="mill_meso_component_rotational_order">
+<path fill="none" stroke="#27667b" d="M163.39,-202.6C170.7,-206.39 177.39,-211.28 182.65,-217.55 203.4,-242.31 172.12,-264.61 192.65,-289.55 193.73,-290.87 194.86,-292.13 196.03,-293.36" />
+<polygon fill="#27667b" stroke="#27667b" points="194.33,-295.12 201.14,-298.07 197.66,-291.52 194.33,-295.12" />
+<title>mill_micro_radial_velocity → mill_meso_component_rotational_order
+upward
+Inward or outward radial motion of component fish can distort the tangential arrangement around the component centroid, affecting rotational order.</title></g>
+
+<g id="edge_upward__b02_r0047" class="inspectable" data-source="mill_micro_radial_velocity" data-target="mill_meso_component_angular_momentum">
+<path fill="none" stroke="#27667b" d="M163.29,-210.6C176.98,-214.9 191.63,-219.51 206.07,-224.04" />
+<polygon fill="#27667b" stroke="#27667b" points="205.21,-226.34 212.62,-226.1 206.68,-221.67 205.21,-226.34" />
+<title>mill_micro_radial_velocity → mill_meso_component_angular_momentum
+upward
+Radial inflow or outflow modifies the spatial lever arm of fish around the component centroid, which can alter component angular momentum.</title></g>
+
+<g id="edge_upward__b02_r0048" class="inspectable" data-source="mill_micro_radial_velocity" data-target="mill_macro_school_rotational_order">
+<path fill="none" stroke="#27667b" d="M128.52,-166.94C146.49,-155.71 169.8,-143.33 192.65,-137.55 286,-113.97 314.18,-122.6 409.3,-137.55 417.54,-138.85 425.99,-140.65 434.39,-142.76" />
+<polygon fill="#27667b" stroke="#27667b" points="433.56,-145.08 440.95,-144.49 434.81,-140.34 433.56,-145.08" />
+<title>mill_micro_radial_velocity → mill_macro_school_rotational_order
+upward
+Coordinated radial motion across many fish can either support or disrupt a common tangential pattern around the school centroid, changing global rotational order.</title></g>
+
+<g id="edge_upward__b02_r0049" class="inspectable" data-source="mill_micro_radial_velocity" data-target="mill_macro_school_angular_momentum">
+<path fill="none" stroke="#27667b" d="M119.86,-166.85C138.12,-150.77 164.93,-130.4 192.65,-120.55 265.81,-94.58 353.85,-90.55 420.35,-92.48" />
+<polygon fill="#27667b" stroke="#27667b" points="420.17,-94.93 427.25,-92.71 420.33,-90.03 420.17,-94.93" />
+<title>mill_micro_radial_velocity → mill_macro_school_angular_momentum
+upward
+Radial velocities redistribute fish radii relative to the school centroid and therefore affect the school-scale cross product of position and velocity.</title></g>
+
+<g id="edge_upward__b03_r0053" class="inspectable" data-source="mill_meso_component_angular_velocity" data-target="mill_macro_school_angular_velocity">
+<path fill="none" stroke="#27667b" d="M387.91,-210.49C398.71,-213.82 409.83,-217.2 420.83,-220.48" />
+<polygon fill="#27667b" stroke="#27667b" points="419.95,-222.78 427.36,-222.42 421.35,-218.08 419.95,-222.78" />
+<title>mill_meso_component_angular_velocity → mill_macro_school_angular_velocity
+upward
+Rotational motion within contact components contributes to the mean angular velocity computed around the whole-school centroid.</title></g>
+
+<g id="edge_upward__b03_r0054" class="inspectable" data-source="mill_meso_component_angular_velocity" data-target="mill_macro_school_rotational_order">
+<path fill="none" stroke="#27667b" d="M387.91,-181.85C403.08,-181.47 418.88,-180.97 434.08,-180.38" />
+<polygon fill="#27667b" stroke="#27667b" points="434.04,-182.83 440.93,-180.1 433.84,-177.94 434.04,-182.83" />
+<title>mill_meso_component_angular_velocity → mill_macro_school_rotational_order
+upward
+Consistent component-level rotation can organize tangential directions across the school, raising global rotational order.</title></g>
+
+<g id="edge_upward__b03_r0055" class="inspectable" data-source="mill_meso_component_angular_velocity" data-target="mill_macro_school_angular_momentum">
+<path fill="none" stroke="#27667b" d="M387.51,-149.18C398.21,-145.26 409.01,-141.31 419.3,-137.55 421.81,-136.64 424.36,-135.71 426.94,-134.77" />
+<polygon fill="#27667b" stroke="#27667b" points="427.56,-137.15 433.3,-132.45 425.88,-132.54 427.56,-137.15" />
+<title>mill_meso_component_angular_velocity → mill_macro_school_angular_momentum
+upward
+Component angular velocity reflects local tangential motion that contributes to the school-level angular momentum.</title></g>
+
+<g id="edge_intra_scale__b02_r0033" class="inspectable" data-source="mill_meso_component_rotational_order" data-target="mill_meso_component_angular_velocity">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M202.2,-295.32C198.92,-293.49 195.72,-291.57 192.65,-289.55 189.89,-287.74 188.84,-287.14 187.65,-284.05 182.76,-271.41 182.76,-235.7 187.65,-223.05 191.51,-213.08 198.31,-205.39 206.73,-199.47" />
+<polygon fill="#6e648d" stroke="#6e648d" points="207.86,-201.66 212.52,-195.89 205.28,-197.49 207.86,-201.66" />
+<title>mill_meso_component_rotational_order → mill_meso_component_angular_velocity
+intra_scale
+Coherent tangential orientation around a component centroid can sustain nonzero mean angular velocity of component fish.</title></g>
+
+<g id="edge_intra_scale__b03_r0034" class="inspectable" data-source="mill_meso_component_angular_momentum" data-target="mill_meso_component_rotational_order">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M300.98,-284.92C300.98,-285.57 300.98,-286.22 300.98,-286.87" />
+<polygon fill="#6e648d" stroke="#6e648d" points="298.53,-286.82 300.98,-293.82 303.43,-286.82 298.53,-286.82" />
+<title>mill_meso_component_angular_momentum → mill_meso_component_rotational_order
+intra_scale
+Mean angular momentum indicates a common rotational sense, supporting rotational order.</title></g>
+
+<g id="edge_downward__b03_r0045" class="inspectable" data-source="mill_macro_school_angular_velocity" data-target="mill_micro_angular_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M428.8,-219.11C425.33,-216.24 422.14,-213.06 419.3,-209.55 398.99,-184.43 433.67,-158.77 409.3,-137.55 336.68,-74.32 262.94,-71.74 192.65,-137.55 167.94,-160.69 202.2,-261.92 182.65,-289.55 181.41,-291.3 180.08,-292.97 178.65,-294.55" />
+<polygon fill="#b3653b" stroke="#b3653b" points="177.15,-292.6 173.85,-299.24 180.57,-296.11 177.15,-292.6" />
+<title>mill_macro_school_angular_velocity → mill_micro_angular_velocity
+downward
+A school-level angular velocity can bias individual tangential motion around the collective center, plausibly changing focal angular velocity.</title></g>
+
+<g id="edge_downward__b03_r0046" class="inspectable" data-source="mill_macro_school_angular_velocity" data-target="mill_micro_tangential_speed">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M428.93,-219.7C425.38,-216.67 422.13,-213.3 419.3,-209.55 400.51,-184.66 432.13,-90.81 409.3,-69.55 374.06,-36.75 227.82,-36.68 192.65,-69.55 168.57,-92.06 201.85,-190.76 182.65,-217.55 181.54,-219.11 180.34,-220.6 179.08,-222.02" />
+<polygon fill="#b3653b" stroke="#b3653b" points="177.48,-220.16 174.19,-226.81 180.91,-223.66 177.48,-220.16" />
+<title>mill_macro_school_angular_velocity → mill_micro_tangential_speed
+downward
+Global milling supplies a shared tangential direction, plausibly increasing or decreasing a focal fish's signed tangential speed.</title></g>
+
+<g id="edge_downward__b03_r0047" class="inspectable" data-source="mill_macro_school_angular_velocity" data-target="mill_micro_radial_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M428.88,-219.74C425.34,-216.7 422.11,-213.32 419.3,-209.55 397.07,-179.75 436.36,-68.05 409.3,-42.55 339.21,23.47 277.36,3.22 192.65,-42.55 146.98,-67.23 119.47,-124.03 106.15,-159.36" />
+<polygon fill="#b3653b" stroke="#b3653b" points="103.99,-158.15 103.89,-165.56 108.59,-159.83 103.99,-158.15" />
+<title>mill_macro_school_angular_velocity → mill_micro_radial_velocity
+downward
+Rotational collective motion can balance inward social attraction and outward escape, plausibly altering individual radial velocity.</title></g>
+
+<g id="edge_downward__b03_r0043" class="inspectable" data-source="mill_macro_school_angular_velocity" data-target="mill_meso_component_angular_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M430.26,-215.14C418.87,-211.64 407.21,-208.12 395.78,-204.73" />
+<polygon fill="#b3653b" stroke="#b3653b" points="396.77,-202.47 389.36,-202.84 395.38,-207.17 396.77,-202.47" />
+<title>mill_macro_school_angular_velocity → mill_meso_component_angular_velocity
+downward
+A global rotational tendency provides a kinematic context that can induce component-level angular velocity through shared turning and neighbor coupling.</title></g>
+
+<g id="edge_downward__b03_r0044" class="inspectable" data-source="mill_macro_school_angular_velocity" data-target="mill_meso_component_rotational_order">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M440.29,-278.01C429.88,-281.96 419.35,-285.89 409.3,-289.55 406.75,-290.48 404.17,-291.42 401.57,-292.36" />
+<polygon fill="#b3653b" stroke="#b3653b" points="400.87,-290 395.11,-294.67 402.52,-294.62 400.87,-290" />
+<title>mill_macro_school_angular_velocity → mill_meso_component_rotational_order
+downward
+Whole-school milling can organize local tangential motions, plausibly increasing rotational order within contact components.</title></g>
+
+<g id="edge_downward__b00_r0030" class="inspectable" data-source="mill_macro_school_rotational_order" data-target="mill_meso_component_angular_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M442.45,-172.09C427.52,-172.42 411.75,-172.88 396.39,-173.45" />
+<polygon fill="#b3653b" stroke="#b3653b" points="396.33,-171 389.42,-173.71 396.51,-175.89 396.33,-171" />
+<title>mill_macro_school_rotational_order → mill_meso_component_angular_velocity
+downward
+A globally rotating school can entrain component-scale vortices; component angular velocity should be responsive to the presence and sign of school-level rotational order.</title></g>
+
+<g id="edge_downward__b01_r0011" class="inspectable" data-source="mill_macro_school_angular_momentum" data-target="mill_meso_component_rotational_order">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M428.91,-127.39C425.36,-130.42 422.12,-133.8 419.3,-137.55 398.98,-164.63 429.85,-262.65 409.3,-289.55 408.13,-291.08 406.9,-292.55 405.61,-293.95" />
+<polygon fill="#b3653b" stroke="#b3653b" points="404.03,-292.07 400.67,-298.68 407.42,-295.61 404.03,-292.07" />
+<title>mill_macro_school_angular_momentum → mill_meso_component_rotational_order
+downward
+A whole-school rotational bias provides a common tangential drive that can organize component fish into aligned tangential motion, increasing component rotational order.</title></g>
+
+<g id="edge_intra_scale__b02_r0051" class="inspectable" data-source="mill_macro_school_angular_momentum" data-target="mill_macro_school_rotational_order">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M522,-131.92C522,-132.57 522,-133.22 522,-133.87" />
+<polygon fill="#6e648d" stroke="#6e648d" points="519.55,-133.82 522,-140.82 524.45,-133.82 519.55,-133.82" />
+<title>mill_macro_school_angular_momentum → mill_macro_school_rotational_order
+intra_scale
+Nonzero mean angular momentum reflects coherent tangential motion around the school centroid, increasing rotational order.</title></g>
+
+<g id="node_mill_micro_angular_velocity" class="inspectable" tabindex="0" data-node-id="mill_micro_angular_velocity">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M160.28,-357.47C160.28,-357.47 30.38,-357.47 30.38,-357.47 24.38,-357.47 18.38,-351.47 18.38,-345.47 18.38,-345.47 18.38,-307.64 18.38,-307.64 18.38,-301.64 24.38,-295.64 30.38,-295.64 30.38,-295.64 160.28,-295.64 160.28,-295.64 166.28,-295.64 172.28,-301.64 172.28,-307.64 172.28,-307.64 172.28,-345.47 172.28,-345.47 172.28,-351.47 166.28,-357.47 160.28,-357.47" />
+<text xml:space="preserve" text-anchor="middle" x="95.33" y="-339.13" font-family="Times New Roman" font-size="14.00">N55</text>
+<text xml:space="preserve" text-anchor="middle" x="95.33" y="-321.88" font-family="Times New Roman" font-size="14.00">Focal angular velocity</text>
+<text xml:space="preserve" text-anchor="middle" x="95.33" y="-304.63" font-family="Times New Roman" font-size="14.00">around school centroid</text>
+<title>N55 | mill_micro_angular_velocity
+Focal angular velocity around school centroid
+Scale: micro | Phenomenon: vortex_milling
+Definition: Let r_i=p_i-c_school and v_i=(vx_i,vy_i). Indicator=(r_i_x v_i_y - r_i_y v_i_x)/||r_i||^2.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_micro_tangential_speed" class="inspectable" tabindex="0" data-node-id="mill_micro_tangential_speed">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M160.65,-284.47C160.65,-284.47 30,-284.47 30,-284.47 24,-284.47 18,-278.47 18,-272.47 18,-272.47 18,-234.64 18,-234.64 18,-228.64 24,-222.64 30,-222.64 30,-222.64 160.65,-222.64 160.65,-222.64 166.65,-222.64 172.65,-228.64 172.65,-234.64 172.65,-234.64 172.65,-272.47 172.65,-272.47 172.65,-278.47 166.65,-284.47 160.65,-284.47" />
+<text xml:space="preserve" text-anchor="middle" x="95.33" y="-266.13" font-family="Times New Roman" font-size="14.00">N56</text>
+<text xml:space="preserve" text-anchor="middle" x="95.33" y="-248.88" font-family="Times New Roman" font-size="14.00">Focal signed tangential</text>
+<text xml:space="preserve" text-anchor="middle" x="95.33" y="-231.63" font-family="Times New Roman" font-size="14.00">speed</text>
+<title>N56 | mill_micro_tangential_speed
+Focal signed tangential speed
+Scale: micro | Phenomenon: vortex_milling
+Definition: Indicator=(r_i_x v_i_y - r_i_y v_i_x)/||r_i||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_micro_radial_velocity" class="inspectable" tabindex="0" data-node-id="mill_micro_radial_velocity">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M150.9,-211.84C150.9,-211.84 39.75,-211.84 39.75,-211.84 33.75,-211.84 27.75,-205.84 27.75,-199.84 27.75,-199.84 27.75,-179.26 27.75,-179.26 27.75,-173.26 33.75,-167.26 39.75,-167.26 39.75,-167.26 150.9,-167.26 150.9,-167.26 156.9,-167.26 162.9,-173.26 162.9,-179.26 162.9,-179.26 162.9,-199.84 162.9,-199.84 162.9,-205.84 156.9,-211.84 150.9,-211.84" />
+<text xml:space="preserve" text-anchor="middle" x="95.33" y="-193.5" font-family="Times New Roman" font-size="14.00">N57</text>
+<text xml:space="preserve" text-anchor="middle" x="95.33" y="-176.25" font-family="Times New Roman" font-size="14.00">Focal radial velocity</text>
+<title>N57 | mill_micro_radial_velocity
+Focal radial velocity
+Scale: micro | Phenomenon: vortex_milling
+Definition: Indicator=(r_i_x v_i_x + r_i_y v_i_y)/||r_i||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_meso_component_angular_velocity" class="inspectable" tabindex="0" data-node-id="mill_meso_component_angular_velocity">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M375.68,-211.47C375.68,-211.47 226.28,-211.47 226.28,-211.47 220.28,-211.47 214.28,-205.47 214.28,-199.47 214.28,-199.47 214.28,-161.64 214.28,-161.64 214.28,-155.64 220.28,-149.64 226.28,-149.64 226.28,-149.64 375.68,-149.64 375.68,-149.64 381.68,-149.64 387.68,-155.64 387.68,-161.64 387.68,-161.64 387.68,-199.47 387.68,-199.47 387.68,-205.47 381.68,-211.47 375.68,-211.47" />
+<text xml:space="preserve" text-anchor="middle" x="300.98" y="-193.13" font-family="Times New Roman" font-size="14.00">N58</text>
+<text xml:space="preserve" text-anchor="middle" x="300.98" y="-175.88" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="300.98" y="-158.63" font-family="Times New Roman" font-size="14.00">angular velocity</text>
+<title>N58 | mill_meso_component_angular_velocity
+Contact-component mean angular velocity
+Scale: meso | Phenomenon: vortex_milling
+Definition: For component C_k with centroid c_C, indicator=(1/n_k) sum_{i in C_k} ((p_i-c_C)_x v_i_y-(p_i-c_C)_y v_i_x)/||p_i-c_C||^2.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_meso_component_rotational_order" class="inspectable" tabindex="0" data-node-id="mill_meso_component_rotational_order">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M387.3,-357.47C387.3,-357.47 214.65,-357.47 214.65,-357.47 208.65,-357.47 202.65,-351.47 202.65,-345.47 202.65,-345.47 202.65,-307.64 202.65,-307.64 202.65,-301.64 208.65,-295.64 214.65,-295.64 214.65,-295.64 387.3,-295.64 387.3,-295.64 393.3,-295.64 399.3,-301.64 399.3,-307.64 399.3,-307.64 399.3,-345.47 399.3,-345.47 399.3,-351.47 393.3,-357.47 387.3,-357.47" />
+<text xml:space="preserve" text-anchor="middle" x="300.98" y="-339.13" font-family="Times New Roman" font-size="14.00">N59</text>
+<text xml:space="preserve" text-anchor="middle" x="300.98" y="-321.88" font-family="Times New Roman" font-size="14.00">Contact-component rotational</text>
+<text xml:space="preserve" text-anchor="middle" x="300.98" y="-304.63" font-family="Times New Roman" font-size="14.00">order</text>
+<title>N59 | mill_meso_component_rotational_order
+Contact-component rotational order
+Scale: meso | Phenomenon: vortex_milling
+Definition: Let t_i=(-(p_i-c_C)_y,(p_i-c_C)_x)/||p_i-c_C||. Indicator=||(1/n_k) sum_i t_i||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_meso_component_angular_momentum" class="inspectable" tabindex="0" data-node-id="mill_meso_component_angular_momentum">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M375.68,-284.47C375.68,-284.47 226.28,-284.47 226.28,-284.47 220.28,-284.47 214.28,-278.47 214.28,-272.47 214.28,-272.47 214.28,-234.64 214.28,-234.64 214.28,-228.64 220.28,-222.64 226.28,-222.64 226.28,-222.64 375.68,-222.64 375.68,-222.64 381.68,-222.64 387.68,-228.64 387.68,-234.64 387.68,-234.64 387.68,-272.47 387.68,-272.47 387.68,-278.47 381.68,-284.47 375.68,-284.47" />
+<text xml:space="preserve" text-anchor="middle" x="300.98" y="-266.13" font-family="Times New Roman" font-size="14.00">N60</text>
+<text xml:space="preserve" text-anchor="middle" x="300.98" y="-248.88" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="300.98" y="-231.63" font-family="Times New Roman" font-size="14.00">angular momentum</text>
+<title>N60 | mill_meso_component_angular_momentum
+Contact-component mean angular momentum
+Scale: meso | Phenomenon: vortex_milling
+Definition: Indicator=(1/n_k) sum_{i in C_k} ((p_i-c_C)_x v_i_y-(p_i-c_C)_y v_i_x).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_macro_school_angular_velocity" class="inspectable" tabindex="0" data-node-id="mill_macro_school_angular_velocity">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M602.7,-277.47C602.7,-277.47 441.3,-277.47 441.3,-277.47 435.3,-277.47 429.3,-271.47 429.3,-265.47 429.3,-265.47 429.3,-227.64 429.3,-227.64 429.3,-221.64 435.3,-215.64 441.3,-215.64 441.3,-215.64 602.7,-215.64 602.7,-215.64 608.7,-215.64 614.7,-221.64 614.7,-227.64 614.7,-227.64 614.7,-265.47 614.7,-265.47 614.7,-271.47 608.7,-277.47 602.7,-277.47" />
+<text xml:space="preserve" text-anchor="middle" x="522" y="-259.13" font-family="Times New Roman" font-size="14.00">N61</text>
+<text xml:space="preserve" text-anchor="middle" x="522" y="-241.88" font-family="Times New Roman" font-size="14.00">Whole-school mean angular</text>
+<text xml:space="preserve" text-anchor="middle" x="522" y="-224.63" font-family="Times New Roman" font-size="14.00">velocity</text>
+<title>N61 | mill_macro_school_angular_velocity
+Whole-school mean angular velocity
+Scale: macro | Phenomenon: vortex_milling
+Definition: Indicator=(1/N_t) sum_i ((p_i-c)_x v_i_y-(p_i-c)_y v_i_x)/||p_i-c||^2.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_macro_school_rotational_order" class="inspectable" tabindex="0" data-node-id="mill_macro_school_rotational_order">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M589.2,-204.47C589.2,-204.47 454.8,-204.47 454.8,-204.47 448.8,-204.47 442.8,-198.47 442.8,-192.47 442.8,-192.47 442.8,-154.64 442.8,-154.64 442.8,-148.64 448.8,-142.64 454.8,-142.64 454.8,-142.64 589.2,-142.64 589.2,-142.64 595.2,-142.64 601.2,-148.64 601.2,-154.64 601.2,-154.64 601.2,-192.47 601.2,-192.47 601.2,-198.47 595.2,-204.47 589.2,-204.47" />
+<text xml:space="preserve" text-anchor="middle" x="522" y="-186.13" font-family="Times New Roman" font-size="14.00">N62</text>
+<text xml:space="preserve" text-anchor="middle" x="522" y="-168.88" font-family="Times New Roman" font-size="14.00">Whole-school rotational</text>
+<text xml:space="preserve" text-anchor="middle" x="522" y="-151.63" font-family="Times New Roman" font-size="14.00">order</text>
+<title>N62 | mill_macro_school_rotational_order
+Whole-school rotational order
+Scale: macro | Phenomenon: vortex_milling
+Definition: Let t_i=(-(p_i-c)_y,(p_i-c)_x)/||p_i-c||. Indicator=||(1/N_t) sum_i t_i||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_macro_school_angular_momentum" class="inspectable" tabindex="0" data-node-id="mill_macro_school_angular_momentum">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M602.7,-131.47C602.7,-131.47 441.3,-131.47 441.3,-131.47 435.3,-131.47 429.3,-125.47 429.3,-119.47 429.3,-119.47 429.3,-81.64 429.3,-81.64 429.3,-75.64 435.3,-69.64 441.3,-69.64 441.3,-69.64 602.7,-69.64 602.7,-69.64 608.7,-69.64 614.7,-75.64 614.7,-81.64 614.7,-81.64 614.7,-119.47 614.7,-119.47 614.7,-125.47 608.7,-131.47 602.7,-131.47" />
+<text xml:space="preserve" text-anchor="middle" x="522" y="-113.13" font-family="Times New Roman" font-size="14.00">N63</text>
+<text xml:space="preserve" text-anchor="middle" x="522" y="-95.88" font-family="Times New Roman" font-size="14.00">Whole-school mean angular</text>
+<text xml:space="preserve" text-anchor="middle" x="522" y="-78.63" font-family="Times New Roman" font-size="14.00">momentum</text>
+<title>N63 | mill_macro_school_angular_momentum
+Whole-school mean angular momentum
+Scale: macro | Phenomenon: vortex_milling
+Definition: Indicator=(1/N_t) sum_i ((p_i-c)_x v_i_y-(p_i-c)_y v_i_x).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

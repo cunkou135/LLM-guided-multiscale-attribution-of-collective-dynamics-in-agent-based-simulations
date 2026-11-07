@@ -1,0 +1,183 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="987pt" height="1060pt" viewBox="0.00 0.00 987.00 1060.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 500.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-500.39 464.94,-500.39 464.94,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-466.5" font-family="Times New Roman" font-size="17.00">Covasim | phenomenon_1</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-444" font-family="Times New Roman" font-size="12.00">7 nodes / 11 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-419.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-419.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-419.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-419.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-419.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="23,-215 23,-398 199.9,-398 199.9,-215 23,-215" />
+<text xml:space="preserve" text-anchor="middle" x="50.12" y="-378.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="224.9,-8 224.9,-264 448.3,-264 448.3,-8 224.9,-8" />
+<text xml:space="preserve" text-anchor="middle" x="251.27" y="-244.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="8,-24 8,-207 214.9,-207 214.9,-24 8,-24" />
+<text xml:space="preserve" text-anchor="middle" x="37.38" y="-187.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_upward__b00_r0002" class="inspectable" data-source="p1_micro_new_exposure_flag" data-target="p1_meso_band_hazard_dispersion">
+<path fill="none" stroke="#27667b" d="M182.14,-240.81C202.32,-235.56 224.65,-229.52 245.87,-223.58" />
+<polygon fill="#27667b" stroke="#27667b" points="246.41,-225.97 252.49,-221.72 245.09,-221.26 246.41,-225.97" />
+<title>p1_micro_new_exposure_flag → p1_meso_band_hazard_dispersion
+upward
+If new exposures concentrate in some age bands, between-band exposure hazards diverge, increasing cross-band dispersion even when total exposure activity is unchanged.</title></g>
+
+<g id="edge_downward__b00_r0000" class="inspectable" data-source="p1_meso_band_exposure_hazard" data-target="p1_micro_new_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M234.56,-76.04C231.03,-79.02 227.77,-82.33 224.9,-86 207.99,-107.59 230.63,-186.54 214.9,-209 208.31,-218.42 199.34,-225.99 189.45,-232.06" />
+<polygon fill="#b3653b" stroke="#b3653b" points="188.3,-229.9 183.41,-235.48 190.71,-234.16 188.3,-229.9" />
+<title>p1_meso_band_exposure_hazard → p1_micro_new_exposure_flag
+downward
+A higher exposure hazard in an age band raises the per-agent probability that a susceptible member of that band transitions from not exposed to exposed at the next observed step, so band-level hazard can drive individual new-exposure events.</title></g>
+
+<g id="edge_downward__b01_r0023" class="inspectable" data-source="p1_meso_band_attack_ratio" data-target="p1_micro_new_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M243.35,-143.75C236.49,-147.97 230.19,-153 224.9,-159 209.91,-176 228.96,-191.22 214.9,-209 207.97,-217.77 199.02,-224.97 189.32,-230.85" />
+<polygon fill="#b3653b" stroke="#b3653b" points="188.34,-228.59 183.45,-234.17 190.75,-232.86 188.34,-228.59" />
+<title>p1_meso_band_attack_ratio → p1_micro_new_exposure_flag
+downward
+A higher cumulative attack ratio in an age band depletes susceptibles, which lowers the per-susceptible exposure hazard; an individual in that band is therefore less likely to show a new exposure transition.</title></g>
+
+<g id="edge_intra_scale__b03_r0028" class="inspectable" data-source="p1_meso_band_attack_ratio" data-target="p1_meso_band_exposure_hazard">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M336.6,-90.78C336.6,-90.12 336.6,-89.47 336.6,-88.82" />
+<polygon fill="#6e648d" stroke="#6e648d" points="339.05,-88.88 336.6,-81.88 334.15,-88.88 339.05,-88.88" />
+<title>p1_meso_band_attack_ratio → p1_meso_band_exposure_hazard
+intra_scale
+A higher cumulative attack ratio in an age band depletes susceptible members and can lower the band's subsequent exposure hazard per susceptible person-step.</title></g>
+
+<g id="edge_intra_scale__b03_r0029" class="inspectable" data-source="p1_meso_band_attack_ratio" data-target="p1_meso_band_hazard_dispersion">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M268.45,-153.37C268.1,-154.02 267.82,-154.67 267.6,-155.32" />
+<polygon fill="#6e648d" stroke="#6e648d" points="265.17,-155.58 268.36,-162.27 270.04,-155.05 265.17,-155.58" />
+<title>p1_meso_band_attack_ratio → p1_meso_band_hazard_dispersion
+intra_scale
+Unequal cumulative attack across bands can widen or narrow cross-band hazard dispersion as susceptible depletion differs by band.</title></g>
+
+<g id="edge_downward__b02_r0000" class="inspectable" data-source="p1_meso_band_hazard_dispersion" data-target="p1_micro_new_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M253.95,-213.33C233.15,-218.82 210.85,-224.93 190.25,-230.78" />
+<polygon fill="#b3653b" stroke="#b3653b" points="189.65,-228.4 183.59,-232.68 191,-233.11 189.65,-228.4" />
+<title>p1_meso_band_hazard_dispersion → p1_micro_new_exposure_flag
+downward
+Cross-band inequality in exposure hazard can concentrate exposure pressure on agents in high-hazard age bands, making an individual new-exposure transition more plausible for those agents.</title></g>
+
+<g id="edge_downward__b02_r0001" class="inspectable" data-source="p1_meso_band_hazard_dispersion" data-target="p1_micro_ever_exposed_state">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M302.92,-226.25C279.79,-247.06 247.25,-273.83 214.9,-292 209.45,-295.06 203.7,-297.95 197.82,-300.65" />
+<polygon fill="#b3653b" stroke="#b3653b" points="197.1,-298.29 191.7,-303.37 199.09,-302.77 197.1,-298.29" />
+<title>p1_meso_band_hazard_dispersion → p1_micro_ever_exposed_state
+downward
+Sustained dispersion of band-level hazard can make some agents accumulate exposure earlier and more often, changing their cumulative ever-exposed state.</title></g>
+
+<g id="edge_intra_scale__b00_r0030" class="inspectable" data-source="p1_meso_band_hazard_dispersion" data-target="p1_meso_band_attack_ratio">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M404.67,-163.78C405.03,-163.12 405.32,-162.47 405.55,-161.82" />
+<polygon fill="#6e648d" stroke="#6e648d" points="407.99,-161.61 404.89,-154.87 403.11,-162.07 407.99,-161.61" />
+<title>p1_meso_band_hazard_dispersion → p1_meso_band_attack_ratio
+intra_scale
+Unequal exposure hazard across age bands can generate divergent cumulative attack ratios, with high-hazard bands accumulating more infections.</title></g>
+
+<g id="edge_downward__b03_r0000" class="inspectable" data-source="p1_macro_band_attack_range" data-target="p1_meso_band_hazard_dispersion">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M205.18,-75.1C208.72,-77.72 211.98,-80.67 214.9,-84 236.76,-108.97 203.74,-132.43 224.9,-158 230.96,-165.32 238.51,-171.2 246.8,-175.92" />
+<polygon fill="#b3653b" stroke="#b3653b" points="245.24,-177.87 252.58,-178.92 247.5,-173.52 245.24,-177.87" />
+<title>p1_macro_band_attack_range → p1_meso_band_hazard_dispersion
+downward
+A wide cross-age range in cumulative attack can signal uneven depletion and behavioural adaptation across age bands, which can reshape how exposure hazard is dispersed among bands in later steps rather than merely restating the aggregate range.</title></g>
+
+<g id="edge_intra_scale__b01_r0035" class="inspectable" data-source="p1_macro_band_attack_range" data-target="p1_macro_band_composition_mismatch">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M111.45,-78.81C111.45,-79.45 111.45,-80.09 111.45,-80.72" />
+<polygon fill="#6e648d" stroke="#6e648d" points="109,-80.49 111.45,-87.49 113.9,-80.49 109,-80.49" />
+<title>p1_macro_band_attack_range → p1_macro_band_composition_mismatch
+intra_scale
+A wide spread in age-band attack ratios plausibly accompanies a mismatch between the age distribution of exposures and susceptible person-time.</title></g>
+
+<g id="edge_downward__b00_r0001" class="inspectable" data-source="p1_macro_band_composition_mismatch" data-target="p1_meso_band_exposure_hazard">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M191.85,-98.16C202.92,-93.99 214.18,-89.84 224.9,-86 227.48,-85.08 230.09,-84.15 232.72,-83.22" />
+<polygon fill="#b3653b" stroke="#b3653b" points="233.48,-85.55 239.27,-80.92 231.85,-80.93 233.48,-85.55" />
+<title>p1_macro_band_composition_mismatch → p1_meso_band_exposure_hazard
+downward
+When exposure shares are misaligned with susceptible person-time, exposure pressure is disproportionately borne by bands with more remaining susceptible person-time; this can elevate the measured hazard in those bands as susceptible depletion and exposure targeting co-evolve.</title></g>
+
+<g id="node_p1_micro_new_exposure_flag" class="inspectable" tabindex="0" data-node-id="p1_micro_new_exposure_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M169.65,-286.92C169.65,-286.92 53.25,-286.92 53.25,-286.92 47.25,-286.92 41.25,-280.92 41.25,-274.92 41.25,-274.92 41.25,-237.09 41.25,-237.09 41.25,-231.09 47.25,-225.09 53.25,-225.09 53.25,-225.09 169.65,-225.09 169.65,-225.09 175.65,-225.09 181.65,-231.09 181.65,-237.09 181.65,-237.09 181.65,-274.92 181.65,-274.92 181.65,-280.92 175.65,-286.92 169.65,-286.92" />
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-268.57" font-family="Times New Roman" font-size="14.00">N1</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-251.32" font-family="Times New Roman" font-size="14.00">Agent new-exposure</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-234.07" font-family="Times New Roman" font-size="14.00">transition indicator</text>
+<title>N1 | p1_micro_new_exposure_flag
+Agent new-exposure transition indicator
+Scale: micro | Phenomenon: age_structured_incidence_divergence
+Definition: X_i(t) = 1 if exposed_i(t) = true and exposed_i(t-1) = false, otherwise 0; defined only when agent i is observed at both step t and the immediately preceding observed step t-1 in the same run; undefined if either observation is missing.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_micro_ever_exposed_state" class="inspectable" tabindex="0" data-node-id="p1_micro_ever_exposed_state">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M177.9,-359.92C177.9,-359.92 45,-359.92 45,-359.92 39,-359.92 33,-353.92 33,-347.92 33,-347.92 33,-310.08 33,-310.08 33,-304.08 39,-298.08 45,-298.08 45,-298.08 177.9,-298.08 177.9,-298.08 183.9,-298.08 189.9,-304.08 189.9,-310.08 189.9,-310.08 189.9,-347.92 189.9,-347.92 189.9,-353.92 183.9,-359.92 177.9,-359.92" />
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-341.57" font-family="Times New Roman" font-size="14.00">N2</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-324.32" font-family="Times New Roman" font-size="14.00">Agent cumulative ever-</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-307.07" font-family="Times New Roman" font-size="14.00">exposed indicator</text>
+<title>N2 | p1_micro_ever_exposed_state
+Agent cumulative ever-exposed indicator
+Scale: micro | Phenomenon: age_structured_incidence_divergence
+Definition: E_i(t) = max over observed steps s &lt;= t in the same run of X_i(s), where X is the new-exposure transition indicator; E_i(t) = 1 if any such s has X_i(s) = 1, else 0; undefined if agent i is not observed at step t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_meso_band_exposure_hazard" class="inspectable" tabindex="0" data-node-id="p1_meso_band_exposure_hazard">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M426.3,-79.91C426.3,-79.91 246.9,-79.91 246.9,-79.91 240.9,-79.91 234.9,-73.91 234.9,-67.91 234.9,-67.91 234.9,-30.09 234.9,-30.09 234.9,-24.08 240.9,-18.09 246.9,-18.09 246.9,-18.09 426.3,-18.09 426.3,-18.09 432.3,-18.09 438.3,-24.09 438.3,-30.09 438.3,-30.09 438.3,-67.91 438.3,-67.91 438.3,-73.91 432.3,-79.91 426.3,-79.91" />
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-61.58" font-family="Times New Roman" font-size="14.00">N3</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-44.33" font-family="Times New Roman" font-size="14.00">Age-band exposure hazard per</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-27.07" font-family="Times New Roman" font-size="14.00">susceptible person-step</text>
+<title>N3 | p1_meso_band_exposure_hazard
+Age-band exposure hazard per susceptible person-step
+Scale: meso | Phenomenon: age_structured_incidence_divergence
+Definition: h_b(t) = sum over agents i in band b of X_i(t) divided by sum over agents i in band b of S_i(t-1), where S_i(t-1) = susceptible_i(t-1) as a 0/1 quantity; undefined when the denominator is 0 or when t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_meso_band_attack_ratio" class="inspectable" tabindex="0" data-node-id="p1_meso_band_attack_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M417.3,-152.91C417.3,-152.91 255.9,-152.91 255.9,-152.91 249.9,-152.91 243.9,-146.91 243.9,-140.91 243.9,-140.91 243.9,-103.09 243.9,-103.09 243.9,-97.09 249.9,-91.09 255.9,-91.09 255.9,-91.09 417.3,-91.09 417.3,-91.09 423.3,-91.09 429.3,-97.09 429.3,-103.09 429.3,-103.09 429.3,-140.91 429.3,-140.91 429.3,-146.91 423.3,-152.91 417.3,-152.91" />
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-134.57" font-family="Times New Roman" font-size="14.00">N4</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-117.33" font-family="Times New Roman" font-size="14.00">Age-band cumulative attack</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-100.08" font-family="Times New Roman" font-size="14.00">ratio</text>
+<title>N4 | p1_meso_band_attack_ratio
+Age-band cumulative attack ratio
+Scale: meso | Phenomenon: age_structured_incidence_divergence
+Definition: A_b(t) = count of agents i in band b with E_i(t) = 1 divided by count of agents i in band b observed in at least one step s &lt;= t; undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_meso_band_hazard_dispersion" class="inspectable" tabindex="0" data-node-id="p1_meso_band_hazard_dispersion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M406.8,-225.91C406.8,-225.91 266.4,-225.91 266.4,-225.91 260.4,-225.91 254.4,-219.91 254.4,-213.91 254.4,-213.91 254.4,-176.09 254.4,-176.09 254.4,-170.09 260.4,-164.09 266.4,-164.09 266.4,-164.09 406.8,-164.09 406.8,-164.09 412.8,-164.09 418.8,-170.09 418.8,-176.09 418.8,-176.09 418.8,-213.91 418.8,-213.91 418.8,-219.91 412.8,-225.91 406.8,-225.91" />
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-207.57" font-family="Times New Roman" font-size="14.00">N5</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-190.32" font-family="Times New Roman" font-size="14.00">Cross-band dispersion of</text>
+<text xml:space="preserve" text-anchor="middle" x="336.6" y="-173.07" font-family="Times New Roman" font-size="14.00">exposure hazard</text>
+<title>N5 | p1_meso_band_hazard_dispersion
+Cross-band dispersion of exposure hazard
+Scale: meso | Phenomenon: age_structured_incidence_divergence
+Definition: CV(t) = SD_b(h_b(t)) / mean_b(h_b(t)), with the standard deviation and mean taken over bands b whose hazard h_b(t) is defined; undefined when fewer than two bands are defined or when the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_macro_band_attack_range" class="inspectable" tabindex="0" data-node-id="p1_macro_band_attack_range">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M192.9,-78.29C192.9,-78.29 30,-78.29 30,-78.29 24,-78.29 18,-72.29 18,-66.29 18,-66.29 18,-45.71 18,-45.71 18,-39.71 24,-33.71 30,-33.71 30,-33.71 192.9,-33.71 192.9,-33.71 198.9,-33.71 204.9,-39.71 204.9,-45.71 204.9,-45.71 204.9,-66.29 204.9,-66.29 204.9,-72.29 198.9,-78.29 192.9,-78.29" />
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-59.95" font-family="Times New Roman" font-size="14.00">N6</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-42.7" font-family="Times New Roman" font-size="14.00">Age-band attack ratio range</text>
+<title>N6 | p1_macro_band_attack_range
+Age-band attack ratio range
+Scale: macro | Phenomenon: age_structured_incidence_divergence
+Definition: R(t) = max_b A_b(t) - min_b A_b(t) over bands with defined A_b(t); undefined when fewer than two bands are defined.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_macro_band_composition_mismatch" class="inspectable" tabindex="0" data-node-id="p1_macro_band_composition_mismatch">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M179.4,-168.54C179.4,-168.54 43.5,-168.54 43.5,-168.54 37.5,-168.54 31.5,-162.54 31.5,-156.54 31.5,-156.54 31.5,-101.46 31.5,-101.46 31.5,-95.46 37.5,-89.46 43.5,-89.46 43.5,-89.46 179.4,-89.46 179.4,-89.46 185.4,-89.46 191.4,-95.46 191.4,-101.46 191.4,-101.46 191.4,-156.54 191.4,-156.54 191.4,-162.54 185.4,-168.54 179.4,-168.54" />
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-150.2" font-family="Times New Roman" font-size="14.00">N7</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-132.95" font-family="Times New Roman" font-size="14.00">Exposure-share versus</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-115.7" font-family="Times New Roman" font-size="14.00">susceptible-person-time</text>
+<text xml:space="preserve" text-anchor="middle" x="111.45" y="-98.45" font-family="Times New Roman" font-size="14.00">mismatch</text>
+<title>N7 | p1_macro_band_composition_mismatch
+Exposure-share versus susceptible-person-time mismatch
+Scale: macro | Phenomenon: age_structured_incidence_divergence
+Definition: M(t) = 0.5 * sum over bands b of |e_b(t) - s_b(t)|, where e_b(t) is the band share of new exposure transitions at t and s_b(t) is the band share of susceptible person-steps at t; undefined when either total is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

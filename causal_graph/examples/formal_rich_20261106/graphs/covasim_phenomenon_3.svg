@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="984pt" height="1252pt" viewBox="0.00 0.00 984.00 1252.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 592.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-592.39 463.83,-592.39 463.83,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-558.5" font-family="Times New Roman" font-size="17.00">Covasim | phenomenon_3</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-536" font-family="Times New Roman" font-size="12.00">8 nodes / 18 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-511.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-511.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-511.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-511.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-511.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="27.14,-234 27.14,-490 227.29,-490 227.29,-234 27.14,-234" />
+<text xml:space="preserve" text-anchor="middle" x="54.26" y="-470.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="237.29,-185 237.29,-457 447.19,-457 447.19,-185 237.29,-185" />
+<text xml:space="preserve" text-anchor="middle" x="263.66" y="-437.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="30.51,-8 30.51,-226 223.91,-226 223.91,-8 30.51,-8" />
+<text xml:space="preserve" text-anchor="middle" x="59.89" y="-206.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_intra_scale__b03_r0005" class="inspectable" data-source="p3_micro_household_degree" data-target="p3_micro_household_attributed_flag">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M127.21,-306.37C127.21,-307.02 127.21,-307.67 127.21,-308.32" />
+<polygon fill="#6e648d" stroke="#6e648d" points="124.76,-308.26 127.21,-315.26 129.66,-308.26 124.76,-308.26" />
+<title>p3_micro_household_degree → p3_micro_household_attributed_flag
+intra_scale
+More household-layer contacts increase the chance that an exposure transition has a recorded source within the persistent household-like layer.</title></g>
+
+<g id="edge_upward__b03_r0002" class="inspectable" data-source="p3_micro_household_degree" data-target="p3_meso_dyad_secondary_dispersion">
+<path fill="none" stroke="#27667b" d="M214.55,-287.97C223.2,-289.27 232.04,-290.6 240.82,-291.92" />
+<polygon fill="#27667b" stroke="#27667b" points="240.43,-294.33 247.72,-292.95 241.16,-289.49 240.43,-294.33" />
+<title>p3_micro_household_degree → p3_meso_dyad_secondary_dispersion
+upward
+An agent with more household-layer contacts participates in more dyadic pairs that can receive secondary exposure; variation in household degree therefore changes how unevenly attributed secondary events are distributed across household dyads.</title></g>
+
+<g id="edge_upward__b00_r0007" class="inspectable" data-source="p3_micro_attributed_exposure_flag" data-target="p3_meso_dyad_attack_fraction">
+<path fill="none" stroke="#27667b" d="M207.23,-408.76C217.42,-407.18 227.96,-405.55 238.46,-403.92" />
+<polygon fill="#27667b" stroke="#27667b" points="238.82,-406.35 245.36,-402.85 238.07,-401.5 238.82,-406.35" />
+<title>p3_micro_attributed_exposure_flag → p3_meso_dyad_attack_fraction
+upward
+Source-attributed household exposures add dyads to the ever-attacked set, increasing the fraction of household dyads with any attributed exposure.</title></g>
+
+<g id="edge_upward__b01_r0014" class="inspectable" data-source="p3_micro_household_attributed_flag" data-target="p3_meso_dyad_secondary_dispersion">
+<path fill="none" stroke="#27667b" d="M217.63,-334.87C225.49,-333.4 233.47,-331.88 241.4,-330.33" />
+<polygon fill="#27667b" stroke="#27667b" points="241.43,-332.82 247.83,-329.07 240.49,-328.02 241.43,-332.82" />
+<title>p3_micro_household_attributed_flag → p3_meso_dyad_secondary_dispersion
+upward
+Repeated household-attributed exposures concentrate in a subset of dyads, increasing dispersion of cumulative attributed exposures across household dyads.</title></g>
+
+<g id="edge_upward__b01_r0013" class="inspectable" data-source="p3_micro_household_attributed_flag" data-target="p3_meso_dyad_attack_fraction">
+<path fill="none" stroke="#27667b" d="M217.63,-368.87C224.59,-370.21 231.64,-371.55 238.67,-372.86" />
+<polygon fill="#27667b" stroke="#27667b" points="238.1,-375.25 245.42,-374.11 238.99,-370.43 238.1,-375.25" />
+<title>p3_micro_household_attributed_flag → p3_meso_dyad_attack_fraction
+upward
+Individual household-attributed exposure events convert previously unaffected household dyads into attacked dyads, raising the fraction of dyads with any attributed exposure.</title></g>
+
+<g id="edge_downward__b02_r0007" class="inspectable" data-source="p3_meso_dyad_secondary_count" data-target="p3_micro_attributed_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M254.11,-246.74C247.73,-250.93 241.97,-255.96 237.29,-262 220.62,-283.5 243.7,-362.31 227.29,-384 223.56,-388.93 219.09,-393.21 214.15,-396.91" />
+<polygon fill="#b3653b" stroke="#b3653b" points="212.84,-394.84 208.4,-400.78 215.58,-398.91 212.84,-394.84" />
+<title>p3_meso_dyad_secondary_count → p3_micro_attributed_exposure_flag
+downward
+Dyad-level secondary activity increases the chance that an agent’s exposure in that dyad carries a resolvable source attribution.</title></g>
+
+<g id="edge_downward__b02_r0006" class="inspectable" data-source="p3_meso_dyad_secondary_count" data-target="p3_micro_household_attributed_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M253.88,-247.98C247.72,-251.91 242.07,-256.54 237.29,-262 222.64,-278.72 241.73,-294.11 227.29,-311 226.21,-312.26 225.09,-313.47 223.93,-314.64" />
+<polygon fill="#b3653b" stroke="#b3653b" points="222.48,-312.65 218.91,-319.16 225.75,-316.3 222.48,-312.65" />
+<title>p3_meso_dyad_secondary_count → p3_micro_household_attributed_flag
+downward
+A household dyad with more attributed secondary exposures is a more active transmission pair, making household-attributed exposure more plausible for its members.</title></g>
+
+<g id="edge_downward__b03_r0002" class="inspectable" data-source="p3_meso_dyad_secondary_dispersion" data-target="p3_micro_household_attributed_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M249.31,-320.6C241.43,-322.08 233.44,-323.61 225.52,-325.16" />
+<polygon fill="#b3653b" stroke="#b3653b" points="225.51,-322.67 219.11,-326.42 226.46,-327.47 225.51,-322.67" />
+<title>p3_meso_dyad_secondary_dispersion → p3_micro_household_attributed_flag
+downward
+When attributed secondary exposures are unevenly spread across household dyads, individuals in high-concentration dyads face stronger within-dyad exposure pressure, making a household-attributed exposure more likely for those agents.</title></g>
+
+<g id="edge_intra_scale__b03_r0036" class="inspectable" data-source="p3_meso_dyad_secondary_dispersion" data-target="p3_meso_dyad_attack_fraction">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M272.73,-346.87C272.69,-347.7 272.73,-348.53 272.86,-349.36" />
+<polygon fill="#6e648d" stroke="#6e648d" points="270.54,-350.19 275.75,-355.46 274.97,-348.09 270.54,-350.19" />
+<title>p3_meso_dyad_secondary_dispersion → p3_meso_dyad_attack_fraction
+intra_scale
+Concentration of attributed exposures in few household dyads can reduce the fraction of dyads with any attributed exposure by leaving many dyads unaffected.</title></g>
+
+<g id="edge_downward__b00_r0003" class="inspectable" data-source="p3_meso_dyad_attack_fraction" data-target="p3_micro_household_attributed_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M246.91,-366.19C239.92,-364.85 232.85,-363.52 225.83,-362.22" />
+<polygon fill="#b3653b" stroke="#b3653b" points="226.45,-359.84 219.12,-360.99 225.56,-364.66 226.45,-359.84" />
+<title>p3_meso_dyad_attack_fraction → p3_micro_household_attributed_flag
+downward
+As a larger fraction of household-layer dyads accumulates attributed exposure, household transmission becomes more saturated; an individual exposure is then more likely to be recorded in the household-attributed category rather than in other settings.</title></g>
+
+<g id="edge_intra_scale__b00_r0038" class="inspectable" data-source="p3_meso_dyad_attack_fraction" data-target="p3_meso_dyad_secondary_dispersion">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M408.07,-356.83C408.57,-356.21 409.01,-355.58 409.4,-354.96" />
+<polygon fill="#6e648d" stroke="#6e648d" points="411.73,-355.73 411.33,-348.32 407.03,-354.36 411.73,-355.73" />
+<title>p3_meso_dyad_attack_fraction → p3_meso_dyad_secondary_dispersion
+intra_scale
+A higher fraction of dyads with attributed exposure can coincide with more uneven accumulation across dyads, raising dispersion of dyad counts.</title></g>
+
+<g id="edge_downward__b01_r0004" class="inspectable" data-source="p3_macro_household_attributed_fraction" data-target="p3_micro_household_attributed_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M51.47,-76.49C35.95,-83.87 21.5,-94.16 12.14,-108.5 0.17,-126.83 -0.37,-287.54 12.14,-305.5 16.93,-312.38 22.97,-318.15 29.77,-322.99" />
+<polygon fill="#b3653b" stroke="#b3653b" points="28.31,-324.96 35.52,-326.7 30.96,-320.85 28.31,-324.96" />
+<title>p3_macro_household_attributed_fraction → p3_micro_household_attributed_flag
+downward
+A higher population-level household share increases the chance that any individual new exposure is attributed to the household layer, because household transmission is a larger component of the force of infection.</title></g>
+
+<g id="edge_downward__b01_r0002" class="inspectable" data-source="p3_macro_household_attributed_fraction" data-target="p3_meso_dyad_secondary_count">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M203.06,-88.06C211.52,-92.59 219.78,-97.58 227.29,-103 260.48,-126.94 291.58,-161.68 312.88,-188.14" />
+<polygon fill="#b3653b" stroke="#b3653b" points="310.86,-189.54 317.13,-193.49 314.69,-186.49 310.86,-189.54" />
+<title>p3_macro_household_attributed_fraction → p3_meso_dyad_secondary_count
+downward
+A larger household share of all exposures implies more transmission occurs within household dyads, raising the expected number of attributed secondary exposures per household dyad.</title></g>
+
+<g id="edge_downward__b01_r0003" class="inspectable" data-source="p3_macro_household_attributed_fraction" data-target="p3_meso_dyad_attack_fraction">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M202.87,-80.5C212.45,-86.38 221.07,-93.75 227.29,-103 242.75,-125.97 220.78,-329.77 237.29,-352 238.44,-353.56 239.67,-355.05 240.97,-356.47" />
+<polygon fill="#b3653b" stroke="#b3653b" points="239.2,-358.17 245.93,-361.27 242.6,-354.65 239.2,-358.17" />
+<title>p3_macro_household_attributed_fraction → p3_meso_dyad_attack_fraction
+downward
+As household-attributed transmission grows as a fraction of all exposures, a greater proportion of household dyads will accumulate at least one attributed exposure event.</title></g>
+
+<g id="edge_intra_scale__b01_r0045" class="inspectable" data-source="p3_macro_household_attributed_fraction" data-target="p3_macro_dyad_attribution_gini">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M127.21,-98.08C127.21,-98.71 127.21,-99.35 127.21,-99.98" />
+<polygon fill="#6e648d" stroke="#6e648d" points="124.76,-99.7 127.21,-106.7 129.66,-99.7 124.76,-99.7" />
+<title>p3_macro_household_attributed_fraction → p3_macro_dyad_attribution_gini
+intra_scale
+A larger household share can concentrate secondary exposures in fewer household dyads, raising dyad-level attribution inequality.</title></g>
+
+<g id="edge_downward__b02_r0012" class="inspectable" data-source="p3_macro_dyad_attribution_gini" data-target="p3_micro_attributed_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M55.32,-187.89C38.01,-201.24 21.76,-217.83 12.14,-237.5 -1.63,-265.65 -5.77,-352.79 12.14,-378.5 19.23,-388.68 29.05,-396.42 39.99,-402.32" />
+<polygon fill="#b3653b" stroke="#b3653b" points="38.61,-404.37 45.97,-405.26 40.77,-399.97 38.61,-404.37" />
+<title>p3_macro_dyad_attribution_gini → p3_micro_attributed_exposure_flag
+downward
+High concentration of dyad-level attribution can shift source-resolved exposure events toward a small set of agents, affecting individual attribution status.</title></g>
+
+<g id="edge_downward__b02_r0011" class="inspectable" data-source="p3_macro_dyad_attribution_gini" data-target="p3_micro_household_attributed_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M55.32,-187.89C38.01,-201.24 21.76,-217.83 12.14,-237.5 -1.14,-264.65 -5.14,-280.7 12.14,-305.5 16.93,-312.38 22.97,-318.15 29.77,-322.99" />
+<polygon fill="#b3653b" stroke="#b3653b" points="28.31,-324.96 35.52,-326.7 30.96,-320.85 28.31,-324.96" />
+<title>p3_macro_dyad_attribution_gini → p3_micro_household_attributed_flag
+downward
+When attributed household exposures are concentrated in few dyads, agents in those high-count dyads face a higher chance of household-attributed exposure.</title></g>
+
+<g id="edge_downward__b02_r0014" class="inspectable" data-source="p3_macro_dyad_attribution_gini" data-target="p3_meso_dyad_attack_fraction">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M190.55,-187.99C204.97,-200.32 218.62,-215.16 227.29,-232 239.53,-255.79 220.88,-330.86 237.29,-352 238.43,-353.47 239.64,-354.88 240.9,-356.24" />
+<polygon fill="#b3653b" stroke="#b3653b" points="238.92,-357.73 245.69,-360.77 242.29,-354.18 238.92,-357.73" />
+<title>p3_macro_dyad_attribution_gini → p3_meso_dyad_attack_fraction
+downward
+Greater concentration of attributed secondary events can leave many dyads with no attribution, plausibly lowering the fraction of household dyads ever attacked.</title></g>
+
+<g id="node_p3_micro_household_degree" class="inspectable" tabindex="0" data-node-id="p3_micro_household_degree">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M202.29,-305.92C202.29,-305.92 52.14,-305.92 52.14,-305.92 46.14,-305.92 40.14,-299.92 40.14,-293.92 40.14,-293.92 40.14,-256.09 40.14,-256.09 40.14,-250.09 46.14,-244.09 52.14,-244.09 52.14,-244.09 202.29,-244.09 202.29,-244.09 208.29,-244.09 214.29,-250.09 214.29,-256.09 214.29,-256.09 214.29,-293.92 214.29,-293.92 214.29,-299.92 208.29,-305.92 202.29,-305.92" />
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-287.57" font-family="Times New Roman" font-size="14.00">N16</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-270.32" font-family="Times New Roman" font-size="14.00">Agent degree in the</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-253.07" font-family="Times New Roman" font-size="14.00">persistent household layer</text>
+<title>N16 | p3_micro_household_degree
+Agent degree in the persistent household layer
+Scale: micro | Phenomenon: household_secondary_attack_concentration
+Definition: d_i,H(t) = number of distinct undirected contact pairs at step t in layer l_H incident to agent i; l_H is the layer value with the largest mean consecutive-step Jaccard overlap of its edge set over all observed steps in the run; undefined if agent i is not observed at step t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_micro_attributed_exposure_flag" class="inspectable" tabindex="0" data-node-id="p3_micro_attributed_exposure_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M194.79,-451.92C194.79,-451.92 59.64,-451.92 59.64,-451.92 53.64,-451.92 47.64,-445.92 47.64,-439.92 47.64,-439.92 47.64,-402.08 47.64,-402.08 47.64,-396.08 53.64,-390.08 59.64,-390.08 59.64,-390.08 194.79,-390.08 194.79,-390.08 200.79,-390.08 206.79,-396.08 206.79,-402.08 206.79,-402.08 206.79,-439.92 206.79,-439.92 206.79,-445.92 200.79,-451.92 194.79,-451.92" />
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-433.57" font-family="Times New Roman" font-size="14.00">N17</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-416.32" font-family="Times New Roman" font-size="14.00">Agent source-attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-399.07" font-family="Times New Roman" font-size="14.00">exposure indicator</text>
+<title>N17 | p3_micro_attributed_exposure_flag
+Agent source-attributed exposure indicator
+Scale: micro | Phenomenon: household_secondary_attack_concentration
+Definition: A_i(t) = 1 if X_i(t) = 1 and the matched exposure event has a non-null partner_id; undefined if X_i(t) = 0 or if the matched event has a null partner_id, since no source can be resolved.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_micro_household_attributed_flag" class="inspectable" tabindex="0" data-node-id="p3_micro_household_attributed_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M205.29,-378.92C205.29,-378.92 49.14,-378.92 49.14,-378.92 43.14,-378.92 37.14,-372.92 37.14,-366.92 37.14,-366.92 37.14,-329.08 37.14,-329.08 37.14,-323.08 43.14,-317.08 49.14,-317.08 49.14,-317.08 205.29,-317.08 205.29,-317.08 211.29,-317.08 217.29,-323.08 217.29,-329.08 217.29,-329.08 217.29,-366.92 217.29,-366.92 217.29,-372.92 211.29,-378.92 205.29,-378.92" />
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-360.57" font-family="Times New Roman" font-size="14.00">N18</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-343.32" font-family="Times New Roman" font-size="14.00">Agent household-attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-326.07" font-family="Times New Roman" font-size="14.00">exposure indicator</text>
+<title>N18 | p3_micro_household_attributed_flag
+Agent household-attributed exposure indicator
+Scale: micro | Phenomenon: household_secondary_attack_concentration
+Definition: H_i(t) = 1 if A_i(t) = 1 and the layer recorded on that exposure event equals l_H; 0 if A_i(t) = 1 and the layer is non-null and different from l_H; undefined if A_i(t) is undefined.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_meso_dyad_secondary_count" class="inspectable" tabindex="0" data-node-id="p3_meso_dyad_secondary_count">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M418.06,-256.92C418.06,-256.92 266.41,-256.92 266.41,-256.92 260.41,-256.92 254.41,-250.92 254.41,-244.92 254.41,-244.92 254.41,-207.09 254.41,-207.09 254.41,-201.09 260.41,-195.09 266.41,-195.09 266.41,-195.09 418.06,-195.09 418.06,-195.09 424.06,-195.09 430.06,-201.09 430.06,-207.09 430.06,-207.09 430.06,-244.92 430.06,-244.92 430.06,-250.92 424.06,-256.92 418.06,-256.92" />
+<text xml:space="preserve" text-anchor="middle" x="342.24" y="-238.57" font-family="Times New Roman" font-size="14.00">N19</text>
+<text xml:space="preserve" text-anchor="middle" x="342.24" y="-221.32" font-family="Times New Roman" font-size="14.00">Household dyad attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="342.24" y="-204.07" font-family="Times New Roman" font-size="14.00">secondary exposure count</text>
+<title>N19 | p3_meso_dyad_secondary_count
+Household dyad attributed secondary exposure count
+Scale: meso | Phenomenon: household_secondary_attack_concentration
+Definition: N_uv(t) = number of exposure events at step t with non-null partner_id whose unordered endpoint pair equals {u,v}, restricted to dyads {u,v} recorded as edges in layer l_H at step t; 0 for a listed dyad with no such event.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_meso_dyad_secondary_dispersion" class="inspectable" tabindex="0" data-node-id="p3_meso_dyad_secondary_dispersion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M422.94,-346.54C422.94,-346.54 261.54,-346.54 261.54,-346.54 255.54,-346.54 249.54,-340.54 249.54,-334.54 249.54,-334.54 249.54,-279.46 249.54,-279.46 249.54,-273.46 255.54,-267.46 261.54,-267.46 261.54,-267.46 422.94,-267.46 422.94,-267.46 428.94,-267.46 434.94,-273.46 434.94,-279.46 434.94,-279.46 434.94,-334.54 434.94,-334.54 434.94,-340.54 428.94,-346.54 422.94,-346.54" />
+<text xml:space="preserve" text-anchor="middle" x="342.24" y="-328.2" font-family="Times New Roman" font-size="14.00">N20</text>
+<text xml:space="preserve" text-anchor="middle" x="342.24" y="-310.95" font-family="Times New Roman" font-size="14.00">Dispersion of attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="342.24" y="-293.7" font-family="Times New Roman" font-size="14.00">exposures across household</text>
+<text xml:space="preserve" text-anchor="middle" x="342.24" y="-276.45" font-family="Times New Roman" font-size="14.00">dyads</text>
+<title>N20 | p3_meso_dyad_secondary_dispersion
+Dispersion of attributed exposures across household dyads
+Scale: meso | Phenomenon: household_secondary_attack_concentration
+Definition: CV(t) = SD_dyad(C_uv(t)) / mean_dyad(C_uv(t)), where C_uv(t) is the cumulative count of source-attributed exposure events in dyad {u,v} over observed steps up to t, taken over dyads recorded in layer l_H at any observed step up to t; undefined when fewer than two dyads or when the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_meso_dyad_attack_fraction" class="inspectable" tabindex="0" data-node-id="p3_meso_dyad_attack_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M425.19,-418.92C425.19,-418.92 259.29,-418.92 259.29,-418.92 253.29,-418.92 247.29,-412.92 247.29,-406.92 247.29,-406.92 247.29,-369.08 247.29,-369.08 247.29,-363.08 253.29,-357.08 259.29,-357.08 259.29,-357.08 425.19,-357.08 425.19,-357.08 431.19,-357.08 437.19,-363.08 437.19,-369.08 437.19,-369.08 437.19,-406.92 437.19,-406.92 437.19,-412.92 431.19,-418.92 425.19,-418.92" />
+<text xml:space="preserve" text-anchor="middle" x="342.24" y="-400.57" font-family="Times New Roman" font-size="14.00">N21</text>
+<text xml:space="preserve" text-anchor="middle" x="342.24" y="-383.32" font-family="Times New Roman" font-size="14.00">Fraction of household dyads</text>
+<text xml:space="preserve" text-anchor="middle" x="342.24" y="-366.07" font-family="Times New Roman" font-size="14.00">with any attributed exposure</text>
+<title>N21 | p3_meso_dyad_attack_fraction
+Fraction of household dyads with any attributed exposure
+Scale: meso | Phenomenon: household_secondary_attack_concentration
+Definition: F(t) = count of dyads {u,v} recorded in l_H up to t with C_uv(t) &gt;= 1 divided by count of dyads recorded in l_H up to t; undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_macro_household_attributed_fraction" class="inspectable" tabindex="0" data-node-id="p3_macro_household_attributed_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M190.66,-97.54C190.66,-97.54 63.76,-97.54 63.76,-97.54 57.76,-97.54 51.76,-91.54 51.76,-85.54 51.76,-85.54 51.76,-30.46 51.76,-30.46 51.76,-24.46 57.76,-18.46 63.76,-18.46 63.76,-18.46 190.66,-18.46 190.66,-18.46 196.66,-18.46 202.66,-24.46 202.66,-30.46 202.66,-30.46 202.66,-85.54 202.66,-85.54 202.66,-91.54 196.66,-97.54 190.66,-97.54" />
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-79.2" font-family="Times New Roman" font-size="14.00">N22</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-61.95" font-family="Times New Roman" font-size="14.00">Household share of all</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-44.7" font-family="Times New Roman" font-size="14.00">observed exposure</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-27.45" font-family="Times New Roman" font-size="14.00">transitions</text>
+<title>N22 | p3_macro_household_attributed_fraction
+Household share of all observed exposure transitions
+Scale: macro | Phenomenon: household_secondary_attack_concentration
+Definition: f(t) = (sum over agents i of H_i(t)) / (sum over agents i of X_i(t)); undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_macro_dyad_attribution_gini" class="inspectable" tabindex="0" data-node-id="p3_macro_dyad_attribution_gini">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M201.91,-187.54C201.91,-187.54 52.51,-187.54 52.51,-187.54 46.51,-187.54 40.51,-181.54 40.51,-175.54 40.51,-175.54 40.51,-120.46 40.51,-120.46 40.51,-114.46 46.51,-108.46 52.51,-108.46 52.51,-108.46 201.91,-108.46 201.91,-108.46 207.91,-108.46 213.91,-114.46 213.91,-120.46 213.91,-120.46 213.91,-175.54 213.91,-175.54 213.91,-181.54 207.91,-187.54 201.91,-187.54" />
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-169.2" font-family="Times New Roman" font-size="14.00">N23</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-151.95" font-family="Times New Roman" font-size="14.00">Gini concentration of</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-134.7" font-family="Times New Roman" font-size="14.00">household dyad attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="127.21" y="-117.45" font-family="Times New Roman" font-size="14.00">exposures</text>
+<title>N23 | p3_macro_dyad_attribution_gini
+Gini concentration of household dyad attributed exposures
+Scale: macro | Phenomenon: household_secondary_attack_concentration
+Definition: G(t) = (sum over dyads j of sum over dyads k of |C_j(t) - C_k(t)|) / (2 * n(t)^2 * mean_dyad(C(t))), where C_j(t) are cumulative dyad counts over dyads recorded up to t and n(t) is the number of such dyads; undefined when n(t) &lt; 2 or the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

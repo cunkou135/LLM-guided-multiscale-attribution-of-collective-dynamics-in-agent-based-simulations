@@ -1,0 +1,538 @@
+[
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p1_micro_new_exposure_flag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "2dc9ef7543f996bc8471518804ad98156fba39d02cc2d1e23c099d218c6c25d4",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p1_micro_ever_exposed_state",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "100604bdda0844ffa75d156a092cbc835b75f7e903362e480f69a3d81c8c155f",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p1_meso_band_exposure_hazard",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "80230b2dce41bb43b3362510f71f1405e8141c77df82f8ca253f47cd4658700b",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p1_meso_band_attack_ratio",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "cbd893e3ccddb695290cb6916e7a9de459afd46c728028323122e0c7dd235136",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p1_meso_band_hazard_dispersion",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "d20792703e8f4d7b4a9e8f609c2cb7f7f254d49a26cd07be165352a568438ab9",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p1_macro_band_attack_range",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "03a66ee9540295218dc0f1fcee62e1b169c369c870200dafbf1009ed17cf696c",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p1_macro_band_composition_mismatch",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "04476017cf28a9cdcaa520ed7abf39fa8df5b5fb02d244d8c21602e6dc542582",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p2_micro_layer_degree",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "f5479ddf13c03cda063b8a9406da8aabaf0bf0d68f2a25b2dd4a9ab08ecfa319",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p2_micro_layer_exposure_flag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "3e9e96813d335e34d28be2d45c42c272e5174c0734fa2190eb546388a62ee45c",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p2_micro_layer_beta_load",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "7526e826cabc116d159743c90463b79964880790eeab6240d171596a5b320ede",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p2_meso_layer_incidence_per_edge",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "b267812dee73aa054cb168acfa1eed199a55af5c7288e3eb175f006b8dc9601a",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p2_meso_layer_degree_dispersion",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "8e6a76eb368512e5da705a039a17547330a59959151d077b6c896acfc8a1553a",
+    "generation_call": "generation/codes/batches/batch_000/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p2_meso_layer_active_run",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "357a574ace8ab42dc3c9bf6c41b7583b267b4247dda0f6c0f51aab21c13f190b",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p2_macro_layer_edge_turnover",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "f7aed173913ec1f52184faa92fea1974c2cebe03d87bd8618bf689d6fe7dd868",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p2_macro_layer_incidence_entropy",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "54c4dc78bcf4e958b175824bbc0aad82fc1d89fc9498adc907e7bab3094fd97b",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p3_micro_household_degree",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "7d7abda610d6768bf4725aa92493beaaba460bbbd854985aaaa142c293996b28",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p3_micro_attributed_exposure_flag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "535de59715d1a2e57a86334737c571b2018c2ecdfd02797bf0760fc2dcb22f8f",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p3_micro_household_attributed_flag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "6604912d551061f1b76a572ea38c863f94b96479c80acef727c2f7d52f5fd622",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p3_meso_dyad_secondary_count",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "24c4d13eef885d57be61de621d4de208c707365d1ef4d0fa78cf9d3869df8250",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p3_meso_dyad_secondary_dispersion",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "06eeb3b806b74809c279cdb8126198c045cdd885d6e87a1036a63c07ae803a4d",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p3_meso_dyad_attack_fraction",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "32e0765f8e5da601d33212c8636f1b62cf2598819899ffda847bcb0b8646e7d6",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p3_macro_household_attributed_fraction",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "ecb5f9304e957cc53a3a202207ae0ba6ff1dbba3200ad5848fcc984158de5c32",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p3_macro_dyad_attribution_gini",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "510bc128b17012351824ba9d060877de8e474bdeb2514aa3f9f86ff93af37292",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p4_micro_silent_infectious_flag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "b743c4bfe64270089b0786232d192f11e9aabb996b5198dc3a45860e22f686a6",
+    "generation_call": "generation/codes/batches/batch_001/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p4_micro_silent_infectious_duration",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "b0fb66f7c31eff2dbd1f77d7e664d0932bb7597e898a7f32d2a85044eb80f14f",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p4_micro_symptomatic_undiagnosed_flag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "9335f0b14c28718e3a4466b70dd6fca8699c35337da115aedc3322f5017d7006",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p4_meso_group_silent_share",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "7580ff0dca23e046526ee3597a11ef086d35c3e26e9e34fe016cff356d265d5d",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p4_meso_group_exposure_yield_silent",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "2183e3b1dc045dd88f4af5bb779ef7689973e4a92eecb4cda935027eff808f4d",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p4_macro_detection_coverage_rate",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "3d43848be0d37006881debc2858be6b6a19e4a25c22a2e6a7ef6f3430b18bf62",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p4_macro_silent_prevalence_share",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "03148c429123b8c737e711f8553d1194fe38c65e29a204143b4078cb10726b2e",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p4_macro_masking_ratio",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "bf96373fdb00073e05340963bcf67bda8f5458d093a467bf2e8d931b42028096",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p4_macro_symptom_to_diagnosis_lag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "73750b950079921f069ee18e831b19bb531907983b013f4915d0c9674085a551",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p5_micro_known_contact_flag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "47f77a52d39194bf13aaa102f1ed1964dda6d0c331f6ace5f5bf430ad65d50a5",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p5_micro_tracing_latency",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "c3178847f87834bfaaa65302095540e6c1a76ee78cb8bbfa151cd5d646d4ba38",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p5_micro_quarantine_flag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "4e2521c4b67025cf2b96d39b4f313db6852508c6a8cfd58ab63757df411e9654",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p5_meso_layer_known_contact_rate",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "5b01f590ceb2f12bce5fdbede60e99fed4cc29e54bb9e9e7204f940809a5c42f",
+    "generation_call": "generation/codes/batches/batch_002/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p5_meso_layer_index_contact_load",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "bb3645bbb6d83710c199b6f74ec63a6b12a5aac4e6aefcc7d60c7f64ccceb252",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p5_meso_layer_load_dispersion",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "f9ccdc86bf52c7803ef126faa6da316ea097cf55c9d0daa3f310e46be677d4b6",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p5_macro_traced_per_diagnosis",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "e3289a5cbdba47103f457eac8199052d9ed39591e8bf279f896b3f5e99652429",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p5_macro_mean_tracing_latency",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "6e94698a5a3188f1dd7e359c1f3a97f6af8bb5372388477f7a128d407eaefafe",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p5_macro_quarantine_coverage",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "4545ec64bb3ed443f8c9bbd5db087c1d5f0a05c61357a34f36edf6162e6cc655",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p5_macro_known_contact_prevalence",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "fd57581b23bc82c20b226053e4a5d9e98fddfb2d81c26c3620c5960b4dfb4a6d",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p6_micro_quarantine_contact_ratio",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "7d49837ca51c4679dff54fdf25259420b63d4bc2ffd3aa75bbeb45ebacf8cab5",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p6_micro_quarantine_degree_delta",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "b05077558ca46dd87a2503174c35b01049db0299d3c0935672fd700cce9907fb",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p6_micro_zero_contact_quarantined_flag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "d96dea4c34ba825c8088c9eed63f725a57b1d64b80cc1cd449fe37c37b0a29ef",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p6_meso_quarantined_degree_dispersion",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "fb23555cffe7e8471eb07b242590968856a460ba78661d037bbf0800e4c17d93",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p6_meso_layer_quarantine_suppression_ratio",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "6c57b847e0b71cf6ef40d20f8f34c1e085e806ef98315da44f063c7912f642fe",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p6_macro_contact_volume_change",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "a80bfad9c33492e8bdf2a88119e45c36ecc26408a1699dad7a32e381de5f6743",
+    "generation_call": "generation/codes/batches/batch_003/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p6_macro_adherence_share",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "d57c49474805998f54362a03355440f2842bd933a27ca7a40c165031e8ec4490",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p6_macro_population_suppression_ratio",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "585c3846fafcfcac7a7dacac6d744e94bd449a6f7526375d26e8712713efd5d1",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p7_micro_exposure_step_index",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "17e6dddc2b0733efdefda19b6ad6a942f8d8dae23e1639d1d4f8ac1a5f45dacc",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p7_micro_exposure_to_diagnosis_interval",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "1f0c04019ba62d220353f4521f84c55e7c620bb873f0f4b6edc27a471058cb9e",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p7_meso_band_exposure_share",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "ad7ee08b6b1fa887f0765b2127546da0a1e8ace0e5950255aef7e751e1feb49e",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p7_meso_layer_exposure_share",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "9c0f822c88af86d71cbffdbf7a9454b8a2214a92c783e88dfb5b8ba218c0349e",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p7_meso_band_share_drift",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "acf5bd20d9e0df21c895ba8b40ef35e04bcb00713d3cb9ff47c641f0eefb7ed6",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p7_macro_age_composition_drift",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "0b0af418963c2a4321f8eb4dc47ad18cad2f1ad8480f0fc8c9255df20a9a2ad7",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p7_macro_layer_composition_drift",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "cc6e853958f790f2922d081ad9fe351aa51687ea7569fc383f409f0b2a4563c3",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p7_macro_growth_change_at_first_quarantine",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "b8279f422e5b3ce98c9380eac69ebca77f25ea25e29f41019d8a9641a8adb4b0",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p7_macro_median_age_of_new_exposures",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "d0e2e0ab734821d7e4b916082af35d1156fadcdecd51a54ae08958da20d5c6c0",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p8_micro_offset_from_infectious_trough",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "45c89f5d86353986bf58a7fd585c04c911285b2c7a521f42354b86b74eac4230",
+    "generation_call": "generation/codes/batches/batch_004/attempt_000"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p8_micro_post_trough_exposure_flag",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "5fcb5b3720f141b182bb13305e0a7b8492bedf9767f4eca9f524278994efdbe9",
+    "generation_call": "generation/codes/batches/batch_005/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p8_meso_layer_post_trough_incidence_ratio",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "09f63aa3bc7dd07ad88dbc63d3eef7a727157d87ff8e38595ee4d287930920fa",
+    "generation_call": "generation/codes/batches/batch_005/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p8_meso_band_post_trough_incidence_ratio",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "1261dbfc596bf1728c01cab840ce87c333b7f62d7a8a99d4bc0580ddbdf6f752",
+    "generation_call": "generation/codes/batches/batch_005/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p8_macro_post_trough_infectious_growth",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "1d627eed47bb476a805c0535609d1fb6a5081ed8a468979ede951d41f91abf7f",
+    "generation_call": "generation/codes/batches/batch_005/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p8_macro_resurgence_amplitude",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "7f3aac95103639e2dc7071be3d3c1dd2d0c45458c60f14a321dc2b0d2635edc2",
+    "generation_call": "generation/codes/batches/batch_005/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p8_macro_trough_susceptible_depletion",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "e670808d199641ce93445fa4dd486233fff7ef3a4c14fb374152b9a9efae7b75",
+    "generation_call": "generation/codes/batches/batch_005/attempt_001"
+  },
+  {
+    "run_id": "3249f90463154305aed53504106b3dae",
+    "indicator_id": "p8_macro_resurgence_breadth",
+    "status": "not_executed",
+    "reason": "explicit_generate_only",
+    "code_sha256": "be081e0eb9cb3e2025b41bb2c77c497f4b772f98256311ad315dd7d9991268c5",
+    "generation_call": "generation/codes/batches/batch_005/attempt_001"
+  }
+]

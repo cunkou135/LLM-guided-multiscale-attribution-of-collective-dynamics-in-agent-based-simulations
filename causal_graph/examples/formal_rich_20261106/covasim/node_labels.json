@@ -1,0 +1,605 @@
+[
+  {
+    "label": "N1",
+    "indicator_id": "p1_micro_new_exposure_flag",
+    "name": "Agent new-exposure transition indicator",
+    "scale": "micro",
+    "phenomenon_id": "age_structured_incidence_divergence",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N2",
+    "indicator_id": "p1_micro_ever_exposed_state",
+    "name": "Agent cumulative ever-exposed indicator",
+    "scale": "micro",
+    "phenomenon_id": "age_structured_incidence_divergence",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N3",
+    "indicator_id": "p1_meso_band_exposure_hazard",
+    "name": "Age-band exposure hazard per susceptible person-step",
+    "scale": "meso",
+    "phenomenon_id": "age_structured_incidence_divergence",
+    "units": "exposures per susceptible person-step",
+    "executed": false
+  },
+  {
+    "label": "N4",
+    "indicator_id": "p1_meso_band_attack_ratio",
+    "name": "Age-band cumulative attack ratio",
+    "scale": "meso",
+    "phenomenon_id": "age_structured_incidence_divergence",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N5",
+    "indicator_id": "p1_meso_band_hazard_dispersion",
+    "name": "Cross-band dispersion of exposure hazard",
+    "scale": "meso",
+    "phenomenon_id": "age_structured_incidence_divergence",
+    "units": "dimensionless ratio",
+    "executed": false
+  },
+  {
+    "label": "N6",
+    "indicator_id": "p1_macro_band_attack_range",
+    "name": "Age-band attack ratio range",
+    "scale": "macro",
+    "phenomenon_id": "age_structured_incidence_divergence",
+    "units": "proportion difference",
+    "executed": false
+  },
+  {
+    "label": "N7",
+    "indicator_id": "p1_macro_band_composition_mismatch",
+    "name": "Exposure-share versus susceptible-person-time mismatch",
+    "scale": "macro",
+    "phenomenon_id": "age_structured_incidence_divergence",
+    "units": "dimensionless (0 to 1)",
+    "executed": false
+  },
+  {
+    "label": "N8",
+    "indicator_id": "p2_micro_layer_degree",
+    "name": "Agent contact degree within a contact layer",
+    "scale": "micro",
+    "phenomenon_id": "setting_specific_cluster_persistence",
+    "units": "edges",
+    "executed": false
+  },
+  {
+    "label": "N9",
+    "indicator_id": "p2_micro_layer_exposure_flag",
+    "name": "Agent exposure transition attributed to a layer",
+    "scale": "micro",
+    "phenomenon_id": "setting_specific_cluster_persistence",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N10",
+    "indicator_id": "p2_micro_layer_beta_load",
+    "name": "Agent per-layer contact weight load",
+    "scale": "micro",
+    "phenomenon_id": "setting_specific_cluster_persistence",
+    "units": "dimensionless weight sum",
+    "executed": false
+  },
+  {
+    "label": "N11",
+    "indicator_id": "p2_meso_layer_incidence_per_edge",
+    "name": "Layer exposure incidence per contact edge",
+    "scale": "meso",
+    "phenomenon_id": "setting_specific_cluster_persistence",
+    "units": "exposures per edge-step",
+    "executed": false
+  },
+  {
+    "label": "N12",
+    "indicator_id": "p2_meso_layer_degree_dispersion",
+    "name": "Within-layer degree dispersion",
+    "scale": "meso",
+    "phenomenon_id": "setting_specific_cluster_persistence",
+    "units": "dimensionless ratio",
+    "executed": false
+  },
+  {
+    "label": "N13",
+    "indicator_id": "p2_meso_layer_active_run",
+    "name": "Layer consecutive active-step run length",
+    "scale": "meso",
+    "phenomenon_id": "setting_specific_cluster_persistence",
+    "units": "steps",
+    "executed": false
+  },
+  {
+    "label": "N14",
+    "indicator_id": "p2_macro_layer_edge_turnover",
+    "name": "Layer edge-set Jaccard turnover",
+    "scale": "macro",
+    "phenomenon_id": "setting_specific_cluster_persistence",
+    "units": "proportion (0 to 1)",
+    "executed": false
+  },
+  {
+    "label": "N15",
+    "indicator_id": "p2_macro_layer_incidence_entropy",
+    "name": "Normalised entropy of layer exposure shares",
+    "scale": "macro",
+    "phenomenon_id": "setting_specific_cluster_persistence",
+    "units": "dimensionless (0 to 1)",
+    "executed": false
+  },
+  {
+    "label": "N16",
+    "indicator_id": "p3_micro_household_degree",
+    "name": "Agent degree in the persistent household layer",
+    "scale": "micro",
+    "phenomenon_id": "household_secondary_attack_concentration",
+    "units": "edges",
+    "executed": false
+  },
+  {
+    "label": "N17",
+    "indicator_id": "p3_micro_attributed_exposure_flag",
+    "name": "Agent source-attributed exposure indicator",
+    "scale": "micro",
+    "phenomenon_id": "household_secondary_attack_concentration",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N18",
+    "indicator_id": "p3_micro_household_attributed_flag",
+    "name": "Agent household-attributed exposure indicator",
+    "scale": "micro",
+    "phenomenon_id": "household_secondary_attack_concentration",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N19",
+    "indicator_id": "p3_meso_dyad_secondary_count",
+    "name": "Household dyad attributed secondary exposure count",
+    "scale": "meso",
+    "phenomenon_id": "household_secondary_attack_concentration",
+    "units": "events per dyad-step",
+    "executed": false
+  },
+  {
+    "label": "N20",
+    "indicator_id": "p3_meso_dyad_secondary_dispersion",
+    "name": "Dispersion of attributed exposures across household dyads",
+    "scale": "meso",
+    "phenomenon_id": "household_secondary_attack_concentration",
+    "units": "dimensionless ratio",
+    "executed": false
+  },
+  {
+    "label": "N21",
+    "indicator_id": "p3_meso_dyad_attack_fraction",
+    "name": "Fraction of household dyads with any attributed exposure",
+    "scale": "meso",
+    "phenomenon_id": "household_secondary_attack_concentration",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N22",
+    "indicator_id": "p3_macro_household_attributed_fraction",
+    "name": "Household share of all observed exposure transitions",
+    "scale": "macro",
+    "phenomenon_id": "household_secondary_attack_concentration",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N23",
+    "indicator_id": "p3_macro_dyad_attribution_gini",
+    "name": "Gini concentration of household dyad attributed exposures",
+    "scale": "macro",
+    "phenomenon_id": "household_secondary_attack_concentration",
+    "units": "dimensionless (0 to 1)",
+    "executed": false
+  },
+  {
+    "label": "N24",
+    "indicator_id": "p4_micro_silent_infectious_flag",
+    "name": "Agent silent-infectious indicator",
+    "scale": "micro",
+    "phenomenon_id": "silent_transmission_masking",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N25",
+    "indicator_id": "p4_micro_silent_infectious_duration",
+    "name": "Agent cumulative silent-infectious duration",
+    "scale": "micro",
+    "phenomenon_id": "silent_transmission_masking",
+    "units": "agent-steps",
+    "executed": false
+  },
+  {
+    "label": "N26",
+    "indicator_id": "p4_micro_symptomatic_undiagnosed_flag",
+    "name": "Agent symptomatic-but-undiagnosed indicator",
+    "scale": "micro",
+    "phenomenon_id": "silent_transmission_masking",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N27",
+    "indicator_id": "p4_meso_group_silent_share",
+    "name": "Silent share of infectious person-steps by quarantine-status group",
+    "scale": "meso",
+    "phenomenon_id": "silent_transmission_masking",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N28",
+    "indicator_id": "p4_meso_group_exposure_yield_silent",
+    "name": "Exposures generated per silent infectious person-step by group",
+    "scale": "meso",
+    "phenomenon_id": "silent_transmission_masking",
+    "units": "exposures per silent infectious person-step",
+    "executed": false
+  },
+  {
+    "label": "N29",
+    "indicator_id": "p4_macro_detection_coverage_rate",
+    "name": "New diagnoses per infectious person-step",
+    "scale": "macro",
+    "phenomenon_id": "silent_transmission_masking",
+    "units": "diagnoses per infectious person-step",
+    "executed": false
+  },
+  {
+    "label": "N30",
+    "indicator_id": "p4_macro_silent_prevalence_share",
+    "name": "Silent share of current infectious agents",
+    "scale": "macro",
+    "phenomenon_id": "silent_transmission_masking",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N31",
+    "indicator_id": "p4_macro_masking_ratio",
+    "name": "Cumulative never-diagnosed to ever-diagnosed infection ratio",
+    "scale": "macro",
+    "phenomenon_id": "silent_transmission_masking",
+    "units": "ratio",
+    "executed": false
+  },
+  {
+    "label": "N32",
+    "indicator_id": "p4_macro_symptom_to_diagnosis_lag",
+    "name": "Mean recorded symptom-to-diagnosis interval",
+    "scale": "macro",
+    "phenomenon_id": "silent_transmission_masking",
+    "units": "days",
+    "executed": false
+  },
+  {
+    "label": "N33",
+    "indicator_id": "p5_micro_known_contact_flag",
+    "name": "Agent known-contact state indicator",
+    "scale": "micro",
+    "phenomenon_id": "tracing_capacity_saturation",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N34",
+    "indicator_id": "p5_micro_tracing_latency",
+    "name": "Agent known-contact to quarantine latency",
+    "scale": "micro",
+    "phenomenon_id": "tracing_capacity_saturation",
+    "units": "days",
+    "executed": false
+  },
+  {
+    "label": "N35",
+    "indicator_id": "p5_micro_quarantine_flag",
+    "name": "Agent quarantine state indicator",
+    "scale": "micro",
+    "phenomenon_id": "tracing_capacity_saturation",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N36",
+    "indicator_id": "p5_meso_layer_known_contact_rate",
+    "name": "Layer known-contact incidence per contact edge",
+    "scale": "meso",
+    "phenomenon_id": "tracing_capacity_saturation",
+    "units": "transitions per edge-step",
+    "executed": false
+  },
+  {
+    "label": "N37",
+    "indicator_id": "p5_meso_layer_index_contact_load",
+    "name": "Per-index contact load within a layer",
+    "scale": "meso",
+    "phenomenon_id": "tracing_capacity_saturation",
+    "units": "edges per index agent",
+    "executed": false
+  },
+  {
+    "label": "N38",
+    "indicator_id": "p5_meso_layer_load_dispersion",
+    "name": "Cross-layer dispersion of contact load",
+    "scale": "meso",
+    "phenomenon_id": "tracing_capacity_saturation",
+    "units": "dimensionless ratio",
+    "executed": false
+  },
+  {
+    "label": "N39",
+    "indicator_id": "p5_macro_traced_per_diagnosis",
+    "name": "Known-contact transitions per new diagnosis",
+    "scale": "macro",
+    "phenomenon_id": "tracing_capacity_saturation",
+    "units": "contacts per diagnosis",
+    "executed": false
+  },
+  {
+    "label": "N40",
+    "indicator_id": "p5_macro_mean_tracing_latency",
+    "name": "Mean per-agent tracing latency at quarantine start",
+    "scale": "macro",
+    "phenomenon_id": "tracing_capacity_saturation",
+    "units": "days",
+    "executed": false
+  },
+  {
+    "label": "N41",
+    "indicator_id": "p5_macro_quarantine_coverage",
+    "name": "Quarantine coverage of observed agent-steps",
+    "scale": "macro",
+    "phenomenon_id": "tracing_capacity_saturation",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N42",
+    "indicator_id": "p5_macro_known_contact_prevalence",
+    "name": "Known-contact prevalence share",
+    "scale": "macro",
+    "phenomenon_id": "tracing_capacity_saturation",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N43",
+    "indicator_id": "p6_micro_quarantine_contact_ratio",
+    "name": "Agent contact degree ratio in and out of quarantine",
+    "scale": "micro",
+    "phenomenon_id": "adherence_heterogeneity_feedback",
+    "units": "ratio",
+    "executed": false
+  },
+  {
+    "label": "N44",
+    "indicator_id": "p6_micro_quarantine_degree_delta",
+    "name": "Agent absolute contact-degree change under quarantine",
+    "scale": "micro",
+    "phenomenon_id": "adherence_heterogeneity_feedback",
+    "units": "edges",
+    "executed": false
+  },
+  {
+    "label": "N45",
+    "indicator_id": "p6_micro_zero_contact_quarantined_flag",
+    "name": "Agent full-contact-suppression indicator under quarantine",
+    "scale": "micro",
+    "phenomenon_id": "adherence_heterogeneity_feedback",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N46",
+    "indicator_id": "p6_meso_quarantined_degree_dispersion",
+    "name": "Dispersion of contact degree among quarantined agents",
+    "scale": "meso",
+    "phenomenon_id": "adherence_heterogeneity_feedback",
+    "units": "dimensionless ratio",
+    "executed": false
+  },
+  {
+    "label": "N47",
+    "indicator_id": "p6_meso_layer_quarantine_suppression_ratio",
+    "name": "Layer-level degree suppression ratio under quarantine",
+    "scale": "meso",
+    "phenomenon_id": "adherence_heterogeneity_feedback",
+    "units": "ratio",
+    "executed": false
+  },
+  {
+    "label": "N48",
+    "indicator_id": "p6_macro_contact_volume_change",
+    "name": "Relative step-to-step change in total contact volume",
+    "scale": "macro",
+    "phenomenon_id": "adherence_heterogeneity_feedback",
+    "units": "per-step relative change",
+    "executed": false
+  },
+  {
+    "label": "N49",
+    "indicator_id": "p6_macro_adherence_share",
+    "name": "Share of quarantined agents at or below the non-quarantined median degree",
+    "scale": "macro",
+    "phenomenon_id": "adherence_heterogeneity_feedback",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N50",
+    "indicator_id": "p6_macro_population_suppression_ratio",
+    "name": "Population-level quarantine contact suppression ratio",
+    "scale": "macro",
+    "phenomenon_id": "adherence_heterogeneity_feedback",
+    "units": "ratio",
+    "executed": false
+  },
+  {
+    "label": "N51",
+    "indicator_id": "p7_micro_exposure_step_index",
+    "name": "Agent first observed exposure step index",
+    "scale": "micro",
+    "phenomenon_id": "intervention_timing_cohort_shift",
+    "units": "step index",
+    "executed": false
+  },
+  {
+    "label": "N52",
+    "indicator_id": "p7_micro_exposure_to_diagnosis_interval",
+    "name": "Agent exposure-to-diagnosis interval",
+    "scale": "micro",
+    "phenomenon_id": "intervention_timing_cohort_shift",
+    "units": "days",
+    "executed": false
+  },
+  {
+    "label": "N53",
+    "indicator_id": "p7_meso_band_exposure_share",
+    "name": "Age-band share of new exposure transitions",
+    "scale": "meso",
+    "phenomenon_id": "intervention_timing_cohort_shift",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N54",
+    "indicator_id": "p7_meso_layer_exposure_share",
+    "name": "Layer share of attributed new exposure transitions",
+    "scale": "meso",
+    "phenomenon_id": "intervention_timing_cohort_shift",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N55",
+    "indicator_id": "p7_meso_band_share_drift",
+    "name": "Age-band exposure share drift from first active step",
+    "scale": "meso",
+    "phenomenon_id": "intervention_timing_cohort_shift",
+    "units": "proportion difference",
+    "executed": false
+  },
+  {
+    "label": "N56",
+    "indicator_id": "p7_macro_age_composition_drift",
+    "name": "Total-variation drift of age composition of exposures",
+    "scale": "macro",
+    "phenomenon_id": "intervention_timing_cohort_shift",
+    "units": "dimensionless (0 to 1)",
+    "executed": false
+  },
+  {
+    "label": "N57",
+    "indicator_id": "p7_macro_layer_composition_drift",
+    "name": "Total-variation drift of layer composition of attributed exposures",
+    "scale": "macro",
+    "phenomenon_id": "intervention_timing_cohort_shift",
+    "units": "dimensionless (0 to 1)",
+    "executed": false
+  },
+  {
+    "label": "N58",
+    "indicator_id": "p7_macro_growth_change_at_first_quarantine",
+    "name": "Contrast of exposure growth before and after first quarantine onset",
+    "scale": "macro",
+    "phenomenon_id": "intervention_timing_cohort_shift",
+    "units": "per-step log-growth difference",
+    "executed": false
+  },
+  {
+    "label": "N59",
+    "indicator_id": "p7_macro_median_age_of_new_exposures",
+    "name": "Median age of agents with new exposure transitions",
+    "scale": "macro",
+    "phenomenon_id": "intervention_timing_cohort_shift",
+    "units": "years (age units as recorded)",
+    "executed": false
+  },
+  {
+    "label": "N60",
+    "indicator_id": "p8_micro_offset_from_infectious_trough",
+    "name": "Agent exposure-step offset from the city infectious trough",
+    "scale": "micro",
+    "phenomenon_id": "community_resurgence_after_decline",
+    "units": "steps",
+    "executed": false
+  },
+  {
+    "label": "N61",
+    "indicator_id": "p8_micro_post_trough_exposure_flag",
+    "name": "Agent exposure transition after the infectious trough",
+    "scale": "micro",
+    "phenomenon_id": "community_resurgence_after_decline",
+    "units": "indicator (0/1)",
+    "executed": false
+  },
+  {
+    "label": "N62",
+    "indicator_id": "p8_meso_layer_post_trough_incidence_ratio",
+    "name": "Layer attributed-exposure rate ratio after versus at the trough",
+    "scale": "meso",
+    "phenomenon_id": "community_resurgence_after_decline",
+    "units": "ratio",
+    "executed": false
+  },
+  {
+    "label": "N63",
+    "indicator_id": "p8_meso_band_post_trough_incidence_ratio",
+    "name": "Age-band exposure rate ratio after versus at the trough",
+    "scale": "meso",
+    "phenomenon_id": "community_resurgence_after_decline",
+    "units": "ratio",
+    "executed": false
+  },
+  {
+    "label": "N64",
+    "indicator_id": "p8_macro_post_trough_infectious_growth",
+    "name": "Mean post-trough log growth of infectious agents",
+    "scale": "macro",
+    "phenomenon_id": "community_resurgence_after_decline",
+    "units": "per-step log growth",
+    "executed": false
+  },
+  {
+    "label": "N65",
+    "indicator_id": "p8_macro_resurgence_amplitude",
+    "name": "Post-trough rebound amplitude of infectious count",
+    "scale": "macro",
+    "phenomenon_id": "community_resurgence_after_decline",
+    "units": "ratio",
+    "executed": false
+  },
+  {
+    "label": "N66",
+    "indicator_id": "p8_macro_trough_susceptible_depletion",
+    "name": "Susceptible share at the infectious trough",
+    "scale": "macro",
+    "phenomenon_id": "community_resurgence_after_decline",
+    "units": "proportion",
+    "executed": false
+  },
+  {
+    "label": "N67",
+    "indicator_id": "p8_macro_resurgence_breadth",
+    "name": "Share of layers with post-trough incidence increase",
+    "scale": "macro",
+    "phenomenon_id": "community_resurgence_after_decline",
+    "units": "proportion",
+    "executed": false
+  }
+]

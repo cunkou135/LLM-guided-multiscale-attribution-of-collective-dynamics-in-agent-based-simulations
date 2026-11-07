@@ -1,0 +1,1467 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1453pt" height="5592pt" viewBox="0.00 0.00 1453.00 5592.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 2675.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-2675.39 688.59,-2675.39 688.59,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-2641.5" font-family="Times New Roman" font-size="17.00">Covasim | upward</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-2619" font-family="Times New Roman" font-size="12.00">67 nodes / 98 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-2594.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-2594.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-2594.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-2594.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-2594.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="8,-499 8,-2119 215.65,-2119 215.65,-499 8,-499" />
+<text xml:space="preserve" text-anchor="middle" x="35.12" y="-2099.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="225.65,-921 225.65,-2573 449.05,-2573 449.05,-921 225.65,-921" />
+<text xml:space="preserve" text-anchor="middle" x="252.03" y="-2553.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="459.05,-8 459.05,-1984 671.95,-1984 671.95,-8 459.05,-8" />
+<text xml:space="preserve" text-anchor="middle" x="488.43" y="-1964.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_upward__b00_r0002" class="inspectable" data-source="p1_micro_new_exposure_flag" data-target="p1_meso_band_hazard_dispersion">
+<path fill="none" stroke="#27667b" d="M182.48,-1445.43C195.14,-1450.83 207.04,-1458.39 215.65,-1469 236.01,-1494.09 205.01,-1516.15 225.65,-1541 231.72,-1548.31 239.28,-1554.18 247.58,-1558.9" />
+<polygon fill="#27667b" stroke="#27667b" points="246.02,-1560.85 253.36,-1561.9 248.27,-1556.5 246.02,-1560.85" />
+<title>p1_micro_new_exposure_flag → p1_meso_band_hazard_dispersion
+upward
+If new exposures concentrate in some age bands, between-band exposure hazards diverge, increasing cross-band dispersion even when total exposure activity is unchanged.</title></g>
+
+<g id="edge_upward__b00_r0000" class="inspectable" data-source="p1_micro_new_exposure_flag" data-target="p2_meso_layer_incidence_per_edge">
+<path fill="none" stroke="#27667b" d="M182.32,-1432C197.96,-1432 214.9,-1432 231.62,-1432" />
+<polygon fill="#27667b" stroke="#27667b" points="231.29,-1434.45 238.29,-1432 231.29,-1429.55 231.29,-1434.45" />
+<title>p1_micro_new_exposure_flag → p2_meso_layer_incidence_per_edge
+upward
+More per-agent new-exposure transitions raise the flow of exposure events that can be attributed to contact layers, so layer-level incidence per recorded edge can rise when these transitions cluster in a layer rather than being diffuse.</title></g>
+
+<g id="edge_upward__b00_r0001" class="inspectable" data-source="p1_micro_new_exposure_flag" data-target="p3_meso_dyad_attack_fraction">
+<path fill="none" stroke="#27667b" d="M182.32,-1454.7C198.77,-1460.07 216.65,-1465.91 234.21,-1471.64" />
+<polygon fill="#27667b" stroke="#27667b" points="233.4,-1473.96 240.81,-1473.8 234.92,-1469.3 233.4,-1473.96" />
+<title>p1_micro_new_exposure_flag → p3_meso_dyad_attack_fraction
+upward
+New household exposures increase the chance that a household-layer dyad accumulates at least one attributed exposure, lifting the fraction of dyads with any attributed event.</title></g>
+
+<g id="edge_upward__b00_r0003" class="inspectable" data-source="p1_micro_new_exposure_flag" data-target="p4_meso_group_silent_share">
+<path fill="none" stroke="#27667b" d="M182.53,-1419.25C195.35,-1413.81 207.3,-1406.05 215.65,-1395 235.12,-1369.23 206.71,-1276.16 225.65,-1250 229,-1245.37 232.91,-1241.22 237.23,-1237.49" />
+<polygon fill="#27667b" stroke="#27667b" points="238.62,-1239.51 242.62,-1233.26 235.6,-1235.65 238.62,-1239.51" />
+<title>p1_micro_new_exposure_flag → p4_meso_group_silent_share
+upward
+Cohorts of new exposures later enter infectious states; if they are distributed unevenly across quarantine-status groups, the silent share of infectious person-steps in those groups can shift after the exposure-to-infectious delay.</title></g>
+
+<g id="edge_upward__b00_r0004" class="inspectable" data-source="p1_micro_new_exposure_flag" data-target="p7_meso_layer_exposure_share">
+<path fill="none" stroke="#27667b" d="M182.44,-1444.21C195.42,-1449.69 207.47,-1457.59 215.65,-1469 232.72,-1492.8 208.22,-1972.47 225.65,-1996 231.18,-2003.46 238.28,-2009.4 246.23,-2014.13" />
+<polygon fill="#27667b" stroke="#27667b" points="245.07,-2016.29 252.4,-2017.43 247.38,-2011.97 245.07,-2016.29" />
+<title>p1_micro_new_exposure_flag → p7_meso_layer_exposure_share
+upward
+New exposures that are layer-attributed alter relative layer composition; an increase in exposures in one setting raises its share of attributed transitions.</title></g>
+
+<g id="edge_upward__b00_r0005" class="inspectable" data-source="p1_micro_new_exposure_flag" data-target="p8_meso_layer_post_trough_incidence_ratio">
+<path fill="none" stroke="#27667b" d="M182.4,-1444.24C195.39,-1449.71 207.45,-1457.61 215.65,-1469 244.03,-1508.41 198.07,-1866.02 225.65,-1906 230.46,-1912.98 236.56,-1918.88 243.41,-1923.86" />
+<polygon fill="#27667b" stroke="#27667b" points="242.04,-1925.89 249.23,-1927.71 244.75,-1921.81 242.04,-1925.89" />
+<title>p1_micro_new_exposure_flag → p8_meso_layer_post_trough_incidence_ratio
+upward
+Post-trough new exposures feed layer-attributed incidence after the trough; if they occur preferentially in a layer, that layer's after-versus-at-trough incidence ratio rises.</title></g>
+
+<g id="edge_upward__b01_r0002" class="inspectable" data-source="p1_micro_ever_exposed_state" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#27667b" d="M190.76,-820.16C267.41,-798.33 382.35,-781.41 449.05,-847 472.62,-870.18 439.59,-1415.27 459.05,-1442 460.35,-1443.78 461.73,-1445.47 463.2,-1447.08" />
+<polygon fill="#27667b" stroke="#27667b" points="461.42,-1448.76 468.17,-1451.84 464.81,-1445.23 461.42,-1448.76" />
+<title>p1_micro_ever_exposed_state → p8_macro_post_trough_infectious_growth
+upward
+Accumulated ever-exposed state among agents reduces susceptible recruitment after the trough, limiting the aggregate post-trough growth rate of infectious agents.</title></g>
+
+<g id="edge_upward__b01_r0001" class="inspectable" data-source="p1_micro_ever_exposed_state" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M190.69,-830.57C200.19,-825.6 208.9,-819.21 215.65,-811 234.49,-788.08 203.15,-764.34 225.65,-745 300.93,-680.26 378.27,-675.37 449.05,-745 473.09,-768.65 440.23,-1324.01 459.05,-1352 464.83,-1360.6 472.63,-1367.57 481.38,-1373.2" />
+<polygon fill="#27667b" stroke="#27667b" points="480,-1375.24 487.27,-1376.68 482.49,-1371.01 480,-1375.24" />
+<title>p1_micro_ever_exposed_state → p8_macro_resurgence_amplitude
+upward
+Greater cumulative individual exposure leaves fewer susceptible agents available to fuel a rebound, damping the post-trough resurgence amplitude.</title></g>
+
+<g id="edge_upward__b01_r0000" class="inspectable" data-source="p1_micro_ever_exposed_state" data-target="p8_macro_trough_susceptible_depletion">
+<path fill="none" stroke="#27667b" d="M190.7,-831.25C200.33,-826.18 209.07,-819.58 215.65,-811 232.06,-789.59 205.8,-708.28 225.65,-690 298.69,-622.75 378.03,-620.62 449.05,-690 466.02,-706.58 445.1,-1097.8 459.05,-1117 463.97,-1123.77 470.22,-1129.31 477.22,-1133.84" />
+<polygon fill="#27667b" stroke="#27667b" points="475.86,-1135.88 483.14,-1137.28 478.32,-1131.64 475.86,-1135.88" />
+<title>p1_micro_ever_exposed_state → p8_macro_trough_susceptible_depletion
+upward
+Agents becoming ever-exposed earlier deplete the local susceptible pool, so the aggregate susceptible share remaining at the city infectious trough is lower.</title></g>
+
+<g id="edge_upward__b01_r0003" class="inspectable" data-source="p2_micro_layer_degree" data-target="p2_meso_layer_incidence_per_edge">
+<path fill="none" stroke="#27667b" d="M205.68,-1020.26C209.39,-1023.44 212.76,-1027 215.65,-1031 239.37,-1063.78 201.56,-1362.5 225.65,-1395 228.01,-1398.19 230.67,-1401.11 233.54,-1403.78" />
+<polygon fill="#27667b" stroke="#27667b" points="231.64,-1405.38 238.59,-1407.95 234.76,-1401.6 231.64,-1405.38" />
+<title>p2_micro_layer_degree → p2_meso_layer_incidence_per_edge
+upward
+Higher per-agent contact degree in a layer increases exposure opportunities along recorded edges, raising the layer-level exposure incidence per edge.</title></g>
+
+<g id="edge_upward__b01_r0004" class="inspectable" data-source="p2_micro_layer_degree" data-target="p2_meso_layer_active_run">
+<path fill="none" stroke="#27667b" d="M205.77,-1020.19C209.46,-1023.39 212.79,-1026.98 215.65,-1031 232.33,-1054.49 208.7,-2044.71 225.65,-2068 230.85,-2075.15 237.5,-2080.94 244.94,-2085.62" />
+<polygon fill="#27667b" stroke="#27667b" points="243.37,-2087.55 250.67,-2088.87 245.79,-2083.29 243.37,-2087.55" />
+<title>p2_micro_layer_degree → p2_meso_layer_active_run
+upward
+Agents with many contacts in a layer can sustain transmission chains across consecutive sampled steps, lengthening the layer's active exposure run.</title></g>
+
+<g id="edge_upward__b01_r0005" class="inspectable" data-source="p2_micro_layer_degree" data-target="p2_macro_layer_incidence_entropy">
+<path fill="none" stroke="#27667b" d="M205.53,-966.19C209.17,-963.41 212.58,-960.36 215.65,-957 227.44,-944.12 211.82,-929.66 225.65,-919 264.97,-888.69 413.75,-884.09 449.05,-919 466.57,-936.32 444.6,-1786.04 459.05,-1806 461.34,-1809.16 463.92,-1812.05 466.74,-1814.69" />
+<polygon fill="#27667b" stroke="#27667b" points="464.72,-1816.2 471.67,-1818.79 467.86,-1812.43 464.72,-1816.2" />
+<title>p2_micro_layer_degree → p2_macro_layer_incidence_entropy
+upward
+Heterogeneous per-agent degree across layers concentrates exposure activity in high-degree settings, shifting the cross-layer entropy of attributed exposures.</title></g>
+
+<g id="edge_upward__b01_r0006" class="inspectable" data-source="p2_micro_layer_degree" data-target="p7_macro_layer_composition_drift">
+<path fill="none" stroke="#27667b" d="M205.5,-967.61C209.26,-964.46 212.68,-960.94 215.65,-957 236.02,-929.96 204.4,-831.35 225.65,-805 242.12,-784.58 388.6,-747.99 483.5,-726.05" />
+<polygon fill="#27667b" stroke="#27667b" points="483.92,-728.47 490.19,-724.51 482.82,-723.7 483.92,-728.47" />
+<title>p2_micro_layer_degree → p7_macro_layer_composition_drift
+upward
+When individual contact degree grows unevenly across layers, the layer composition of attributed exposures drifts away from its early-run reference.</title></g>
+
+<g id="edge_upward__b01_r0007" class="inspectable" data-source="p2_micro_layer_degree" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#27667b" d="M205.68,-967.05C209.34,-964.05 212.69,-960.71 215.65,-957 227.23,-942.47 211.75,-886.33 225.65,-874 262.79,-841.06 413.64,-839.21 449.05,-874 471.56,-896.12 440.46,-1416.49 459.05,-1442 460.35,-1443.78 461.73,-1445.47 463.21,-1447.08" />
+<polygon fill="#27667b" stroke="#27667b" points="461.42,-1448.76 468.17,-1451.84 464.81,-1445.22 461.42,-1448.76" />
+<title>p2_micro_layer_degree → p8_macro_post_trough_infectious_growth
+upward
+High per-agent layer degree preserves transmission opportunities after the trough, supporting faster aggregate growth of infectious agents.</title></g>
+
+<g id="edge_upward__b01_r0008" class="inspectable" data-source="p2_micro_layer_degree" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M205.8,-967.14C209.42,-964.12 212.74,-960.75 215.65,-957 230.15,-938.3 208.15,-866.93 225.65,-851 299.08,-784.17 378.15,-781.5 449.05,-851 468.93,-870.49 443.48,-1328.93 459.05,-1352 464.85,-1360.59 472.65,-1367.55 481.41,-1373.18" />
+<polygon fill="#27667b" stroke="#27667b" points="480.03,-1375.22 487.3,-1376.66 482.51,-1370.99 480.03,-1375.22" />
+<title>p2_micro_layer_degree → p8_macro_resurgence_amplitude
+upward
+Higher individual contact degree provides more channels for renewed transmission, increasing the size of the post-trough rebound.</title></g>
+
+<g id="edge_upward__b01_r0009" class="inspectable" data-source="p2_micro_layer_degree" data-target="p8_macro_resurgence_breadth">
+<path fill="none" stroke="#27667b" d="M205.48,-966.89C209.19,-963.93 212.61,-960.64 215.65,-957 232.97,-936.24 205.02,-914.47 225.65,-897 263.53,-864.91 413.66,-862.18 449.05,-897 473.49,-921.04 439,-1486.19 459.05,-1514 462.72,-1519.08 467.14,-1523.48 472.06,-1527.27" />
+<polygon fill="#27667b" stroke="#27667b" points="470.67,-1529.28 477.82,-1531.22 473.44,-1525.24 470.67,-1529.28" />
+<title>p2_micro_layer_degree → p8_macro_resurgence_breadth
+upward
+Agents with contacts spread across layers can seed post-trough increases in multiple settings, broadening the share of layers with resurgence.</title></g>
+
+<g id="edge_upward__b03_r0001" class="inspectable" data-source="p2_micro_layer_beta_load" data-target="p1_meso_band_attack_ratio">
+<path fill="none" stroke="#27667b" d="M191.95,-1134.34C206.25,-1133.31 221.34,-1132.23 236.15,-1131.17" />
+<polygon fill="#27667b" stroke="#27667b" points="236.03,-1133.64 242.84,-1130.69 235.68,-1128.75 236.03,-1133.64" />
+<title>p2_micro_layer_beta_load → p1_meso_band_attack_ratio
+upward
+Agents carrying larger per-layer contact-weight loads are more likely to generate new exposures through their setting-specific contacts; if this load is unevenly distributed across ages, the affected age bands can accumulate higher attack ratios over the run.</title></g>
+
+<g id="edge_upward__b03_r0008" class="inspectable" data-source="p2_micro_layer_beta_load" data-target="p3_meso_dyad_secondary_dispersion">
+<path fill="none" stroke="#27667b" d="M191.7,-1117.66C200.21,-1113.52 208.4,-1108.67 215.65,-1103 221.96,-1098.06 219.44,-1093.07 225.65,-1088 229.22,-1085.09 233,-1082.35 236.93,-1079.76" />
+<polygon fill="#27667b" stroke="#27667b" points="238.2,-1081.85 242.86,-1076.08 235.62,-1077.69 238.2,-1081.85" />
+<title>p2_micro_layer_beta_load → p3_meso_dyad_secondary_dispersion
+upward
+High contact-weight load within a layer makes repeated exposure between connected agents more likely; in the household-like layer this can produce additional secondary events in some dyads and increase dyad-level dispersion of attributed secondary counts.</title></g>
+
+<g id="edge_upward__b03_r0000" class="inspectable" data-source="p3_micro_household_degree" data-target="p1_meso_band_attack_ratio">
+<path fill="none" stroke="#27667b" d="M199.25,-1089.04C211.34,-1092.12 223.85,-1095.31 236.17,-1098.45" />
+<polygon fill="#27667b" stroke="#27667b" points="235.38,-1100.78 242.77,-1100.14 236.59,-1096.03 235.38,-1100.78" />
+<title>p3_micro_household_degree → p1_meso_band_attack_ratio
+upward
+Higher household-layer degree for an agent increases repeated close-contact exposure within the household setting; when such agents are concentrated in particular age bands, sustained household transmission can raise those bands' cumulative attack ratios rather than merely reflecting a precomputed aggregate.</title></g>
+
+<g id="edge_upward__b03_r0002" class="inspectable" data-source="p3_micro_household_degree" data-target="p3_meso_dyad_secondary_dispersion">
+<path fill="none" stroke="#27667b" d="M199.25,-1057.72C211.22,-1056.43 223.61,-1055.1 235.82,-1053.79" />
+<polygon fill="#27667b" stroke="#27667b" points="236.03,-1056.24 242.73,-1053.05 235.51,-1051.36 236.03,-1056.24" />
+<title>p3_micro_household_degree → p3_meso_dyad_secondary_dispersion
+upward
+An agent with more household-layer contacts participates in more dyadic pairs that can receive secondary exposure; variation in household degree therefore changes how unevenly attributed secondary events are distributed across household dyads.</title></g>
+
+<g id="edge_upward__b03_r0006" class="inspectable" data-source="p3_micro_household_degree" data-target="p6_meso_quarantined_degree_dispersion">
+<path fill="none" stroke="#27667b" d="M199.16,-1043.22C205.19,-1039.44 210.79,-1035.07 215.65,-1030 225.96,-1019.24 215.17,-1008.6 225.65,-998 228.48,-995.14 231.53,-992.51 234.76,-990.09" />
+<polygon fill="#27667b" stroke="#27667b" points="235.98,-992.22 240.38,-986.25 233.21,-988.18 235.98,-992.22" />
+<title>p3_micro_household_degree → p6_meso_quarantined_degree_dispersion
+upward
+Agents with large household-layer degree retain more recorded contacts even while quarantined; heterogeneity in household degree among quarantined agents therefore contributes to wider dispersion of observed contact degree in the quarantined subgroup.</title></g>
+
+<g id="edge_upward__b00_r0008" class="inspectable" data-source="p3_micro_attributed_exposure_flag" data-target="p1_meso_band_hazard_dispersion">
+<path fill="none" stroke="#27667b" d="M191.95,-1530.84C209.75,-1536.65 228.76,-1542.86 246.95,-1548.8" />
+<polygon fill="#27667b" stroke="#27667b" points="245.84,-1551.02 253.25,-1550.86 247.36,-1546.36 245.84,-1551.02" />
+<title>p3_micro_attributed_exposure_flag → p1_meso_band_hazard_dispersion
+upward
+Attributed exposures concentrated among particular ages can widen band-specific exposure hazards, raising cross-band dispersion.</title></g>
+
+<g id="edge_upward__b00_r0006" class="inspectable" data-source="p3_micro_attributed_exposure_flag" data-target="p2_meso_layer_incidence_per_edge">
+<path fill="none" stroke="#27667b" d="M191.95,-1479.16C204.96,-1474.91 218.63,-1470.45 232.15,-1466.03" />
+<polygon fill="#27667b" stroke="#27667b" points="232.75,-1468.41 238.64,-1463.91 231.23,-1463.75 232.75,-1468.41" />
+<title>p3_micro_attributed_exposure_flag → p2_meso_layer_incidence_per_edge
+upward
+Source-attributed exposures are the events entering layer incidence numerators; more attributed exposures per edge raise layer incidence, especially when attribution is concentrated in a layer.</title></g>
+
+<g id="edge_upward__b00_r0007" class="inspectable" data-source="p3_micro_attributed_exposure_flag" data-target="p3_meso_dyad_attack_fraction">
+<path fill="none" stroke="#27667b" d="M191.95,-1505C205.49,-1505 219.73,-1505 233.78,-1505" />
+<polygon fill="#27667b" stroke="#27667b" points="233.51,-1507.45 240.51,-1505 233.51,-1502.55 233.51,-1507.45" />
+<title>p3_micro_attributed_exposure_flag → p3_meso_dyad_attack_fraction
+upward
+Source-attributed household exposures add dyads to the ever-attacked set, increasing the fraction of household dyads with any attributed exposure.</title></g>
+
+<g id="edge_upward__b00_r0009" class="inspectable" data-source="p3_micro_attributed_exposure_flag" data-target="p4_meso_group_silent_share">
+<path fill="none" stroke="#27667b" d="M191.49,-1488.19C200.87,-1483.13 209.34,-1476.55 215.65,-1468 244.44,-1428.98 197.66,-1289.6 225.65,-1250 228.99,-1245.28 232.91,-1241.05 237.26,-1237.26" />
+<polygon fill="#27667b" stroke="#27667b" points="238.73,-1239.22 242.71,-1232.96 235.7,-1235.37 238.73,-1239.22" />
+<title>p3_micro_attributed_exposure_flag → p4_meso_group_silent_share
+upward
+Attributed exposures seed later infectious individuals; uneven attribution across quarantine-status groups can change the silent share after progression to infectiousness.</title></g>
+
+<g id="edge_upward__b00_r0010" class="inspectable" data-source="p3_micro_attributed_exposure_flag" data-target="p7_meso_layer_exposure_share">
+<path fill="none" stroke="#27667b" d="M191.68,-1521.67C201.03,-1526.75 209.44,-1533.38 215.65,-1542 230.38,-1562.48 210.6,-1975.75 225.65,-1996 231.14,-2003.39 238.18,-2009.29 246.05,-2013.99" />
+<polygon fill="#27667b" stroke="#27667b" points="244.83,-2016.12 252.16,-2017.27 247.15,-2011.8 244.83,-2016.12" />
+<title>p3_micro_attributed_exposure_flag → p7_meso_layer_exposure_share
+upward
+Attributed exposures determine which layers receive incident events; a shift toward one layer raises its exposure share.</title></g>
+
+<g id="edge_upward__b00_r0011" class="inspectable" data-source="p3_micro_attributed_exposure_flag" data-target="p8_meso_layer_post_trough_incidence_ratio">
+<path fill="none" stroke="#27667b" d="M191.64,-1521.7C201,-1526.78 209.42,-1533.39 215.65,-1542 239.37,-1574.78 202.6,-1872.75 225.65,-1906 230.48,-1912.97 236.59,-1918.86 243.45,-1923.84" />
+<polygon fill="#27667b" stroke="#27667b" points="242.08,-1925.87 249.27,-1927.69 244.78,-1921.79 242.08,-1925.87" />
+<title>p3_micro_attributed_exposure_flag → p8_meso_layer_post_trough_incidence_ratio
+upward
+Attributed exposures after the trough drive layer-specific post-trough incidence; concentration in a layer raises its post-trough ratio relative to the trough.</title></g>
+
+<g id="edge_upward__b01_r0014" class="inspectable" data-source="p3_micro_household_attributed_flag" data-target="p3_meso_dyad_secondary_dispersion">
+<path fill="none" stroke="#27667b" d="M202.35,-946.39C207.21,-949.79 211.71,-953.64 215.65,-958 227.94,-971.59 213.64,-984.16 225.65,-998 229.26,-1002.16 233.31,-1005.94 237.67,-1009.37" />
+<polygon fill="#27667b" stroke="#27667b" points="235.94,-1011.14 243.04,-1013.27 238.82,-1007.18 235.94,-1011.14" />
+<title>p3_micro_household_attributed_flag → p3_meso_dyad_secondary_dispersion
+upward
+Repeated household-attributed exposures concentrate in a subset of dyads, increasing dispersion of cumulative attributed exposures across household dyads.</title></g>
+
+<g id="edge_upward__b01_r0013" class="inspectable" data-source="p3_micro_household_attributed_flag" data-target="p3_meso_dyad_attack_fraction">
+<path fill="none" stroke="#27667b" d="M202.21,-944.39C207.31,-948.26 211.89,-952.76 215.65,-958 232.17,-981.02 208.86,-1445.17 225.65,-1468 228.57,-1471.97 231.94,-1475.53 235.64,-1478.7" />
+<polygon fill="#27667b" stroke="#27667b" points="233.92,-1480.47 240.96,-1482.78 236.9,-1476.58 233.92,-1480.47" />
+<title>p3_micro_household_attributed_flag → p3_meso_dyad_attack_fraction
+upward
+Individual household-attributed exposure events convert previously unaffected household dyads into attacked dyads, raising the fraction of dyads with any attributed exposure.</title></g>
+
+<g id="edge_upward__b01_r0015" class="inspectable" data-source="p3_micro_household_attributed_flag" data-target="p7_macro_layer_composition_drift">
+<path fill="none" stroke="#27667b" d="M202.31,-897.01C207.32,-893.28 211.85,-888.97 215.65,-884 232.57,-861.86 206.64,-779.38 225.65,-759 290.15,-689.85 405.2,-686.91 483.15,-694.62" />
+<polygon fill="#27667b" stroke="#27667b" points="482.79,-697.04 490.01,-695.34 483.31,-692.17 482.79,-697.04" />
+<title>p3_micro_household_attributed_flag → p7_macro_layer_composition_drift
+upward
+More household-attributed individual exposures raise the household layer's share of attributed exposures, shifting layer composition over time.</title></g>
+
+<g id="edge_upward__b01_r0016" class="inspectable" data-source="p3_micro_household_attributed_flag" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M202.11,-896.85C207.16,-893.16 211.76,-888.91 215.65,-884 227.61,-868.93 211.28,-810.79 225.65,-798 299.8,-731.97 378.21,-728.43 449.05,-798 471.01,-819.57 441.85,-1326.47 459.05,-1352 464.84,-1360.6 472.64,-1367.56 481.39,-1373.2" />
+<polygon fill="#27667b" stroke="#27667b" points="480.01,-1375.23 487.29,-1376.67 482.5,-1371 480.01,-1375.23" />
+<title>p3_micro_household_attributed_flag → p8_macro_resurgence_amplitude
+upward
+Household-attributed exposure chains can persist through low-incidence periods and reseed transmission, increasing post-trough rebound amplitude.</title></g>
+
+<g id="edge_upward__b01_r0017" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p1_meso_band_exposure_hazard">
+<path fill="none" stroke="#27667b" d="M186.65,-626.29C198.02,-631.55 208.37,-638.86 215.65,-649 231.27,-670.78 209.87,-1592.33 225.65,-1614 226.9,-1615.72 228.24,-1617.36 229.65,-1618.93" />
+<polygon fill="#27667b" stroke="#27667b" points="227.64,-1620.39 234.36,-1623.54 231.07,-1616.89 227.64,-1620.39" />
+<title>p4_micro_silent_infectious_flag → p1_meso_band_exposure_hazard
+upward
+Silently infectious agents remain in contact and contribute infection pressure in their age bands, raising the band-level exposure hazard.</title></g>
+
+<g id="edge_upward__b01_r0018" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p2_meso_layer_incidence_per_edge">
+<path fill="none" stroke="#27667b" d="M186.62,-626.31C197.99,-631.57 208.36,-638.87 215.65,-649 239.86,-682.64 201.2,-1361.53 225.65,-1395 227.99,-1398.21 230.62,-1401.14 233.49,-1403.82" />
+<polygon fill="#27667b" stroke="#27667b" points="231.57,-1405.41 238.51,-1408.01 234.7,-1401.64 231.57,-1405.41" />
+<title>p4_micro_silent_infectious_flag → p2_meso_layer_incidence_per_edge
+upward
+Silent infectious agents active in contact layers generate exposures along recorded edges, increasing layer exposure incidence per edge.</title></g>
+
+<g id="edge_upward__b01_r0019" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p4_macro_detection_coverage_rate">
+<path fill="none" stroke="#27667b" d="M186.6,-584.36C199.44,-580.48 212.8,-577.11 225.65,-575 274.64,-566.97 413.57,-540.27 449.05,-575 467.67,-593.23 443.75,-1022.9 459.05,-1044 460.3,-1045.72 461.63,-1047.36 463.04,-1048.92" />
+<polygon fill="#27667b" stroke="#27667b" points="461.03,-1050.38 467.74,-1053.52 464.45,-1046.88 461.03,-1050.38" />
+<title>p4_micro_silent_infectious_flag → p4_macro_detection_coverage_rate
+upward
+A larger silent infectious pool lowers the number of new diagnoses per infectious person-step, reducing observed detection coverage.</title></g>
+
+<g id="edge_upward__b01_r0020" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p4_macro_masking_ratio">
+<path fill="none" stroke="#27667b" d="M186.63,-596.97C197.57,-591.82 207.79,-585.01 215.65,-576 229.69,-559.91 209.98,-543.52 225.65,-529 299.13,-460.91 380.79,-572.32 449.05,-499 473.48,-472.76 438.38,-367.28 459.05,-338 461.05,-335.16 463.27,-332.51 465.67,-330.02" />
+<polygon fill="#27667b" stroke="#27667b" points="467.02,-332.1 470.46,-325.53 463.67,-328.53 467.02,-332.1" />
+<title>p4_micro_silent_infectious_flag → p4_macro_masking_ratio
+upward
+Silent infectious episodes accumulate undiagnosed ever-exposed agents, increasing the ratio of never-diagnosed to ever-diagnosed infections.</title></g>
+
+<g id="edge_upward__b01_r0021" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p5_macro_quarantine_coverage">
+<path fill="none" stroke="#27667b" d="M186.59,-595.07C197.21,-590.15 207.34,-583.91 215.65,-576 224.02,-568.03 216.04,-558.41 225.65,-552 266.96,-524.46 413.53,-517.32 449.05,-552 465.71,-568.27 445.36,-952.17 459.05,-971 464.25,-978.15 470.93,-983.93 478.42,-988.59" />
+<polygon fill="#27667b" stroke="#27667b" points="476.87,-990.53 484.17,-991.83 479.27,-986.26 476.87,-990.53" />
+<title>p4_micro_silent_infectious_flag → p5_macro_quarantine_coverage
+upward
+Undiagnosed silent infectious agents are less likely to be quarantined, lowering population quarantine coverage relative to observed infections.</title></g>
+
+<g id="edge_upward__b01_r0022" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p6_macro_contact_volume_change">
+<path fill="none" stroke="#27667b" d="M186.46,-597.85C197.63,-592.6 207.97,-585.52 215.65,-576 236.77,-549.83 201.62,-524.53 225.65,-501 261.34,-466.05 415.13,-512.68 449.05,-476 471.69,-451.51 439.31,-202.88 459.05,-176 460.71,-173.73 462.53,-171.6 464.47,-169.6" />
+<polygon fill="#27667b" stroke="#27667b" points="466,-171.52 469.54,-165 462.71,-167.9 466,-171.52" />
+<title>p4_micro_silent_infectious_flag → p6_macro_contact_volume_change
+upward
+Silent infectious agents continue normal activity, attenuating the population-wide decline in contact volume after interventions.</title></g>
+
+<g id="edge_upward__b01_r0023" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p7_macro_growth_change_at_first_quarantine">
+<path fill="none" stroke="#27667b" d="M186.45,-598.17C197.69,-592.88 208.05,-585.72 215.65,-576 229.13,-558.75 218.57,-498.72 225.65,-478 289.12,-292.23 310.01,-230.77 459.05,-103 460.64,-101.64 462.27,-100.32 463.95,-99.03" />
+<polygon fill="#27667b" stroke="#27667b" points="465.12,-101.2 469.37,-95.11 462.26,-97.22 465.12,-101.2" />
+<title>p4_micro_silent_infectious_flag → p7_macro_growth_change_at_first_quarantine
+upward
+Ongoing silent transmission offsets the growth reduction expected around quarantine onset, weakening the observed before-after growth contrast.</title></g>
+
+<g id="edge_upward__b01_r0024" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#27667b" d="M186.5,-620.54C275.33,-631.32 416.77,-654.46 449.05,-695 474.9,-727.47 434.68,-1408.41 459.05,-1442 460.34,-1443.78 461.73,-1445.48 463.2,-1447.09" />
+<polygon fill="#27667b" stroke="#27667b" points="461.41,-1448.77 468.15,-1451.85 464.8,-1445.23 461.41,-1448.77" />
+<title>p4_micro_silent_infectious_flag → p8_macro_post_trough_infectious_growth
+upward
+Silent infections surviving the trough continue generating new infections, raising post-trough growth of the infectious population.</title></g>
+
+<g id="edge_upward__b01_r0025" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M186.62,-595.04C264.2,-581.06 383.85,-574.31 449.05,-645 475.68,-673.87 437.17,-1319.38 459.05,-1352 464.82,-1360.61 472.61,-1367.58 481.36,-1373.22" />
+<polygon fill="#27667b" stroke="#27667b" points="479.98,-1375.25 487.25,-1376.69 482.47,-1371.03 479.98,-1375.25" />
+<title>p4_micro_silent_infectious_flag → p8_macro_resurgence_amplitude
+upward
+Hidden infectious activity provides a reservoir that can seed a larger rebound after the observed infectious minimum.</title></g>
+
+<g id="edge_upward__b02_r0000" class="inspectable" data-source="p4_micro_silent_infectious_duration" data-target="p1_meso_band_exposure_hazard">
+<path fill="none" stroke="#27667b" d="M192.8,-1778.55C201.5,-1773.74 209.43,-1767.66 215.65,-1760 236.01,-1734.91 205.01,-1712.85 225.65,-1688 226.72,-1686.71 227.83,-1685.47 228.99,-1684.27" />
+<polygon fill="#27667b" stroke="#27667b" points="230.51,-1686.21 233.99,-1679.66 227.18,-1682.61 230.51,-1686.21" />
+<title>p4_micro_silent_infectious_duration → p1_meso_band_exposure_hazard
+upward
+Agents with longer cumulative silent infectious duration continue to contact others while undiagnosed, increasing the rate at which susceptible age-band members become exposed; this raises the band-level exposure hazard beyond what would occur if silent infectious periods were shorter.</title></g>
+
+<g id="edge_upward__b02_r0001" class="inspectable" data-source="p4_micro_silent_infectious_duration" data-target="p2_meso_layer_active_run">
+<path fill="none" stroke="#27667b" d="M193.02,-1814.62C201.8,-1819.57 209.69,-1825.9 215.65,-1834 231.07,-1854.97 209.99,-2047.21 225.65,-2068 230.92,-2075 237.58,-2080.69 244.99,-2085.32" />
+<polygon fill="#27667b" stroke="#27667b" points="243.38,-2087.22 250.68,-2088.53 245.79,-2082.96 243.38,-2087.22" />
+<title>p4_micro_silent_infectious_duration → p2_meso_layer_active_run
+upward
+Silent infectious agents sustain contact activity in their settings, so layers with such agents experience repeated exposure events across consecutive steps, lengthening the layer's consecutive active-step run.</title></g>
+
+<g id="edge_upward__b02_r0002" class="inspectable" data-source="p4_micro_silent_infectious_duration" data-target="p3_meso_dyad_secondary_count">
+<path fill="none" stroke="#27667b" d="M192.6,-1814.28C201.56,-1819.28 209.62,-1825.72 215.65,-1834 235.73,-1861.6 205.26,-2113.63 225.65,-2141 230.23,-2147.15 235.87,-2152.28 242.16,-2156.58" />
+<polygon fill="#27667b" stroke="#27667b" points="240.69,-2158.54 247.93,-2160.12 243.25,-2154.37 240.69,-2158.54" />
+<title>p4_micro_silent_infectious_duration → p3_meso_dyad_secondary_count
+upward
+In a household dyad, a silently infectious index case with longer duration has more opportunities to expose the partner, increasing the dyad's attributed secondary exposure count.</title></g>
+
+<g id="edge_upward__b03_r0009" class="inspectable" data-source="p4_micro_symptomatic_undiagnosed_flag" data-target="p5_meso_layer_load_dispersion">
+<path fill="none" stroke="#27667b" d="M193.17,-1376.51C201.92,-1381.47 209.77,-1387.84 215.65,-1396 244.03,-1435.41 196.82,-1793.92 225.65,-1833 231.48,-1840.9 239.06,-1847.13 247.53,-1852.05" />
+<polygon fill="#27667b" stroke="#27667b" points="246.16,-1854.1 253.49,-1855.18 248.43,-1849.76 246.16,-1854.1" />
+<title>p4_micro_symptomatic_undiagnosed_flag → p5_meso_layer_load_dispersion
+upward
+Undiagnosed symptomatic agents remain in contact networks and can later be linked to known-contact tracing in different settings; if they are unevenly distributed across layers, the resulting per-index contact load becomes more dispersed across layers.</title></g>
+
+<g id="edge_upward__b03_r0003" class="inspectable" data-source="p4_micro_symptomatic_undiagnosed_flag" data-target="p7_meso_band_exposure_share">
+<path fill="none" stroke="#27667b" d="M193.21,-1359C211.55,-1359 231.12,-1359 249.71,-1359" />
+<polygon fill="#27667b" stroke="#27667b" points="249.66,-1361.45 256.66,-1359 249.66,-1356.55 249.66,-1361.45" />
+<title>p4_micro_symptomatic_undiagnosed_flag → p7_meso_band_exposure_share
+upward
+Symptomatic-but-undiagnosed agents continue normal social contact without entering surveillance; if this state is more common in some age groups, those groups contribute disproportionately to new exposure transitions and shift the age-band composition of incident exposure activity.</title></g>
+
+<g id="edge_upward__b02_r0003" class="inspectable" data-source="p5_micro_known_contact_flag" data-target="p1_meso_band_exposure_hazard">
+<path fill="none" stroke="#27667b" d="M201.46,-1846.73C206.82,-1842.84 211.65,-1838.3 215.65,-1833 235.12,-1807.23 205.88,-1713.54 225.65,-1688 226.81,-1686.5 228.03,-1685.07 229.31,-1683.69" />
+<polygon fill="#27667b" stroke="#27667b" points="230.8,-1685.65 234.16,-1679.04 227.41,-1682.11 230.8,-1685.65" />
+<title>p5_micro_known_contact_flag → p1_meso_band_exposure_hazard
+upward
+Being flagged as a known contact typically triggers quarantine and reduced social activity, which lowers the exposure hazard in the agent's age band by removing potential transmitters from contact networks.</title></g>
+
+<g id="edge_upward__b02_r0004" class="inspectable" data-source="p5_micro_known_contact_flag" data-target="p2_meso_layer_active_run">
+<path fill="none" stroke="#27667b" d="M201.48,-1892.36C206.83,-1896.21 211.66,-1900.72 215.65,-1906 237.42,-1934.76 203.68,-2039.39 225.65,-2068 230.99,-2074.95 237.68,-2080.61 245.13,-2085.22" />
+<polygon fill="#27667b" stroke="#27667b" points="243.53,-2087.13 250.83,-2088.41 245.92,-2082.85 243.53,-2087.13" />
+<title>p5_micro_known_contact_flag → p2_meso_layer_active_run
+upward
+Known-contact flags lead to quarantine, reducing the number of active transmitters in contact layers and thereby shortening the layer's consecutive run of exposure events.</title></g>
+
+<g id="edge_upward__b02_r0005" class="inspectable" data-source="p5_micro_known_contact_flag" data-target="p3_meso_dyad_secondary_count">
+<path fill="none" stroke="#27667b" d="M201.59,-1892.28C206.92,-1896.15 211.71,-1900.68 215.65,-1906 231.22,-1926.99 209.93,-2120.12 225.65,-2141 230.22,-2147.06 235.81,-2152.14 242.05,-2156.4" />
+<polygon fill="#27667b" stroke="#27667b" points="240.5,-2158.33 247.75,-2159.91 243.07,-2154.15 240.5,-2158.33" />
+<title>p5_micro_known_contact_flag → p3_meso_dyad_secondary_count
+upward
+When a household member is flagged as a known contact and quarantined, secondary exposures within that dyad are reduced, lowering the dyad's attributed secondary count.</title></g>
+
+<g id="edge_upward__b02_r0006" class="inspectable" data-source="p5_micro_known_contact_flag" data-target="p5_meso_layer_index_contact_load">
+<path fill="none" stroke="#27667b" d="M201.65,-1892.23C206.96,-1896.11 211.73,-1900.66 215.65,-1906 235.91,-1933.6 205.19,-2186.54 225.65,-2214 232.83,-2223.64 242.63,-2230.8 253.44,-2236.11" />
+<polygon fill="#27667b" stroke="#27667b" points="252.29,-2238.28 259.69,-2238.88 254.28,-2233.8 252.29,-2238.28" />
+<title>p5_micro_known_contact_flag → p5_meso_layer_index_contact_load
+upward
+Known-contact flags are the trigger for quarantine; the layer-specific contact degree of newly quarantined flagged agents defines the tracing workload per index, so more flagged agents in a layer increase the layer's per-index contact load.</title></g>
+
+<g id="edge_upward__b03_r0004" class="inspectable" data-source="p5_micro_tracing_latency" data-target="p3_meso_dyad_secondary_dispersion">
+<path fill="none" stroke="#27667b" d="M192.37,-1268.55C201.37,-1263.58 209.5,-1257.19 215.65,-1249 237.16,-1220.33 204.72,-1117.1 225.65,-1088 229.15,-1083.14 233.26,-1078.8 237.82,-1074.93" />
+<polygon fill="#27667b" stroke="#27667b" points="239.04,-1077.08 243.08,-1070.86 236.04,-1073.2 239.04,-1077.08" />
+<title>p5_micro_tracing_latency → p3_meso_dyad_secondary_dispersion
+upward
+Longer delay from known-contact flag to quarantine leaves source agents and their household contacts active for more steps; this can create additional secondary exposure events in some household dyads and increase dispersion of attributed counts across dyads.</title></g>
+
+<g id="edge_upward__b03_r0005" class="inspectable" data-source="p5_micro_tracing_latency" data-target="p5_meso_layer_load_dispersion">
+<path fill="none" stroke="#27667b" d="M192.7,-1303.21C201.65,-1308.22 209.68,-1314.68 215.65,-1323 232.17,-1346.02 208.86,-1810.17 225.65,-1833 231.46,-1840.91 239.04,-1847.15 247.5,-1852.07" />
+<polygon fill="#27667b" stroke="#27667b" points="246.13,-1854.11 253.46,-1855.2 248.4,-1849.77 246.13,-1854.11" />
+<title>p5_micro_tracing_latency → p5_meso_layer_load_dispersion
+upward
+When individual tracing delays are long and uneven, newly quarantined index agents may accumulate different numbers of active layer contacts before isolation; this uneven accumulation can widen the cross-layer dispersion of per-index contact load.</title></g>
+
+<g id="edge_upward__b00_r0013" class="inspectable" data-source="p5_micro_quarantine_flag" data-target="p2_meso_layer_incidence_per_edge">
+<path fill="none" stroke="#27667b" d="M189.28,-1635.12C199.49,-1629.94 208.79,-1623.08 215.65,-1614 235.12,-1588.23 205.88,-1494.54 225.65,-1469 228.08,-1465.86 230.79,-1462.98 233.71,-1460.35" />
+<polygon fill="#27667b" stroke="#27667b" points="234.92,-1462.52 238.83,-1456.22 231.84,-1458.71 234.92,-1462.52" />
+<title>p5_micro_quarantine_flag → p2_meso_layer_incidence_per_edge
+upward
+Quarantine removes agents from contact layers, reducing exposure events per remaining edge, so layer incidence per edge can fall when quarantine covers active layer members.</title></g>
+
+<g id="edge_upward__b00_r0016" class="inspectable" data-source="p5_micro_quarantine_flag" data-target="p3_meso_dyad_attack_fraction">
+<path fill="none" stroke="#27667b" d="M189.25,-1634.43C199.33,-1629.34 208.6,-1622.69 215.65,-1614 236.01,-1588.91 205.01,-1566.85 225.65,-1542 228.56,-1538.49 231.82,-1535.32 235.34,-1532.44" />
+<polygon fill="#27667b" stroke="#27667b" points="236.53,-1534.6 240.71,-1528.48 233.62,-1530.66 236.53,-1534.6" />
+<title>p5_micro_quarantine_flag → p3_meso_dyad_attack_fraction
+upward
+Quarantining an index case in a household dyad reduces subsequent attributed household exposures, lowering the fraction of dyads with any attributed event.</title></g>
+
+<g id="edge_upward__b00_r0012" class="inspectable" data-source="p5_micro_quarantine_flag" data-target="p6_meso_layer_quarantine_suppression_ratio">
+<path fill="none" stroke="#27667b" d="M189.21,-1666.31C199.57,-1671.55 208.92,-1678.58 215.65,-1688 237.35,-1718.39 204.57,-2329.18 225.65,-2360 232.1,-2369.44 240.91,-2376.9 250.76,-2382.8" />
+<polygon fill="#27667b" stroke="#27667b" points="249.45,-2384.87 256.77,-2386.09 251.81,-2380.58 249.45,-2384.87" />
+<title>p5_micro_quarantine_flag → p6_meso_layer_quarantine_suppression_ratio
+upward
+More quarantined agents in a layer lower the quarantined group's mean in-layer degree relative to non-quarantined agents, reducing the layer suppression ratio through behavioural withdrawal.</title></g>
+
+<g id="edge_upward__b00_r0014" class="inspectable" data-source="p5_micro_quarantine_flag" data-target="p7_meso_layer_exposure_share">
+<path fill="none" stroke="#27667b" d="M189.32,-1666.54C199.59,-1671.76 208.9,-1678.72 215.65,-1688 235.79,-1715.69 205.08,-1968.63 225.65,-1996 231.18,-2003.36 238.25,-2009.24 246.13,-2013.94" />
+<polygon fill="#27667b" stroke="#27667b" points="244.92,-2016.06 252.24,-2017.21 247.23,-2011.74 244.92,-2016.06" />
+<title>p5_micro_quarantine_flag → p7_meso_layer_exposure_share
+upward
+Quarantine changes which layers remain active; settings with many quarantined members lose exposure share while less affected layers gain share.</title></g>
+
+<g id="edge_upward__b00_r0015" class="inspectable" data-source="p5_micro_quarantine_flag" data-target="p8_meso_layer_post_trough_incidence_ratio">
+<path fill="none" stroke="#27667b" d="M189.21,-1666.62C199.5,-1671.83 208.84,-1678.76 215.65,-1688 244.44,-1727.02 197.66,-1866.4 225.65,-1906 230.54,-1912.92 236.7,-1918.79 243.58,-1923.75" />
+<polygon fill="#27667b" stroke="#27667b" points="242.23,-1925.79 249.43,-1927.58 244.92,-1921.69 242.23,-1925.79" />
+<title>p5_micro_quarantine_flag → p8_meso_layer_post_trough_incidence_ratio
+upward
+Quarantine after the trough can suppress layer-specific resurgence; layers with higher quarantine coverage show lower post-trough incidence ratios.</title></g>
+
+<g id="edge_upward__b00_r0022" class="inspectable" data-source="p6_micro_quarantine_contact_ratio" data-target="p1_meso_band_hazard_dispersion">
+<path fill="none" stroke="#27667b" d="M201.49,-1578C216.3,-1578 231.67,-1578 246.51,-1578" />
+<polygon fill="#27667b" stroke="#27667b" points="246.18,-1580.45 253.18,-1578 246.18,-1575.55 246.18,-1580.45" />
+<title>p6_micro_quarantine_contact_ratio → p1_meso_band_hazard_dispersion
+upward
+If adherence differs by age, quarantine contact reduction is uneven across age bands, widening band-specific exposure hazards and increasing dispersion.</title></g>
+
+<g id="edge_upward__b00_r0018" class="inspectable" data-source="p6_micro_quarantine_contact_ratio" data-target="p2_meso_layer_incidence_per_edge">
+<path fill="none" stroke="#27667b" d="M201.52,-1554.08C206.79,-1550.34 211.59,-1546.01 215.65,-1541 236.01,-1515.91 205.01,-1493.85 225.65,-1469 227.98,-1466.19 230.53,-1463.6 233.26,-1461.2" />
+<polygon fill="#27667b" stroke="#27667b" points="234.75,-1463.14 238.73,-1456.89 231.72,-1459.3 234.75,-1463.14" />
+<title>p6_micro_quarantine_contact_ratio → p2_meso_layer_incidence_per_edge
+upward
+Agents with lower quarantine contact ratios contribute fewer layer contacts and exposures, reducing layer incidence per edge when such adherence is common in the layer.</title></g>
+
+<g id="edge_upward__b00_r0021" class="inspectable" data-source="p6_micro_quarantine_contact_ratio" data-target="p3_meso_dyad_attack_fraction">
+<path fill="none" stroke="#27667b" d="M201.49,-1549.04C212.18,-1545.55 223.17,-1541.96 234.03,-1538.42" />
+<polygon fill="#27667b" stroke="#27667b" points="234.58,-1540.81 240.48,-1536.31 233.06,-1536.15 234.58,-1540.81" />
+<title>p6_micro_quarantine_contact_ratio → p3_meso_dyad_attack_fraction
+upward
+Household dyad members with lower quarantine contact ratios sustain more in-home contact, raising the chance that the dyad accumulates an attributed exposure.</title></g>
+
+<g id="edge_upward__b00_r0017" class="inspectable" data-source="p6_micro_quarantine_contact_ratio" data-target="p6_meso_layer_quarantine_suppression_ratio">
+<path fill="none" stroke="#27667b" d="M201.34,-1600.69C206.8,-1604.71 211.68,-1609.44 215.65,-1615 239.68,-1648.7 202.31,-2325.82 225.65,-2360 232.1,-2369.44 240.9,-2376.91 250.75,-2382.81" />
+<polygon fill="#27667b" stroke="#27667b" points="249.44,-2384.88 256.75,-2386.1 251.8,-2380.59 249.44,-2384.88" />
+<title>p6_micro_quarantine_contact_ratio → p6_meso_layer_quarantine_suppression_ratio
+upward
+Heterogeneous per-agent contact ratios under quarantine aggregate into the layer-level ratio: agents who reduce contacts more strongly lower the quarantined mean degree, increasing suppression.</title></g>
+
+<g id="edge_upward__b00_r0019" class="inspectable" data-source="p6_micro_quarantine_contact_ratio" data-target="p7_meso_layer_exposure_share">
+<path fill="none" stroke="#27667b" d="M201.26,-1600.75C206.74,-1604.75 211.65,-1609.46 215.65,-1615 240.46,-1649.32 200.32,-1962.07 225.65,-1996 231.16,-2003.38 238.21,-2009.27 246.08,-2013.97" />
+<polygon fill="#27667b" stroke="#27667b" points="244.86,-2016.1 252.19,-2017.25 247.18,-2011.78 244.86,-2016.1" />
+<title>p6_micro_quarantine_contact_ratio → p7_meso_layer_exposure_share
+upward
+Adherence differences shift exposure activity from layers where quarantined agents withdraw toward layers where they remain active, changing layer exposure shares.</title></g>
+
+<g id="edge_upward__b00_r0020" class="inspectable" data-source="p6_micro_quarantine_contact_ratio" data-target="p8_meso_layer_post_trough_incidence_ratio">
+<path fill="none" stroke="#27667b" d="M201.66,-1601.12C206.97,-1605.04 211.74,-1609.63 215.65,-1615 234.71,-1641.14 207.13,-1879.47 225.65,-1906 230.5,-1912.95 236.63,-1918.83 243.5,-1923.8" />
+<polygon fill="#27667b" stroke="#27667b" points="242.14,-1925.84 249.33,-1927.65 244.83,-1921.75 242.14,-1925.84" />
+<title>p6_micro_quarantine_contact_ratio → p8_meso_layer_post_trough_incidence_ratio
+upward
+Higher adherence in a layer suppresses post-trough attributed incidence more than at the trough, lowering that layer's post-trough ratio.</title></g>
+
+<g id="edge_upward__b01_r0034" class="inspectable" data-source="p6_micro_quarantine_degree_delta" data-target="p6_meso_quarantined_degree_dispersion">
+<path fill="none" stroke="#27667b" d="M192.27,-722.16C200.68,-727.01 208.69,-732.6 215.65,-739 271.67,-790.52 307.07,-874.15 324.15,-923.03" />
+<polygon fill="#27667b" stroke="#27667b" points="321.76,-923.6 326.35,-929.43 326.39,-922.01 321.76,-923.6" />
+<title>p6_micro_quarantine_degree_delta → p6_meso_quarantined_degree_dispersion
+upward
+Heterogeneous individual reductions in degree under quarantine create a wider spread of contact degree among quarantined agents.</title></g>
+
+<g id="edge_upward__b01_r0035" class="inspectable" data-source="p6_micro_quarantine_degree_delta" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#27667b" d="M192.28,-694.02C271.59,-698.81 389.93,-719.89 449.05,-799 470.44,-827.62 438.04,-1413.1 459.05,-1442 460.34,-1443.78 461.73,-1445.47 463.2,-1447.08" />
+<polygon fill="#27667b" stroke="#27667b" points="461.41,-1448.76 468.16,-1451.84 464.81,-1445.23 461.41,-1448.76" />
+<title>p6_micro_quarantine_degree_delta → p8_macro_post_trough_infectious_growth
+upward
+Agents whose quarantine degree remains close to normal sustain transmission after the trough, increasing aggregate infectious growth.</title></g>
+
+<g id="edge_upward__b01_r0036" class="inspectable" data-source="p6_micro_quarantine_degree_delta" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M192.22,-665.73C268.88,-644.08 382.82,-627.77 449.05,-693 475.14,-718.69 438.64,-1321.6 459.05,-1352 464.83,-1360.61 472.62,-1367.57 481.37,-1373.21" />
+<polygon fill="#27667b" stroke="#27667b" points="479.99,-1375.24 487.26,-1376.69 482.47,-1371.02 479.99,-1375.24" />
+<title>p6_micro_quarantine_degree_delta → p8_macro_resurgence_amplitude
+upward
+Heterogeneous adherence leaves some quarantined agents with high contact degree, providing channels for a larger rebound.</title></g>
+
+<g id="edge_upward__b02_r0007" class="inspectable" data-source="p6_micro_zero_contact_quarantined_flag" data-target="p1_meso_band_exposure_hazard">
+<path fill="none" stroke="#27667b" d="M203.2,-2009.79C207.92,-2005.74 212.15,-2001.16 215.65,-1996 234.85,-1967.65 205.19,-1715.46 225.65,-1688 226.92,-1686.29 228.27,-1684.67 229.7,-1683.11" />
+<polygon fill="#27667b" stroke="#27667b" points="231.12,-1685.15 234.46,-1678.53 227.72,-1681.62 231.12,-1685.15" />
+<title>p6_micro_zero_contact_quarantined_flag → p1_meso_band_exposure_hazard
+upward
+Quarantined agents who achieve zero contacts contribute no exposures, reducing the exposure hazard in their age band compared with bands where quarantined agents maintain contacts.</title></g>
+
+<g id="edge_upward__b02_r0008" class="inspectable" data-source="p6_micro_zero_contact_quarantined_flag" data-target="p2_meso_layer_active_run">
+<path fill="none" stroke="#27667b" d="M203.42,-2066.94C216.87,-2070.79 230.75,-2074.77 244.24,-2078.63" />
+<polygon fill="#27667b" stroke="#27667b" points="243.27,-2080.9 250.67,-2080.47 244.62,-2076.19 243.27,-2080.9" />
+<title>p6_micro_zero_contact_quarantined_flag → p2_meso_layer_active_run
+upward
+Full contact suppression by quarantined agents removes exposure events from their layers, which can break the layer's consecutive active run and shorten its length.</title></g>
+
+<g id="edge_upward__b02_r0009" class="inspectable" data-source="p6_micro_zero_contact_quarantined_flag" data-target="p3_meso_dyad_secondary_count">
+<path fill="none" stroke="#27667b" d="M149.97,-2080.89C170.64,-2101.18 197.77,-2124.89 225.65,-2141 230.72,-2143.93 236.05,-2146.66 241.52,-2149.22" />
+<polygon fill="#27667b" stroke="#27667b" points="240.29,-2151.35 247.68,-2151.97 242.29,-2146.88 240.29,-2151.35" />
+<title>p6_micro_zero_contact_quarantined_flag → p3_meso_dyad_secondary_count
+upward
+A quarantined household member with zero contacts cannot generate secondary exposures in the dyad, lowering the dyad's attributed secondary count.</title></g>
+
+<g id="edge_upward__b02_r0010" class="inspectable" data-source="p6_micro_zero_contact_quarantined_flag" data-target="p5_meso_layer_index_contact_load">
+<path fill="none" stroke="#27667b" d="M129.37,-2080.94C147.53,-2120.12 180.25,-2178.93 225.65,-2214 234.02,-2220.47 243.58,-2225.83 253.49,-2230.28" />
+<polygon fill="#27667b" stroke="#27667b" points="252.34,-2232.45 259.74,-2232.92 254.24,-2227.94 252.34,-2232.45" />
+<title>p6_micro_zero_contact_quarantined_flag → p5_meso_layer_index_contact_load
+upward
+Zero-contact quarantined agents contribute zero degree to the per-index contact load; their presence in the newly quarantined set lowers the layer's average contact load because the average includes these zeros.</title></g>
+
+<g id="edge_upward__b01_r0037" class="inspectable" data-source="p7_micro_exposure_step_index" data-target="p7_macro_age_composition_drift">
+<path fill="none" stroke="#27667b" d="M136.17,-508.55C156.63,-483.84 188.81,-451.29 225.65,-437 271.94,-419.05 412.82,-403.06 449.05,-437 473.92,-460.29 438.45,-562.86 459.05,-590 462.52,-594.57 466.59,-598.58 471.08,-602.09" />
+<polygon fill="#27667b" stroke="#27667b" points="469.56,-604.02 476.7,-606.02 472.38,-600 469.56,-604.02" />
+<title>p7_micro_exposure_step_index → p7_macro_age_composition_drift
+upward
+If later-exposed cohorts have a different age structure from early cohorts, the timing of individual first exposures shifts the aggregate age composition of incident exposures.</title></g>
+
+<g id="edge_upward__b01_r0038" class="inspectable" data-source="p7_micro_exposure_step_index" data-target="p7_macro_median_age_of_new_exposures">
+<path fill="none" stroke="#27667b" d="M130.07,-508.79C148.99,-478.15 182.49,-433.29 225.65,-414 316.3,-373.49 375.56,-347.24 449.05,-414 466.24,-429.61 444.65,-499.78 459.05,-518 462.36,-522.18 466.17,-525.88 470.35,-529.15" />
+<polygon fill="#27667b" stroke="#27667b" points="468.82,-531.07 475.96,-533.08 471.63,-527.06 468.82,-531.07" />
+<title>p7_micro_exposure_step_index → p7_macro_median_age_of_new_exposures
+upward
+Cohort timing changes which age groups contribute new exposures, moving the median age of agents with exposure transitions.</title></g>
+
+<g id="edge_upward__b01_r0039" class="inspectable" data-source="p7_micro_exposure_step_index" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#27667b" d="M180.86,-552.42C274.18,-570.14 432.33,-602.85 449.05,-624 477.24,-659.65 432.38,-1405.2 459.05,-1442 460.34,-1443.78 461.73,-1445.48 463.19,-1447.09" />
+<polygon fill="#27667b" stroke="#27667b" points="461.4,-1448.77 468.15,-1451.85 464.8,-1445.23 461.4,-1448.77" />
+<title>p7_micro_exposure_step_index → p8_macro_post_trough_infectious_growth
+upward
+Exposures occurring later in the run feed the post-trough infectious pool, increasing measured growth after the trough.</title></g>
+
+<g id="edge_upward__b01_r0040" class="inspectable" data-source="p7_micro_exposure_step_index" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M181.06,-525.88C258.7,-514.25 383.23,-509.98 449.05,-584 463.23,-599.94 447.18,-1334.27 459.05,-1352 464.82,-1360.61 472.61,-1367.58 481.35,-1373.22" />
+<polygon fill="#27667b" stroke="#27667b" points="479.97,-1375.25 487.24,-1376.7 482.46,-1371.03 479.97,-1375.25" />
+<title>p7_micro_exposure_step_index → p8_macro_resurgence_amplitude
+upward
+A later distribution of individual first exposures places more new infections after the trough, raising the rebound amplitude.</title></g>
+
+<g id="edge_upward__b02_r0011" class="inspectable" data-source="p7_micro_exposure_to_diagnosis_interval" data-target="p1_meso_band_exposure_hazard">
+<path fill="none" stroke="#27667b" d="M206,-1693.57C214.62,-1690.75 223.4,-1687.89 232.11,-1685.04" />
+<polygon fill="#27667b" stroke="#27667b" points="232.75,-1687.41 238.65,-1682.91 231.23,-1682.75 232.75,-1687.41" />
+<title>p7_micro_exposure_to_diagnosis_interval → p1_meso_band_exposure_hazard
+upward
+A longer exposure-to-diagnosis interval means the agent remains undetected and potentially infectious for more steps, increasing the number of exposure events generated among susceptible age-band members and raising the band's exposure hazard.</title></g>
+
+<g id="edge_upward__b02_r0012" class="inspectable" data-source="p7_micro_exposure_to_diagnosis_interval" data-target="p2_meso_layer_active_run">
+<path fill="none" stroke="#27667b" d="M206.08,-1750.64C209.63,-1753.73 212.86,-1757.16 215.65,-1761 235.73,-1788.6 205.26,-2040.63 225.65,-2068 230.93,-2075.09 237.63,-2080.84 245.11,-2085.5" />
+<polygon fill="#27667b" stroke="#27667b" points="243.56,-2087.44 250.86,-2088.73 245.96,-2083.17 243.56,-2087.44" />
+<title>p7_micro_exposure_to_diagnosis_interval → p2_meso_layer_active_run
+upward
+Longer intervals delay diagnosis and isolation, so exposed agents continue contacting others in their layers for more steps, sustaining layer-level exposure activity and lengthening consecutive active runs.</title></g>
+
+<g id="edge_upward__b02_r0013" class="inspectable" data-source="p7_micro_exposure_to_diagnosis_interval" data-target="p3_meso_dyad_secondary_count">
+<path fill="none" stroke="#27667b" d="M206.11,-1750.62C209.66,-1753.71 212.87,-1757.16 215.65,-1761 240.39,-1795.23 200.52,-2107.05 225.65,-2141 230.21,-2147.16 235.84,-2152.31 242.12,-2156.61" />
+<polygon fill="#27667b" stroke="#27667b" points="240.64,-2158.57 247.89,-2160.15 243.21,-2154.4 240.64,-2158.57" />
+<title>p7_micro_exposure_to_diagnosis_interval → p3_meso_dyad_secondary_count
+upward
+In a household dyad, a longer exposure-to-diagnosis interval for the index case provides more time for within-dyad transmission before isolation, increasing the dyad's secondary exposure count.</title></g>
+
+<g id="edge_upward__b03_r0007" class="inspectable" data-source="p8_micro_post_trough_exposure_flag" data-target="p7_meso_band_exposure_share">
+<path fill="none" stroke="#27667b" d="M199.17,-1235.3C205.36,-1239.4 210.99,-1244.25 215.65,-1250 236.01,-1275.09 205.01,-1297.15 225.65,-1322 232.46,-1330.2 241.14,-1336.59 250.64,-1341.57" />
+<polygon fill="#27667b" stroke="#27667b" points="249.31,-1343.65 256.69,-1344.46 251.43,-1339.23 249.31,-1343.65" />
+<title>p8_micro_post_trough_exposure_flag → p7_meso_band_exposure_share
+upward
+Post-trough exposure transitions in particular age bands add incident activity after the citywide infectious minimum; if resurgence is age-selective, these late exposures change the band shares of new exposure transitions at subsequent steps.</title></g>
+
+<g id="edge_upward__b01_r0010" class="inspectable" data-source="p2_meso_layer_degree_dispersion" data-target="p2_macro_layer_incidence_entropy">
+<path fill="none" stroke="#27667b" d="M405.4,-2315.55C422.25,-2310.09 438.51,-2301.26 449.05,-2287 476,-2250.53 432.37,-1915.67 459.05,-1879 461.35,-1875.83 463.95,-1872.93 466.78,-1870.28" />
+<polygon fill="#27667b" stroke="#27667b" points="467.93,-1872.52 471.73,-1866.15 464.79,-1868.76 467.93,-1872.52" />
+<title>p2_meso_layer_degree_dispersion → p2_macro_layer_incidence_entropy
+upward
+Within-layer degree dispersion creates core-periphery contact patterns that make some layers dominate exposure production, changing cross-layer incidence entropy.</title></g>
+
+<g id="edge_upward__b01_r0011" class="inspectable" data-source="p2_meso_layer_degree_dispersion" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#27667b" d="M405.22,-2315.72C422.17,-2310.28 438.54,-2301.4 449.05,-2287 474.34,-2252.36 434.02,-1549.83 459.05,-1515 460.34,-1513.21 461.72,-1511.5 463.18,-1509.88" />
+<polygon fill="#27667b" stroke="#27667b" points="464.82,-1511.7 468.14,-1505.07 461.41,-1508.19 464.82,-1511.7" />
+<title>p2_meso_layer_degree_dispersion → p8_macro_post_trough_infectious_growth
+upward
+Dispersed degree within a layer leaves high-contact agents able to restart transmission after the trough, increasing post-trough infectious growth.</title></g>
+
+<g id="edge_upward__b01_r0012" class="inspectable" data-source="p2_meso_layer_degree_dispersion" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M405.23,-2315.73C422.18,-2310.28 438.54,-2301.41 449.05,-2287 476.71,-2249.07 432.94,-1481.02 459.05,-1442 464.81,-1433.38 472.6,-1426.41 481.34,-1420.77" />
+<polygon fill="#27667b" stroke="#27667b" points="482.45,-1422.96 487.23,-1417.29 479.96,-1418.74 482.45,-1422.96" />
+<title>p2_meso_layer_degree_dispersion → p8_macro_resurgence_amplitude
+upward
+Strong within-layer degree inequality can produce concentrated superspreading events that amplify the post-trough rebound.</title></g>
+
+<g id="edge_upward__b01_r0026" class="inspectable" data-source="p4_meso_group_exposure_yield_silent" data-target="p4_macro_silent_prevalence_share">
+<path fill="none" stroke="#27667b" d="M421.52,-2471.96C431.91,-2466.18 441.51,-2458.98 449.05,-2450 513,-2373.86 549.55,-2064.62 560.76,-1954.32" />
+<polygon fill="#27667b" stroke="#27667b" points="563.17,-1954.83 561.43,-1947.62 558.3,-1954.34 563.17,-1954.83" />
+<title>p4_meso_group_exposure_yield_silent → p4_macro_silent_prevalence_share
+upward
+Quarantine-status groups that generate more exposures per silent infectious person-step expand the silent infectious pool, increasing silent prevalence share.</title></g>
+
+<g id="edge_upward__b01_r0027" class="inspectable" data-source="p4_meso_group_exposure_yield_silent" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#27667b" d="M421.34,-2474.35C432.24,-2468.23 442.05,-2460.29 449.05,-2450 463.67,-2428.53 443.92,-1536.11 459.05,-1515 460.34,-1513.21 461.72,-1511.5 463.18,-1509.87" />
+<polygon fill="#27667b" stroke="#27667b" points="464.82,-1511.7 468.13,-1505.06 461.4,-1508.19 464.82,-1511.7" />
+<title>p4_meso_group_exposure_yield_silent → p8_macro_post_trough_infectious_growth
+upward
+High silent exposure yield in groups after the trough sustains aggregate infectious growth by continuously adding new infections.</title></g>
+
+<g id="edge_upward__b01_r0028" class="inspectable" data-source="p4_meso_group_exposure_yield_silent" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M421.35,-2474.36C432.25,-2468.23 442.05,-2460.29 449.05,-2450 464.8,-2426.85 443.5,-1465.29 459.05,-1442 464.81,-1433.38 472.58,-1426.4 481.32,-1420.76" />
+<polygon fill="#27667b" stroke="#27667b" points="482.43,-1422.95 487.21,-1417.28 479.94,-1418.73 482.43,-1422.95" />
+<title>p4_meso_group_exposure_yield_silent → p8_macro_resurgence_amplitude
+upward
+Groups with high silent exposure yield can drive a larger rebound because their hidden transmission chains remain active through the decline.</title></g>
+
+<g id="edge_upward__b01_r0029" class="inspectable" data-source="p5_meso_layer_known_contact_rate" data-target="p4_macro_detection_coverage_rate">
+<path fill="none" stroke="#27667b" d="M427.75,-1267.98C435.89,-1263.28 443.24,-1257.39 449.05,-1250 467.23,-1226.87 441.14,-1141.34 459.05,-1118 460.2,-1116.5 461.42,-1115.06 462.69,-1113.68" />
+<polygon fill="#27667b" stroke="#27667b" points="464.19,-1115.64 467.55,-1109.03 460.8,-1112.1 464.19,-1115.64" />
+<title>p5_meso_layer_known_contact_rate → p4_macro_detection_coverage_rate
+upward
+Higher per-edge known-contact incidence in layers brings more infections to diagnosis through tracing, raising new diagnoses per infectious person-step.</title></g>
+
+<g id="edge_upward__b01_r0030" class="inspectable" data-source="p5_meso_layer_known_contact_rate" data-target="p5_macro_quarantine_coverage">
+<path fill="none" stroke="#27667b" d="M427.95,-1268.13C436.06,-1263.41 443.34,-1257.47 449.05,-1250 476.75,-1213.76 431.77,-1081.55 459.05,-1045 464.29,-1037.98 470.97,-1032.28 478.41,-1027.66" />
+<polygon fill="#27667b" stroke="#27667b" points="479.21,-1030.02 484.11,-1024.45 476.81,-1025.74 479.21,-1030.02" />
+<title>p5_meso_layer_known_contact_rate → p5_macro_quarantine_coverage
+upward
+Layer-level tracing yield converts more flagged contacts into quarantined agents, increasing population quarantine coverage.</title></g>
+
+<g id="edge_upward__b01_r0031" class="inspectable" data-source="p5_meso_layer_known_contact_rate" data-target="p5_macro_known_contact_prevalence">
+<path fill="none" stroke="#27667b" d="M427.81,-1304.48C435.99,-1309.31 443.34,-1315.38 449.05,-1323 466.65,-1346.49 441.62,-1563.38 459.05,-1587 462.22,-1591.3 465.94,-1595.11 470.04,-1598.47" />
+<polygon fill="#27667b" stroke="#27667b" points="468.46,-1600.35 475.55,-1602.51 471.35,-1596.4 468.46,-1600.35" />
+<title>p5_meso_layer_known_contact_rate → p5_macro_known_contact_prevalence
+upward
+Higher known-contact incidence per layer edge increases the standing caseload of known contacts at the population level.</title></g>
+
+<g id="edge_upward__b01_r0032" class="inspectable" data-source="p5_meso_layer_known_contact_rate" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M427.87,-1307.48C435.63,-1311.75 442.86,-1316.87 449.05,-1323 458.74,-1332.59 449.76,-1342.02 459.05,-1352 465.51,-1358.94 473.23,-1364.86 481.5,-1369.89" />
+<polygon fill="#27667b" stroke="#27667b" points="479.95,-1371.83 487.25,-1373.17 482.38,-1367.57 479.95,-1371.83" />
+<title>p5_meso_layer_known_contact_rate → p8_macro_resurgence_amplitude
+upward
+Stronger layer tracing yield removes contacts from transmission chains, reducing the fuel available for a post-trough rebound.</title></g>
+
+<g id="edge_upward__b01_r0033" class="inspectable" data-source="p5_meso_layer_known_contact_rate" data-target="p8_macro_resurgence_breadth">
+<path fill="none" stroke="#27667b" d="M427.96,-1304.71C436.06,-1309.5 443.35,-1315.5 449.05,-1323 474.78,-1356.83 433.57,-1479.98 459.05,-1514 462.89,-1519.13 467.5,-1523.56 472.61,-1527.37" />
+<polygon fill="#27667b" stroke="#27667b" points="470.9,-1529.17 478.08,-1531.03 473.63,-1525.1 470.9,-1529.17" />
+<title>p5_meso_layer_known_contact_rate → p8_macro_resurgence_breadth
+upward
+Effective per-edge tracing in some layers suppresses those settings after the trough, reducing the share of layers that show renewed incidence.</title></g>
+
+<g id="edge_upward__b01_r0042" class="inspectable" data-source="p7_meso_band_share_drift" data-target="p1_macro_band_attack_range">
+<path fill="none" stroke="#27667b" d="M423.2,-1710.49C436.28,-1708.41 449.9,-1706.24 463.29,-1704.11" />
+<polygon fill="#27667b" stroke="#27667b" points="463.57,-1706.55 470.1,-1703.03 462.8,-1701.71 463.57,-1706.55" />
+<title>p7_meso_band_share_drift → p1_macro_band_attack_range
+upward
+When exposure incidence shifts toward particular age bands, cumulative attack ratios diverge further between the most and least affected bands.</title></g>
+
+<g id="edge_upward__b01_r0043" class="inspectable" data-source="p7_meso_band_share_drift" data-target="p1_macro_band_composition_mismatch">
+<path fill="none" stroke="#27667b" d="M423.2,-1737.88C440.81,-1740.76 459.39,-1743.8 477.09,-1746.7" />
+<polygon fill="#27667b" stroke="#27667b" points="476.36,-1749.06 483.66,-1747.77 477.15,-1744.23 476.36,-1749.06" />
+<title>p7_meso_band_share_drift → p1_macro_band_composition_mismatch
+upward
+Age-band exposure share drift changes the composition of new exposures relative to susceptible person-time, increasing composition mismatch.</title></g>
+
+<g id="edge_upward__b01_r0041" class="inspectable" data-source="p7_meso_band_share_drift" data-target="p7_macro_median_age_of_new_exposures">
+<path fill="none" stroke="#27667b" d="M423.26,-1708.34C433.33,-1703.11 442.38,-1696.18 449.05,-1687 466.95,-1662.38 441.33,-615.76 459.05,-591 462.31,-586.44 466.18,-582.44 470.48,-578.93" />
+<polygon fill="#27667b" stroke="#27667b" points="471.63,-581.13 475.84,-575.02 468.74,-577.17 471.63,-581.13" />
+<title>p7_meso_band_share_drift → p7_macro_median_age_of_new_exposures
+upward
+Drift in age-band shares of exposure transitions changes the weighting of age groups, moving the median age of new exposures.</title></g>
+
+<g id="edge_upward__b01_r0044" class="inspectable" data-source="p7_meso_band_share_drift" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#27667b" d="M423.39,-1707.76C433.3,-1702.61 442.28,-1695.85 449.05,-1687 472.32,-1656.59 436.01,-1545.58 459.05,-1515 460.33,-1513.31 461.69,-1511.69 463.12,-1510.14" />
+<polygon fill="#27667b" stroke="#27667b" points="464.52,-1512.19 467.9,-1505.59 461.14,-1508.64 464.52,-1512.19" />
+<title>p7_meso_band_share_drift → p8_macro_post_trough_infectious_growth
+upward
+Drift toward more active or less immune age bands can sustain new infections after the trough, raising aggregate post-trough growth.</title></g>
+
+<g id="edge_upward__b01_r0045" class="inspectable" data-source="p7_meso_band_share_drift" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M423.26,-1708.01C433.26,-1702.82 442.29,-1695.99 449.05,-1687 465.42,-1665.22 443.57,-1464.42 459.05,-1442 464.89,-1433.53 472.68,-1426.65 481.38,-1421.06" />
+<polygon fill="#27667b" stroke="#27667b" points="482.44,-1423.28 487.23,-1417.61 479.95,-1419.05 482.44,-1423.28" />
+<title>p7_meso_band_share_drift → p8_macro_resurgence_amplitude
+upward
+A shift in exposure burden toward age bands with more remaining susceptible contacts can amplify the post-trough rebound.</title></g>
+
+<g id="edge_upward__b01_r0046" class="inspectable" data-source="p8_meso_band_post_trough_incidence_ratio" data-target="p1_macro_band_attack_range">
+<path fill="none" stroke="#27667b" d="M435.05,-1772.11C440.17,-1768.6 444.9,-1764.58 449.05,-1760 462.51,-1745.13 445.13,-1730.43 459.05,-1716 460.96,-1714.02 462.99,-1712.18 465.12,-1710.46" />
+<polygon fill="#27667b" stroke="#27667b" points="466.3,-1712.63 470.57,-1706.56 463.45,-1708.64 466.3,-1712.63" />
+<title>p8_meso_band_post_trough_incidence_ratio → p1_macro_band_attack_range
+upward
+Differential post-trough incidence across age bands widens cumulative attack ratios between the most and least affected bands.</title></g>
+
+<g id="edge_upward__b01_r0047" class="inspectable" data-source="p8_meso_band_post_trough_incidence_ratio" data-target="p1_macro_band_composition_mismatch">
+<path fill="none" stroke="#27667b" d="M434.91,-1781.63C448.96,-1779.39 463.36,-1777.1 477.21,-1774.89" />
+<polygon fill="#27667b" stroke="#27667b" points="477.28,-1777.37 483.8,-1773.85 476.51,-1772.53 477.28,-1777.37" />
+<title>p8_meso_band_post_trough_incidence_ratio → p1_macro_band_composition_mismatch
+upward
+Age-selective post-trough exposure increases alter the exposure composition relative to susceptible person-time, raising composition mismatch.</title></g>
+
+<g id="edge_upward__b01_r0048" class="inspectable" data-source="p8_meso_band_post_trough_incidence_ratio" data-target="p7_macro_age_composition_drift">
+<path fill="none" stroke="#27667b" d="M435.05,-1774C440.36,-1770.04 445.12,-1765.41 449.05,-1760 466.97,-1735.35 441.21,-687.7 459.05,-663 462.47,-658.26 466.56,-654.13 471.1,-650.55" />
+<polygon fill="#27667b" stroke="#27667b" points="472.5,-652.56 476.83,-646.54 469.69,-648.55 472.5,-652.56" />
+<title>p8_meso_band_post_trough_incidence_ratio → p7_macro_age_composition_drift
+upward
+When some age bands have higher post-trough incidence ratios than others, the age composition of incident exposures shifts away from its early-run reference.</title></g>
+
+<g id="edge_upward__b01_r0049" class="inspectable" data-source="p8_meso_band_post_trough_incidence_ratio" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#27667b" d="M434.86,-1773.85C440.21,-1769.93 445.03,-1765.35 449.05,-1760 465.42,-1738.22 442.84,-1536.9 459.05,-1515 460.31,-1513.29 461.66,-1511.67 463.08,-1510.11" />
+<polygon fill="#27667b" stroke="#27667b" points="464.49,-1512.16 467.83,-1505.54 461.09,-1508.63 464.49,-1512.16" />
+<title>p8_meso_band_post_trough_incidence_ratio → p8_macro_post_trough_infectious_growth
+upward
+Age bands with high post-trough exposure rates contribute disproportionately to new infections, increasing aggregate post-trough infectious growth.</title></g>
+
+<g id="edge_upward__b01_r0050" class="inspectable" data-source="p8_meso_band_post_trough_incidence_ratio" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M434.92,-1773.9C440.25,-1769.96 445.06,-1765.36 449.05,-1760 470.16,-1731.64 439.11,-1471.19 459.05,-1442 464.85,-1433.51 472.61,-1426.61 481.3,-1421.01" />
+<polygon fill="#27667b" stroke="#27667b" points="482.36,-1423.23 487.14,-1417.56 479.87,-1419.01 482.36,-1423.23" />
+<title>p8_meso_band_post_trough_incidence_ratio → p8_macro_resurgence_amplitude
+upward
+Age-selective post-trough increases in exposure rates add to the overall infectious pool, raising the observed resurgence amplitude.</title></g>
+
+<g id="node_p1_micro_new_exposure_flag" class="inspectable" tabindex="0" data-node-id="p1_micro_new_exposure_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M170.03,-1462.91C170.03,-1462.91 53.63,-1462.91 53.63,-1462.91 47.63,-1462.91 41.63,-1456.91 41.63,-1450.91 41.63,-1450.91 41.63,-1413.09 41.63,-1413.09 41.63,-1407.09 47.63,-1401.09 53.63,-1401.09 53.63,-1401.09 170.03,-1401.09 170.03,-1401.09 176.03,-1401.09 182.03,-1407.09 182.03,-1413.09 182.03,-1413.09 182.03,-1450.91 182.03,-1450.91 182.03,-1456.91 176.03,-1462.91 170.03,-1462.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1444.58" font-family="Times New Roman" font-size="14.00">N1</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1427.33" font-family="Times New Roman" font-size="14.00">Agent new-exposure</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1410.08" font-family="Times New Roman" font-size="14.00">transition indicator</text>
+<title>N1 | p1_micro_new_exposure_flag
+Agent new-exposure transition indicator
+Scale: micro | Phenomenon: age_structured_incidence_divergence
+Definition: X_i(t) = 1 if exposed_i(t) = true and exposed_i(t-1) = false, otherwise 0; defined only when agent i is observed at both step t and the immediately preceding observed step t-1 in the same run; undefined if either observation is missing.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_micro_ever_exposed_state" class="inspectable" tabindex="0" data-node-id="p1_micro_ever_exposed_state">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M178.28,-878.91C178.28,-878.91 45.38,-878.91 45.38,-878.91 39.38,-878.91 33.38,-872.91 33.38,-866.91 33.38,-866.91 33.38,-829.09 33.38,-829.09 33.38,-823.09 39.38,-817.09 45.38,-817.09 45.38,-817.09 178.28,-817.09 178.28,-817.09 184.28,-817.09 190.28,-823.09 190.28,-829.09 190.28,-829.09 190.28,-866.91 190.28,-866.91 190.28,-872.91 184.28,-878.91 178.28,-878.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-860.58" font-family="Times New Roman" font-size="14.00">N2</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-843.33" font-family="Times New Roman" font-size="14.00">Agent cumulative ever-</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-826.08" font-family="Times New Roman" font-size="14.00">exposed indicator</text>
+<title>N2 | p1_micro_ever_exposed_state
+Agent cumulative ever-exposed indicator
+Scale: micro | Phenomenon: age_structured_incidence_divergence
+Definition: E_i(t) = max over observed steps s &lt;= t in the same run of X_i(s), where X is the new-exposure transition indicator; E_i(t) = 1 if any such s has X_i(s) = 1, else 0; undefined if agent i is not observed at step t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_micro_layer_degree" class="inspectable" tabindex="0" data-node-id="p2_micro_layer_degree">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M193.28,-1024.91C193.28,-1024.91 30.38,-1024.91 30.38,-1024.91 24.38,-1024.91 18.38,-1018.91 18.38,-1012.91 18.38,-1012.91 18.38,-975.09 18.38,-975.09 18.38,-969.09 24.38,-963.09 30.38,-963.09 30.38,-963.09 193.28,-963.09 193.28,-963.09 199.28,-963.09 205.28,-969.09 205.28,-975.09 205.28,-975.09 205.28,-1012.91 205.28,-1012.91 205.28,-1018.91 199.28,-1024.91 193.28,-1024.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1006.58" font-family="Times New Roman" font-size="14.00">N8</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-989.33" font-family="Times New Roman" font-size="14.00">Agent contact degree within</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-972.08" font-family="Times New Roman" font-size="14.00">a contact layer</text>
+<title>N8 | p2_micro_layer_degree
+Agent contact degree within a contact layer
+Scale: micro | Phenomenon: setting_specific_cluster_persistence
+Definition: d_i,l(t) = number of distinct contact records at step t in layer l with agent_id = i plus those with partner_id = i, de-duplicated by unordered pair so that a reciprocal pair counts once; undefined if agent i is not observed at step t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_micro_layer_exposure_flag" class="inspectable" tabindex="0" data-node-id="p2_micro_layer_exposure_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M185.03,-805.91C185.03,-805.91 38.63,-805.91 38.63,-805.91 32.63,-805.91 26.63,-799.91 26.63,-793.91 26.63,-793.91 26.63,-756.09 26.63,-756.09 26.63,-750.09 32.63,-744.09 38.63,-744.09 38.63,-744.09 185.03,-744.09 185.03,-744.09 191.03,-744.09 197.03,-750.09 197.03,-756.09 197.03,-756.09 197.03,-793.91 197.03,-793.91 197.03,-799.91 191.03,-805.91 185.03,-805.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-787.58" font-family="Times New Roman" font-size="14.00">N9</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-770.33" font-family="Times New Roman" font-size="14.00">Agent exposure transition</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-753.08" font-family="Times New Roman" font-size="14.00">attributed to a layer</text>
+<title>N9 | p2_micro_layer_exposure_flag
+Agent exposure transition attributed to a layer
+Scale: micro | Phenomenon: setting_specific_cluster_persistence
+Definition: E_i,l(t) = 1 if X_i(t) = 1 and the layer recorded on the exposure event for that agent and step equals l; 0 if X_i(t) = 1 and the recorded layer is non-null and different from l; undefined if X_i(t) = 0, if the recorded layer is null, or if no exposure event can be matched.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_micro_layer_beta_load" class="inspectable" tabindex="0" data-node-id="p2_micro_layer_beta_load">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M179.4,-1170.91C179.4,-1170.91 44.25,-1170.91 44.25,-1170.91 38.25,-1170.91 32.25,-1164.91 32.25,-1158.91 32.25,-1158.91 32.25,-1121.09 32.25,-1121.09 32.25,-1115.09 38.25,-1109.09 44.25,-1109.09 44.25,-1109.09 179.4,-1109.09 179.4,-1109.09 185.4,-1109.09 191.4,-1115.09 191.4,-1121.09 191.4,-1121.09 191.4,-1158.91 191.4,-1158.91 191.4,-1164.91 185.4,-1170.91 179.4,-1170.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1152.58" font-family="Times New Roman" font-size="14.00">N10</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1135.33" font-family="Times New Roman" font-size="14.00">Agent per-layer contact</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1118.08" font-family="Times New Roman" font-size="14.00">weight load</text>
+<title>N10 | p2_micro_layer_beta_load
+Agent per-layer contact weight load
+Scale: micro | Phenomenon: setting_specific_cluster_persistence
+Definition: W_i,l(t) = sum of beta over the undirected contact edges at step t in layer l incident to agent i; undefined if agent i is not observed at step t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_micro_household_degree" class="inspectable" tabindex="0" data-node-id="p3_micro_household_degree">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M186.9,-1097.91C186.9,-1097.91 36.75,-1097.91 36.75,-1097.91 30.75,-1097.91 24.75,-1091.91 24.75,-1085.91 24.75,-1085.91 24.75,-1048.09 24.75,-1048.09 24.75,-1042.09 30.75,-1036.09 36.75,-1036.09 36.75,-1036.09 186.9,-1036.09 186.9,-1036.09 192.9,-1036.09 198.9,-1042.09 198.9,-1048.09 198.9,-1048.09 198.9,-1085.91 198.9,-1085.91 198.9,-1091.91 192.9,-1097.91 186.9,-1097.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1079.58" font-family="Times New Roman" font-size="14.00">N16</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1062.33" font-family="Times New Roman" font-size="14.00">Agent degree in the</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1045.08" font-family="Times New Roman" font-size="14.00">persistent household layer</text>
+<title>N16 | p3_micro_household_degree
+Agent degree in the persistent household layer
+Scale: micro | Phenomenon: household_secondary_attack_concentration
+Definition: d_i,H(t) = number of distinct undirected contact pairs at step t in layer l_H incident to agent i; l_H is the layer value with the largest mean consecutive-step Jaccard overlap of its edge set over all observed steps in the run; undefined if agent i is not observed at step t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_micro_attributed_exposure_flag" class="inspectable" tabindex="0" data-node-id="p3_micro_attributed_exposure_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M179.4,-1535.91C179.4,-1535.91 44.25,-1535.91 44.25,-1535.91 38.25,-1535.91 32.25,-1529.91 32.25,-1523.91 32.25,-1523.91 32.25,-1486.09 32.25,-1486.09 32.25,-1480.09 38.25,-1474.09 44.25,-1474.09 44.25,-1474.09 179.4,-1474.09 179.4,-1474.09 185.4,-1474.09 191.4,-1480.09 191.4,-1486.09 191.4,-1486.09 191.4,-1523.91 191.4,-1523.91 191.4,-1529.91 185.4,-1535.91 179.4,-1535.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1517.58" font-family="Times New Roman" font-size="14.00">N17</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1500.33" font-family="Times New Roman" font-size="14.00">Agent source-attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1483.08" font-family="Times New Roman" font-size="14.00">exposure indicator</text>
+<title>N17 | p3_micro_attributed_exposure_flag
+Agent source-attributed exposure indicator
+Scale: micro | Phenomenon: household_secondary_attack_concentration
+Definition: A_i(t) = 1 if X_i(t) = 1 and the matched exposure event has a non-null partner_id; undefined if X_i(t) = 0 or if the matched event has a null partner_id, since no source can be resolved.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_micro_household_attributed_flag" class="inspectable" tabindex="0" data-node-id="p3_micro_household_attributed_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M189.9,-951.91C189.9,-951.91 33.75,-951.91 33.75,-951.91 27.75,-951.91 21.75,-945.91 21.75,-939.91 21.75,-939.91 21.75,-902.09 21.75,-902.09 21.75,-896.09 27.75,-890.09 33.75,-890.09 33.75,-890.09 189.9,-890.09 189.9,-890.09 195.9,-890.09 201.9,-896.09 201.9,-902.09 201.9,-902.09 201.9,-939.91 201.9,-939.91 201.9,-945.91 195.9,-951.91 189.9,-951.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-933.58" font-family="Times New Roman" font-size="14.00">N18</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-916.33" font-family="Times New Roman" font-size="14.00">Agent household-attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-899.08" font-family="Times New Roman" font-size="14.00">exposure indicator</text>
+<title>N18 | p3_micro_household_attributed_flag
+Agent household-attributed exposure indicator
+Scale: micro | Phenomenon: household_secondary_attack_concentration
+Definition: H_i(t) = 1 if A_i(t) = 1 and the layer recorded on that exposure event equals l_H; 0 if A_i(t) = 1 and the layer is non-null and different from l_H; undefined if A_i(t) is undefined.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_micro_silent_infectious_flag" class="inspectable" tabindex="0" data-node-id="p4_micro_silent_infectious_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M174.15,-643.91C174.15,-643.91 49.5,-643.91 49.5,-643.91 43.5,-643.91 37.5,-637.91 37.5,-631.91 37.5,-631.91 37.5,-594.09 37.5,-594.09 37.5,-588.09 43.5,-582.09 49.5,-582.09 49.5,-582.09 174.15,-582.09 174.15,-582.09 180.15,-582.09 186.15,-588.09 186.15,-594.09 186.15,-594.09 186.15,-631.91 186.15,-631.91 186.15,-637.91 180.15,-643.91 174.15,-643.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-625.58" font-family="Times New Roman" font-size="14.00">N24</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-608.33" font-family="Times New Roman" font-size="14.00">Agent silent-infectious</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-591.08" font-family="Times New Roman" font-size="14.00">indicator</text>
+<title>N24 | p4_micro_silent_infectious_flag
+Agent silent-infectious indicator
+Scale: micro | Phenomenon: silent_transmission_masking
+Definition: Z_i(t) = 1 if infectious_i(t) = true and diagnosed_i(t) = false; 0 if infectious_i(t) = true and diagnosed_i(t) = true; undefined if infectious_i(t) = false or the agent is not observed at t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_micro_silent_infectious_duration" class="inspectable" tabindex="0" data-node-id="p4_micro_silent_infectious_duration">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M180.53,-1827.91C180.53,-1827.91 43.13,-1827.91 43.13,-1827.91 37.13,-1827.91 31.13,-1821.91 31.13,-1815.91 31.13,-1815.91 31.13,-1778.09 31.13,-1778.09 31.13,-1772.09 37.13,-1766.09 43.13,-1766.09 43.13,-1766.09 180.53,-1766.09 180.53,-1766.09 186.53,-1766.09 192.53,-1772.09 192.53,-1778.09 192.53,-1778.09 192.53,-1815.91 192.53,-1815.91 192.53,-1821.91 186.53,-1827.91 180.53,-1827.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1809.58" font-family="Times New Roman" font-size="14.00">N25</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1792.33" font-family="Times New Roman" font-size="14.00">Agent cumulative silent-</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1775.08" font-family="Times New Roman" font-size="14.00">infectious duration</text>
+<title>N25 | p4_micro_silent_infectious_duration
+Agent cumulative silent-infectious duration
+Scale: micro | Phenomenon: silent_transmission_masking
+Definition: D_i(t) = number of observed steps s &lt;= t in the same run with Z_i(s) = 1; undefined if agent i is not observed at t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_micro_symptomatic_undiagnosed_flag" class="inspectable" tabindex="0" data-node-id="p4_micro_symptomatic_undiagnosed_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M180.9,-1389.91C180.9,-1389.91 42.75,-1389.91 42.75,-1389.91 36.75,-1389.91 30.75,-1383.91 30.75,-1377.91 30.75,-1377.91 30.75,-1340.09 30.75,-1340.09 30.75,-1334.09 36.75,-1328.09 42.75,-1328.09 42.75,-1328.09 180.9,-1328.09 180.9,-1328.09 186.9,-1328.09 192.9,-1334.09 192.9,-1340.09 192.9,-1340.09 192.9,-1377.91 192.9,-1377.91 192.9,-1383.91 186.9,-1389.91 180.9,-1389.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1371.58" font-family="Times New Roman" font-size="14.00">N26</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1354.33" font-family="Times New Roman" font-size="14.00">Agent symptomatic-but-</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1337.08" font-family="Times New Roman" font-size="14.00">undiagnosed indicator</text>
+<title>N26 | p4_micro_symptomatic_undiagnosed_flag
+Agent symptomatic-but-undiagnosed indicator
+Scale: micro | Phenomenon: silent_transmission_masking
+Definition: Y_i(t) = 1 if symptomatic_i(t) = true and diagnosed_i(t) = false; 0 if symptomatic_i(t) = true and diagnosed_i(t) = true; undefined if symptomatic_i(t) = false or the agent is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p5_micro_known_contact_flag" class="inspectable" tabindex="0" data-node-id="p5_micro_known_contact_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M189.15,-1900.91C189.15,-1900.91 34.5,-1900.91 34.5,-1900.91 28.5,-1900.91 22.5,-1894.91 22.5,-1888.91 22.5,-1888.91 22.5,-1851.09 22.5,-1851.09 22.5,-1845.09 28.5,-1839.09 34.5,-1839.09 34.5,-1839.09 189.15,-1839.09 189.15,-1839.09 195.15,-1839.09 201.15,-1845.09 201.15,-1851.09 201.15,-1851.09 201.15,-1888.91 201.15,-1888.91 201.15,-1894.91 195.15,-1900.91 189.15,-1900.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1882.58" font-family="Times New Roman" font-size="14.00">N33</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1865.33" font-family="Times New Roman" font-size="14.00">Agent known-contact state</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1848.08" font-family="Times New Roman" font-size="14.00">indicator</text>
+<title>N33 | p5_micro_known_contact_flag
+Agent known-contact state indicator
+Scale: micro | Phenomenon: tracing_capacity_saturation
+Definition: K_i(t) = 1 if known_contact_i(t) = true, 0 if known_contact_i(t) = false; undefined if agent i is not observed at step t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p5_micro_tracing_latency" class="inspectable" tabindex="0" data-node-id="p5_micro_tracing_latency">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M180.15,-1316.91C180.15,-1316.91 43.5,-1316.91 43.5,-1316.91 37.5,-1316.91 31.5,-1310.91 31.5,-1304.91 31.5,-1304.91 31.5,-1267.09 31.5,-1267.09 31.5,-1261.09 37.5,-1255.09 43.5,-1255.09 43.5,-1255.09 180.15,-1255.09 180.15,-1255.09 186.15,-1255.09 192.15,-1261.09 192.15,-1267.09 192.15,-1267.09 192.15,-1304.91 192.15,-1304.91 192.15,-1310.91 186.15,-1316.91 180.15,-1316.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1298.58" font-family="Times New Roman" font-size="14.00">N34</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1281.33" font-family="Times New Roman" font-size="14.00">Agent known-contact to</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1264.08" font-family="Times New Roman" font-size="14.00">quarantine latency</text>
+<title>N34 | p5_micro_tracing_latency
+Agent known-contact to quarantine latency
+Scale: micro | Phenomenon: tracing_capacity_saturation
+Definition: Tau_i = date_quarantined_i - date_known_contact_i for agent i, defined only when both native dates are non-null for that agent in the run; undefined otherwise.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p5_micro_quarantine_flag" class="inspectable" tabindex="0" data-node-id="p5_micro_quarantine_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M176.78,-1681.91C176.78,-1681.91 46.88,-1681.91 46.88,-1681.91 40.88,-1681.91 34.88,-1675.91 34.88,-1669.91 34.88,-1669.91 34.88,-1632.09 34.88,-1632.09 34.88,-1626.09 40.88,-1620.09 46.88,-1620.09 46.88,-1620.09 176.78,-1620.09 176.78,-1620.09 182.78,-1620.09 188.78,-1626.09 188.78,-1632.09 188.78,-1632.09 188.78,-1669.91 188.78,-1669.91 188.78,-1675.91 182.78,-1681.91 176.78,-1681.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1663.58" font-family="Times New Roman" font-size="14.00">N35</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1646.33" font-family="Times New Roman" font-size="14.00">Agent quarantine state</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1629.08" font-family="Times New Roman" font-size="14.00">indicator</text>
+<title>N35 | p5_micro_quarantine_flag
+Agent quarantine state indicator
+Scale: micro | Phenomenon: tracing_capacity_saturation
+Definition: Q_i(t) = 1 if quarantined_i(t) = true, 0 if quarantined_i(t) = false; undefined if agent i is not observed at step t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_micro_quarantine_contact_ratio" class="inspectable" tabindex="0" data-node-id="p6_micro_quarantine_contact_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M189.15,-1608.91C189.15,-1608.91 34.5,-1608.91 34.5,-1608.91 28.5,-1608.91 22.5,-1602.91 22.5,-1596.91 22.5,-1596.91 22.5,-1559.09 22.5,-1559.09 22.5,-1553.09 28.5,-1547.09 34.5,-1547.09 34.5,-1547.09 189.15,-1547.09 189.15,-1547.09 195.15,-1547.09 201.15,-1553.09 201.15,-1559.09 201.15,-1559.09 201.15,-1596.91 201.15,-1596.91 201.15,-1602.91 195.15,-1608.91 189.15,-1608.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1590.58" font-family="Times New Roman" font-size="14.00">N43</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1573.33" font-family="Times New Roman" font-size="14.00">Agent contact degree ratio</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1556.08" font-family="Times New Roman" font-size="14.00">in and out of quarantine</text>
+<title>N43 | p6_micro_quarantine_contact_ratio
+Agent contact degree ratio in and out of quarantine
+Scale: micro | Phenomenon: adherence_heterogeneity_feedback
+Definition: rho_i = (mean over observed steps s with quarantined_i(s) = true of d_i(s)) / (mean over observed steps s with quarantined_i(s) = false of d_i(s)); undefined when either step set is empty or the non-quarantine mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_micro_quarantine_degree_delta" class="inspectable" tabindex="0" data-node-id="p6_micro_quarantine_degree_delta">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M179.78,-733.54C179.78,-733.54 43.88,-733.54 43.88,-733.54 37.88,-733.54 31.88,-727.54 31.88,-721.54 31.88,-721.54 31.88,-666.46 31.88,-666.46 31.88,-660.46 37.88,-654.46 43.88,-654.46 43.88,-654.46 179.78,-654.46 179.78,-654.46 185.78,-654.46 191.78,-660.46 191.78,-666.46 191.78,-666.46 191.78,-721.54 191.78,-721.54 191.78,-727.54 185.78,-733.54 179.78,-733.54" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-715.2" font-family="Times New Roman" font-size="14.00">N44</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-697.95" font-family="Times New Roman" font-size="14.00">Agent absolute contact-</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-680.7" font-family="Times New Roman" font-size="14.00">degree change under</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-663.45" font-family="Times New Roman" font-size="14.00">quarantine</text>
+<title>N44 | p6_micro_quarantine_degree_delta
+Agent absolute contact-degree change under quarantine
+Scale: micro | Phenomenon: adherence_heterogeneity_feedback
+Definition: delta_i = (mean over observed steps with quarantined_i = true of d_i) - (mean over observed steps with quarantined_i = false of d_i); undefined when either step set is empty.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_micro_zero_contact_quarantined_flag" class="inspectable" tabindex="0" data-node-id="p6_micro_zero_contact_quarantined_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M191.03,-2080.54C191.03,-2080.54 32.63,-2080.54 32.63,-2080.54 26.63,-2080.54 20.63,-2074.54 20.63,-2068.54 20.63,-2068.54 20.63,-2013.46 20.63,-2013.46 20.63,-2007.46 26.63,-2001.46 32.63,-2001.46 32.63,-2001.46 191.03,-2001.46 191.03,-2001.46 197.03,-2001.46 203.03,-2007.46 203.03,-2013.46 203.03,-2013.46 203.03,-2068.54 203.03,-2068.54 203.03,-2074.54 197.03,-2080.54 191.03,-2080.54" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-2062.2" font-family="Times New Roman" font-size="14.00">N45</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-2044.95" font-family="Times New Roman" font-size="14.00">Agent full-contact-</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-2027.7" font-family="Times New Roman" font-size="14.00">suppression indicator under</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-2010.45" font-family="Times New Roman" font-size="14.00">quarantine</text>
+<title>N45 | p6_micro_zero_contact_quarantined_flag
+Agent full-contact-suppression indicator under quarantine
+Scale: micro | Phenomenon: adherence_heterogeneity_feedback
+Definition: Z_i(t) = 1 if quarantined_i(t) = true and d_i(t) = 0; 0 if quarantined_i(t) = true and d_i(t) &gt; 0; undefined if quarantined_i(t) = false or the agent is not observed at t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p7_micro_exposure_step_index" class="inspectable" tabindex="0" data-node-id="p7_micro_exposure_step_index">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M168.53,-570.91C168.53,-570.91 55.13,-570.91 55.13,-570.91 49.13,-570.91 43.13,-564.91 43.13,-558.91 43.13,-558.91 43.13,-521.09 43.13,-521.09 43.13,-515.09 49.13,-509.08 55.13,-509.08 55.13,-509.08 168.53,-509.08 168.53,-509.08 174.53,-509.08 180.53,-515.09 180.53,-521.09 180.53,-521.09 180.53,-558.91 180.53,-558.91 180.53,-564.91 174.53,-570.91 168.53,-570.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-552.58" font-family="Times New Roman" font-size="14.00">N51</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-535.33" font-family="Times New Roman" font-size="14.00">Agent first observed</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-518.08" font-family="Times New Roman" font-size="14.00">exposure step index</text>
+<title>N51 | p7_micro_exposure_step_index
+Agent first observed exposure step index
+Scale: micro | Phenomenon: intervention_timing_cohort_shift
+Definition: t_i = min over observed steps s in the run with X_i(s) = 1 of s; undefined for agents with no observed exposure transition.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p7_micro_exposure_to_diagnosis_interval" class="inspectable" tabindex="0" data-node-id="p7_micro_exposure_to_diagnosis_interval">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M193.65,-1754.91C193.65,-1754.91 30,-1754.91 30,-1754.91 24,-1754.91 18,-1748.91 18,-1742.91 18,-1742.91 18,-1705.09 18,-1705.09 18,-1699.09 24,-1693.09 30,-1693.09 30,-1693.09 193.65,-1693.09 193.65,-1693.09 199.65,-1693.09 205.65,-1699.09 205.65,-1705.09 205.65,-1705.09 205.65,-1742.91 205.65,-1742.91 205.65,-1748.91 199.65,-1754.91 193.65,-1754.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1736.58" font-family="Times New Roman" font-size="14.00">N52</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1719.33" font-family="Times New Roman" font-size="14.00">Agent exposure-to-diagnosis</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1702.08" font-family="Times New Roman" font-size="14.00">interval</text>
+<title>N52 | p7_micro_exposure_to_diagnosis_interval
+Agent exposure-to-diagnosis interval
+Scale: micro | Phenomenon: intervention_timing_cohort_shift
+Definition: I_i = date_diagnosed_i - date_exposed_i, defined only when both native dates are non-null for agent i; undefined otherwise.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_micro_offset_from_infectious_trough" class="inspectable" tabindex="0" data-node-id="p8_micro_offset_from_infectious_trough">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M189.53,-1990.54C189.53,-1990.54 34.13,-1990.54 34.13,-1990.54 28.13,-1990.54 22.13,-1984.54 22.13,-1978.54 22.13,-1978.54 22.13,-1923.46 22.13,-1923.46 22.13,-1917.46 28.13,-1911.46 34.13,-1911.46 34.13,-1911.46 189.53,-1911.46 189.53,-1911.46 195.53,-1911.46 201.53,-1917.46 201.53,-1923.46 201.53,-1923.46 201.53,-1978.54 201.53,-1978.54 201.53,-1984.54 195.53,-1990.54 189.53,-1990.54" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1972.2" font-family="Times New Roman" font-size="14.00">N60</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1954.95" font-family="Times New Roman" font-size="14.00">Agent exposure-step offset</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1937.7" font-family="Times New Roman" font-size="14.00">from the city infectious</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1920.45" font-family="Times New Roman" font-size="14.00">trough</text>
+<title>N60 | p8_micro_offset_from_infectious_trough
+Agent exposure-step offset from the city infectious trough
+Scale: micro | Phenomenon: community_resurgence_after_decline
+Definition: o_i = t_i - t*, where t_i is the agent's first observed exposure step and t* is the observed step of minimum count of agents with infectious_i(t) = true within the run (earliest such step on ties); undefined when t_i is undefined or t* is undefined.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_micro_post_trough_exposure_flag" class="inspectable" tabindex="0" data-node-id="p8_micro_post_trough_exposure_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M186.9,-1243.91C186.9,-1243.91 36.75,-1243.91 36.75,-1243.91 30.75,-1243.91 24.75,-1237.91 24.75,-1231.91 24.75,-1231.91 24.75,-1194.09 24.75,-1194.09 24.75,-1188.09 30.75,-1182.09 36.75,-1182.09 36.75,-1182.09 186.9,-1182.09 186.9,-1182.09 192.9,-1182.09 198.9,-1188.09 198.9,-1194.09 198.9,-1194.09 198.9,-1231.91 198.9,-1231.91 198.9,-1237.91 192.9,-1243.91 186.9,-1243.91" />
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1225.58" font-family="Times New Roman" font-size="14.00">N61</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1208.33" font-family="Times New Roman" font-size="14.00">Agent exposure transition</text>
+<text xml:space="preserve" text-anchor="middle" x="111.83" y="-1191.08" font-family="Times New Roman" font-size="14.00">after the infectious trough</text>
+<title>N61 | p8_micro_post_trough_exposure_flag
+Agent exposure transition after the infectious trough
+Scale: micro | Phenomenon: community_resurgence_after_decline
+Definition: R_i(t) = 1 if X_i(t) = 1 and t &gt; t*; 0 if X_i(t) = 1 and t &lt;= t*; undefined if X_i(t) = 0 or t* is undefined.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_meso_band_exposure_hazard" class="inspectable" tabindex="0" data-node-id="p1_meso_band_exposure_hazard">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M427.05,-1681.91C427.05,-1681.91 247.65,-1681.91 247.65,-1681.91 241.65,-1681.91 235.65,-1675.91 235.65,-1669.91 235.65,-1669.91 235.65,-1632.09 235.65,-1632.09 235.65,-1626.09 241.65,-1620.09 247.65,-1620.09 247.65,-1620.09 427.05,-1620.09 427.05,-1620.09 433.05,-1620.09 439.05,-1626.09 439.05,-1632.09 439.05,-1632.09 439.05,-1669.91 439.05,-1669.91 439.05,-1675.91 433.05,-1681.91 427.05,-1681.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1663.58" font-family="Times New Roman" font-size="14.00">N3</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1646.33" font-family="Times New Roman" font-size="14.00">Age-band exposure hazard per</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1629.08" font-family="Times New Roman" font-size="14.00">susceptible person-step</text>
+<title>N3 | p1_meso_band_exposure_hazard
+Age-band exposure hazard per susceptible person-step
+Scale: meso | Phenomenon: age_structured_incidence_divergence
+Definition: h_b(t) = sum over agents i in band b of X_i(t) divided by sum over agents i in band b of S_i(t-1), where S_i(t-1) = susceptible_i(t-1) as a 0/1 quantity; undefined when the denominator is 0 or when t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_meso_band_attack_ratio" class="inspectable" tabindex="0" data-node-id="p1_meso_band_attack_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M418.05,-1154.91C418.05,-1154.91 256.65,-1154.91 256.65,-1154.91 250.65,-1154.91 244.65,-1148.91 244.65,-1142.91 244.65,-1142.91 244.65,-1105.09 244.65,-1105.09 244.65,-1099.09 250.65,-1093.09 256.65,-1093.09 256.65,-1093.09 418.05,-1093.09 418.05,-1093.09 424.05,-1093.09 430.05,-1099.09 430.05,-1105.09 430.05,-1105.09 430.05,-1142.91 430.05,-1142.91 430.05,-1148.91 424.05,-1154.91 418.05,-1154.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1136.58" font-family="Times New Roman" font-size="14.00">N4</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1119.33" font-family="Times New Roman" font-size="14.00">Age-band cumulative attack</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1102.08" font-family="Times New Roman" font-size="14.00">ratio</text>
+<title>N4 | p1_meso_band_attack_ratio
+Age-band cumulative attack ratio
+Scale: meso | Phenomenon: age_structured_incidence_divergence
+Definition: A_b(t) = count of agents i in band b with E_i(t) = 1 divided by count of agents i in band b observed in at least one step s &lt;= t; undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_meso_band_hazard_dispersion" class="inspectable" tabindex="0" data-node-id="p1_meso_band_hazard_dispersion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M407.55,-1608.91C407.55,-1608.91 267.15,-1608.91 267.15,-1608.91 261.15,-1608.91 255.15,-1602.91 255.15,-1596.91 255.15,-1596.91 255.15,-1559.09 255.15,-1559.09 255.15,-1553.09 261.15,-1547.09 267.15,-1547.09 267.15,-1547.09 407.55,-1547.09 407.55,-1547.09 413.55,-1547.09 419.55,-1553.09 419.55,-1559.09 419.55,-1559.09 419.55,-1596.91 419.55,-1596.91 419.55,-1602.91 413.55,-1608.91 407.55,-1608.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1590.58" font-family="Times New Roman" font-size="14.00">N5</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1573.33" font-family="Times New Roman" font-size="14.00">Cross-band dispersion of</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1556.08" font-family="Times New Roman" font-size="14.00">exposure hazard</text>
+<title>N5 | p1_meso_band_hazard_dispersion
+Cross-band dispersion of exposure hazard
+Scale: meso | Phenomenon: age_structured_incidence_divergence
+Definition: CV(t) = SD_b(h_b(t)) / mean_b(h_b(t)), with the standard deviation and mean taken over bands b whose hazard h_b(t) is defined; undefined when fewer than two bands are defined or when the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_meso_layer_incidence_per_edge" class="inspectable" tabindex="0" data-node-id="p2_meso_layer_incidence_per_edge">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M422.55,-1462.91C422.55,-1462.91 252.15,-1462.91 252.15,-1462.91 246.15,-1462.91 240.15,-1456.91 240.15,-1450.91 240.15,-1450.91 240.15,-1413.09 240.15,-1413.09 240.15,-1407.09 246.15,-1401.09 252.15,-1401.09 252.15,-1401.09 422.55,-1401.09 422.55,-1401.09 428.55,-1401.09 434.55,-1407.09 434.55,-1413.09 434.55,-1413.09 434.55,-1450.91 434.55,-1450.91 434.55,-1456.91 428.55,-1462.91 422.55,-1462.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1444.58" font-family="Times New Roman" font-size="14.00">N11</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1427.33" font-family="Times New Roman" font-size="14.00">Layer exposure incidence per</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1410.08" font-family="Times New Roman" font-size="14.00">contact edge</text>
+<title>N11 | p2_meso_layer_incidence_per_edge
+Layer exposure incidence per contact edge
+Scale: meso | Phenomenon: setting_specific_cluster_persistence
+Definition: lambda_l(t) = (sum over agents i of E_i,l(t)) / N_l(t), where N_l(t) is the number of distinct undirected edges recorded in layer l at step t; undefined when N_l(t) = 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_meso_layer_degree_dispersion" class="inspectable" tabindex="0" data-node-id="p2_meso_layer_degree_dispersion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M392.93,-2354.91C392.93,-2354.91 281.78,-2354.91 281.78,-2354.91 275.78,-2354.91 269.78,-2348.91 269.78,-2342.91 269.78,-2342.91 269.78,-2305.09 269.78,-2305.09 269.78,-2299.09 275.78,-2293.09 281.78,-2293.09 281.78,-2293.09 392.93,-2293.09 392.93,-2293.09 398.93,-2293.09 404.93,-2299.09 404.93,-2305.09 404.93,-2305.09 404.93,-2342.91 404.93,-2342.91 404.93,-2348.91 398.93,-2354.91 392.93,-2354.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2336.57" font-family="Times New Roman" font-size="14.00">N12</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2319.32" font-family="Times New Roman" font-size="14.00">Within-layer degree</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2302.07" font-family="Times New Roman" font-size="14.00">dispersion</text>
+<title>N12 | p2_meso_layer_degree_dispersion
+Within-layer degree dispersion
+Scale: meso | Phenomenon: setting_specific_cluster_persistence
+Definition: CV_l(t) = SD_i(d_i,l(t)) / mean_i(d_i,l(t)) over agents observed at step t in layer l; undefined when fewer than two agents have defined degree or when the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_meso_layer_active_run" class="inspectable" tabindex="0" data-node-id="p2_meso_layer_active_run">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M410.18,-2135.91C410.18,-2135.91 264.53,-2135.91 264.53,-2135.91 258.53,-2135.91 252.53,-2129.91 252.53,-2123.91 252.53,-2123.91 252.53,-2086.09 252.53,-2086.09 252.53,-2080.09 258.53,-2074.09 264.53,-2074.09 264.53,-2074.09 410.18,-2074.09 410.18,-2074.09 416.18,-2074.09 422.18,-2080.09 422.18,-2086.09 422.18,-2086.09 422.18,-2123.91 422.18,-2123.91 422.18,-2129.91 416.18,-2135.91 410.18,-2135.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2117.57" font-family="Times New Roman" font-size="14.00">N13</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2100.32" font-family="Times New Roman" font-size="14.00">Layer consecutive active-</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2083.07" font-family="Times New Roman" font-size="14.00">step run length</text>
+<title>N13 | p2_meso_layer_active_run
+Layer consecutive active-step run length
+Scale: meso | Phenomenon: setting_specific_cluster_persistence
+Definition: L_l(t) = k where k is the largest integer such that for every observed step s in the k consecutive observed steps ending at t, sum over i of E_i,l(s) &gt; 0; L_l(t) = 0 if the layer has no attributed exposure at t; undefined if step t is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_meso_dyad_secondary_count" class="inspectable" tabindex="0" data-node-id="p3_meso_dyad_secondary_count">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M413.18,-2208.91C413.18,-2208.91 261.53,-2208.91 261.53,-2208.91 255.53,-2208.91 249.53,-2202.91 249.53,-2196.91 249.53,-2196.91 249.53,-2159.09 249.53,-2159.09 249.53,-2153.09 255.53,-2147.09 261.53,-2147.09 261.53,-2147.09 413.18,-2147.09 413.18,-2147.09 419.18,-2147.09 425.18,-2153.09 425.18,-2159.09 425.18,-2159.09 425.18,-2196.91 425.18,-2196.91 425.18,-2202.91 419.18,-2208.91 413.18,-2208.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2190.57" font-family="Times New Roman" font-size="14.00">N19</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2173.32" font-family="Times New Roman" font-size="14.00">Household dyad attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2156.07" font-family="Times New Roman" font-size="14.00">secondary exposure count</text>
+<title>N19 | p3_meso_dyad_secondary_count
+Household dyad attributed secondary exposure count
+Scale: meso | Phenomenon: household_secondary_attack_concentration
+Definition: N_uv(t) = number of exposure events at step t with non-null partner_id whose unordered endpoint pair equals {u,v}, restricted to dyads {u,v} recorded as edges in layer l_H at step t; 0 for a listed dyad with no such event.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_meso_dyad_secondary_dispersion" class="inspectable" tabindex="0" data-node-id="p3_meso_dyad_secondary_dispersion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M418.05,-1082.54C418.05,-1082.54 256.65,-1082.54 256.65,-1082.54 250.65,-1082.54 244.65,-1076.54 244.65,-1070.54 244.65,-1070.54 244.65,-1015.46 244.65,-1015.46 244.65,-1009.46 250.65,-1003.46 256.65,-1003.46 256.65,-1003.46 418.05,-1003.46 418.05,-1003.46 424.05,-1003.46 430.05,-1009.46 430.05,-1015.46 430.05,-1015.46 430.05,-1070.54 430.05,-1070.54 430.05,-1076.54 424.05,-1082.54 418.05,-1082.54" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1064.2" font-family="Times New Roman" font-size="14.00">N20</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1046.95" font-family="Times New Roman" font-size="14.00">Dispersion of attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1029.7" font-family="Times New Roman" font-size="14.00">exposures across household</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1012.45" font-family="Times New Roman" font-size="14.00">dyads</text>
+<title>N20 | p3_meso_dyad_secondary_dispersion
+Dispersion of attributed exposures across household dyads
+Scale: meso | Phenomenon: household_secondary_attack_concentration
+Definition: CV(t) = SD_dyad(C_uv(t)) / mean_dyad(C_uv(t)), where C_uv(t) is the cumulative count of source-attributed exposure events in dyad {u,v} over observed steps up to t, taken over dyads recorded in layer l_H at any observed step up to t; undefined when fewer than two dyads or when the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_meso_dyad_attack_fraction" class="inspectable" tabindex="0" data-node-id="p3_meso_dyad_attack_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M420.3,-1535.91C420.3,-1535.91 254.4,-1535.91 254.4,-1535.91 248.4,-1535.91 242.4,-1529.91 242.4,-1523.91 242.4,-1523.91 242.4,-1486.09 242.4,-1486.09 242.4,-1480.09 248.4,-1474.09 254.4,-1474.09 254.4,-1474.09 420.3,-1474.09 420.3,-1474.09 426.3,-1474.09 432.3,-1480.09 432.3,-1486.09 432.3,-1486.09 432.3,-1523.91 432.3,-1523.91 432.3,-1529.91 426.3,-1535.91 420.3,-1535.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1517.58" font-family="Times New Roman" font-size="14.00">N21</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1500.33" font-family="Times New Roman" font-size="14.00">Fraction of household dyads</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1483.08" font-family="Times New Roman" font-size="14.00">with any attributed exposure</text>
+<title>N21 | p3_meso_dyad_attack_fraction
+Fraction of household dyads with any attributed exposure
+Scale: meso | Phenomenon: household_secondary_attack_concentration
+Definition: F(t) = count of dyads {u,v} recorded in l_H up to t with C_uv(t) &gt;= 1 divided by count of dyads recorded in l_H up to t; undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_meso_group_silent_share" class="inspectable" tabindex="0" data-node-id="p4_meso_group_silent_share">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M418.43,-1244.54C418.43,-1244.54 256.28,-1244.54 256.28,-1244.54 250.28,-1244.54 244.28,-1238.54 244.28,-1232.54 244.28,-1232.54 244.28,-1177.46 244.28,-1177.46 244.28,-1171.46 250.28,-1165.46 256.28,-1165.46 256.28,-1165.46 418.43,-1165.46 418.43,-1165.46 424.43,-1165.46 430.43,-1171.46 430.43,-1177.46 430.43,-1177.46 430.43,-1232.54 430.43,-1232.54 430.43,-1238.54 424.43,-1244.54 418.43,-1244.54" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1226.2" font-family="Times New Roman" font-size="14.00">N27</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1208.95" font-family="Times New Roman" font-size="14.00">Silent share of infectious</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1191.7" font-family="Times New Roman" font-size="14.00">person-steps by quarantine-</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1174.45" font-family="Times New Roman" font-size="14.00">status group</text>
+<title>N27 | p4_meso_group_silent_share
+Silent share of infectious person-steps by quarantine-status group
+Scale: meso | Phenomenon: silent_transmission_masking
+Definition: For group g at step t: q_g(t) = (sum over agents i in g at t of Z_i(t)) / (sum over agents i in g at t of 1[infectious_i(t)]); undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_meso_group_exposure_yield_silent" class="inspectable" tabindex="0" data-node-id="p4_meso_group_exposure_yield_silent">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M409.05,-2534.54C409.05,-2534.54 265.65,-2534.54 265.65,-2534.54 259.65,-2534.54 253.65,-2528.54 253.65,-2522.54 253.65,-2522.54 253.65,-2467.46 253.65,-2467.46 253.65,-2461.46 259.65,-2455.46 265.65,-2455.46 265.65,-2455.46 409.05,-2455.46 409.05,-2455.46 415.05,-2455.46 421.05,-2461.46 421.05,-2467.46 421.05,-2467.46 421.05,-2522.54 421.05,-2522.54 421.05,-2528.54 415.05,-2534.54 409.05,-2534.54" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2516.2" font-family="Times New Roman" font-size="14.00">N28</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2498.95" font-family="Times New Roman" font-size="14.00">Exposures generated per</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2481.7" font-family="Times New Roman" font-size="14.00">silent infectious person-</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2464.45" font-family="Times New Roman" font-size="14.00">step by group</text>
+<title>N28 | p4_meso_group_exposure_yield_silent
+Exposures generated per silent infectious person-step by group
+Scale: meso | Phenomenon: silent_transmission_masking
+Definition: y_g(t) = (sum over agents i in group g of X_i(t)) / (sum over agents i in group g of Z_i(t)); undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p5_meso_layer_known_contact_rate" class="inspectable" tabindex="0" data-node-id="p5_meso_layer_known_contact_rate">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M415.43,-1316.91C415.43,-1316.91 259.28,-1316.91 259.28,-1316.91 253.28,-1316.91 247.28,-1310.91 247.28,-1304.91 247.28,-1304.91 247.28,-1267.09 247.28,-1267.09 247.28,-1261.09 253.28,-1255.09 259.28,-1255.09 259.28,-1255.09 415.43,-1255.09 415.43,-1255.09 421.43,-1255.09 427.43,-1261.09 427.43,-1267.09 427.43,-1267.09 427.43,-1304.91 427.43,-1304.91 427.43,-1310.91 421.43,-1316.91 415.43,-1316.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1298.58" font-family="Times New Roman" font-size="14.00">N36</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1281.33" font-family="Times New Roman" font-size="14.00">Layer known-contact</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1264.08" font-family="Times New Roman" font-size="14.00">incidence per contact edge</text>
+<title>N36 | p5_meso_layer_known_contact_rate
+Layer known-contact incidence per contact edge
+Scale: meso | Phenomenon: tracing_capacity_saturation
+Definition: r_l(t) = (number of agents i with a known-contact transition at step t, i.e. known_contact_i(t) = true and known_contact_i(t-1) = false, whose layer-attributed record is l) / N_l(t), where N_l(t) is the number of distinct undirected edges in layer l at step t; undefined when N_l(t) = 0 or t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p5_meso_layer_index_contact_load" class="inspectable" tabindex="0" data-node-id="p5_meso_layer_index_contact_load">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M401.18,-2281.91C401.18,-2281.91 273.53,-2281.91 273.53,-2281.91 267.53,-2281.91 261.53,-2275.91 261.53,-2269.91 261.53,-2269.91 261.53,-2232.09 261.53,-2232.09 261.53,-2226.09 267.53,-2220.09 273.53,-2220.09 273.53,-2220.09 401.18,-2220.09 401.18,-2220.09 407.18,-2220.09 413.18,-2226.09 413.18,-2232.09 413.18,-2232.09 413.18,-2269.91 413.18,-2269.91 413.18,-2275.91 407.18,-2281.91 401.18,-2281.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2263.57" font-family="Times New Roman" font-size="14.00">N37</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2246.32" font-family="Times New Roman" font-size="14.00">Per-index contact load</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2229.07" font-family="Times New Roman" font-size="14.00">within a layer</text>
+<title>N37 | p5_meso_layer_index_contact_load
+Per-index contact load within a layer
+Scale: meso | Phenomenon: tracing_capacity_saturation
+Definition: w_l(t) = (sum over agents i newly quarantined at t of d_i,l(t)) / (number of agents newly quarantined at t), where newly quarantined means quarantined_i(t) = true and quarantined_i(t-1) = false; undefined when no agent is newly quarantined or t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p5_meso_layer_load_dispersion" class="inspectable" tabindex="0" data-node-id="p5_meso_layer_load_dispersion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M407.55,-1900.91C407.55,-1900.91 267.15,-1900.91 267.15,-1900.91 261.15,-1900.91 255.15,-1894.91 255.15,-1888.91 255.15,-1888.91 255.15,-1851.09 255.15,-1851.09 255.15,-1845.09 261.15,-1839.09 267.15,-1839.09 267.15,-1839.09 407.55,-1839.09 407.55,-1839.09 413.55,-1839.09 419.55,-1845.09 419.55,-1851.09 419.55,-1851.09 419.55,-1888.91 419.55,-1888.91 419.55,-1894.91 413.55,-1900.91 407.55,-1900.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1882.58" font-family="Times New Roman" font-size="14.00">N38</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1865.33" font-family="Times New Roman" font-size="14.00">Cross-layer dispersion of</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1848.08" font-family="Times New Roman" font-size="14.00">contact load</text>
+<title>N38 | p5_meso_layer_load_dispersion
+Cross-layer dispersion of contact load
+Scale: meso | Phenomenon: tracing_capacity_saturation
+Definition: CV(t) = SD_l(w_l(t)) / mean_l(w_l(t)) over layers with defined w_l(t); undefined when fewer than two layers are defined or the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_meso_quarantined_degree_dispersion" class="inspectable" tabindex="0" data-node-id="p6_meso_quarantined_degree_dispersion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M420.68,-992.91C420.68,-992.91 254.03,-992.91 254.03,-992.91 248.03,-992.91 242.03,-986.91 242.03,-980.91 242.03,-980.91 242.03,-943.09 242.03,-943.09 242.03,-937.09 248.03,-931.09 254.03,-931.09 254.03,-931.09 420.68,-931.09 420.68,-931.09 426.68,-931.09 432.68,-937.09 432.68,-943.09 432.68,-943.09 432.68,-980.91 432.68,-980.91 432.68,-986.91 426.68,-992.91 420.68,-992.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-974.58" font-family="Times New Roman" font-size="14.00">N46</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-957.33" font-family="Times New Roman" font-size="14.00">Dispersion of contact degree</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-940.08" font-family="Times New Roman" font-size="14.00">among quarantined agents</text>
+<title>N46 | p6_meso_quarantined_degree_dispersion
+Dispersion of contact degree among quarantined agents
+Scale: meso | Phenomenon: adherence_heterogeneity_feedback
+Definition: CV(t) = SD_i(d_i(t)) / mean_i(d_i(t)) over agents observed at step t with quarantined_i(t) = true; undefined when fewer than two such agents or the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_meso_layer_quarantine_suppression_ratio" class="inspectable" tabindex="0" data-node-id="p6_meso_layer_quarantine_suppression_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M404.18,-2444.54C404.18,-2444.54 270.53,-2444.54 270.53,-2444.54 264.53,-2444.54 258.53,-2438.54 258.53,-2432.54 258.53,-2432.54 258.53,-2377.46 258.53,-2377.46 258.53,-2371.46 264.53,-2365.46 270.53,-2365.46 270.53,-2365.46 404.18,-2365.46 404.18,-2365.46 410.18,-2365.46 416.18,-2371.46 416.18,-2377.46 416.18,-2377.46 416.18,-2432.54 416.18,-2432.54 416.18,-2438.54 410.18,-2444.54 404.18,-2444.54" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2426.2" font-family="Times New Roman" font-size="14.00">N47</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2408.95" font-family="Times New Roman" font-size="14.00">Layer-level degree</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2391.7" font-family="Times New Roman" font-size="14.00">suppression ratio under</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2374.45" font-family="Times New Roman" font-size="14.00">quarantine</text>
+<title>N47 | p6_meso_layer_quarantine_suppression_ratio
+Layer-level degree suppression ratio under quarantine
+Scale: meso | Phenomenon: adherence_heterogeneity_feedback
+Definition: sigma_l(t) = (mean over quarantined agents at t of d_i,l(t)) / (mean over non-quarantined agents at t of d_i,l(t)); undefined when either group is empty in that layer or the denominator mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p7_meso_band_exposure_share" class="inspectable" tabindex="0" data-node-id="p7_meso_band_exposure_share">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M404.18,-1389.91C404.18,-1389.91 270.53,-1389.91 270.53,-1389.91 264.53,-1389.91 258.53,-1383.91 258.53,-1377.91 258.53,-1377.91 258.53,-1340.09 258.53,-1340.09 258.53,-1334.09 264.53,-1328.09 270.53,-1328.09 270.53,-1328.09 404.18,-1328.09 404.18,-1328.09 410.18,-1328.09 416.18,-1334.09 416.18,-1340.09 416.18,-1340.09 416.18,-1377.91 416.18,-1377.91 416.18,-1383.91 410.18,-1389.91 404.18,-1389.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1371.58" font-family="Times New Roman" font-size="14.00">N53</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1354.33" font-family="Times New Roman" font-size="14.00">Age-band share of new</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1337.08" font-family="Times New Roman" font-size="14.00">exposure transitions</text>
+<title>N53 | p7_meso_band_exposure_share
+Age-band share of new exposure transitions
+Scale: meso | Phenomenon: intervention_timing_cohort_shift
+Definition: p_b(t) = (sum over agents i in band b of X_i(t)) / (sum over all bands of the same sum); undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p7_meso_layer_exposure_share" class="inspectable" tabindex="0" data-node-id="p7_meso_layer_exposure_share">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M408.68,-2062.91C408.68,-2062.91 266.03,-2062.91 266.03,-2062.91 260.03,-2062.91 254.03,-2056.91 254.03,-2050.91 254.03,-2050.91 254.03,-2013.09 254.03,-2013.09 254.03,-2007.09 260.03,-2001.09 266.03,-2001.09 266.03,-2001.09 408.68,-2001.09 408.68,-2001.09 414.68,-2001.09 420.68,-2007.09 420.68,-2013.09 420.68,-2013.09 420.68,-2050.91 420.68,-2050.91 420.68,-2056.91 414.68,-2062.91 408.68,-2062.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2044.58" font-family="Times New Roman" font-size="14.00">N54</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2027.33" font-family="Times New Roman" font-size="14.00">Layer share of attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-2010.08" font-family="Times New Roman" font-size="14.00">new exposure transitions</text>
+<title>N54 | p7_meso_layer_exposure_share
+Layer share of attributed new exposure transitions
+Scale: meso | Phenomenon: intervention_timing_cohort_shift
+Definition: q_l(t) = (sum over agents i of E_i,l(t)) / (sum over all layers of the same sum); undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p7_meso_band_share_drift" class="inspectable" tabindex="0" data-node-id="p7_meso_band_share_drift">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M410.93,-1754.91C410.93,-1754.91 263.78,-1754.91 263.78,-1754.91 257.78,-1754.91 251.78,-1748.91 251.78,-1742.91 251.78,-1742.91 251.78,-1705.09 251.78,-1705.09 251.78,-1699.09 257.78,-1693.09 263.78,-1693.09 263.78,-1693.09 410.93,-1693.09 410.93,-1693.09 416.93,-1693.09 422.93,-1699.09 422.93,-1705.09 422.93,-1705.09 422.93,-1742.91 422.93,-1742.91 422.93,-1748.91 416.93,-1754.91 410.93,-1754.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1736.58" font-family="Times New Roman" font-size="14.00">N55</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1719.33" font-family="Times New Roman" font-size="14.00">Age-band exposure share</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1702.08" font-family="Times New Roman" font-size="14.00">drift from first active step</text>
+<title>N55 | p7_meso_band_share_drift
+Age-band exposure share drift from first active step
+Scale: meso | Phenomenon: intervention_timing_cohort_shift
+Definition: D_b(t) = |p_b(t) - p_b(t0)|, where t0 is the earliest observed step in the run with at least one exposure transition; undefined when p_b(t) or p_b(t0) is undefined.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_meso_layer_post_trough_incidence_ratio" class="inspectable" tabindex="0" data-node-id="p8_meso_layer_post_trough_incidence_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M411.68,-1990.54C411.68,-1990.54 263.03,-1990.54 263.03,-1990.54 257.03,-1990.54 251.03,-1984.54 251.03,-1978.54 251.03,-1978.54 251.03,-1923.46 251.03,-1923.46 251.03,-1917.46 257.03,-1911.46 263.03,-1911.46 263.03,-1911.46 411.68,-1911.46 411.68,-1911.46 417.68,-1911.46 423.68,-1917.46 423.68,-1923.46 423.68,-1923.46 423.68,-1978.54 423.68,-1978.54 423.68,-1984.54 417.68,-1990.54 411.68,-1990.54" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1972.2" font-family="Times New Roman" font-size="14.00">N62</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1954.95" font-family="Times New Roman" font-size="14.00">Layer attributed-exposure</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1937.7" font-family="Times New Roman" font-size="14.00">rate ratio after versus at</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1920.45" font-family="Times New Roman" font-size="14.00">the trough</text>
+<title>N62 | p8_meso_layer_post_trough_incidence_ratio
+Layer attributed-exposure rate ratio after versus at the trough
+Scale: meso | Phenomenon: community_resurgence_after_decline
+Definition: Phi_l = (mean over observed steps s &gt; t* of lambda_l(s)) / lambda_l(t*), where lambda_l(s) is attributed layer exposure incidence per edge at step s; undefined when lambda_l(t*) = 0, is undefined, or no step after t* is observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_meso_band_post_trough_incidence_ratio" class="inspectable" tabindex="0" data-node-id="p8_meso_band_post_trough_incidence_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M422.55,-1827.91C422.55,-1827.91 252.15,-1827.91 252.15,-1827.91 246.15,-1827.91 240.15,-1821.91 240.15,-1815.91 240.15,-1815.91 240.15,-1778.09 240.15,-1778.09 240.15,-1772.09 246.15,-1766.09 252.15,-1766.09 252.15,-1766.09 422.55,-1766.09 422.55,-1766.09 428.55,-1766.09 434.55,-1772.09 434.55,-1778.09 434.55,-1778.09 434.55,-1815.91 434.55,-1815.91 434.55,-1821.91 428.55,-1827.91 422.55,-1827.91" />
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1809.58" font-family="Times New Roman" font-size="14.00">N63</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1792.33" font-family="Times New Roman" font-size="14.00">Age-band exposure rate ratio</text>
+<text xml:space="preserve" text-anchor="middle" x="337.35" y="-1775.08" font-family="Times New Roman" font-size="14.00">after versus at the trough</text>
+<title>N63 | p8_meso_band_post_trough_incidence_ratio
+Age-band exposure rate ratio after versus at the trough
+Scale: meso | Phenomenon: community_resurgence_after_decline
+Definition: Psi_b = (mean over observed steps s &gt; t* of h_b(s)) / h_b(t*), with h_b the band exposure hazard per susceptible person-step; undefined when h_b(t*) = 0, is undefined, or no step after t* is observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_macro_band_attack_range" class="inspectable" tabindex="0" data-node-id="p1_macro_band_attack_range">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M646.95,-1710.29C646.95,-1710.29 484.05,-1710.29 484.05,-1710.29 478.05,-1710.29 472.05,-1704.29 472.05,-1698.29 472.05,-1698.29 472.05,-1677.71 472.05,-1677.71 472.05,-1671.71 478.05,-1665.71 484.05,-1665.71 484.05,-1665.71 646.95,-1665.71 646.95,-1665.71 652.95,-1665.71 658.95,-1671.71 658.95,-1677.71 658.95,-1677.71 658.95,-1698.29 658.95,-1698.29 658.95,-1704.29 652.95,-1710.29 646.95,-1710.29" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1691.95" font-family="Times New Roman" font-size="14.00">N6</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1674.7" font-family="Times New Roman" font-size="14.00">Age-band attack ratio range</text>
+<title>N6 | p1_macro_band_attack_range
+Age-band attack ratio range
+Scale: macro | Phenomenon: age_structured_incidence_divergence
+Definition: R(t) = max_b A_b(t) - min_b A_b(t) over bands with defined A_b(t); undefined when fewer than two bands are defined.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p1_macro_band_composition_mismatch" class="inspectable" tabindex="0" data-node-id="p1_macro_band_composition_mismatch">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M633.45,-1800.54C633.45,-1800.54 497.55,-1800.54 497.55,-1800.54 491.55,-1800.54 485.55,-1794.54 485.55,-1788.54 485.55,-1788.54 485.55,-1733.46 485.55,-1733.46 485.55,-1727.46 491.55,-1721.46 497.55,-1721.46 497.55,-1721.46 633.45,-1721.46 633.45,-1721.46 639.45,-1721.46 645.45,-1727.46 645.45,-1733.46 645.45,-1733.46 645.45,-1788.54 645.45,-1788.54 645.45,-1794.54 639.45,-1800.54 633.45,-1800.54" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1782.2" font-family="Times New Roman" font-size="14.00">N7</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1764.95" font-family="Times New Roman" font-size="14.00">Exposure-share versus</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1747.7" font-family="Times New Roman" font-size="14.00">susceptible-person-time</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1730.45" font-family="Times New Roman" font-size="14.00">mismatch</text>
+<title>N7 | p1_macro_band_composition_mismatch
+Exposure-share versus susceptible-person-time mismatch
+Scale: macro | Phenomenon: age_structured_incidence_divergence
+Definition: M(t) = 0.5 * sum over bands b of |e_b(t) - s_b(t)|, where e_b(t) is the band share of new exposure transitions at t and s_b(t) is the band share of susceptible person-steps at t; undefined when either total is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_macro_layer_edge_turnover" class="inspectable" tabindex="0" data-node-id="p2_macro_layer_edge_turnover">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M632.33,-242.91C632.33,-242.91 498.68,-242.91 498.68,-242.91 492.68,-242.91 486.68,-236.91 486.68,-230.91 486.68,-230.91 486.68,-193.09 486.68,-193.09 486.68,-187.09 492.68,-181.09 498.68,-181.09 498.68,-181.09 632.33,-181.09 632.33,-181.09 638.33,-181.09 644.33,-187.09 644.33,-193.09 644.33,-193.09 644.33,-230.91 644.33,-230.91 644.33,-236.91 638.33,-242.91 632.33,-242.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-224.57" font-family="Times New Roman" font-size="14.00">N14</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-207.32" font-family="Times New Roman" font-size="14.00">Layer edge-set Jaccard</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-190.07" font-family="Times New Roman" font-size="14.00">turnover</text>
+<title>N14 | p2_macro_layer_edge_turnover
+Layer edge-set Jaccard turnover
+Scale: macro | Phenomenon: setting_specific_cluster_persistence
+Definition: J_l(t) = 1 - |A_l(t) intersect A_l(t-1)| / |A_l(t) union A_l(t-1)|, where A_l(t) is the set of unordered agent pairs recorded as edges in layer l at step t; undefined when the union is empty or t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p2_macro_layer_incidence_entropy" class="inspectable" tabindex="0" data-node-id="p2_macro_layer_incidence_entropy">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M645.83,-1872.91C645.83,-1872.91 485.18,-1872.91 485.18,-1872.91 479.18,-1872.91 473.18,-1866.91 473.18,-1860.91 473.18,-1860.91 473.18,-1823.09 473.18,-1823.09 473.18,-1817.09 479.18,-1811.09 485.18,-1811.09 485.18,-1811.09 645.83,-1811.09 645.83,-1811.09 651.83,-1811.09 657.83,-1817.09 657.83,-1823.09 657.83,-1823.09 657.83,-1860.91 657.83,-1860.91 657.83,-1866.91 651.83,-1872.91 645.83,-1872.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1854.58" font-family="Times New Roman" font-size="14.00">N15</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1837.33" font-family="Times New Roman" font-size="14.00">Normalised entropy of layer</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1820.08" font-family="Times New Roman" font-size="14.00">exposure shares</text>
+<title>N15 | p2_macro_layer_incidence_entropy
+Normalised entropy of layer exposure shares
+Scale: macro | Phenomenon: setting_specific_cluster_persistence
+Definition: H(t) = -(sum over layers l of p_l(t) * ln p_l(t)) / ln(n(t)), where p_l(t) is the share of layer-attributed exposure transitions at t falling in layer l and n(t) is the number of layers with non-zero share; undefined when n(t) &lt; 2.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_macro_household_attributed_fraction" class="inspectable" tabindex="0" data-node-id="p3_macro_household_attributed_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M628.95,-422.54C628.95,-422.54 502.05,-422.54 502.05,-422.54 496.05,-422.54 490.05,-416.54 490.05,-410.54 490.05,-410.54 490.05,-355.46 490.05,-355.46 490.05,-349.46 496.05,-343.46 502.05,-343.46 502.05,-343.46 628.95,-343.46 628.95,-343.46 634.95,-343.46 640.95,-349.46 640.95,-355.46 640.95,-355.46 640.95,-410.54 640.95,-410.54 640.95,-416.54 634.95,-422.54 628.95,-422.54" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-404.2" font-family="Times New Roman" font-size="14.00">N22</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-386.95" font-family="Times New Roman" font-size="14.00">Household share of all</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-369.7" font-family="Times New Roman" font-size="14.00">observed exposure</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-352.45" font-family="Times New Roman" font-size="14.00">transitions</text>
+<title>N22 | p3_macro_household_attributed_fraction
+Household share of all observed exposure transitions
+Scale: macro | Phenomenon: household_secondary_attack_concentration
+Definition: f(t) = (sum over agents i of H_i(t)) / (sum over agents i of X_i(t)); undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p3_macro_dyad_attribution_gini" class="inspectable" tabindex="0" data-node-id="p3_macro_dyad_attribution_gini">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M640.2,-512.54C640.2,-512.54 490.8,-512.54 490.8,-512.54 484.8,-512.54 478.8,-506.54 478.8,-500.54 478.8,-500.54 478.8,-445.46 478.8,-445.46 478.8,-439.46 484.8,-433.46 490.8,-433.46 490.8,-433.46 640.2,-433.46 640.2,-433.46 646.2,-433.46 652.2,-439.46 652.2,-445.46 652.2,-445.46 652.2,-500.54 652.2,-500.54 652.2,-506.54 646.2,-512.54 640.2,-512.54" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-494.2" font-family="Times New Roman" font-size="14.00">N23</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-476.95" font-family="Times New Roman" font-size="14.00">Gini concentration of</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-459.7" font-family="Times New Roman" font-size="14.00">household dyad attributed</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-442.45" font-family="Times New Roman" font-size="14.00">exposures</text>
+<title>N23 | p3_macro_dyad_attribution_gini
+Gini concentration of household dyad attributed exposures
+Scale: macro | Phenomenon: household_secondary_attack_concentration
+Definition: G(t) = (sum over dyads j of sum over dyads k of |C_j(t) - C_k(t)|) / (2 * n(t)^2 * mean_dyad(C(t))), where C_j(t) are cumulative dyad counts over dyads recorded up to t and n(t) is the number of such dyads; undefined when n(t) &lt; 2 or the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_macro_detection_coverage_rate" class="inspectable" tabindex="0" data-node-id="p4_macro_detection_coverage_rate">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M649.95,-1111.91C649.95,-1111.91 481.05,-1111.91 481.05,-1111.91 475.05,-1111.91 469.05,-1105.91 469.05,-1099.91 469.05,-1099.91 469.05,-1062.09 469.05,-1062.09 469.05,-1056.09 475.05,-1050.09 481.05,-1050.09 481.05,-1050.09 649.95,-1050.09 649.95,-1050.09 655.95,-1050.09 661.95,-1056.09 661.95,-1062.09 661.95,-1062.09 661.95,-1099.91 661.95,-1099.91 661.95,-1105.91 655.95,-1111.91 649.95,-1111.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1093.58" font-family="Times New Roman" font-size="14.00">N29</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1076.33" font-family="Times New Roman" font-size="14.00">New diagnoses per infectious</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1059.08" font-family="Times New Roman" font-size="14.00">person-step</text>
+<title>N29 | p4_macro_detection_coverage_rate
+New diagnoses per infectious person-step
+Scale: macro | Phenomenon: silent_transmission_masking
+Definition: c(t) = (number of agents with diagnosed transition 1 at step t, i.e. diagnosed_i(t) = true and diagnosed_i(t-1) = false) / (number of agents with infectious_i(t) = true); undefined when the denominator is 0 or t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_macro_silent_prevalence_share" class="inspectable" tabindex="0" data-node-id="p4_macro_silent_prevalence_share">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M628.95,-1945.91C628.95,-1945.91 502.05,-1945.91 502.05,-1945.91 496.05,-1945.91 490.05,-1939.91 490.05,-1933.91 490.05,-1933.91 490.05,-1896.09 490.05,-1896.09 490.05,-1890.09 496.05,-1884.09 502.05,-1884.09 502.05,-1884.09 628.95,-1884.09 628.95,-1884.09 634.95,-1884.09 640.95,-1890.09 640.95,-1896.09 640.95,-1896.09 640.95,-1933.91 640.95,-1933.91 640.95,-1939.91 634.95,-1945.91 628.95,-1945.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1927.58" font-family="Times New Roman" font-size="14.00">N30</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1910.33" font-family="Times New Roman" font-size="14.00">Silent share of current</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1893.08" font-family="Times New Roman" font-size="14.00">infectious agents</text>
+<title>N30 | p4_macro_silent_prevalence_share
+Silent share of current infectious agents
+Scale: macro | Phenomenon: silent_transmission_masking
+Definition: s(t) = (sum over agents i of Z_i(t)) / (sum over agents i of 1[infectious_i(t) = true]); undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_macro_masking_ratio" class="inspectable" tabindex="0" data-node-id="p4_macro_masking_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M647.33,-332.54C647.33,-332.54 483.68,-332.54 483.68,-332.54 477.68,-332.54 471.68,-326.54 471.68,-320.54 471.68,-320.54 471.68,-265.46 471.68,-265.46 471.68,-259.46 477.68,-253.46 483.68,-253.46 483.68,-253.46 647.33,-253.46 647.33,-253.46 653.33,-253.46 659.33,-259.46 659.33,-265.46 659.33,-265.46 659.33,-320.54 659.33,-320.54 659.33,-326.54 653.33,-332.54 647.33,-332.54" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-314.2" font-family="Times New Roman" font-size="14.00">N31</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-296.95" font-family="Times New Roman" font-size="14.00">Cumulative never-diagnosed</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-279.7" font-family="Times New Roman" font-size="14.00">to ever-diagnosed infection</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-262.45" font-family="Times New Roman" font-size="14.00">ratio</text>
+<title>N31 | p4_macro_masking_ratio
+Cumulative never-diagnosed to ever-diagnosed infection ratio
+Scale: macro | Phenomenon: silent_transmission_masking
+Definition: U(t) = count of agents i with E_i(t) = 1 and no diagnosed_i(s) = true for any observed s &lt;= t, divided by count of agents i with E_i(t) = 1 and at least one diagnosed_i(s) = true for some s &lt;= t; undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_macro_symptom_to_diagnosis_lag" class="inspectable" tabindex="0" data-node-id="p4_macro_symptom_to_diagnosis_lag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M648.45,-819.91C648.45,-819.91 482.55,-819.91 482.55,-819.91 476.55,-819.91 470.55,-813.91 470.55,-807.91 470.55,-807.91 470.55,-770.09 470.55,-770.09 470.55,-764.09 476.55,-758.09 482.55,-758.09 482.55,-758.09 648.45,-758.09 648.45,-758.09 654.45,-758.09 660.45,-764.09 660.45,-770.09 660.45,-770.09 660.45,-807.91 660.45,-807.91 660.45,-813.91 654.45,-819.91 648.45,-819.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-801.58" font-family="Times New Roman" font-size="14.00">N32</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-784.33" font-family="Times New Roman" font-size="14.00">Mean recorded symptom-to-</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-767.08" font-family="Times New Roman" font-size="14.00">diagnosis interval</text>
+<title>N32 | p4_macro_symptom_to_diagnosis_lag
+Mean recorded symptom-to-diagnosis interval
+Scale: macro | Phenomenon: silent_transmission_masking
+Definition: L(t) = mean over agents i diagnosed newly at step t, with both date_symptomatic and date_diagnosed non-null, of (date_diagnosed_i - date_symptomatic_i); undefined when no agent qualifies.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p5_macro_traced_per_diagnosis" class="inspectable" tabindex="0" data-node-id="p5_macro_traced_per_diagnosis">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M639.83,-892.91C639.83,-892.91 491.18,-892.91 491.18,-892.91 485.18,-892.91 479.18,-886.91 479.18,-880.91 479.18,-880.91 479.18,-843.09 479.18,-843.09 479.18,-837.09 485.18,-831.09 491.18,-831.09 491.18,-831.09 639.83,-831.09 639.83,-831.09 645.83,-831.09 651.83,-837.09 651.83,-843.09 651.83,-843.09 651.83,-880.91 651.83,-880.91 651.83,-886.91 645.83,-892.91 639.83,-892.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-874.58" font-family="Times New Roman" font-size="14.00">N39</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-857.33" font-family="Times New Roman" font-size="14.00">Known-contact transitions</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-840.08" font-family="Times New Roman" font-size="14.00">per new diagnosis</text>
+<title>N39 | p5_macro_traced_per_diagnosis
+Known-contact transitions per new diagnosis
+Scale: macro | Phenomenon: tracing_capacity_saturation
+Definition: P(t) = (number of agents with a known-contact transition at t) / (number of agents with a diagnosed transition at t); undefined when the diagnosis denominator is 0 or t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p5_macro_mean_tracing_latency" class="inspectable" tabindex="0" data-node-id="p5_macro_mean_tracing_latency">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M641.7,-965.91C641.7,-965.91 489.3,-965.91 489.3,-965.91 483.3,-965.91 477.3,-959.91 477.3,-953.91 477.3,-953.91 477.3,-916.09 477.3,-916.09 477.3,-910.09 483.3,-904.09 489.3,-904.09 489.3,-904.09 641.7,-904.09 641.7,-904.09 647.7,-904.09 653.7,-910.09 653.7,-916.09 653.7,-916.09 653.7,-953.91 653.7,-953.91 653.7,-959.91 647.7,-965.91 641.7,-965.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-947.58" font-family="Times New Roman" font-size="14.00">N40</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-930.33" font-family="Times New Roman" font-size="14.00">Mean per-agent tracing</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-913.08" font-family="Times New Roman" font-size="14.00">latency at quarantine start</text>
+<title>N40 | p5_macro_mean_tracing_latency
+Mean per-agent tracing latency at quarantine start
+Scale: macro | Phenomenon: tracing_capacity_saturation
+Definition: Lambda(t) = mean over agents i with quarantined_i(t) = true and quarantined_i(t-1) = false and defined Tau_i of Tau_i; undefined when no such agent has a defined latency.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p5_macro_quarantine_coverage" class="inspectable" tabindex="0" data-node-id="p5_macro_quarantine_coverage">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M633.08,-1038.91C633.08,-1038.91 497.93,-1038.91 497.93,-1038.91 491.93,-1038.91 485.93,-1032.91 485.93,-1026.91 485.93,-1026.91 485.93,-989.09 485.93,-989.09 485.93,-983.09 491.93,-977.09 497.93,-977.09 497.93,-977.09 633.08,-977.09 633.08,-977.09 639.08,-977.09 645.08,-983.09 645.08,-989.09 645.08,-989.09 645.08,-1026.91 645.08,-1026.91 645.08,-1032.91 639.08,-1038.91 633.08,-1038.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1020.58" font-family="Times New Roman" font-size="14.00">N41</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1003.33" font-family="Times New Roman" font-size="14.00">Quarantine coverage of</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-986.08" font-family="Times New Roman" font-size="14.00">observed agent-steps</text>
+<title>N41 | p5_macro_quarantine_coverage
+Quarantine coverage of observed agent-steps
+Scale: macro | Phenomenon: tracing_capacity_saturation
+Definition: C(t) = (number of agents i observed at step t with quarantined_i(t) = true) / (number of agents observed at step t); undefined when no agent is observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p5_macro_known_contact_prevalence" class="inspectable" tabindex="0" data-node-id="p5_macro_known_contact_prevalence">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M642.08,-1654.91C642.08,-1654.91 488.93,-1654.91 488.93,-1654.91 482.93,-1654.91 476.93,-1648.91 476.93,-1642.91 476.93,-1642.91 476.93,-1605.09 476.93,-1605.09 476.93,-1599.09 482.93,-1593.09 488.93,-1593.09 488.93,-1593.09 642.08,-1593.09 642.08,-1593.09 648.08,-1593.09 654.08,-1599.09 654.08,-1605.09 654.08,-1605.09 654.08,-1642.91 654.08,-1642.91 654.08,-1648.91 648.08,-1654.91 642.08,-1654.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1636.58" font-family="Times New Roman" font-size="14.00">N42</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1619.33" font-family="Times New Roman" font-size="14.00">Known-contact prevalence</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1602.08" font-family="Times New Roman" font-size="14.00">share</text>
+<title>N42 | p5_macro_known_contact_prevalence
+Known-contact prevalence share
+Scale: macro | Phenomenon: tracing_capacity_saturation
+Definition: K(t) = (number of agents i observed at step t with known_contact_i(t) = true) / (number of agents observed at step t); undefined when no agent is observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_macro_contact_volume_change" class="inspectable" tabindex="0" data-node-id="p6_macro_contact_volume_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M648.08,-169.91C648.08,-169.91 482.93,-169.91 482.93,-169.91 476.93,-169.91 470.93,-163.91 470.93,-157.91 470.93,-157.91 470.93,-120.09 470.93,-120.09 470.93,-114.09 476.93,-108.09 482.93,-108.09 482.93,-108.09 648.08,-108.09 648.08,-108.09 654.08,-108.09 660.08,-114.09 660.08,-120.09 660.08,-120.09 660.08,-157.91 660.08,-157.91 660.08,-163.91 654.08,-169.91 648.08,-169.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-151.57" font-family="Times New Roman" font-size="14.00">N48</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-134.32" font-family="Times New Roman" font-size="14.00">Relative step-to-step change</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-117.08" font-family="Times New Roman" font-size="14.00">in total contact volume</text>
+<title>N48 | p6_macro_contact_volume_change
+Relative step-to-step change in total contact volume
+Scale: macro | Phenomenon: adherence_heterogeneity_feedback
+Definition: G(t) = (E(t) - E(t-1)) / E(t-1), where E(t) is the number of distinct undirected edges at step t over all layers; undefined when E(t-1) = 0 or t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_macro_adherence_share" class="inspectable" tabindex="0" data-node-id="p6_macro_adherence_share">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M647.7,-1274.54C647.7,-1274.54 483.3,-1274.54 483.3,-1274.54 477.3,-1274.54 471.3,-1268.54 471.3,-1262.54 471.3,-1262.54 471.3,-1207.46 471.3,-1207.46 471.3,-1201.46 477.3,-1195.46 483.3,-1195.46 483.3,-1195.46 647.7,-1195.46 647.7,-1195.46 653.7,-1195.46 659.7,-1201.46 659.7,-1207.46 659.7,-1207.46 659.7,-1262.54 659.7,-1262.54 659.7,-1268.54 653.7,-1274.54 647.7,-1274.54" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1256.2" font-family="Times New Roman" font-size="14.00">N49</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1238.95" font-family="Times New Roman" font-size="14.00">Share of quarantined agents</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1221.7" font-family="Times New Roman" font-size="14.00">at or below the non-</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1204.45" font-family="Times New Roman" font-size="14.00">quarantined median degree</text>
+<title>N49 | p6_macro_adherence_share
+Share of quarantined agents at or below the non-quarantined median degree
+Scale: macro | Phenomenon: adherence_heterogeneity_feedback
+Definition: A(t) = (count of agents i with quarantined_i(t) = true and d_i(t) &lt;= m(t)) / (count of agents with quarantined_i(t) = true), where m(t) is the median of d_j(t) over agents with quarantined_j(t) = false at step t; undefined when either count is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_macro_population_suppression_ratio" class="inspectable" tabindex="0" data-node-id="p6_macro_population_suppression_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M643.58,-1346.91C643.58,-1346.91 487.43,-1346.91 487.43,-1346.91 481.43,-1346.91 475.43,-1340.91 475.43,-1334.91 475.43,-1334.91 475.43,-1297.09 475.43,-1297.09 475.43,-1291.09 481.43,-1285.09 487.43,-1285.09 487.43,-1285.09 643.58,-1285.09 643.58,-1285.09 649.58,-1285.09 655.58,-1291.09 655.58,-1297.09 655.58,-1297.09 655.58,-1334.91 655.58,-1334.91 655.58,-1340.91 649.58,-1346.91 643.58,-1346.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1328.58" font-family="Times New Roman" font-size="14.00">N50</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1311.33" font-family="Times New Roman" font-size="14.00">Population-level quarantine</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1294.08" font-family="Times New Roman" font-size="14.00">contact suppression ratio</text>
+<title>N50 | p6_macro_population_suppression_ratio
+Population-level quarantine contact suppression ratio
+Scale: macro | Phenomenon: adherence_heterogeneity_feedback
+Definition: Sigma(t) = (mean of d_i(t) over agents with quarantined_i(t) = true) / (mean of d_i(t) over agents with quarantined_i(t) = false); undefined when either group is empty or the denominator mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p7_macro_age_composition_drift" class="inspectable" tabindex="0" data-node-id="p7_macro_age_composition_drift">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M640.58,-657.91C640.58,-657.91 490.43,-657.91 490.43,-657.91 484.43,-657.91 478.43,-651.91 478.43,-645.91 478.43,-645.91 478.43,-608.09 478.43,-608.09 478.43,-602.09 484.43,-596.09 490.43,-596.09 490.43,-596.09 640.58,-596.09 640.58,-596.09 646.58,-596.09 652.58,-602.09 652.58,-608.09 652.58,-608.09 652.58,-645.91 652.58,-645.91 652.58,-651.91 646.58,-657.91 640.58,-657.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-639.58" font-family="Times New Roman" font-size="14.00">N56</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-622.33" font-family="Times New Roman" font-size="14.00">Total-variation drift of age</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-605.08" font-family="Times New Roman" font-size="14.00">composition of exposures</text>
+<title>N56 | p7_macro_age_composition_drift
+Total-variation drift of age composition of exposures
+Scale: macro | Phenomenon: intervention_timing_cohort_shift
+Definition: V_age(t) = 0.5 * sum over bands b of |p_b(t) - p_b(t0)|, with t0 the earliest observed step having at least one exposure transition; undefined when t0 or t is not observed or the step has no exposures.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p7_macro_layer_composition_drift" class="inspectable" tabindex="0" data-node-id="p7_macro_layer_composition_drift">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M627.08,-747.54C627.08,-747.54 503.93,-747.54 503.93,-747.54 497.93,-747.54 491.93,-741.54 491.93,-735.54 491.93,-735.54 491.93,-680.46 491.93,-680.46 491.93,-674.46 497.93,-668.46 503.93,-668.46 503.93,-668.46 627.08,-668.46 627.08,-668.46 633.08,-668.46 639.08,-674.46 639.08,-680.46 639.08,-680.46 639.08,-735.54 639.08,-735.54 639.08,-741.54 633.08,-747.54 627.08,-747.54" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-729.2" font-family="Times New Roman" font-size="14.00">N57</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-711.95" font-family="Times New Roman" font-size="14.00">Total-variation drift of</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-694.7" font-family="Times New Roman" font-size="14.00">layer composition of</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-677.45" font-family="Times New Roman" font-size="14.00">attributed exposures</text>
+<title>N57 | p7_macro_layer_composition_drift
+Total-variation drift of layer composition of attributed exposures
+Scale: macro | Phenomenon: intervention_timing_cohort_shift
+Definition: V_layer(t) = 0.5 * sum over layers l of |q_l(t) - q_l(t1)|, with t1 the earliest observed step having at least one layer-attributed exposure transition; undefined when either step lacks attributed exposures.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p7_macro_growth_change_at_first_quarantine" class="inspectable" tabindex="0" data-node-id="p7_macro_growth_change_at_first_quarantine">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M648.08,-97.54C648.08,-97.54 482.93,-97.54 482.93,-97.54 476.93,-97.54 470.93,-91.54 470.93,-85.54 470.93,-85.54 470.93,-30.46 470.93,-30.46 470.93,-24.46 476.93,-18.46 482.93,-18.46 482.93,-18.46 648.08,-18.46 648.08,-18.46 654.08,-18.46 660.08,-24.46 660.08,-30.46 660.08,-30.46 660.08,-85.54 660.08,-85.54 660.08,-91.54 654.08,-97.54 648.08,-97.54" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-79.2" font-family="Times New Roman" font-size="14.00">N58</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-61.95" font-family="Times New Roman" font-size="14.00">Contrast of exposure growth</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-44.7" font-family="Times New Roman" font-size="14.00">before and after first</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-27.45" font-family="Times New Roman" font-size="14.00">quarantine onset</text>
+<title>N58 | p7_macro_growth_change_at_first_quarantine
+Contrast of exposure growth before and after first quarantine onset
+Scale: macro | Phenomenon: intervention_timing_cohort_shift
+Definition: g_before = mean over observed steps s &lt; tq with positive counts n(s-1), n(s) of ln(n(s)/n(s-1)); g_after = the analogous mean over observed steps s &gt; tq; variable = g_after - g_before, where n(t) is the number of exposure transitions at t and tq is the earliest observed step with at least one quarantine transition; undefined if either segment is empty or any needed count is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p7_macro_median_age_of_new_exposures" class="inspectable" tabindex="0" data-node-id="p7_macro_median_age_of_new_exposures">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M641.7,-584.91C641.7,-584.91 489.3,-584.91 489.3,-584.91 483.3,-584.91 477.3,-578.91 477.3,-572.91 477.3,-572.91 477.3,-535.09 477.3,-535.09 477.3,-529.09 483.3,-523.09 489.3,-523.09 489.3,-523.09 641.7,-523.09 641.7,-523.09 647.7,-523.09 653.7,-529.09 653.7,-535.09 653.7,-535.09 653.7,-572.91 653.7,-572.91 653.7,-578.91 647.7,-584.91 641.7,-584.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-566.58" font-family="Times New Roman" font-size="14.00">N59</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-549.33" font-family="Times New Roman" font-size="14.00">Median age of agents with</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-532.08" font-family="Times New Roman" font-size="14.00">new exposure transitions</text>
+<title>N59 | p7_macro_median_age_of_new_exposures
+Median age of agents with new exposure transitions
+Scale: macro | Phenomenon: intervention_timing_cohort_shift
+Definition: m(t) = median of age_i over agents i observed at step t with X_i(t) = 1; undefined when no agent has a defined exposure transition and age at that step.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_macro_post_trough_infectious_growth" class="inspectable" tabindex="0" data-node-id="p8_macro_post_trough_infectious_growth">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M649.58,-1508.91C649.58,-1508.91 481.43,-1508.91 481.43,-1508.91 475.43,-1508.91 469.43,-1502.91 469.43,-1496.91 469.43,-1496.91 469.43,-1459.09 469.43,-1459.09 469.43,-1453.09 475.43,-1447.09 481.43,-1447.09 481.43,-1447.09 649.58,-1447.09 649.58,-1447.09 655.58,-1447.09 661.58,-1453.09 661.58,-1459.09 661.58,-1459.09 661.58,-1496.91 661.58,-1496.91 661.58,-1502.91 655.58,-1508.91 649.58,-1508.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1490.58" font-family="Times New Roman" font-size="14.00">N64</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1473.33" font-family="Times New Roman" font-size="14.00">Mean post-trough log growth</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1456.08" font-family="Times New Roman" font-size="14.00">of infectious agents</text>
+<title>N64 | p8_macro_post_trough_infectious_growth
+Mean post-trough log growth of infectious agents
+Scale: macro | Phenomenon: community_resurgence_after_decline
+Definition: g = mean over consecutive observed step pairs (s-1, s) with s &gt; t*, I(s-1) &gt; 0 and I(s) &gt; 0 of ln(I(s)/I(s-1)), where I(s) is the count of agents with infectious_i(s) = true; undefined when no such pair exists.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_macro_resurgence_amplitude" class="inspectable" tabindex="0" data-node-id="p8_macro_resurgence_amplitude">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M630.08,-1436.54C630.08,-1436.54 500.93,-1436.54 500.93,-1436.54 494.93,-1436.54 488.93,-1430.54 488.93,-1424.54 488.93,-1424.54 488.93,-1369.46 488.93,-1369.46 488.93,-1363.46 494.93,-1357.46 500.93,-1357.46 500.93,-1357.46 630.08,-1357.46 630.08,-1357.46 636.08,-1357.46 642.08,-1363.46 642.08,-1369.46 642.08,-1369.46 642.08,-1424.54 642.08,-1424.54 642.08,-1430.54 636.08,-1436.54 630.08,-1436.54" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1418.2" font-family="Times New Roman" font-size="14.00">N65</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1400.95" font-family="Times New Roman" font-size="14.00">Post-trough rebound</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1383.7" font-family="Times New Roman" font-size="14.00">amplitude of infectious</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1366.45" font-family="Times New Roman" font-size="14.00">count</text>
+<title>N65 | p8_macro_resurgence_amplitude
+Post-trough rebound amplitude of infectious count
+Scale: macro | Phenomenon: community_resurgence_after_decline
+Definition: A = (max over observed steps s &gt; t* of I(s)) / I(t*); undefined when I(t*) = 0 or no step after t* is observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_macro_trough_susceptible_depletion" class="inspectable" tabindex="0" data-node-id="p8_macro_trough_susceptible_depletion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M634.2,-1184.91C634.2,-1184.91 496.8,-1184.91 496.8,-1184.91 490.8,-1184.91 484.8,-1178.91 484.8,-1172.91 484.8,-1172.91 484.8,-1135.09 484.8,-1135.09 484.8,-1129.09 490.8,-1123.09 496.8,-1123.09 496.8,-1123.09 634.2,-1123.09 634.2,-1123.09 640.2,-1123.09 646.2,-1129.09 646.2,-1135.09 646.2,-1135.09 646.2,-1172.91 646.2,-1172.91 646.2,-1178.91 640.2,-1184.91 634.2,-1184.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1166.58" font-family="Times New Roman" font-size="14.00">N66</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1149.33" font-family="Times New Roman" font-size="14.00">Susceptible share at the</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1132.08" font-family="Times New Roman" font-size="14.00">infectious trough</text>
+<title>N66 | p8_macro_trough_susceptible_depletion
+Susceptible share at the infectious trough
+Scale: macro | Phenomenon: community_resurgence_after_decline
+Definition: S(t*) = (number of agents i observed at t* with susceptible_i(t*) = true) / (number of agents observed at t*); undefined when t* is undefined or no agent is observed at t*.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_macro_resurgence_breadth" class="inspectable" tabindex="0" data-node-id="p8_macro_resurgence_breadth">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M639.45,-1581.91C639.45,-1581.91 491.55,-1581.91 491.55,-1581.91 485.55,-1581.91 479.55,-1575.91 479.55,-1569.91 479.55,-1569.91 479.55,-1532.09 479.55,-1532.09 479.55,-1526.09 485.55,-1520.09 491.55,-1520.09 491.55,-1520.09 639.45,-1520.09 639.45,-1520.09 645.45,-1520.09 651.45,-1526.09 651.45,-1532.09 651.45,-1532.09 651.45,-1569.91 651.45,-1569.91 651.45,-1575.91 645.45,-1581.91 639.45,-1581.91" />
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1563.58" font-family="Times New Roman" font-size="14.00">N67</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1546.33" font-family="Times New Roman" font-size="14.00">Share of layers with post-</text>
+<text xml:space="preserve" text-anchor="middle" x="565.5" y="-1529.08" font-family="Times New Roman" font-size="14.00">trough incidence increase</text>
+<title>N67 | p8_macro_resurgence_breadth
+Share of layers with post-trough incidence increase
+Scale: macro | Phenomenon: community_resurgence_after_decline
+Definition: B = (number of layers l with Phi_l defined and Phi_l &gt; 1) / (number of layers l with Phi_l defined); undefined when no layer has a defined ratio.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

@@ -1,0 +1,27 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Fish | intra_scale</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">6 nodes / 3 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"frag_micro_nn_distance" [id="node_frag_micro_nn_distance", label="N1\nFocal fish nearest-neighbor\ndistance", style="rounded,filled", fillcolor="white"];
+"elong_micro_axis_alignment" [id="node_elong_micro_axis_alignment", label="N4\nFocal fish heading alignment\nwith group principal axis", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"frag_meso_contact_component_count" [id="node_frag_meso_contact_component_count", label="N2\nFish contact-graph component\ncount", style="rounded,filled", fillcolor="white"];
+"elong_meso_local_eigen_ratio" [id="node_elong_meso_local_eigen_ratio", label="N5\nMean contact-neighborhood\nelongation ratio\n[not executable]", style="rounded,filled,dashed", fillcolor="#f2f2f2"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"frag_macro_largest_component_fraction" [id="node_frag_macro_largest_component_fraction", label="N3\nLargest fish contact-\ncomponent fraction", style="rounded,filled", fillcolor="white"];
+"elong_macro_global_eigen_ratio" [id="node_elong_macro_global_eigen_ratio", label="N6\nGlobal fish position\neigenvalue ratio", style="rounded,filled", fillcolor="white"];
+}
+"frag_micro_nn_distance" -> "elong_micro_axis_alignment" [id="edge_intra_scale__micro_nn_spacing_to_axis_alignment", color="#6e648d", style="dotted", constraint=false];
+"elong_meso_local_eigen_ratio" -> "frag_meso_contact_component_count" [id="edge_intra_scale__meso_local_stretch_to_component_count", color="#6e648d", style="dotted", constraint=false];
+"elong_macro_global_eigen_ratio" -> "frag_macro_largest_component_fraction" [id="edge_intra_scale__macro_global_stretch_to_largest_component", color="#6e648d", style="dotted", constraint=false];
+}

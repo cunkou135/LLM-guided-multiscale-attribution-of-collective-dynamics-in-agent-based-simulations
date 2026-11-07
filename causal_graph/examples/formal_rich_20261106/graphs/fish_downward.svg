@@ -1,0 +1,1630 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="630pt" height="11333pt" viewBox="0.00 0.00 630.00 11333.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 5431.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-5431.39 293.64,-5431.39 293.64,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-5397.5" font-family="Times New Roman" font-size="17.00">Fish | downward</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-5375" font-family="Times New Roman" font-size="12.00">72 nodes / 116 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-5350.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-5350.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-5350.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-5350.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-5350.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="46.68,-8 46.68,-1759 260.33,-1759 260.33,-8 46.68,-8" />
+<text xml:space="preserve" text-anchor="middle" x="73.81" y="-1739.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="41.06,-1767 41.06,-3570 265.96,-3570 265.96,-1767 41.06,-1767" />
+<text xml:space="preserve" text-anchor="middle" x="67.43" y="-3550.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="39.56,-3578 39.56,-5329 267.46,-5329 267.46,-3578 39.56,-3578" />
+<text xml:space="preserve" text-anchor="middle" x="68.93" y="-5309.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_downward__b03_r0007" class="inspectable" data-source="elong_meso_component_escape_alignment" data-target="elong_micro_component_projection">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-2063.87C41.8,-2057.86 31.84,-2049.94 24.56,-2039.5 12.09,-2021.66 12.29,-490.48 24.56,-472.5 35.35,-456.69 51.9,-445.82 69.59,-438.36" />
+<polygon fill="#b3653b" stroke="#b3653b" points="70.19,-440.76 75.81,-435.92 68.4,-436.2 70.19,-440.76" />
+<title>elong_meso_component_escape_alignment → elong_micro_component_projection
+downward
+When the component major axis is escape-aligned, fish positions along that axis are reshaped, plausibly changing individual normalized projections onto the component axis.</title></g>
+
+<g id="edge_downward__b03_r0006" class="inspectable" data-source="elong_meso_component_escape_alignment" data-target="wave_micro_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-2063.87C41.8,-2057.86 31.84,-2049.94 24.56,-2039.5 12.67,-2022.49 12.67,-562.51 24.56,-545.5 30.95,-536.34 39.41,-529.11 48.93,-523.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.1,-525.57 55.08,-520.08 47.76,-521.27 50.1,-525.57" />
+<title>elong_meso_component_escape_alignment → wave_micro_escape_alignment
+downward
+A component whose elongation aligns with mean escape direction provides a directional context that can bias individual fish headings toward their own escape directions.</title></g>
+
+<g id="edge_downward__b03_r0008" class="inspectable" data-source="elong_meso_component_escape_alignment" data-target="pol_micro_neighbor_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-2063.87C41.8,-2057.86 31.84,-2049.94 24.56,-2039.5 8.63,-2016.7 8.63,-1061.3 24.56,-1038.5 30.95,-1029.34 39.41,-1022.11 48.93,-1016.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.1,-1018.57 55.08,-1013.08 47.76,-1014.27 50.1,-1018.57" />
+<title>elong_meso_component_escape_alignment → pol_micro_neighbor_alignment
+downward
+Component-level elongation and escape alignment alter the spatial arrangement of neighbors, plausibly changing the heading alignment a focal fish experiences locally.</title></g>
+
+<g id="edge_downward__b03_r0009" class="inspectable" data-source="elong_meso_component_escape_alignment" data-target="comp_micro_nearest_contact_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-2063.87C41.8,-2057.86 31.84,-2049.94 24.56,-2039.5 11.83,-2021.28 11.83,-1257.72 24.56,-1239.5 35.3,-1224.11 51.84,-1214.19 69.52,-1207.81" />
+<polygon fill="#b3653b" stroke="#b3653b" points="69.84,-1210.29 75.72,-1205.77 68.31,-1205.63 69.84,-1210.29" />
+<title>elong_meso_component_escape_alignment → comp_micro_nearest_contact_distance
+downward
+An escape-aligned stretched component changes nearest-neighbor geometry, plausibly increasing or decreasing a focal fish's nearest contact distance.</title></g>
+
+<g id="edge_downward__b03_r0022" class="inspectable" data-source="fright_meso_component_fright_edge_fraction" data-target="wave_micro_heading_change">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.78,-2509.98C53.25,-2503.65 35.76,-2493.54 24.56,-2477.5 10.35,-2457.16 10.35,-711.84 24.56,-691.5 32.62,-679.95 43.95,-671.48 56.58,-665.27" />
+<polygon fill="#b3653b" stroke="#b3653b" points="57.39,-667.6 62.77,-662.49 55.38,-663.13 57.39,-667.6" />
+<title>fright_meso_component_fright_edge_fraction → wave_micro_heading_change
+downward
+When many component contacts involve frightened fish, local escape turns become more likely, plausibly increasing individual heading-change magnitude.</title></g>
+
+<g id="edge_downward__b03_r0020" class="inspectable" data-source="fright_meso_component_fright_edge_fraction" data-target="fright_micro_state">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.78,-2509.98C53.25,-2503.65 35.76,-2493.54 24.56,-2477.5 10.92,-2457.98 10.92,-783.02 24.56,-763.5 36.5,-746.39 55.66,-736.16 75.59,-730.09" />
+<polygon fill="#b3653b" stroke="#b3653b" points="76,-732.52 82.09,-728.29 74.69,-727.8 76,-732.52" />
+<title>fright_meso_component_fright_edge_fraction → fright_micro_state
+downward
+A high fraction of frightened contact edges in a component increases social fright exposure, making a focal fish's transition into fright more likely.</title></g>
+
+<g id="edge_downward__b03_r0021" class="inspectable" data-source="fright_meso_component_fright_edge_fraction" data-target="fright_micro_remaining">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.78,-2509.98C53.25,-2503.65 35.76,-2493.54 24.56,-2477.5 11.37,-2458.62 11.37,-838.38 24.56,-819.5 31.83,-809.08 41.93,-801.59 53.3,-796.25" />
+<polygon fill="#b3653b" stroke="#b3653b" points="54.04,-798.6 59.54,-793.63 52.14,-794.08 54.04,-798.6" />
+<title>fright_meso_component_fright_edge_fraction → fright_micro_remaining
+downward
+Dense frightened-edge contexts can prolong or reset local fright pressure, plausibly affecting the remaining fright duration of a focal fish.</title></g>
+
+<g id="edge_downward__b03_r0023" class="inspectable" data-source="fright_meso_component_fright_edge_fraction" data-target="pol_micro_heading_deviation">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.78,-2509.98C53.25,-2503.65 35.76,-2493.54 24.56,-2477.5 12.53,-2460.28 12.53,-982.72 24.56,-965.5 31.13,-956.09 39.86,-948.73 49.7,-942.96" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.69,-945.21 55.71,-939.76 48.38,-940.89 50.69,-945.21" />
+<title>fright_meso_component_fright_edge_fraction → pol_micro_heading_deviation
+downward
+A frightened-edge-rich component can locally disorder headings through escape responses, plausibly raising focal deviation from the school mean heading.</title></g>
+
+<g id="edge_downward__b03_r0037" class="inspectable" data-source="comp_meso_component_mean_degree" data-target="pol_micro_neighbor_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M66.46,-2962.04C49.94,-2955.64 34.68,-2945.99 24.56,-2931.5 9.5,-2909.95 9.5,-1060.05 24.56,-1038.5 30.95,-1029.34 39.41,-1022.11 48.93,-1016.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.1,-1018.57 55.08,-1013.08 47.76,-1014.27 50.1,-1018.57" />
+<title>comp_meso_component_mean_degree → pol_micro_neighbor_alignment
+downward
+More contacts in a component increase social heading input, plausibly strengthening a focal fish's alignment with contact neighbors.</title></g>
+
+<g id="edge_downward__b03_r0034" class="inspectable" data-source="comp_meso_component_mean_degree" data-target="comp_micro_degree">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M66.46,-2962.04C49.94,-2955.64 34.68,-2945.99 24.56,-2931.5 10.52,-2911.4 10.52,-1186.6 24.56,-1166.5 35.85,-1150.32 53.94,-1141.21 73.04,-1136.24" />
+<polygon fill="#b3653b" stroke="#b3653b" points="73.52,-1138.65 79.8,-1134.7 72.43,-1133.87 73.52,-1138.65" />
+<title>comp_meso_component_mean_degree → comp_micro_degree
+downward
+A component with higher mean degree offers more potential contact partners, plausibly raising the realized contact degree of a focal fish in that component.</title></g>
+
+<g id="edge_downward__b03_r0035" class="inspectable" data-source="comp_meso_component_mean_degree" data-target="comp_micro_nearest_contact_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M66.46,-2962.04C49.94,-2955.64 34.68,-2945.99 24.56,-2931.5 11.1,-2912.23 11.1,-1258.77 24.56,-1239.5 35.3,-1224.11 51.84,-1214.19 69.52,-1207.81" />
+<polygon fill="#b3653b" stroke="#b3653b" points="69.84,-1210.29 75.72,-1205.77 68.31,-1205.63 69.84,-1210.29" />
+<title>comp_meso_component_mean_degree → comp_micro_nearest_contact_distance
+downward
+Higher component connectivity can bring neighbors closer or create crowding, plausibly changing a focal fish's nearest contact distance.</title></g>
+
+<g id="edge_downward__b03_r0036" class="inspectable" data-source="comp_meso_component_mean_degree" data-target="comp_micro_clustering_coefficient">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M66.46,-2962.04C49.94,-2955.64 34.68,-2945.99 24.56,-2931.5 11.68,-2913.07 11.68,-1330.93 24.56,-1312.5 36.24,-1295.77 54.77,-1285.49 74.18,-1279.22" />
+<polygon fill="#b3653b" stroke="#b3653b" points="74.76,-1281.61 80.78,-1277.28 73.37,-1276.9 74.76,-1281.61" />
+<title>comp_meso_component_mean_degree → comp_micro_clustering_coefficient
+downward
+Component-level contact density can create more neighbor-of-neighbor links, plausibly increasing a focal fish's local clustering coefficient.</title></g>
+
+<g id="edge_downward__b03_r0050" class="inspectable" data-source="lead_meso_component_cascade_fraction" data-target="wave_micro_heading_change">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M66.75,-3416.91C50.11,-3410.64 34.72,-3401.06 24.56,-3386.5 13.84,-3371.16 13.84,-706.84 24.56,-691.5 32.62,-679.95 43.95,-671.48 56.58,-665.27" />
+<polygon fill="#b3653b" stroke="#b3653b" points="57.39,-667.6 62.77,-662.49 55.38,-663.13 57.39,-667.6" />
+<title>lead_meso_component_cascade_fraction → wave_micro_heading_change
+downward
+Frequent cascade-matched turns within a component can increase individual step heading changes as followers adjust to leaders.</title></g>
+
+<g id="edge_downward__b03_r0051" class="inspectable" data-source="lead_meso_component_cascade_fraction" data-target="pol_micro_neighbor_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M66.75,-3416.91C50.11,-3410.64 34.72,-3401.06 24.56,-3386.5 5.88,-3359.76 5.88,-1065.24 24.56,-1038.5 30.95,-1029.34 39.41,-1022.11 48.93,-1016.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.1,-1018.57 55.08,-1013.08 47.76,-1014.27 50.1,-1018.57" />
+<title>lead_meso_component_cascade_fraction → pol_micro_neighbor_alignment
+downward
+Cascading turns tend to align neighbors, plausibly raising a focal fish's heading alignment with contact neighbors.</title></g>
+
+<g id="edge_downward__b03_r0048" class="inspectable" data-source="lead_meso_component_cascade_fraction" data-target="lead_micro_lagged_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M66.75,-3416.91C50.11,-3410.64 34.72,-3401.06 24.56,-3386.5 10.24,-3366 10.24,-1607 24.56,-1586.5 32.74,-1574.79 44.27,-1566.24 57.11,-1560.01" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.01,-1562.29 63.42,-1557.22 56.03,-1557.81 58.01,-1562.29" />
+<title>lead_meso_component_cascade_fraction → lead_micro_lagged_alignment
+downward
+A component with many sign-matched cascades provides a stronger lagged turning context, plausibly increasing focal alignment with previous neighbor heading changes.</title></g>
+
+<g id="edge_downward__b03_r0049" class="inspectable" data-source="lead_meso_component_cascade_fraction" data-target="lead_micro_influence_score">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M66.75,-3416.91C50.11,-3410.64 34.72,-3401.06 24.56,-3386.5 10.82,-3366.84 10.82,-1679.16 24.56,-1659.5 35.54,-1643.77 52.57,-1633.75 70.69,-1627.4" />
+<polygon fill="#b3653b" stroke="#b3653b" points="71.15,-1629.82 77.07,-1625.35 69.66,-1625.16 71.15,-1629.82" />
+<title>lead_meso_component_cascade_fraction → lead_micro_influence_score
+downward
+Cascade-rich components can amplify some individuals' turns, plausibly raising the run-level lagged influence score of a focal fish.</title></g>
+
+<g id="edge_downward__b03_r0003" class="inspectable" data-source="frag_macro_component_count" data-target="frag_micro_isolate">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M49.01,-3588.75C39.46,-3582.98 30.98,-3575.7 24.56,-3566.5 11.03,-3547.13 11.03,-183.87 24.56,-164.5 32.79,-152.71 44.43,-144.12 57.38,-137.88" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.33,-140.14 63.75,-135.09 56.36,-135.66 58.33,-140.14" />
+<title>frag_macro_component_count → frag_micro_isolate
+downward
+Fragmentation can leave marginal fish outside dense subgroups, making individual contact isolation more likely through changed local neighbor availability.</title></g>
+
+<g id="edge_downward__b03_r0005" class="inspectable" data-source="frag_macro_component_count" data-target="pol_micro_neighbor_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M49.01,-3588.75C39.46,-3582.98 30.98,-3575.7 24.56,-3566.5 14.5,-3552.11 14.5,-1052.89 24.56,-1038.5 30.95,-1029.34 39.41,-1022.11 48.93,-1016.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.1,-1018.57 55.08,-1013.08 47.76,-1014.27 50.1,-1018.57" />
+<title>frag_macro_component_count → pol_micro_neighbor_alignment
+downward
+More components imply fewer cross-group neighbors for a fish, which can change the local heading reference and reduce alignment with contact neighbors.</title></g>
+
+<g id="edge_downward__b03_r0004" class="inspectable" data-source="frag_macro_component_count" data-target="comp_micro_degree">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M49.01,-3588.75C39.46,-3582.98 30.98,-3575.7 24.56,-3566.5 5.47,-3539.17 5.47,-1193.83 24.56,-1166.5 35.85,-1150.32 53.94,-1141.21 73.04,-1136.24" />
+<polygon fill="#b3653b" stroke="#b3653b" points="73.52,-1138.65 79.8,-1134.7 72.43,-1133.87 73.52,-1138.65" />
+<title>frag_macro_component_count → comp_micro_degree
+downward
+A more fragmented group context alters how many neighbors a focal fish can maintain, plausibly lowering its realized contact degree.</title></g>
+
+<g id="edge_downward__b03_r0000" class="inspectable" data-source="frag_macro_component_count" data-target="frag_meso_mean_component_size">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M49.01,-3588.75C39.46,-3582.98 30.98,-3575.7 24.56,-3566.5 10.77,-3546.76 10.77,-1852.24 24.56,-1832.5 30.4,-1824.13 38.07,-1817.65 46.75,-1812.66" />
+<polygon fill="#b3653b" stroke="#b3653b" points="47.8,-1814.87 52.91,-1809.5 45.57,-1810.51 47.8,-1814.87" />
+<title>frag_macro_component_count → frag_meso_mean_component_size
+downward
+More contact components change the local grouping context in which fish merge or split, plausibly lowering the average component size observed at the meso level.</title></g>
+
+<g id="edge_downward__b03_r0001" class="inspectable" data-source="frag_macro_component_count" data-target="frag_meso_component_size_entropy">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M49.01,-3588.75C39.46,-3582.98 30.98,-3575.7 24.56,-3566.5 11.35,-3547.59 11.35,-1924.41 24.56,-1905.5 34.3,-1891.55 48.8,-1882.09 64.6,-1875.69" />
+<polygon fill="#b3653b" stroke="#b3653b" points="65.31,-1878.04 71.03,-1873.32 63.61,-1873.45 65.31,-1878.04" />
+<title>frag_macro_component_count → frag_meso_component_size_entropy
+downward
+A higher number of components can redistribute fish among subgroups, plausibly raising the entropy of component sizes through repeated splitting and partial re-merging.</title></g>
+
+<g id="edge_downward__b03_r0002" class="inspectable" data-source="frag_macro_component_count" data-target="comp_meso_component_mean_degree">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M49.01,-3588.75C39.46,-3582.98 30.98,-3575.7 24.56,-3566.5 7.06,-3541.45 7.06,-3041.55 24.56,-3016.5 33.1,-3004.27 45.29,-2995.49 58.82,-2989.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-2991.54 65.06,-2986.55 57.66,-2987.03 59.58,-2991.54" />
+<title>frag_macro_component_count → comp_meso_component_mean_degree
+downward
+When the school is split into more components, fish interactions become confined to smaller subsets, plausibly reducing the mean contact degree within components.</title></g>
+
+<g id="edge_downward__b00_r0000" class="inspectable" data-source="frag_macro_largest_fraction" data-target="frag_meso_mean_component_size">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M74.43,-3665.55C54.92,-3659.44 36.27,-3649.27 24.56,-3632.5 10.24,-3612 10.24,-1853 24.56,-1832.5 30.4,-1824.13 38.07,-1817.65 46.75,-1812.66" />
+<polygon fill="#b3653b" stroke="#b3653b" points="47.8,-1814.87 52.91,-1809.5 45.57,-1810.51 47.8,-1814.87" />
+<title>frag_macro_largest_fraction → frag_meso_mean_component_size
+downward
+When the largest connected fraction grows or shrinks through merging and splitting, the remaining small components are redistributed, so the mean component size can shift dynamically rather than being a fixed identity.</title></g>
+
+<g id="edge_downward__b00_r0001" class="inspectable" data-source="frag_macro_largest_fraction" data-target="elong_meso_component_axis_length">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M74.43,-3665.55C54.92,-3659.44 36.27,-3649.27 24.56,-3632.5 13.14,-3616.16 13.14,-2213.84 24.56,-2197.5 29.88,-2189.88 36.62,-2183.6 44.22,-2178.43" />
+<polygon fill="#b3653b" stroke="#b3653b" points="45.46,-2180.54 50.13,-2174.77 42.89,-2176.37 45.46,-2180.54" />
+<title>frag_macro_largest_fraction → elong_meso_component_axis_length
+downward
+A dominant largest component can absorb or shed peripheral groups; this changes which fish belong to a component and therefore alters that component's spatial spread along its major axis.</title></g>
+
+<g id="edge_downward__b00_r0002" class="inspectable" data-source="frag_macro_largest_fraction" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M74.43,-3665.55C54.92,-3659.44 36.27,-3649.27 24.56,-3632.5 13.72,-3616.99 13.72,-2286.01 24.56,-2270.5 31.7,-2260.28 41.39,-2252.46 52.29,-2246.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2248.84 58.25,-2243.52 50.89,-2244.46 53.08,-2248.84" />
+<title>frag_macro_largest_fraction → wave_meso_component_escape_coherence
+downward
+The global share of fish in one component controls how many escape-direction biases are mixed inside components, so component-level escape coherence can be diluted or reinforced by global fragmentation.</title></g>
+
+<g id="edge_downward__b00_r0003" class="inspectable" data-source="frag_macro_largest_fraction" data-target="fright_meso_component_fright_position_corr">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M74.43,-3665.55C54.92,-3659.44 36.27,-3649.27 24.56,-3632.5 8.95,-3610.16 9.2,-2674.01 24.56,-2651.5 32.84,-2639.35 44.54,-2630.12 57.53,-2623.12" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.35,-2625.45 63.51,-2620.13 56.16,-2621.06 58.35,-2625.45" />
+<title>frag_macro_largest_fraction → fright_meso_component_fright_position_corr
+downward
+When most fish belong to one connected component, fright states and positions are mixed over a larger set; when fragmentation isolates groups, frightened individuals are spatially sorted differently within components.</title></g>
+
+<g id="edge_downward__b00_r0004" class="inspectable" data-source="frag_macro_largest_fraction" data-target="pol_meso_component_polarization">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M74.43,-3665.55C54.92,-3659.44 36.27,-3649.27 24.56,-3632.5 10.11,-3611.82 10.11,-2745.18 24.56,-2724.5 31.7,-2714.28 41.39,-2706.46 52.29,-2700.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2702.84 58.25,-2697.52 50.89,-2698.46 53.08,-2702.84" />
+<title>frag_macro_largest_fraction → pol_meso_component_polarization
+downward
+Merging into a dominant component can combine sub-groups with different headings, changing component polarization; splitting can preserve locally aligned sub-groups instead.</title></g>
+
+<g id="edge_downward__b00_r0005" class="inspectable" data-source="frag_macro_largest_fraction" data-target="comp_meso_component_mean_nearest_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M74.43,-3665.55C54.92,-3659.44 36.27,-3649.27 24.56,-3632.5 7.28,-3607.77 7.28,-3114.23 24.56,-3089.5 33.1,-3077.27 45.29,-3068.49 58.82,-3062.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-3064.54 65.06,-3059.55 57.66,-3060.03 59.58,-3064.54" />
+<title>frag_macro_largest_fraction → comp_meso_component_mean_nearest_distance
+downward
+Global connectivity changes which fish are counted together in a component and can bring distant sub-groups into the same component, shifting the mean nearest-contact spacing inside components.</title></g>
+
+<g id="edge_downward__b00_r0006" class="inspectable" data-source="frag_macro_largest_fraction" data-target="mill_meso_component_angular_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M74.43,-3665.55C54.92,-3659.44 36.27,-3649.27 24.56,-3632.5 9.6,-3611.09 9.6,-3183.91 24.56,-3162.5 33.1,-3150.27 45.29,-3141.49 58.82,-3135.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-3137.54 65.06,-3132.55 57.66,-3133.03 59.58,-3137.54" />
+<title>frag_macro_largest_fraction → mill_meso_component_angular_velocity
+downward
+A larger dominant component can sustain shear across more fish, while fragmented small components rotate around local centroids, so global largest-fraction changes can alter component angular velocity.</title></g>
+
+<g id="edge_downward__b00_r0007" class="inspectable" data-source="frag_macro_largest_fraction" data-target="lead_meso_component_influence_variance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M74.43,-3665.55C54.92,-3659.44 36.27,-3649.27 24.56,-3632.5 11.58,-3613.92 13.56,-3601.32 24.56,-3581.5 34.73,-3563.16 51,-3548.45 68.62,-3536.89" />
+<polygon fill="#b3653b" stroke="#b3653b" points="69.79,-3539.05 74.41,-3533.25 67.18,-3534.9 69.79,-3539.05" />
+<title>frag_macro_largest_fraction → lead_meso_component_influence_variance
+downward
+Global fragmentation changes which fish share a component and therefore how heterogeneous leader/follower influence scores are within components.</title></g>
+
+<g id="edge_downward__b01_r0000" class="inspectable" data-source="frag_macro_component_count_change" data-target="frag_meso_component_size_entropy">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.12,-3737.43C54.1,-3731.13 36.03,-3720.93 24.56,-3704.5 10.25,-3684.02 10.25,-1925.98 24.56,-1905.5 34.3,-1891.55 48.8,-1882.09 64.6,-1875.69" />
+<polygon fill="#b3653b" stroke="#b3653b" points="65.31,-1878.04 71.03,-1873.32 63.61,-1873.45 65.31,-1878.04" />
+<title>frag_macro_component_count_change → frag_meso_component_size_entropy
+downward
+Stepwise splitting or merging of contact components redistributes fish among component sizes, so a macro change in component count can alter the meso entropy of component sizes through the same fragmentation dynamics.</title></g>
+
+<g id="edge_downward__b01_r0001" class="inspectable" data-source="frag_macro_component_count_change" data-target="pol_meso_component_mean_deviation">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.12,-3737.43C54.1,-3731.13 36.03,-3720.93 24.56,-3704.5 10.13,-3683.84 10.13,-2818.16 24.56,-2797.5 33.1,-2785.27 45.29,-2776.49 58.82,-2770.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-2772.54 65.06,-2767.55 57.66,-2768.03 59.58,-2772.54" />
+<title>frag_macro_component_count_change → pol_meso_component_mean_deviation
+downward
+When the school breaks into more components, fish that remain grouped may be exposed to different local social cues, changing within-component heading scatter and thus the meso mean deviation.</title></g>
+
+<g id="edge_downward__b01_r0002" class="inspectable" data-source="frag_macro_component_count_change" data-target="mill_meso_component_rotational_order">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.12,-3737.43C54.1,-3731.13 36.03,-3720.93 24.56,-3704.5 9.64,-3683.14 9.64,-3256.86 24.56,-3235.5 30.63,-3226.81 38.54,-3219.86 47.47,-3214.31" />
+<polygon fill="#b3653b" stroke="#b3653b" points="48.63,-3216.47 53.52,-3210.89 46.22,-3212.2 48.63,-3216.47" />
+<title>frag_macro_component_count_change → mill_meso_component_rotational_order
+downward
+Fragmentation interrupts coherent circulation by separating fish into smaller groups, which can reduce the tendency for component-level tangential directions to align into rotational order.</title></g>
+
+<g id="edge_downward__b01_r0003" class="inspectable" data-source="elong_macro_school_aspect_ratio" data-target="wave_meso_component_mean_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M66.83,-3805.98C50.08,-3800.72 34.62,-3791.91 24.56,-3777.5 13.15,-3761.17 13.15,-2359.83 24.56,-2343.5 32.98,-2331.43 44.97,-2322.73 58.28,-2316.45" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.95,-2318.84 64.41,-2313.81 57.01,-2314.34 58.95,-2318.84" />
+<title>elong_macro_school_aspect_ratio → wave_meso_component_mean_escape_alignment
+downward
+A whole-school elongation axis shapes the geometry in which component fish turn and flee, so components stretched along that axis tend to have headings more aligned with their escape directions.</title></g>
+
+<g id="edge_downward__b01_r0004" class="inspectable" data-source="elong_macro_school_aspect_ratio" data-target="mill_meso_component_rotational_order">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M66.83,-3805.98C50.08,-3800.72 34.62,-3791.91 24.56,-3777.5 7.31,-3752.81 7.31,-3260.19 24.56,-3235.5 30.63,-3226.81 38.54,-3219.86 47.47,-3214.31" />
+<polygon fill="#b3653b" stroke="#b3653b" points="48.63,-3216.47 53.52,-3210.89 46.22,-3212.2 48.63,-3216.47" />
+<title>elong_macro_school_aspect_ratio → mill_meso_component_rotational_order
+downward
+Strong whole-school elongation opposes circular geometry by stretching positions and velocities along one direction, which can suppress the tangential alignment needed for component rotational order.</title></g>
+
+<g id="edge_downward__b02_r0001" class="inspectable" data-source="elong_macro_anisotropy_index" data-target="frag_meso_centroid_pair_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.41,-3865.57C53.01,-3859.37 35.67,-3849.41 24.56,-3833.5 9.8,-3812.38 9.8,-1999.62 24.56,-1978.5 34.47,-1964.3 49.32,-1954.75 65.45,-1948.35" />
+<polygon fill="#b3653b" stroke="#b3653b" points="66.28,-1950.66 72.03,-1945.97 64.62,-1946.05 66.28,-1950.66" />
+<title>elong_macro_anisotropy_index → frag_meso_centroid_pair_distance
+downward
+When the school is globally elongated, components may be pushed apart along the major axis, increasing distances between component centroids.</title></g>
+
+<g id="edge_downward__b02_r0000" class="inspectable" data-source="elong_macro_anisotropy_index" data-target="elong_meso_component_aspect_ratio">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.41,-3865.57C53.01,-3859.37 35.67,-3849.41 24.56,-3833.5 10.38,-3813.21 10.38,-2071.79 24.56,-2051.5 32.57,-2040.03 43.79,-2031.59 56.32,-2025.4" />
+<polygon fill="#b3653b" stroke="#b3653b" points="57.07,-2027.75 62.44,-2022.63 55.06,-2023.28 57.07,-2027.75" />
+<title>elong_macro_anisotropy_index → elong_meso_component_aspect_ratio
+downward
+Higher whole-school anisotropy implies global stretching along a major axis, imposing a shared strain field that locally elongates contact components and increases their aspect ratio.</title></g>
+
+<g id="edge_downward__b02_r0002" class="inspectable" data-source="elong_macro_anisotropy_index" data-target="pol_meso_component_away_shark_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.41,-3865.57C53.01,-3859.37 35.67,-3849.41 24.56,-3833.5 9.24,-3811.57 9.24,-2892.43 24.56,-2870.5 31.7,-2860.28 41.39,-2852.46 52.29,-2846.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2848.84 58.25,-2843.52 50.89,-2844.46 53.08,-2848.84" />
+<title>elong_macro_anisotropy_index → pol_meso_component_away_shark_alignment
+downward
+Global anisotropy aligned with escape direction may reinforce local component alignment away from the shark, as components inherit the global directional bias.</title></g>
+
+<g id="edge_downward__b02_r0012" class="inspectable" data-source="elong_macro_anisotropy_index" data-target="mill_meso_component_angular_momentum">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.41,-3865.57C53.01,-3859.37 35.67,-3849.41 24.56,-3833.5 7.82,-3809.54 7.82,-3331.46 24.56,-3307.5 33.08,-3295.3 45.27,-3286.59 58.79,-3280.4" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.51,-3282.76 65.02,-3277.8 57.62,-3278.23 59.51,-3282.76" />
+<title>elong_macro_anisotropy_index → mill_meso_component_angular_momentum
+downward
+Global elongation may suppress rotational milling by imposing a linear escape direction, reducing component angular momentum.</title></g>
+
+<g id="edge_downward__b03_r0014" class="inspectable" data-source="elong_macro_major_escape_alignment" data-target="elong_micro_major_projection">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M70.44,-3937.52C52.41,-3931.16 35.49,-3921.15 24.56,-3905.5 10.26,-3885.03 10.26,-330.97 24.56,-310.5 31.46,-300.61 40.77,-292.97 51.23,-287.09" />
+<polygon fill="#b3653b" stroke="#b3653b" points="52.18,-289.35 57.29,-283.98 49.95,-284.99 52.18,-289.35" />
+<title>elong_macro_major_escape_alignment → elong_micro_major_projection
+downward
+When the school major axis is escape-aligned, individual projections onto that axis are reorganized by the collective stretching, plausibly shifting focal normalized projections.</title></g>
+
+<g id="edge_downward__b03_r0013" class="inspectable" data-source="elong_macro_major_escape_alignment" data-target="wave_micro_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M70.44,-3937.52C52.41,-3931.16 35.49,-3921.15 24.56,-3905.5 11.19,-3886.37 11.19,-564.63 24.56,-545.5 30.95,-536.34 39.41,-529.11 48.93,-523.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.1,-525.57 55.08,-520.08 47.76,-521.27 50.1,-525.57" />
+<title>elong_macro_major_escape_alignment → wave_micro_escape_alignment
+downward
+Whole-school alignment of elongation with escape direction provides a directional field that can make individual heading-escape alignment more likely.</title></g>
+
+<g id="edge_downward__b03_r0010" class="inspectable" data-source="elong_macro_major_escape_alignment" data-target="elong_meso_component_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M70.44,-3937.52C52.41,-3931.16 35.49,-3921.15 24.56,-3905.5 10.39,-3885.22 10.39,-2144.78 24.56,-2124.5 30.25,-2116.35 37.57,-2109.73 45.82,-2104.36" />
+<polygon fill="#b3653b" stroke="#b3653b" points="46.88,-2106.58 51.66,-2100.9 44.39,-2102.36 46.88,-2106.58" />
+<title>elong_macro_major_escape_alignment → elong_meso_component_escape_alignment
+downward
+Whole-school major-axis escape alignment creates a global directional axis that can propagate into component-level elongation and escape alignment.</title></g>
+
+<g id="edge_downward__b03_r0011" class="inspectable" data-source="elong_macro_major_escape_alignment" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M70.44,-3937.52C52.41,-3931.16 35.49,-3921.15 24.56,-3905.5 11.55,-3886.88 11.55,-2289.12 24.56,-2270.5 31.7,-2260.28 41.39,-2252.46 52.29,-2246.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2248.84 58.25,-2243.52 50.89,-2244.46 53.08,-2248.84" />
+<title>elong_macro_major_escape_alignment → wave_meso_component_escape_coherence
+downward
+A school-level escape-aligned elongation can synchronize component escape directions, plausibly raising coherence within contact components.</title></g>
+
+<g id="edge_downward__b03_r0012" class="inspectable" data-source="elong_macro_major_escape_alignment" data-target="pol_meso_component_polarization">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M70.44,-3937.52C52.41,-3931.16 35.49,-3921.15 24.56,-3905.5 5.77,-3878.6 5.77,-2751.4 24.56,-2724.5 31.7,-2714.28 41.39,-2706.46 52.29,-2700.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2702.84 58.25,-2697.52 50.89,-2698.46 53.08,-2702.84" />
+<title>elong_macro_major_escape_alignment → pol_meso_component_polarization
+downward
+Global elongation along a common escape axis can bias component headings toward that axis, plausibly increasing component polarization.</title></g>
+
+<g id="edge_downward__b03_r0017" class="inspectable" data-source="wave_macro_school_escape_coherence" data-target="wave_micro_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M78.85,-4013.21C57.78,-4007.11 37.18,-3996.57 24.56,-3978.5 10.9,-3958.95 10.9,-565.05 24.56,-545.5 30.95,-536.34 39.41,-529.11 48.93,-523.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.1,-525.57 55.08,-520.08 47.76,-521.27 50.1,-525.57" />
+<title>wave_macro_school_escape_coherence → wave_micro_escape_alignment
+downward
+School-level escape coherence acts as a shared directional context that can increase individual heading alignment with own escape direction.</title></g>
+
+<g id="edge_downward__b03_r0018" class="inspectable" data-source="wave_macro_school_escape_coherence" data-target="wave_micro_heading_change">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M78.85,-4013.21C57.78,-4007.11 37.18,-3996.57 24.56,-3978.5 11.48,-3959.79 11.48,-710.21 24.56,-691.5 32.62,-679.95 43.95,-671.48 56.58,-665.27" />
+<polygon fill="#b3653b" stroke="#b3653b" points="57.39,-667.6 62.77,-662.49 55.38,-663.13 57.39,-667.6" />
+<title>wave_macro_school_escape_coherence → wave_micro_heading_change
+downward
+As a coherent escape wave passes, individual fish are plausibly induced to turn, changing step heading-change magnitudes.</title></g>
+
+<g id="edge_downward__b03_r0019" class="inspectable" data-source="wave_macro_school_escape_coherence" data-target="pol_micro_neighbor_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M78.85,-4013.21C57.78,-4007.11 37.18,-3996.57 24.56,-3978.5 12.86,-3961.76 12.86,-1055.24 24.56,-1038.5 30.95,-1029.34 39.41,-1022.11 48.93,-1016.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.1,-1018.57 55.08,-1013.08 47.76,-1014.27 50.1,-1018.57" />
+<title>wave_macro_school_escape_coherence → pol_micro_neighbor_alignment
+downward
+A school-wide coherent escape direction can make neighboring headings more similar, plausibly raising focal alignment with contact neighbors.</title></g>
+
+<g id="edge_downward__b03_r0015" class="inspectable" data-source="wave_macro_school_escape_coherence" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M78.85,-4013.21C57.78,-4007.11 37.18,-3996.57 24.56,-3978.5 10.97,-3959.05 10.97,-2289.95 24.56,-2270.5 31.7,-2260.28 41.39,-2252.46 52.29,-2246.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2248.84 58.25,-2243.52 50.89,-2244.46 53.08,-2248.84" />
+<title>wave_macro_school_escape_coherence → wave_meso_component_escape_coherence
+downward
+High school-wide escape-direction coherence provides a common directional drive that can increase coherence within contact components.</title></g>
+
+<g id="edge_downward__b03_r0016" class="inspectable" data-source="wave_macro_school_escape_coherence" data-target="wave_meso_component_mean_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M78.85,-4013.21C57.78,-4007.11 37.18,-3996.57 24.56,-3978.5 11.55,-3959.88 11.55,-2362.12 24.56,-2343.5 32.98,-2331.43 44.97,-2322.73 58.28,-2316.45" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.95,-2318.84 64.41,-2313.81 57.01,-2314.34 58.95,-2318.84" />
+<title>wave_macro_school_escape_coherence → wave_meso_component_mean_escape_alignment
+downward
+A coherent school escape wave can align component fish headings with their escape directions, plausibly raising component mean alignment.</title></g>
+
+<g id="edge_downward__b00_r0008" class="inspectable" data-source="wave_macro_heading_change_shark_cov" data-target="frag_meso_mean_component_size">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-4075.87C41.8,-4069.86 31.84,-4061.94 24.56,-4051.5 6.91,-4026.23 6.91,-1857.77 24.56,-1832.5 30.4,-1824.13 38.07,-1817.65 46.75,-1812.66" />
+<polygon fill="#b3653b" stroke="#b3653b" points="47.8,-1814.87 52.91,-1809.5 45.57,-1810.51 47.8,-1814.87" />
+<title>wave_macro_heading_change_shark_cov → frag_meso_mean_component_size
+downward
+Heterogeneous turning near versus far from sharks can shear contact neighborhoods, merging or breaking components and thereby changing mean component size.</title></g>
+
+<g id="edge_downward__b00_r0009" class="inspectable" data-source="wave_macro_heading_change_shark_cov" data-target="elong_meso_component_axis_length">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-4075.87C41.8,-4069.86 31.84,-4061.94 24.56,-4051.5 9.81,-4030.39 9.81,-2218.61 24.56,-2197.5 29.88,-2189.88 36.62,-2183.6 44.22,-2178.43" />
+<polygon fill="#b3653b" stroke="#b3653b" points="45.46,-2180.54 50.13,-2174.77 42.89,-2176.37 45.46,-2180.54" />
+<title>wave_macro_heading_change_shark_cov → elong_meso_component_axis_length
+downward
+When heading changes are strongly coupled to shark proximity, fish near the shark turn away and stretch local components along the escape direction, increasing component major-axis length.</title></g>
+
+<g id="edge_downward__b00_r0010" class="inspectable" data-source="wave_macro_heading_change_shark_cov" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-4075.87C41.8,-4069.86 31.84,-4061.94 24.56,-4051.5 10.39,-4031.22 10.39,-2290.78 24.56,-2270.5 31.7,-2260.28 41.39,-2252.46 52.29,-2246.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2248.84 58.25,-2243.52 50.89,-2244.46 53.08,-2248.84" />
+<title>wave_macro_heading_change_shark_cov → wave_meso_component_escape_coherence
+downward
+A strong global covariance between turning and proximity implies coordinated threat response; this can align escape directions inside components and raise component escape coherence.</title></g>
+
+<g id="edge_downward__b00_r0011" class="inspectable" data-source="wave_macro_heading_change_shark_cov" data-target="fright_meso_component_fright_position_corr">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-4075.87C41.8,-4069.86 31.84,-4061.94 24.56,-4051.5 13.42,-4035.56 13.6,-2667.56 24.56,-2651.5 32.84,-2639.35 44.54,-2630.12 57.53,-2623.12" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.35,-2625.45 63.51,-2620.13 56.16,-2621.06 58.35,-2625.45" />
+<title>wave_macro_heading_change_shark_cov → fright_meso_component_fright_position_corr
+downward
+Differential turning by shark proximity redistributes frightened and non-frightened fish within components, altering the correlation between fright state and distance from component centroid.</title></g>
+
+<g id="edge_downward__b00_r0012" class="inspectable" data-source="wave_macro_heading_change_shark_cov" data-target="pol_meso_component_polarization">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-4075.87C41.8,-4069.86 31.84,-4061.94 24.56,-4051.5 14,-4036.39 14,-2739.61 24.56,-2724.5 31.7,-2714.28 41.39,-2706.46 52.29,-2700.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2702.84 58.25,-2697.52 50.89,-2698.46 53.08,-2702.84" />
+<title>wave_macro_heading_change_shark_cov → pol_meso_component_polarization
+downward
+If heading changes are globally tuned to shark proximity, nearby fish turn similarly while distant fish turn less, which can either sharpen or break component-level heading alignment.</title></g>
+
+<g id="edge_downward__b00_r0013" class="inspectable" data-source="wave_macro_heading_change_shark_cov" data-target="comp_meso_component_mean_nearest_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-4075.87C41.8,-4069.86 31.84,-4061.94 24.56,-4051.5 9.25,-4029.59 9.25,-3111.41 24.56,-3089.5 33.1,-3077.27 45.29,-3068.49 58.82,-3062.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-3064.54 65.06,-3059.55 57.66,-3060.03 59.58,-3064.54" />
+<title>wave_macro_heading_change_shark_cov → comp_meso_component_mean_nearest_distance
+downward
+Turning responses that depend on shark distance change local crowding: fish near a shark may compress or spread, which shifts mean nearest-contact distance within components.</title></g>
+
+<g id="edge_downward__b00_r0014" class="inspectable" data-source="wave_macro_heading_change_shark_cov" data-target="mill_meso_component_angular_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-4075.87C41.8,-4069.86 31.84,-4061.94 24.56,-4051.5 10.42,-4031.25 10.42,-3182.75 24.56,-3162.5 33.1,-3150.27 45.29,-3141.49 58.82,-3135.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-3137.54 65.06,-3132.55 57.66,-3133.03 59.58,-3137.54" />
+<title>wave_macro_heading_change_shark_cov → mill_meso_component_angular_velocity
+downward
+A proximity-dependent turning field can impose tangential motion on one side of a component and weaker motion on the other, generating or suppressing component angular velocity.</title></g>
+
+<g id="edge_downward__b00_r0015" class="inspectable" data-source="wave_macro_heading_change_shark_cov" data-target="lead_meso_component_influence_variance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M52.96,-4075.87C41.8,-4069.86 31.84,-4061.94 24.56,-4051.5 9.6,-4030.09 11.89,-3604.33 24.56,-3581.5 34.73,-3563.16 51,-3548.45 68.62,-3536.89" />
+<polygon fill="#b3653b" stroke="#b3653b" points="69.79,-3539.05 74.41,-3533.25 67.18,-3534.9 69.79,-3539.05" />
+<title>wave_macro_heading_change_shark_cov → lead_meso_component_influence_variance
+downward
+Heterogeneous threat-driven turns make some fish lead and others follow, so the global heading-change/proximity covariance can be associated with variance in component influence scores.</title></g>
+
+<g id="edge_downward__b01_r0005" class="inspectable" data-source="wave_macro_escape_coherence_change" data-target="wave_meso_component_mean_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M61.54,-4153.02C46.94,-4146.66 33.67,-4137.54 24.56,-4124.5 10.39,-4104.22 10.39,-2363.78 24.56,-2343.5 32.98,-2331.43 44.97,-2322.73 58.28,-2316.45" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.95,-2318.84 64.41,-2313.81 57.01,-2314.34 58.95,-2318.84" />
+<title>wave_macro_escape_coherence_change → wave_meso_component_mean_escape_alignment
+downward
+A rising school-wide escape-direction coherence propagates into contact components, making component fish more likely to share a common escape heading and raising component mean heading-escape alignment.</title></g>
+
+<g id="edge_downward__b01_r0006" class="inspectable" data-source="wave_macro_escape_coherence_change" data-target="pol_meso_component_mean_deviation">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M61.54,-4153.02C46.94,-4146.66 33.67,-4137.54 24.56,-4124.5 14,-4109.39 14,-2812.61 24.56,-2797.5 33.1,-2785.27 45.29,-2776.49 58.82,-2770.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-2772.54 65.06,-2767.55 57.66,-2768.03 59.58,-2772.54" />
+<title>wave_macro_escape_coherence_change → pol_meso_component_mean_deviation
+downward
+A coherent escape wave tends to sweep local heading adjustments through components, reducing the scatter of component headings around their mean during the wave passage.</title></g>
+
+<g id="edge_downward__b01_r0007" class="inspectable" data-source="fright_macro_school_prevalence" data-target="frag_meso_component_size_entropy">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M86.63,-4234.26C62.97,-4228.59 38.73,-4217.79 24.56,-4197.5 6.33,-4171.4 6.33,-1931.6 24.56,-1905.5 34.3,-1891.55 48.8,-1882.09 64.6,-1875.69" />
+<polygon fill="#b3653b" stroke="#b3653b" points="65.31,-1878.04 71.03,-1873.32 63.61,-1873.45 65.31,-1878.04" />
+<title>fright_macro_school_prevalence → frag_meso_component_size_entropy
+downward
+Widespread fright increases local avoidance and escape motion, which can break contact links unevenly and thereby reshape the distribution of component sizes toward smaller or more varied components.</title></g>
+
+<g id="edge_downward__b01_r0008" class="inspectable" data-source="fright_macro_school_prevalence" data-target="wave_meso_component_mean_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M86.63,-4234.26C62.97,-4228.59 38.73,-4217.79 24.56,-4197.5 9.81,-4176.39 9.81,-2364.61 24.56,-2343.5 32.98,-2331.43 44.97,-2322.73 58.28,-2316.45" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.95,-2318.84 64.41,-2313.81 57.01,-2314.34 58.95,-2318.84" />
+<title>fright_macro_school_prevalence → wave_meso_component_mean_escape_alignment
+downward
+High school fright prevalence supplies many fish with active escape directions, so component members are more likely to align their headings with those escape directions.</title></g>
+
+<g id="edge_downward__b02_r0013" class="inspectable" data-source="fright_macro_school_fright_edge_fraction" data-target="wave_meso_component_turn_variance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M53.89,-4295.36C42.35,-4289.3 32.05,-4281.23 24.56,-4270.5 9.81,-4249.39 9.81,-2437.61 24.56,-2416.5 29.77,-2409.03 36.36,-2402.84 43.77,-2397.73" />
+<polygon fill="#b3653b" stroke="#b3653b" points="44.89,-2399.92 49.52,-2394.13 42.29,-2395.77 44.89,-2399.92" />
+<title>fright_macro_school_fright_edge_fraction → wave_meso_component_turn_variance
+downward
+Widespread fright edges may increase local turn variability as fish react individually, raising component turn variance.</title></g>
+
+<g id="edge_downward__b02_r0003" class="inspectable" data-source="fright_macro_school_fright_edge_fraction" data-target="fright_meso_component_prevalence">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M53.89,-4295.36C42.35,-4289.3 32.05,-4281.23 24.56,-4270.5 10.39,-4250.22 10.39,-2509.78 24.56,-2489.5 33.27,-2477.03 45.78,-2468.14 59.63,-2461.83" />
+<polygon fill="#b3653b" stroke="#b3653b" points="60.53,-2464.11 66.05,-2459.16 58.65,-2459.58 60.53,-2464.11" />
+<title>fright_macro_school_fright_edge_fraction → fright_meso_component_prevalence
+downward
+A high global fraction of frightened edges indicates widespread fright contagion, which can raise the local prevalence of frightened fish within components through increased exposure.</title></g>
+
+<g id="edge_downward__b02_r0004" class="inspectable" data-source="fright_macro_school_fright_edge_fraction" data-target="pol_meso_component_away_shark_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M53.89,-4295.36C42.35,-4289.3 32.05,-4281.23 24.56,-4270.5 13.42,-4254.56 13.42,-2886.44 24.56,-2870.5 31.7,-2860.28 41.39,-2852.46 52.29,-2846.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2848.84 58.25,-2843.52 50.89,-2844.46 53.08,-2848.84" />
+<title>fright_macro_school_fright_edge_fraction → pol_meso_component_away_shark_alignment
+downward
+Widespread fright at the global edge level can drive local components to orient away from the shark, as frightened fish collectively bias component headings.</title></g>
+
+<g id="edge_downward__b02_r0005" class="inspectable" data-source="fright_macro_school_fright_edge_fraction" data-target="comp_meso_component_edge_density">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M53.89,-4295.36C42.35,-4289.3 32.05,-4281.23 24.56,-4270.5 14,-4255.39 14,-2958.61 24.56,-2943.5 33.58,-2930.58 46.68,-2921.51 61.12,-2915.16" />
+<polygon fill="#b3653b" stroke="#b3653b" points="61.79,-2917.53 67.37,-2912.65 59.96,-2912.99 61.79,-2917.53" />
+<title>fright_macro_school_fright_edge_fraction → comp_meso_component_edge_density
+downward
+High global frightened-edge fraction may cause fish to aggregate more tightly, altering local component edge density; we posit increased clustering of frightened fish raises density.</title></g>
+
+<g id="edge_downward__b03_r0028" class="inspectable" data-source="fright_macro_onset_rate" data-target="wave_micro_heading_change">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M94.78,-4377.76C68.56,-4374.67 40.12,-4365.78 24.56,-4343.5 10.03,-4322.71 10.03,-712.29 24.56,-691.5 32.62,-679.95 43.95,-671.48 56.58,-665.27" />
+<polygon fill="#b3653b" stroke="#b3653b" points="57.39,-667.6 62.77,-662.49 55.38,-663.13 57.39,-667.6" />
+<title>fright_macro_onset_rate → wave_micro_heading_change
+downward
+Fright onset events are accompanied by escape turns, so school-wide onset rate can plausibly increase individual step heading changes.</title></g>
+
+<g id="edge_downward__b03_r0027" class="inspectable" data-source="fright_macro_onset_rate" data-target="fright_micro_state">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M94.78,-4377.76C68.56,-4374.67 40.12,-4365.78 24.56,-4343.5 10.32,-4323.12 10.32,-783.88 24.56,-763.5 36.5,-746.39 55.66,-736.16 75.59,-730.09" />
+<polygon fill="#b3653b" stroke="#b3653b" points="76,-732.52 82.09,-728.29 74.69,-727.8 76,-732.52" />
+<title>fright_macro_onset_rate → fright_micro_state
+downward
+A higher school-level onset rate increases local contagion pressure, making an individual fish's fright state more probable.</title></g>
+
+<g id="edge_downward__b03_r0024" class="inspectable" data-source="fright_macro_onset_rate" data-target="fright_meso_component_prevalence">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M94.78,-4377.76C68.56,-4374.67 40.12,-4365.78 24.56,-4343.5 9.81,-4322.39 9.81,-2510.61 24.56,-2489.5 33.27,-2477.03 45.78,-2468.14 59.63,-2461.83" />
+<polygon fill="#b3653b" stroke="#b3653b" points="60.53,-2464.11 66.05,-2459.16 58.65,-2459.58 60.53,-2464.11" />
+<title>fright_macro_onset_rate → fright_meso_component_prevalence
+downward
+Higher school-wide fright onset introduces new frightened fish into local components, plausibly raising component fright prevalence.</title></g>
+
+<g id="edge_downward__b03_r0025" class="inspectable" data-source="fright_macro_onset_rate" data-target="fright_meso_component_fright_edge_fraction">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M94.78,-4377.76C68.56,-4374.67 40.12,-4365.78 24.56,-4343.5 10.38,-4323.21 10.38,-2581.79 24.56,-2561.5 34.16,-2547.75 48.42,-2538.44 64,-2532.16" />
+<polygon fill="#b3653b" stroke="#b3653b" points="64.6,-2534.55 70.32,-2529.84 62.91,-2529.95 64.6,-2534.55" />
+<title>fright_macro_onset_rate → fright_meso_component_fright_edge_fraction
+downward
+A rising onset rate increases the chance that both endpoints of a local contact become frightened, plausibly raising frightened-edge fractions.</title></g>
+
+<g id="edge_downward__b03_r0026" class="inspectable" data-source="fright_macro_onset_rate" data-target="pol_meso_component_polarization">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M94.78,-4377.76C68.56,-4374.67 40.12,-4365.78 24.56,-4343.5 11.68,-4325.07 11.68,-2742.93 24.56,-2724.5 31.7,-2714.28 41.39,-2706.46 52.29,-2700.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2702.84 58.25,-2697.52 50.89,-2698.46 53.08,-2702.84" />
+<title>fright_macro_onset_rate → pol_meso_component_polarization
+downward
+Widespread fright onset can trigger coordinated escape turns within components, plausibly increasing component heading polarization.</title></g>
+
+<g id="edge_downward__b03_r0033" class="inspectable" data-source="pol_macro_school_polarization" data-target="wave_micro_escape_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M78.81,-4433.86C57.74,-4427.92 37.15,-4417.53 24.56,-4399.5 9.23,-4377.56 9.23,-567.44 24.56,-545.5 30.95,-536.34 39.41,-529.11 48.93,-523.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.1,-525.57 55.08,-520.08 47.76,-521.27 50.1,-525.57" />
+<title>pol_macro_school_polarization → wave_micro_escape_alignment
+downward
+High whole-school polarization can align individual headings with the prevailing escape direction, plausibly raising heading-escape alignment.</title></g>
+
+<g id="edge_downward__b03_r0032" class="inspectable" data-source="pol_macro_school_polarization" data-target="pol_micro_heading_deviation">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M78.81,-4433.86C57.74,-4427.92 37.15,-4417.53 24.56,-4399.5 10.9,-4379.95 10.9,-985.05 24.56,-965.5 31.13,-956.09 39.86,-948.73 49.7,-942.96" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.69,-945.21 55.71,-939.76 48.38,-940.89 50.69,-945.21" />
+<title>pol_macro_school_polarization → pol_micro_heading_deviation
+downward
+A polarized collective heading can constrain individual headings, plausibly reducing focal deviation from the school mean.</title></g>
+
+<g id="edge_downward__b03_r0031" class="inspectable" data-source="pol_macro_school_polarization" data-target="pol_micro_neighbor_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M78.81,-4433.86C57.74,-4427.92 37.15,-4417.53 24.56,-4399.5 11.19,-4380.36 11.19,-1057.64 24.56,-1038.5 30.95,-1029.34 39.41,-1022.11 48.93,-1016.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.1,-1018.57 55.08,-1013.08 47.76,-1014.27 50.1,-1018.57" />
+<title>pol_macro_school_polarization → pol_micro_neighbor_alignment
+downward
+School-level polarization implies more similar headings across neighbors, plausibly increasing a focal fish's alignment with its contact neighbors.</title></g>
+
+<g id="edge_downward__b03_r0029" class="inspectable" data-source="pol_macro_school_polarization" data-target="pol_meso_component_polarization">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M78.81,-4433.86C57.74,-4427.92 37.15,-4417.53 24.56,-4399.5 11.23,-4380.43 11.23,-2743.57 24.56,-2724.5 31.7,-2714.28 41.39,-2706.46 52.29,-2700.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2702.84 58.25,-2697.52 50.89,-2698.46 53.08,-2702.84" />
+<title>pol_macro_school_polarization → pol_meso_component_polarization
+downward
+A highly polarized school provides a strong common heading field that can raise polarization within contact components.</title></g>
+
+<g id="edge_downward__b03_r0030" class="inspectable" data-source="pol_macro_school_polarization" data-target="pol_meso_component_mean_deviation">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M78.81,-4433.86C57.74,-4427.92 37.15,-4417.53 24.56,-4399.5 11.82,-4381.26 11.82,-2815.74 24.56,-2797.5 33.1,-2785.27 45.29,-2776.49 58.82,-2770.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-2772.54 65.06,-2767.55 57.66,-2768.03 59.58,-2772.54" />
+<title>pol_macro_school_polarization → pol_meso_component_mean_deviation
+downward
+When school-wide polarization is high, component headings are plausibly drawn toward the common direction, reducing mean component heading deviation.</title></g>
+
+<g id="edge_downward__b00_r0016" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="frag_meso_mean_component_size">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.84,-4506.57C53.31,-4499.09 35.8,-4487.98 24.56,-4471.5 14.23,-4456.36 14.06,-1847.52 24.56,-1832.5 30.4,-1824.13 38.07,-1817.65 46.75,-1812.66" />
+<polygon fill="#b3653b" stroke="#b3653b" points="47.8,-1814.87 52.91,-1809.5 45.57,-1810.51 47.8,-1814.87" />
+<title>pol_macro_polarization_proximity_cov → frag_meso_mean_component_size
+downward
+A run-level regime in which polarization tracks shark proximity can make fish align and move together under threat, changing how contact components merge or split.</title></g>
+
+<g id="edge_downward__b00_r0017" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="elong_meso_component_axis_length">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.84,-4506.57C53.31,-4499.09 35.8,-4487.98 24.56,-4471.5 6.75,-4445.41 6.47,-2223.39 24.56,-2197.5 29.88,-2189.88 36.62,-2183.6 44.22,-2178.43" />
+<polygon fill="#b3653b" stroke="#b3653b" points="45.46,-2180.54 50.13,-2174.77 42.89,-2176.37 45.46,-2180.54" />
+<title>pol_macro_polarization_proximity_cov → elong_meso_component_axis_length
+downward
+When global polarization is coupled to proximity, threat-aligned motion can stretch components along the shared heading, increasing their major-axis length.</title></g>
+
+<g id="edge_downward__b00_r0018" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.84,-4506.57C53.31,-4499.09 35.8,-4487.98 24.56,-4471.5 7.33,-4446.25 7.05,-2295.56 24.56,-2270.5 31.7,-2260.28 41.39,-2252.46 52.29,-2246.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2248.84 58.25,-2243.52 50.89,-2244.46 53.08,-2248.84" />
+<title>pol_macro_polarization_proximity_cov → wave_meso_component_escape_coherence
+downward
+Global polarization-proximity coupling indicates how strongly threat proximity aligns headings; this conditions whether escape directions within components are coherent.</title></g>
+
+<g id="edge_downward__b00_r0019" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="fright_meso_component_fright_position_corr">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.84,-4506.57C53.31,-4499.09 35.8,-4487.98 24.56,-4471.5 10.31,-4450.62 10.31,-2672.38 24.56,-2651.5 32.84,-2639.35 44.54,-2630.12 57.53,-2623.12" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.35,-2625.45 63.51,-2620.13 56.16,-2621.06 58.35,-2625.45" />
+<title>pol_macro_polarization_proximity_cov → fright_meso_component_fright_position_corr
+downward
+If polarization and proximity covary, frightened fish may be concentrated near threat-facing edges of components, changing the within-component fright-position correlation.</title></g>
+
+<g id="edge_downward__b00_r0020" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="pol_meso_component_polarization">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.84,-4506.57C53.31,-4499.09 35.8,-4487.98 24.56,-4471.5 10.88,-4451.46 10.66,-2744.39 24.56,-2724.5 31.7,-2714.28 41.39,-2706.46 52.29,-2700.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2702.84 58.25,-2697.52 50.89,-2698.46 53.08,-2702.84" />
+<title>pol_macro_polarization_proximity_cov → pol_meso_component_polarization
+downward
+The run-level polarization-proximity coupling sets how much local components align during threat, so component-level polarization can vary with this global coupling regime.</title></g>
+
+<g id="edge_downward__b00_r0021" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="comp_meso_component_mean_nearest_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.84,-4506.57C53.31,-4499.09 35.8,-4487.98 24.56,-4471.5 13.74,-4455.64 13.56,-3105.24 24.56,-3089.5 33.1,-3077.27 45.29,-3068.49 58.82,-3062.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-3064.54 65.06,-3059.55 57.66,-3060.03 59.58,-3064.54" />
+<title>pol_macro_polarization_proximity_cov → comp_meso_component_mean_nearest_distance
+downward
+Threat-coupled alignment changes how fish pack while moving together; stronger coupling can compress or loosen nearest-neighbor spacing inside components.</title></g>
+
+<g id="edge_downward__b00_r0022" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="mill_meso_component_angular_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.84,-4506.57C53.31,-4499.09 35.8,-4487.98 24.56,-4471.5 14.31,-4456.48 14.15,-3177.41 24.56,-3162.5 33.1,-3150.27 45.29,-3141.49 58.82,-3135.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-3137.54 65.06,-3132.55 57.66,-3133.03 59.58,-3137.54" />
+<title>pol_macro_polarization_proximity_cov → mill_meso_component_angular_velocity
+downward
+If global polarization rises near sharks, components may favor straight escape over rotation; weak coupling may allow vortex-like local motion, altering component angular velocity.</title></g>
+
+<g id="edge_downward__b00_r0023" class="inspectable" data-source="pol_macro_polarization_proximity_cov" data-target="lead_meso_component_influence_variance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M71.84,-4506.57C53.31,-4499.09 35.8,-4487.98 24.56,-4471.5 10.62,-4451.08 12.57,-3603.12 24.56,-3581.5 34.73,-3563.16 51,-3548.45 68.62,-3536.89" />
+<polygon fill="#b3653b" stroke="#b3653b" points="69.79,-3539.05 74.41,-3533.25 67.18,-3534.9 69.79,-3539.05" />
+<title>pol_macro_polarization_proximity_cov → lead_meso_component_influence_variance
+downward
+Threat-coupled polarization can make some individuals' turns dominate others, changing within-component heterogeneity of leader/follower influence.</title></g>
+
+<g id="edge_downward__b01_r0009" class="inspectable" data-source="pol_macro_polarization_change" data-target="pol_meso_component_mean_deviation">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M58.61,-4588.51C45.16,-4582.33 33.04,-4573.65 24.56,-4561.5 10.53,-4541.41 10.53,-2817.59 24.56,-2797.5 33.1,-2785.27 45.29,-2776.49 58.82,-2770.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-2772.54 65.06,-2767.55 57.66,-2768.03 59.58,-2772.54" />
+<title>pol_macro_polarization_change → pol_meso_component_mean_deviation
+downward
+An increase in whole-school heading polarization reflects stronger collective alignment, which can propagate into components and reduce the mean angular deviation of component headings.</title></g>
+
+<g id="edge_downward__b01_r0010" class="inspectable" data-source="comp_macro_school_mean_degree" data-target="frag_meso_component_size_entropy">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M60.89,-4661.74C46.54,-4655.39 33.53,-4646.35 24.56,-4633.5 13.71,-4617.97 13.71,-1921.03 24.56,-1905.5 34.3,-1891.55 48.8,-1882.09 64.6,-1875.69" />
+<polygon fill="#b3653b" stroke="#b3653b" points="65.31,-1878.04 71.03,-1873.32 63.61,-1873.45 65.31,-1878.04" />
+<title>comp_macro_school_mean_degree → frag_meso_component_size_entropy
+downward
+Higher whole-school contact degree means denser local connectivity, which tends to merge contact components and reduce the meso entropy of component sizes.</title></g>
+
+<g id="edge_downward__b02_r0008" class="inspectable" data-source="comp_macro_school_clustering" data-target="frag_meso_centroid_pair_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M82.91,-4742.33C60.46,-4736.43 37.99,-4725.73 24.56,-4706.5 13.71,-4690.97 13.71,-1994.03 24.56,-1978.5 34.47,-1964.3 49.32,-1954.75 65.45,-1948.35" />
+<polygon fill="#b3653b" stroke="#b3653b" points="66.28,-1950.66 72.03,-1945.97 64.62,-1946.05 66.28,-1950.66" />
+<title>comp_macro_school_clustering → frag_meso_centroid_pair_distance
+downward
+Strong global clustering may make components more compact and closer together, reducing centroid pair distances.</title></g>
+
+<g id="edge_downward__b02_r0006" class="inspectable" data-source="comp_macro_school_clustering" data-target="comp_meso_component_edge_density">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M82.91,-4742.33C60.46,-4736.43 37.99,-4725.73 24.56,-4706.5 10.53,-4686.43 10.53,-2963.57 24.56,-2943.5 33.58,-2930.58 46.68,-2921.51 61.12,-2915.16" />
+<polygon fill="#b3653b" stroke="#b3653b" points="61.79,-2917.53 67.37,-2912.65 59.96,-2912.99 61.79,-2917.53" />
+<title>comp_macro_school_clustering → comp_meso_component_edge_density
+downward
+Higher global clustering coefficient reflects a more tightly knit contact network, which can locally densify components, raising their edge density.</title></g>
+
+<g id="edge_downward__b02_r0014" class="inspectable" data-source="comp_macro_school_clustering" data-target="mill_meso_component_angular_momentum">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M82.91,-4742.33C60.46,-4736.43 37.99,-4725.73 24.56,-4706.5 13.43,-4690.57 13.43,-3323.43 24.56,-3307.5 33.08,-3295.3 45.27,-3286.59 58.79,-3280.4" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.51,-3282.76 65.02,-3277.8 57.62,-3278.23 59.51,-3282.76" />
+<title>comp_macro_school_clustering → mill_meso_component_angular_momentum
+downward
+Strong global clustering may promote coherent rotational motion within dense components, increasing angular momentum.</title></g>
+
+<g id="edge_downward__b02_r0007" class="inspectable" data-source="comp_macro_school_clustering" data-target="lead_meso_component_lagged_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M82.91,-4742.33C60.46,-4736.43 37.99,-4725.73 24.56,-4706.5 14.15,-4691.59 14.31,-3412.52 24.56,-3397.5 33.13,-3384.93 45.35,-3375.49 58.88,-3368.4" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.92,-3370.62 65.15,-3365.36 57.79,-3366.21 59.92,-3370.62" />
+<title>comp_macro_school_clustering → lead_meso_component_lagged_alignment
+downward
+Dense global clustering facilitates local propagation of heading changes, enhancing lagged alignment within components.</title></g>
+
+<g id="edge_downward__b03_r0042" class="inspectable" data-source="comp_macro_school_mean_nearest_distance" data-target="frag_micro_isolate">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M57.68,-4806.26C44.61,-4800.01 32.86,-4791.38 24.56,-4779.5 6.2,-4753.23 6.2,-190.77 24.56,-164.5 32.79,-152.71 44.43,-144.12 57.38,-137.88" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.33,-140.14 63.75,-135.09 56.36,-135.66 58.33,-140.14" />
+<title>comp_macro_school_mean_nearest_distance → frag_micro_isolate
+downward
+Larger school-wide nearest-contact spacing makes it more likely that a marginal fish has no recorded contact neighbor, increasing isolation.</title></g>
+
+<g id="edge_downward__b03_r0041" class="inspectable" data-source="comp_macro_school_mean_nearest_distance" data-target="comp_micro_degree">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M57.68,-4806.26C44.61,-4800.01 32.86,-4791.38 24.56,-4779.5 10.19,-4758.93 10.19,-1187.07 24.56,-1166.5 35.85,-1150.32 53.94,-1141.21 73.04,-1136.24" />
+<polygon fill="#b3653b" stroke="#b3653b" points="73.52,-1138.65 79.8,-1134.7 72.43,-1133.87 73.52,-1138.65" />
+<title>comp_macro_school_mean_nearest_distance → comp_micro_degree
+downward
+When the school is more spread out, individual fish have fewer close contacts, plausibly reducing focal contact degree.</title></g>
+
+<g id="edge_downward__b03_r0040" class="inspectable" data-source="comp_macro_school_mean_nearest_distance" data-target="comp_micro_nearest_contact_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M57.68,-4806.26C44.61,-4800.01 32.86,-4791.38 24.56,-4779.5 10.48,-4759.35 10.48,-1259.65 24.56,-1239.5 35.3,-1224.11 51.84,-1214.19 69.52,-1207.81" />
+<polygon fill="#b3653b" stroke="#b3653b" points="69.84,-1210.29 75.72,-1205.77 68.31,-1205.63 69.84,-1210.29" />
+<title>comp_macro_school_mean_nearest_distance → comp_micro_nearest_contact_distance
+downward
+School-level spacing sets the local crowding regime, plausibly shifting the nearest contact distance experienced by an individual fish.</title></g>
+
+<g id="edge_downward__b03_r0039" class="inspectable" data-source="comp_macro_school_mean_nearest_distance" data-target="comp_meso_component_edge_density">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M57.68,-4806.26C44.61,-4800.01 32.86,-4791.38 24.56,-4779.5 9.95,-4758.59 9.95,-2964.41 24.56,-2943.5 33.58,-2930.58 46.68,-2921.51 61.12,-2915.16" />
+<polygon fill="#b3653b" stroke="#b3653b" points="61.79,-2917.53 67.37,-2912.65 59.96,-2912.99 61.79,-2917.53" />
+<title>comp_macro_school_mean_nearest_distance → comp_meso_component_edge_density
+downward
+Larger typical nearest-neighbor spacing reduces the chance of local contacts, plausibly lowering component edge density.</title></g>
+
+<g id="edge_downward__b03_r0038" class="inspectable" data-source="comp_macro_school_mean_nearest_distance" data-target="comp_meso_component_mean_nearest_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M57.68,-4806.26C44.61,-4800.01 32.86,-4791.38 24.56,-4779.5 11.12,-4760.26 11.12,-3108.74 24.56,-3089.5 33.1,-3077.27 45.29,-3068.49 58.82,-3062.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-3064.54 65.06,-3059.55 57.66,-3060.03 59.58,-3064.54" />
+<title>comp_macro_school_mean_nearest_distance → comp_meso_component_mean_nearest_distance
+downward
+A school-wide increase in nearest-contact spacing can propagate into component geometry, plausibly raising mean nearest-contact distance within components.</title></g>
+
+<g id="edge_downward__b03_r0045" class="inspectable" data-source="mill_macro_school_angular_velocity" data-target="mill_micro_angular_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M60.57,-4880.6C46.35,-4874.26 33.46,-4865.25 24.56,-4852.5 10.77,-4832.76 10.77,-1405.24 24.56,-1385.5 35.03,-1370.5 51.01,-1360.69 68.19,-1354.3" />
+<polygon fill="#b3653b" stroke="#b3653b" points="68.87,-1356.66 74.71,-1352.09 67.3,-1352.01 68.87,-1356.66" />
+<title>mill_macro_school_angular_velocity → mill_micro_angular_velocity
+downward
+A school-level angular velocity can bias individual tangential motion around the collective center, plausibly changing focal angular velocity.</title></g>
+
+<g id="edge_downward__b03_r0046" class="inspectable" data-source="mill_macro_school_angular_velocity" data-target="mill_micro_tangential_speed">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M60.57,-4880.6C46.35,-4874.26 33.46,-4865.25 24.56,-4852.5 11.06,-4833.17 11.06,-1476.83 24.56,-1457.5 34.95,-1442.62 50.8,-1432.94 67.86,-1426.68" />
+<polygon fill="#b3653b" stroke="#b3653b" points="68.48,-1429.05 74.34,-1424.51 66.92,-1424.41 68.48,-1429.05" />
+<title>mill_macro_school_angular_velocity → mill_micro_tangential_speed
+downward
+Global milling supplies a shared tangential direction, plausibly increasing or decreasing a focal fish's signed tangential speed.</title></g>
+
+<g id="edge_downward__b03_r0047" class="inspectable" data-source="mill_macro_school_angular_velocity" data-target="mill_micro_radial_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M60.57,-4880.6C46.35,-4874.26 33.46,-4865.25 24.56,-4852.5 11.28,-4833.49 11.28,-1532.51 24.56,-1513.5 36.72,-1496.09 56.74,-1486.86 77.42,-1482.18" />
+<polygon fill="#b3653b" stroke="#b3653b" points="77.8,-1484.6 84.19,-1480.84 76.85,-1479.8 77.8,-1484.6" />
+<title>mill_macro_school_angular_velocity → mill_micro_radial_velocity
+downward
+Rotational collective motion can balance inward social attraction and outward escape, plausibly altering individual radial velocity.</title></g>
+
+<g id="edge_downward__b03_r0043" class="inspectable" data-source="mill_macro_school_angular_velocity" data-target="mill_meso_component_angular_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M60.57,-4880.6C46.35,-4874.26 33.46,-4865.25 24.56,-4852.5 11.12,-4833.26 11.12,-3181.74 24.56,-3162.5 33.1,-3150.27 45.29,-3141.49 58.82,-3135.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-3137.54 65.06,-3132.55 57.66,-3133.03 59.58,-3137.54" />
+<title>mill_macro_school_angular_velocity → mill_meso_component_angular_velocity
+downward
+A global rotational tendency provides a kinematic context that can induce component-level angular velocity through shared turning and neighbor coupling.</title></g>
+
+<g id="edge_downward__b03_r0044" class="inspectable" data-source="mill_macro_school_angular_velocity" data-target="mill_meso_component_rotational_order">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M60.57,-4880.6C46.35,-4874.26 33.46,-4865.25 24.56,-4852.5 11.7,-4834.09 11.7,-3253.91 24.56,-3235.5 30.63,-3226.81 38.54,-3219.86 47.47,-3214.31" />
+<polygon fill="#b3653b" stroke="#b3653b" points="48.63,-3216.47 53.52,-3210.89 46.22,-3212.2 48.63,-3216.47" />
+<title>mill_macro_school_angular_velocity → mill_meso_component_rotational_order
+downward
+Whole-school milling can organize local tangential motions, plausibly increasing rotational order within contact components.</title></g>
+
+<g id="edge_downward__b00_r0024" class="inspectable" data-source="mill_macro_school_rotational_order" data-target="frag_meso_mean_component_size">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.79,-4958.65C54.52,-4952.37 36.16,-4942.12 24.56,-4925.5 12.26,-4907.89 12.26,-1850.11 24.56,-1832.5 30.4,-1824.13 38.07,-1817.65 46.75,-1812.66" />
+<polygon fill="#b3653b" stroke="#b3653b" points="47.8,-1814.87 52.91,-1809.5 45.57,-1810.51 47.8,-1814.87" />
+<title>mill_macro_school_rotational_order → frag_meso_mean_component_size
+downward
+A globally rotating school imposes tangential shear that can tear and re-form contact components, changing mean component size.</title></g>
+
+<g id="edge_downward__b00_r0025" class="inspectable" data-source="mill_macro_school_rotational_order" data-target="elong_meso_component_axis_length">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.79,-4958.65C54.52,-4952.37 36.16,-4942.12 24.56,-4925.5 13.71,-4909.97 13.71,-2213.03 24.56,-2197.5 29.88,-2189.88 36.62,-2183.6 44.22,-2178.43" />
+<polygon fill="#b3653b" stroke="#b3653b" points="45.46,-2180.54 50.13,-2174.77 42.89,-2176.37 45.46,-2180.54" />
+<title>mill_macro_school_rotational_order → elong_meso_component_axis_length
+downward
+Global rotational order stretches components along the tangential direction while compressing them radially, which can change component major-axis length.</title></g>
+
+<g id="edge_downward__b00_r0026" class="inspectable" data-source="mill_macro_school_rotational_order" data-target="wave_meso_component_escape_coherence">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.79,-4958.65C54.52,-4952.37 36.16,-4942.12 24.56,-4925.5 14,-4910.38 14,-2285.62 24.56,-2270.5 31.7,-2260.28 41.39,-2252.46 52.29,-2246.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2248.84 58.25,-2243.52 50.89,-2244.46 53.08,-2248.84" />
+<title>mill_macro_school_rotational_order → wave_meso_component_escape_coherence
+downward
+Strong global rotation competes with unified escape headings, so component escape-direction coherence may be reduced when rotational order is high.</title></g>
+
+<g id="edge_downward__b00_r0027" class="inspectable" data-source="mill_macro_school_rotational_order" data-target="fright_meso_component_fright_position_corr">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.79,-4958.65C54.52,-4952.37 36.16,-4942.12 24.56,-4925.5 6.47,-4899.61 6.75,-2677.59 24.56,-2651.5 32.84,-2639.35 44.54,-2630.12 57.53,-2623.12" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.35,-2625.45 63.51,-2620.13 56.16,-2621.06 58.35,-2625.45" />
+<title>mill_macro_school_rotational_order → fright_meso_component_fright_position_corr
+downward
+Rotational motion redistributes fish around component centroids, so frightened individuals become spatially arranged by orbit rather than by simple outward distance, changing the fright-position correlation.</title></g>
+
+<g id="edge_downward__b00_r0028" class="inspectable" data-source="mill_macro_school_rotational_order" data-target="pol_meso_component_polarization">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.79,-4958.65C54.52,-4952.37 36.16,-4942.12 24.56,-4925.5 7.05,-4900.44 7.05,-2749.56 24.56,-2724.5 31.7,-2714.28 41.39,-2706.46 52.29,-2700.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2702.84 58.25,-2697.52 50.89,-2698.46 53.08,-2702.84" />
+<title>mill_macro_school_rotational_order → pol_meso_component_polarization
+downward
+Global rotational order implies headings are organized tangentially, which can lower component heading polarization by canceling opposing headings on opposite sides.</title></g>
+
+<g id="edge_downward__b00_r0029" class="inspectable" data-source="mill_macro_school_rotational_order" data-target="comp_meso_component_mean_nearest_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.79,-4958.65C54.52,-4952.37 36.16,-4942.12 24.56,-4925.5 9.95,-4904.59 9.95,-3110.41 24.56,-3089.5 33.1,-3077.27 45.29,-3068.49 58.82,-3062.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-3064.54 65.06,-3059.55 57.66,-3060.03 59.58,-3064.54" />
+<title>mill_macro_school_rotational_order → comp_meso_component_mean_nearest_distance
+downward
+Rotation changes local crowding through centrifugal spreading and tangential shear, shifting nearest-contact distances within components.</title></g>
+
+<g id="edge_downward__b00_r0030" class="inspectable" data-source="mill_macro_school_rotational_order" data-target="mill_meso_component_angular_velocity">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.79,-4958.65C54.52,-4952.37 36.16,-4942.12 24.56,-4925.5 10.53,-4905.43 10.53,-3182.57 24.56,-3162.5 33.1,-3150.27 45.29,-3141.49 58.82,-3135.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.58,-3137.54 65.06,-3132.55 57.66,-3133.03 59.58,-3137.54" />
+<title>mill_macro_school_rotational_order → mill_meso_component_angular_velocity
+downward
+A globally rotating school can entrain component-scale vortices; component angular velocity should be responsive to the presence and sign of school-level rotational order.</title></g>
+
+<g id="edge_downward__b00_r0031" class="inspectable" data-source="mill_macro_school_rotational_order" data-target="lead_meso_component_influence_variance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M73.79,-4958.65C54.52,-4952.37 36.16,-4942.12 24.56,-4925.5 3.18,-4894.89 6.45,-3614.15 24.56,-3581.5 34.73,-3563.16 51,-3548.45 68.62,-3536.89" />
+<polygon fill="#b3653b" stroke="#b3653b" points="69.79,-3539.05 74.41,-3533.25 67.18,-3534.9 69.79,-3539.05" />
+<title>mill_macro_school_rotational_order → lead_meso_component_influence_variance
+downward
+When the whole school rotates coherently, many fish share the same turning tendency, which can reduce the distinction between leaders and followers inside components.</title></g>
+
+<g id="edge_downward__b01_r0011" class="inspectable" data-source="mill_macro_school_angular_momentum" data-target="mill_meso_component_rotational_order">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M60.57,-5026.6C46.35,-5020.26 33.46,-5011.25 24.56,-4998.5 10.53,-4978.43 10.53,-3255.57 24.56,-3235.5 30.63,-3226.81 38.54,-3219.86 47.47,-3214.31" />
+<polygon fill="#b3653b" stroke="#b3653b" points="48.63,-3216.47 53.52,-3210.89 46.22,-3212.2 48.63,-3216.47" />
+<title>mill_macro_school_angular_momentum → mill_meso_component_rotational_order
+downward
+A whole-school rotational bias provides a common tangential drive that can organize component fish into aligned tangential motion, increasing component rotational order.</title></g>
+
+<g id="edge_downward__b02_r0010" class="inspectable" data-source="lead_macro_school_cascade_fraction" data-target="wave_meso_component_turn_variance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M61.54,-5173.02C46.94,-5166.66 33.67,-5157.54 24.56,-5144.5 13.71,-5128.97 13.71,-2432.03 24.56,-2416.5 29.77,-2409.03 36.36,-2402.84 43.77,-2397.73" />
+<polygon fill="#b3653b" stroke="#b3653b" points="44.89,-2399.92 49.52,-2394.13 42.29,-2395.77 44.89,-2399.92" />
+<title>lead_macro_school_cascade_fraction → wave_meso_component_turn_variance
+downward
+Global cascades may synchronize turns, reducing variance in requested turns within components.</title></g>
+
+<g id="edge_downward__b02_r0011" class="inspectable" data-source="lead_macro_school_cascade_fraction" data-target="pol_meso_component_away_shark_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M61.54,-5173.02C46.94,-5166.66 33.67,-5157.54 24.56,-5144.5 6.47,-5118.61 6.47,-2896.39 24.56,-2870.5 31.7,-2860.28 41.39,-2852.46 52.29,-2846.5" />
+<polygon fill="#b3653b" stroke="#b3653b" points="53.08,-2848.84 58.25,-2843.52 50.89,-2844.46 53.08,-2848.84" />
+<title>lead_macro_school_cascade_fraction → pol_meso_component_away_shark_alignment
+downward
+Global cascade alignment may bias component headings away from the shark, increasing away-shark alignment.</title></g>
+
+<g id="edge_downward__b02_r0009" class="inspectable" data-source="lead_macro_school_cascade_fraction" data-target="lead_meso_component_lagged_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M61.54,-5173.02C46.94,-5166.66 33.67,-5157.54 24.56,-5144.5 10.66,-5124.61 10.88,-3417.54 24.56,-3397.5 33.13,-3384.93 45.35,-3375.49 58.88,-3368.4" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.92,-3370.62 65.15,-3365.36 57.79,-3366.21 59.92,-3370.62" />
+<title>lead_macro_school_cascade_fraction → lead_meso_component_lagged_alignment
+downward
+A high global cascade fraction indicates widespread sign-matched heading changes, which can amplify local lagged alignment within components.</title></g>
+
+<g id="edge_downward__b03_r0056" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_micro_lagged_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M56.41,-5243.64C43.85,-5237.45 32.59,-5229 24.56,-5217.5 10.12,-5196.83 10.12,-1607.17 24.56,-1586.5 32.74,-1574.79 44.27,-1566.24 57.11,-1560.01" />
+<polygon fill="#b3653b" stroke="#b3653b" points="58.01,-1562.29 63.42,-1557.22 56.03,-1557.81 58.01,-1562.29" />
+<title>lead_macro_school_influence_variance → lead_micro_lagged_alignment
+downward
+When influence is highly variable school-wide, a focal fish's current turn is plausibly more or less aligned with earlier neighbor turns depending on its local leaders.</title></g>
+
+<g id="edge_downward__b03_r0055" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_micro_influence_score">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M56.41,-5243.64C43.85,-5237.45 32.59,-5229 24.56,-5217.5 10.41,-5197.24 10.41,-1679.76 24.56,-1659.5 35.54,-1643.77 52.57,-1633.75 70.69,-1627.4" />
+<polygon fill="#b3653b" stroke="#b3653b" points="71.15,-1629.82 77.07,-1625.35 69.66,-1625.16 71.15,-1629.82" />
+<title>lead_macro_school_influence_variance → lead_micro_influence_score
+downward
+A wide school-level influence distribution implies that a focal fish's lagged influence score is shaped by uneven leader-follower dynamics.</title></g>
+
+<g id="edge_downward__b03_r0052" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_meso_component_lagged_alignment">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M56.41,-5243.64C43.85,-5237.45 32.59,-5229 24.56,-5217.5 10.08,-5196.78 10.31,-3418.38 24.56,-3397.5 33.13,-3384.93 45.35,-3375.49 58.88,-3368.4" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.92,-3370.62 65.15,-3365.36 57.79,-3366.21 59.92,-3370.62" />
+<title>lead_macro_school_influence_variance → lead_meso_component_lagged_alignment
+downward
+High variance in influence scores creates uneven leader-follower roles, plausibly altering component mean lagged heading-change alignment.</title></g>
+
+<g id="edge_downward__b03_r0053" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_meso_component_cascade_fraction">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M56.41,-5243.64C43.85,-5237.45 32.59,-5229 24.56,-5217.5 10.66,-5197.61 10.66,-3490.39 24.56,-3470.5 33.15,-3458.19 45.46,-3449.37 59.09,-3443.08" />
+<polygon fill="#b3653b" stroke="#b3653b" points="59.89,-3445.4 65.39,-3440.42 57.99,-3440.88 59.89,-3445.4" />
+<title>lead_macro_school_influence_variance → lead_meso_component_cascade_fraction
+downward
+A school-wide spread of influential individuals can produce more sign-matched turning sequences, plausibly raising component cascade fraction.</title></g>
+
+<g id="edge_downward__b03_r0054" class="inspectable" data-source="lead_macro_school_influence_variance" data-target="lead_meso_component_influence_variance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M56.41,-5243.64C43.85,-5237.45 32.59,-5229 24.56,-5217.5 11.54,-5198.87 13.54,-3601.37 24.56,-3581.5 34.73,-3563.16 51,-3548.45 68.62,-3536.89" />
+<polygon fill="#b3653b" stroke="#b3653b" points="69.79,-3539.05 74.41,-3533.25 67.18,-3534.9 69.79,-3539.05" />
+<title>lead_macro_school_influence_variance → lead_meso_component_influence_variance
+downward
+Global heterogeneity in influence scores can concentrate or disperse leadership within components, plausibly changing component influence variance.</title></g>
+
+<g id="node_frag_micro_component_size" class="inspectable" tabindex="0" data-node-id="frag_micro_component_size">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M230.46,-79.91C230.46,-79.91 76.56,-79.91 76.56,-79.91 70.56,-79.91 64.56,-73.91 64.56,-67.91 64.56,-67.91 64.56,-30.09 64.56,-30.09 64.56,-24.08 70.56,-18.09 76.56,-18.09 76.56,-18.09 230.46,-18.09 230.46,-18.09 236.46,-18.09 242.46,-24.09 242.46,-30.09 242.46,-30.09 242.46,-67.91 242.46,-67.91 242.46,-73.91 236.46,-79.91 230.46,-79.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-61.58" font-family="Times New Roman" font-size="14.00">N1</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-44.33" font-family="Times New Roman" font-size="14.00">Contact-component size of</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-27.07" font-family="Times New Roman" font-size="14.00">focal fish</text>
+<title>N1 | frag_micro_component_size
+Contact-component size of focal fish
+Scale: micro | Phenomenon: school_fragmentation
+Definition: For run r and step t, let G_t=(V_t,E_t) be the undirected graph with fish nodes V_t from agent_states role='fish' and edges E_t from contacts pairs {agent_id,partner_id} at (r,t). For focal fish i in V_t, let C_t(i) be its connected component in G_t. Indicator = |C_t(i)|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_micro_isolate" class="inspectable" tabindex="0" data-node-id="frag_micro_isolate">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M229.33,-152.91C229.33,-152.91 77.68,-152.91 77.68,-152.91 71.68,-152.91 65.68,-146.91 65.68,-140.91 65.68,-140.91 65.68,-103.09 65.68,-103.09 65.68,-97.09 71.68,-91.09 77.68,-91.09 77.68,-91.09 229.33,-91.09 229.33,-91.09 235.33,-91.09 241.33,-97.09 241.33,-103.09 241.33,-103.09 241.33,-140.91 241.33,-140.91 241.33,-146.91 235.33,-152.91 229.33,-152.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-134.57" font-family="Times New Roman" font-size="14.00">N2</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-117.33" font-family="Times New Roman" font-size="14.00">Focal fish contact isolation</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-100.08" font-family="Times New Roman" font-size="14.00">flag</text>
+<title>N2 | frag_micro_isolate
+Focal fish contact isolation flag
+Scale: micro | Phenomenon: school_fragmentation
+Definition: For fish i at (r,t), let k_i(t)=|{j: (i,j) in E_t or (j,i) in E_t}|. Indicator = 1 if k_i(t)=0, else 0.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_micro_component_shark_distance" class="inspectable" tabindex="0" data-node-id="frag_micro_component_shark_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M236.46,-225.91C236.46,-225.91 70.56,-225.91 70.56,-225.91 64.56,-225.91 58.56,-219.91 58.56,-213.91 58.56,-213.91 58.56,-176.09 58.56,-176.09 58.56,-170.09 64.56,-164.09 70.56,-164.09 70.56,-164.09 236.46,-164.09 236.46,-164.09 242.46,-164.09 248.46,-170.09 248.46,-176.09 248.46,-176.09 248.46,-213.91 248.46,-213.91 248.46,-219.91 242.46,-225.91 236.46,-225.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-207.57" font-family="Times New Roman" font-size="14.00">N3</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-190.32" font-family="Times New Roman" font-size="14.00">Focal component centroid to</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-173.07" font-family="Times New Roman" font-size="14.00">nearest shark distance</text>
+<title>N3 | frag_micro_component_shark_distance
+Focal component centroid to nearest shark distance
+Scale: micro | Phenomenon: school_fragmentation
+Definition: Let c_C(t)=mean_{j in C_t(i)} p_j(t) for focal fish i. Let D_i(t)=min_{s in sharks at t} ||c_C(t)-p_s(t)||. Indicator = D_i(t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_elong_micro_major_projection" class="inspectable" tabindex="0" data-node-id="elong_micro_major_projection">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M236.08,-298.92C236.08,-298.92 70.93,-298.92 70.93,-298.92 64.93,-298.92 58.93,-292.92 58.93,-286.92 58.93,-286.92 58.93,-249.09 58.93,-249.09 58.93,-243.09 64.93,-237.09 70.93,-237.09 70.93,-237.09 236.08,-237.09 236.08,-237.09 242.08,-237.09 248.08,-243.09 248.08,-249.09 248.08,-249.09 248.08,-286.92 248.08,-286.92 248.08,-292.92 242.08,-298.92 236.08,-298.92" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-280.57" font-family="Times New Roman" font-size="14.00">N10</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-263.32" font-family="Times New Roman" font-size="14.00">Focal fish normalized major-</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-246.07" font-family="Times New Roman" font-size="14.00">axis projection</text>
+<title>N10 | elong_micro_major_projection
+Focal fish normalized major-axis projection
+Scale: micro | Phenomenon: school_elongation
+Definition: Let c=mean_i p_i and C=(1/N) sum_i (p_i-c)(p_i-c)^T for all fish at (r,t). Let lambda1&gt;=lambda2 be eigenvalues and u1 the unit eigenvector for lambda1. For fish i, indicator=(p_i-c)·u1/sqrt(lambda1).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_elong_micro_mahalanobis_sq" class="inspectable" tabindex="0" data-node-id="elong_micro_mahalanobis_sq">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M213.58,-371.92C213.58,-371.92 93.43,-371.92 93.43,-371.92 87.43,-371.92 81.43,-365.92 81.43,-359.92 81.43,-359.92 81.43,-322.08 81.43,-322.08 81.43,-316.08 87.43,-310.08 93.43,-310.08 93.43,-310.08 213.58,-310.08 213.58,-310.08 219.58,-310.08 225.58,-316.08 225.58,-322.08 225.58,-322.08 225.58,-359.92 225.58,-359.92 225.58,-365.92 219.58,-371.92 213.58,-371.92" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-353.57" font-family="Times New Roman" font-size="14.00">N11</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-336.32" font-family="Times New Roman" font-size="14.00">Focal fish squared</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-319.07" font-family="Times New Roman" font-size="14.00">Mahalanobis distance</text>
+<title>N11 | elong_micro_mahalanobis_sq
+Focal fish squared Mahalanobis distance
+Scale: micro | Phenomenon: school_elongation
+Definition: Indicator=(p_i-c)^T C^{-1}(p_i-c), with c and C as the whole-school position mean and covariance at (r,t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_elong_micro_component_projection" class="inspectable" tabindex="0" data-node-id="elong_micro_component_projection">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M217.33,-461.54C217.33,-461.54 89.68,-461.54 89.68,-461.54 83.68,-461.54 77.68,-455.54 77.68,-449.54 77.68,-449.54 77.68,-394.46 77.68,-394.46 77.68,-388.46 83.68,-382.46 89.68,-382.46 89.68,-382.46 217.33,-382.46 217.33,-382.46 223.33,-382.46 229.33,-388.46 229.33,-394.46 229.33,-394.46 229.33,-449.54 229.33,-449.54 229.33,-455.54 223.33,-461.54 217.33,-461.54" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-443.2" font-family="Times New Roman" font-size="14.00">N12</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-425.95" font-family="Times New Roman" font-size="14.00">Focal fish normalized</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-408.7" font-family="Times New Roman" font-size="14.00">component major-axis</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-391.45" font-family="Times New Roman" font-size="14.00">projection</text>
+<title>N12 | elong_micro_component_projection
+Focal fish normalized component major-axis projection
+Scale: micro | Phenomenon: school_elongation
+Definition: For focal fish i in component C_t(i), let c_C, C_C, lambda1_C, u1_C be the component position mean, covariance, largest eigenvalue and eigenvector. Indicator=(p_i-c_C)·u1_C/sqrt(lambda1_C).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_micro_escape_alignment" class="inspectable" tabindex="0" data-node-id="wave_micro_escape_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M238.33,-533.91C238.33,-533.91 68.68,-533.91 68.68,-533.91 62.68,-533.91 56.68,-527.91 56.68,-521.91 56.68,-521.91 56.68,-484.08 56.68,-484.08 56.68,-478.08 62.68,-472.08 68.68,-472.08 68.68,-472.08 238.33,-472.08 238.33,-472.08 244.33,-472.08 250.33,-478.08 250.33,-484.08 250.33,-484.08 250.33,-521.91 250.33,-521.91 250.33,-527.91 244.33,-533.91 238.33,-533.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-515.58" font-family="Times New Roman" font-size="14.00">N19</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-498.32" font-family="Times New Roman" font-size="14.00">Focal heading alignment with</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-481.07" font-family="Times New Roman" font-size="14.00">own escape direction</text>
+<title>N19 | wave_micro_escape_alignment
+Focal heading alignment with own escape direction
+Scale: micro | Phenomenon: coordinated_escape_wave
+Definition: For fish i with heading theta_i(t) and decision_json.escape_direction e_i(t)=(e_x,e_y), indicator=cos(theta_i(t)-atan2(e_y,e_x)).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_micro_requested_turn_abs" class="inspectable" tabindex="0" data-node-id="wave_micro_requested_turn_abs">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M225.21,-606.91C225.21,-606.91 81.81,-606.91 81.81,-606.91 75.81,-606.91 69.81,-600.91 69.81,-594.91 69.81,-594.91 69.81,-557.09 69.81,-557.09 69.81,-551.09 75.81,-545.09 81.81,-545.09 81.81,-545.09 225.21,-545.09 225.21,-545.09 231.21,-545.09 237.21,-551.09 237.21,-557.09 237.21,-557.09 237.21,-594.91 237.21,-594.91 237.21,-600.91 231.21,-606.91 225.21,-606.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-588.58" font-family="Times New Roman" font-size="14.00">N20</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-571.33" font-family="Times New Roman" font-size="14.00">Focal absolute requested</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-554.08" font-family="Times New Roman" font-size="14.00">turn</text>
+<title>N20 | wave_micro_requested_turn_abs
+Focal absolute requested turn
+Scale: micro | Phenomenon: coordinated_escape_wave
+Definition: Indicator=|decision_json.requested_turn| for fish i at (r,t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_micro_heading_change" class="inspectable" tabindex="0" data-node-id="wave_micro_heading_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M230.46,-679.91C230.46,-679.91 76.56,-679.91 76.56,-679.91 70.56,-679.91 64.56,-673.91 64.56,-667.91 64.56,-667.91 64.56,-630.09 64.56,-630.09 64.56,-624.09 70.56,-618.09 76.56,-618.09 76.56,-618.09 230.46,-618.09 230.46,-618.09 236.46,-618.09 242.46,-624.09 242.46,-630.09 242.46,-630.09 242.46,-667.91 242.46,-667.91 242.46,-673.91 236.46,-679.91 230.46,-679.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-661.58" font-family="Times New Roman" font-size="14.00">N21</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-644.33" font-family="Times New Roman" font-size="14.00">Focal step heading change</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-627.08" font-family="Times New Roman" font-size="14.00">magnitude</text>
+<title>N21 | wave_micro_heading_change
+Focal step heading change magnitude
+Scale: micro | Phenomenon: coordinated_escape_wave
+Definition: Indicator=|atan2(sin(theta_i(t)-theta_i(t-1)), cos(theta_i(t)-theta_i(t-1)))|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_fright_micro_state" class="inspectable" tabindex="0" data-node-id="fright_micro_state">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M210.96,-752.91C210.96,-752.91 96.06,-752.91 96.06,-752.91 90.06,-752.91 84.06,-746.91 84.06,-740.91 84.06,-740.91 84.06,-703.09 84.06,-703.09 84.06,-697.09 90.06,-691.09 96.06,-691.09 96.06,-691.09 210.96,-691.09 210.96,-691.09 216.96,-691.09 222.96,-697.09 222.96,-703.09 222.96,-703.09 222.96,-740.91 222.96,-740.91 222.96,-746.91 216.96,-752.91 210.96,-752.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-734.58" font-family="Times New Roman" font-size="14.00">N28</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-717.33" font-family="Times New Roman" font-size="14.00">Focal fish frightened</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-700.08" font-family="Times New Roman" font-size="14.00">indicator</text>
+<title>N28 | fright_micro_state
+Focal fish frightened indicator
+Scale: micro | Phenomenon: fright_contagion_wave
+Definition: Indicator=1 if fright_i(t)&gt;0, else 0.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_fright_micro_remaining" class="inspectable" tabindex="0" data-node-id="fright_micro_remaining">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M233.83,-808.29C233.83,-808.29 73.18,-808.29 73.18,-808.29 67.18,-808.29 61.18,-802.29 61.18,-796.29 61.18,-796.29 61.18,-775.71 61.18,-775.71 61.18,-769.71 67.18,-763.71 73.18,-763.71 73.18,-763.71 233.83,-763.71 233.83,-763.71 239.83,-763.71 245.83,-769.71 245.83,-775.71 245.83,-775.71 245.83,-796.29 245.83,-796.29 245.83,-802.29 239.83,-808.29 233.83,-808.29" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-789.95" font-family="Times New Roman" font-size="14.00">N29</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-772.7" font-family="Times New Roman" font-size="14.00">Focal remaining fright steps</text>
+<title>N29 | fright_micro_remaining
+Focal remaining fright steps
+Scale: micro | Phenomenon: fright_contagion_wave
+Definition: Indicator=remaining_i(t) for fish i.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_fright_micro_nearest_fright_distance" class="inspectable" tabindex="0" data-node-id="fright_micro_nearest_fright_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M233.46,-880.91C233.46,-880.91 73.56,-880.91 73.56,-880.91 67.56,-880.91 61.56,-874.91 61.56,-868.91 61.56,-868.91 61.56,-831.09 61.56,-831.09 61.56,-825.09 67.56,-819.09 73.56,-819.09 73.56,-819.09 233.46,-819.09 233.46,-819.09 239.46,-819.09 245.46,-825.09 245.46,-831.09 245.46,-831.09 245.46,-868.91 245.46,-868.91 245.46,-874.91 239.46,-880.91 233.46,-880.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-862.58" font-family="Times New Roman" font-size="14.00">N30</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-845.33" font-family="Times New Roman" font-size="14.00">Focal distance to nearest</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-828.08" font-family="Times New Roman" font-size="14.00">frightened contact neighbor</text>
+<title>N30 | fright_micro_nearest_fright_distance
+Focal distance to nearest frightened contact neighbor
+Scale: micro | Phenomenon: fright_contagion_wave
+Definition: For fish i, let N_i(t) be contact neighbors at (r,t) with fright_j(t)&gt;0. Indicator=min_{j in N_i(t)} ||p_i(t)-p_j(t)||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_micro_heading_deviation" class="inspectable" tabindex="0" data-node-id="pol_micro_heading_deviation">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M237.58,-953.91C237.58,-953.91 69.43,-953.91 69.43,-953.91 63.43,-953.91 57.43,-947.91 57.43,-941.91 57.43,-941.91 57.43,-904.09 57.43,-904.09 57.43,-898.09 63.43,-892.09 69.43,-892.09 69.43,-892.09 237.58,-892.09 237.58,-892.09 243.58,-892.09 249.58,-898.09 249.58,-904.09 249.58,-904.09 249.58,-941.91 249.58,-941.91 249.58,-947.91 243.58,-953.91 237.58,-953.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-935.58" font-family="Times New Roman" font-size="14.00">N37</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-918.33" font-family="Times New Roman" font-size="14.00">Focal heading deviation from</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-901.08" font-family="Times New Roman" font-size="14.00">school mean</text>
+<title>N37 | pol_micro_heading_deviation
+Focal heading deviation from school mean
+Scale: micro | Phenomenon: threat_induced_polarization
+Definition: Let Theta=atan2(mean_i sin theta_i, mean_i cos theta_i). Indicator=|atan2(sin(theta_i-Theta), cos(theta_i-Theta))|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_micro_neighbor_alignment" class="inspectable" tabindex="0" data-node-id="pol_micro_neighbor_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M238.33,-1026.91C238.33,-1026.91 68.68,-1026.91 68.68,-1026.91 62.68,-1026.91 56.68,-1020.91 56.68,-1014.91 56.68,-1014.91 56.68,-977.09 56.68,-977.09 56.68,-971.09 62.68,-965.09 68.68,-965.09 68.68,-965.09 238.33,-965.09 238.33,-965.09 244.33,-965.09 250.33,-971.09 250.33,-977.09 250.33,-977.09 250.33,-1014.91 250.33,-1014.91 250.33,-1020.91 244.33,-1026.91 238.33,-1026.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1008.58" font-family="Times New Roman" font-size="14.00">N38</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-991.33" font-family="Times New Roman" font-size="14.00">Focal heading alignment with</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-974.08" font-family="Times New Roman" font-size="14.00">contact neighbors</text>
+<title>N38 | pol_micro_neighbor_alignment
+Focal heading alignment with contact neighbors
+Scale: micro | Phenomenon: threat_induced_polarization
+Definition: For fish i, let N_i(t) be contact neighbors. Let theta_N=atan2(mean_{j in N_i} sin theta_j, mean_{j in N_i} cos theta_j). Indicator=cos(theta_i-theta_N).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_micro_shark_proximity" class="inspectable" tabindex="0" data-node-id="pol_micro_shark_proximity">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M224.46,-1099.91C224.46,-1099.91 82.56,-1099.91 82.56,-1099.91 76.56,-1099.91 70.56,-1093.91 70.56,-1087.91 70.56,-1087.91 70.56,-1050.09 70.56,-1050.09 70.56,-1044.09 76.56,-1038.09 82.56,-1038.09 82.56,-1038.09 224.46,-1038.09 224.46,-1038.09 230.46,-1038.09 236.46,-1044.09 236.46,-1050.09 236.46,-1050.09 236.46,-1087.91 236.46,-1087.91 236.46,-1093.91 230.46,-1099.91 224.46,-1099.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1081.58" font-family="Times New Roman" font-size="14.00">N39</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1064.33" font-family="Times New Roman" font-size="14.00">Focal inverse distance to</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1047.08" font-family="Times New Roman" font-size="14.00">nearest shark</text>
+<title>N39 | pol_micro_shark_proximity
+Focal inverse distance to nearest shark
+Scale: micro | Phenomenon: threat_induced_polarization
+Definition: Indicator=1/d_i(t), where d_i(t)=min_{s in sharks} ||p_i(t)-p_s(t)||&gt;0.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_micro_degree" class="inspectable" tabindex="0" data-node-id="comp_micro_degree">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M213.21,-1155.29C213.21,-1155.29 93.81,-1155.29 93.81,-1155.29 87.81,-1155.29 81.81,-1149.29 81.81,-1143.29 81.81,-1143.29 81.81,-1122.71 81.81,-1122.71 81.81,-1116.71 87.81,-1110.71 93.81,-1110.71 93.81,-1110.71 213.21,-1110.71 213.21,-1110.71 219.21,-1110.71 225.21,-1116.71 225.21,-1122.71 225.21,-1122.71 225.21,-1143.29 225.21,-1143.29 225.21,-1149.29 219.21,-1155.29 213.21,-1155.29" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1136.95" font-family="Times New Roman" font-size="14.00">N46</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1119.7" font-family="Times New Roman" font-size="14.00">Focal contact degree</text>
+<title>N46 | comp_micro_degree
+Focal contact degree
+Scale: micro | Phenomenon: local_compaction
+Definition: For fish i, indicator=k_i(t)=|{j: (i,j) in E_t or (j,i) in E_t}|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_micro_nearest_contact_distance" class="inspectable" tabindex="0" data-node-id="comp_micro_nearest_contact_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M217.33,-1227.91C217.33,-1227.91 89.68,-1227.91 89.68,-1227.91 83.68,-1227.91 77.68,-1221.91 77.68,-1215.91 77.68,-1215.91 77.68,-1178.09 77.68,-1178.09 77.68,-1172.09 83.68,-1166.09 89.68,-1166.09 89.68,-1166.09 217.33,-1166.09 217.33,-1166.09 223.33,-1166.09 229.33,-1172.09 229.33,-1178.09 229.33,-1178.09 229.33,-1215.91 229.33,-1215.91 229.33,-1221.91 223.33,-1227.91 217.33,-1227.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1209.58" font-family="Times New Roman" font-size="14.00">N47</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1192.33" font-family="Times New Roman" font-size="14.00">Focal nearest contact-</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1175.08" font-family="Times New Roman" font-size="14.00">neighbor distance</text>
+<title>N47 | comp_micro_nearest_contact_distance
+Focal nearest contact-neighbor distance
+Scale: micro | Phenomenon: local_compaction
+Definition: For fish i, indicator=min_{j in N_i(t)} ||p_i(t)-p_j(t)||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_micro_clustering_coefficient" class="inspectable" tabindex="0" data-node-id="comp_micro_clustering_coefficient">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M212.46,-1300.91C212.46,-1300.91 94.56,-1300.91 94.56,-1300.91 88.56,-1300.91 82.56,-1294.91 82.56,-1288.91 82.56,-1288.91 82.56,-1251.09 82.56,-1251.09 82.56,-1245.09 88.56,-1239.09 94.56,-1239.09 94.56,-1239.09 212.46,-1239.09 212.46,-1239.09 218.46,-1239.09 224.46,-1245.09 224.46,-1251.09 224.46,-1251.09 224.46,-1288.91 224.46,-1288.91 224.46,-1294.91 218.46,-1300.91 212.46,-1300.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1282.58" font-family="Times New Roman" font-size="14.00">N48</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1265.33" font-family="Times New Roman" font-size="14.00">Focal local clustering</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1248.08" font-family="Times New Roman" font-size="14.00">coefficient</text>
+<title>N48 | comp_micro_clustering_coefficient
+Focal local clustering coefficient
+Scale: micro | Phenomenon: local_compaction
+Definition: Let k_i be degree and T_i the number of edges among neighbors of i in G_t. Indicator=2T_i/(k_i(k_i-1)) if k_i&gt;=2.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_micro_angular_velocity" class="inspectable" tabindex="0" data-node-id="mill_micro_angular_velocity">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M218.46,-1373.91C218.46,-1373.91 88.56,-1373.91 88.56,-1373.91 82.56,-1373.91 76.56,-1367.91 76.56,-1361.91 76.56,-1361.91 76.56,-1324.09 76.56,-1324.09 76.56,-1318.09 82.56,-1312.09 88.56,-1312.09 88.56,-1312.09 218.46,-1312.09 218.46,-1312.09 224.46,-1312.09 230.46,-1318.09 230.46,-1324.09 230.46,-1324.09 230.46,-1361.91 230.46,-1361.91 230.46,-1367.91 224.46,-1373.91 218.46,-1373.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1355.58" font-family="Times New Roman" font-size="14.00">N55</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1338.33" font-family="Times New Roman" font-size="14.00">Focal angular velocity</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1321.08" font-family="Times New Roman" font-size="14.00">around school centroid</text>
+<title>N55 | mill_micro_angular_velocity
+Focal angular velocity around school centroid
+Scale: micro | Phenomenon: vortex_milling
+Definition: Let r_i=p_i-c_school and v_i=(vx_i,vy_i). Indicator=(r_i_x v_i_y - r_i_y v_i_x)/||r_i||^2.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_micro_tangential_speed" class="inspectable" tabindex="0" data-node-id="mill_micro_tangential_speed">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M218.83,-1446.91C218.83,-1446.91 88.18,-1446.91 88.18,-1446.91 82.18,-1446.91 76.18,-1440.91 76.18,-1434.91 76.18,-1434.91 76.18,-1397.09 76.18,-1397.09 76.18,-1391.09 82.18,-1385.09 88.18,-1385.09 88.18,-1385.09 218.83,-1385.09 218.83,-1385.09 224.83,-1385.09 230.83,-1391.09 230.83,-1397.09 230.83,-1397.09 230.83,-1434.91 230.83,-1434.91 230.83,-1440.91 224.83,-1446.91 218.83,-1446.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1428.58" font-family="Times New Roman" font-size="14.00">N56</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1411.33" font-family="Times New Roman" font-size="14.00">Focal signed tangential</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1394.08" font-family="Times New Roman" font-size="14.00">speed</text>
+<title>N56 | mill_micro_tangential_speed
+Focal signed tangential speed
+Scale: micro | Phenomenon: vortex_milling
+Definition: Indicator=(r_i_x v_i_y - r_i_y v_i_x)/||r_i||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_micro_radial_velocity" class="inspectable" tabindex="0" data-node-id="mill_micro_radial_velocity">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M209.08,-1502.29C209.08,-1502.29 97.93,-1502.29 97.93,-1502.29 91.93,-1502.29 85.93,-1496.29 85.93,-1490.29 85.93,-1490.29 85.93,-1469.71 85.93,-1469.71 85.93,-1463.71 91.93,-1457.71 97.93,-1457.71 97.93,-1457.71 209.08,-1457.71 209.08,-1457.71 215.08,-1457.71 221.08,-1463.71 221.08,-1469.71 221.08,-1469.71 221.08,-1490.29 221.08,-1490.29 221.08,-1496.29 215.08,-1502.29 209.08,-1502.29" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1483.95" font-family="Times New Roman" font-size="14.00">N57</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1466.7" font-family="Times New Roman" font-size="14.00">Focal radial velocity</text>
+<title>N57 | mill_micro_radial_velocity
+Focal radial velocity
+Scale: micro | Phenomenon: vortex_milling
+Definition: Indicator=(r_i_x v_i_x + r_i_y v_i_y)/||r_i||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_micro_lagged_alignment" class="inspectable" tabindex="0" data-node-id="lead_micro_lagged_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M229.71,-1574.91C229.71,-1574.91 77.31,-1574.91 77.31,-1574.91 71.31,-1574.91 65.31,-1568.91 65.31,-1562.91 65.31,-1562.91 65.31,-1525.09 65.31,-1525.09 65.31,-1519.09 71.31,-1513.09 77.31,-1513.09 77.31,-1513.09 229.71,-1513.09 229.71,-1513.09 235.71,-1513.09 241.71,-1519.09 241.71,-1525.09 241.71,-1525.09 241.71,-1562.91 241.71,-1562.91 241.71,-1568.91 235.71,-1574.91 229.71,-1574.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1556.58" font-family="Times New Roman" font-size="14.00">N64</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1539.33" font-family="Times New Roman" font-size="14.00">Focal lagged neighbor</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1522.08" font-family="Times New Roman" font-size="14.00">heading-change alignment</text>
+<title>N64 | lead_micro_lagged_alignment
+Focal lagged neighbor heading-change alignment
+Scale: micro | Phenomenon: leader_follower_cascade
+Definition: Let Delta theta_i(t)=atan2(sin(theta_i(t)-theta_i(t-1)), cos(theta_i(t)-theta_i(t-1))). For N_i(t-1), let m_i(t-1)=mean_{j in N_i(t-1)} Delta theta_j(t-1). Indicator=cos(Delta theta_i(t)-m_i(t-1)).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_micro_influence_score" class="inspectable" tabindex="0" data-node-id="lead_micro_influence_score">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M216.21,-1647.91C216.21,-1647.91 90.81,-1647.91 90.81,-1647.91 84.81,-1647.91 78.81,-1641.91 78.81,-1635.91 78.81,-1635.91 78.81,-1598.09 78.81,-1598.09 78.81,-1592.09 84.81,-1586.09 90.81,-1586.09 90.81,-1586.09 216.21,-1586.09 216.21,-1586.09 222.21,-1586.09 228.21,-1592.09 228.21,-1598.09 228.21,-1598.09 228.21,-1635.91 228.21,-1635.91 228.21,-1641.91 222.21,-1647.91 216.21,-1647.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1629.58" font-family="Times New Roman" font-size="14.00">N65</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1612.33" font-family="Times New Roman" font-size="14.00">Focal run-level lagged</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1595.08" font-family="Times New Roman" font-size="14.00">influence score</text>
+<title>N65 | lead_micro_influence_score
+Focal run-level lagged influence score
+Scale: micro | Phenomenon: leader_follower_cascade
+Definition: For fish i, let x_t=Delta theta_i(t) and y_t=mean_{j in N_i(t)} Delta theta_j(t+1). Indicator=corr(x_t,y_t) over valid t in the run.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_micro_influence_percentile" class="inspectable" tabindex="0" data-node-id="lead_micro_influence_percentile">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M223.33,-1720.91C223.33,-1720.91 83.68,-1720.91 83.68,-1720.91 77.68,-1720.91 71.68,-1714.91 71.68,-1708.91 71.68,-1708.91 71.68,-1671.09 71.68,-1671.09 71.68,-1665.09 77.68,-1659.09 83.68,-1659.09 83.68,-1659.09 223.33,-1659.09 223.33,-1659.09 229.33,-1659.09 235.33,-1665.09 235.33,-1671.09 235.33,-1671.09 235.33,-1708.91 235.33,-1708.91 235.33,-1714.91 229.33,-1720.91 223.33,-1720.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1702.58" font-family="Times New Roman" font-size="14.00">N66</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1685.33" font-family="Times New Roman" font-size="14.00">Focal run-level influence</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1668.08" font-family="Times New Roman" font-size="14.00">percentile</text>
+<title>N66 | lead_micro_influence_percentile
+Focal run-level influence percentile
+Scale: micro | Phenomenon: leader_follower_cascade
+Definition: Indicator=100*(rank(s_i)-0.5)/M, where s_i is the influence score and M is the number of fish with defined scores in the run.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_meso_mean_component_size" class="inspectable" tabindex="0" data-node-id="frag_meso_mean_component_size">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M240.21,-1821.29C240.21,-1821.29 66.81,-1821.29 66.81,-1821.29 60.81,-1821.29 54.81,-1815.29 54.81,-1809.29 54.81,-1809.29 54.81,-1788.71 54.81,-1788.71 54.81,-1782.71 60.81,-1776.71 66.81,-1776.71 66.81,-1776.71 240.21,-1776.71 240.21,-1776.71 246.21,-1776.71 252.21,-1782.71 252.21,-1788.71 252.21,-1788.71 252.21,-1809.29 252.21,-1809.29 252.21,-1815.29 246.21,-1821.29 240.21,-1821.29" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1802.95" font-family="Times New Roman" font-size="14.00">N4</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1785.7" font-family="Times New Roman" font-size="14.00">Mean contact-component size</text>
+<title>N4 | frag_meso_mean_component_size
+Mean contact-component size
+Scale: meso | Phenomenon: school_fragmentation
+Definition: Let components of G_t be C_1,...,C_m. Indicator = (1/m) sum_{k=1}^m |C_k|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_meso_component_size_entropy" class="inspectable" tabindex="0" data-node-id="frag_meso_component_size_entropy">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M222.21,-1893.91C222.21,-1893.91 84.81,-1893.91 84.81,-1893.91 78.81,-1893.91 72.81,-1887.91 72.81,-1881.91 72.81,-1881.91 72.81,-1844.09 72.81,-1844.09 72.81,-1838.09 78.81,-1832.09 84.81,-1832.09 84.81,-1832.09 222.21,-1832.09 222.21,-1832.09 228.21,-1832.09 234.21,-1838.09 234.21,-1844.09 234.21,-1844.09 234.21,-1881.91 234.21,-1881.91 234.21,-1887.91 228.21,-1893.91 222.21,-1893.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1875.58" font-family="Times New Roman" font-size="14.00">N5</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1858.33" font-family="Times New Roman" font-size="14.00">Contact-component size</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1841.08" font-family="Times New Roman" font-size="14.00">entropy</text>
+<title>N5 | frag_meso_component_size_entropy
+Contact-component size entropy
+Scale: meso | Phenomenon: school_fragmentation
+Definition: Let p_k=|C_k|/N_t for N_t=sum_j |C_j|. Indicator = -sum_k p_k log2(p_k), with 0 log2 0 treated as 0.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_meso_centroid_pair_distance" class="inspectable" tabindex="0" data-node-id="frag_meso_centroid_pair_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M221.08,-1966.91C221.08,-1966.91 85.93,-1966.91 85.93,-1966.91 79.93,-1966.91 73.93,-1960.91 73.93,-1954.91 73.93,-1954.91 73.93,-1917.09 73.93,-1917.09 73.93,-1911.09 79.93,-1905.09 85.93,-1905.09 85.93,-1905.09 221.08,-1905.09 221.08,-1905.09 227.08,-1905.09 233.08,-1911.09 233.08,-1917.09 233.08,-1917.09 233.08,-1954.91 233.08,-1954.91 233.08,-1960.91 227.08,-1966.91 221.08,-1966.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1948.58" font-family="Times New Roman" font-size="14.00">N6</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1931.33" font-family="Times New Roman" font-size="14.00">Mean distance between</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1914.08" font-family="Times New Roman" font-size="14.00">component centroids</text>
+<title>N6 | frag_meso_centroid_pair_distance
+Mean distance between component centroids
+Scale: meso | Phenomenon: school_fragmentation
+Definition: Let c_k be the position centroid of component C_k. Indicator = (2/(m(m-1))) sum_{a&lt;b} ||c_a-c_b|| for m components; undefined if m&lt;2.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_elong_meso_component_aspect_ratio" class="inspectable" tabindex="0" data-node-id="elong_meso_component_aspect_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M230.83,-2039.91C230.83,-2039.91 76.18,-2039.91 76.18,-2039.91 70.18,-2039.91 64.18,-2033.91 64.18,-2027.91 64.18,-2027.91 64.18,-1990.09 64.18,-1990.09 64.18,-1984.09 70.18,-1978.09 76.18,-1978.09 76.18,-1978.09 230.83,-1978.09 230.83,-1978.09 236.83,-1978.09 242.83,-1984.09 242.83,-1990.09 242.83,-1990.09 242.83,-2027.91 242.83,-2027.91 242.83,-2033.91 236.83,-2039.91 230.83,-2039.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2021.58" font-family="Times New Roman" font-size="14.00">N13</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2004.33" font-family="Times New Roman" font-size="14.00">Contact-component aspect</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-1987.08" font-family="Times New Roman" font-size="14.00">ratio</text>
+<title>N13 | elong_meso_component_aspect_ratio
+Contact-component aspect ratio
+Scale: meso | Phenomenon: school_elongation
+Definition: For component C_k at (r,t), let lambda1&gt;=lambda2 be eigenvalues of its position covariance. Indicator=sqrt(lambda1/lambda2).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_elong_meso_component_escape_alignment" class="inspectable" tabindex="0" data-node-id="elong_meso_component_escape_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M241.71,-2112.91C241.71,-2112.91 65.31,-2112.91 65.31,-2112.91 59.31,-2112.91 53.31,-2106.91 53.31,-2100.91 53.31,-2100.91 53.31,-2063.09 53.31,-2063.09 53.31,-2057.09 59.31,-2051.09 65.31,-2051.09 65.31,-2051.09 241.71,-2051.09 241.71,-2051.09 247.71,-2051.09 253.71,-2057.09 253.71,-2063.09 253.71,-2063.09 253.71,-2100.91 253.71,-2100.91 253.71,-2106.91 247.71,-2112.91 241.71,-2112.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2094.57" font-family="Times New Roman" font-size="14.00">N14</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2077.32" font-family="Times New Roman" font-size="14.00">Component major-axis escape</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2060.07" font-family="Times New Roman" font-size="14.00">alignment</text>
+<title>N14 | elong_meso_component_escape_alignment
+Component major-axis escape alignment
+Scale: meso | Phenomenon: school_elongation
+Definition: For component C_k, let u1_C be its major-axis unit vector. Let e_C be the normalized mean of decision_json.escape_direction for component fish with non-null escape_direction at (r,t). Indicator=|u1_C·e_C|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_elong_meso_component_axis_length" class="inspectable" tabindex="0" data-node-id="elong_meso_component_axis_length">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M243.21,-2185.91C243.21,-2185.91 63.81,-2185.91 63.81,-2185.91 57.81,-2185.91 51.81,-2179.91 51.81,-2173.91 51.81,-2173.91 51.81,-2136.09 51.81,-2136.09 51.81,-2130.09 57.81,-2124.09 63.81,-2124.09 63.81,-2124.09 243.21,-2124.09 243.21,-2124.09 249.21,-2124.09 255.21,-2130.09 255.21,-2136.09 255.21,-2136.09 255.21,-2173.91 255.21,-2173.91 255.21,-2179.91 249.21,-2185.91 243.21,-2185.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2167.57" font-family="Times New Roman" font-size="14.00">N15</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2150.32" font-family="Times New Roman" font-size="14.00">Contact-component major-axis</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2133.07" font-family="Times New Roman" font-size="14.00">length</text>
+<title>N15 | elong_meso_component_axis_length
+Contact-component major-axis length
+Scale: meso | Phenomenon: school_elongation
+Definition: Indicator=sqrt(lambda1_C), where lambda1_C is the largest eigenvalue of the position covariance of component C_k at (r,t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_meso_component_escape_coherence" class="inspectable" tabindex="0" data-node-id="wave_meso_component_escape_coherence">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M234.96,-2258.91C234.96,-2258.91 72.06,-2258.91 72.06,-2258.91 66.06,-2258.91 60.06,-2252.91 60.06,-2246.91 60.06,-2246.91 60.06,-2209.09 60.06,-2209.09 60.06,-2203.09 66.06,-2197.09 72.06,-2197.09 72.06,-2197.09 234.96,-2197.09 234.96,-2197.09 240.96,-2197.09 246.96,-2203.09 246.96,-2209.09 246.96,-2209.09 246.96,-2246.91 246.96,-2246.91 246.96,-2252.91 240.96,-2258.91 234.96,-2258.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2240.57" font-family="Times New Roman" font-size="14.00">N22</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2223.32" font-family="Times New Roman" font-size="14.00">Contact-component escape-</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2206.07" font-family="Times New Roman" font-size="14.00">direction coherence</text>
+<title>N22 | wave_meso_component_escape_coherence
+Contact-component escape-direction coherence
+Scale: meso | Phenomenon: coordinated_escape_wave
+Definition: For component C_k, let e_i be unit escape_direction for fish i in C_k with non-null escape_direction. Indicator=|sum_i e_i|/n_k.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_meso_component_mean_escape_alignment" class="inspectable" tabindex="0" data-node-id="wave_meso_component_mean_escape_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M228.96,-2331.91C228.96,-2331.91 78.06,-2331.91 78.06,-2331.91 72.06,-2331.91 66.06,-2325.91 66.06,-2319.91 66.06,-2319.91 66.06,-2282.09 66.06,-2282.09 66.06,-2276.09 72.06,-2270.09 78.06,-2270.09 78.06,-2270.09 228.96,-2270.09 228.96,-2270.09 234.96,-2270.09 240.96,-2276.09 240.96,-2282.09 240.96,-2282.09 240.96,-2319.91 240.96,-2319.91 240.96,-2325.91 234.96,-2331.91 228.96,-2331.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2313.57" font-family="Times New Roman" font-size="14.00">N23</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2296.32" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2279.07" font-family="Times New Roman" font-size="14.00">heading-escape alignment</text>
+<title>N23 | wave_meso_component_mean_escape_alignment
+Contact-component mean heading-escape alignment
+Scale: meso | Phenomenon: coordinated_escape_wave
+Definition: For component C_k, indicator=(1/n_k) sum_i cos(theta_i-atan2(e_i_y,e_i_x)) over fish with non-null escape_direction.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_meso_component_turn_variance" class="inspectable" tabindex="0" data-node-id="wave_meso_component_turn_variance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M243.96,-2404.91C243.96,-2404.91 63.06,-2404.91 63.06,-2404.91 57.06,-2404.91 51.06,-2398.91 51.06,-2392.91 51.06,-2392.91 51.06,-2355.09 51.06,-2355.09 51.06,-2349.09 57.06,-2343.09 63.06,-2343.09 63.06,-2343.09 243.96,-2343.09 243.96,-2343.09 249.96,-2343.09 255.96,-2349.09 255.96,-2355.09 255.96,-2355.09 255.96,-2392.91 255.96,-2392.91 255.96,-2398.91 249.96,-2404.91 243.96,-2404.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2386.57" font-family="Times New Roman" font-size="14.00">N24</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2369.32" font-family="Times New Roman" font-size="14.00">Contact-component requested-</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2352.07" font-family="Times New Roman" font-size="14.00">turn variance</text>
+<title>N24 | wave_meso_component_turn_variance
+Contact-component requested-turn variance
+Scale: meso | Phenomenon: coordinated_escape_wave
+Definition: For component C_k, indicator=(1/n_k) sum_i (tau_i - mean_j tau_j)^2, where tau_i=decision_json.requested_turn.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_fright_meso_component_prevalence" class="inspectable" tabindex="0" data-node-id="fright_meso_component_prevalence">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M227.08,-2477.91C227.08,-2477.91 79.93,-2477.91 79.93,-2477.91 73.93,-2477.91 67.93,-2471.91 67.93,-2465.91 67.93,-2465.91 67.93,-2428.09 67.93,-2428.09 67.93,-2422.09 73.93,-2416.09 79.93,-2416.09 79.93,-2416.09 227.08,-2416.09 227.08,-2416.09 233.08,-2416.09 239.08,-2422.09 239.08,-2428.09 239.08,-2428.09 239.08,-2465.91 239.08,-2465.91 239.08,-2471.91 233.08,-2477.91 227.08,-2477.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2459.57" font-family="Times New Roman" font-size="14.00">N31</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2442.32" font-family="Times New Roman" font-size="14.00">Contact-component fright</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2425.07" font-family="Times New Roman" font-size="14.00">prevalence</text>
+<title>N31 | fright_meso_component_prevalence
+Contact-component fright prevalence
+Scale: meso | Phenomenon: fright_contagion_wave
+Definition: For component C_k, indicator=(1/|C_k|) sum_{i in C_k} 1[fright_i(t)&gt;0].
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_fright_meso_component_fright_edge_fraction" class="inspectable" tabindex="0" data-node-id="fright_meso_component_fright_edge_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M222.96,-2550.91C222.96,-2550.91 84.06,-2550.91 84.06,-2550.91 78.06,-2550.91 72.06,-2544.91 72.06,-2538.91 72.06,-2538.91 72.06,-2501.09 72.06,-2501.09 72.06,-2495.09 78.06,-2489.09 84.06,-2489.09 84.06,-2489.09 222.96,-2489.09 222.96,-2489.09 228.96,-2489.09 234.96,-2495.09 234.96,-2501.09 234.96,-2501.09 234.96,-2538.91 234.96,-2538.91 234.96,-2544.91 228.96,-2550.91 222.96,-2550.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2532.57" font-family="Times New Roman" font-size="14.00">N32</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2515.32" font-family="Times New Roman" font-size="14.00">Contact-component</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2498.07" font-family="Times New Roman" font-size="14.00">frightened-edge fraction</text>
+<title>N32 | fright_meso_component_fright_edge_fraction
+Contact-component frightened-edge fraction
+Scale: meso | Phenomenon: fright_contagion_wave
+Definition: For component C_k, let E_k(t) be recorded edges with both endpoints in C_k. Indicator=|{(i,j) in E_k: fright_i&gt;0 and fright_j&gt;0}|/|E_k|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_fright_meso_component_fright_position_corr" class="inspectable" tabindex="0" data-node-id="fright_meso_component_fright_position_corr">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M229.71,-2640.54C229.71,-2640.54 77.31,-2640.54 77.31,-2640.54 71.31,-2640.54 65.31,-2634.54 65.31,-2628.54 65.31,-2628.54 65.31,-2573.46 65.31,-2573.46 65.31,-2567.46 71.31,-2561.46 77.31,-2561.46 77.31,-2561.46 229.71,-2561.46 229.71,-2561.46 235.71,-2561.46 241.71,-2567.46 241.71,-2573.46 241.71,-2573.46 241.71,-2628.54 241.71,-2628.54 241.71,-2634.54 235.71,-2640.54 229.71,-2640.54" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2622.2" font-family="Times New Roman" font-size="14.00">N33</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2604.95" font-family="Times New Roman" font-size="14.00">Contact-component fright-</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2587.7" font-family="Times New Roman" font-size="14.00">centroid-distance</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2570.45" font-family="Times New Roman" font-size="14.00">correlation</text>
+<title>N33 | fright_meso_component_fright_position_corr
+Contact-component fright-centroid-distance correlation
+Scale: meso | Phenomenon: fright_contagion_wave
+Definition: For component C_k, let x_i=1[fright_i&gt;0] and y_i=||p_i-c_C||. Indicator=corr(x,y) over i in C_k.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_meso_component_polarization" class="inspectable" tabindex="0" data-node-id="pol_meso_component_polarization">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M234.96,-2712.91C234.96,-2712.91 72.06,-2712.91 72.06,-2712.91 66.06,-2712.91 60.06,-2706.91 60.06,-2700.91 60.06,-2700.91 60.06,-2663.09 60.06,-2663.09 60.06,-2657.09 66.06,-2651.09 72.06,-2651.09 72.06,-2651.09 234.96,-2651.09 234.96,-2651.09 240.96,-2651.09 246.96,-2657.09 246.96,-2663.09 246.96,-2663.09 246.96,-2700.91 246.96,-2700.91 246.96,-2706.91 240.96,-2712.91 234.96,-2712.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2694.57" font-family="Times New Roman" font-size="14.00">N40</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2677.32" font-family="Times New Roman" font-size="14.00">Contact-component heading</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2660.07" font-family="Times New Roman" font-size="14.00">polarization</text>
+<title>N40 | pol_meso_component_polarization
+Contact-component heading polarization
+Scale: meso | Phenomenon: threat_induced_polarization
+Definition: For component C_k, indicator=sqrt((sum_i cos theta_i)^2+(sum_i sin theta_i)^2)/|C_k|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_meso_component_mean_deviation" class="inspectable" tabindex="0" data-node-id="pol_meso_component_mean_deviation">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M228.21,-2785.91C228.21,-2785.91 78.81,-2785.91 78.81,-2785.91 72.81,-2785.91 66.81,-2779.91 66.81,-2773.91 66.81,-2773.91 66.81,-2736.09 66.81,-2736.09 66.81,-2730.09 72.81,-2724.09 78.81,-2724.09 78.81,-2724.09 228.21,-2724.09 228.21,-2724.09 234.21,-2724.09 240.21,-2730.09 240.21,-2736.09 240.21,-2736.09 240.21,-2773.91 240.21,-2773.91 240.21,-2779.91 234.21,-2785.91 228.21,-2785.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2767.57" font-family="Times New Roman" font-size="14.00">N41</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2750.32" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2733.07" font-family="Times New Roman" font-size="14.00">heading deviation</text>
+<title>N41 | pol_meso_component_mean_deviation
+Contact-component mean heading deviation
+Scale: meso | Phenomenon: threat_induced_polarization
+Definition: Let Theta_C=atan2(mean_{i in C} sin theta_i, mean_{i in C} cos theta_i). Indicator=(1/|C|) sum_{i in C} |atan2(sin(theta_i-Theta_C), cos(theta_i-Theta_C))|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_meso_component_away_shark_alignment" class="inspectable" tabindex="0" data-node-id="pol_meso_component_away_shark_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M234.96,-2858.91C234.96,-2858.91 72.06,-2858.91 72.06,-2858.91 66.06,-2858.91 60.06,-2852.91 60.06,-2846.91 60.06,-2846.91 60.06,-2809.09 60.06,-2809.09 60.06,-2803.09 66.06,-2797.09 72.06,-2797.09 72.06,-2797.09 234.96,-2797.09 234.96,-2797.09 240.96,-2797.09 246.96,-2803.09 246.96,-2809.09 246.96,-2809.09 246.96,-2846.91 246.96,-2846.91 246.96,-2852.91 240.96,-2858.91 234.96,-2858.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2840.57" font-family="Times New Roman" font-size="14.00">N42</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2823.32" font-family="Times New Roman" font-size="14.00">Contact-component heading</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2806.07" font-family="Times New Roman" font-size="14.00">away-from-shark alignment</text>
+<title>N42 | pol_meso_component_away_shark_alignment
+Contact-component heading away-from-shark alignment
+Scale: meso | Phenomenon: threat_induced_polarization
+Definition: Let Theta_C be component mean heading and c_C its centroid. Let s* be the nearest shark to c_C and a=(c_C-p_s*)/||c_C-p_s*||. Indicator=cos(Theta_C)·a_x+sin(Theta_C)·a_y.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_meso_component_edge_density" class="inspectable" tabindex="0" data-node-id="comp_meso_component_edge_density">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M225.96,-2931.91C225.96,-2931.91 81.06,-2931.91 81.06,-2931.91 75.06,-2931.91 69.06,-2925.91 69.06,-2919.91 69.06,-2919.91 69.06,-2882.09 69.06,-2882.09 69.06,-2876.09 75.06,-2870.09 81.06,-2870.09 81.06,-2870.09 225.96,-2870.09 225.96,-2870.09 231.96,-2870.09 237.96,-2876.09 237.96,-2882.09 237.96,-2882.09 237.96,-2919.91 237.96,-2919.91 237.96,-2925.91 231.96,-2931.91 225.96,-2931.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2913.57" font-family="Times New Roman" font-size="14.00">N49</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2896.32" font-family="Times New Roman" font-size="14.00">Contact-component edge</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2879.07" font-family="Times New Roman" font-size="14.00">density</text>
+<title>N49 | comp_meso_component_edge_density
+Contact-component edge density
+Scale: meso | Phenomenon: local_compaction
+Definition: For component C_k with n_k=|C_k| and e_k=|E_k|, indicator=e_k/(n_k(n_k-1)/2).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_meso_component_mean_degree" class="inspectable" tabindex="0" data-node-id="comp_meso_component_mean_degree">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M228.21,-3004.91C228.21,-3004.91 78.81,-3004.91 78.81,-3004.91 72.81,-3004.91 66.81,-2998.91 66.81,-2992.91 66.81,-2992.91 66.81,-2955.09 66.81,-2955.09 66.81,-2949.09 72.81,-2943.09 78.81,-2943.09 78.81,-2943.09 228.21,-2943.09 228.21,-2943.09 234.21,-2943.09 240.21,-2949.09 240.21,-2955.09 240.21,-2955.09 240.21,-2992.91 240.21,-2992.91 240.21,-2998.91 234.21,-3004.91 228.21,-3004.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2986.57" font-family="Times New Roman" font-size="14.00">N50</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2969.32" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-2952.07" font-family="Times New Roman" font-size="14.00">degree</text>
+<title>N50 | comp_meso_component_mean_degree
+Contact-component mean degree
+Scale: meso | Phenomenon: local_compaction
+Definition: For component C_k, indicator=(1/n_k) sum_{i in C_k} k_i(t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_meso_component_mean_nearest_distance" class="inspectable" tabindex="0" data-node-id="comp_meso_component_mean_nearest_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M228.21,-3077.91C228.21,-3077.91 78.81,-3077.91 78.81,-3077.91 72.81,-3077.91 66.81,-3071.91 66.81,-3065.91 66.81,-3065.91 66.81,-3028.09 66.81,-3028.09 66.81,-3022.09 72.81,-3016.09 78.81,-3016.09 78.81,-3016.09 228.21,-3016.09 228.21,-3016.09 234.21,-3016.09 240.21,-3022.09 240.21,-3028.09 240.21,-3028.09 240.21,-3065.91 240.21,-3065.91 240.21,-3071.91 234.21,-3077.91 228.21,-3077.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3059.57" font-family="Times New Roman" font-size="14.00">N51</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3042.32" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3025.07" font-family="Times New Roman" font-size="14.00">nearest-contact distance</text>
+<title>N51 | comp_meso_component_mean_nearest_distance
+Contact-component mean nearest-contact distance
+Scale: meso | Phenomenon: local_compaction
+Definition: For component C_k, indicator=(1/n_k) sum_{i in C_k} min_{j in N_i(t)} ||p_i-p_j|| over fish with N_i(t) nonempty.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_meso_component_angular_velocity" class="inspectable" tabindex="0" data-node-id="mill_meso_component_angular_velocity">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M228.21,-3150.91C228.21,-3150.91 78.81,-3150.91 78.81,-3150.91 72.81,-3150.91 66.81,-3144.91 66.81,-3138.91 66.81,-3138.91 66.81,-3101.09 66.81,-3101.09 66.81,-3095.09 72.81,-3089.09 78.81,-3089.09 78.81,-3089.09 228.21,-3089.09 228.21,-3089.09 234.21,-3089.09 240.21,-3095.09 240.21,-3101.09 240.21,-3101.09 240.21,-3138.91 240.21,-3138.91 240.21,-3144.91 234.21,-3150.91 228.21,-3150.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3132.57" font-family="Times New Roman" font-size="14.00">N58</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3115.32" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3098.07" font-family="Times New Roman" font-size="14.00">angular velocity</text>
+<title>N58 | mill_meso_component_angular_velocity
+Contact-component mean angular velocity
+Scale: meso | Phenomenon: vortex_milling
+Definition: For component C_k with centroid c_C, indicator=(1/n_k) sum_{i in C_k} ((p_i-c_C)_x v_i_y-(p_i-c_C)_y v_i_x)/||p_i-c_C||^2.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_meso_component_rotational_order" class="inspectable" tabindex="0" data-node-id="mill_meso_component_rotational_order">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M239.83,-3223.91C239.83,-3223.91 67.18,-3223.91 67.18,-3223.91 61.18,-3223.91 55.18,-3217.91 55.18,-3211.91 55.18,-3211.91 55.18,-3174.09 55.18,-3174.09 55.18,-3168.09 61.18,-3162.09 67.18,-3162.09 67.18,-3162.09 239.83,-3162.09 239.83,-3162.09 245.83,-3162.09 251.83,-3168.09 251.83,-3174.09 251.83,-3174.09 251.83,-3211.91 251.83,-3211.91 251.83,-3217.91 245.83,-3223.91 239.83,-3223.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3205.57" font-family="Times New Roman" font-size="14.00">N59</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3188.32" font-family="Times New Roman" font-size="14.00">Contact-component rotational</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3171.07" font-family="Times New Roman" font-size="14.00">order</text>
+<title>N59 | mill_meso_component_rotational_order
+Contact-component rotational order
+Scale: meso | Phenomenon: vortex_milling
+Definition: Let t_i=(-(p_i-c_C)_y,(p_i-c_C)_x)/||p_i-c_C||. Indicator=||(1/n_k) sum_i t_i||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_meso_component_angular_momentum" class="inspectable" tabindex="0" data-node-id="mill_meso_component_angular_momentum">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M228.21,-3296.91C228.21,-3296.91 78.81,-3296.91 78.81,-3296.91 72.81,-3296.91 66.81,-3290.91 66.81,-3284.91 66.81,-3284.91 66.81,-3247.09 66.81,-3247.09 66.81,-3241.09 72.81,-3235.09 78.81,-3235.09 78.81,-3235.09 228.21,-3235.09 228.21,-3235.09 234.21,-3235.09 240.21,-3241.09 240.21,-3247.09 240.21,-3247.09 240.21,-3284.91 240.21,-3284.91 240.21,-3290.91 234.21,-3296.91 228.21,-3296.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3278.57" font-family="Times New Roman" font-size="14.00">N60</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3261.32" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3244.07" font-family="Times New Roman" font-size="14.00">angular momentum</text>
+<title>N60 | mill_meso_component_angular_momentum
+Contact-component mean angular momentum
+Scale: meso | Phenomenon: vortex_milling
+Definition: Indicator=(1/n_k) sum_{i in C_k} ((p_i-c_C)_x v_i_y-(p_i-c_C)_y v_i_x).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_meso_component_lagged_alignment" class="inspectable" tabindex="0" data-node-id="lead_meso_component_lagged_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M228.21,-3386.54C228.21,-3386.54 78.81,-3386.54 78.81,-3386.54 72.81,-3386.54 66.81,-3380.54 66.81,-3374.54 66.81,-3374.54 66.81,-3319.46 66.81,-3319.46 66.81,-3313.46 72.81,-3307.46 78.81,-3307.46 78.81,-3307.46 228.21,-3307.46 228.21,-3307.46 234.21,-3307.46 240.21,-3313.46 240.21,-3319.46 240.21,-3319.46 240.21,-3374.54 240.21,-3374.54 240.21,-3380.54 234.21,-3386.54 228.21,-3386.54" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3368.2" font-family="Times New Roman" font-size="14.00">N67</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3350.95" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3333.7" font-family="Times New Roman" font-size="14.00">lagged heading-change</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3316.45" font-family="Times New Roman" font-size="14.00">alignment</text>
+<title>N67 | lead_meso_component_lagged_alignment
+Contact-component mean lagged heading-change alignment
+Scale: meso | Phenomenon: leader_follower_cascade
+Definition: For component C_k, indicator=(1/n_k) sum_{i in C_k} cos(Delta theta_i(t)-m_i(t-1)), with m_i(t-1) the mean previous-step neighbor heading change.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_meso_component_cascade_fraction" class="inspectable" tabindex="0" data-node-id="lead_meso_component_cascade_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M227.83,-3458.91C227.83,-3458.91 79.18,-3458.91 79.18,-3458.91 73.18,-3458.91 67.18,-3452.91 67.18,-3446.91 67.18,-3446.91 67.18,-3409.09 67.18,-3409.09 67.18,-3403.09 73.18,-3397.09 79.18,-3397.09 79.18,-3397.09 227.83,-3397.09 227.83,-3397.09 233.83,-3397.09 239.83,-3403.09 239.83,-3409.09 239.83,-3409.09 239.83,-3446.91 239.83,-3446.91 239.83,-3452.91 233.83,-3458.91 227.83,-3458.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3440.57" font-family="Times New Roman" font-size="14.00">N68</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3423.32" font-family="Times New Roman" font-size="14.00">Contact-component sign-</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3406.07" font-family="Times New Roman" font-size="14.00">matched cascade fraction</text>
+<title>N68 | lead_meso_component_cascade_fraction
+Contact-component sign-matched cascade fraction
+Scale: meso | Phenomenon: leader_follower_cascade
+Definition: Let M_C(t-1)=mean_{j in C_k(t-1)} Delta theta_j(t-1). Indicator=(1/n_k) sum_{i in C_k(t)} 1[sign(Delta theta_i(t))=sign(M_C(t-1))].
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_meso_component_influence_variance" class="inspectable" tabindex="0" data-node-id="lead_meso_component_influence_variance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M240.96,-3531.91C240.96,-3531.91 66.06,-3531.91 66.06,-3531.91 60.06,-3531.91 54.06,-3525.91 54.06,-3519.91 54.06,-3519.91 54.06,-3482.09 54.06,-3482.09 54.06,-3476.09 60.06,-3470.09 66.06,-3470.09 66.06,-3470.09 240.96,-3470.09 240.96,-3470.09 246.96,-3470.09 252.96,-3476.09 252.96,-3482.09 252.96,-3482.09 252.96,-3519.91 252.96,-3519.91 252.96,-3525.91 246.96,-3531.91 240.96,-3531.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3513.57" font-family="Times New Roman" font-size="14.00">N69</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3496.32" font-family="Times New Roman" font-size="14.00">Contact-component influence-</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3479.07" font-family="Times New Roman" font-size="14.00">score variance</text>
+<title>N69 | lead_meso_component_influence_variance
+Contact-component influence-score variance
+Scale: meso | Phenomenon: leader_follower_cascade
+Definition: For component C_k, indicator=(1/n_k) sum_{i in C_k} (s_i-mean_{j in C_k} s_j)^2, where s_i is the run-level lagged influence score.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_macro_component_count" class="inspectable" tabindex="0" data-node-id="frag_macro_component_count">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M245.46,-3632.29C245.46,-3632.29 61.56,-3632.29 61.56,-3632.29 55.56,-3632.29 49.56,-3626.29 49.56,-3620.29 49.56,-3620.29 49.56,-3599.71 49.56,-3599.71 49.56,-3593.71 55.56,-3587.71 61.56,-3587.71 61.56,-3587.71 245.46,-3587.71 245.46,-3587.71 251.46,-3587.71 257.46,-3593.71 257.46,-3599.71 257.46,-3599.71 257.46,-3620.29 257.46,-3620.29 257.46,-3626.29 251.46,-3632.29 245.46,-3632.29" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3613.95" font-family="Times New Roman" font-size="14.00">N7</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3596.7" font-family="Times New Roman" font-size="14.00">Number of contact components</text>
+<title>N7 | frag_macro_component_count
+Number of contact components
+Scale: macro | Phenomenon: school_fragmentation
+Definition: Indicator = m, the number of connected components of G_t.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_macro_largest_fraction" class="inspectable" tabindex="0" data-node-id="frag_macro_largest_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M220.33,-3704.91C220.33,-3704.91 86.68,-3704.91 86.68,-3704.91 80.68,-3704.91 74.68,-3698.91 74.68,-3692.91 74.68,-3692.91 74.68,-3655.09 74.68,-3655.09 74.68,-3649.09 80.68,-3643.09 86.68,-3643.09 86.68,-3643.09 220.33,-3643.09 220.33,-3643.09 226.33,-3643.09 232.33,-3649.09 232.33,-3655.09 232.33,-3655.09 232.33,-3692.91 232.33,-3692.91 232.33,-3698.91 226.33,-3704.91 220.33,-3704.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3686.57" font-family="Times New Roman" font-size="14.00">N8</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3669.32" font-family="Times New Roman" font-size="14.00">Largest component fish</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3652.07" font-family="Times New Roman" font-size="14.00">fraction</text>
+<title>N8 | frag_macro_largest_fraction
+Largest component fish fraction
+Scale: macro | Phenomenon: school_fragmentation
+Definition: Indicator = max_k |C_k| / N_t, where N_t=sum_j |C_j|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_frag_macro_component_count_change" class="inspectable" tabindex="0" data-node-id="frag_macro_component_count_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M221.46,-3777.91C221.46,-3777.91 85.56,-3777.91 85.56,-3777.91 79.56,-3777.91 73.56,-3771.91 73.56,-3765.91 73.56,-3765.91 73.56,-3728.09 73.56,-3728.09 73.56,-3722.09 79.56,-3716.09 85.56,-3716.09 85.56,-3716.09 221.46,-3716.09 221.46,-3716.09 227.46,-3716.09 233.46,-3722.09 233.46,-3728.09 233.46,-3728.09 233.46,-3765.91 233.46,-3765.91 233.46,-3771.91 227.46,-3777.91 221.46,-3777.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3759.57" font-family="Times New Roman" font-size="14.00">N9</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3742.32" font-family="Times New Roman" font-size="14.00">Step change in contact-</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3725.07" font-family="Times New Roman" font-size="14.00">component count</text>
+<title>N9 | frag_macro_component_count_change
+Step change in contact-component count
+Scale: macro | Phenomenon: school_fragmentation
+Definition: Indicator(t)=m(t)-m(t-1), where m(t) is the number of connected components of G_t.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_elong_macro_school_aspect_ratio" class="inspectable" tabindex="0" data-node-id="elong_macro_school_aspect_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M227.83,-3833.29C227.83,-3833.29 79.18,-3833.29 79.18,-3833.29 73.18,-3833.29 67.18,-3827.29 67.18,-3821.29 67.18,-3821.29 67.18,-3800.71 67.18,-3800.71 67.18,-3794.71 73.18,-3788.71 79.18,-3788.71 79.18,-3788.71 227.83,-3788.71 227.83,-3788.71 233.83,-3788.71 239.83,-3794.71 239.83,-3800.71 239.83,-3800.71 239.83,-3821.29 239.83,-3821.29 239.83,-3827.29 233.83,-3833.29 227.83,-3833.29" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3814.95" font-family="Times New Roman" font-size="14.00">N16</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3797.7" font-family="Times New Roman" font-size="14.00">Whole-school aspect ratio</text>
+<title>N16 | elong_macro_school_aspect_ratio
+Whole-school aspect ratio
+Scale: macro | Phenomenon: school_elongation
+Definition: Let lambda1&gt;=lambda2 be eigenvalues of the covariance of all fish positions at (r,t). Indicator=sqrt(lambda1/lambda2).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_elong_macro_anisotropy_index" class="inspectable" tabindex="0" data-node-id="elong_macro_anisotropy_index">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M223.33,-3905.91C223.33,-3905.91 83.68,-3905.91 83.68,-3905.91 77.68,-3905.91 71.68,-3899.91 71.68,-3893.91 71.68,-3893.91 71.68,-3856.09 71.68,-3856.09 71.68,-3850.09 77.68,-3844.09 83.68,-3844.09 83.68,-3844.09 223.33,-3844.09 223.33,-3844.09 229.33,-3844.09 235.33,-3850.09 235.33,-3856.09 235.33,-3856.09 235.33,-3893.91 235.33,-3893.91 235.33,-3899.91 229.33,-3905.91 223.33,-3905.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3887.57" font-family="Times New Roman" font-size="14.00">N17</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3870.32" font-family="Times New Roman" font-size="14.00">Whole-school anisotropy</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3853.07" font-family="Times New Roman" font-size="14.00">index</text>
+<title>N17 | elong_macro_anisotropy_index
+Whole-school anisotropy index
+Scale: macro | Phenomenon: school_elongation
+Definition: Indicator=(lambda1-lambda2)/(lambda1+lambda2) for lambda1&gt;=lambda2&gt;0.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_elong_macro_major_escape_alignment" class="inspectable" tabindex="0" data-node-id="elong_macro_major_escape_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M224.08,-3978.91C224.08,-3978.91 82.93,-3978.91 82.93,-3978.91 76.93,-3978.91 70.93,-3972.91 70.93,-3966.91 70.93,-3966.91 70.93,-3929.09 70.93,-3929.09 70.93,-3923.09 76.93,-3917.09 82.93,-3917.09 82.93,-3917.09 224.08,-3917.09 224.08,-3917.09 230.08,-3917.09 236.08,-3923.09 236.08,-3929.09 236.08,-3929.09 236.08,-3966.91 236.08,-3966.91 236.08,-3972.91 230.08,-3978.91 224.08,-3978.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3960.57" font-family="Times New Roman" font-size="14.00">N18</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3943.32" font-family="Times New Roman" font-size="14.00">Whole-school major-axis</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3926.07" font-family="Times New Roman" font-size="14.00">escape alignment</text>
+<title>N18 | elong_macro_major_escape_alignment
+Whole-school major-axis escape alignment
+Scale: macro | Phenomenon: school_elongation
+Definition: Let u1 be the whole-school major-axis unit vector. Let e=normalize(sum_i escape_direction_i) over fish with non-null escape_direction at (r,t). Indicator=|u1·e|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_macro_school_escape_coherence" class="inspectable" tabindex="0" data-node-id="wave_macro_school_escape_coherence">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M215.83,-4051.91C215.83,-4051.91 91.18,-4051.91 91.18,-4051.91 85.18,-4051.91 79.18,-4045.91 79.18,-4039.91 79.18,-4039.91 79.18,-4002.09 79.18,-4002.09 79.18,-3996.09 85.18,-3990.09 91.18,-3990.09 91.18,-3990.09 215.83,-3990.09 215.83,-3990.09 221.83,-3990.09 227.83,-3996.09 227.83,-4002.09 227.83,-4002.09 227.83,-4039.91 227.83,-4039.91 227.83,-4045.91 221.83,-4051.91 215.83,-4051.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4033.57" font-family="Times New Roman" font-size="14.00">N25</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4016.32" font-family="Times New Roman" font-size="14.00">Whole-school escape-</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-3999.07" font-family="Times New Roman" font-size="14.00">direction coherence</text>
+<title>N25 | wave_macro_school_escape_coherence
+Whole-school escape-direction coherence
+Scale: macro | Phenomenon: coordinated_escape_wave
+Definition: Indicator=|sum_i e_i|/n, over fish with non-null escape_direction at (r,t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_macro_heading_change_shark_cov" class="inspectable" tabindex="0" data-node-id="wave_macro_heading_change_shark_cov">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M241.71,-4124.91C241.71,-4124.91 65.31,-4124.91 65.31,-4124.91 59.31,-4124.91 53.31,-4118.91 53.31,-4112.91 53.31,-4112.91 53.31,-4075.09 53.31,-4075.09 53.31,-4069.09 59.31,-4063.09 65.31,-4063.09 65.31,-4063.09 241.71,-4063.09 241.71,-4063.09 247.71,-4063.09 253.71,-4069.09 253.71,-4075.09 253.71,-4075.09 253.71,-4112.91 253.71,-4112.91 253.71,-4118.91 247.71,-4124.91 241.71,-4124.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4106.57" font-family="Times New Roman" font-size="14.00">N26</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4089.32" font-family="Times New Roman" font-size="14.00">Heading-change magnitude vs</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4072.07" font-family="Times New Roman" font-size="14.00">shark proximity covariance</text>
+<title>N26 | wave_macro_heading_change_shark_cov
+Heading-change magnitude vs shark proximity covariance
+Scale: macro | Phenomenon: coordinated_escape_wave
+Definition: For fish i at (r,t) with d_i&gt;0, let x_i=|Delta theta_i| and y_i=1/d_i. Indicator=(1/n) sum_i (x_i-mean x)(y_i-mean y).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_wave_macro_escape_coherence_change" class="inspectable" tabindex="0" data-node-id="wave_macro_escape_coherence_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M233.08,-4197.91C233.08,-4197.91 73.93,-4197.91 73.93,-4197.91 67.93,-4197.91 61.93,-4191.91 61.93,-4185.91 61.93,-4185.91 61.93,-4148.09 61.93,-4148.09 61.93,-4142.09 67.93,-4136.09 73.93,-4136.09 73.93,-4136.09 233.08,-4136.09 233.08,-4136.09 239.08,-4136.09 245.08,-4142.09 245.08,-4148.09 245.08,-4148.09 245.08,-4185.91 245.08,-4185.91 245.08,-4191.91 239.08,-4197.91 233.08,-4197.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4179.57" font-family="Times New Roman" font-size="14.00">N27</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4162.32" font-family="Times New Roman" font-size="14.00">Step change in school</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4145.07" font-family="Times New Roman" font-size="14.00">escape-direction coherence</text>
+<title>N27 | wave_macro_escape_coherence_change
+Step change in school escape-direction coherence
+Scale: macro | Phenomenon: coordinated_escape_wave
+Definition: Indicator(t)=R(t)-R(t-1), where R(t)=|sum_i e_i(t)|/n(t) over non-null escape directions.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_fright_macro_school_prevalence" class="inspectable" tabindex="0" data-node-id="fright_macro_school_prevalence">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M207.96,-4270.91C207.96,-4270.91 99.06,-4270.91 99.06,-4270.91 93.06,-4270.91 87.06,-4264.91 87.06,-4258.91 87.06,-4258.91 87.06,-4221.09 87.06,-4221.09 87.06,-4215.09 93.06,-4209.09 99.06,-4209.09 99.06,-4209.09 207.96,-4209.09 207.96,-4209.09 213.96,-4209.09 219.96,-4215.09 219.96,-4221.09 219.96,-4221.09 219.96,-4258.91 219.96,-4258.91 219.96,-4264.91 213.96,-4270.91 207.96,-4270.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4252.57" font-family="Times New Roman" font-size="14.00">N34</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4235.32" font-family="Times New Roman" font-size="14.00">Whole-school fright</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4218.07" font-family="Times New Roman" font-size="14.00">prevalence</text>
+<title>N34 | fright_macro_school_prevalence
+Whole-school fright prevalence
+Scale: macro | Phenomenon: fright_contagion_wave
+Definition: Indicator=(1/N_t) sum_i 1[fright_i(t)&gt;0] over all fish i.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_fright_macro_school_fright_edge_fraction" class="inspectable" tabindex="0" data-node-id="fright_macro_school_fright_edge_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M240.58,-4343.91C240.58,-4343.91 66.43,-4343.91 66.43,-4343.91 60.43,-4343.91 54.43,-4337.91 54.43,-4331.91 54.43,-4331.91 54.43,-4294.09 54.43,-4294.09 54.43,-4288.09 60.43,-4282.09 66.43,-4282.09 66.43,-4282.09 240.58,-4282.09 240.58,-4282.09 246.58,-4282.09 252.58,-4288.09 252.58,-4294.09 252.58,-4294.09 252.58,-4331.91 252.58,-4331.91 252.58,-4337.91 246.58,-4343.91 240.58,-4343.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4325.57" font-family="Times New Roman" font-size="14.00">N35</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4308.32" font-family="Times New Roman" font-size="14.00">Whole-school frightened-edge</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4291.07" font-family="Times New Roman" font-size="14.00">fraction</text>
+<title>N35 | fright_macro_school_fright_edge_fraction
+Whole-school frightened-edge fraction
+Scale: macro | Phenomenon: fright_contagion_wave
+Definition: Indicator=|{(i,j) in E_t: fright_i&gt;0 and fright_j&gt;0}|/|E_t|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_fright_macro_onset_rate" class="inspectable" tabindex="0" data-node-id="fright_macro_onset_rate">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M199.71,-4399.29C199.71,-4399.29 107.31,-4399.29 107.31,-4399.29 101.31,-4399.29 95.31,-4393.29 95.31,-4387.29 95.31,-4387.29 95.31,-4366.71 95.31,-4366.71 95.31,-4360.71 101.31,-4354.71 107.31,-4354.71 107.31,-4354.71 199.71,-4354.71 199.71,-4354.71 205.71,-4354.71 211.71,-4360.71 211.71,-4366.71 211.71,-4366.71 211.71,-4387.29 211.71,-4387.29 211.71,-4393.29 205.71,-4399.29 199.71,-4399.29" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4380.95" font-family="Times New Roman" font-size="14.00">N36</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4363.7" font-family="Times New Roman" font-size="14.00">Fright onset rate</text>
+<title>N36 | fright_macro_onset_rate
+Fright onset rate
+Scale: macro | Phenomenon: fright_contagion_wave
+Definition: Indicator=|{i: fright_i(t)&gt;0 and fright_i(t-1)=0}|/N_t^defined.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_macro_school_polarization" class="inspectable" tabindex="0" data-node-id="pol_macro_school_polarization">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M215.83,-4471.91C215.83,-4471.91 91.18,-4471.91 91.18,-4471.91 85.18,-4471.91 79.18,-4465.91 79.18,-4459.91 79.18,-4459.91 79.18,-4422.09 79.18,-4422.09 79.18,-4416.09 85.18,-4410.09 91.18,-4410.09 91.18,-4410.09 215.83,-4410.09 215.83,-4410.09 221.83,-4410.09 227.83,-4416.09 227.83,-4422.09 227.83,-4422.09 227.83,-4459.91 227.83,-4459.91 227.83,-4465.91 221.83,-4471.91 215.83,-4471.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4453.57" font-family="Times New Roman" font-size="14.00">N43</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4436.32" font-family="Times New Roman" font-size="14.00">Whole-school heading</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4419.07" font-family="Times New Roman" font-size="14.00">polarization</text>
+<title>N43 | pol_macro_school_polarization
+Whole-school heading polarization
+Scale: macro | Phenomenon: threat_induced_polarization
+Definition: Indicator=sqrt((sum_i cos theta_i)^2+(sum_i sin theta_i)^2)/N_t.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_macro_polarization_proximity_cov" class="inspectable" tabindex="0" data-node-id="pol_macro_polarization_proximity_cov">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M222.96,-4561.54C222.96,-4561.54 84.06,-4561.54 84.06,-4561.54 78.06,-4561.54 72.06,-4555.54 72.06,-4549.54 72.06,-4549.54 72.06,-4494.46 72.06,-4494.46 72.06,-4488.46 78.06,-4482.46 84.06,-4482.46 84.06,-4482.46 222.96,-4482.46 222.96,-4482.46 228.96,-4482.46 234.96,-4488.46 234.96,-4494.46 234.96,-4494.46 234.96,-4549.54 234.96,-4549.54 234.96,-4555.54 228.96,-4561.54 222.96,-4561.54" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4543.2" font-family="Times New Roman" font-size="14.00">N44</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4525.95" font-family="Times New Roman" font-size="14.00">Run-level polarization vs</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4508.7" font-family="Times New Roman" font-size="14.00">mean shark proximity</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4491.45" font-family="Times New Roman" font-size="14.00">covariance</text>
+<title>N44 | pol_macro_polarization_proximity_cov
+Run-level polarization vs mean shark proximity covariance
+Scale: macro | Phenomenon: threat_induced_polarization
+Definition: Let R(t) be school polarization and q(t)=(1/N_t) sum_i 1/d_i(t). Indicator=(1/T) sum_t (R(t)-mean R)(q(t)-mean q) over steps with both defined.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_pol_macro_polarization_change" class="inspectable" tabindex="0" data-node-id="pol_macro_polarization_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M236.08,-4633.91C236.08,-4633.91 70.93,-4633.91 70.93,-4633.91 64.93,-4633.91 58.93,-4627.91 58.93,-4621.91 58.93,-4621.91 58.93,-4584.09 58.93,-4584.09 58.93,-4578.09 64.93,-4572.09 70.93,-4572.09 70.93,-4572.09 236.08,-4572.09 236.08,-4572.09 242.08,-4572.09 248.08,-4578.09 248.08,-4584.09 248.08,-4584.09 248.08,-4621.91 248.08,-4621.91 248.08,-4627.91 242.08,-4633.91 236.08,-4633.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4615.57" font-family="Times New Roman" font-size="14.00">N45</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4598.32" font-family="Times New Roman" font-size="14.00">Step change in whole-school</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4581.07" font-family="Times New Roman" font-size="14.00">polarization</text>
+<title>N45 | pol_macro_polarization_change
+Step change in whole-school polarization
+Scale: macro | Phenomenon: threat_induced_polarization
+Definition: Indicator(t)=R(t)-R(t-1), where R(t) is the whole-school heading polarization.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_macro_school_mean_degree" class="inspectable" tabindex="0" data-node-id="comp_macro_school_mean_degree">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M233.83,-4706.91C233.83,-4706.91 73.18,-4706.91 73.18,-4706.91 67.18,-4706.91 61.18,-4700.91 61.18,-4694.91 61.18,-4694.91 61.18,-4657.09 61.18,-4657.09 61.18,-4651.09 67.18,-4645.09 73.18,-4645.09 73.18,-4645.09 233.83,-4645.09 233.83,-4645.09 239.83,-4645.09 245.83,-4651.09 245.83,-4657.09 245.83,-4657.09 245.83,-4694.91 245.83,-4694.91 245.83,-4700.91 239.83,-4706.91 233.83,-4706.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4688.57" font-family="Times New Roman" font-size="14.00">N52</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4671.32" font-family="Times New Roman" font-size="14.00">Whole-school mean contact</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4654.07" font-family="Times New Roman" font-size="14.00">degree</text>
+<title>N52 | comp_macro_school_mean_degree
+Whole-school mean contact degree
+Scale: macro | Phenomenon: local_compaction
+Definition: Indicator=(1/N_t) sum_i k_i(t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_macro_school_clustering" class="inspectable" tabindex="0" data-node-id="comp_macro_school_clustering">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M211.71,-4779.91C211.71,-4779.91 95.31,-4779.91 95.31,-4779.91 89.31,-4779.91 83.31,-4773.91 83.31,-4767.91 83.31,-4767.91 83.31,-4730.09 83.31,-4730.09 83.31,-4724.09 89.31,-4718.09 95.31,-4718.09 95.31,-4718.09 211.71,-4718.09 211.71,-4718.09 217.71,-4718.09 223.71,-4724.09 223.71,-4730.09 223.71,-4730.09 223.71,-4767.91 223.71,-4767.91 223.71,-4773.91 217.71,-4779.91 211.71,-4779.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4761.57" font-family="Times New Roman" font-size="14.00">N53</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4744.32" font-family="Times New Roman" font-size="14.00">Whole-school global</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4727.07" font-family="Times New Roman" font-size="14.00">clustering coefficient</text>
+<title>N53 | comp_macro_school_clustering
+Whole-school global clustering coefficient
+Scale: macro | Phenomenon: local_compaction
+Definition: Indicator=3T_t/Q_t, where T_t is the number of triangles and Q_t the number of connected triples in G_t.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_macro_school_mean_nearest_distance" class="inspectable" tabindex="0" data-node-id="comp_macro_school_mean_nearest_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M236.83,-4852.91C236.83,-4852.91 70.18,-4852.91 70.18,-4852.91 64.18,-4852.91 58.18,-4846.91 58.18,-4840.91 58.18,-4840.91 58.18,-4803.09 58.18,-4803.09 58.18,-4797.09 64.18,-4791.09 70.18,-4791.09 70.18,-4791.09 236.83,-4791.09 236.83,-4791.09 242.83,-4791.09 248.83,-4797.09 248.83,-4803.09 248.83,-4803.09 248.83,-4840.91 248.83,-4840.91 248.83,-4846.91 242.83,-4852.91 236.83,-4852.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4834.57" font-family="Times New Roman" font-size="14.00">N54</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4817.32" font-family="Times New Roman" font-size="14.00">Whole-school mean nearest-</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4800.07" font-family="Times New Roman" font-size="14.00">contact distance</text>
+<title>N54 | comp_macro_school_mean_nearest_distance
+Whole-school mean nearest-contact distance
+Scale: macro | Phenomenon: local_compaction
+Definition: Indicator=(1/N_t^c) sum_i min_{j in N_i(t)} ||p_i-p_j|| over fish with N_i(t) nonempty.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_macro_school_angular_velocity" class="inspectable" tabindex="0" data-node-id="mill_macro_school_angular_velocity">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M234.21,-4925.91C234.21,-4925.91 72.81,-4925.91 72.81,-4925.91 66.81,-4925.91 60.81,-4919.91 60.81,-4913.91 60.81,-4913.91 60.81,-4876.09 60.81,-4876.09 60.81,-4870.09 66.81,-4864.09 72.81,-4864.09 72.81,-4864.09 234.21,-4864.09 234.21,-4864.09 240.21,-4864.09 246.21,-4870.09 246.21,-4876.09 246.21,-4876.09 246.21,-4913.91 246.21,-4913.91 246.21,-4919.91 240.21,-4925.91 234.21,-4925.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4907.57" font-family="Times New Roman" font-size="14.00">N61</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4890.32" font-family="Times New Roman" font-size="14.00">Whole-school mean angular</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4873.07" font-family="Times New Roman" font-size="14.00">velocity</text>
+<title>N61 | mill_macro_school_angular_velocity
+Whole-school mean angular velocity
+Scale: macro | Phenomenon: vortex_milling
+Definition: Indicator=(1/N_t) sum_i ((p_i-c)_x v_i_y-(p_i-c)_y v_i_x)/||p_i-c||^2.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_macro_school_rotational_order" class="inspectable" tabindex="0" data-node-id="mill_macro_school_rotational_order">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M220.71,-4998.91C220.71,-4998.91 86.31,-4998.91 86.31,-4998.91 80.31,-4998.91 74.31,-4992.91 74.31,-4986.91 74.31,-4986.91 74.31,-4949.09 74.31,-4949.09 74.31,-4943.09 80.31,-4937.09 86.31,-4937.09 86.31,-4937.09 220.71,-4937.09 220.71,-4937.09 226.71,-4937.09 232.71,-4943.09 232.71,-4949.09 232.71,-4949.09 232.71,-4986.91 232.71,-4986.91 232.71,-4992.91 226.71,-4998.91 220.71,-4998.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4980.57" font-family="Times New Roman" font-size="14.00">N62</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4963.32" font-family="Times New Roman" font-size="14.00">Whole-school rotational</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-4946.07" font-family="Times New Roman" font-size="14.00">order</text>
+<title>N62 | mill_macro_school_rotational_order
+Whole-school rotational order
+Scale: macro | Phenomenon: vortex_milling
+Definition: Let t_i=(-(p_i-c)_y,(p_i-c)_x)/||p_i-c||. Indicator=||(1/N_t) sum_i t_i||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_mill_macro_school_angular_momentum" class="inspectable" tabindex="0" data-node-id="mill_macro_school_angular_momentum">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M234.21,-5071.91C234.21,-5071.91 72.81,-5071.91 72.81,-5071.91 66.81,-5071.91 60.81,-5065.91 60.81,-5059.91 60.81,-5059.91 60.81,-5022.09 60.81,-5022.09 60.81,-5016.09 66.81,-5010.09 72.81,-5010.09 72.81,-5010.09 234.21,-5010.09 234.21,-5010.09 240.21,-5010.09 246.21,-5016.09 246.21,-5022.09 246.21,-5022.09 246.21,-5059.91 246.21,-5059.91 246.21,-5065.91 240.21,-5071.91 234.21,-5071.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5053.57" font-family="Times New Roman" font-size="14.00">N63</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5036.32" font-family="Times New Roman" font-size="14.00">Whole-school mean angular</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5019.07" font-family="Times New Roman" font-size="14.00">momentum</text>
+<title>N63 | mill_macro_school_angular_momentum
+Whole-school mean angular momentum
+Scale: macro | Phenomenon: vortex_milling
+Definition: Indicator=(1/N_t) sum_i ((p_i-c)_x v_i_y-(p_i-c)_y v_i_x).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_macro_school_lagged_alignment" class="inspectable" tabindex="0" data-node-id="lead_macro_school_lagged_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M231.58,-5144.91C231.58,-5144.91 75.43,-5144.91 75.43,-5144.91 69.43,-5144.91 63.43,-5138.91 63.43,-5132.91 63.43,-5132.91 63.43,-5095.09 63.43,-5095.09 63.43,-5089.09 69.43,-5083.09 75.43,-5083.09 75.43,-5083.09 231.58,-5083.09 231.58,-5083.09 237.58,-5083.09 243.58,-5089.09 243.58,-5095.09 243.58,-5095.09 243.58,-5132.91 243.58,-5132.91 243.58,-5138.91 237.58,-5144.91 231.58,-5144.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5126.57" font-family="Times New Roman" font-size="14.00">N70</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5109.32" font-family="Times New Roman" font-size="14.00">Whole-school mean lagged</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5092.07" font-family="Times New Roman" font-size="14.00">heading-change alignment</text>
+<title>N70 | lead_macro_school_lagged_alignment
+Whole-school mean lagged heading-change alignment
+Scale: macro | Phenomenon: leader_follower_cascade
+Definition: Indicator=(1/N_t^d) sum_i cos(Delta theta_i(t)-m_i(t-1)) over fish with defined lagged alignment.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_macro_school_cascade_fraction" class="inspectable" tabindex="0" data-node-id="lead_macro_school_cascade_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M233.08,-5217.91C233.08,-5217.91 73.93,-5217.91 73.93,-5217.91 67.93,-5217.91 61.93,-5211.91 61.93,-5205.91 61.93,-5205.91 61.93,-5168.09 61.93,-5168.09 61.93,-5162.09 67.93,-5156.09 73.93,-5156.09 73.93,-5156.09 233.08,-5156.09 233.08,-5156.09 239.08,-5156.09 245.08,-5162.09 245.08,-5168.09 245.08,-5168.09 245.08,-5205.91 245.08,-5205.91 245.08,-5211.91 239.08,-5217.91 233.08,-5217.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5199.57" font-family="Times New Roman" font-size="14.00">N71</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5182.32" font-family="Times New Roman" font-size="14.00">Whole-school sign-matched</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5165.07" font-family="Times New Roman" font-size="14.00">cascade fraction</text>
+<title>N71 | lead_macro_school_cascade_fraction
+Whole-school sign-matched cascade fraction
+Scale: macro | Phenomenon: leader_follower_cascade
+Definition: Let M(t-1)=mean_j Delta theta_j(t-1). Indicator=(1/N_t) sum_i 1[sign(Delta theta_i(t))=sign(M(t-1))].
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_lead_macro_school_influence_variance" class="inspectable" tabindex="0" data-node-id="lead_macro_school_influence_variance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M238.33,-5290.91C238.33,-5290.91 68.68,-5290.91 68.68,-5290.91 62.68,-5290.91 56.68,-5284.91 56.68,-5278.91 56.68,-5278.91 56.68,-5241.09 56.68,-5241.09 56.68,-5235.09 62.68,-5229.09 68.68,-5229.09 68.68,-5229.09 238.33,-5229.09 238.33,-5229.09 244.33,-5229.09 250.33,-5235.09 250.33,-5241.09 250.33,-5241.09 250.33,-5278.91 250.33,-5278.91 250.33,-5284.91 244.33,-5290.91 238.33,-5290.91" />
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5272.57" font-family="Times New Roman" font-size="14.00">N72</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5255.32" font-family="Times New Roman" font-size="14.00">Whole-school influence-score</text>
+<text xml:space="preserve" text-anchor="middle" x="153.51" y="-5238.07" font-family="Times New Roman" font-size="14.00">variance</text>
+<title>N72 | lead_macro_school_influence_variance
+Whole-school influence-score variance
+Scale: macro | Phenomenon: leader_follower_cascade
+Definition: Indicator=(1/M) sum_i (s_i-mean_j s_j)^2 over fish i with defined run-level influence score s_i.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

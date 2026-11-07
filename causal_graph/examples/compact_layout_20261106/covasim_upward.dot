@@ -1,0 +1,31 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Covasim | upward</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">6 nodes / 7 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"sic_micro_prior_setting_degree" [id="node_sic_micro_prior_setting_degree", label="N1\nNewly infected agent prior\nsame-setting contact degree\n[not executable]", style="rounded,filled,dashed", fillcolor="#f2f2f2"];
+"icts_micro_quarantine_contact_ratio" [id="node_icts_micro_quarantine_contact_ratio", label="N4\nAgent contact-degree ratio\naround quarantine onset\n[not executable]", style="rounded,filled,dashed", fillcolor="#f2f2f2"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"sic_meso_layer_infection_contact_ratio" [id="node_sic_meso_layer_infection_contact_ratio", label="N2\nLayer-specific infection\nevents per contact edge\n[not executable]", style="rounded,filled,dashed", fillcolor="#f2f2f2"];
+"icts_meso_layer_contact_change" [id="node_icts_meso_layer_contact_change", label="N5\nLayer contact-volume change\naround quarantine-count\nincrease", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"sic_macro_layer_entropy" [id="node_sic_macro_layer_entropy", label="N3\nCity infection-event layer\nentropy", style="rounded,filled", fillcolor="white"];
+"icts_macro_city_contact_change_on_quarantine_increase" [id="node_icts_macro_city_contact_change_on_quarantine_increase", label="N6\nCity contact-volume change\non quarantine-increase steps", style="rounded,filled", fillcolor="white"];
+}
+"sic_micro_prior_setting_degree" -> "sic_meso_layer_infection_contact_ratio" [id="edge_upward__edge_sic_micro_degree_to_meso_layer_ratio", color="#27667b", style="solid", constraint=true];
+"icts_micro_quarantine_contact_ratio" -> "icts_meso_layer_contact_change" [id="edge_upward__edge_icts_micro_quarantine_ratio_to_meso_layer_contact_change", color="#27667b", style="solid", constraint=true];
+"sic_meso_layer_infection_contact_ratio" -> "sic_macro_layer_entropy" [id="edge_upward__edge_sic_meso_layer_ratio_to_macro_layer_entropy", color="#27667b", style="solid", constraint=true];
+"icts_meso_layer_contact_change" -> "sic_macro_layer_entropy" [id="edge_upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy", color="#27667b", style="solid", constraint=true];
+"sic_micro_prior_setting_degree" -> "sic_macro_layer_entropy" [id="edge_upward__edge_sic_micro_degree_to_macro_layer_entropy", color="#27667b", style="solid", constraint=true];
+"icts_micro_quarantine_contact_ratio" -> "icts_macro_city_contact_change_on_quarantine_increase" [id="edge_upward__edge_icts_micro_quarantine_ratio_to_macro_city_contact_change", color="#27667b", style="solid", constraint=true];
+"icts_micro_quarantine_contact_ratio" -> "sic_meso_layer_infection_contact_ratio" [id="edge_upward__edge_icts_micro_quarantine_ratio_to_meso_layer_infection_ratio", color="#27667b", style="solid", constraint=true];
+}

@@ -1,0 +1,99 @@
+{
+  "checked_at": "2026-11-07T07:08:10.740416+00:00",
+  "scope": "real LLM candidate generation only; no new indicator execution or causal testing",
+  "scenes": {
+    "fish": {
+      "phenomena": 8,
+      "variables": 72,
+      "scales": {
+        "micro": 24,
+        "meso": 24,
+        "macro": 24
+      },
+      "candidate_edges": 495,
+      "directions": {
+        "upward": 172,
+        "downward": 116,
+        "intra_scale": 207
+      },
+      "cross_phenomenon_edges": 337,
+      "isolated_variables": 0,
+      "largest_strong_component": 66,
+      "directed_edge_density": 0.09683098591549295,
+      "implemented_source_functions": 72,
+      "new_functions_executed": 0,
+      "executable_nodes": 0,
+      "model_responses_by_task": {
+        "codes": 9,
+        "edges_downward": 5,
+        "edges_intrascale": 4,
+        "edges_upward": 8,
+        "indicators": 1,
+        "phenomena": 1
+      },
+      "recorded_token_usage": {
+        "prompt_tokens": 421226,
+        "completion_tokens": 453974,
+        "total_tokens": 875200
+      },
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "failed_original_attempts_by_task": {
+        "edges_upward": 5,
+        "codes": 3,
+        "edges_downward": 1
+      },
+      "required_data_drift_warnings": 17,
+      "candidate_sha256": "4f2f8d074fd7055c04db781ded92e878296c380198171bf5ff90642c70faf52f"
+    },
+    "covasim": {
+      "phenomena": 8,
+      "variables": 67,
+      "scales": {
+        "micro": 21,
+        "meso": 21,
+        "macro": 25
+      },
+      "candidate_edges": 454,
+      "directions": {
+        "upward": 98,
+        "downward": 121,
+        "intra_scale": 235
+      },
+      "cross_phenomenon_edges": 322,
+      "isolated_variables": 0,
+      "largest_strong_component": 63,
+      "directed_edge_density": 0.10266847580280417,
+      "implemented_source_functions": 67,
+      "new_functions_executed": 0,
+      "executable_nodes": 0,
+      "model_responses_by_task": {
+        "codes": 9,
+        "edges_downward": 4,
+        "edges_intrascale": 5,
+        "edges_upward": 7,
+        "indicators": 2,
+        "phenomena": 1
+      },
+      "recorded_token_usage": {
+        "prompt_tokens": 426807,
+        "completion_tokens": 468103,
+        "total_tokens": 894910
+      },
+      "response_models": [
+        "deepseek-flash"
+      ],
+      "failed_original_attempts_by_task": {
+        "edges_upward": 4,
+        "indicators": 1,
+        "codes": 3,
+        "edges_intrascale": 1
+      },
+      "required_data_drift_warnings": 41,
+      "candidate_sha256": "97f85c43fc32dc1d61ef242be96c54dd03a162dc83f01dac9d6944b4ee66cace"
+    }
+  },
+  "visualization_views": 30,
+  "original_results_unchanged": true
+}

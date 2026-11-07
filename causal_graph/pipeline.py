@@ -17,7 +17,7 @@ from .inputs import inspect_runs, assert_unchanged
 from .data_schema import build_data_schema
 from .io import digest, now, object_digest, read_json, save_json
 from .llm_client import LLMClient
-from .prompts import TEMPLATE_VERSION
+from .prompts import template_version
 from .schemas import SCHEMAS, GRAPH_SCHEMA, EXECUTABLE_SCHEMA
 
 
@@ -48,9 +48,11 @@ def software_provenance():
 
 
 def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=False,
-                 generate_only=False, approvals=None, execute_only=False):
+                 generate_only=False, approvals=None, execute_only=False, resume_source_upgrade=False):
     if execute_only and (not resume or generate_only):
         raise ValueError('execute_only requires resume and cannot be combined with generate_only')
+    if resume_source_upgrade and (not resume or not generate_only):
+        raise ValueError('Source-upgrade resume requires an existing generate-only experiment')
     output = Path(output).resolve()
     if any(output.is_relative_to(Path(p).resolve()) or Path(p).resolve().is_relative_to(output) for p in paths):
         raise ValueError('Experiment output and input run directories must be disjoint')
@@ -72,6 +74,8 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
     client = client or LLMClient(llm_config)
     if execute_only:
         client = _CachedOnlyClient(client.mode)
+    if resume_source_upgrade:
+        client.revalidate_saved = True
     metadata = None
 
     def step(number, name, inputs, outputs, action):
@@ -100,9 +104,11 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
         # Execution mode may change only via explicit resume; generation identity cannot change.
         generation_settings = {k: asdict(settings)[k] for k in
                                ('max_phenomena', 'max_indicators', 'max_edges', 'generation_attempts')}
+        if settings.code_batch_size:
+            generation_settings['code_batch_size'] = settings.code_batch_size
         identity = {'inputs': [{k: r[k] for k in ('directory', 'data_hashes')} for r in runs],
                     'llm': llm_config.summary(), 'generation_settings': generation_settings,
-                    'prompt_version': TEMPLATE_VERSION, 'source_sha256': software['source_sha256'],
+                    'prompt_version': template_version(settings), 'source_sha256': software['source_sha256'],
                     'client_mode': client.mode, 'data_schema_sha256': object_digest(data_schema)}
         save_json(invocation / 'proposed_identity.json', identity)
         if resume:
@@ -111,9 +117,9 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
                 raise ValueError('Stored generation identity hash mismatch')
             expected = metadata['identity']
             comparison = identity
-            if execute_only:
-                # Generation provenance stays immutable. A new execution implementation
-                # may consume the exact old hypotheses, never regenerate them.
+            if execute_only or resume_source_upgrade:
+                # Keep original provenance; explicit upgrades record a separate software
+                # snapshot while all input/model/config/prompt/schema identities still match.
                 expected = {k: v for k, v in expected.items() if k != 'source_sha256'}
                 comparison = {k: v for k, v in identity.items() if k != 'source_sha256'}
             if object_digest(expected) != object_digest(comparison):
@@ -122,6 +128,11 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
                 original_graph = read_json(output / 'candidate_graph.json')
                 save_json(invocation / 'input_candidate_graph.json', original_graph)
                 save_json(invocation / 'execution_software.json', software)
+            if resume_source_upgrade:
+                save_json(invocation / 'generation_source_upgrade.json', {
+                    'original_source_sha256': metadata['identity']['source_sha256'],
+                    'current_software': software, 'revalidate_original_code_responses': True,
+                    'unchanged_contract': 'inputs/model/config/prompt/schema identities and original response hashes'})
         else:
             manifest = runs[0]['manifest']
             metadata = {'experiment_id': uuid.uuid4().hex, 'started_at': now(), 'status': 'running',
@@ -139,7 +150,8 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
         save_json(output / 'schemas.json', {'generation': SCHEMAS, 'candidate_graph': GRAPH_SCHEMA,
                                           'executable_graph': EXECUTABLE_SCHEMA})
         save_json(invocation / 'settings.json', {'pipeline': asdict(settings), 'generate_only': generate_only,
-                                               'execute_only': execute_only, 'review': approvals})
+                                               'execute_only': execute_only, 'resume_source_upgrade': resume_source_upgrade,
+                                               'review': approvals})
         context, calls = {'data_schema': data_schema}, {}
         tasks = ((3, 'phenomena', identify_phenomena), (4, 'indicators', define_indicators),
                  (5, 'codes', generate_codes), (6, 'edges_upward', propose_upward_edges),
@@ -152,6 +164,9 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
                                 lambda fn=action: fn(runs[0]['scenario_text'], context, settings, client, output))
             if name.startswith('edges_'):
                 context[name] = parsed['edges']
+                assembly = output / call / 'assembly.json'
+                if assembly.is_file():
+                    context.setdefault('edge_origins', {})[name] = read_json(assembly)['edge_origins']
             else:
                 context.update(parsed)
             calls[name] = call

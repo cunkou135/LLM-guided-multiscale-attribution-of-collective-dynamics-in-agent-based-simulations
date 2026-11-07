@@ -1,0 +1,2018 @@
+{
+  "valid": true,
+  "checks": [
+    "JSON Schema 2.0",
+    "unique node IDs/names",
+    "references",
+    "three scale directions",
+    "no self loops",
+    "feedback and isolated nodes retained",
+    "observed fields",
+    "function signatures",
+    "Python syntax",
+    "static access and runtime projection"
+  ],
+  "generation_calls": {
+    "phenomena": "generation/phenomena/attempt_000",
+    "indicators": "generation/indicators/attempt_000",
+    "codes": "generation/codes/local_batch_assembly",
+    "edges_upward": "generation/edges_upward/local_batch_assembly",
+    "edges_downward": "generation/edges_downward/local_batch_assembly",
+    "edges_intrascale": "generation/edges_intrascale/local_batch_assembly"
+  },
+  "stage_reports": {
+    "phenomena": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "indicators": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "codes": {
+      "valid": true,
+      "errors": [],
+      "warnings": [
+        {
+          "indicator_id": "elong_macro_school_aspect_ratio",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "role",
+              "x",
+              "y"
+            ]
+          }
+        },
+        {
+          "indicator_id": "elong_macro_anisotropy_index",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "role",
+              "x",
+              "y"
+            ]
+          }
+        },
+        {
+          "indicator_id": "elong_macro_major_escape_alignment",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ],
+            "events": [
+              "run_id",
+              "step",
+              "agent_id",
+              "decision_json"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "role",
+              "x",
+              "y"
+            ],
+            "events": [
+              "run_id",
+              "step",
+              "decision_json"
+            ]
+          }
+        },
+        {
+          "indicator_id": "wave_meso_component_escape_coherence",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ],
+            "events": [
+              "run_id",
+              "step",
+              "agent_id",
+              "decision_json"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ],
+            "events": [
+              "run_id",
+              "step",
+              "agent_id",
+              "decision_json"
+            ]
+          }
+        },
+        {
+          "indicator_id": "wave_meso_component_turn_variance",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ],
+            "events": [
+              "run_id",
+              "step",
+              "agent_id",
+              "decision_json"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ],
+            "events": [
+              "run_id",
+              "step",
+              "agent_id",
+              "decision_json"
+            ]
+          }
+        },
+        {
+          "indicator_id": "wave_macro_school_escape_coherence",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role"
+            ],
+            "events": [
+              "run_id",
+              "step",
+              "agent_id",
+              "decision_json"
+            ]
+          },
+          "code_required": {
+            "events": [
+              "run_id",
+              "step",
+              "role",
+              "decision_json"
+            ]
+          }
+        },
+        {
+          "indicator_id": "wave_macro_escape_coherence_change",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role"
+            ],
+            "events": [
+              "run_id",
+              "step",
+              "agent_id",
+              "decision_json"
+            ]
+          },
+          "code_required": {
+            "events": [
+              "run_id",
+              "step",
+              "role",
+              "decision_json"
+            ]
+          }
+        },
+        {
+          "indicator_id": "pol_macro_polarization_proximity_cov",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "heading",
+              "x",
+              "y"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y",
+              "heading"
+            ]
+          }
+        },
+        {
+          "indicator_id": "comp_micro_degree",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          }
+        },
+        {
+          "indicator_id": "comp_micro_clustering_coefficient",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          }
+        },
+        {
+          "indicator_id": "comp_meso_component_edge_density",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          }
+        },
+        {
+          "indicator_id": "comp_meso_component_mean_degree",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          }
+        },
+        {
+          "indicator_id": "comp_macro_school_mean_degree",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          }
+        },
+        {
+          "indicator_id": "comp_macro_school_clustering",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role"
+            ],
+            "contacts": [
+              "run_id",
+              "step",
+              "agent_id",
+              "partner_id"
+            ]
+          }
+        },
+        {
+          "indicator_id": "mill_macro_school_angular_velocity",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y",
+              "vx",
+              "vy"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "role",
+              "x",
+              "y",
+              "vx",
+              "vy"
+            ]
+          }
+        },
+        {
+          "indicator_id": "mill_macro_school_rotational_order",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y",
+              "vx",
+              "vy"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "role",
+              "x",
+              "y"
+            ]
+          }
+        },
+        {
+          "indicator_id": "mill_macro_school_angular_momentum",
+          "type": "required_data_changed",
+          "definition_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "agent_id",
+              "role",
+              "x",
+              "y",
+              "vx",
+              "vy"
+            ]
+          },
+          "code_required": {
+            "agent_states": [
+              "run_id",
+              "step",
+              "role",
+              "x",
+              "y",
+              "vx",
+              "vy"
+            ]
+          }
+        }
+      ],
+      "code_contracts": {
+        "frag_micro_component_size": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "frag_micro_isolate": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "frag_micro_component_shark_distance": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "frag_meso_mean_component_size": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "frag_meso_component_size_entropy": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "frag_meso_centroid_pair_distance": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "frag_macro_component_count": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "frag_macro_largest_fraction": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "frag_macro_component_count_change": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_micro_major_projection": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_micro_mahalanobis_sq": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_micro_component_projection": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_macro_school_aspect_ratio": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_macro_anisotropy_index": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_macro_major_escape_alignment": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "events": [
+              "decision_json",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_meso_component_aspect_ratio": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_meso_component_axis_length": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "elong_meso_component_escape_alignment": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ],
+            "events": [
+              "agent_id",
+              "decision_json",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "wave_micro_escape_alignment": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "events": [
+              "agent_id",
+              "decision_json",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "wave_micro_requested_turn_abs": {
+          "errors": [],
+          "statically_observed_access": {
+            "events": [
+              "agent_id",
+              "decision_json",
+              "step"
+            ]
+          },
+          "unresolved_access": [],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "wave_micro_heading_change": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "wave_meso_component_escape_coherence": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ],
+            "events": [
+              "agent_id",
+              "decision_json",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "wave_meso_component_mean_escape_alignment": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ],
+            "events": [
+              "agent_id",
+              "decision_json",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "wave_meso_component_turn_variance": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ],
+            "events": [
+              "agent_id",
+              "decision_json",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "wave_macro_school_escape_coherence": {
+          "errors": [],
+          "statically_observed_access": {
+            "events": [
+              "decision_json",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "events: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "wave_macro_heading_change_shark_cov": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "wave_macro_escape_coherence_change": {
+          "errors": [],
+          "statically_observed_access": {
+            "events": [
+              "decision_json",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "events: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "fright_micro_state": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "fright",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "fright_micro_remaining": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "remaining",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "fright_micro_nearest_fright_distance": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "fright",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": []
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "fright_meso_component_prevalence": {
+          "errors": [],
+          "statically_observed_access": {
+            "contacts": [
+              "run_id",
+              "step"
+            ],
+            "agent_states": [
+              "agent_id",
+              "fright",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "fright_meso_component_fright_edge_fraction": {
+          "errors": [],
+          "statically_observed_access": {
+            "contacts": [
+              "run_id",
+              "step"
+            ],
+            "agent_states": [
+              "agent_id",
+              "fright",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "fright_meso_component_fright_position_corr": {
+          "errors": [],
+          "statically_observed_access": {
+            "contacts": [
+              "run_id",
+              "step"
+            ],
+            "agent_states": [
+              "agent_id",
+              "fright",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "fright_macro_school_prevalence": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "fright_macro_school_fright_edge_fraction": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "fright",
+              "run_id",
+              "step"
+            ],
+            "contacts": []
+          },
+          "unresolved_access": [],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "fright_macro_onset_rate": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "fright",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "pol_micro_heading_deviation": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "pol_micro_neighbor_alignment": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "pol_micro_shark_proximity": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "pol_meso_component_polarization": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection",
+            "contacts: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "pol_meso_component_mean_deviation": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection",
+            "contacts: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "pol_meso_component_away_shark_alignment": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection",
+            "contacts: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "pol_macro_school_polarization": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "pol_macro_polarization_proximity_cov": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "pol_macro_polarization_change": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "comp_micro_degree": {
+          "errors": [],
+          "statically_observed_access": {
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ],
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "comp_micro_nearest_contact_distance": {
+          "errors": [],
+          "statically_observed_access": {
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ],
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "comp_micro_clustering_coefficient": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection",
+            "contacts: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "comp_meso_component_edge_density": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "comp_meso_component_mean_degree": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "comp_meso_component_mean_nearest_distance": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "comp_macro_school_mean_degree": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "comp_macro_school_clustering": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "comp_macro_school_mean_nearest_distance": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "mill_micro_angular_velocity": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "vx",
+              "vy",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "mill_micro_tangential_speed": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "vx",
+              "vy",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "mill_micro_radial_velocity": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "vx",
+              "vy",
+              "x",
+              "y"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "mill_meso_component_angular_velocity": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "vx",
+              "vy",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "mill_meso_component_rotational_order": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "vx",
+              "vy",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "mill_meso_component_angular_momentum": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step",
+              "vx",
+              "vy",
+              "x",
+              "y"
+            ],
+            "contacts": [
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "mill_macro_school_angular_velocity": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "mill_macro_school_rotational_order": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "mill_macro_school_angular_momentum": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "lead_micro_lagged_alignment": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "lead_micro_influence_score": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "lead_micro_influence_percentile": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "lead_meso_component_lagged_alignment": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "lead_meso_component_cascade_fraction": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "lead_meso_component_influence_variance": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "lead_macro_school_lagged_alignment": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "lead_macro_school_cascade_fraction": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        },
+        "lead_macro_school_influence_variance": {
+          "errors": [],
+          "statically_observed_access": {
+            "agent_states": [
+              "agent_id",
+              "heading",
+              "role",
+              "run_id",
+              "step"
+            ],
+            "contacts": [
+              "agent_id",
+              "partner_id",
+              "run_id",
+              "step"
+            ]
+          },
+          "unresolved_access": [
+            "agent_states: dynamic indexing or boolean/positional selection"
+          ],
+          "runtime_enforcement": "Only declared table columns are supplied; static analysis is conservative, not proof of semantic correctness."
+        }
+      }
+    },
+    "edges_upward": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "edges_downward": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    },
+    "edges_intrascale": {
+      "valid": true,
+      "errors": [],
+      "warnings": [],
+      "code_contracts": {}
+    }
+  }
+}

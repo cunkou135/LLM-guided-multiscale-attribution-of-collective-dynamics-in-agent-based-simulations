@@ -1,0 +1,44 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Covasim | phenomenon_3</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">8 nodes / 18 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"p3_micro_household_degree" [id="node_p3_micro_household_degree", label="N16\nAgent degree in the\npersistent household layer", style="rounded,filled", fillcolor="white"];
+"p3_micro_attributed_exposure_flag" [id="node_p3_micro_attributed_exposure_flag", label="N17\nAgent source-attributed\nexposure indicator", style="rounded,filled", fillcolor="white"];
+"p3_micro_household_attributed_flag" [id="node_p3_micro_household_attributed_flag", label="N18\nAgent household-attributed\nexposure indicator", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"p3_meso_dyad_secondary_count" [id="node_p3_meso_dyad_secondary_count", label="N19\nHousehold dyad attributed\nsecondary exposure count", style="rounded,filled", fillcolor="white"];
+"p3_meso_dyad_secondary_dispersion" [id="node_p3_meso_dyad_secondary_dispersion", label="N20\nDispersion of attributed\nexposures across household\ndyads", style="rounded,filled", fillcolor="white"];
+"p3_meso_dyad_attack_fraction" [id="node_p3_meso_dyad_attack_fraction", label="N21\nFraction of household dyads\nwith any attributed exposure", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"p3_macro_household_attributed_fraction" [id="node_p3_macro_household_attributed_fraction", label="N22\nHousehold share of all\nobserved exposure\ntransitions", style="rounded,filled", fillcolor="white"];
+"p3_macro_dyad_attribution_gini" [id="node_p3_macro_dyad_attribution_gini", label="N23\nGini concentration of\nhousehold dyad attributed\nexposures", style="rounded,filled", fillcolor="white"];
+}
+"p3_micro_attributed_exposure_flag" -> "p3_meso_dyad_attack_fraction" [id="edge_upward__b00_r0007", color="#27667b", style="solid", constraint=true];
+"p3_micro_household_attributed_flag" -> "p3_meso_dyad_attack_fraction" [id="edge_upward__b01_r0013", color="#27667b", style="solid", constraint=true];
+"p3_micro_household_attributed_flag" -> "p3_meso_dyad_secondary_dispersion" [id="edge_upward__b01_r0014", color="#27667b", style="solid", constraint=true];
+"p3_micro_household_degree" -> "p3_meso_dyad_secondary_dispersion" [id="edge_upward__b03_r0002", color="#27667b", style="solid", constraint=true];
+"p3_meso_dyad_attack_fraction" -> "p3_micro_household_attributed_flag" [id="edge_downward__b00_r0003", color="#b3653b", style="dashed", constraint=false];
+"p3_macro_household_attributed_fraction" -> "p3_meso_dyad_secondary_count" [id="edge_downward__b01_r0002", color="#b3653b", style="dashed", constraint=false];
+"p3_macro_household_attributed_fraction" -> "p3_meso_dyad_attack_fraction" [id="edge_downward__b01_r0003", color="#b3653b", style="dashed", constraint=false];
+"p3_macro_household_attributed_fraction" -> "p3_micro_household_attributed_flag" [id="edge_downward__b01_r0004", color="#b3653b", style="dashed", constraint=false];
+"p3_meso_dyad_secondary_count" -> "p3_micro_household_attributed_flag" [id="edge_downward__b02_r0006", color="#b3653b", style="dashed", constraint=false];
+"p3_meso_dyad_secondary_count" -> "p3_micro_attributed_exposure_flag" [id="edge_downward__b02_r0007", color="#b3653b", style="dashed", constraint=false];
+"p3_macro_dyad_attribution_gini" -> "p3_micro_household_attributed_flag" [id="edge_downward__b02_r0011", color="#b3653b", style="dashed", constraint=false];
+"p3_macro_dyad_attribution_gini" -> "p3_micro_attributed_exposure_flag" [id="edge_downward__b02_r0012", color="#b3653b", style="dashed", constraint=false];
+"p3_macro_dyad_attribution_gini" -> "p3_meso_dyad_attack_fraction" [id="edge_downward__b02_r0014", color="#b3653b", style="dashed", constraint=false];
+"p3_meso_dyad_secondary_dispersion" -> "p3_micro_household_attributed_flag" [id="edge_downward__b03_r0002", color="#b3653b", style="dashed", constraint=false];
+"p3_meso_dyad_attack_fraction" -> "p3_meso_dyad_secondary_dispersion" [id="edge_intra_scale__b00_r0038", color="#6e648d", style="dotted", constraint=false];
+"p3_macro_household_attributed_fraction" -> "p3_macro_dyad_attribution_gini" [id="edge_intra_scale__b01_r0045", color="#6e648d", style="dotted", constraint=false];
+"p3_micro_household_degree" -> "p3_micro_household_attributed_flag" [id="edge_intra_scale__b03_r0005", color="#6e648d", style="dotted", constraint=false];
+"p3_meso_dyad_secondary_dispersion" -> "p3_meso_dyad_attack_fraction" [id="edge_intra_scale__b03_r0036", color="#6e648d", style="dotted", constraint=false];
+}

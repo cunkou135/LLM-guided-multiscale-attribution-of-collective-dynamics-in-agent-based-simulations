@@ -1,0 +1,257 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="999pt" height="1281pt" viewBox="0.00 0.00 999.00 1281.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 606.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-606.39 470.79,-606.39 470.79,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-572.5" font-family="Times New Roman" font-size="17.00">Covasim | phenomenon_4</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-550" font-family="Times New Roman" font-size="12.00">9 nodes / 18 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-525.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-525.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-525.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-525.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-525.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="37.1,-248 37.1,-504 219.25,-504 219.25,-248 37.1,-248" />
+<text xml:space="preserve" text-anchor="middle" x="64.22" y="-484.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="25.1,-8 25.1,-226 231.25,-226 231.25,-8 25.1,-8" />
+<text xml:space="preserve" text-anchor="middle" x="51.47" y="-206.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="241.25,-107 241.25,-452 454.15,-452 454.15,-107 241.25,-107" />
+<text xml:space="preserve" text-anchor="middle" x="270.62" y="-432.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_upward__b01_r0019" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p4_macro_detection_coverage_rate">
+<path fill="none" stroke="#27667b" d="M202.82,-269.91C218.39,-265.22 235.04,-260.07 251.28,-254.93" />
+<polygon fill="#27667b" stroke="#27667b" points="251.84,-257.32 257.77,-252.86 250.36,-252.65 251.84,-257.32" />
+<title>p4_micro_silent_infectious_flag → p4_macro_detection_coverage_rate
+upward
+A larger silent infectious pool lowers the number of new diagnoses per infectious person-step, reducing observed detection coverage.</title></g>
+
+<g id="edge_upward__b01_r0020" class="inspectable" data-source="p4_micro_silent_infectious_flag" data-target="p4_macro_masking_ratio">
+<path fill="none" stroke="#27667b" d="M202.82,-293.4C216.42,-294.21 230.84,-295.08 245.1,-295.93" />
+<polygon fill="#27667b" stroke="#27667b" points="244.82,-298.37 251.95,-296.34 245.11,-293.47 244.82,-298.37" />
+<title>p4_micro_silent_infectious_flag → p4_macro_masking_ratio
+upward
+Silent infectious episodes accumulate undiagnosed ever-exposed agents, increasing the ratio of never-diagnosed to ever-diagnosed infections.</title></g>
+
+<g id="edge_intra_scale__b01_r0010" class="inspectable" data-source="p4_micro_symptomatic_undiagnosed_flag" data-target="p4_micro_silent_infectious_duration">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M128.17,-403.78C128.17,-403.12 128.17,-402.47 128.17,-401.82" />
+<polygon fill="#6e648d" stroke="#6e648d" points="130.62,-401.88 128.17,-394.88 125.72,-401.88 130.62,-401.88" />
+<title>p4_micro_symptomatic_undiagnosed_flag → p4_micro_silent_infectious_duration
+intra_scale
+Undiagnosed symptomatic infection plausibly extends the time an agent remains silently infectious because recognition is delayed.</title></g>
+
+<g id="edge_downward__b03_r0003" class="inspectable" data-source="p4_meso_group_silent_share" data-target="p4_micro_silent_infectious_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M34.62,-84.84C24.98,-91.15 16.42,-98.92 10.1,-108.5 -3.85,-129.64 -2.68,-200.63 10.1,-222.5 18.67,-237.16 31.8,-248.84 46.23,-258.06" />
+<polygon fill="#b3653b" stroke="#b3653b" points="44.84,-260.09 52.1,-261.6 47.38,-255.89 44.84,-260.09" />
+<title>p4_meso_group_silent_share → p4_micro_silent_infectious_flag
+downward
+A higher silent share within a quarantine-status group can reflect weaker detection and behavioural visibility in that group, increasing the likelihood that a currently infectious group member remains undiagnosed and therefore silent.</title></g>
+
+<g id="edge_intra_scale__b03_r0039" class="inspectable" data-source="p4_meso_group_exposure_yield_silent" data-target="p4_meso_group_silent_share">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M128.17,-108.22C128.17,-107.58 128.17,-106.95 128.17,-106.32" />
+<polygon fill="#6e648d" stroke="#6e648d" points="130.62,-106.59 128.17,-99.59 125.72,-106.59 130.62,-106.59" />
+<title>p4_meso_group_exposure_yield_silent → p4_meso_group_silent_share
+intra_scale
+Groups that generate more exposures per silent infectious person-step can sustain a larger silent share of infectious person-steps.</title></g>
+
+<g id="edge_upward__b01_r0026" class="inspectable" data-source="p4_meso_group_exposure_yield_silent" data-target="p4_macro_silent_prevalence_share">
+<path fill="none" stroke="#27667b" d="M212.34,-148C229.14,-148 246.81,-148 263.61,-148" />
+<polygon fill="#27667b" stroke="#27667b" points="263.26,-150.45 270.26,-148 263.26,-145.55 263.26,-150.45" />
+<title>p4_meso_group_exposure_yield_silent → p4_macro_silent_prevalence_share
+upward
+Quarantine-status groups that generate more exposures per silent infectious person-step expand the silent infectious pool, increasing silent prevalence share.</title></g>
+
+<g id="edge_downward__b01_r0008" class="inspectable" data-source="p4_macro_detection_coverage_rate" data-target="p4_micro_silent_infectious_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M250.77,-246.89C237.45,-251 223.87,-255.27 210.85,-259.46" />
+<polygon fill="#b3653b" stroke="#b3653b" points="210.17,-257.1 204.26,-261.59 211.67,-261.77 210.17,-257.1" />
+<title>p4_macro_detection_coverage_rate → p4_micro_silent_infectious_flag
+downward
+Higher detection coverage shortens the undiagnosed infectious period by finding cases sooner, reducing the probability that an infectious agent is silent (infectious but undiagnosed) at a sampled step.</title></g>
+
+<g id="edge_downward__b01_r0009" class="inspectable" data-source="p4_macro_detection_coverage_rate" data-target="p4_micro_symptomatic_undiagnosed_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M250.84,-247.05C247.31,-250.02 244.08,-253.32 241.25,-257 222.08,-281.89 250.18,-372.94 231.25,-398 227.08,-403.51 222.02,-408.21 216.4,-412.2" />
+<polygon fill="#b3653b" stroke="#b3653b" points="215.41,-409.92 210.84,-415.76 218.05,-414.05 215.41,-409.92" />
+<title>p4_macro_detection_coverage_rate → p4_micro_symptomatic_undiagnosed_flag
+downward
+Increased detection coverage identifies symptomatic cases more quickly, lowering the chance that a symptomatic agent remains undiagnosed.</title></g>
+
+<g id="edge_downward__b01_r0010" class="inspectable" data-source="p4_macro_detection_coverage_rate" data-target="p4_meso_group_silent_share">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M251.05,-193.85C247.47,-190.9 244.17,-187.63 241.25,-184 218.5,-155.75 252.89,-132.11 231.25,-103 229.99,-101.3 228.64,-99.66 227.23,-98.09" />
+<polygon fill="#b3653b" stroke="#b3653b" points="229.21,-96.6 222.53,-93.38 225.74,-100.06 229.21,-96.6" />
+<title>p4_macro_detection_coverage_rate → p4_meso_group_silent_share
+downward
+Higher detection coverage reduces the fraction of infectious person-steps that are undiagnosed within quarantine-status groups, because more infections are diagnosed.</title></g>
+
+<g id="edge_intra_scale__b00_r0044" class="inspectable" data-source="p4_macro_detection_coverage_rate" data-target="p4_macro_silent_prevalence_share">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M403.11,-189.78C403.4,-189.12 403.63,-188.47 403.82,-187.82" />
+<polygon fill="#6e648d" stroke="#6e648d" points="406.26,-187.67 403.28,-180.88 401.38,-188.04 406.26,-187.67" />
+<title>p4_macro_detection_coverage_rate → p4_macro_silent_prevalence_share
+intra_scale
+Higher detection coverage moves infectious agents out of the undiagnosed pool, reducing the silent share of current infectious agents.</title></g>
+
+<g id="edge_intra_scale__b01_r0050" class="inspectable" data-source="p4_macro_silent_prevalence_share" data-target="p4_macro_detection_coverage_rate">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M292.23,-179.37C291.95,-180.02 291.72,-180.67 291.54,-181.32" />
+<polygon fill="#6e648d" stroke="#6e648d" points="289.1,-181.51 292.16,-188.27 293.98,-181.08 289.1,-181.51" />
+<title>p4_macro_silent_prevalence_share → p4_macro_detection_coverage_rate
+intra_scale
+When more infectious agents are undiagnosed, new diagnoses per infectious person-step plausibly fall.</title></g>
+
+<g id="edge_intra_scale__b01_r0049" class="inspectable" data-source="p4_macro_silent_prevalence_share" data-target="p4_macro_masking_ratio">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M271.71,-158.26C256.01,-164.61 242.37,-174.66 236.25,-190.5 231.36,-203.14 231.36,-238.86 236.25,-251.5 237.44,-254.58 238.55,-255.09 241.25,-257 242.97,-258.22 244.73,-259.41 246.51,-260.58" />
+<polygon fill="#6e648d" stroke="#6e648d" points="245.04,-262.55 252.28,-264.17 247.63,-258.39 245.04,-262.55" />
+<title>p4_macro_silent_prevalence_share → p4_macro_masking_ratio
+intra_scale
+A persistently large silent infectious share plausibly accumulates more never-diagnosed relative to ever-diagnosed infections.</title></g>
+
+<g id="edge_intra_scale__b01_r0051" class="inspectable" data-source="p4_macro_silent_prevalence_share" data-target="p4_macro_symptom_to_diagnosis_lag">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M271.97,-157.62C256.86,-163.72 243.82,-173.41 237.92,-188.67 234.82,-196.68 234.82,-335.32 237.92,-343.33 239.93,-348.54 242.78,-353.09 246.27,-357.06" />
+<polygon fill="#6e648d" stroke="#6e648d" points="244.42,-358.68 251.16,-361.78 247.82,-355.15 244.42,-358.68" />
+<title>p4_macro_silent_prevalence_share → p4_macro_symptom_to_diagnosis_lag
+intra_scale
+A high silent share plausibly lengthens recorded symptom-to-diagnosis intervals because recognition is delayed.</title></g>
+
+<g id="edge_downward__b03_r0004" class="inspectable" data-source="p4_macro_masking_ratio" data-target="p4_meso_group_silent_share">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M253.78,-270.49C249.06,-266.51 244.82,-262.04 241.25,-257 221.43,-229.01 250.9,-131.11 231.25,-103 230.04,-101.26 228.74,-99.59 227.37,-97.99" />
+<polygon fill="#b3653b" stroke="#b3653b" points="229.4,-96.56 222.79,-93.2 225.86,-99.95 229.4,-96.56" />
+<title>p4_macro_masking_ratio → p4_meso_group_silent_share
+downward
+A large accumulated pool of never-diagnosed ever-exposed agents can feed back into group-level silent infectious activity by sustaining undetected transmission within quarantine-status groups.</title></g>
+
+<g id="edge_downward__b00_r0005" class="inspectable" data-source="p4_macro_symptom_to_diagnosis_lag" data-target="p4_micro_silent_infectious_duration">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M252.43,-373.9C240.85,-372.78 229.04,-371.64 217.55,-370.53" />
+<polygon fill="#b3653b" stroke="#b3653b" points="217.96,-368.11 210.75,-369.88 217.48,-372.99 217.96,-368.11" />
+<title>p4_macro_symptom_to_diagnosis_lag → p4_micro_silent_infectious_duration
+downward
+A longer population-average symptom-to-diagnosis interval implies diagnosis occurs later in the disease course, extending the period during which an individual can remain infectious while undiagnosed.</title></g>
+
+<g id="edge_intra_scale__b03_r0045" class="inspectable" data-source="p4_macro_symptom_to_diagnosis_lag" data-target="p4_macro_detection_coverage_rate">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M252.21,-353.5C248.43,-351.46 244.76,-349.3 241.25,-347 238.49,-345.19 237.44,-344.58 236.25,-341.5 229.92,-325.13 229.92,-278.87 236.25,-262.5 238.3,-257.19 241.2,-252.55 244.75,-248.48" />
+<polygon fill="#6e648d" stroke="#6e648d" points="246.44,-250.26 249.74,-243.62 243.01,-246.75 246.44,-250.26" />
+<title>p4_macro_symptom_to_diagnosis_lag → p4_macro_detection_coverage_rate
+intra_scale
+Longer symptom-to-diagnosis lag lowers the number of new diagnoses per current infectious person-step, reducing detection coverage.</title></g>
+
+<g id="edge_intra_scale__b03_r0046" class="inspectable" data-source="p4_macro_symptom_to_diagnosis_lag" data-target="p4_macro_silent_prevalence_share">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M252.23,-362.31C244.47,-356.49 238.22,-349.08 234.58,-339.67 231.63,-332.03 231.63,-199.97 234.58,-192.33 239.97,-178.39 251.05,-168.77 264.25,-162.15" />
+<polygon fill="#6e648d" stroke="#6e648d" points="265.02,-164.49 270.4,-159.39 263.01,-160.02 265.02,-164.49" />
+<title>p4_macro_symptom_to_diagnosis_lag → p4_macro_silent_prevalence_share
+intra_scale
+Delayed diagnosis leaves more infectious agents undiagnosed, increasing the silent share of current infectious agents.</title></g>
+
+<g id="edge_intra_scale__b03_r0047" class="inspectable" data-source="p4_macro_symptom_to_diagnosis_lag" data-target="p4_macro_masking_ratio">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M347.7,-351.83C347.7,-351.31 347.7,-350.79 347.7,-350.27" />
+<polygon fill="#6e648d" stroke="#6e648d" points="350.15,-350.38 347.7,-343.38 345.25,-350.38 350.15,-350.38" />
+<title>p4_macro_symptom_to_diagnosis_lag → p4_macro_masking_ratio
+intra_scale
+Longer symptom-to-diagnosis lag can leave more ever-exposed agents never diagnosed, increasing the masking ratio.</title></g>
+
+<g id="node_p4_micro_silent_infectious_flag" class="inspectable" tabindex="0" data-node-id="p4_micro_silent_infectious_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M190.5,-319.92C190.5,-319.92 65.85,-319.92 65.85,-319.92 59.85,-319.92 53.85,-313.92 53.85,-307.92 53.85,-307.92 53.85,-270.08 53.85,-270.08 53.85,-264.08 59.85,-258.08 65.85,-258.08 65.85,-258.08 190.5,-258.08 190.5,-258.08 196.5,-258.08 202.5,-264.08 202.5,-270.08 202.5,-270.08 202.5,-307.92 202.5,-307.92 202.5,-313.92 196.5,-319.92 190.5,-319.92" />
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-301.57" font-family="Times New Roman" font-size="14.00">N24</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-284.32" font-family="Times New Roman" font-size="14.00">Agent silent-infectious</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-267.07" font-family="Times New Roman" font-size="14.00">indicator</text>
+<title>N24 | p4_micro_silent_infectious_flag
+Agent silent-infectious indicator
+Scale: micro | Phenomenon: silent_transmission_masking
+Definition: Z_i(t) = 1 if infectious_i(t) = true and diagnosed_i(t) = false; 0 if infectious_i(t) = true and diagnosed_i(t) = true; undefined if infectious_i(t) = false or the agent is not observed at t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_micro_silent_infectious_duration" class="inspectable" tabindex="0" data-node-id="p4_micro_silent_infectious_duration">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M196.87,-392.92C196.87,-392.92 59.47,-392.92 59.47,-392.92 53.47,-392.92 47.47,-386.92 47.47,-380.92 47.47,-380.92 47.47,-343.08 47.47,-343.08 47.47,-337.08 53.47,-331.08 59.47,-331.08 59.47,-331.08 196.87,-331.08 196.87,-331.08 202.87,-331.08 208.87,-337.08 208.87,-343.08 208.87,-343.08 208.87,-380.92 208.87,-380.92 208.87,-386.92 202.87,-392.92 196.87,-392.92" />
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-374.57" font-family="Times New Roman" font-size="14.00">N25</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-357.32" font-family="Times New Roman" font-size="14.00">Agent cumulative silent-</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-340.07" font-family="Times New Roman" font-size="14.00">infectious duration</text>
+<title>N25 | p4_micro_silent_infectious_duration
+Agent cumulative silent-infectious duration
+Scale: micro | Phenomenon: silent_transmission_masking
+Definition: D_i(t) = number of observed steps s &lt;= t in the same run with Z_i(s) = 1; undefined if agent i is not observed at t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_micro_symptomatic_undiagnosed_flag" class="inspectable" tabindex="0" data-node-id="p4_micro_symptomatic_undiagnosed_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M197.25,-465.92C197.25,-465.92 59.1,-465.92 59.1,-465.92 53.1,-465.92 47.1,-459.92 47.1,-453.92 47.1,-453.92 47.1,-416.08 47.1,-416.08 47.1,-410.08 53.1,-404.08 59.1,-404.08 59.1,-404.08 197.25,-404.08 197.25,-404.08 203.25,-404.08 209.25,-410.08 209.25,-416.08 209.25,-416.08 209.25,-453.92 209.25,-453.92 209.25,-459.92 203.25,-465.92 197.25,-465.92" />
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-447.57" font-family="Times New Roman" font-size="14.00">N26</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-430.32" font-family="Times New Roman" font-size="14.00">Agent symptomatic-but-</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-413.07" font-family="Times New Roman" font-size="14.00">undiagnosed indicator</text>
+<title>N26 | p4_micro_symptomatic_undiagnosed_flag
+Agent symptomatic-but-undiagnosed indicator
+Scale: micro | Phenomenon: silent_transmission_masking
+Definition: Y_i(t) = 1 if symptomatic_i(t) = true and diagnosed_i(t) = false; 0 if symptomatic_i(t) = true and diagnosed_i(t) = true; undefined if symptomatic_i(t) = false or the agent is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_meso_group_silent_share" class="inspectable" tabindex="0" data-node-id="p4_meso_group_silent_share">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M209.25,-97.54C209.25,-97.54 47.1,-97.54 47.1,-97.54 41.1,-97.54 35.1,-91.54 35.1,-85.54 35.1,-85.54 35.1,-30.46 35.1,-30.46 35.1,-24.46 41.1,-18.46 47.1,-18.46 47.1,-18.46 209.25,-18.46 209.25,-18.46 215.25,-18.46 221.25,-24.46 221.25,-30.46 221.25,-30.46 221.25,-85.54 221.25,-85.54 221.25,-91.54 215.25,-97.54 209.25,-97.54" />
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-79.2" font-family="Times New Roman" font-size="14.00">N27</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-61.95" font-family="Times New Roman" font-size="14.00">Silent share of infectious</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-44.7" font-family="Times New Roman" font-size="14.00">person-steps by quarantine-</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-27.45" font-family="Times New Roman" font-size="14.00">status group</text>
+<title>N27 | p4_meso_group_silent_share
+Silent share of infectious person-steps by quarantine-status group
+Scale: meso | Phenomenon: silent_transmission_masking
+Definition: For group g at step t: q_g(t) = (sum over agents i in g at t of Z_i(t)) / (sum over agents i in g at t of 1[infectious_i(t)]); undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_meso_group_exposure_yield_silent" class="inspectable" tabindex="0" data-node-id="p4_meso_group_exposure_yield_silent">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M199.87,-187.54C199.87,-187.54 56.47,-187.54 56.47,-187.54 50.47,-187.54 44.47,-181.54 44.47,-175.54 44.47,-175.54 44.47,-120.46 44.47,-120.46 44.47,-114.46 50.47,-108.46 56.47,-108.46 56.47,-108.46 199.87,-108.46 199.87,-108.46 205.87,-108.46 211.87,-114.46 211.87,-120.46 211.87,-120.46 211.87,-175.54 211.87,-175.54 211.87,-181.54 205.87,-187.54 199.87,-187.54" />
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-169.2" font-family="Times New Roman" font-size="14.00">N28</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-151.95" font-family="Times New Roman" font-size="14.00">Exposures generated per</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-134.7" font-family="Times New Roman" font-size="14.00">silent infectious person-</text>
+<text xml:space="preserve" text-anchor="middle" x="128.17" y="-117.45" font-family="Times New Roman" font-size="14.00">step by group</text>
+<title>N28 | p4_meso_group_exposure_yield_silent
+Exposures generated per silent infectious person-step by group
+Scale: meso | Phenomenon: silent_transmission_masking
+Definition: y_g(t) = (sum over agents i in group g of X_i(t)) / (sum over agents i in group g of Z_i(t)); undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_macro_detection_coverage_rate" class="inspectable" tabindex="0" data-node-id="p4_macro_detection_coverage_rate">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M432.15,-251.91C432.15,-251.91 263.25,-251.91 263.25,-251.91 257.25,-251.91 251.25,-245.91 251.25,-239.91 251.25,-239.91 251.25,-202.09 251.25,-202.09 251.25,-196.09 257.25,-190.09 263.25,-190.09 263.25,-190.09 432.15,-190.09 432.15,-190.09 438.15,-190.09 444.15,-196.09 444.15,-202.09 444.15,-202.09 444.15,-239.91 444.15,-239.91 444.15,-245.91 438.15,-251.91 432.15,-251.91" />
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-233.57" font-family="Times New Roman" font-size="14.00">N29</text>
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-216.32" font-family="Times New Roman" font-size="14.00">New diagnoses per infectious</text>
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-199.07" font-family="Times New Roman" font-size="14.00">person-step</text>
+<title>N29 | p4_macro_detection_coverage_rate
+New diagnoses per infectious person-step
+Scale: macro | Phenomenon: silent_transmission_masking
+Definition: c(t) = (number of agents with diagnosed transition 1 at step t, i.e. diagnosed_i(t) = true and diagnosed_i(t-1) = false) / (number of agents with infectious_i(t) = true); undefined when the denominator is 0 or t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_macro_silent_prevalence_share" class="inspectable" tabindex="0" data-node-id="p4_macro_silent_prevalence_share">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M411.15,-178.91C411.15,-178.91 284.25,-178.91 284.25,-178.91 278.25,-178.91 272.25,-172.91 272.25,-166.91 272.25,-166.91 272.25,-129.09 272.25,-129.09 272.25,-123.09 278.25,-117.09 284.25,-117.09 284.25,-117.09 411.15,-117.09 411.15,-117.09 417.15,-117.09 423.15,-123.09 423.15,-129.09 423.15,-129.09 423.15,-166.91 423.15,-166.91 423.15,-172.91 417.15,-178.91 411.15,-178.91" />
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-160.57" font-family="Times New Roman" font-size="14.00">N30</text>
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-143.32" font-family="Times New Roman" font-size="14.00">Silent share of current</text>
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-126.08" font-family="Times New Roman" font-size="14.00">infectious agents</text>
+<title>N30 | p4_macro_silent_prevalence_share
+Silent share of current infectious agents
+Scale: macro | Phenomenon: silent_transmission_masking
+Definition: s(t) = (sum over agents i of Z_i(t)) / (sum over agents i of 1[infectious_i(t) = true]); undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_macro_masking_ratio" class="inspectable" tabindex="0" data-node-id="p4_macro_masking_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M429.52,-341.54C429.52,-341.54 265.87,-341.54 265.87,-341.54 259.87,-341.54 253.87,-335.54 253.87,-329.54 253.87,-329.54 253.87,-274.46 253.87,-274.46 253.87,-268.46 259.87,-262.46 265.87,-262.46 265.87,-262.46 429.52,-262.46 429.52,-262.46 435.52,-262.46 441.52,-268.46 441.52,-274.46 441.52,-274.46 441.52,-329.54 441.52,-329.54 441.52,-335.54 435.52,-341.54 429.52,-341.54" />
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-323.2" font-family="Times New Roman" font-size="14.00">N31</text>
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-305.95" font-family="Times New Roman" font-size="14.00">Cumulative never-diagnosed</text>
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-288.7" font-family="Times New Roman" font-size="14.00">to ever-diagnosed infection</text>
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-271.45" font-family="Times New Roman" font-size="14.00">ratio</text>
+<title>N31 | p4_macro_masking_ratio
+Cumulative never-diagnosed to ever-diagnosed infection ratio
+Scale: macro | Phenomenon: silent_transmission_masking
+Definition: U(t) = count of agents i with E_i(t) = 1 and no diagnosed_i(s) = true for any observed s &lt;= t, divided by count of agents i with E_i(t) = 1 and at least one diagnosed_i(s) = true for some s &lt;= t; undefined when the denominator is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p4_macro_symptom_to_diagnosis_lag" class="inspectable" tabindex="0" data-node-id="p4_macro_symptom_to_diagnosis_lag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M430.65,-413.92C430.65,-413.92 264.75,-413.92 264.75,-413.92 258.75,-413.92 252.75,-407.92 252.75,-401.92 252.75,-401.92 252.75,-364.08 252.75,-364.08 252.75,-358.08 258.75,-352.08 264.75,-352.08 264.75,-352.08 430.65,-352.08 430.65,-352.08 436.65,-352.08 442.65,-358.08 442.65,-364.08 442.65,-364.08 442.65,-401.92 442.65,-401.92 442.65,-407.92 436.65,-413.92 430.65,-413.92" />
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-395.57" font-family="Times New Roman" font-size="14.00">N32</text>
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-378.32" font-family="Times New Roman" font-size="14.00">Mean recorded symptom-to-</text>
+<text xml:space="preserve" text-anchor="middle" x="347.7" y="-361.07" font-family="Times New Roman" font-size="14.00">diagnosis interval</text>
+<title>N32 | p4_macro_symptom_to_diagnosis_lag
+Mean recorded symptom-to-diagnosis interval
+Scale: macro | Phenomenon: silent_transmission_masking
+Definition: L(t) = mean over agents i diagnosed newly at step t, with both date_symptomatic and date_diagnosed non-null, of (date_diagnosed_i - date_symptomatic_i); undefined when no agent qualifies.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

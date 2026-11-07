@@ -1,0 +1,41 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Covasim | phenomenon_6</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">8 nodes / 15 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"p6_micro_quarantine_contact_ratio" [id="node_p6_micro_quarantine_contact_ratio", label="N43\nAgent contact degree ratio\nin and out of quarantine", style="rounded,filled", fillcolor="white"];
+"p6_micro_quarantine_degree_delta" [id="node_p6_micro_quarantine_degree_delta", label="N44\nAgent absolute contact-\ndegree change under\nquarantine", style="rounded,filled", fillcolor="white"];
+"p6_micro_zero_contact_quarantined_flag" [id="node_p6_micro_zero_contact_quarantined_flag", label="N45\nAgent full-contact-\nsuppression indicator under\nquarantine", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"p6_meso_quarantined_degree_dispersion" [id="node_p6_meso_quarantined_degree_dispersion", label="N46\nDispersion of contact degree\namong quarantined agents", style="rounded,filled", fillcolor="white"];
+"p6_meso_layer_quarantine_suppression_ratio" [id="node_p6_meso_layer_quarantine_suppression_ratio", label="N47\nLayer-level degree\nsuppression ratio under\nquarantine", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"p6_macro_contact_volume_change" [id="node_p6_macro_contact_volume_change", label="N48\nRelative step-to-step change\nin total contact volume", style="rounded,filled", fillcolor="white"];
+"p6_macro_adherence_share" [id="node_p6_macro_adherence_share", label="N49\nShare of quarantined agents\nat or below the non-\nquarantined median degree", style="rounded,filled", fillcolor="white"];
+"p6_macro_population_suppression_ratio" [id="node_p6_macro_population_suppression_ratio", label="N50\nPopulation-level quarantine\ncontact suppression ratio", style="rounded,filled", fillcolor="white"];
+}
+"p6_micro_quarantine_contact_ratio" -> "p6_meso_layer_quarantine_suppression_ratio" [id="edge_upward__b00_r0017", color="#27667b", style="solid", constraint=true];
+"p6_micro_quarantine_degree_delta" -> "p6_meso_quarantined_degree_dispersion" [id="edge_upward__b01_r0034", color="#27667b", style="solid", constraint=true];
+"p6_meso_quarantined_degree_dispersion" -> "p6_micro_zero_contact_quarantined_flag" [id="edge_downward__b00_r0007", color="#b3653b", style="dashed", constraint=false];
+"p6_macro_population_suppression_ratio" -> "p6_micro_quarantine_contact_ratio" [id="edge_downward__b00_r0008", color="#b3653b", style="dashed", constraint=false];
+"p6_meso_layer_quarantine_suppression_ratio" -> "p6_micro_quarantine_contact_ratio" [id="edge_downward__b01_r0027", color="#b3653b", style="dashed", constraint=false];
+"p6_meso_layer_quarantine_suppression_ratio" -> "p6_micro_zero_contact_quarantined_flag" [id="edge_downward__b01_r0028", color="#b3653b", style="dashed", constraint=false];
+"p6_meso_layer_quarantine_suppression_ratio" -> "p6_micro_quarantine_degree_delta" [id="edge_downward__b01_r0033", color="#b3653b", style="dashed", constraint=false];
+"p6_macro_contact_volume_change" -> "p6_micro_quarantine_contact_ratio" [id="edge_downward__b02_r0038", color="#b3653b", style="dashed", constraint=false];
+"p6_macro_contact_volume_change" -> "p6_micro_zero_contact_quarantined_flag" [id="edge_downward__b02_r0039", color="#b3653b", style="dashed", constraint=false];
+"p6_macro_adherence_share" -> "p6_micro_zero_contact_quarantined_flag" [id="edge_downward__b03_r0007", color="#b3653b", style="dashed", constraint=false];
+"p6_macro_adherence_share" -> "p6_macro_population_suppression_ratio" [id="edge_intra_scale__b00_r0052", color="#6e648d", style="dotted", constraint=false];
+"p6_meso_quarantined_degree_dispersion" -> "p6_meso_layer_quarantine_suppression_ratio" [id="edge_intra_scale__b01_r0023", color="#6e648d", style="dotted", constraint=false];
+"p6_macro_population_suppression_ratio" -> "p6_macro_contact_volume_change" [id="edge_intra_scale__b01_r0057", color="#6e648d", style="dotted", constraint=false];
+"p6_macro_contact_volume_change" -> "p6_macro_adherence_share" [id="edge_intra_scale__b03_r0051", color="#6e648d", style="dotted", constraint=false];
+"p6_macro_contact_volume_change" -> "p6_macro_population_suppression_ratio" [id="edge_intra_scale__b03_r0052", color="#6e648d", style="dotted", constraint=false];
+}

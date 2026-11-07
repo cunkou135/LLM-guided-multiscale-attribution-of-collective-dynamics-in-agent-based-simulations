@@ -1,0 +1,48 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Fish | phenomenon_4</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">9 nodes / 21 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"fright_micro_state" [id="node_fright_micro_state", label="N28\nFocal fish frightened\nindicator", style="rounded,filled", fillcolor="white"];
+"fright_micro_remaining" [id="node_fright_micro_remaining", label="N29\nFocal remaining fright steps", style="rounded,filled", fillcolor="white"];
+"fright_micro_nearest_fright_distance" [id="node_fright_micro_nearest_fright_distance", label="N30\nFocal distance to nearest\nfrightened contact neighbor", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"fright_meso_component_prevalence" [id="node_fright_meso_component_prevalence", label="N31\nContact-component fright\nprevalence", style="rounded,filled", fillcolor="white"];
+"fright_meso_component_fright_edge_fraction" [id="node_fright_meso_component_fright_edge_fraction", label="N32\nContact-component\nfrightened-edge fraction", style="rounded,filled", fillcolor="white"];
+"fright_meso_component_fright_position_corr" [id="node_fright_meso_component_fright_position_corr", label="N33\nContact-component fright-\ncentroid-distance\ncorrelation", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"fright_macro_school_prevalence" [id="node_fright_macro_school_prevalence", label="N34\nWhole-school fright\nprevalence", style="rounded,filled", fillcolor="white"];
+"fright_macro_school_fright_edge_fraction" [id="node_fright_macro_school_fright_edge_fraction", label="N35\nWhole-school frightened-edge\nfraction", style="rounded,filled", fillcolor="white"];
+"fright_macro_onset_rate" [id="node_fright_macro_onset_rate", label="N36\nFright onset rate", style="rounded,filled", fillcolor="white"];
+}
+"fright_micro_state" -> "fright_meso_component_fright_edge_fraction" [id="edge_upward__b02_r0020", color="#27667b", style="solid", constraint=true];
+"fright_micro_state" -> "fright_meso_component_fright_position_corr" [id="edge_upward__b02_r0021", color="#27667b", style="solid", constraint=true];
+"fright_micro_state" -> "fright_macro_onset_rate" [id="edge_upward__b02_r0024", color="#27667b", style="solid", constraint=true];
+"fright_meso_component_fright_edge_fraction" -> "fright_macro_school_prevalence" [id="edge_upward__b02_r0025", color="#27667b", style="solid", constraint=true];
+"fright_micro_remaining" -> "fright_meso_component_prevalence" [id="edge_upward__b03_r0007", color="#27667b", style="solid", constraint=true];
+"fright_micro_remaining" -> "fright_meso_component_fright_position_corr" [id="edge_upward__b03_r0008", color="#27667b", style="solid", constraint=true];
+"fright_micro_remaining" -> "fright_macro_school_prevalence" [id="edge_upward__b03_r0012", color="#27667b", style="solid", constraint=true];
+"fright_meso_component_fright_position_corr" -> "fright_macro_school_prevalence" [id="edge_upward__b03_r0039", color="#27667b", style="solid", constraint=true];
+"fright_meso_component_fright_position_corr" -> "fright_macro_onset_rate" [id="edge_upward__b03_r0040", color="#27667b", style="solid", constraint=true];
+"fright_macro_school_fright_edge_fraction" -> "fright_meso_component_prevalence" [id="edge_downward__b02_r0003", color="#b3653b", style="dashed", constraint=false];
+"fright_meso_component_fright_edge_fraction" -> "fright_micro_state" [id="edge_downward__b03_r0020", color="#b3653b", style="dashed", constraint=false];
+"fright_meso_component_fright_edge_fraction" -> "fright_micro_remaining" [id="edge_downward__b03_r0021", color="#b3653b", style="dashed", constraint=false];
+"fright_macro_onset_rate" -> "fright_meso_component_prevalence" [id="edge_downward__b03_r0024", color="#b3653b", style="dashed", constraint=false];
+"fright_macro_onset_rate" -> "fright_meso_component_fright_edge_fraction" [id="edge_downward__b03_r0025", color="#b3653b", style="dashed", constraint=false];
+"fright_macro_onset_rate" -> "fright_micro_state" [id="edge_downward__b03_r0027", color="#b3653b", style="dashed", constraint=false];
+"fright_meso_component_prevalence" -> "fright_meso_component_fright_edge_fraction" [id="edge_intra_scale__b02_r0025", color="#6e648d", style="dotted", constraint=false];
+"fright_macro_school_fright_edge_fraction" -> "fright_macro_school_prevalence" [id="edge_intra_scale__b02_r0046", color="#6e648d", style="dotted", constraint=false];
+"fright_macro_school_fright_edge_fraction" -> "fright_macro_onset_rate" [id="edge_intra_scale__b02_r0047", color="#6e648d", style="dotted", constraint=false];
+"fright_meso_component_fright_edge_fraction" -> "fright_meso_component_prevalence" [id="edge_intra_scale__b03_r0027", color="#6e648d", style="dotted", constraint=false];
+"fright_meso_component_fright_edge_fraction" -> "fright_meso_component_fright_position_corr" [id="edge_intra_scale__b03_r0028", color="#6e648d", style="dotted", constraint=false];
+"fright_macro_onset_rate" -> "fright_macro_school_prevalence" [id="edge_intra_scale__b03_r0046", color="#6e648d", style="dotted", constraint=false];
+}

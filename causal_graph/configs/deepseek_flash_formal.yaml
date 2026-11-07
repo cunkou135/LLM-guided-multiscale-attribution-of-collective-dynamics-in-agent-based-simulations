@@ -1,0 +1,19 @@
+default_profile: deepseek_flash_formal
+profiles:
+  deepseek_flash_formal:
+    provider: openai_compatible
+    base_url: https://api.deepseek.com
+    model: deepseek-flash
+    api_key_env: DEEPSEEK_API_KEY
+    temperature: 0.3
+    top_p: null
+    max_tokens: 196608
+    timeout: 1800
+    max_retries: 1
+    reasoning_effort: low
+    stream: true
+    extra_body:
+      response_format:
+        type: json_object
+      stream_options:
+        include_usage: true

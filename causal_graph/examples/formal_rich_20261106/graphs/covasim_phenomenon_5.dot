@@ -1,0 +1,55 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Covasim | phenomenon_5</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">10 nodes / 27 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"p5_micro_known_contact_flag" [id="node_p5_micro_known_contact_flag", label="N33\nAgent known-contact state\nindicator", style="rounded,filled", fillcolor="white"];
+"p5_micro_tracing_latency" [id="node_p5_micro_tracing_latency", label="N34\nAgent known-contact to\nquarantine latency", style="rounded,filled", fillcolor="white"];
+"p5_micro_quarantine_flag" [id="node_p5_micro_quarantine_flag", label="N35\nAgent quarantine state\nindicator", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"p5_meso_layer_known_contact_rate" [id="node_p5_meso_layer_known_contact_rate", label="N36\nLayer known-contact\nincidence per contact edge", style="rounded,filled", fillcolor="white"];
+"p5_meso_layer_index_contact_load" [id="node_p5_meso_layer_index_contact_load", label="N37\nPer-index contact load\nwithin a layer", style="rounded,filled", fillcolor="white"];
+"p5_meso_layer_load_dispersion" [id="node_p5_meso_layer_load_dispersion", label="N38\nCross-layer dispersion of\ncontact load", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"p5_macro_traced_per_diagnosis" [id="node_p5_macro_traced_per_diagnosis", label="N39\nKnown-contact transitions\nper new diagnosis", style="rounded,filled", fillcolor="white"];
+"p5_macro_mean_tracing_latency" [id="node_p5_macro_mean_tracing_latency", label="N40\nMean per-agent tracing\nlatency at quarantine start", style="rounded,filled", fillcolor="white"];
+"p5_macro_quarantine_coverage" [id="node_p5_macro_quarantine_coverage", label="N41\nQuarantine coverage of\nobserved agent-steps", style="rounded,filled", fillcolor="white"];
+"p5_macro_known_contact_prevalence" [id="node_p5_macro_known_contact_prevalence", label="N42\nKnown-contact prevalence\nshare", style="rounded,filled", fillcolor="white"];
+}
+"p5_meso_layer_known_contact_rate" -> "p5_macro_quarantine_coverage" [id="edge_upward__b01_r0030", color="#27667b", style="solid", constraint=true];
+"p5_meso_layer_known_contact_rate" -> "p5_macro_known_contact_prevalence" [id="edge_upward__b01_r0031", color="#27667b", style="solid", constraint=true];
+"p5_micro_known_contact_flag" -> "p5_meso_layer_index_contact_load" [id="edge_upward__b02_r0006", color="#27667b", style="solid", constraint=true];
+"p5_micro_tracing_latency" -> "p5_meso_layer_load_dispersion" [id="edge_upward__b03_r0005", color="#27667b", style="solid", constraint=true];
+"p5_macro_traced_per_diagnosis" -> "p5_meso_layer_index_contact_load" [id="edge_downward__b00_r0006", color="#b3653b", style="dashed", constraint=false];
+"p5_macro_mean_tracing_latency" -> "p5_micro_quarantine_flag" [id="edge_downward__b01_r0014", color="#b3653b", style="dashed", constraint=false];
+"p5_macro_mean_tracing_latency" -> "p5_meso_layer_known_contact_rate" [id="edge_downward__b01_r0016", color="#b3653b", style="dashed", constraint=false];
+"p5_meso_layer_known_contact_rate" -> "p5_micro_known_contact_flag" [id="edge_downward__b01_r0025", color="#b3653b", style="dashed", constraint=false];
+"p5_meso_layer_known_contact_rate" -> "p5_micro_tracing_latency" [id="edge_downward__b01_r0026", color="#b3653b", style="dashed", constraint=false];
+"p5_meso_layer_known_contact_rate" -> "p5_micro_quarantine_flag" [id="edge_downward__b01_r0032", color="#b3653b", style="dashed", constraint=false];
+"p5_meso_layer_index_contact_load" -> "p5_micro_tracing_latency" [id="edge_downward__b02_r0023", color="#b3653b", style="dashed", constraint=false];
+"p5_meso_layer_index_contact_load" -> "p5_micro_known_contact_flag" [id="edge_downward__b02_r0024", color="#b3653b", style="dashed", constraint=false];
+"p5_meso_layer_index_contact_load" -> "p5_micro_quarantine_flag" [id="edge_downward__b02_r0025", color="#b3653b", style="dashed", constraint=false];
+"p5_meso_layer_load_dispersion" -> "p5_micro_tracing_latency" [id="edge_downward__b03_r0005", color="#b3653b", style="dashed", constraint=false];
+"p5_macro_known_contact_prevalence" -> "p5_meso_layer_index_contact_load" [id="edge_downward__b03_r0006", color="#b3653b", style="dashed", constraint=false];
+"p5_micro_known_contact_flag" -> "p5_micro_tracing_latency" [id="edge_intra_scale__b00_r0021", color="#6e648d", style="dotted", constraint=false];
+"p5_micro_known_contact_flag" -> "p5_micro_quarantine_flag" [id="edge_intra_scale__b00_r0022", color="#6e648d", style="dotted", constraint=false];
+"p5_meso_layer_index_contact_load" -> "p5_meso_layer_known_contact_rate" [id="edge_intra_scale__b00_r0040", color="#6e648d", style="dotted", constraint=false];
+"p5_micro_tracing_latency" -> "p5_micro_quarantine_flag" [id="edge_intra_scale__b01_r0014", color="#6e648d", style="dotted", constraint=false];
+"p5_meso_layer_load_dispersion" -> "p5_meso_layer_known_contact_rate" [id="edge_intra_scale__b01_r0018", color="#6e648d", style="dotted", constraint=false];
+"p5_meso_layer_load_dispersion" -> "p5_meso_layer_index_contact_load" [id="edge_intra_scale__b01_r0019", color="#6e648d", style="dotted", constraint=false];
+"p5_macro_known_contact_prevalence" -> "p5_macro_traced_per_diagnosis" [id="edge_intra_scale__b01_r0054", color="#6e648d", style="dotted", constraint=false];
+"p5_macro_known_contact_prevalence" -> "p5_macro_mean_tracing_latency" [id="edge_intra_scale__b01_r0055", color="#6e648d", style="dotted", constraint=false];
+"p5_macro_known_contact_prevalence" -> "p5_macro_quarantine_coverage" [id="edge_intra_scale__b01_r0056", color="#6e648d", style="dotted", constraint=false];
+"p5_meso_layer_known_contact_rate" -> "p5_meso_layer_index_contact_load" [id="edge_intra_scale__b03_r0043", color="#6e648d", style="dotted", constraint=false];
+"p5_macro_mean_tracing_latency" -> "p5_macro_traced_per_diagnosis" [id="edge_intra_scale__b03_r0048", color="#6e648d", style="dotted", constraint=false];
+"p5_macro_mean_tracing_latency" -> "p5_macro_quarantine_coverage" [id="edge_intra_scale__b03_r0049", color="#6e648d", style="dotted", constraint=false];
+}

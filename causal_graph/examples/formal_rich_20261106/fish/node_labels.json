@@ -1,0 +1,650 @@
+[
+  {
+    "label": "N1",
+    "indicator_id": "frag_micro_component_size",
+    "name": "Contact-component size of focal fish",
+    "scale": "micro",
+    "phenomenon_id": "school_fragmentation",
+    "units": "agents",
+    "executed": false
+  },
+  {
+    "label": "N2",
+    "indicator_id": "frag_micro_isolate",
+    "name": "Focal fish contact isolation flag",
+    "scale": "micro",
+    "phenomenon_id": "school_fragmentation",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N3",
+    "indicator_id": "frag_micro_component_shark_distance",
+    "name": "Focal component centroid to nearest shark distance",
+    "scale": "micro",
+    "phenomenon_id": "school_fragmentation",
+    "units": "model length",
+    "executed": false
+  },
+  {
+    "label": "N4",
+    "indicator_id": "frag_meso_mean_component_size",
+    "name": "Mean contact-component size",
+    "scale": "meso",
+    "phenomenon_id": "school_fragmentation",
+    "units": "agents",
+    "executed": false
+  },
+  {
+    "label": "N5",
+    "indicator_id": "frag_meso_component_size_entropy",
+    "name": "Contact-component size entropy",
+    "scale": "meso",
+    "phenomenon_id": "school_fragmentation",
+    "units": "bits",
+    "executed": false
+  },
+  {
+    "label": "N6",
+    "indicator_id": "frag_meso_centroid_pair_distance",
+    "name": "Mean distance between component centroids",
+    "scale": "meso",
+    "phenomenon_id": "school_fragmentation",
+    "units": "model length",
+    "executed": false
+  },
+  {
+    "label": "N7",
+    "indicator_id": "frag_macro_component_count",
+    "name": "Number of contact components",
+    "scale": "macro",
+    "phenomenon_id": "school_fragmentation",
+    "units": "components",
+    "executed": false
+  },
+  {
+    "label": "N8",
+    "indicator_id": "frag_macro_largest_fraction",
+    "name": "Largest component fish fraction",
+    "scale": "macro",
+    "phenomenon_id": "school_fragmentation",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N9",
+    "indicator_id": "frag_macro_component_count_change",
+    "name": "Step change in contact-component count",
+    "scale": "macro",
+    "phenomenon_id": "school_fragmentation",
+    "units": "components/step",
+    "executed": false
+  },
+  {
+    "label": "N10",
+    "indicator_id": "elong_micro_major_projection",
+    "name": "Focal fish normalized major-axis projection",
+    "scale": "micro",
+    "phenomenon_id": "school_elongation",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N11",
+    "indicator_id": "elong_micro_mahalanobis_sq",
+    "name": "Focal fish squared Mahalanobis distance",
+    "scale": "micro",
+    "phenomenon_id": "school_elongation",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N12",
+    "indicator_id": "elong_micro_component_projection",
+    "name": "Focal fish normalized component major-axis projection",
+    "scale": "micro",
+    "phenomenon_id": "school_elongation",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N13",
+    "indicator_id": "elong_meso_component_aspect_ratio",
+    "name": "Contact-component aspect ratio",
+    "scale": "meso",
+    "phenomenon_id": "school_elongation",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N14",
+    "indicator_id": "elong_meso_component_escape_alignment",
+    "name": "Component major-axis escape alignment",
+    "scale": "meso",
+    "phenomenon_id": "school_elongation",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N15",
+    "indicator_id": "elong_meso_component_axis_length",
+    "name": "Contact-component major-axis length",
+    "scale": "meso",
+    "phenomenon_id": "school_elongation",
+    "units": "model length",
+    "executed": false
+  },
+  {
+    "label": "N16",
+    "indicator_id": "elong_macro_school_aspect_ratio",
+    "name": "Whole-school aspect ratio",
+    "scale": "macro",
+    "phenomenon_id": "school_elongation",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N17",
+    "indicator_id": "elong_macro_anisotropy_index",
+    "name": "Whole-school anisotropy index",
+    "scale": "macro",
+    "phenomenon_id": "school_elongation",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N18",
+    "indicator_id": "elong_macro_major_escape_alignment",
+    "name": "Whole-school major-axis escape alignment",
+    "scale": "macro",
+    "phenomenon_id": "school_elongation",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N19",
+    "indicator_id": "wave_micro_escape_alignment",
+    "name": "Focal heading alignment with own escape direction",
+    "scale": "micro",
+    "phenomenon_id": "coordinated_escape_wave",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N20",
+    "indicator_id": "wave_micro_requested_turn_abs",
+    "name": "Focal absolute requested turn",
+    "scale": "micro",
+    "phenomenon_id": "coordinated_escape_wave",
+    "units": "radians",
+    "executed": false
+  },
+  {
+    "label": "N21",
+    "indicator_id": "wave_micro_heading_change",
+    "name": "Focal step heading change magnitude",
+    "scale": "micro",
+    "phenomenon_id": "coordinated_escape_wave",
+    "units": "radians",
+    "executed": false
+  },
+  {
+    "label": "N22",
+    "indicator_id": "wave_meso_component_escape_coherence",
+    "name": "Contact-component escape-direction coherence",
+    "scale": "meso",
+    "phenomenon_id": "coordinated_escape_wave",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N23",
+    "indicator_id": "wave_meso_component_mean_escape_alignment",
+    "name": "Contact-component mean heading-escape alignment",
+    "scale": "meso",
+    "phenomenon_id": "coordinated_escape_wave",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N24",
+    "indicator_id": "wave_meso_component_turn_variance",
+    "name": "Contact-component requested-turn variance",
+    "scale": "meso",
+    "phenomenon_id": "coordinated_escape_wave",
+    "units": "radians^2",
+    "executed": false
+  },
+  {
+    "label": "N25",
+    "indicator_id": "wave_macro_school_escape_coherence",
+    "name": "Whole-school escape-direction coherence",
+    "scale": "macro",
+    "phenomenon_id": "coordinated_escape_wave",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N26",
+    "indicator_id": "wave_macro_heading_change_shark_cov",
+    "name": "Heading-change magnitude vs shark proximity covariance",
+    "scale": "macro",
+    "phenomenon_id": "coordinated_escape_wave",
+    "units": "radians per model length",
+    "executed": false
+  },
+  {
+    "label": "N27",
+    "indicator_id": "wave_macro_escape_coherence_change",
+    "name": "Step change in school escape-direction coherence",
+    "scale": "macro",
+    "phenomenon_id": "coordinated_escape_wave",
+    "units": "1/step",
+    "executed": false
+  },
+  {
+    "label": "N28",
+    "indicator_id": "fright_micro_state",
+    "name": "Focal fish frightened indicator",
+    "scale": "micro",
+    "phenomenon_id": "fright_contagion_wave",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N29",
+    "indicator_id": "fright_micro_remaining",
+    "name": "Focal remaining fright steps",
+    "scale": "micro",
+    "phenomenon_id": "fright_contagion_wave",
+    "units": "steps",
+    "executed": false
+  },
+  {
+    "label": "N30",
+    "indicator_id": "fright_micro_nearest_fright_distance",
+    "name": "Focal distance to nearest frightened contact neighbor",
+    "scale": "micro",
+    "phenomenon_id": "fright_contagion_wave",
+    "units": "model length",
+    "executed": false
+  },
+  {
+    "label": "N31",
+    "indicator_id": "fright_meso_component_prevalence",
+    "name": "Contact-component fright prevalence",
+    "scale": "meso",
+    "phenomenon_id": "fright_contagion_wave",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N32",
+    "indicator_id": "fright_meso_component_fright_edge_fraction",
+    "name": "Contact-component frightened-edge fraction",
+    "scale": "meso",
+    "phenomenon_id": "fright_contagion_wave",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N33",
+    "indicator_id": "fright_meso_component_fright_position_corr",
+    "name": "Contact-component fright-centroid-distance correlation",
+    "scale": "meso",
+    "phenomenon_id": "fright_contagion_wave",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N34",
+    "indicator_id": "fright_macro_school_prevalence",
+    "name": "Whole-school fright prevalence",
+    "scale": "macro",
+    "phenomenon_id": "fright_contagion_wave",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N35",
+    "indicator_id": "fright_macro_school_fright_edge_fraction",
+    "name": "Whole-school frightened-edge fraction",
+    "scale": "macro",
+    "phenomenon_id": "fright_contagion_wave",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N36",
+    "indicator_id": "fright_macro_onset_rate",
+    "name": "Fright onset rate",
+    "scale": "macro",
+    "phenomenon_id": "fright_contagion_wave",
+    "units": "1/step",
+    "executed": false
+  },
+  {
+    "label": "N37",
+    "indicator_id": "pol_micro_heading_deviation",
+    "name": "Focal heading deviation from school mean",
+    "scale": "micro",
+    "phenomenon_id": "threat_induced_polarization",
+    "units": "radians",
+    "executed": false
+  },
+  {
+    "label": "N38",
+    "indicator_id": "pol_micro_neighbor_alignment",
+    "name": "Focal heading alignment with contact neighbors",
+    "scale": "micro",
+    "phenomenon_id": "threat_induced_polarization",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N39",
+    "indicator_id": "pol_micro_shark_proximity",
+    "name": "Focal inverse distance to nearest shark",
+    "scale": "micro",
+    "phenomenon_id": "threat_induced_polarization",
+    "units": "1/model length",
+    "executed": false
+  },
+  {
+    "label": "N40",
+    "indicator_id": "pol_meso_component_polarization",
+    "name": "Contact-component heading polarization",
+    "scale": "meso",
+    "phenomenon_id": "threat_induced_polarization",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N41",
+    "indicator_id": "pol_meso_component_mean_deviation",
+    "name": "Contact-component mean heading deviation",
+    "scale": "meso",
+    "phenomenon_id": "threat_induced_polarization",
+    "units": "radians",
+    "executed": false
+  },
+  {
+    "label": "N42",
+    "indicator_id": "pol_meso_component_away_shark_alignment",
+    "name": "Contact-component heading away-from-shark alignment",
+    "scale": "meso",
+    "phenomenon_id": "threat_induced_polarization",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N43",
+    "indicator_id": "pol_macro_school_polarization",
+    "name": "Whole-school heading polarization",
+    "scale": "macro",
+    "phenomenon_id": "threat_induced_polarization",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N44",
+    "indicator_id": "pol_macro_polarization_proximity_cov",
+    "name": "Run-level polarization vs mean shark proximity covariance",
+    "scale": "macro",
+    "phenomenon_id": "threat_induced_polarization",
+    "units": "1/model length",
+    "executed": false
+  },
+  {
+    "label": "N45",
+    "indicator_id": "pol_macro_polarization_change",
+    "name": "Step change in whole-school polarization",
+    "scale": "macro",
+    "phenomenon_id": "threat_induced_polarization",
+    "units": "1/step",
+    "executed": false
+  },
+  {
+    "label": "N46",
+    "indicator_id": "comp_micro_degree",
+    "name": "Focal contact degree",
+    "scale": "micro",
+    "phenomenon_id": "local_compaction",
+    "units": "neighbors",
+    "executed": false
+  },
+  {
+    "label": "N47",
+    "indicator_id": "comp_micro_nearest_contact_distance",
+    "name": "Focal nearest contact-neighbor distance",
+    "scale": "micro",
+    "phenomenon_id": "local_compaction",
+    "units": "model length",
+    "executed": false
+  },
+  {
+    "label": "N48",
+    "indicator_id": "comp_micro_clustering_coefficient",
+    "name": "Focal local clustering coefficient",
+    "scale": "micro",
+    "phenomenon_id": "local_compaction",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N49",
+    "indicator_id": "comp_meso_component_edge_density",
+    "name": "Contact-component edge density",
+    "scale": "meso",
+    "phenomenon_id": "local_compaction",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N50",
+    "indicator_id": "comp_meso_component_mean_degree",
+    "name": "Contact-component mean degree",
+    "scale": "meso",
+    "phenomenon_id": "local_compaction",
+    "units": "neighbors",
+    "executed": false
+  },
+  {
+    "label": "N51",
+    "indicator_id": "comp_meso_component_mean_nearest_distance",
+    "name": "Contact-component mean nearest-contact distance",
+    "scale": "meso",
+    "phenomenon_id": "local_compaction",
+    "units": "model length",
+    "executed": false
+  },
+  {
+    "label": "N52",
+    "indicator_id": "comp_macro_school_mean_degree",
+    "name": "Whole-school mean contact degree",
+    "scale": "macro",
+    "phenomenon_id": "local_compaction",
+    "units": "neighbors",
+    "executed": false
+  },
+  {
+    "label": "N53",
+    "indicator_id": "comp_macro_school_clustering",
+    "name": "Whole-school global clustering coefficient",
+    "scale": "macro",
+    "phenomenon_id": "local_compaction",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N54",
+    "indicator_id": "comp_macro_school_mean_nearest_distance",
+    "name": "Whole-school mean nearest-contact distance",
+    "scale": "macro",
+    "phenomenon_id": "local_compaction",
+    "units": "model length",
+    "executed": false
+  },
+  {
+    "label": "N55",
+    "indicator_id": "mill_micro_angular_velocity",
+    "name": "Focal angular velocity around school centroid",
+    "scale": "micro",
+    "phenomenon_id": "vortex_milling",
+    "units": "radians/model time",
+    "executed": false
+  },
+  {
+    "label": "N56",
+    "indicator_id": "mill_micro_tangential_speed",
+    "name": "Focal signed tangential speed",
+    "scale": "micro",
+    "phenomenon_id": "vortex_milling",
+    "units": "model length/model time",
+    "executed": false
+  },
+  {
+    "label": "N57",
+    "indicator_id": "mill_micro_radial_velocity",
+    "name": "Focal radial velocity",
+    "scale": "micro",
+    "phenomenon_id": "vortex_milling",
+    "units": "model length/model time",
+    "executed": false
+  },
+  {
+    "label": "N58",
+    "indicator_id": "mill_meso_component_angular_velocity",
+    "name": "Contact-component mean angular velocity",
+    "scale": "meso",
+    "phenomenon_id": "vortex_milling",
+    "units": "radians/model time",
+    "executed": false
+  },
+  {
+    "label": "N59",
+    "indicator_id": "mill_meso_component_rotational_order",
+    "name": "Contact-component rotational order",
+    "scale": "meso",
+    "phenomenon_id": "vortex_milling",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N60",
+    "indicator_id": "mill_meso_component_angular_momentum",
+    "name": "Contact-component mean angular momentum",
+    "scale": "meso",
+    "phenomenon_id": "vortex_milling",
+    "units": "model length^2/model time",
+    "executed": false
+  },
+  {
+    "label": "N61",
+    "indicator_id": "mill_macro_school_angular_velocity",
+    "name": "Whole-school mean angular velocity",
+    "scale": "macro",
+    "phenomenon_id": "vortex_milling",
+    "units": "radians/model time",
+    "executed": false
+  },
+  {
+    "label": "N62",
+    "indicator_id": "mill_macro_school_rotational_order",
+    "name": "Whole-school rotational order",
+    "scale": "macro",
+    "phenomenon_id": "vortex_milling",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N63",
+    "indicator_id": "mill_macro_school_angular_momentum",
+    "name": "Whole-school mean angular momentum",
+    "scale": "macro",
+    "phenomenon_id": "vortex_milling",
+    "units": "model length^2/model time",
+    "executed": false
+  },
+  {
+    "label": "N64",
+    "indicator_id": "lead_micro_lagged_alignment",
+    "name": "Focal lagged neighbor heading-change alignment",
+    "scale": "micro",
+    "phenomenon_id": "leader_follower_cascade",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N65",
+    "indicator_id": "lead_micro_influence_score",
+    "name": "Focal run-level lagged influence score",
+    "scale": "micro",
+    "phenomenon_id": "leader_follower_cascade",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N66",
+    "indicator_id": "lead_micro_influence_percentile",
+    "name": "Focal run-level influence percentile",
+    "scale": "micro",
+    "phenomenon_id": "leader_follower_cascade",
+    "units": "percentile",
+    "executed": false
+  },
+  {
+    "label": "N67",
+    "indicator_id": "lead_meso_component_lagged_alignment",
+    "name": "Contact-component mean lagged heading-change alignment",
+    "scale": "meso",
+    "phenomenon_id": "leader_follower_cascade",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N68",
+    "indicator_id": "lead_meso_component_cascade_fraction",
+    "name": "Contact-component sign-matched cascade fraction",
+    "scale": "meso",
+    "phenomenon_id": "leader_follower_cascade",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N69",
+    "indicator_id": "lead_meso_component_influence_variance",
+    "name": "Contact-component influence-score variance",
+    "scale": "meso",
+    "phenomenon_id": "leader_follower_cascade",
+    "units": "dimensionless^2",
+    "executed": false
+  },
+  {
+    "label": "N70",
+    "indicator_id": "lead_macro_school_lagged_alignment",
+    "name": "Whole-school mean lagged heading-change alignment",
+    "scale": "macro",
+    "phenomenon_id": "leader_follower_cascade",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N71",
+    "indicator_id": "lead_macro_school_cascade_fraction",
+    "name": "Whole-school sign-matched cascade fraction",
+    "scale": "macro",
+    "phenomenon_id": "leader_follower_cascade",
+    "units": "dimensionless",
+    "executed": false
+  },
+  {
+    "label": "N72",
+    "indicator_id": "lead_macro_school_influence_variance",
+    "name": "Whole-school influence-score variance",
+    "scale": "macro",
+    "phenomenon_id": "leader_follower_cascade",
+    "units": "dimensionless^2",
+    "executed": false
+  }
+]

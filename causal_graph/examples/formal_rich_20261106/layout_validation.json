@@ -1,0 +1,21 @@
+{
+  "checked_at": "2026-11-07T07:08:49.524844+00:00",
+  "views": 30,
+  "candidate_layouts": {
+    "fish": {
+      "nodes_checked": 72,
+      "node_box_overlaps": [],
+      "font_points": 14,
+      "edge_crossings_eliminated": false,
+      "dense_graph_reading": "direction/phenomenon views, adjacency matrix and interactive neighbor focus"
+    },
+    "covasim": {
+      "nodes_checked": 67,
+      "node_box_overlaps": [],
+      "font_points": 14,
+      "edge_crossings_eliminated": false,
+      "dense_graph_reading": "direction/phenomenon views, adjacency matrix and interactive neighbor focus"
+    }
+  },
+  "graphviz_version": "dot - graphviz version 14.1.5 (20260411.2331)"
+}

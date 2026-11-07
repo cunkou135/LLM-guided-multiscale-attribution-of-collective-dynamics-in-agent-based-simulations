@@ -1,0 +1,45 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Covasim | phenomenon_4</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">9 nodes / 18 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"p4_micro_silent_infectious_flag" [id="node_p4_micro_silent_infectious_flag", label="N24\nAgent silent-infectious\nindicator", style="rounded,filled", fillcolor="white"];
+"p4_micro_silent_infectious_duration" [id="node_p4_micro_silent_infectious_duration", label="N25\nAgent cumulative silent-\ninfectious duration", style="rounded,filled", fillcolor="white"];
+"p4_micro_symptomatic_undiagnosed_flag" [id="node_p4_micro_symptomatic_undiagnosed_flag", label="N26\nAgent symptomatic-but-\nundiagnosed indicator", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"p4_meso_group_silent_share" [id="node_p4_meso_group_silent_share", label="N27\nSilent share of infectious\nperson-steps by quarantine-\nstatus group", style="rounded,filled", fillcolor="white"];
+"p4_meso_group_exposure_yield_silent" [id="node_p4_meso_group_exposure_yield_silent", label="N28\nExposures generated per\nsilent infectious person-\nstep by group", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"p4_macro_detection_coverage_rate" [id="node_p4_macro_detection_coverage_rate", label="N29\nNew diagnoses per infectious\nperson-step", style="rounded,filled", fillcolor="white"];
+"p4_macro_silent_prevalence_share" [id="node_p4_macro_silent_prevalence_share", label="N30\nSilent share of current\ninfectious agents", style="rounded,filled", fillcolor="white"];
+"p4_macro_masking_ratio" [id="node_p4_macro_masking_ratio", label="N31\nCumulative never-diagnosed\nto ever-diagnosed infection\nratio", style="rounded,filled", fillcolor="white"];
+"p4_macro_symptom_to_diagnosis_lag" [id="node_p4_macro_symptom_to_diagnosis_lag", label="N32\nMean recorded symptom-to-\ndiagnosis interval", style="rounded,filled", fillcolor="white"];
+}
+"p4_micro_silent_infectious_flag" -> "p4_macro_detection_coverage_rate" [id="edge_upward__b01_r0019", color="#27667b", style="solid", constraint=true];
+"p4_micro_silent_infectious_flag" -> "p4_macro_masking_ratio" [id="edge_upward__b01_r0020", color="#27667b", style="solid", constraint=true];
+"p4_meso_group_exposure_yield_silent" -> "p4_macro_silent_prevalence_share" [id="edge_upward__b01_r0026", color="#27667b", style="solid", constraint=true];
+"p4_macro_symptom_to_diagnosis_lag" -> "p4_micro_silent_infectious_duration" [id="edge_downward__b00_r0005", color="#b3653b", style="dashed", constraint=false];
+"p4_macro_detection_coverage_rate" -> "p4_micro_silent_infectious_flag" [id="edge_downward__b01_r0008", color="#b3653b", style="dashed", constraint=false];
+"p4_macro_detection_coverage_rate" -> "p4_micro_symptomatic_undiagnosed_flag" [id="edge_downward__b01_r0009", color="#b3653b", style="dashed", constraint=false];
+"p4_macro_detection_coverage_rate" -> "p4_meso_group_silent_share" [id="edge_downward__b01_r0010", color="#b3653b", style="dashed", constraint=false];
+"p4_meso_group_silent_share" -> "p4_micro_silent_infectious_flag" [id="edge_downward__b03_r0003", color="#b3653b", style="dashed", constraint=false];
+"p4_macro_masking_ratio" -> "p4_meso_group_silent_share" [id="edge_downward__b03_r0004", color="#b3653b", style="dashed", constraint=false];
+"p4_macro_detection_coverage_rate" -> "p4_macro_silent_prevalence_share" [id="edge_intra_scale__b00_r0044", color="#6e648d", style="dotted", constraint=false];
+"p4_micro_symptomatic_undiagnosed_flag" -> "p4_micro_silent_infectious_duration" [id="edge_intra_scale__b01_r0010", color="#6e648d", style="dotted", constraint=false];
+"p4_macro_silent_prevalence_share" -> "p4_macro_masking_ratio" [id="edge_intra_scale__b01_r0049", color="#6e648d", style="dotted", constraint=false];
+"p4_macro_silent_prevalence_share" -> "p4_macro_detection_coverage_rate" [id="edge_intra_scale__b01_r0050", color="#6e648d", style="dotted", constraint=false];
+"p4_macro_silent_prevalence_share" -> "p4_macro_symptom_to_diagnosis_lag" [id="edge_intra_scale__b01_r0051", color="#6e648d", style="dotted", constraint=false];
+"p4_meso_group_exposure_yield_silent" -> "p4_meso_group_silent_share" [id="edge_intra_scale__b03_r0039", color="#6e648d", style="dotted", constraint=false];
+"p4_macro_symptom_to_diagnosis_lag" -> "p4_macro_detection_coverage_rate" [id="edge_intra_scale__b03_r0045", color="#6e648d", style="dotted", constraint=false];
+"p4_macro_symptom_to_diagnosis_lag" -> "p4_macro_silent_prevalence_share" [id="edge_intra_scale__b03_r0046", color="#6e648d", style="dotted", constraint=false];
+"p4_macro_symptom_to_diagnosis_lag" -> "p4_macro_masking_ratio" [id="edge_intra_scale__b03_r0047", color="#6e648d", style="dotted", constraint=false];
+}

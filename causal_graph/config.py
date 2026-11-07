@@ -106,6 +106,7 @@ class PipelineConfig:
     indicator_timeout: int = 30
     min_observations: int = 3
     missing_fraction_warning: float = .2
+    code_batch_size: int = 0
 
     def summary(self):
         return asdict(self)
@@ -120,6 +121,8 @@ def load_pipeline(path):
             raise ValueError(f'{name} must be a positive integer')
     if result.execution_mode not in ('isolated', 'trusted_reviewed'):
         raise ValueError('execution_mode must be isolated or trusted_reviewed')
+    if type(result.code_batch_size) is not int or result.code_batch_size < 0:
+        raise ValueError('code_batch_size must be a nonnegative integer; zero means a single call')
     if type(result.indicator_timeout) is not int or not 1 <= result.indicator_timeout <= 300:
         raise ValueError('indicator_timeout must be within [1, 300]')
     if not _number(result.missing_fraction_warning, 0, 1):

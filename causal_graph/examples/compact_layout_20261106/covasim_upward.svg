@@ -1,0 +1,148 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1437pt" height="852pt" viewBox="0.00 0.00 1437.00 852.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 400.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-400.39 681.09,-400.39 681.09,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-366.5" font-family="Times New Roman" font-size="17.00">Covasim | upward</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-344" font-family="Times New Roman" font-size="12.00">6 nodes / 7 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-319.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-319.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-319.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-319.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-319.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="8,-80 8,-298 217.9,-298 217.9,-80 8,-80" />
+<text xml:space="preserve" text-anchor="middle" x="35.12" y="-278.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="227.9,-80 227.9,-298 443.05,-298 443.05,-80 227.9,-80" />
+<text xml:space="preserve" text-anchor="middle" x="254.28" y="-278.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="453.05,-8 453.05,-191 664.45,-191 664.45,-8 453.05,-8" />
+<text xml:space="preserve" text-anchor="middle" x="482.43" y="-171.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_upward__edge_sic_micro_degree_to_meso_layer_ratio" class="inspectable" data-source="sic_micro_prior_setting_degree" data-target="sic_meso_layer_infection_contact_ratio">
+<path fill="none" stroke="#27667b" d="M208.43,-220C220.68,-220 233.2,-220 245.36,-220" />
+<polygon fill="#27667b" stroke="#27667b" points="245.21,-222.45 252.21,-220 245.21,-217.55 245.21,-222.45" />
+<title>sic_micro_prior_setting_degree → sic_meso_layer_infection_contact_ratio
+upward
+Infected agents with higher prior same-setting contact degree are more embedded in dense layer-specific contact structures; their subsequent interactions can generate more same-layer infection events per observed contact row, shifting the meso layer infection-to-contact ratio beyond simple event aggregation.</title></g>
+
+<g id="edge_upward__edge_sic_micro_degree_to_macro_layer_entropy" class="inspectable" data-source="sic_micro_prior_setting_degree" data-target="sic_macro_layer_entropy">
+<path fill="none" stroke="#27667b" d="M208.02,-185.89C211.66,-182.59 214.99,-178.97 217.9,-175 230.71,-157.52 211.81,-92.52 227.9,-78 263.4,-45.97 397.45,-63.63 443.05,-78 448.22,-79.63 448.23,-82.52 453.05,-85 457.66,-87.37 462.46,-89.66 467.36,-91.84" />
+<polygon fill="#27667b" stroke="#27667b" points="466.33,-94.07 473.73,-94.6 468.28,-89.57 466.33,-94.07" />
+<title>sic_micro_prior_setting_degree → sic_macro_layer_entropy
+upward
+Heterogeneous prior contact embeddedness of infected agents across settings can create layer-specific infection clustering; when high-degree infections concentrate in particular layers, the city-wide infection-event distribution across layers can become more skewed, altering normalized layer entropy.</title></g>
+
+<g id="edge_upward__edge_icts_micro_quarantine_ratio_to_meso_layer_infection_ratio" class="inspectable" data-source="icts_micro_quarantine_contact_ratio" data-target="sic_meso_layer_infection_contact_ratio">
+<path fill="none" stroke="#27667b" d="M203.01,-166.35C217.13,-172.11 231.73,-178.07 245.84,-183.83" />
+<polygon fill="#27667b" stroke="#27667b" points="244.82,-186.06 252.23,-186.43 246.67,-181.52 244.82,-186.06" />
+<title>icts_micro_quarantine_contact_ratio → sic_meso_layer_infection_contact_ratio
+upward
+Quarantined agents who retain more contacts can continue to create infectious contact opportunities within their layer, potentially raising layer infection events per contact row; strong post-onset contact reduction instead lowers that layer-specific infection-to-contact ratio.</title></g>
+
+<g id="edge_upward__edge_icts_micro_quarantine_ratio_to_meso_layer_contact_change" class="inspectable" data-source="icts_micro_quarantine_contact_ratio" data-target="icts_meso_layer_contact_change">
+<path fill="none" stroke="#27667b" d="M203.01,-130C211.62,-130 220.4,-130 229.14,-130" />
+<polygon fill="#27667b" stroke="#27667b" points="228.99,-132.45 235.99,-130 228.99,-127.55 228.99,-132.45" />
+<title>icts_micro_quarantine_contact_ratio → icts_meso_layer_contact_change
+upward
+When quarantined agents retain a larger share of their pre-onset contacts, layer-level contact volume around quarantine-count increases declines less; widespread low post/pre contact ratios instead amplify layer contact-volume contraction.</title></g>
+
+<g id="edge_upward__edge_icts_micro_quarantine_ratio_to_macro_city_contact_change" class="inspectable" data-source="icts_micro_quarantine_contact_ratio" data-target="icts_macro_city_contact_change_on_quarantine_increase">
+<path fill="none" stroke="#27667b" d="M162.52,-89.96C181.7,-76.52 204.68,-63.15 227.9,-56 301.27,-33.42 388.22,-32.56 454.42,-36.87" />
+<polygon fill="#27667b" stroke="#27667b" points="454.14,-39.31 461.29,-37.35 454.47,-34.42 454.14,-39.31" />
+<title>icts_micro_quarantine_contact_ratio → icts_macro_city_contact_change_on_quarantine_increase
+upward
+Individual contact retention after quarantine onset attenuates the aggregate city contact-volume decline on quarantine-increase steps; if many quarantined agents maintain contacts, the city-level differential contact change is less negative than when post-onset contacts drop sharply.</title></g>
+
+<g id="edge_upward__edge_sic_meso_layer_ratio_to_macro_layer_entropy" class="inspectable" data-source="sic_meso_layer_infection_contact_ratio" data-target="sic_macro_layer_entropy">
+<path fill="none" stroke="#27667b" d="M417.19,-186.25C425.94,-182.5 434.69,-178.69 443.05,-175 456.17,-169.2 470.07,-162.91 483.5,-156.75" />
+<polygon fill="#27667b" stroke="#27667b" points="484.19,-159.13 489.53,-153.98 482.14,-154.67 484.19,-159.13" />
+<title>sic_meso_layer_infection_contact_ratio → sic_macro_layer_entropy
+upward
+Differential infection-to-contact intensity across layers changes the relative share of infection events attributed to each layer; an elevated ratio in one layer can make city infection events more concentrated, while more balanced ratios across layers can diversify the city-level layer distribution.</title></g>
+
+<g id="edge_upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy" class="inspectable" data-source="icts_meso_layer_contact_change" data-target="sic_macro_layer_entropy">
+<path fill="none" stroke="#27667b" d="M433.53,-126.49C444.54,-126.09 455.73,-125.69 466.67,-125.29" />
+<polygon fill="#27667b" stroke="#27667b" points="466.55,-127.75 473.45,-125.05 466.37,-122.85 466.55,-127.75" />
+<title>icts_meso_layer_contact_change → sic_macro_layer_entropy
+upward
+Quarantine-associated contact-volume contractions that differ by layer redistribute mixing opportunities among settings, which can shift transmission toward less-contracted layers and thereby reshape the city-level distribution of infection events across layers.</title></g>
+
+<g id="node_sic_micro_prior_setting_degree" class="inspectable" tabindex="0" data-node-id="sic_micro_prior_setting_degree">
+<path fill="#f2f2f2" stroke="#444444" stroke-width="1.1" stroke-dasharray="5,2" d="M195.9,-259.54C195.9,-259.54 30,-259.54 30,-259.54 24,-259.54 18,-253.54 18,-247.54 18,-247.54 18,-192.46 18,-192.46 18,-186.46 24,-180.46 30,-180.46 30,-180.46 195.9,-180.46 195.9,-180.46 201.9,-180.46 207.9,-186.46 207.9,-192.46 207.9,-192.46 207.9,-247.54 207.9,-247.54 207.9,-253.54 201.9,-259.54 195.9,-259.54" />
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-241.2" font-family="Times New Roman" font-size="14.00">N1</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-223.95" font-family="Times New Roman" font-size="14.00">Newly infected agent prior</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-206.7" font-family="Times New Roman" font-size="14.00">same-setting contact degree</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-189.45" font-family="Times New Roman" font-size="14.00">[not executable]</text>
+<title>N1 | sic_micro_prior_setting_degree
+Newly infected agent prior same-setting contact degree
+Scale: micro | Phenomenon: setting_infection_clustering
+Definition: For each event row e in events with run_id r, step t, agent_id a, layer L, classified as an infection transition by a fixed observed event_type/state label set, define D(e)=# { p : p is non-null/non-sentinel, p!=a, and exists c in contacts with c.run_id=r, c.layer=L, c.step in [t-W,t-1], and ((c.agent_id=a and c.partner_id=p) or (c.partner_id=a and c.agent_id=p)) }. The indicator value for e is D(e). W is a pre-specified nonnegative integer window length.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'failed', 'error_type': 'review_rejected', 'error': 'ReviewRejected: The mathematical definition specifies D(e) for each infection event. The function returns a per-step mean, so event-level observations and variation are discarded; the later config note does not preserve the original observation unit. It also lacks the specified negative-sentinel filter (the supplied contacts contain no negative IDs). Original code is retained and not executed.'}}</title></g>
+
+<g id="node_icts_micro_quarantine_contact_ratio" class="inspectable" tabindex="0" data-node-id="icts_micro_quarantine_contact_ratio">
+<path fill="#f2f2f2" stroke="#444444" stroke-width="1.1" stroke-dasharray="5,2" d="M190.65,-169.54C190.65,-169.54 35.25,-169.54 35.25,-169.54 29.25,-169.54 23.25,-163.54 23.25,-157.54 23.25,-157.54 23.25,-102.46 23.25,-102.46 23.25,-96.46 29.25,-90.46 35.25,-90.46 35.25,-90.46 190.65,-90.46 190.65,-90.46 196.65,-90.46 202.65,-96.46 202.65,-102.46 202.65,-102.46 202.65,-157.54 202.65,-157.54 202.65,-163.54 196.65,-169.54 190.65,-169.54" />
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-151.2" font-family="Times New Roman" font-size="14.00">N4</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-133.95" font-family="Times New Roman" font-size="14.00">Agent contact-degree ratio</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-116.7" font-family="Times New Roman" font-size="14.00">around quarantine onset</text>
+<text xml:space="preserve" text-anchor="middle" x="112.95" y="-99.45" font-family="Times New Roman" font-size="14.00">[not executable]</text>
+<title>N4 | icts_micro_quarantine_contact_ratio
+Agent contact-degree ratio around quarantine onset
+Scale: micro | Phenomenon: intervention_contact_trajectory_shift
+Definition: For each event q in events with run_id r, step s, agent_id a, state matching the observed quarantined label, before=false, after=true, let P_pre={p: exists c in contacts, c.run_id=r, c.step in [s-W,s-1], ((c.agent_id=a and c.partner_id=p) or (c.partner_id=a and c.agent_id=p)), p non-null/non-sentinel, p!=a} and P_post similarly for c.step in [s+1,s+W]. Indicator = |P_post|/|P_pre| if |P_pre|&gt;0; undefined if |P_pre|=0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'failed', 'error_type': 'review_rejected', 'error': 'ReviewRejected: The definition specifies a ratio for each quarantine-onset event, but the function collapses onsets to a per-step mean. In addition, missing before values become false and can qualify as onsets despite the config rule, and negative sentinels are not explicitly excluded. The supplied onset/contacts data do not trigger the latter conditions; the observation-unit mismatch remains. Not executed.'}}</title></g>
+
+<g id="node_sic_meso_layer_infection_contact_ratio" class="inspectable" tabindex="0" data-node-id="sic_meso_layer_infection_contact_ratio">
+<path fill="#f2f2f2" stroke="#444444" stroke-width="1.1" stroke-dasharray="5,2" d="M404.93,-259.54C404.93,-259.54 266.03,-259.54 266.03,-259.54 260.03,-259.54 254.03,-253.54 254.03,-247.54 254.03,-247.54 254.03,-192.46 254.03,-192.46 254.03,-186.46 260.03,-180.46 266.03,-180.46 266.03,-180.46 404.93,-180.46 404.93,-180.46 410.93,-180.46 416.93,-186.46 416.93,-192.46 416.93,-192.46 416.93,-247.54 416.93,-247.54 416.93,-253.54 410.93,-259.54 404.93,-259.54" />
+<text xml:space="preserve" text-anchor="middle" x="335.48" y="-241.2" font-family="Times New Roman" font-size="14.00">N2</text>
+<text xml:space="preserve" text-anchor="middle" x="335.48" y="-223.95" font-family="Times New Roman" font-size="14.00">Layer-specific infection</text>
+<text xml:space="preserve" text-anchor="middle" x="335.48" y="-206.7" font-family="Times New Roman" font-size="14.00">events per contact edge</text>
+<text xml:space="preserve" text-anchor="middle" x="335.48" y="-189.45" font-family="Times New Roman" font-size="14.00">[not executable]</text>
+<title>N2 | sic_meso_layer_infection_contact_ratio
+Layer-specific infection events per contact edge
+Scale: meso | Phenomenon: setting_infection_clustering
+Definition: For run r, layer L, window [s,s+W-1], let I(r,L,s)=# { e in events : e.run_id=r, e.layer=L, e.step in [s,s+W-1], e classified as an infection transition }, and C(r,L,s)=# { c in contacts : c.run_id=r, c.layer=L, c.step in [s,s+W-1] }. Indicator = I(r,L,s)/C(r,L,s) when C&gt;0; undefined when C=0 or L is null.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'failed', 'error_type': 'execution_or_validation_error', 'error': 'ValueError: seed_infection: insufficient actual observations (0 &lt; 3)'}}</title></g>
+
+<g id="node_icts_meso_layer_contact_change" class="inspectable" tabindex="0" data-node-id="icts_meso_layer_contact_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M421.05,-169.54C421.05,-169.54 249.9,-169.54 249.9,-169.54 243.9,-169.54 237.9,-163.54 237.9,-157.54 237.9,-157.54 237.9,-102.46 237.9,-102.46 237.9,-96.46 243.9,-90.46 249.9,-90.46 249.9,-90.46 421.05,-90.46 421.05,-90.46 427.05,-90.46 433.05,-96.46 433.05,-102.46 433.05,-102.46 433.05,-157.54 433.05,-157.54 433.05,-163.54 427.05,-169.54 421.05,-169.54" />
+<text xml:space="preserve" text-anchor="middle" x="335.48" y="-151.2" font-family="Times New Roman" font-size="14.00">N5</text>
+<text xml:space="preserve" text-anchor="middle" x="335.48" y="-133.95" font-family="Times New Roman" font-size="14.00">Layer contact-volume change</text>
+<text xml:space="preserve" text-anchor="middle" x="335.48" y="-116.7" font-family="Times New Roman" font-size="14.00">around quarantine-count</text>
+<text xml:space="preserve" text-anchor="middle" x="335.48" y="-99.45" font-family="Times New Roman" font-size="14.00">increase</text>
+<title>N5 | icts_meso_layer_contact_change
+Layer contact-volume change around quarantine-count increase
+Scale: meso | Phenomenon: intervention_contact_trajectory_shift
+Definition: For run r and layer L, let Q_t=model_states.quarantined at step t. Let S={t: Q_t&gt;Q_prev(t) with previous sampled step observed}. For each t in S, define C_pre(t)=mean over u in [t-W,t-1] intersect observed steps of # contacts rows with run_id=r, layer=L, step=u; C_post(t)=mean over u in [t+1,t+W] intersect observed steps of # contacts rows with run_id=r, layer=L, step=u. Indicator = median over t in S of (C_post(t)-C_pre(t)) when S and required pre/post steps exist; undefined if S is empty or no pre/post observed steps exist.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'success', 'series_file': 'indicator_series/3249f90463154305aed53504106b3dae/icts_meso_layer_contact_change.parquet', 'series_sha256': '934dfd6236571bae46827252f2c92b21559b1122e23d155b7b080b99b7fbd537'}}</title></g>
+
+<g id="node_sic_macro_layer_entropy" class="inspectable" tabindex="0" data-node-id="sic_macro_layer_entropy">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M630.08,-152.91C630.08,-152.91 487.43,-152.91 487.43,-152.91 481.43,-152.91 475.43,-146.91 475.43,-140.91 475.43,-140.91 475.43,-103.09 475.43,-103.09 475.43,-97.09 481.43,-91.09 487.43,-91.09 487.43,-91.09 630.08,-91.09 630.08,-91.09 636.08,-91.09 642.08,-97.09 642.08,-103.09 642.08,-103.09 642.08,-140.91 642.08,-140.91 642.08,-146.91 636.08,-152.91 630.08,-152.91" />
+<text xml:space="preserve" text-anchor="middle" x="558.75" y="-134.57" font-family="Times New Roman" font-size="14.00">N3</text>
+<text xml:space="preserve" text-anchor="middle" x="558.75" y="-117.33" font-family="Times New Roman" font-size="14.00">City infection-event layer</text>
+<text xml:space="preserve" text-anchor="middle" x="558.75" y="-100.08" font-family="Times New Roman" font-size="14.00">entropy</text>
+<title>N3 | sic_macro_layer_entropy
+City infection-event layer entropy
+Scale: macro | Phenomenon: setting_infection_clustering
+Definition: For run r and window [s,s+W-1], let n_L = # infection-transition events with layer L for each non-null layer label L observed in r; N=sum_L n_L; p_L=n_L/N; K=# non-null layer labels observed in r in contacts or events; H = -(sum_L p_L log p_L)/log K if N&gt;0 and K&gt;1; undefined otherwise.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'success', 'series_file': 'indicator_series/3249f90463154305aed53504106b3dae/sic_macro_layer_entropy.parquet', 'series_sha256': '2fe88bd2ce1f3d64edf52698b4ee1921b855a23581fd11a7bbeb1e9a4a583ec0'}}</title></g>
+
+<g id="node_icts_macro_city_contact_change_on_quarantine_increase" class="inspectable" tabindex="0" data-node-id="icts_macro_city_contact_change_on_quarantine_increase">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M642.45,-79.91C642.45,-79.91 475.05,-79.91 475.05,-79.91 469.05,-79.91 463.05,-73.91 463.05,-67.91 463.05,-67.91 463.05,-30.09 463.05,-30.09 463.05,-24.08 469.05,-18.09 475.05,-18.09 475.05,-18.09 642.45,-18.09 642.45,-18.09 648.45,-18.09 654.45,-24.09 654.45,-30.09 654.45,-30.09 654.45,-67.91 654.45,-67.91 654.45,-73.91 648.45,-79.91 642.45,-79.91" />
+<text xml:space="preserve" text-anchor="middle" x="558.75" y="-61.58" font-family="Times New Roman" font-size="14.00">N6</text>
+<text xml:space="preserve" text-anchor="middle" x="558.75" y="-44.33" font-family="Times New Roman" font-size="14.00">City contact-volume change</text>
+<text xml:space="preserve" text-anchor="middle" x="558.75" y="-27.07" font-family="Times New Roman" font-size="14.00">on quarantine-increase steps</text>
+<title>N6 | icts_macro_city_contact_change_on_quarantine_increase
+City contact-volume change on quarantine-increase steps
+Scale: macro | Phenomenon: intervention_contact_trajectory_shift
+Definition: For run r, let C_t=# contacts rows at step t; DeltaC_t=C_t-C_{t-1}; DeltaQ_t=Q_t-Q_{t-1} from model_states.quarantined. Let A=mean{DeltaC_t: DeltaQ_t&gt;0 and both t and t-1 are observed}; B=mean{DeltaC_t: DeltaQ_t=0 and both t and t-1 are observed}. Indicator=A-B. Undefined if A or B has no members.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'success', 'series_file': 'indicator_series/3249f90463154305aed53504106b3dae/icts_macro_city_contact_change_on_quarantine_increase.parquet', 'series_sha256': '5ffb1143ae8a5b522622133849a128734395e95a7c5789b7c9f0fa07875de63c'}}</title></g>
+</g>
+</svg>

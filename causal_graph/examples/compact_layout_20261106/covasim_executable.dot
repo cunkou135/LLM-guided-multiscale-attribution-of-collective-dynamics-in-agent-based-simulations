@@ -1,0 +1,20 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Covasim | Executable hypotheses</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">3 nodes / 3 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"icts_meso_layer_contact_change" [id="node_icts_meso_layer_contact_change", label="N5\nLayer contact-volume change\naround quarantine-count\nincrease", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"sic_macro_layer_entropy" [id="node_sic_macro_layer_entropy", label="N3\nCity infection-event layer\nentropy", style="rounded,filled", fillcolor="white"];
+"icts_macro_city_contact_change_on_quarantine_increase" [id="node_icts_macro_city_contact_change_on_quarantine_increase", label="N6\nCity contact-volume change\non quarantine-increase steps", style="rounded,filled", fillcolor="white"];
+}
+"icts_meso_layer_contact_change" -> "sic_macro_layer_entropy" [id="edge_upward__edge_icts_meso_layer_contact_change_to_macro_layer_entropy", color="#27667b", style="solid", constraint=true];
+"sic_macro_layer_entropy" -> "icts_macro_city_contact_change_on_quarantine_increase" [id="edge_intra_scale__macro_layer_entropy_to_city_contact_change", color="#6e648d", style="dotted", constraint=false];
+"icts_macro_city_contact_change_on_quarantine_increase" -> "sic_macro_layer_entropy" [id="edge_intra_scale__macro_city_contact_change_to_layer_entropy", color="#6e648d", style="dotted", constraint=false];
+}

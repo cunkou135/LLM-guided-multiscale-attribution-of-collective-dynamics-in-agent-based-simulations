@@ -58,42 +58,83 @@ def analyze_access(code, required, schema):
                     return table_of(node.func.value)
         return None
 
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Assign):
+    class AccessVisitor(ast.NodeVisitor):
+        def visit_FunctionDef(self, node):
+            saved_aliases, saved_derived = aliases.copy(), derived.copy()
+            # Helpers have local names; nested functions may capture outer frames.
+            for arg in node.args.args:
+                aliases.pop(arg.arg, None)
+            for statement in node.body:
+                self.visit(statement)
+            aliases.clear(); aliases.update(saved_aliases)
+            derived.clear(); derived.update(saved_derived)
+
+        def visit_Assign(self, node):
+            # Read the RHS with the current bindings before replacing a local name.
+            self.visit(node.value)
             table = table_of(node.value)
             for target in node.targets:
-                if isinstance(target, ast.Name) and table:
-                    aliases[target.id] = table
-                elif isinstance(target, ast.Subscript) and table_of(target.value):
+                if isinstance(target, ast.Name):
+                    if table:
+                        aliases[target.id] = table
+                    elif target.id in aliases:
+                        aliases.pop(target.id)
+                        dynamic.append(f'{target.id}: transformed/mixed frame; runtime projection required')
+                elif isinstance(target, ast.Subscript):
+                    self.visit(target.value)
                     for field in literal(target.slice) or []:
-                        derived.add((table_of(target.value), field))
-    for node in ast.walk(tree):
-        if isinstance(node, ast.Subscript):
+                        source = table_of(target.value)
+                        if source:
+                            derived.add((source, field))
+
+        def visit_AnnAssign(self, node):
+            if node.value is not None:
+                self.visit_Assign(ast.Assign(targets=[node.target], value=node.value))
+
+        def visit_AugAssign(self, node):
+            if isinstance(node.target, ast.Subscript):
+                table = table_of(node.target.value)
+                if table:
+                    used.setdefault(table, set()).update(literal(node.target.slice) or [])
+            self.generic_visit(node)
+
+        def visit_Subscript(self, node):
             if isinstance(node.value, ast.Name) and node.value.id == 'data':
                 table = table_of(node)
                 if table:
                     used.setdefault(table, set())
                 else:
                     dynamic.append('dynamic data-table lookup')
-                continue
-            table = table_of(node.value)
-            fields = literal(node.slice)
-            if isinstance(node.value, ast.Attribute) and node.value.attr in {'loc', 'iloc'}:
-                fields = literal(node.slice.elts[1]) if isinstance(node.slice, ast.Tuple) and len(node.slice.elts) > 1 and node.value.attr == 'loc' else None
-            if table and fields and isinstance(node.ctx, ast.Load):
-                used.setdefault(table, set()).update(f for f in fields if (table, f) not in derived)
-            elif table and fields is None:
-                dynamic.append(f'{table}: dynamic indexing or boolean/positional selection')
-        if isinstance(node, ast.Attribute):
+            else:
+                table = table_of(node.value)
+                fields = literal(node.slice)
+                if isinstance(node.value, ast.Attribute) and node.value.attr in {'loc', 'iloc'}:
+                    fields = literal(node.slice.elts[1]) if isinstance(node.slice, ast.Tuple) and len(node.slice.elts) > 1 and node.value.attr == 'loc' else None
+                if table and fields and isinstance(node.ctx, ast.Load):
+                    used.setdefault(table, set()).update(f for f in fields if (table, f) not in derived)
+                elif table and fields is None:
+                    dynamic.append(f'{table}: dynamic indexing or boolean/positional selection')
+            self.generic_visit(node)
+
+        def visit_Attribute(self, node):
             table = table_of(node.value)
             if table and node.attr in schema['tables'].get(table, {}).get('fields', {}):
                 used.setdefault(table, set()).add(node.attr)
-        if isinstance(node, ast.Call) and isinstance(node.func, ast.Attribute):
-            table = table_of(node.func.value)
-            if table and node.func.attr in {'groupby', 'sort_values', 'set_index', 'dropna', 'drop_duplicates'}:
-                fields = literal(node.args[0]) if node.args else None
-                if fields:
-                    used.setdefault(table, set()).update(f for f in fields if (table, f) not in derived)
+            self.generic_visit(node)
+
+        def visit_Call(self, node):
+            if isinstance(node.func, ast.Attribute):
+                table = table_of(node.func.value)
+                if table and node.func.attr in {'groupby', 'sort_values', 'set_index', 'dropna', 'drop_duplicates'}:
+                    fields = literal(node.args[0]) if node.args else None
+                    for keyword in node.keywords:
+                        if keyword.arg in {'by', 'keys', 'subset'}:
+                            fields = literal(keyword.value)
+                    if fields:
+                        used.setdefault(table, set()).update(f for f in fields if (table, f) not in derived)
+            self.generic_visit(node)
+
+    AccessVisitor().visit(tree)
     errors = check_required(required, schema)
     for table, fields in used.items():
         if table not in required:

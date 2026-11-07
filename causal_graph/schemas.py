@@ -161,8 +161,12 @@ def validate_stage(stage, value, context, limits):
         pairs, by_id = set(), {}
         for edge in entries:
             source,target=edge['source'],edge['target']
+            if 'edge_source_ids' in context and source not in context['edge_source_ids']:
+                errors.append(f'Source outside the disjoint partition: {source}')
             pair=(source,target)
-            if edge['edge_id'] in by_id and by_id[edge['edge_id']]!=pair:
+            # Partitioned transport assigns stable local row IDs during assembly;
+            # original model IDs and row positions remain in generation_sources.
+            if 'edge_source_ids' not in context and edge['edge_id'] in by_id and by_id[edge['edge_id']]!=pair:
                 errors.append('Duplicate edge_id refers to different endpoints')
             by_id[edge['edge_id']]=pair
             if pair in pairs:warnings.append({'type':'duplicate_edge','source':source,'target':target})

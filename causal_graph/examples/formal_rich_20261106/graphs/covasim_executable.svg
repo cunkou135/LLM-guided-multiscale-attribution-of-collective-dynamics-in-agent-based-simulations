@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="630pt" height="290pt" viewBox="0.00 0.00 630.00 290.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 130.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-130.39 293.64,-130.39 293.64,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-96.5" font-family="Times New Roman" font-size="17.00">Covasim | Executable hypotheses</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-74" font-family="Times New Roman" font-size="12.00">0 nodes / 0 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-49.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-49.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-49.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-49.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-49.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+
+<g id="node1" class="node">
+<title>empty</title>
+<path fill="white" stroke="none" stroke-width="1.1" d="M258.07,-36C258.07,-36 26.93,-36 26.93,-36 20.93,-36 14.92,-30 14.92,-24 14.92,-24 14.92,-12 14.92,-12 14.92,-6 20.92,0 26.92,0 26.92,0 258.07,0 258.07,0 264.07,0 270.07,-6 270.07,-12 270.07,-12 270.07,-24 270.07,-24 270.07,-30 264.07,-36 258.07,-36" />
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-13.32" font-family="Times New Roman" font-size="14.00">No nodes passed execution acceptance</text>
+</g>
+</g>
+</svg>

@@ -1,0 +1,47 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Fish | phenomenon_3</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">9 nodes / 20 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"wave_micro_escape_alignment" [id="node_wave_micro_escape_alignment", label="N19\nFocal heading alignment with\nown escape direction", style="rounded,filled", fillcolor="white"];
+"wave_micro_requested_turn_abs" [id="node_wave_micro_requested_turn_abs", label="N20\nFocal absolute requested\nturn", style="rounded,filled", fillcolor="white"];
+"wave_micro_heading_change" [id="node_wave_micro_heading_change", label="N21\nFocal step heading change\nmagnitude", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"wave_meso_component_escape_coherence" [id="node_wave_meso_component_escape_coherence", label="N22\nContact-component escape-\ndirection coherence", style="rounded,filled", fillcolor="white"];
+"wave_meso_component_mean_escape_alignment" [id="node_wave_meso_component_mean_escape_alignment", label="N23\nContact-component mean\nheading-escape alignment", style="rounded,filled", fillcolor="white"];
+"wave_meso_component_turn_variance" [id="node_wave_meso_component_turn_variance", label="N24\nContact-component requested-\nturn variance", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"wave_macro_school_escape_coherence" [id="node_wave_macro_school_escape_coherence", label="N25\nWhole-school escape-\ndirection coherence", style="rounded,filled", fillcolor="white"];
+"wave_macro_heading_change_shark_cov" [id="node_wave_macro_heading_change_shark_cov", label="N26\nHeading-change magnitude vs\nshark proximity covariance", style="rounded,filled", fillcolor="white"];
+"wave_macro_escape_coherence_change" [id="node_wave_macro_escape_coherence_change", label="N27\nStep change in school\nescape-direction coherence", style="rounded,filled", fillcolor="white"];
+}
+"wave_micro_escape_alignment" -> "wave_meso_component_mean_escape_alignment" [id="edge_upward__b00_r0009", color="#27667b", style="solid", constraint=true];
+"wave_micro_requested_turn_abs" -> "wave_meso_component_turn_variance" [id="edge_upward__b01_r0001", color="#27667b", style="solid", constraint=true];
+"wave_micro_heading_change" -> "wave_meso_component_escape_coherence" [id="edge_upward__b02_r0015", color="#27667b", style="solid", constraint=true];
+"wave_micro_heading_change" -> "wave_meso_component_mean_escape_alignment" [id="edge_upward__b02_r0016", color="#27667b", style="solid", constraint=true];
+"wave_micro_heading_change" -> "wave_meso_component_turn_variance" [id="edge_upward__b02_r0017", color="#27667b", style="solid", constraint=true];
+"wave_micro_heading_change" -> "wave_macro_school_escape_coherence" [id="edge_upward__b02_r0019", color="#27667b", style="solid", constraint=true];
+"wave_meso_component_escape_coherence" -> "wave_macro_school_escape_coherence" [id="edge_upward__b03_r0034", color="#27667b", style="solid", constraint=true];
+"wave_meso_component_escape_coherence" -> "wave_macro_escape_coherence_change" [id="edge_upward__b03_r0035", color="#27667b", style="solid", constraint=true];
+"wave_macro_heading_change_shark_cov" -> "wave_meso_component_escape_coherence" [id="edge_downward__b00_r0010", color="#b3653b", style="dashed", constraint=false];
+"wave_macro_escape_coherence_change" -> "wave_meso_component_mean_escape_alignment" [id="edge_downward__b01_r0005", color="#b3653b", style="dashed", constraint=false];
+"wave_macro_school_escape_coherence" -> "wave_meso_component_escape_coherence" [id="edge_downward__b03_r0015", color="#b3653b", style="dashed", constraint=false];
+"wave_macro_school_escape_coherence" -> "wave_meso_component_mean_escape_alignment" [id="edge_downward__b03_r0016", color="#b3653b", style="dashed", constraint=false];
+"wave_macro_school_escape_coherence" -> "wave_micro_escape_alignment" [id="edge_downward__b03_r0017", color="#b3653b", style="dashed", constraint=false];
+"wave_macro_school_escape_coherence" -> "wave_micro_heading_change" [id="edge_downward__b03_r0018", color="#b3653b", style="dashed", constraint=false];
+"wave_micro_heading_change" -> "wave_micro_requested_turn_abs" [id="edge_intra_scale__b00_r0007", color="#6e648d", style="dotted", constraint=false];
+"wave_micro_escape_alignment" -> "wave_micro_heading_change" [id="edge_intra_scale__b02_r0008", color="#6e648d", style="dotted", constraint=false];
+"wave_meso_component_mean_escape_alignment" -> "wave_meso_component_escape_coherence" [id="edge_intra_scale__b02_r0022", color="#6e648d", style="dotted", constraint=false];
+"wave_micro_requested_turn_abs" -> "wave_micro_heading_change" [id="edge_intra_scale__b03_r0003", color="#6e648d", style="dotted", constraint=false];
+"wave_micro_requested_turn_abs" -> "wave_micro_escape_alignment" [id="edge_intra_scale__b03_r0004", color="#6e648d", style="dotted", constraint=false];
+"wave_meso_component_turn_variance" -> "wave_meso_component_escape_coherence" [id="edge_intra_scale__b03_r0023", color="#6e648d", style="dotted", constraint=false];
+}

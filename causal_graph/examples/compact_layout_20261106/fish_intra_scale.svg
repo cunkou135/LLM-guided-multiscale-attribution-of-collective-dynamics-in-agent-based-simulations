@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="630pt" height="1460pt" viewBox="0.00 0.00 630.00 1460.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 692.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-692.39 293.64,-692.39 293.64,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-658.5" font-family="Times New Roman" font-size="17.00">Fish | intra_scale</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-636" font-family="Times New Roman" font-size="12.00">6 nodes / 3 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-611.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-611.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-611.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-611.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-611.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="37.93,-8 37.93,-191 247.07,-191 247.07,-8 37.93,-8" />
+<text xml:space="preserve" text-anchor="middle" x="65.05" y="-171.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="31.92,-199 31.92,-399 253.07,-399 253.07,-199 31.92,-199" />
+<text xml:space="preserve" text-anchor="middle" x="58.3" y="-379.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="62.67,-407 62.67,-590 222.32,-590 222.32,-407 62.67,-407" />
+<text xml:space="preserve" text-anchor="middle" x="92.05" y="-570.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_intra_scale__micro_nn_spacing_to_axis_alignment" class="inspectable" data-source="frag_micro_nn_distance" data-target="elong_micro_axis_alignment">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M142.5,-80.37C142.5,-81.02 142.5,-81.67 142.5,-82.32" />
+<polygon fill="#6e648d" stroke="#6e648d" points="140.05,-82.26 142.5,-89.26 144.95,-82.26 140.05,-82.26" />
+<title>frag_micro_nn_distance → elong_micro_axis_alignment
+intra_scale
+A fish with larger nearest-neighbor spacing has weaker local social constraint from nearby schoolmates; over subsequent steps its heading may be less entrained by the group's principal axis, so its absolute axis alignment can change. This is a dynamic micro-level candidate effect rather than a definitional aggregation.</title></g>
+
+<g id="edge_intra_scale__meso_local_stretch_to_component_count" class="inspectable" data-source="elong_meso_local_eigen_ratio" data-target="frag_meso_contact_component_count">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M142.5,-281.03C142.5,-280.62 142.5,-280.22 142.5,-279.81" />
+<polygon fill="#6e648d" stroke="#6e648d" points="144.95,-279.84 142.5,-272.84 140.05,-279.84 144.95,-279.84" />
+<title>elong_meso_local_eigen_ratio → frag_meso_contact_component_count
+intra_scale
+Anisotropic local contact-neighborhood geometry can reflect stretching along one direction that breaks lateral contacts; as local neighborhoods become more elongated, the contact graph may later split into more components. This is a plausible meso-level dynamic relation mediated by changing contacts, not a direct aggregation of the same quantity.</title></g>
+
+<g id="edge_intra_scale__macro_global_stretch_to_largest_component" class="inspectable" data-source="elong_macro_global_eigen_ratio" data-target="frag_macro_largest_component_fraction">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M142.5,-489.78C142.5,-489.12 142.5,-488.47 142.5,-487.82" />
+<polygon fill="#6e648d" stroke="#6e648d" points="144.95,-487.88 142.5,-480.88 140.05,-487.88 144.95,-487.88" />
+<title>elong_macro_global_eigen_ratio → frag_macro_largest_component_fraction
+intra_scale
+Greater global position elongation spreads fish along a major axis and can push some pairwise distances beyond contact range, which may reduce the fraction of fish remaining in the largest contact component. The candidate effect is mediated by contact formation and is not a definitional identity between the two macro indicators.</title></g>
+
+<g id="node_frag_micro_nn_distance" class="inspectable" tabindex="0" data-node-id="frag_micro_nn_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M220.95,-79.91C220.95,-79.91 64.05,-79.91 64.05,-79.91 58.05,-79.91 52.05,-73.91 52.05,-67.91 52.05,-67.91 52.05,-30.09 52.05,-30.09 52.05,-24.08 58.05,-18.09 64.05,-18.09 64.05,-18.09 220.95,-18.09 220.95,-18.09 226.95,-18.09 232.95,-24.09 232.95,-30.09 232.95,-30.09 232.95,-67.91 232.95,-67.91 232.95,-73.91 226.95,-79.91 220.95,-79.91" />
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-61.58" font-family="Times New Roman" font-size="14.00">N1</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-44.33" font-family="Times New Roman" font-size="14.00">Focal fish nearest-neighbor</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-27.07" font-family="Times New Roman" font-size="14.00">distance</text>
+<title>N1 | frag_micro_nn_distance
+Focal fish nearest-neighbor distance
+Scale: micro | Phenomenon: school_fragmentation
+Definition: For run r and step t, let V_t={i: role_i(t)='fish'}. For i in V_t, d_i(t)=min_{j in V_t, j!=i} sqrt((x_i(t)-x_j(t))^2+(y_i(t)-y_j(t))^2). If |V_t|&lt;2, d_i(t)=NaN.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'success', 'series_file': 'indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/frag_micro_nn_distance.parquet', 'series_sha256': '3b312a81989834692e765b861953bf4b9777d72a81fc4c895e38399e387bb2c4'}}</title></g>
+
+<g id="node_elong_micro_axis_alignment" class="inspectable" tabindex="0" data-node-id="elong_micro_axis_alignment">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M225.07,-152.91C225.07,-152.91 59.93,-152.91 59.93,-152.91 53.93,-152.91 47.92,-146.91 47.92,-140.91 47.92,-140.91 47.92,-103.09 47.92,-103.09 47.92,-97.09 53.92,-91.09 59.92,-91.09 59.92,-91.09 225.07,-91.09 225.07,-91.09 231.07,-91.09 237.07,-97.09 237.07,-103.09 237.07,-103.09 237.07,-140.91 237.07,-140.91 237.07,-146.91 231.07,-152.91 225.07,-152.91" />
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-134.57" font-family="Times New Roman" font-size="14.00">N4</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-117.33" font-family="Times New Roman" font-size="14.00">Focal fish heading alignment</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-100.08" font-family="Times New Roman" font-size="14.00">with group principal axis</text>
+<title>N4 | elong_micro_axis_alignment
+Focal fish heading alignment with group principal axis
+Scale: micro | Phenomenon: school_elongation
+Definition: For run r and step t, let V_t={i: role_i(t)='fish'}. Let mu(t)=(1/|V_t|) sum_{j in V_t} p_j(t) and Sigma(t)=(1/(|V_t|-1)) sum_{j in V_t} (p_j(t)-mu(t))(p_j(t)-mu(t))^T with p_j=(x_j,y_j). Let lambda1&gt;=lambda2 be eigenvalues of Sigma(t) and u1(t) a unit eigenvector for lambda1. For i in V_t, h_i(t)=(cos heading_i(t), sin heading_i(t)); a_i(t)=|h_i(t) dot u1(t)|. If |V_t|&lt;3 or lambda1=lambda2, set a_i(t)=NaN.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'success', 'series_file': 'indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/elong_micro_axis_alignment.parquet', 'series_sha256': '42ac8d51aeba9ef44e2d72ab20454b4af12dac3ef6056aec2a23c1cfd979cdcc'}}</title></g>
+
+<g id="node_frag_meso_contact_component_count" class="inspectable" tabindex="0" data-node-id="frag_meso_contact_component_count">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M231.07,-270.92C231.07,-270.92 53.93,-270.92 53.93,-270.92 47.93,-270.92 41.92,-264.92 41.92,-258.92 41.92,-258.92 41.92,-221.09 41.92,-221.09 41.92,-215.09 47.92,-209.09 53.92,-209.09 53.92,-209.09 231.07,-209.09 231.07,-209.09 237.07,-209.09 243.07,-215.09 243.07,-221.09 243.07,-221.09 243.07,-258.92 243.07,-258.92 243.07,-264.92 237.07,-270.92 231.07,-270.92" />
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-252.57" font-family="Times New Roman" font-size="14.00">N2</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-235.32" font-family="Times New Roman" font-size="14.00">Fish contact-graph component</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-218.07" font-family="Times New Roman" font-size="14.00">count</text>
+<title>N2 | frag_meso_contact_component_count
+Fish contact-graph component count
+Scale: meso | Phenomenon: school_fragmentation
+Definition: At (r,t), build G_t=(V_t,E_t) with V_t={i: role_i(t)='fish'} and E_t={{i,j}: i,j in V_t, i!=j, and (agent_id=i, partner_id=j) or (agent_id=j, partner_id=i) appears in contacts at (r,t)}. Let C_1(t),...,C_{K(t)}(t) be the connected components of G_t. K(t)=number of components.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'success', 'series_file': 'indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/frag_meso_contact_component_count.parquet', 'series_sha256': '4cf060754c76c46cddf0dad5ff306bca23e6bc940786dc3b57db2221359e5811'}}</title></g>
+
+<g id="node_elong_meso_local_eigen_ratio" class="inspectable" tabindex="0" data-node-id="elong_meso_local_eigen_ratio">
+<path fill="#f2f2f2" stroke="#444444" stroke-width="1.1" stroke-dasharray="5,2" d="M223.2,-360.54C223.2,-360.54 61.8,-360.54 61.8,-360.54 55.8,-360.54 49.8,-354.54 49.8,-348.54 49.8,-348.54 49.8,-293.46 49.8,-293.46 49.8,-287.46 55.8,-281.46 61.8,-281.46 61.8,-281.46 223.2,-281.46 223.2,-281.46 229.2,-281.46 235.2,-287.46 235.2,-293.46 235.2,-293.46 235.2,-348.54 235.2,-348.54 235.2,-354.54 229.2,-360.54 223.2,-360.54" />
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-342.2" font-family="Times New Roman" font-size="14.00">N5</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-324.95" font-family="Times New Roman" font-size="14.00">Mean contact-neighborhood</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-307.7" font-family="Times New Roman" font-size="14.00">elongation ratio</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-290.45" font-family="Times New Roman" font-size="14.00">[not executable]</text>
+<title>N5 | elong_meso_local_eigen_ratio
+Mean contact-neighborhood elongation ratio
+Scale: meso | Phenomenon: school_elongation
+Definition: At (r,t), for fish i let N_i(t)={j: {i,j} in E_t} and S_i(t)={i} union N_i(t). If |S_i(t)|&gt;=3 and lambda2_i(t)&gt;0, define R_i(t)=lambda1_i(t)/lambda2_i(t) from the sample covariance of positions in S_i(t). The meso indicator is the mean of R_i(t) over eligible i. If no eligible i, NaN.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'failed', 'error_type': 'mathematical_validation_error', 'error': '\nNot equal to tolerance rtol=1e-07, atol=1e-09\n\nMismatched elements: 1 / 21 (4.76%)\nMax absolute difference: 6.99494838\nMax relative difference: 3.21743644e-07\n x: array([         nan,          nan, 6.327701e+00, 1.075033e+02,\n       7.271408e+00, 5.043703e+00, 2.663191e+02, 3.323982e+00,\n       2.084087e+02, 5.796471e+00, 3.364291e+00, 4.354002e+02,...\n y: array([         nan,          nan, 6.327701e+00, 1.075033e+02,\n       7.271408e+00, 5.043703e+00, 2.663191e+02, 3.323982e+00,\n       2.084087e+02, 5.796471e+00, 3.364291e+00, 4.354002e+02,...', 'series_file': 'indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/elong_meso_local_eigen_ratio.parquet', 'series_sha256': '31712f0d49ec4bf5dbbc28aa1cd90a7a2a479b399de4307c5d41beb5547e477d'}}</title></g>
+
+<g id="node_frag_macro_largest_component_fraction" class="inspectable" tabindex="0" data-node-id="frag_macro_largest_component_fraction">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M200.32,-478.92C200.32,-478.92 84.68,-478.92 84.68,-478.92 78.68,-478.92 72.67,-472.92 72.67,-466.92 72.67,-466.92 72.67,-429.08 72.67,-429.08 72.67,-423.08 78.67,-417.08 84.67,-417.08 84.67,-417.08 200.32,-417.08 200.32,-417.08 206.32,-417.08 212.32,-423.08 212.32,-429.08 212.32,-429.08 212.32,-466.92 212.32,-466.92 212.32,-472.92 206.32,-478.92 200.32,-478.92" />
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-460.57" font-family="Times New Roman" font-size="14.00">N3</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-443.32" font-family="Times New Roman" font-size="14.00">Largest fish contact-</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-426.07" font-family="Times New Roman" font-size="14.00">component fraction</text>
+<title>N3 | frag_macro_largest_component_fraction
+Largest fish contact-component fraction
+Scale: macro | Phenomenon: school_fragmentation
+Definition: Using G_t and components C_k(t) from the contact graph at (r,t), L(t)=max_k |C_k(t)|/|V_t|, with L(t)=NaN if |V_t|=0.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'success', 'series_file': 'indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/frag_macro_largest_component_fraction.parquet', 'series_sha256': 'af054b1af64809a55d82042106e5256b6011bcf86158bf17e0519d738b10a0ba'}}</title></g>
+
+<g id="node_elong_macro_global_eigen_ratio" class="inspectable" tabindex="0" data-node-id="elong_macro_global_eigen_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M194.7,-551.91C194.7,-551.91 90.3,-551.91 90.3,-551.91 84.3,-551.91 78.3,-545.91 78.3,-539.91 78.3,-539.91 78.3,-502.08 78.3,-502.08 78.3,-496.08 84.3,-490.08 90.3,-490.08 90.3,-490.08 194.7,-490.08 194.7,-490.08 200.7,-490.08 206.7,-496.08 206.7,-502.08 206.7,-502.08 206.7,-539.91 206.7,-539.91 206.7,-545.91 200.7,-551.91 194.7,-551.91" />
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-533.58" font-family="Times New Roman" font-size="14.00">N6</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-516.33" font-family="Times New Roman" font-size="14.00">Global fish position</text>
+<text xml:space="preserve" text-anchor="middle" x="142.5" y="-499.07" font-family="Times New Roman" font-size="14.00">eigenvalue ratio</text>
+<title>N6 | elong_macro_global_eigen_ratio
+Global fish position eigenvalue ratio
+Scale: macro | Phenomenon: school_elongation
+Definition: For V_t={i: role_i(t)='fish'} at (r,t), let mu(t)=(1/|V_t|) sum_{j in V_t} p_j(t) and Sigma(t)=(1/(|V_t|-1)) sum_{j in V_t} (p_j(t)-mu(t))(p_j(t)-mu(t))^T. Let lambda1(t)&gt;=lambda2(t)&gt;=0 be eigenvalues of Sigma(t). R(t)=lambda1(t)/lambda2(t) if lambda2(t)&gt;0; NaN if lambda2(t)=0 or |V_t|&lt;3.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'success', 'series_file': 'indicator_series/2a815b4dfe4f47b8ac2416fac04456e5/elong_macro_global_eigen_ratio.parquet', 'series_sha256': '5791da491ba8b3f12157e370812b190a52b31cf43b3eeb25b2fb2be46ee22554'}}</title></g>
+</g>
+</svg>

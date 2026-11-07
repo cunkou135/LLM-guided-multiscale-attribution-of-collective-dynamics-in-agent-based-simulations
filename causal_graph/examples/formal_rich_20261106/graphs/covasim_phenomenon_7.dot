@@ -1,0 +1,36 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Covasim | phenomenon_7</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">9 nodes / 9 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"p7_micro_exposure_step_index" [id="node_p7_micro_exposure_step_index", label="N51\nAgent first observed\nexposure step index", style="rounded,filled", fillcolor="white"];
+"p7_micro_exposure_to_diagnosis_interval" [id="node_p7_micro_exposure_to_diagnosis_interval", label="N52\nAgent exposure-to-diagnosis\ninterval", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"p7_meso_band_exposure_share" [id="node_p7_meso_band_exposure_share", label="N53\nAge-band share of new\nexposure transitions", style="rounded,filled", fillcolor="white"];
+"p7_meso_layer_exposure_share" [id="node_p7_meso_layer_exposure_share", label="N54\nLayer share of attributed\nnew exposure transitions", style="rounded,filled", fillcolor="white"];
+"p7_meso_band_share_drift" [id="node_p7_meso_band_share_drift", label="N55\nAge-band exposure share\ndrift from first active step", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"p7_macro_age_composition_drift" [id="node_p7_macro_age_composition_drift", label="N56\nTotal-variation drift of age\ncomposition of exposures", style="rounded,filled", fillcolor="white"];
+"p7_macro_layer_composition_drift" [id="node_p7_macro_layer_composition_drift", label="N57\nTotal-variation drift of\nlayer composition of\nattributed exposures", style="rounded,filled", fillcolor="white"];
+"p7_macro_growth_change_at_first_quarantine" [id="node_p7_macro_growth_change_at_first_quarantine", label="N58\nContrast of exposure growth\nbefore and after first\nquarantine onset", style="rounded,filled", fillcolor="white"];
+"p7_macro_median_age_of_new_exposures" [id="node_p7_macro_median_age_of_new_exposures", label="N59\nMedian age of agents with\nnew exposure transitions", style="rounded,filled", fillcolor="white"];
+}
+"p7_micro_exposure_step_index" -> "p7_macro_age_composition_drift" [id="edge_upward__b01_r0037", color="#27667b", style="solid", constraint=true];
+"p7_micro_exposure_step_index" -> "p7_macro_median_age_of_new_exposures" [id="edge_upward__b01_r0038", color="#27667b", style="solid", constraint=true];
+"p7_meso_band_share_drift" -> "p7_macro_median_age_of_new_exposures" [id="edge_upward__b01_r0041", color="#27667b", style="solid", constraint=true];
+"p7_macro_age_composition_drift" -> "p7_micro_exposure_step_index" [id="edge_downward__b00_r0009", color="#b3653b", style="dashed", constraint=false];
+"p7_macro_growth_change_at_first_quarantine" -> "p7_micro_exposure_step_index" [id="edge_downward__b02_r0053", color="#b3653b", style="dashed", constraint=false];
+"p7_meso_band_share_drift" -> "p7_micro_exposure_step_index" [id="edge_downward__b03_r0008", color="#b3653b", style="dashed", constraint=false];
+"p7_macro_median_age_of_new_exposures" -> "p7_meso_band_exposure_share" [id="edge_downward__b03_r0009", color="#b3653b", style="dashed", constraint=false];
+"p7_macro_age_composition_drift" -> "p7_macro_median_age_of_new_exposures" [id="edge_intra_scale__b03_r0054", color="#6e648d", style="dotted", constraint=false];
+"p7_macro_age_composition_drift" -> "p7_macro_layer_composition_drift" [id="edge_intra_scale__b03_r0055", color="#6e648d", style="dotted", constraint=false];
+}

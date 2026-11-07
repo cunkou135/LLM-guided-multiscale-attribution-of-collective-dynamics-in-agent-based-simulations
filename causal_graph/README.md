@@ -1,5 +1,7 @@
 # 第一部分：真实数据 Schema 驱动的 LLM 候选因果图（2.0）
 
+丰富候选图使用 `configs/formal_rich.yaml`（最多 8 个现象、72 个变量、720 条边）与 `configs/deepseek_flash_formal.yaml`。该设置不要求固定各尺度数量，不为增加复杂度强行补边；新实验与旧 6 变量测试结果分别保存。参数、真实生成结果和大图展示方式见 [丰富候选图实验说明](docs/FORMAL_RICH_EXPERIMENT.md)。
+
 研究分为两个核心部分：本模块生成未经统计验证的语义候选图，第二部分以后使用独立的数学方法判别候选关系。本轮不实现时滞估计、显著性筛选、Granger、Bootstrap、主动实验或参数干预。
 
 ## 安装与命令
@@ -75,3 +77,7 @@ python -m causal_graph.visualize_graphs --experiment causal_graph/results/v2_liv
 ```
 
 导出每场景的完整候选图、可执行图、三类方向分图和逐运行图，共 12 个 SVG/PNG；overview.png 对照四个主图，index.html 可切换视图并点选定义/边理由。绘图不修改原图，不添加关系；边颜色/线型只表示方向类别。执行失败节点在完整图中仍保留并标注，所有边仍未经统计因果检验。图形依赖使用本机现有 Matplotlib/Pillow，另提供可选安装项 .[graphs]。
+
+绘图现默认优先使用本机已有 Graphviz 自动紧凑布局，节点字体 14 点，提供 DOT/SVG/PNG/PDF。`--layout matplotlib` 可使用后备路径。大于 12 节点时增加按现象分图和完整有向邻接矩阵；HTML 支持缩放及点选相邻关系，保留原始字号。概览仅用于导航，论文阅读和导出应使用独立分图。
+
+本轮真实生成已完成 Fish 72 变量/495 边、Covasim 67 变量/454 边，共 30 个新视图；另提供旧结果 12 个紧凑视图。[查看新图](examples/formal_rich_20261106/graphs/index.html)，[查看验收](docs/RICH_GENERATION_ACCEPTANCE.md)。新增 139 个函数本轮未执行。

@@ -1,0 +1,226 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1005pt" height="1435pt" viewBox="0.00 0.00 1005.00 1435.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 680.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-680.39 473.63,-680.39 473.63,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-646.5" font-family="Times New Roman" font-size="17.00">Covasim | phenomenon_6</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-624" font-family="Times New Roman" font-size="12.00">8 nodes / 15 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-599.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-599.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-599.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-599.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-599.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="30.56,-8 30.56,-298 232.96,-298 232.96,-8 30.56,-8" />
+<text xml:space="preserve" text-anchor="middle" x="57.69" y="-278.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="246.34,-89 246.34,-289 456.99,-289 456.99,-89 246.34,-89" />
+<text xml:space="preserve" text-anchor="middle" x="272.71" y="-269.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="27.19,-306 27.19,-578 236.34,-578 236.34,-306 27.19,-306" />
+<text xml:space="preserve" text-anchor="middle" x="56.56" y="-558.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_upward__b00_r0017" class="inspectable" data-source="p6_micro_quarantine_contact_ratio" data-target="p6_meso_layer_quarantine_suppression_ratio">
+<path fill="none" stroke="#27667b" d="M221.23,-76.74C226.89,-80.63 232.03,-85.17 236.34,-90.5 259.14,-118.72 224.58,-142.47 246.34,-171.5 251.59,-178.51 258.16,-184.44 265.43,-189.43" />
+<polygon fill="#27667b" stroke="#27667b" points="263.78,-191.28 271.01,-192.94 266.39,-187.14 263.78,-191.28" />
+<title>p6_micro_quarantine_contact_ratio → p6_meso_layer_quarantine_suppression_ratio
+upward
+Heterogeneous per-agent contact ratios under quarantine aggregate into the layer-level ratio: agents who reduce contacts more strongly lower the quarantined mean degree, increasing suppression.</title></g>
+
+<g id="edge_upward__b01_r0034" class="inspectable" data-source="p6_micro_quarantine_degree_delta" data-target="p6_meso_quarantined_degree_dispersion">
+<path fill="none" stroke="#27667b" d="M212.05,-130C223.62,-130 235.67,-130 247.62,-130" />
+<polygon fill="#27667b" stroke="#27667b" points="247.36,-132.45 254.36,-130 247.36,-127.55 247.36,-132.45" />
+<title>p6_micro_quarantine_degree_delta → p6_meso_quarantined_degree_dispersion
+upward
+Heterogeneous individual reductions in degree under quarantine create a wider spread of contact degree among quarantined agents.</title></g>
+
+<g id="edge_downward__b00_r0007" class="inspectable" data-source="p6_meso_quarantined_degree_dispersion" data-target="p6_micro_zero_contact_quarantined_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M256.04,-160.68C252.72,-162.38 249.48,-164.15 246.34,-166 241.19,-169.04 241.37,-171.77 236.34,-175 234.54,-176.16 232.7,-177.3 230.83,-178.43" />
+<polygon fill="#b3653b" stroke="#b3653b" points="229.63,-176.29 224.81,-181.92 232.09,-180.53 229.63,-176.29" />
+<title>p6_meso_quarantined_degree_dispersion → p6_micro_zero_contact_quarantined_flag
+downward
+High dispersion of contact degree among quarantined agents implies a heavy lower tail of very low-contact behaviour; an individual quarantined agent is then more likely to fall into the fully suppressed zero-contact category.</title></g>
+
+<g id="edge_intra_scale__b01_r0023" class="inspectable" data-source="p6_meso_quarantined_degree_dispersion" data-target="p6_meso_layer_quarantine_suppression_ratio">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M351.66,-161.32C351.66,-161.73 351.66,-162.13 351.66,-162.54" />
+<polygon fill="#6e648d" stroke="#6e648d" points="349.21,-162.51 351.66,-169.51 354.11,-162.51 349.21,-162.51" />
+<title>p6_meso_quarantined_degree_dispersion → p6_meso_layer_quarantine_suppression_ratio
+intra_scale
+Heterogeneous contact behavior among quarantined agents plausibly weakens layer-level suppression because some retain many contacts.</title></g>
+
+<g id="edge_downward__b01_r0027" class="inspectable" data-source="p6_meso_layer_quarantine_suppression_ratio" data-target="p6_micro_quarantine_contact_ratio">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M272.29,-182.88C262.31,-176.97 253.2,-169.65 246.34,-160.5 224.58,-131.47 259.14,-107.72 236.34,-79.5 233.78,-76.33 230.93,-73.45 227.85,-70.82" />
+<polygon fill="#b3653b" stroke="#b3653b" points="229.48,-68.98 222.43,-66.69 226.51,-72.88 229.48,-68.98" />
+<title>p6_meso_layer_quarantine_suppression_ratio → p6_micro_quarantine_contact_ratio
+downward
+Stronger layer-level degree suppression under quarantine means quarantined agents in that layer have relatively fewer contacts, mechanically lowering their individual quarantined-to-non-quarantined contact ratio.</title></g>
+
+<g id="edge_downward__b01_r0033" class="inspectable" data-source="p6_meso_layer_quarantine_suppression_ratio" data-target="p6_micro_quarantine_degree_delta">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M272.53,-181.96C255.49,-175.62 237.34,-168.88 219.97,-162.42" />
+<polygon fill="#b3653b" stroke="#b3653b" points="220.88,-160.14 213.47,-160 219.17,-164.73 220.88,-160.14" />
+<title>p6_meso_layer_quarantine_suppression_ratio → p6_micro_quarantine_degree_delta
+downward
+Stronger layer-level suppression makes the quarantined-minus-non-quarantined degree difference more negative for agents in that layer, because quarantined agents reduce contacts more strongly.</title></g>
+
+<g id="edge_downward__b01_r0028" class="inspectable" data-source="p6_meso_layer_quarantine_suppression_ratio" data-target="p6_micro_zero_contact_quarantined_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M272.57,-214.23C259.34,-214.77 245.45,-215.35 231.76,-215.91" />
+<polygon fill="#b3653b" stroke="#b3653b" points="231.69,-213.46 224.79,-216.2 231.89,-218.36 231.69,-213.46" />
+<title>p6_meso_layer_quarantine_suppression_ratio → p6_micro_zero_contact_quarantined_flag
+downward
+A higher suppression ratio indicates quarantined agents in the layer achieve lower contact degrees, increasing the chance that an individual quarantined agent records zero contacts.</title></g>
+
+<g id="edge_downward__b02_r0038" class="inspectable" data-source="p6_macro_contact_volume_change" data-target="p6_micro_quarantine_contact_ratio">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M36.7,-318.54C27.06,-312.09 18.51,-304.18 12.19,-294.5 -0.2,-275.52 -0.79,-109.08 12.19,-90.5 18.15,-81.97 25.99,-75.18 34.82,-69.77" />
+<polygon fill="#b3653b" stroke="#b3653b" points="35.84,-72 40.77,-66.46 33.46,-67.72 35.84,-72" />
+<title>p6_macro_contact_volume_change → p6_micro_quarantine_contact_ratio
+downward
+Population contact-volume shifts change the baseline contact environment against which a quarantined agent’s contact reduction is measured.</title></g>
+
+<g id="edge_downward__b02_r0039" class="inspectable" data-source="p6_macro_contact_volume_change" data-target="p6_micro_zero_contact_quarantined_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M131.76,-315.62C131.76,-299.74 131.76,-283.87 131.76,-267.99" />
+<polygon fill="#b3653b" stroke="#b3653b" points="134.21,-268.2 131.76,-261.2 129.31,-268.2 134.21,-268.2" />
+<title>p6_macro_contact_volume_change → p6_micro_zero_contact_quarantined_flag
+downward
+A large population contact decline can make it more likely that a quarantined individual records no contact edges at a step.</title></g>
+
+<g id="edge_intra_scale__b03_r0051" class="inspectable" data-source="p6_macro_contact_volume_change" data-target="p6_macro_adherence_share">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M131.76,-378.32C131.76,-378.73 131.76,-379.13 131.76,-379.54" />
+<polygon fill="#6e648d" stroke="#6e648d" points="129.31,-379.51 131.76,-386.51 134.21,-379.51 129.31,-379.51" />
+<title>p6_macro_contact_volume_change → p6_macro_adherence_share
+intra_scale
+Population-wide contact volume changes can reflect and reinforce the share of quarantined agents whose degree remains below the non-quarantined median.</title></g>
+
+<g id="edge_intra_scale__b03_r0052" class="inspectable" data-source="p6_macro_contact_volume_change" data-target="p6_macro_population_suppression_ratio">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M36.82,-365.29C25.17,-371.41 14.73,-379.54 7.19,-390.33 -2.4,-404.06 -2.4,-451.94 7.19,-465.67 14.11,-475.58 23.48,-483.25 33.99,-489.18" />
+<polygon fill="#6e648d" stroke="#6e648d" points="32.75,-491.29 40.09,-492.31 34.99,-486.93 32.75,-491.29" />
+<title>p6_macro_contact_volume_change → p6_macro_population_suppression_ratio
+intra_scale
+A drop in total contact volume is mechanically linked to stronger suppression of quarantined versus non-quarantined contact degree.</title></g>
+
+<g id="edge_downward__b03_r0007" class="inspectable" data-source="p6_macro_adherence_share" data-target="p6_micro_zero_contact_quarantined_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M37.04,-401.32C27.28,-395 18.6,-387.17 12.19,-377.5 -4.51,-352.31 -1.34,-336.53 12.19,-309.5 20.82,-292.25 34.53,-277.48 49.64,-265.18" />
+<polygon fill="#b3653b" stroke="#b3653b" points="50.99,-267.24 55,-261 47.97,-263.38 50.99,-267.24" />
+<title>p6_macro_adherence_share → p6_micro_zero_contact_quarantined_flag
+downward
+A larger population share of quarantined agents contacting at or below the non-quarantined median can reinforce adherence norms, increasing the probability that an individual quarantined agent records zero contacts at a step.</title></g>
+
+<g id="edge_intra_scale__b00_r0052" class="inspectable" data-source="p6_macro_adherence_share" data-target="p6_macro_population_suppression_ratio">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M131.76,-467.87C131.76,-468.39 131.76,-468.9 131.76,-469.42" />
+<polygon fill="#6e648d" stroke="#6e648d" points="129.31,-469.32 131.76,-476.32 134.21,-469.32 129.31,-469.32" />
+<title>p6_macro_adherence_share → p6_macro_population_suppression_ratio
+intra_scale
+Greater adherence among quarantined agents lowers their contact degree relative to others, increasing the population suppression ratio.</title></g>
+
+<g id="edge_downward__b00_r0008" class="inspectable" data-source="p6_macro_population_suppression_ratio" data-target="p6_micro_quarantine_contact_ratio">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M41.21,-491.83C29.79,-485.93 19.55,-478.04 12.19,-467.5 0.2,-450.33 0.2,-107.67 12.19,-90.5 18.15,-81.97 25.99,-75.18 34.82,-69.77" />
+<polygon fill="#b3653b" stroke="#b3653b" points="35.84,-72 40.77,-66.46 33.46,-67.72 35.84,-72" />
+<title>p6_macro_population_suppression_ratio → p6_micro_quarantine_contact_ratio
+downward
+A lower population-level quarantine suppression ratio indicates stronger overall activity reduction among quarantined agents, shaping the adherence context in which an individual quarantined agent’s own in-quarantine contact ratio is realised.</title></g>
+
+<g id="edge_intra_scale__b01_r0057" class="inspectable" data-source="p6_macro_population_suppression_ratio" data-target="p6_macro_contact_volume_change">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M41.39,-490.67C31.91,-485.27 23.46,-478.31 17.19,-469.33 6.67,-454.27 6.67,-401.73 17.19,-386.67 20.79,-381.51 25.12,-377.01 29.95,-373.09" />
+<polygon fill="#6e648d" stroke="#6e648d" points="31.38,-375.08 35.6,-368.99 28.5,-371.12 31.38,-375.08" />
+<title>p6_macro_population_suppression_ratio → p6_macro_contact_volume_change
+intra_scale
+Stronger degree suppression among quarantined agents plausibly reduces population-wide contact volume change.</title></g>
+
+<g id="node_p6_micro_quarantine_contact_ratio" class="inspectable" tabindex="0" data-node-id="p6_micro_quarantine_contact_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M209.09,-79.91C209.09,-79.91 54.44,-79.91 54.44,-79.91 48.44,-79.91 42.44,-73.91 42.44,-67.91 42.44,-67.91 42.44,-30.09 42.44,-30.09 42.44,-24.08 48.44,-18.09 54.44,-18.09 54.44,-18.09 209.09,-18.09 209.09,-18.09 215.09,-18.09 221.09,-24.09 221.09,-30.09 221.09,-30.09 221.09,-67.91 221.09,-67.91 221.09,-73.91 215.09,-79.91 209.09,-79.91" />
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-61.58" font-family="Times New Roman" font-size="14.00">N43</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-44.33" font-family="Times New Roman" font-size="14.00">Agent contact degree ratio</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-27.07" font-family="Times New Roman" font-size="14.00">in and out of quarantine</text>
+<title>N43 | p6_micro_quarantine_contact_ratio
+Agent contact degree ratio in and out of quarantine
+Scale: micro | Phenomenon: adherence_heterogeneity_feedback
+Definition: rho_i = (mean over observed steps s with quarantined_i(s) = true of d_i(s)) / (mean over observed steps s with quarantined_i(s) = false of d_i(s)); undefined when either step set is empty or the non-quarantine mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_micro_quarantine_degree_delta" class="inspectable" tabindex="0" data-node-id="p6_micro_quarantine_degree_delta">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M199.71,-169.54C199.71,-169.54 63.81,-169.54 63.81,-169.54 57.81,-169.54 51.81,-163.54 51.81,-157.54 51.81,-157.54 51.81,-102.46 51.81,-102.46 51.81,-96.46 57.81,-90.46 63.81,-90.46 63.81,-90.46 199.71,-90.46 199.71,-90.46 205.71,-90.46 211.71,-96.46 211.71,-102.46 211.71,-102.46 211.71,-157.54 211.71,-157.54 211.71,-163.54 205.71,-169.54 199.71,-169.54" />
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-151.2" font-family="Times New Roman" font-size="14.00">N44</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-133.95" font-family="Times New Roman" font-size="14.00">Agent absolute contact-</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-116.7" font-family="Times New Roman" font-size="14.00">degree change under</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-99.45" font-family="Times New Roman" font-size="14.00">quarantine</text>
+<title>N44 | p6_micro_quarantine_degree_delta
+Agent absolute contact-degree change under quarantine
+Scale: micro | Phenomenon: adherence_heterogeneity_feedback
+Definition: delta_i = (mean over observed steps with quarantined_i = true of d_i) - (mean over observed steps with quarantined_i = false of d_i); undefined when either step set is empty.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_micro_zero_contact_quarantined_flag" class="inspectable" tabindex="0" data-node-id="p6_micro_zero_contact_quarantined_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M210.96,-259.54C210.96,-259.54 52.56,-259.54 52.56,-259.54 46.56,-259.54 40.56,-253.54 40.56,-247.54 40.56,-247.54 40.56,-192.46 40.56,-192.46 40.56,-186.46 46.56,-180.46 52.56,-180.46 52.56,-180.46 210.96,-180.46 210.96,-180.46 216.96,-180.46 222.96,-186.46 222.96,-192.46 222.96,-192.46 222.96,-247.54 222.96,-247.54 222.96,-253.54 216.96,-259.54 210.96,-259.54" />
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-241.2" font-family="Times New Roman" font-size="14.00">N45</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-223.95" font-family="Times New Roman" font-size="14.00">Agent full-contact-</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-206.7" font-family="Times New Roman" font-size="14.00">suppression indicator under</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-189.45" font-family="Times New Roman" font-size="14.00">quarantine</text>
+<title>N45 | p6_micro_zero_contact_quarantined_flag
+Agent full-contact-suppression indicator under quarantine
+Scale: micro | Phenomenon: adherence_heterogeneity_feedback
+Definition: Z_i(t) = 1 if quarantined_i(t) = true and d_i(t) = 0; 0 if quarantined_i(t) = true and d_i(t) &gt; 0; undefined if quarantined_i(t) = false or the agent is not observed at t.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_meso_quarantined_degree_dispersion" class="inspectable" tabindex="0" data-node-id="p6_meso_quarantined_degree_dispersion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M434.99,-160.91C434.99,-160.91 268.34,-160.91 268.34,-160.91 262.34,-160.91 256.34,-154.91 256.34,-148.91 256.34,-148.91 256.34,-111.09 256.34,-111.09 256.34,-105.09 262.34,-99.09 268.34,-99.09 268.34,-99.09 434.99,-99.09 434.99,-99.09 440.99,-99.09 446.99,-105.09 446.99,-111.09 446.99,-111.09 446.99,-148.91 446.99,-148.91 446.99,-154.91 440.99,-160.91 434.99,-160.91" />
+<text xml:space="preserve" text-anchor="middle" x="351.66" y="-142.57" font-family="Times New Roman" font-size="14.00">N46</text>
+<text xml:space="preserve" text-anchor="middle" x="351.66" y="-125.33" font-family="Times New Roman" font-size="14.00">Dispersion of contact degree</text>
+<text xml:space="preserve" text-anchor="middle" x="351.66" y="-108.08" font-family="Times New Roman" font-size="14.00">among quarantined agents</text>
+<title>N46 | p6_meso_quarantined_degree_dispersion
+Dispersion of contact degree among quarantined agents
+Scale: meso | Phenomenon: adherence_heterogeneity_feedback
+Definition: CV(t) = SD_i(d_i(t)) / mean_i(d_i(t)) over agents observed at step t with quarantined_i(t) = true; undefined when fewer than two such agents or the mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_meso_layer_quarantine_suppression_ratio" class="inspectable" tabindex="0" data-node-id="p6_meso_layer_quarantine_suppression_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M418.49,-250.54C418.49,-250.54 284.84,-250.54 284.84,-250.54 278.84,-250.54 272.84,-244.54 272.84,-238.54 272.84,-238.54 272.84,-183.46 272.84,-183.46 272.84,-177.46 278.84,-171.46 284.84,-171.46 284.84,-171.46 418.49,-171.46 418.49,-171.46 424.49,-171.46 430.49,-177.46 430.49,-183.46 430.49,-183.46 430.49,-238.54 430.49,-238.54 430.49,-244.54 424.49,-250.54 418.49,-250.54" />
+<text xml:space="preserve" text-anchor="middle" x="351.66" y="-232.2" font-family="Times New Roman" font-size="14.00">N47</text>
+<text xml:space="preserve" text-anchor="middle" x="351.66" y="-214.95" font-family="Times New Roman" font-size="14.00">Layer-level degree</text>
+<text xml:space="preserve" text-anchor="middle" x="351.66" y="-197.7" font-family="Times New Roman" font-size="14.00">suppression ratio under</text>
+<text xml:space="preserve" text-anchor="middle" x="351.66" y="-180.45" font-family="Times New Roman" font-size="14.00">quarantine</text>
+<title>N47 | p6_meso_layer_quarantine_suppression_ratio
+Layer-level degree suppression ratio under quarantine
+Scale: meso | Phenomenon: adherence_heterogeneity_feedback
+Definition: sigma_l(t) = (mean over quarantined agents at t of d_i,l(t)) / (mean over non-quarantined agents at t of d_i,l(t)); undefined when either group is empty in that layer or the denominator mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_macro_contact_volume_change" class="inspectable" tabindex="0" data-node-id="p6_macro_contact_volume_change">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M214.34,-377.92C214.34,-377.92 49.19,-377.92 49.19,-377.92 43.19,-377.92 37.19,-371.92 37.19,-365.92 37.19,-365.92 37.19,-328.08 37.19,-328.08 37.19,-322.08 43.19,-316.08 49.19,-316.08 49.19,-316.08 214.34,-316.08 214.34,-316.08 220.34,-316.08 226.34,-322.08 226.34,-328.08 226.34,-328.08 226.34,-365.92 226.34,-365.92 226.34,-371.92 220.34,-377.92 214.34,-377.92" />
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-359.57" font-family="Times New Roman" font-size="14.00">N48</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-342.32" font-family="Times New Roman" font-size="14.00">Relative step-to-step change</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-325.07" font-family="Times New Roman" font-size="14.00">in total contact volume</text>
+<title>N48 | p6_macro_contact_volume_change
+Relative step-to-step change in total contact volume
+Scale: macro | Phenomenon: adherence_heterogeneity_feedback
+Definition: G(t) = (E(t) - E(t-1)) / E(t-1), where E(t) is the number of distinct undirected edges at step t over all layers; undefined when E(t-1) = 0 or t-1 is not observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_macro_adherence_share" class="inspectable" tabindex="0" data-node-id="p6_macro_adherence_share">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M213.96,-467.54C213.96,-467.54 49.56,-467.54 49.56,-467.54 43.56,-467.54 37.56,-461.54 37.56,-455.54 37.56,-455.54 37.56,-400.46 37.56,-400.46 37.56,-394.46 43.56,-388.46 49.56,-388.46 49.56,-388.46 213.96,-388.46 213.96,-388.46 219.96,-388.46 225.96,-394.46 225.96,-400.46 225.96,-400.46 225.96,-455.54 225.96,-455.54 225.96,-461.54 219.96,-467.54 213.96,-467.54" />
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-449.2" font-family="Times New Roman" font-size="14.00">N49</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-431.95" font-family="Times New Roman" font-size="14.00">Share of quarantined agents</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-414.7" font-family="Times New Roman" font-size="14.00">at or below the non-</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-397.45" font-family="Times New Roman" font-size="14.00">quarantined median degree</text>
+<title>N49 | p6_macro_adherence_share
+Share of quarantined agents at or below the non-quarantined median degree
+Scale: macro | Phenomenon: adherence_heterogeneity_feedback
+Definition: A(t) = (count of agents i with quarantined_i(t) = true and d_i(t) &lt;= m(t)) / (count of agents with quarantined_i(t) = true), where m(t) is the median of d_j(t) over agents with quarantined_j(t) = false at step t; undefined when either count is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p6_macro_population_suppression_ratio" class="inspectable" tabindex="0" data-node-id="p6_macro_population_suppression_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M209.84,-539.91C209.84,-539.91 53.69,-539.91 53.69,-539.91 47.69,-539.91 41.69,-533.91 41.69,-527.91 41.69,-527.91 41.69,-490.08 41.69,-490.08 41.69,-484.08 47.69,-478.08 53.69,-478.08 53.69,-478.08 209.84,-478.08 209.84,-478.08 215.84,-478.08 221.84,-484.08 221.84,-490.08 221.84,-490.08 221.84,-527.91 221.84,-527.91 221.84,-533.91 215.84,-539.91 209.84,-539.91" />
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-521.58" font-family="Times New Roman" font-size="14.00">N50</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-504.32" font-family="Times New Roman" font-size="14.00">Population-level quarantine</text>
+<text xml:space="preserve" text-anchor="middle" x="131.76" y="-487.07" font-family="Times New Roman" font-size="14.00">contact suppression ratio</text>
+<title>N50 | p6_macro_population_suppression_ratio
+Population-level quarantine contact suppression ratio
+Scale: macro | Phenomenon: adherence_heterogeneity_feedback
+Definition: Sigma(t) = (mean of d_i(t) over agents with quarantined_i(t) = true) / (mean of d_i(t) over agents with quarantined_i(t) = false); undefined when either group is empty or the denominator mean is 0.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

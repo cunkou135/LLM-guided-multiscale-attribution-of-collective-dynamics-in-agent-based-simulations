@@ -77,3 +77,39 @@ def test_static_aliases_derived_columns_and_grouped_output():
     assert not analyze_access(code, {'agent_states': ['step', 'x']}, schema)['errors']
     wrong = code.replace("df['x']", "df['absent']")
     assert 'undeclared fields' in str(analyze_access(wrong, {'agent_states': ['step', 'x']}, schema)['errors'])
+
+
+def test_transformed_frames_do_not_retain_stale_raw_table_bindings():
+    schema = fixture_context()['data_schema']
+    schema['tables']['agent_states']['fields']['x'] = {'type': 'double'}
+    code = '''def compute_indicator(data, config):
+    df = data['agent_states'][['step', 'x']].copy()
+    before = df['x']
+    df = df.assign(derived=before * 2)
+    renamed = df.rename(columns={'derived': 'new_name'})
+    return renamed.set_index('step')['new_name']
+'''
+    required = {'agent_states': ['step', 'x']}
+    report = analyze_access(code, required, schema)
+    assert not report['errors']
+    assert report['statically_observed_access']['agent_states'] == ['step', 'x']
+    assert report['unresolved_access']
+    wrong = code.replace("before = df['x']", "before = df['missing']")
+    assert 'missing' in str(analyze_access(wrong, required, schema)['errors'])
+
+
+def test_helper_local_names_do_not_contaminate_raw_field_provenance():
+    schema = fixture_context()['data_schema']
+    schema['tables']['agent_states']['fields']['x'] = {'type': 'double'}
+    schema['tables']['events'] = {'fields': {'step': {'type': 'int64'}, 'kind': {'type': 'string'}}}
+    code = '''def helper(data):
+    df = data['events'][['step', 'kind']]
+    return df['kind']
+def compute_indicator(data, config):
+    df = data['agent_states'][['step', 'x']]
+    merged = df.merge(df, on='step')
+    return merged.set_index('step')['x_x']
+'''
+    required = {'agent_states': ['step', 'x'], 'events': ['step', 'kind']}
+    assert not analyze_access(code, required, schema)['errors']
+    assert 'undeclared' in str(analyze_access(code.replace("[['step', 'x']]", "[['step', 'missing']]"), required, schema)['errors'])

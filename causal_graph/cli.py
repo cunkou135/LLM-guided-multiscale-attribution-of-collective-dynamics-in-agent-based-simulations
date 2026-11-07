@@ -27,6 +27,7 @@ def main(argv=None):
     parser.add_argument('--resume', type=Path, help='Resume an existing experiment; repeat identical run/model configuration')
     parser.add_argument('--generate-only', action='store_true', help='Generate hypotheses/code for review without execution')
     parser.add_argument('--execute-only', action='store_true', help='Resume reviewed calculations from existing checkpoints; never call the LLM')
+    parser.add_argument('--resume-source-upgrade', action='store_true', help='Explicit generate-only resume after a source upgrade; retain both versions and revalidate original responses')
     parser.add_argument('--execution-mode', choices=['isolated', 'trusted_reviewed'])
     parser.add_argument('--review-file', type=Path, help='Code review identity, decisions and exact approved source SHA-256 values')
     args = parser.parse_args(argv)
@@ -46,7 +47,8 @@ def main(argv=None):
         group = re.sub('[^A-Za-z0-9_-]', '_', llm.profile)[:60] + '-' + object_digest(llm.summary())[:12]
         output = args.resume or args.output or args.output_root / group / uuid.uuid4().hex
         result = run_pipeline(paths, llm, settings, output, resume=bool(args.resume),
-                              generate_only=args.generate_only, approvals=approvals, execute_only=args.execute_only)
+                              generate_only=args.generate_only, approvals=approvals, execute_only=args.execute_only,
+                              resume_source_upgrade=args.resume_source_upgrade)
         report = read_json(result / 'pipeline_report.json')
         print(f'{report["status"]}: {result}')
         return 2 if report['status'] == 'completed_with_failures' else 0

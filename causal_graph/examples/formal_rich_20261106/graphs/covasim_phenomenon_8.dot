@@ -1,0 +1,44 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Covasim | phenomenon_8</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">8 nodes / 18 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"p8_micro_offset_from_infectious_trough" [id="node_p8_micro_offset_from_infectious_trough", label="N60\nAgent exposure-step offset\nfrom the city infectious\ntrough", style="rounded,filled", fillcolor="white"];
+"p8_micro_post_trough_exposure_flag" [id="node_p8_micro_post_trough_exposure_flag", label="N61\nAgent exposure transition\nafter the infectious trough", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"p8_meso_layer_post_trough_incidence_ratio" [id="node_p8_meso_layer_post_trough_incidence_ratio", label="N62\nLayer attributed-exposure\nrate ratio after versus at\nthe trough", style="rounded,filled", fillcolor="white"];
+"p8_meso_band_post_trough_incidence_ratio" [id="node_p8_meso_band_post_trough_incidence_ratio", label="N63\nAge-band exposure rate ratio\nafter versus at the trough", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"p8_macro_post_trough_infectious_growth" [id="node_p8_macro_post_trough_infectious_growth", label="N64\nMean post-trough log growth\nof infectious agents", style="rounded,filled", fillcolor="white"];
+"p8_macro_resurgence_amplitude" [id="node_p8_macro_resurgence_amplitude", label="N65\nPost-trough rebound\namplitude of infectious\ncount", style="rounded,filled", fillcolor="white"];
+"p8_macro_trough_susceptible_depletion" [id="node_p8_macro_trough_susceptible_depletion", label="N66\nSusceptible share at the\ninfectious trough", style="rounded,filled", fillcolor="white"];
+"p8_macro_resurgence_breadth" [id="node_p8_macro_resurgence_breadth", label="N67\nShare of layers with post-\ntrough incidence increase", style="rounded,filled", fillcolor="white"];
+}
+"p8_meso_band_post_trough_incidence_ratio" -> "p8_macro_post_trough_infectious_growth" [id="edge_upward__b01_r0049", color="#27667b", style="solid", constraint=true];
+"p8_meso_band_post_trough_incidence_ratio" -> "p8_macro_resurgence_amplitude" [id="edge_upward__b01_r0050", color="#27667b", style="solid", constraint=true];
+"p8_meso_layer_post_trough_incidence_ratio" -> "p8_micro_post_trough_exposure_flag" [id="edge_downward__b00_r0010", color="#b3653b", style="dashed", constraint=false];
+"p8_macro_trough_susceptible_depletion" -> "p8_meso_band_post_trough_incidence_ratio" [id="edge_downward__b00_r0011", color="#b3653b", style="dashed", constraint=false];
+"p8_macro_resurgence_breadth" -> "p8_meso_band_post_trough_incidence_ratio" [id="edge_downward__b01_r0019", color="#b3653b", style="dashed", constraint=false];
+"p8_macro_resurgence_breadth" -> "p8_micro_post_trough_exposure_flag" [id="edge_downward__b01_r0020", color="#b3653b", style="dashed", constraint=false];
+"p8_macro_resurgence_breadth" -> "p8_micro_offset_from_infectious_trough" [id="edge_downward__b01_r0021", color="#b3653b", style="dashed", constraint=false];
+"p8_meso_band_post_trough_incidence_ratio" -> "p8_micro_post_trough_exposure_flag" [id="edge_downward__b01_r0029", color="#b3653b", style="dashed", constraint=false];
+"p8_meso_band_post_trough_incidence_ratio" -> "p8_micro_offset_from_infectious_trough" [id="edge_downward__b01_r0030", color="#b3653b", style="dashed", constraint=false];
+"p8_macro_post_trough_infectious_growth" -> "p8_meso_layer_post_trough_incidence_ratio" [id="edge_downward__b02_r0054", color="#b3653b", style="dashed", constraint=false];
+"p8_macro_post_trough_infectious_growth" -> "p8_meso_band_post_trough_incidence_ratio" [id="edge_downward__b02_r0055", color="#b3653b", style="dashed", constraint=false];
+"p8_macro_post_trough_infectious_growth" -> "p8_micro_post_trough_exposure_flag" [id="edge_downward__b02_r0058", color="#b3653b", style="dashed", constraint=false];
+"p8_macro_resurgence_amplitude" -> "p8_meso_layer_post_trough_incidence_ratio" [id="edge_downward__b03_r0010", color="#b3653b", style="dashed", constraint=false];
+"p8_macro_resurgence_amplitude" -> "p8_macro_post_trough_infectious_growth" [id="edge_intra_scale__b00_r0057", color="#6e648d", style="dotted", constraint=false];
+"p8_meso_layer_post_trough_incidence_ratio" -> "p8_meso_band_post_trough_incidence_ratio" [id="edge_intra_scale__b01_r0034", color="#6e648d", style="dotted", constraint=false];
+"p8_macro_trough_susceptible_depletion" -> "p8_macro_resurgence_amplitude" [id="edge_intra_scale__b01_r0039", color="#6e648d", style="dotted", constraint=false];
+"p8_macro_post_trough_infectious_growth" -> "p8_macro_resurgence_amplitude" [id="edge_intra_scale__b03_r0057", color="#6e648d", style="dotted", constraint=false];
+"p8_macro_post_trough_infectious_growth" -> "p8_macro_resurgence_breadth" [id="edge_intra_scale__b03_r0058", color="#6e648d", style="dotted", constraint=false];
+}

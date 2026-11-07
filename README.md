@@ -105,3 +105,7 @@ t.export('exported_trajectory')
 
 
 本地科研执行不要求 Docker：明确审查生成代码后，使用 trusted_reviewed 与 --execute-only --resume，在现有 Python 子进程中计算，保留 SHA-256 审核、日志和失败状态，不重新调用 LLM。当前原 12 个函数中 8 项通过、4 项未通过；详见 [本地执行验收](causal_graph/docs/LOCAL_EXECUTION_REPORT.md) 与 [全部真实因果图视图](causal_graph/examples/local_execution_20261106/graphs/index.html)。
+
+丰富候选空间的新档案上限为 8 个现象、72 个变量、720 条边，使用 JSON 输出及每批 12 个变量的函数生成，另存新实验；见 [丰富候选图实验说明](causal_graph/docs/FORMAL_RICH_EXPERIMENT.md)。图形支持自动紧凑布局、大字号、方向/现象分图、完整邻接矩阵及交互缩放，原 6 变量结果保持保留。
+
+真实丰富候选图现为 Fish 72 变量/495 边、Covasim 67 变量/454 边：[全部新图](causal_graph/examples/formal_rich_20261106/graphs/index.html)、[生成验收](causal_graph/docs/RICH_GENERATION_ACCEPTANCE.md)。新函数尚未做数学与执行验收，与原 12 个函数结果分别记录。

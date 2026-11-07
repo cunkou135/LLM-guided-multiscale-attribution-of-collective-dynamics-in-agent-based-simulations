@@ -1,0 +1,246 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024pt" height="1125pt" viewBox="0.00 0.00 1024.00 1125.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 531.39)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-531.39 483.06,-531.39 483.06,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-497.5" font-family="Times New Roman" font-size="17.00">Covasim | phenomenon_8</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-475" font-family="Times New Roman" font-size="12.00">8 nodes / 18 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-450.85" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-450.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-450.85" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-450.85" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-450.85" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="37.37,-229 37.37,-429 236.77,-429 236.77,-229 37.37,-229" />
+<text xml:space="preserve" text-anchor="middle" x="64.49" y="-409.8" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="29.87,-8 29.87,-208 244.27,-208 244.27,-8 29.87,-8" />
+<text xml:space="preserve" text-anchor="middle" x="56.24" y="-188.8" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="254.27,-50 254.27,-395 466.42,-395 466.42,-50 254.27,-50" />
+<text xml:space="preserve" text-anchor="middle" x="283.64" y="-375.8" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_downward__b00_r0010" class="inspectable" data-source="p8_meso_layer_post_trough_incidence_ratio" data-target="p8_micro_post_trough_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M50.19,-78.71C36.23,-85.88 23.54,-95.52 14.87,-108.5 1.89,-127.9 1.5,-299.37 14.87,-318.5 21.85,-328.5 31.39,-336.12 42.08,-341.93" />
+<polygon fill="#b3653b" stroke="#b3653b" points="40.93,-344.09 48.29,-344.99 43.1,-339.7 40.93,-344.09" />
+<title>p8_meso_layer_post_trough_incidence_ratio → p8_micro_post_trough_exposure_flag
+downward
+A layer with elevated post-trough attributed exposure incidence increases the probability that an individual active in that layer experiences a new exposure transition after the city-wide infectious trough.</title></g>
+
+<g id="edge_intra_scale__b01_r0034" class="inspectable" data-source="p8_meso_layer_post_trough_incidence_ratio" data-target="p8_meso_band_post_trough_incidence_ratio">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M137.07,-97.87C137.07,-98.39 137.07,-98.9 137.07,-99.42" />
+<polygon fill="#6e648d" stroke="#6e648d" points="134.62,-99.32 137.07,-106.32 139.52,-99.32 134.62,-99.32" />
+<title>p8_meso_layer_post_trough_incidence_ratio → p8_meso_band_post_trough_incidence_ratio
+intra_scale
+Layer-specific post-trough resurgence can propagate into age-band post-trough exposure rates when those layers serve particular ages.</title></g>
+
+<g id="edge_downward__b01_r0030" class="inspectable" data-source="p8_meso_band_post_trough_incidence_ratio" data-target="p8_micro_offset_from_infectious_trough">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M137.07,-170.45C137.07,-190.57 137.07,-210.7 137.07,-230.82" />
+<polygon fill="#b3653b" stroke="#b3653b" points="134.62,-230.63 137.07,-237.63 139.52,-230.63 134.62,-230.63" />
+<title>p8_meso_band_post_trough_incidence_ratio → p8_micro_offset_from_infectious_trough
+downward
+When a band's post-trough incidence is much higher than at the trough, its exposures concentrate later in the resurgent phase, increasing the positive offset from the trough for individuals in that band.</title></g>
+
+<g id="edge_downward__b01_r0029" class="inspectable" data-source="p8_meso_band_post_trough_incidence_ratio" data-target="p8_micro_post_trough_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M75.22,-170.26C51.83,-185.57 27.76,-206.39 14.87,-232.5 -2.06,-266.77 -7.02,-287.16 14.87,-318.5 21.85,-328.5 31.39,-336.12 42.08,-341.93" />
+<polygon fill="#b3653b" stroke="#b3653b" points="40.93,-344.09 48.29,-344.99 43.1,-339.7 40.93,-344.09" />
+<title>p8_meso_band_post_trough_incidence_ratio → p8_micro_post_trough_exposure_flag
+downward
+A higher band-level post-trough incidence ratio means exposure activity in that age band is elevated after the trough, raising the probability that an individual in the band has a post-trough exposure transition.</title></g>
+
+<g id="edge_upward__b01_r0049" class="inspectable" data-source="p8_meso_band_post_trough_incidence_ratio" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#27667b" d="M234.8,-122.11C241.74,-120.64 248.75,-119.12 255.72,-117.6" />
+<polygon fill="#27667b" stroke="#27667b" points="256.1,-120.02 262.41,-116.12 255.04,-115.24 256.1,-120.02" />
+<title>p8_meso_band_post_trough_incidence_ratio → p8_macro_post_trough_infectious_growth
+upward
+Age bands with high post-trough exposure rates contribute disproportionately to new infections, increasing aggregate post-trough infectious growth.</title></g>
+
+<g id="edge_upward__b01_r0050" class="inspectable" data-source="p8_meso_band_post_trough_incidence_ratio" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#27667b" d="M234.8,-153.43C248.28,-155.44 262.04,-157.49 275.27,-159.46" />
+<polygon fill="#27667b" stroke="#27667b" points="274.64,-161.85 281.93,-160.45 275.37,-157 274.64,-161.85" />
+<title>p8_meso_band_post_trough_incidence_ratio → p8_macro_resurgence_amplitude
+upward
+Age-selective post-trough increases in exposure rates add to the overall infectious pool, raising the observed resurgence amplitude.</title></g>
+
+<g id="edge_downward__b02_r0058" class="inspectable" data-source="p8_macro_post_trough_infectious_growth" data-target="p8_micro_post_trough_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M263.72,-117C260.24,-119.98 257.05,-123.3 254.27,-127 227.89,-162.01 270.7,-289.03 244.27,-324 240.55,-328.91 236.14,-333.16 231.25,-336.83" />
+<polygon fill="#b3653b" stroke="#b3653b" points="230.01,-334.71 225.56,-340.65 232.74,-338.78 230.01,-334.71" />
+<title>p8_macro_post_trough_infectious_growth → p8_micro_post_trough_exposure_flag
+downward
+When city-wide infectious growth after the trough is stronger, individual exposure transitions are more likely to occur after the trough.</title></g>
+
+<g id="edge_downward__b02_r0054" class="inspectable" data-source="p8_macro_post_trough_infectious_growth" data-target="p8_meso_layer_post_trough_incidence_ratio">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M263.97,-76.78C253.47,-75.21 242.78,-73.62 232.29,-72.05" />
+<polygon fill="#b3653b" stroke="#b3653b" points="232.71,-69.64 225.43,-71.03 231.99,-74.48 232.71,-69.64" />
+<title>p8_macro_post_trough_infectious_growth → p8_meso_layer_post_trough_incidence_ratio
+downward
+Stronger post-trough infectious growth can raise layer-specific post-trough exposure incidence relative to the trough, increasing the layer rebound ratio.</title></g>
+
+<g id="edge_downward__b02_r0055" class="inspectable" data-source="p8_macro_post_trough_infectious_growth" data-target="p8_meso_band_post_trough_incidence_ratio">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M263.89,-107.62C256.96,-109.09 249.95,-110.6 242.97,-112.12" />
+<polygon fill="#b3653b" stroke="#b3653b" points="242.59,-109.7 236.28,-113.6 243.64,-114.48 242.59,-109.7" />
+<title>p8_macro_post_trough_infectious_growth → p8_meso_band_post_trough_incidence_ratio
+downward
+Post-trough growth can be age-selective, plausibly raising the after-versus-at-trough exposure hazard ratio in some age bands.</title></g>
+
+<g id="edge_intra_scale__b03_r0057" class="inspectable" data-source="p8_macro_post_trough_infectious_growth" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M291.98,-122.32C291.49,-122.93 291.05,-123.54 290.66,-124.14" />
+<polygon fill="#6e648d" stroke="#6e648d" points="288.4,-123.17 288.73,-130.58 293.09,-124.58 288.4,-123.17" />
+<title>p8_macro_post_trough_infectious_growth → p8_macro_resurgence_amplitude
+intra_scale
+Sustained positive post-trough infectious growth can raise the maximum infectious count relative to the trough, increasing rebound amplitude.</title></g>
+
+<g id="edge_intra_scale__b03_r0058" class="inspectable" data-source="p8_macro_post_trough_infectious_growth" data-target="p8_macro_resurgence_breadth">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M263.79,-112.61C257.47,-117.9 252.38,-124.44 249.27,-132.5 243.22,-148.15 243.22,-267.85 249.27,-283.5 252.9,-292.9 259.19,-300.27 266.99,-306.02" />
+<polygon fill="#6e648d" stroke="#6e648d" points="265.4,-307.91 272.6,-309.67 268.06,-303.8 265.4,-307.91" />
+<title>p8_macro_post_trough_infectious_growth → p8_macro_resurgence_breadth
+intra_scale
+Broad post-trough growth can appear across multiple contact layers, increasing the share of layers with post-trough incidence increases.</title></g>
+
+<g id="edge_downward__b03_r0010" class="inspectable" data-source="p8_macro_resurgence_amplitude" data-target="p8_meso_layer_post_trough_incidence_ratio">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M283.34,-147.99C272.7,-142.31 262.57,-135.39 254.27,-127 246.13,-118.79 252.41,-111.2 244.27,-103 240.14,-98.85 235.57,-95.06 230.72,-91.61" />
+<polygon fill="#b3653b" stroke="#b3653b" points="232.38,-89.77 225.2,-87.93 229.67,-93.85 232.38,-89.77" />
+<title>p8_macro_resurgence_amplitude → p8_meso_layer_post_trough_incidence_ratio
+downward
+A larger citywide post-trough rebound implies stronger re-activation of transmission opportunities, which can differentially raise attributed exposure incidence in specific contact layers after the trough.</title></g>
+
+<g id="edge_intra_scale__b00_r0057" class="inspectable" data-source="p8_macro_resurgence_amplitude" data-target="p8_macro_post_trough_infectious_growth">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M432.38,-132.03C432.42,-131.32 432.38,-130.61 432.28,-129.9" />
+<polygon fill="#6e648d" stroke="#6e648d" points="434.55,-128.97 429.35,-123.69 430.12,-131.07 434.55,-128.97" />
+<title>p8_macro_resurgence_amplitude → p8_macro_post_trough_infectious_growth
+intra_scale
+A larger post-trough rebound implies faster accumulation of infectious agents, so resurgence amplitude tracks positive post-trough growth.</title></g>
+
+<g id="edge_downward__b00_r0011" class="inspectable" data-source="p8_macro_trough_susceptible_depletion" data-target="p8_meso_band_post_trough_incidence_ratio">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M279.26,-228.03C270.69,-224.63 262.21,-220.94 254.27,-217 230.6,-205.26 206.08,-189.42 185.7,-175.09" />
+<polygon fill="#b3653b" stroke="#b3653b" points="187.31,-173.23 180.19,-171.17 184.48,-177.22 187.31,-173.23" />
+<title>p8_macro_trough_susceptible_depletion → p8_meso_band_post_trough_incidence_ratio
+downward
+Greater susceptible depletion at the trough leaves fewer susceptible person-steps in each age band, reducing the post-trough rebound ratio of band exposure hazard relative to its trough value.</title></g>
+
+<g id="edge_intra_scale__b01_r0039" class="inspectable" data-source="p8_macro_trough_susceptible_depletion" data-target="p8_macro_resurgence_amplitude">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M360.34,-221.83C360.34,-221.31 360.34,-220.79 360.34,-220.27" />
+<polygon fill="#6e648d" stroke="#6e648d" points="362.79,-220.38 360.34,-213.38 357.89,-220.38 362.79,-220.38" />
+<title>p8_macro_trough_susceptible_depletion → p8_macro_resurgence_amplitude
+intra_scale
+A larger susceptible share at the trough plausibly supports a larger post-trough infectious rebound.</title></g>
+
+<g id="edge_downward__b01_r0021" class="inspectable" data-source="p8_macro_resurgence_breadth" data-target="p8_micro_offset_from_infectious_trough">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M274.07,-307.89C261.33,-305.18 248.11,-302.37 235.14,-299.62" />
+<polygon fill="#b3653b" stroke="#b3653b" points="235.95,-297.29 228.59,-298.23 234.93,-302.08 235.95,-297.29" />
+<title>p8_macro_resurgence_breadth → p8_micro_offset_from_infectious_trough
+downward
+Widespread resurgence extends post-trough exposure activity, so agents exposed during rebound tend to have larger positive offsets from the trough step.</title></g>
+
+<g id="edge_downward__b01_r0020" class="inspectable" data-source="p8_macro_resurgence_breadth" data-target="p8_micro_post_trough_exposure_flag">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M273.99,-339.11C260.44,-341.2 246.36,-343.36 232.61,-345.47" />
+<polygon fill="#b3653b" stroke="#b3653b" points="232.61,-342.99 226.06,-346.48 233.35,-347.84 232.61,-342.99" />
+<title>p8_macro_resurgence_breadth → p8_micro_post_trough_exposure_flag
+downward
+Broader layer resurgence increases the overall post-trough exposure pressure, raising the probability that an individual new exposure occurs after the infectious trough.</title></g>
+
+<g id="edge_downward__b01_r0019" class="inspectable" data-source="p8_macro_resurgence_breadth" data-target="p8_meso_band_post_trough_incidence_ratio">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M273.99,-305.49C266.56,-301.03 259.78,-295.6 254.27,-289 236.37,-267.58 258.12,-251.23 244.27,-227 232.73,-206.82 214.67,-189.29 196.69,-175.3" />
+<polygon fill="#b3653b" stroke="#b3653b" points="198.36,-173.49 191.3,-171.22 195.4,-177.4 198.36,-173.49" />
+<title>p8_macro_resurgence_breadth → p8_meso_band_post_trough_incidence_ratio
+downward
+When resurgence is broad across many layers, post-trough exposure activity is more widespread, raising band-specific post-trough incidence ratios relative to the trough.</title></g>
+
+<g id="node_p8_micro_offset_from_infectious_trough" class="inspectable" tabindex="0" data-node-id="p8_micro_offset_from_infectious_trough">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M214.77,-318.54C214.77,-318.54 59.37,-318.54 59.37,-318.54 53.37,-318.54 47.37,-312.54 47.37,-306.54 47.37,-306.54 47.37,-251.46 47.37,-251.46 47.37,-245.46 53.37,-239.46 59.37,-239.46 59.37,-239.46 214.77,-239.46 214.77,-239.46 220.77,-239.46 226.77,-245.46 226.77,-251.46 226.77,-251.46 226.77,-306.54 226.77,-306.54 226.77,-312.54 220.77,-318.54 214.77,-318.54" />
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-300.2" font-family="Times New Roman" font-size="14.00">N60</text>
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-282.95" font-family="Times New Roman" font-size="14.00">Agent exposure-step offset</text>
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-265.7" font-family="Times New Roman" font-size="14.00">from the city infectious</text>
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-248.45" font-family="Times New Roman" font-size="14.00">trough</text>
+<title>N60 | p8_micro_offset_from_infectious_trough
+Agent exposure-step offset from the city infectious trough
+Scale: micro | Phenomenon: community_resurgence_after_decline
+Definition: o_i = t_i - t*, where t_i is the agent's first observed exposure step and t* is the observed step of minimum count of agents with infectious_i(t) = true within the run (earliest such step on ties); undefined when t_i is undefined or t* is undefined.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_micro_post_trough_exposure_flag" class="inspectable" tabindex="0" data-node-id="p8_micro_post_trough_exposure_flag">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M212.14,-390.92C212.14,-390.92 61.99,-390.92 61.99,-390.92 55.99,-390.92 49.99,-384.92 49.99,-378.92 49.99,-378.92 49.99,-341.08 49.99,-341.08 49.99,-335.08 55.99,-329.08 61.99,-329.08 61.99,-329.08 212.14,-329.08 212.14,-329.08 218.14,-329.08 224.14,-335.08 224.14,-341.08 224.14,-341.08 224.14,-378.92 224.14,-378.92 224.14,-384.92 218.14,-390.92 212.14,-390.92" />
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-372.57" font-family="Times New Roman" font-size="14.00">N61</text>
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-355.32" font-family="Times New Roman" font-size="14.00">Agent exposure transition</text>
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-338.07" font-family="Times New Roman" font-size="14.00">after the infectious trough</text>
+<title>N61 | p8_micro_post_trough_exposure_flag
+Agent exposure transition after the infectious trough
+Scale: micro | Phenomenon: community_resurgence_after_decline
+Definition: R_i(t) = 1 if X_i(t) = 1 and t &gt; t*; 0 if X_i(t) = 1 and t &lt;= t*; undefined if X_i(t) = 0 or t* is undefined.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_meso_layer_post_trough_incidence_ratio" class="inspectable" tabindex="0" data-node-id="p8_meso_layer_post_trough_incidence_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M211.39,-97.54C211.39,-97.54 62.74,-97.54 62.74,-97.54 56.74,-97.54 50.74,-91.54 50.74,-85.54 50.74,-85.54 50.74,-30.46 50.74,-30.46 50.74,-24.46 56.74,-18.46 62.74,-18.46 62.74,-18.46 211.39,-18.46 211.39,-18.46 217.39,-18.46 223.39,-24.46 223.39,-30.46 223.39,-30.46 223.39,-85.54 223.39,-85.54 223.39,-91.54 217.39,-97.54 211.39,-97.54" />
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-79.2" font-family="Times New Roman" font-size="14.00">N62</text>
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-61.95" font-family="Times New Roman" font-size="14.00">Layer attributed-exposure</text>
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-44.7" font-family="Times New Roman" font-size="14.00">rate ratio after versus at</text>
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-27.45" font-family="Times New Roman" font-size="14.00">the trough</text>
+<title>N62 | p8_meso_layer_post_trough_incidence_ratio
+Layer attributed-exposure rate ratio after versus at the trough
+Scale: meso | Phenomenon: community_resurgence_after_decline
+Definition: Phi_l = (mean over observed steps s &gt; t* of lambda_l(s)) / lambda_l(t*), where lambda_l(s) is attributed layer exposure incidence per edge at step s; undefined when lambda_l(t*) = 0, is undefined, or no step after t* is observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_meso_band_post_trough_incidence_ratio" class="inspectable" tabindex="0" data-node-id="p8_meso_band_post_trough_incidence_ratio">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M222.27,-169.91C222.27,-169.91 51.87,-169.91 51.87,-169.91 45.87,-169.91 39.87,-163.91 39.87,-157.91 39.87,-157.91 39.87,-120.09 39.87,-120.09 39.87,-114.09 45.87,-108.09 51.87,-108.09 51.87,-108.09 222.27,-108.09 222.27,-108.09 228.27,-108.09 234.27,-114.09 234.27,-120.09 234.27,-120.09 234.27,-157.91 234.27,-157.91 234.27,-163.91 228.27,-169.91 222.27,-169.91" />
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-151.57" font-family="Times New Roman" font-size="14.00">N63</text>
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-134.32" font-family="Times New Roman" font-size="14.00">Age-band exposure rate ratio</text>
+<text xml:space="preserve" text-anchor="middle" x="137.07" y="-117.08" font-family="Times New Roman" font-size="14.00">after versus at the trough</text>
+<title>N63 | p8_meso_band_post_trough_incidence_ratio
+Age-band exposure rate ratio after versus at the trough
+Scale: meso | Phenomenon: community_resurgence_after_decline
+Definition: Psi_b = (mean over observed steps s &gt; t* of h_b(s)) / h_b(t*), with h_b the band exposure hazard per susceptible person-step; undefined when h_b(t*) = 0, is undefined, or no step after t* is observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_macro_post_trough_infectious_growth" class="inspectable" tabindex="0" data-node-id="p8_macro_post_trough_infectious_growth">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M444.42,-121.91C444.42,-121.91 276.27,-121.91 276.27,-121.91 270.27,-121.91 264.27,-115.91 264.27,-109.91 264.27,-109.91 264.27,-72.09 264.27,-72.09 264.27,-66.08 270.27,-60.09 276.27,-60.09 276.27,-60.09 444.42,-60.09 444.42,-60.09 450.42,-60.09 456.42,-66.09 456.42,-72.09 456.42,-72.09 456.42,-109.91 456.42,-109.91 456.42,-115.91 450.42,-121.91 444.42,-121.91" />
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-103.58" font-family="Times New Roman" font-size="14.00">N64</text>
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-86.33" font-family="Times New Roman" font-size="14.00">Mean post-trough log growth</text>
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-69.08" font-family="Times New Roman" font-size="14.00">of infectious agents</text>
+<title>N64 | p8_macro_post_trough_infectious_growth
+Mean post-trough log growth of infectious agents
+Scale: macro | Phenomenon: community_resurgence_after_decline
+Definition: g = mean over consecutive observed step pairs (s-1, s) with s &gt; t*, I(s-1) &gt; 0 and I(s) &gt; 0 of ln(I(s)/I(s-1)), where I(s) is the count of agents with infectious_i(s) = true; undefined when no such pair exists.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_macro_resurgence_amplitude" class="inspectable" tabindex="0" data-node-id="p8_macro_resurgence_amplitude">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M424.92,-211.54C424.92,-211.54 295.77,-211.54 295.77,-211.54 289.77,-211.54 283.77,-205.54 283.77,-199.54 283.77,-199.54 283.77,-144.46 283.77,-144.46 283.77,-138.46 289.77,-132.46 295.77,-132.46 295.77,-132.46 424.92,-132.46 424.92,-132.46 430.92,-132.46 436.92,-138.46 436.92,-144.46 436.92,-144.46 436.92,-199.54 436.92,-199.54 436.92,-205.54 430.92,-211.54 424.92,-211.54" />
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-193.2" font-family="Times New Roman" font-size="14.00">N65</text>
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-175.95" font-family="Times New Roman" font-size="14.00">Post-trough rebound</text>
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-158.7" font-family="Times New Roman" font-size="14.00">amplitude of infectious</text>
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-141.45" font-family="Times New Roman" font-size="14.00">count</text>
+<title>N65 | p8_macro_resurgence_amplitude
+Post-trough rebound amplitude of infectious count
+Scale: macro | Phenomenon: community_resurgence_after_decline
+Definition: A = (max over observed steps s &gt; t* of I(s)) / I(t*); undefined when I(t*) = 0 or no step after t* is observed.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_macro_trough_susceptible_depletion" class="inspectable" tabindex="0" data-node-id="p8_macro_trough_susceptible_depletion">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M429.04,-283.92C429.04,-283.92 291.64,-283.92 291.64,-283.92 285.64,-283.92 279.64,-277.92 279.64,-271.92 279.64,-271.92 279.64,-234.09 279.64,-234.09 279.64,-228.09 285.64,-222.09 291.64,-222.09 291.64,-222.09 429.04,-222.09 429.04,-222.09 435.04,-222.09 441.04,-228.09 441.04,-234.09 441.04,-234.09 441.04,-271.92 441.04,-271.92 441.04,-277.92 435.04,-283.92 429.04,-283.92" />
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-265.57" font-family="Times New Roman" font-size="14.00">N66</text>
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-248.32" font-family="Times New Roman" font-size="14.00">Susceptible share at the</text>
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-231.07" font-family="Times New Roman" font-size="14.00">infectious trough</text>
+<title>N66 | p8_macro_trough_susceptible_depletion
+Susceptible share at the infectious trough
+Scale: macro | Phenomenon: community_resurgence_after_decline
+Definition: S(t*) = (number of agents i observed at t* with susceptible_i(t*) = true) / (number of agents observed at t*); undefined when t* is undefined or no agent is observed at t*.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_p8_macro_resurgence_breadth" class="inspectable" tabindex="0" data-node-id="p8_macro_resurgence_breadth">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M434.29,-356.92C434.29,-356.92 286.39,-356.92 286.39,-356.92 280.39,-356.92 274.39,-350.92 274.39,-344.92 274.39,-344.92 274.39,-307.08 274.39,-307.08 274.39,-301.08 280.39,-295.08 286.39,-295.08 286.39,-295.08 434.29,-295.08 434.29,-295.08 440.29,-295.08 446.29,-301.08 446.29,-307.08 446.29,-307.08 446.29,-344.92 446.29,-344.92 446.29,-350.92 440.29,-356.92 434.29,-356.92" />
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-338.57" font-family="Times New Roman" font-size="14.00">N67</text>
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-321.32" font-family="Times New Roman" font-size="14.00">Share of layers with post-</text>
+<text xml:space="preserve" text-anchor="middle" x="360.34" y="-304.07" font-family="Times New Roman" font-size="14.00">trough incidence increase</text>
+<title>N67 | p8_macro_resurgence_breadth
+Share of layers with post-trough incidence increase
+Scale: macro | Phenomenon: community_resurgence_after_decline
+Definition: B = (number of layers l with Phi_l defined and Phi_l &gt; 1) / (number of layers l with Phi_l defined); undefined when no layer has a defined ratio.
+Execution: {'3249f90463154305aed53504106b3dae': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

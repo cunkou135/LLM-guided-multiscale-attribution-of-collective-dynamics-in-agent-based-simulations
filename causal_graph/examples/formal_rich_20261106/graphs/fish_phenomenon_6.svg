@@ -1,0 +1,274 @@
+<?xml version='1.0' encoding='utf-8'?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1310pt" height="951pt" viewBox="0.00 0.00 1310.00 951.00">
+<g id="graph0" class="graph" transform="scale(2.08333 2.08333) rotate(0) translate(8.64 448)">
+<title>G</title>
+<polygon fill="white" stroke="none" points="-8.64,8.64 -8.64,-448 620.34,-448 620.34,8.64 -8.64,8.64" />
+<text xml:space="preserve" text-anchor="start" x="12" y="-414.11" font-family="Times New Roman" font-size="17.00">Fish | phenomenon_6</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-391.61" font-family="Times New Roman" font-size="12.00">9 nodes / 21 edges</text>
+<text xml:space="preserve" text-anchor="start" x="12" y="-367.46" font-family="Times New Roman" font-size="10.00" fill="#27667b">Upward: solid</text>
+<text xml:space="preserve" text-anchor="start" x="72" y="-367.46" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="89.25" y="-367.46" font-family="Times New Roman" font-size="10.00" fill="#b3653b">Downward: dashed</text>
+<text xml:space="preserve" text-anchor="start" x="173.25" y="-367.46" font-family="Times New Roman" font-size="17.00"> | </text>
+<text xml:space="preserve" text-anchor="start" x="190.5" y="-367.46" font-family="Times New Roman" font-size="10.00" fill="#6e648d">Same scale: dotted</text>
+<g id="clust1" class="cluster">
+<title>cluster_micro</title>
+<polygon fill="white" stroke="#dddddd" points="8,-98.61 8,-336.61 179.65,-336.61 179.65,-98.61 8,-98.61" />
+<text xml:space="preserve" text-anchor="middle" x="35.12" y="-317.41" font-family="Times New Roman" font-size="16.00">Micro</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_meso</title>
+<polygon fill="white" stroke="#dddddd" points="189.65,-89.61 189.65,-345.61 383.05,-345.61 383.05,-89.61 189.65,-89.61" />
+<text xml:space="preserve" text-anchor="middle" x="216.02" y="-326.41" font-family="Times New Roman" font-size="16.00">Meso</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_macro</title>
+<polygon fill="white" stroke="#dddddd" points="393.05,-16.61 393.05,-272.61 603.7,-272.61 603.7,-16.61 393.05,-16.61" />
+<text xml:space="preserve" text-anchor="middle" x="422.42" y="-253.41" font-family="Times New Roman" font-size="16.00">Macro</text>
+</g>
+
+<g id="edge_upward__b02_r0035" class="inspectable" data-source="comp_micro_degree" data-target="comp_meso_component_edge_density">
+<path fill="none" stroke="#27667b" d="M165.98,-224.97C170.69,-227.03 175.29,-229.24 179.65,-231.61 184.65,-234.32 184.72,-236.77 189.65,-239.61 191.22,-240.51 192.81,-241.4 194.43,-242.27" />
+<polygon fill="#27667b" stroke="#27667b" points="192.96,-244.27 200.3,-245.32 195.22,-239.92 192.96,-244.27" />
+<title>comp_micro_degree → comp_meso_component_edge_density
+upward
+Fish with many contacts locally increase the number of realized edges within their component, raising meso edge density.</title></g>
+
+<g id="edge_upward__b02_r0036" class="inspectable" data-source="comp_micro_degree" data-target="comp_meso_component_mean_nearest_distance">
+<path fill="none" stroke="#27667b" d="M166.04,-203.61C174.21,-203.61 182.62,-203.61 191.03,-203.61" />
+<polygon fill="#27667b" stroke="#27667b" points="190.91,-206.06 197.91,-203.61 190.91,-201.16 190.91,-206.06" />
+<title>comp_micro_degree → comp_meso_component_mean_nearest_distance
+upward
+High-degree fish are surrounded by many close neighbors; their local crowding can lower the mean nearest-contact distance of their component.</title></g>
+
+<g id="edge_upward__b02_r0038" class="inspectable" data-source="comp_micro_degree" data-target="comp_macro_school_clustering">
+<path fill="none" stroke="#27667b" d="M165.73,-187.72C170.98,-184.41 175.74,-180.42 179.65,-175.61 192.06,-160.33 174.97,-100.71 189.65,-87.61 221.71,-58.98 341.63,-76.13 383.05,-87.61 388.05,-88.99 388.36,-91.4 393.05,-93.61 401.67,-97.67 410.87,-101.55 420.1,-105.17" />
+<polygon fill="#27667b" stroke="#27667b" points="419.02,-107.37 426.43,-107.59 420.77,-102.8 419.02,-107.37" />
+<title>comp_micro_degree → comp_macro_school_clustering
+upward
+High-degree individuals create more neighbor-neighbor contact opportunities, which can promote triangles and increase global clustering.</title></g>
+
+<g id="edge_upward__b03_r0014" class="inspectable" data-source="comp_micro_nearest_contact_distance" data-target="comp_meso_component_mean_nearest_distance">
+<path fill="none" stroke="#27667b" d="M170.13,-164.9C177.15,-167.26 184.33,-169.67 191.5,-172.08" />
+<polygon fill="#27667b" stroke="#27667b" points="190.42,-174.3 197.83,-174.21 191.98,-169.66 190.42,-174.3" />
+<title>comp_micro_nearest_contact_distance → comp_meso_component_mean_nearest_distance
+upward
+Individual nearest-contact spacing is the local quantity whose distribution determines the component-level average nearest-contact distance.</title></g>
+
+<g id="edge_upward__b03_r0017" class="inspectable" data-source="comp_micro_nearest_contact_distance" data-target="comp_macro_school_mean_nearest_distance">
+<path fill="none" stroke="#27667b" d="M127.06,-108.21C144.2,-93.63 166.48,-77.74 189.65,-69.61 255.19,-46.61 333.46,-43.86 394.66,-46.74" />
+<polygon fill="#27667b" stroke="#27667b" points="394.17,-49.17 401.29,-47.08 394.43,-44.27 394.17,-49.17" />
+<title>comp_micro_nearest_contact_distance → comp_macro_school_mean_nearest_distance
+upward
+School-wide mean nearest-contact distance reflects the aggregation of local nearest-contact distances across fish.</title></g>
+
+<g id="edge_downward__b03_r0034" class="inspectable" data-source="comp_meso_component_mean_degree" data-target="comp_micro_degree">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M200.16,-161.94C196.57,-163.76 193.05,-165.65 189.65,-167.61 184.72,-170.44 184.65,-172.89 179.65,-175.61 177.6,-176.72 175.51,-177.79 173.37,-178.83" />
+<polygon fill="#b3653b" stroke="#b3653b" points="172.69,-176.45 167.36,-181.61 174.74,-180.9 172.69,-176.45" />
+<title>comp_meso_component_mean_degree → comp_micro_degree
+downward
+A component with higher mean degree offers more potential contact partners, plausibly raising the realized contact degree of a focal fish in that component.</title></g>
+
+<g id="edge_downward__b03_r0035" class="inspectable" data-source="comp_meso_component_mean_degree" data-target="comp_micro_nearest_contact_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M199.27,-134.67C192.28,-135 185.23,-135.34 178.26,-135.67" />
+<polygon fill="#b3653b" stroke="#b3653b" points="178.51,-133.2 171.64,-135.98 178.75,-138.1 178.51,-133.2" />
+<title>comp_meso_component_mean_degree → comp_micro_nearest_contact_distance
+downward
+Higher component connectivity can bring neighbors closer or create crowding, plausibly changing a focal fish's nearest contact distance.</title></g>
+
+<g id="edge_downward__b03_r0036" class="inspectable" data-source="comp_meso_component_mean_degree" data-target="comp_micro_clustering_coefficient">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M199.45,-157.81C195.86,-160.75 192.56,-164 189.65,-167.61 171.58,-190.02 197.35,-208.9 179.65,-231.61 177.26,-234.68 174.55,-237.49 171.61,-240.07" />
+<polygon fill="#b3653b" stroke="#b3653b" points="170.47,-237.85 166.48,-244.09 173.5,-241.7 170.47,-237.85" />
+<title>comp_meso_component_mean_degree → comp_micro_clustering_coefficient
+downward
+Component-level contact density can create more neighbor-of-neighbor links, plausibly increasing a focal fish's local clustering coefficient.</title></g>
+
+<g id="edge_upward__b02_r0040" class="inspectable" data-source="comp_meso_component_mean_degree" data-target="comp_macro_school_clustering">
+<path fill="none" stroke="#27667b" d="M373.38,-130.61C388.67,-130.61 404.52,-130.61 419.57,-130.61" />
+<polygon fill="#27667b" stroke="#27667b" points="419.33,-133.06 426.33,-130.61 419.33,-128.16 419.33,-133.06" />
+<title>comp_meso_component_mean_degree → comp_macro_school_clustering
+upward
+Components with higher mean contact degree support more transitive contacts, and the mixture of such components can raise school-level clustering.</title></g>
+
+<g id="edge_upward__b02_r0041" class="inspectable" data-source="comp_meso_component_mean_degree" data-target="comp_macro_school_mean_nearest_distance">
+<path fill="none" stroke="#27667b" d="M373.38,-100.7C381.88,-97.75 390.55,-94.74 399.16,-91.74" />
+<polygon fill="#27667b" stroke="#27667b" points="399.81,-94.11 405.62,-89.5 398.2,-89.48 399.81,-94.11" />
+<title>comp_meso_component_mean_degree → comp_macro_school_mean_nearest_distance
+upward
+Components whose fish have many contacts are generally more crowded; when such components dominate, the school-wide mean nearest-contact distance tends to decrease.</title></g>
+
+<g id="edge_intra_scale__b02_r0030" class="inspectable" data-source="comp_meso_component_mean_nearest_distance" data-target="comp_meso_component_edge_density">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M286.35,-234.97C286.35,-235.62 286.35,-236.28 286.35,-236.93" />
+<polygon fill="#6e648d" stroke="#6e648d" points="283.9,-236.87 286.35,-243.87 288.8,-236.87 283.9,-236.87" />
+<title>comp_meso_component_mean_nearest_distance → comp_meso_component_edge_density
+intra_scale
+Larger mean nearest-contact spacing implies fewer close pairs and can lower realized contact edge density within the component.</title></g>
+
+<g id="edge_intra_scale__b02_r0031" class="inspectable" data-source="comp_meso_component_mean_nearest_distance" data-target="comp_meso_component_mean_degree">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M286.35,-172.38C286.35,-171.73 286.35,-171.08 286.35,-170.43" />
+<polygon fill="#6e648d" stroke="#6e648d" points="288.8,-170.49 286.35,-163.49 283.9,-170.49 288.8,-170.49" />
+<title>comp_meso_component_mean_nearest_distance → comp_meso_component_mean_degree
+intra_scale
+Looser local spacing can reduce the number of contact neighbors per fish, lowering mean component degree.</title></g>
+
+<g id="edge_upward__b03_r0050" class="inspectable" data-source="comp_meso_component_mean_nearest_distance" data-target="comp_macro_school_mean_degree">
+<path fill="none" stroke="#27667b" d="M373.38,-203.61C381.28,-203.61 389.34,-203.61 397.35,-203.61" />
+<polygon fill="#27667b" stroke="#27667b" points="397.16,-206.06 404.16,-203.61 397.16,-201.16 397.16,-206.06" />
+<title>comp_meso_component_mean_nearest_distance → comp_macro_school_mean_degree
+upward
+Components with smaller mean nearest-contact distances tend to have denser local links, raising school mean contact degree.</title></g>
+
+<g id="edge_upward__b03_r0049" class="inspectable" data-source="comp_meso_component_mean_nearest_distance" data-target="comp_macro_school_mean_nearest_distance">
+<path fill="none" stroke="#27667b" d="M373.33,-181.96C376.9,-179.01 380.17,-175.74 383.05,-172.11 403.11,-146.78 372.64,-125.15 393.05,-100.11 394.75,-98.02 396.58,-96.05 398.51,-94.2" />
+<polygon fill="#27667b" stroke="#27667b" points="399.76,-96.35 403.46,-89.93 396.56,-92.64 399.76,-96.35" />
+<title>comp_meso_component_mean_nearest_distance → comp_macro_school_mean_nearest_distance
+upward
+Component mean nearest-contact distances aggregate across components to determine the school-wide mean nearest-contact distance.</title></g>
+
+<g id="edge_intra_scale__b03_r0052" class="inspectable" data-source="comp_macro_school_mean_degree" data-target="comp_macro_school_clustering">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M498.37,-172.38C498.37,-171.73 498.37,-171.08 498.37,-170.43" />
+<polygon fill="#6e648d" stroke="#6e648d" points="500.82,-170.49 498.37,-163.49 495.92,-170.49 500.82,-170.49" />
+<title>comp_macro_school_mean_degree → comp_macro_school_clustering
+intra_scale
+Dense contacts create more neighbor triangles and raise global clustering.</title></g>
+
+<g id="edge_intra_scale__b03_r0053" class="inspectable" data-source="comp_macro_school_mean_degree" data-target="comp_macro_school_mean_nearest_distance">
+<path fill="none" stroke="#6e648d" stroke-dasharray="1,5" d="M405.73,-174.14C401.34,-171.79 397.09,-169.28 393.05,-166.61 390.3,-164.78 389.24,-164.19 388.05,-161.11 383.16,-148.46 383.16,-112.75 388.05,-100.11 390.09,-94.83 392.97,-90.2 396.48,-86.13" />
+<polygon fill="#6e648d" stroke="#6e648d" points="398.16,-87.92 401.42,-81.26 394.72,-84.43 398.16,-87.92" />
+<title>comp_macro_school_mean_degree → comp_macro_school_mean_nearest_distance
+intra_scale
+Higher mean contact degree implies more close contacts, lowering mean nearest-contact distance.</title></g>
+
+<g id="edge_downward__b02_r0006" class="inspectable" data-source="comp_macro_school_clustering" data-target="comp_meso_component_edge_density">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M427.79,-143.41C414.54,-148.84 402.04,-156.58 393.05,-167.61 372.64,-192.65 403.11,-214.28 383.05,-239.61 381.34,-241.77 379.48,-243.81 377.5,-245.73" />
+<polygon fill="#b3653b" stroke="#b3653b" points="376.08,-243.72 372.38,-250.15 379.28,-247.43 376.08,-243.72" />
+<title>comp_macro_school_clustering → comp_meso_component_edge_density
+downward
+Higher global clustering coefficient reflects a more tightly knit contact network, which can locally densify components, raising their edge density.</title></g>
+
+<g id="edge_downward__b03_r0041" class="inspectable" data-source="comp_macro_school_mean_nearest_distance" data-target="comp_micro_degree">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M402.54,-31.77C334.38,-19.46 245.08,-17.15 189.65,-69.61 172.47,-85.87 194.4,-157.11 179.65,-175.61 177.47,-178.34 175.03,-180.8 172.37,-183.03" />
+<polygon fill="#b3653b" stroke="#b3653b" points="171.26,-180.81 167.05,-186.91 174.15,-184.76 171.26,-180.81" />
+<title>comp_macro_school_mean_nearest_distance → comp_micro_degree
+downward
+When the school is more spread out, individual fish have fewer close contacts, plausibly reducing focal contact degree.</title></g>
+
+<g id="edge_downward__b03_r0040" class="inspectable" data-source="comp_macro_school_mean_nearest_distance" data-target="comp_micro_nearest_contact_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M422.74,-26.23C357.97,-4.03 263.29,16.06 189.65,-19.61 154.99,-36.39 129.17,-72.68 113.29,-100.98" />
+<polygon fill="#b3653b" stroke="#b3653b" points="111.19,-99.71 110,-107.02 115.5,-102.05 111.19,-99.71" />
+<title>comp_macro_school_mean_nearest_distance → comp_micro_nearest_contact_distance
+downward
+School-level spacing sets the local crowding regime, plausibly shifting the nearest contact distance experienced by an individual fish.</title></g>
+
+<g id="edge_downward__b03_r0039" class="inspectable" data-source="comp_macro_school_mean_nearest_distance" data-target="comp_meso_component_edge_density">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M402.5,-84.64C399.02,-87.62 395.84,-90.93 393.05,-94.61 373.52,-120.33 402.22,-213.61 383.05,-239.61 381.36,-241.9 379.5,-244.05 377.52,-246.07" />
+<polygon fill="#b3653b" stroke="#b3653b" points="375.89,-244.24 372.3,-250.73 379.15,-247.89 375.89,-244.24" />
+<title>comp_macro_school_mean_nearest_distance → comp_meso_component_edge_density
+downward
+Larger typical nearest-neighbor spacing reduces the chance of local contacts, plausibly lowering component edge density.</title></g>
+
+<g id="edge_downward__b03_r0038" class="inspectable" data-source="comp_macro_school_mean_nearest_distance" data-target="comp_meso_component_mean_nearest_distance">
+<path fill="none" stroke="#b3653b" stroke-dasharray="5,2" d="M402.81,-79.39C399.25,-82.3 395.96,-85.53 393.05,-89.11 372.64,-114.15 403.11,-135.78 383.05,-161.11 381.49,-163.07 379.82,-164.93 378.05,-166.69" />
+<polygon fill="#b3653b" stroke="#b3653b" points="376.43,-164.85 372.79,-171.32 379.67,-168.53 376.43,-164.85" />
+<title>comp_macro_school_mean_nearest_distance → comp_meso_component_mean_nearest_distance
+downward
+A school-wide increase in nearest-contact spacing can propagate into component geometry, plausibly raising mean nearest-contact distance within components.</title></g>
+
+<g id="node_comp_micro_degree" class="inspectable" tabindex="0" data-node-id="comp_micro_degree">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M153.52,-225.9C153.52,-225.9 34.12,-225.9 34.12,-225.9 28.12,-225.9 22.12,-219.9 22.12,-213.9 22.12,-213.9 22.12,-193.32 22.12,-193.32 22.12,-187.32 28.12,-181.32 34.12,-181.32 34.12,-181.32 153.52,-181.32 153.52,-181.32 159.52,-181.32 165.52,-187.32 165.52,-193.32 165.52,-193.32 165.52,-213.9 165.52,-213.9 165.52,-219.9 159.52,-225.9 153.52,-225.9" />
+<text xml:space="preserve" text-anchor="middle" x="93.82" y="-207.56" font-family="Times New Roman" font-size="14.00">N46</text>
+<text xml:space="preserve" text-anchor="middle" x="93.82" y="-190.31" font-family="Times New Roman" font-size="14.00">Focal contact degree</text>
+<title>N46 | comp_micro_degree
+Focal contact degree
+Scale: micro | Phenomenon: local_compaction
+Definition: For fish i, indicator=k_i(t)=|{j: (i,j) in E_t or (j,i) in E_t}|.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_micro_nearest_contact_distance" class="inspectable" tabindex="0" data-node-id="comp_micro_nearest_contact_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M157.65,-170.52C157.65,-170.52 30,-170.52 30,-170.52 24,-170.52 18,-164.52 18,-158.52 18,-158.52 18,-120.69 18,-120.69 18,-114.69 24,-108.69 30,-108.69 30,-108.69 157.65,-108.69 157.65,-108.69 163.65,-108.69 169.65,-114.69 169.65,-120.69 169.65,-120.69 169.65,-158.52 169.65,-158.52 169.65,-164.52 163.65,-170.52 157.65,-170.52" />
+<text xml:space="preserve" text-anchor="middle" x="93.82" y="-152.18" font-family="Times New Roman" font-size="14.00">N47</text>
+<text xml:space="preserve" text-anchor="middle" x="93.82" y="-134.93" font-family="Times New Roman" font-size="14.00">Focal nearest contact-</text>
+<text xml:space="preserve" text-anchor="middle" x="93.82" y="-117.68" font-family="Times New Roman" font-size="14.00">neighbor distance</text>
+<title>N47 | comp_micro_nearest_contact_distance
+Focal nearest contact-neighbor distance
+Scale: micro | Phenomenon: local_compaction
+Definition: For fish i, indicator=min_{j in N_i(t)} ||p_i(t)-p_j(t)||.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_micro_clustering_coefficient" class="inspectable" tabindex="0" data-node-id="comp_micro_clustering_coefficient">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M152.77,-298.52C152.77,-298.52 34.88,-298.52 34.88,-298.52 28.88,-298.52 22.87,-292.52 22.87,-286.52 22.87,-286.52 22.87,-248.69 22.87,-248.69 22.87,-242.69 28.87,-236.69 34.87,-236.69 34.87,-236.69 152.77,-236.69 152.77,-236.69 158.77,-236.69 164.77,-242.69 164.77,-248.69 164.77,-248.69 164.77,-286.52 164.77,-286.52 164.77,-292.52 158.77,-298.52 152.77,-298.52" />
+<text xml:space="preserve" text-anchor="middle" x="93.82" y="-280.18" font-family="Times New Roman" font-size="14.00">N48</text>
+<text xml:space="preserve" text-anchor="middle" x="93.82" y="-262.93" font-family="Times New Roman" font-size="14.00">Focal local clustering</text>
+<text xml:space="preserve" text-anchor="middle" x="93.82" y="-245.68" font-family="Times New Roman" font-size="14.00">coefficient</text>
+<title>N48 | comp_micro_clustering_coefficient
+Focal local clustering coefficient
+Scale: micro | Phenomenon: local_compaction
+Definition: Let k_i be degree and T_i the number of edges among neighbors of i in G_t. Indicator=2T_i/(k_i(k_i-1)) if k_i&gt;=2.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_meso_component_edge_density" class="inspectable" tabindex="0" data-node-id="comp_meso_component_edge_density">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M358.8,-307.52C358.8,-307.52 213.9,-307.52 213.9,-307.52 207.9,-307.52 201.9,-301.52 201.9,-295.52 201.9,-295.52 201.9,-257.69 201.9,-257.69 201.9,-251.69 207.9,-245.69 213.9,-245.69 213.9,-245.69 358.8,-245.69 358.8,-245.69 364.8,-245.69 370.8,-251.69 370.8,-257.69 370.8,-257.69 370.8,-295.52 370.8,-295.52 370.8,-301.52 364.8,-307.52 358.8,-307.52" />
+<text xml:space="preserve" text-anchor="middle" x="286.35" y="-289.18" font-family="Times New Roman" font-size="14.00">N49</text>
+<text xml:space="preserve" text-anchor="middle" x="286.35" y="-271.93" font-family="Times New Roman" font-size="14.00">Contact-component edge</text>
+<text xml:space="preserve" text-anchor="middle" x="286.35" y="-254.68" font-family="Times New Roman" font-size="14.00">density</text>
+<title>N49 | comp_meso_component_edge_density
+Contact-component edge density
+Scale: meso | Phenomenon: local_compaction
+Definition: For component C_k with n_k=|C_k| and e_k=|E_k|, indicator=e_k/(n_k(n_k-1)/2).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_meso_component_mean_degree" class="inspectable" tabindex="0" data-node-id="comp_meso_component_mean_degree">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M361.05,-161.52C361.05,-161.52 211.65,-161.52 211.65,-161.52 205.65,-161.52 199.65,-155.52 199.65,-149.52 199.65,-149.52 199.65,-111.69 199.65,-111.69 199.65,-105.69 205.65,-99.69 211.65,-99.69 211.65,-99.69 361.05,-99.69 361.05,-99.69 367.05,-99.69 373.05,-105.69 373.05,-111.69 373.05,-111.69 373.05,-149.52 373.05,-149.52 373.05,-155.52 367.05,-161.52 361.05,-161.52" />
+<text xml:space="preserve" text-anchor="middle" x="286.35" y="-143.18" font-family="Times New Roman" font-size="14.00">N50</text>
+<text xml:space="preserve" text-anchor="middle" x="286.35" y="-125.93" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="286.35" y="-108.68" font-family="Times New Roman" font-size="14.00">degree</text>
+<title>N50 | comp_meso_component_mean_degree
+Contact-component mean degree
+Scale: meso | Phenomenon: local_compaction
+Definition: For component C_k, indicator=(1/n_k) sum_{i in C_k} k_i(t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_meso_component_mean_nearest_distance" class="inspectable" tabindex="0" data-node-id="comp_meso_component_mean_nearest_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M361.05,-234.52C361.05,-234.52 211.65,-234.52 211.65,-234.52 205.65,-234.52 199.65,-228.52 199.65,-222.52 199.65,-222.52 199.65,-184.69 199.65,-184.69 199.65,-178.69 205.65,-172.69 211.65,-172.69 211.65,-172.69 361.05,-172.69 361.05,-172.69 367.05,-172.69 373.05,-178.69 373.05,-184.69 373.05,-184.69 373.05,-222.52 373.05,-222.52 373.05,-228.52 367.05,-234.52 361.05,-234.52" />
+<text xml:space="preserve" text-anchor="middle" x="286.35" y="-216.18" font-family="Times New Roman" font-size="14.00">N51</text>
+<text xml:space="preserve" text-anchor="middle" x="286.35" y="-198.93" font-family="Times New Roman" font-size="14.00">Contact-component mean</text>
+<text xml:space="preserve" text-anchor="middle" x="286.35" y="-181.68" font-family="Times New Roman" font-size="14.00">nearest-contact distance</text>
+<title>N51 | comp_meso_component_mean_nearest_distance
+Contact-component mean nearest-contact distance
+Scale: meso | Phenomenon: local_compaction
+Definition: For component C_k, indicator=(1/n_k) sum_{i in C_k} min_{j in N_i(t)} ||p_i-p_j|| over fish with N_i(t) nonempty.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_macro_school_mean_degree" class="inspectable" tabindex="0" data-node-id="comp_macro_school_mean_degree">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M578.7,-234.52C578.7,-234.52 418.05,-234.52 418.05,-234.52 412.05,-234.52 406.05,-228.52 406.05,-222.52 406.05,-222.52 406.05,-184.69 406.05,-184.69 406.05,-178.69 412.05,-172.69 418.05,-172.69 418.05,-172.69 578.7,-172.69 578.7,-172.69 584.7,-172.69 590.7,-178.69 590.7,-184.69 590.7,-184.69 590.7,-222.52 590.7,-222.52 590.7,-228.52 584.7,-234.52 578.7,-234.52" />
+<text xml:space="preserve" text-anchor="middle" x="498.37" y="-216.18" font-family="Times New Roman" font-size="14.00">N52</text>
+<text xml:space="preserve" text-anchor="middle" x="498.37" y="-198.93" font-family="Times New Roman" font-size="14.00">Whole-school mean contact</text>
+<text xml:space="preserve" text-anchor="middle" x="498.37" y="-181.68" font-family="Times New Roman" font-size="14.00">degree</text>
+<title>N52 | comp_macro_school_mean_degree
+Whole-school mean contact degree
+Scale: macro | Phenomenon: local_compaction
+Definition: Indicator=(1/N_t) sum_i k_i(t).
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_macro_school_clustering" class="inspectable" tabindex="0" data-node-id="comp_macro_school_clustering">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M556.57,-161.52C556.57,-161.52 440.17,-161.52 440.17,-161.52 434.17,-161.52 428.17,-155.52 428.17,-149.52 428.17,-149.52 428.17,-111.69 428.17,-111.69 428.17,-105.69 434.17,-99.69 440.17,-99.69 440.17,-99.69 556.57,-99.69 556.57,-99.69 562.57,-99.69 568.57,-105.69 568.57,-111.69 568.57,-111.69 568.57,-149.52 568.57,-149.52 568.57,-155.52 562.57,-161.52 556.57,-161.52" />
+<text xml:space="preserve" text-anchor="middle" x="498.37" y="-143.18" font-family="Times New Roman" font-size="14.00">N53</text>
+<text xml:space="preserve" text-anchor="middle" x="498.37" y="-125.93" font-family="Times New Roman" font-size="14.00">Whole-school global</text>
+<text xml:space="preserve" text-anchor="middle" x="498.37" y="-108.68" font-family="Times New Roman" font-size="14.00">clustering coefficient</text>
+<title>N53 | comp_macro_school_clustering
+Whole-school global clustering coefficient
+Scale: macro | Phenomenon: local_compaction
+Definition: Indicator=3T_t/Q_t, where T_t is the number of triangles and Q_t the number of connected triples in G_t.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+
+<g id="node_comp_macro_school_mean_nearest_distance" class="inspectable" tabindex="0" data-node-id="comp_macro_school_mean_nearest_distance">
+<path fill="white" stroke="#444444" stroke-width="1.1" d="M581.7,-88.52C581.7,-88.52 415.05,-88.52 415.05,-88.52 409.05,-88.52 403.05,-82.52 403.05,-76.52 403.05,-76.52 403.05,-38.69 403.05,-38.69 403.05,-32.69 409.05,-26.69 415.05,-26.69 415.05,-26.69 581.7,-26.69 581.7,-26.69 587.7,-26.69 593.7,-32.69 593.7,-38.69 593.7,-38.69 593.7,-76.52 593.7,-76.52 593.7,-82.52 587.7,-88.52 581.7,-88.52" />
+<text xml:space="preserve" text-anchor="middle" x="498.37" y="-70.18" font-family="Times New Roman" font-size="14.00">N54</text>
+<text xml:space="preserve" text-anchor="middle" x="498.37" y="-52.93" font-family="Times New Roman" font-size="14.00">Whole-school mean nearest-</text>
+<text xml:space="preserve" text-anchor="middle" x="498.37" y="-35.68" font-family="Times New Roman" font-size="14.00">contact distance</text>
+<title>N54 | comp_macro_school_mean_nearest_distance
+Whole-school mean nearest-contact distance
+Scale: macro | Phenomenon: local_compaction
+Definition: Indicator=(1/N_t^c) sum_i min_{j in N_i(t)} ||p_i-p_j|| over fish with N_i(t) nonempty.
+Execution: {'2a815b4dfe4f47b8ac2416fac04456e5': {'status': 'not_executed', 'reason': 'explicit_generate_only'}}</title></g>
+</g>
+</svg>

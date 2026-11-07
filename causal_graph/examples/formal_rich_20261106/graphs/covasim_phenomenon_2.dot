@@ -1,0 +1,42 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Covasim | phenomenon_2</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">8 nodes / 16 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"p2_micro_layer_degree" [id="node_p2_micro_layer_degree", label="N8\nAgent contact degree within\na contact layer", style="rounded,filled", fillcolor="white"];
+"p2_micro_layer_exposure_flag" [id="node_p2_micro_layer_exposure_flag", label="N9\nAgent exposure transition\nattributed to a layer", style="rounded,filled", fillcolor="white"];
+"p2_micro_layer_beta_load" [id="node_p2_micro_layer_beta_load", label="N10\nAgent per-layer contact\nweight load", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"p2_meso_layer_incidence_per_edge" [id="node_p2_meso_layer_incidence_per_edge", label="N11\nLayer exposure incidence per\ncontact edge", style="rounded,filled", fillcolor="white"];
+"p2_meso_layer_degree_dispersion" [id="node_p2_meso_layer_degree_dispersion", label="N12\nWithin-layer degree\ndispersion", style="rounded,filled", fillcolor="white"];
+"p2_meso_layer_active_run" [id="node_p2_meso_layer_active_run", label="N13\nLayer consecutive active-\nstep run length", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"p2_macro_layer_edge_turnover" [id="node_p2_macro_layer_edge_turnover", label="N14\nLayer edge-set Jaccard\nturnover", style="rounded,filled", fillcolor="white"];
+"p2_macro_layer_incidence_entropy" [id="node_p2_macro_layer_incidence_entropy", label="N15\nNormalised entropy of layer\nexposure shares", style="rounded,filled", fillcolor="white"];
+}
+"p2_micro_layer_degree" -> "p2_meso_layer_incidence_per_edge" [id="edge_upward__b01_r0003", color="#27667b", style="solid", constraint=true];
+"p2_micro_layer_degree" -> "p2_meso_layer_active_run" [id="edge_upward__b01_r0004", color="#27667b", style="solid", constraint=true];
+"p2_micro_layer_degree" -> "p2_macro_layer_incidence_entropy" [id="edge_upward__b01_r0005", color="#27667b", style="solid", constraint=true];
+"p2_meso_layer_degree_dispersion" -> "p2_macro_layer_incidence_entropy" [id="edge_upward__b01_r0010", color="#27667b", style="solid", constraint=true];
+"p2_macro_layer_edge_turnover" -> "p2_meso_layer_incidence_per_edge" [id="edge_downward__b00_r0002", color="#b3653b", style="dashed", constraint=false];
+"p2_macro_layer_incidence_entropy" -> "p2_meso_layer_active_run" [id="edge_downward__b01_r0000", color="#b3653b", style="dashed", constraint=false];
+"p2_macro_layer_incidence_entropy" -> "p2_micro_layer_exposure_flag" [id="edge_downward__b01_r0001", color="#b3653b", style="dashed", constraint=false];
+"p2_meso_layer_incidence_per_edge" -> "p2_micro_layer_exposure_flag" [id="edge_downward__b01_r0024", color="#b3653b", style="dashed", constraint=false];
+"p2_meso_layer_degree_dispersion" -> "p2_micro_layer_beta_load" [id="edge_downward__b02_r0004", color="#b3653b", style="dashed", constraint=false];
+"p2_meso_layer_active_run" -> "p2_micro_layer_exposure_flag" [id="edge_downward__b03_r0001", color="#b3653b", style="dashed", constraint=false];
+"p2_meso_layer_active_run" -> "p2_meso_layer_incidence_per_edge" [id="edge_intra_scale__b00_r0034", color="#6e648d", style="dotted", constraint=false];
+"p2_micro_layer_beta_load" -> "p2_micro_layer_exposure_flag" [id="edge_intra_scale__b01_r0003", color="#6e648d", style="dotted", constraint=false];
+"p2_macro_layer_edge_turnover" -> "p2_macro_layer_incidence_entropy" [id="edge_intra_scale__b01_r0040", color="#6e648d", style="dotted", constraint=false];
+"p2_micro_layer_degree" -> "p2_micro_layer_exposure_flag" [id="edge_intra_scale__b03_r0000", color="#6e648d", style="dotted", constraint=false];
+"p2_meso_layer_degree_dispersion" -> "p2_meso_layer_incidence_per_edge" [id="edge_intra_scale__b03_r0032", color="#6e648d", style="dotted", constraint=false];
+"p2_meso_layer_degree_dispersion" -> "p2_meso_layer_active_run" [id="edge_intra_scale__b03_r0033", color="#6e648d", style="dotted", constraint=false];
+}

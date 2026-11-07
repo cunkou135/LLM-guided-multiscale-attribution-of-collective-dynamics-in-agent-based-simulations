@@ -1,0 +1,10 @@
+# Broad candidate inventory. Ceilings are not required counts or a density target.
+max_phenomena: 8
+max_indicators: 72
+max_edges: 720
+generation_attempts: 2
+code_batch_size: 12
+execution_mode: trusted_reviewed
+indicator_timeout: 180
+min_observations: 3
+missing_fraction_warning: 0.2

@@ -1,0 +1,44 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Fish | phenomenon_2</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">9 nodes / 17 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"elong_micro_major_projection" [id="node_elong_micro_major_projection", label="N10\nFocal fish normalized major-\naxis projection", style="rounded,filled", fillcolor="white"];
+"elong_micro_mahalanobis_sq" [id="node_elong_micro_mahalanobis_sq", label="N11\nFocal fish squared\nMahalanobis distance", style="rounded,filled", fillcolor="white"];
+"elong_micro_component_projection" [id="node_elong_micro_component_projection", label="N12\nFocal fish normalized\ncomponent major-axis\nprojection", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"elong_meso_component_aspect_ratio" [id="node_elong_meso_component_aspect_ratio", label="N13\nContact-component aspect\nratio", style="rounded,filled", fillcolor="white"];
+"elong_meso_component_escape_alignment" [id="node_elong_meso_component_escape_alignment", label="N14\nComponent major-axis escape\nalignment", style="rounded,filled", fillcolor="white"];
+"elong_meso_component_axis_length" [id="node_elong_meso_component_axis_length", label="N15\nContact-component major-axis\nlength", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"elong_macro_school_aspect_ratio" [id="node_elong_macro_school_aspect_ratio", label="N16\nWhole-school aspect ratio", style="rounded,filled", fillcolor="white"];
+"elong_macro_anisotropy_index" [id="node_elong_macro_anisotropy_index", label="N17\nWhole-school anisotropy\nindex", style="rounded,filled", fillcolor="white"];
+"elong_macro_major_escape_alignment" [id="node_elong_macro_major_escape_alignment", label="N18\nWhole-school major-axis\nescape alignment", style="rounded,filled", fillcolor="white"];
+}
+"elong_micro_major_projection" -> "elong_meso_component_aspect_ratio" [id="edge_upward__b02_r0005", color="#27667b", style="solid", constraint=true];
+"elong_micro_major_projection" -> "elong_meso_component_axis_length" [id="edge_upward__b02_r0006", color="#27667b", style="solid", constraint=true];
+"elong_micro_major_projection" -> "elong_meso_component_escape_alignment" [id="edge_upward__b02_r0007", color="#27667b", style="solid", constraint=true];
+"elong_micro_major_projection" -> "elong_macro_school_aspect_ratio" [id="edge_upward__b02_r0008", color="#27667b", style="solid", constraint=true];
+"elong_micro_major_projection" -> "elong_macro_major_escape_alignment" [id="edge_upward__b02_r0009", color="#27667b", style="solid", constraint=true];
+"elong_meso_component_escape_alignment" -> "elong_macro_school_aspect_ratio" [id="edge_upward__b02_r0010", color="#27667b", style="solid", constraint=true];
+"elong_meso_component_escape_alignment" -> "elong_macro_anisotropy_index" [id="edge_upward__b02_r0011", color="#27667b", style="solid", constraint=true];
+"elong_meso_component_escape_alignment" -> "elong_macro_major_escape_alignment" [id="edge_upward__b02_r0012", color="#27667b", style="solid", constraint=true];
+"elong_micro_mahalanobis_sq" -> "elong_meso_component_axis_length" [id="edge_upward__b03_r0000", color="#27667b", style="solid", constraint=true];
+"elong_micro_mahalanobis_sq" -> "elong_macro_school_aspect_ratio" [id="edge_upward__b03_r0004", color="#27667b", style="solid", constraint=true];
+"elong_meso_component_axis_length" -> "elong_macro_school_aspect_ratio" [id="edge_upward__b03_r0029", color="#27667b", style="solid", constraint=true];
+"elong_meso_component_axis_length" -> "elong_macro_anisotropy_index" [id="edge_upward__b03_r0030", color="#27667b", style="solid", constraint=true];
+"elong_meso_component_axis_length" -> "elong_macro_major_escape_alignment" [id="edge_upward__b03_r0031", color="#27667b", style="solid", constraint=true];
+"elong_macro_anisotropy_index" -> "elong_meso_component_aspect_ratio" [id="edge_downward__b02_r0000", color="#b3653b", style="dashed", constraint=false];
+"elong_meso_component_escape_alignment" -> "elong_micro_component_projection" [id="edge_downward__b03_r0007", color="#b3653b", style="dashed", constraint=false];
+"elong_macro_major_escape_alignment" -> "elong_meso_component_escape_alignment" [id="edge_downward__b03_r0010", color="#b3653b", style="dashed", constraint=false];
+"elong_macro_major_escape_alignment" -> "elong_micro_major_projection" [id="edge_downward__b03_r0014", color="#b3653b", style="dashed", constraint=false];
+}

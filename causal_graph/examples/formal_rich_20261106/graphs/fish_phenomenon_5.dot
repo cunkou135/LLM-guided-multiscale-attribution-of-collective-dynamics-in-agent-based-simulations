@@ -1,0 +1,45 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Fish | phenomenon_5</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">9 nodes / 18 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"pol_micro_heading_deviation" [id="node_pol_micro_heading_deviation", label="N37\nFocal heading deviation from\nschool mean", style="rounded,filled", fillcolor="white"];
+"pol_micro_neighbor_alignment" [id="node_pol_micro_neighbor_alignment", label="N38\nFocal heading alignment with\ncontact neighbors", style="rounded,filled", fillcolor="white"];
+"pol_micro_shark_proximity" [id="node_pol_micro_shark_proximity", label="N39\nFocal inverse distance to\nnearest shark", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"pol_meso_component_polarization" [id="node_pol_meso_component_polarization", label="N40\nContact-component heading\npolarization", style="rounded,filled", fillcolor="white"];
+"pol_meso_component_mean_deviation" [id="node_pol_meso_component_mean_deviation", label="N41\nContact-component mean\nheading deviation", style="rounded,filled", fillcolor="white"];
+"pol_meso_component_away_shark_alignment" [id="node_pol_meso_component_away_shark_alignment", label="N42\nContact-component heading\naway-from-shark alignment", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"pol_macro_school_polarization" [id="node_pol_macro_school_polarization", label="N43\nWhole-school heading\npolarization", style="rounded,filled", fillcolor="white"];
+"pol_macro_polarization_proximity_cov" [id="node_pol_macro_polarization_proximity_cov", label="N44\nRun-level polarization vs\nmean shark proximity\ncovariance", style="rounded,filled", fillcolor="white"];
+"pol_macro_polarization_change" [id="node_pol_macro_polarization_change", label="N45\nStep change in whole-school\npolarization", style="rounded,filled", fillcolor="white"];
+}
+"pol_micro_heading_deviation" -> "pol_meso_component_mean_deviation" [id="edge_upward__b00_r0018", color="#27667b", style="solid", constraint=true];
+"pol_micro_neighbor_alignment" -> "pol_meso_component_away_shark_alignment" [id="edge_upward__b01_r0008", color="#27667b", style="solid", constraint=true];
+"pol_micro_shark_proximity" -> "pol_meso_component_polarization" [id="edge_upward__b02_r0030", color="#27667b", style="solid", constraint=true];
+"pol_micro_shark_proximity" -> "pol_meso_component_away_shark_alignment" [id="edge_upward__b02_r0031", color="#27667b", style="solid", constraint=true];
+"pol_micro_shark_proximity" -> "pol_macro_school_polarization" [id="edge_upward__b02_r0033", color="#27667b", style="solid", constraint=true];
+"pol_micro_shark_proximity" -> "pol_macro_polarization_proximity_cov" [id="edge_upward__b02_r0034", color="#27667b", style="solid", constraint=true];
+"pol_meso_component_polarization" -> "pol_macro_school_polarization" [id="edge_upward__b03_r0043", color="#27667b", style="solid", constraint=true];
+"pol_meso_component_polarization" -> "pol_macro_polarization_change" [id="edge_upward__b03_r0044", color="#27667b", style="solid", constraint=true];
+"pol_macro_polarization_proximity_cov" -> "pol_meso_component_polarization" [id="edge_downward__b00_r0020", color="#b3653b", style="dashed", constraint=false];
+"pol_macro_polarization_change" -> "pol_meso_component_mean_deviation" [id="edge_downward__b01_r0009", color="#b3653b", style="dashed", constraint=false];
+"pol_macro_school_polarization" -> "pol_meso_component_polarization" [id="edge_downward__b03_r0029", color="#b3653b", style="dashed", constraint=false];
+"pol_macro_school_polarization" -> "pol_meso_component_mean_deviation" [id="edge_downward__b03_r0030", color="#b3653b", style="dashed", constraint=false];
+"pol_macro_school_polarization" -> "pol_micro_neighbor_alignment" [id="edge_downward__b03_r0031", color="#b3653b", style="dashed", constraint=false];
+"pol_macro_school_polarization" -> "pol_micro_heading_deviation" [id="edge_downward__b03_r0032", color="#b3653b", style="dashed", constraint=false];
+"pol_micro_heading_deviation" -> "pol_micro_neighbor_alignment" [id="edge_intra_scale__b00_r0016", color="#6e648d", style="dotted", constraint=false];
+"pol_meso_component_polarization" -> "pol_meso_component_away_shark_alignment" [id="edge_intra_scale__b03_r0030", color="#6e648d", style="dotted", constraint=false];
+"pol_macro_polarization_proximity_cov" -> "pol_macro_polarization_change" [id="edge_intra_scale__b03_r0049", color="#6e648d", style="dotted", constraint=false];
+"pol_macro_polarization_proximity_cov" -> "pol_macro_school_polarization" [id="edge_intra_scale__b03_r0050", color="#6e648d", style="dotted", constraint=false];
+}

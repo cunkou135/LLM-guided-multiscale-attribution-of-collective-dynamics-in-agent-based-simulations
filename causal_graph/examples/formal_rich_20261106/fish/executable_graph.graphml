@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d1" for="graph" attr.name="schema_version" attr.type="string"/>
+<key id="d0" for="graph" attr.name="evidence_status" attr.type="string"/>
+<graph edgedefault="directed"><data key="d0">unvalidated_semantic_candidates</data>
+<data key="d1">2.0</data>
+</graph></graphml>

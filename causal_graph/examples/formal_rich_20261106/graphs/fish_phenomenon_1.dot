@@ -1,0 +1,43 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Fish | phenomenon_1</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">9 nodes / 16 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"frag_micro_component_size" [id="node_frag_micro_component_size", label="N1\nContact-component size of\nfocal fish", style="rounded,filled", fillcolor="white"];
+"frag_micro_isolate" [id="node_frag_micro_isolate", label="N2\nFocal fish contact isolation\nflag", style="rounded,filled", fillcolor="white"];
+"frag_micro_component_shark_distance" [id="node_frag_micro_component_shark_distance", label="N3\nFocal component centroid to\nnearest shark distance", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"frag_meso_mean_component_size" [id="node_frag_meso_mean_component_size", label="N4\nMean contact-component size", style="rounded,filled", fillcolor="white"];
+"frag_meso_component_size_entropy" [id="node_frag_meso_component_size_entropy", label="N5\nContact-component size\nentropy", style="rounded,filled", fillcolor="white"];
+"frag_meso_centroid_pair_distance" [id="node_frag_meso_centroid_pair_distance", label="N6\nMean distance between\ncomponent centroids", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"frag_macro_component_count" [id="node_frag_macro_component_count", label="N7\nNumber of contact components", style="rounded,filled", fillcolor="white"];
+"frag_macro_largest_fraction" [id="node_frag_macro_largest_fraction", label="N8\nLargest component fish\nfraction", style="rounded,filled", fillcolor="white"];
+"frag_macro_component_count_change" [id="node_frag_macro_component_count_change", label="N9\nStep change in contact-\ncomponent count", style="rounded,filled", fillcolor="white"];
+}
+"frag_micro_component_size" -> "frag_meso_component_size_entropy" [id="edge_upward__b00_r0000", color="#27667b", style="solid", constraint=true];
+"frag_micro_isolate" -> "frag_meso_centroid_pair_distance" [id="edge_upward__b01_r0000", color="#27667b", style="solid", constraint=true];
+"frag_micro_component_shark_distance" -> "frag_meso_component_size_entropy" [id="edge_upward__b02_r0000", color="#27667b", style="solid", constraint=true];
+"frag_micro_component_shark_distance" -> "frag_meso_centroid_pair_distance" [id="edge_upward__b02_r0001", color="#27667b", style="solid", constraint=true];
+"frag_micro_component_shark_distance" -> "frag_macro_component_count" [id="edge_upward__b02_r0003", color="#27667b", style="solid", constraint=true];
+"frag_micro_component_shark_distance" -> "frag_macro_largest_fraction" [id="edge_upward__b02_r0004", color="#27667b", style="solid", constraint=true];
+"frag_meso_mean_component_size" -> "frag_macro_component_count" [id="edge_upward__b03_r0024", color="#27667b", style="solid", constraint=true];
+"frag_meso_mean_component_size" -> "frag_macro_largest_fraction" [id="edge_upward__b03_r0025", color="#27667b", style="solid", constraint=true];
+"frag_macro_largest_fraction" -> "frag_meso_mean_component_size" [id="edge_downward__b00_r0000", color="#b3653b", style="dashed", constraint=false];
+"frag_macro_component_count_change" -> "frag_meso_component_size_entropy" [id="edge_downward__b01_r0000", color="#b3653b", style="dashed", constraint=false];
+"frag_macro_component_count" -> "frag_meso_mean_component_size" [id="edge_downward__b03_r0000", color="#b3653b", style="dashed", constraint=false];
+"frag_macro_component_count" -> "frag_meso_component_size_entropy" [id="edge_downward__b03_r0001", color="#b3653b", style="dashed", constraint=false];
+"frag_macro_component_count" -> "frag_micro_isolate" [id="edge_downward__b03_r0003", color="#b3653b", style="dashed", constraint=false];
+"frag_micro_component_shark_distance" -> "frag_micro_isolate" [id="edge_intra_scale__b02_r0000", color="#6e648d", style="dotted", constraint=false];
+"frag_macro_component_count" -> "frag_macro_largest_fraction" [id="edge_intra_scale__b02_r0038", color="#6e648d", style="dotted", constraint=false];
+"frag_meso_mean_component_size" -> "frag_meso_component_size_entropy" [id="edge_intra_scale__b03_r0020", color="#6e648d", style="dotted", constraint=false];
+}

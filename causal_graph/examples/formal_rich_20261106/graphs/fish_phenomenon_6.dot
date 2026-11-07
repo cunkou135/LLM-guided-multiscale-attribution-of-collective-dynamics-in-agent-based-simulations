@@ -1,0 +1,48 @@
+digraph G {
+graph [rankdir=LR, newrank=true, nodesep=0.15, ranksep=0.42, splines=spline, outputorder=edgesfirst, pad=0.12, bgcolor="white", fontname="Times New Roman", fontsize=17, labelloc=t, labeljust=l, dpi=150];
+node [shape=box, style="rounded,filled", fillcolor="white", color="#444444", fontname="Times New Roman", fontsize=14, margin="0.10,0.07", penwidth=1.1];
+edge [arrowsize=0.7, penwidth=1.0];
+label=<<TABLE BORDER="0" CELLBORDER="0" CELLPADDING="2"><TR><TD ALIGN="LEFT">Fish | phenomenon_6</TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="12">9 nodes / 21 edges</FONT></TD></TR><TR><TD ALIGN="LEFT"><FONT POINT-SIZE="10" COLOR="#27667b">Upward: solid</FONT> | <FONT POINT-SIZE="10" COLOR="#b3653b">Downward: dashed</FONT> | <FONT POINT-SIZE="10" COLOR="#6e648d">Same scale: dotted</FONT></TD></TR></TABLE>>;
+subgraph cluster_micro {
+rank=same;
+label="Micro"; color="#dddddd"; margin=10; fontsize=16;
+"comp_micro_degree" [id="node_comp_micro_degree", label="N46\nFocal contact degree", style="rounded,filled", fillcolor="white"];
+"comp_micro_nearest_contact_distance" [id="node_comp_micro_nearest_contact_distance", label="N47\nFocal nearest contact-\nneighbor distance", style="rounded,filled", fillcolor="white"];
+"comp_micro_clustering_coefficient" [id="node_comp_micro_clustering_coefficient", label="N48\nFocal local clustering\ncoefficient", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_meso {
+rank=same;
+label="Meso"; color="#dddddd"; margin=10; fontsize=16;
+"comp_meso_component_edge_density" [id="node_comp_meso_component_edge_density", label="N49\nContact-component edge\ndensity", style="rounded,filled", fillcolor="white"];
+"comp_meso_component_mean_degree" [id="node_comp_meso_component_mean_degree", label="N50\nContact-component mean\ndegree", style="rounded,filled", fillcolor="white"];
+"comp_meso_component_mean_nearest_distance" [id="node_comp_meso_component_mean_nearest_distance", label="N51\nContact-component mean\nnearest-contact distance", style="rounded,filled", fillcolor="white"];
+}
+subgraph cluster_macro {
+rank=same;
+label="Macro"; color="#dddddd"; margin=10; fontsize=16;
+"comp_macro_school_mean_degree" [id="node_comp_macro_school_mean_degree", label="N52\nWhole-school mean contact\ndegree", style="rounded,filled", fillcolor="white"];
+"comp_macro_school_clustering" [id="node_comp_macro_school_clustering", label="N53\nWhole-school global\nclustering coefficient", style="rounded,filled", fillcolor="white"];
+"comp_macro_school_mean_nearest_distance" [id="node_comp_macro_school_mean_nearest_distance", label="N54\nWhole-school mean nearest-\ncontact distance", style="rounded,filled", fillcolor="white"];
+}
+"comp_micro_degree" -> "comp_meso_component_edge_density" [id="edge_upward__b02_r0035", color="#27667b", style="solid", constraint=true];
+"comp_micro_degree" -> "comp_meso_component_mean_nearest_distance" [id="edge_upward__b02_r0036", color="#27667b", style="solid", constraint=true];
+"comp_micro_degree" -> "comp_macro_school_clustering" [id="edge_upward__b02_r0038", color="#27667b", style="solid", constraint=true];
+"comp_meso_component_mean_degree" -> "comp_macro_school_clustering" [id="edge_upward__b02_r0040", color="#27667b", style="solid", constraint=true];
+"comp_meso_component_mean_degree" -> "comp_macro_school_mean_nearest_distance" [id="edge_upward__b02_r0041", color="#27667b", style="solid", constraint=true];
+"comp_micro_nearest_contact_distance" -> "comp_meso_component_mean_nearest_distance" [id="edge_upward__b03_r0014", color="#27667b", style="solid", constraint=true];
+"comp_micro_nearest_contact_distance" -> "comp_macro_school_mean_nearest_distance" [id="edge_upward__b03_r0017", color="#27667b", style="solid", constraint=true];
+"comp_meso_component_mean_nearest_distance" -> "comp_macro_school_mean_nearest_distance" [id="edge_upward__b03_r0049", color="#27667b", style="solid", constraint=true];
+"comp_meso_component_mean_nearest_distance" -> "comp_macro_school_mean_degree" [id="edge_upward__b03_r0050", color="#27667b", style="solid", constraint=true];
+"comp_macro_school_clustering" -> "comp_meso_component_edge_density" [id="edge_downward__b02_r0006", color="#b3653b", style="dashed", constraint=false];
+"comp_meso_component_mean_degree" -> "comp_micro_degree" [id="edge_downward__b03_r0034", color="#b3653b", style="dashed", constraint=false];
+"comp_meso_component_mean_degree" -> "comp_micro_nearest_contact_distance" [id="edge_downward__b03_r0035", color="#b3653b", style="dashed", constraint=false];
+"comp_meso_component_mean_degree" -> "comp_micro_clustering_coefficient" [id="edge_downward__b03_r0036", color="#b3653b", style="dashed", constraint=false];
+"comp_macro_school_mean_nearest_distance" -> "comp_meso_component_mean_nearest_distance" [id="edge_downward__b03_r0038", color="#b3653b", style="dashed", constraint=false];
+"comp_macro_school_mean_nearest_distance" -> "comp_meso_component_edge_density" [id="edge_downward__b03_r0039", color="#b3653b", style="dashed", constraint=false];
+"comp_macro_school_mean_nearest_distance" -> "comp_micro_nearest_contact_distance" [id="edge_downward__b03_r0040", color="#b3653b", style="dashed", constraint=false];
+"comp_macro_school_mean_nearest_distance" -> "comp_micro_degree" [id="edge_downward__b03_r0041", color="#b3653b", style="dashed", constraint=false];
+"comp_meso_component_mean_nearest_distance" -> "comp_meso_component_edge_density" [id="edge_intra_scale__b02_r0030", color="#6e648d", style="dotted", constraint=false];
+"comp_meso_component_mean_nearest_distance" -> "comp_meso_component_mean_degree" [id="edge_intra_scale__b02_r0031", color="#6e648d", style="dotted", constraint=false];
+"comp_macro_school_mean_degree" -> "comp_macro_school_clustering" [id="edge_intra_scale__b03_r0052", color="#6e648d", style="dotted", constraint=false];
+"comp_macro_school_mean_degree" -> "comp_macro_school_mean_nearest_distance" [id="edge_intra_scale__b03_r0053", color="#6e648d", style="dotted", constraint=false];
+}

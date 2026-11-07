@@ -5,7 +5,7 @@ from pathlib import Path
 import networkx as nx
 from jsonschema import Draft202012Validator
 
-from .io import digest, save_json
+from .io import digest, read_json, save_json
 from .schemas import GRAPH_SCHEMA, EXECUTABLE_SCHEMA
 
 
@@ -19,6 +19,8 @@ def merge_candidate_edges(context, calls, limits):
         if not report['valid']:raise ValueError(f'{stage}: {report["errors"]}')
         for index, edge in enumerate(raw):
             provenance={'stage':stage,'call':calls[stage],'original_edge_id':edge['edge_id'],'row_index':index}
+            if context.get('edge_origins', {}).get(stage):
+                provenance=deepcopy(context['edge_origins'][stage][index])
             pair=(edge['source'],edge['target'])
             if pair in lookup:
                 existing=lookup[pair]
@@ -37,6 +39,9 @@ def merge_candidate_edges(context, calls, limits):
 
 def assemble_graph(context, code_call, root):
     codes={v['indicator_id']:v for v in context['codes']}
+    assembly=Path(root)/code_call/'assembly.json'
+    origins={iid: item['generation_call'] for item in read_json(assembly)['sources']
+             for iid in item['indicator_ids']} if assembly.exists() else {}
     folder=Path(root)/'indicator_code'
     folder.mkdir(exist_ok=True)
     nodes=[]
@@ -51,7 +56,8 @@ def assemble_graph(context, code_call, root):
                 file.write_text(code['python_code'],encoding='utf-8')
         nodes.append({**definition,**{k:v for k,v in code.items() if k!='indicator_id'},
                       'node_id':definition['indicator_id'],'code_file':file.relative_to(root).as_posix() if file else None,
-                      'code_sha256':digest(file) if file else None,'generation_call':code_call,'execution':{}})
+                      'code_sha256':digest(file) if file else None,
+                      'generation_call':origins.get(definition['indicator_id'],code_call),'execution':{}})
     graph={'schema_version':'2.0','evidence_status':'unvalidated_semantic_candidates',
            'phenomena':deepcopy(context['phenomena']),'nodes':nodes,'edges':deepcopy(context['merged_edges'])}
     Draft202012Validator(GRAPH_SCHEMA).validate(graph)
