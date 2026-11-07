@@ -111,6 +111,8 @@ def test_only_failing_generation_task_retries(tmp_path, control_config, failure)
     prompts = list((filesystem_path(root) / 'internal/checkpoints').rglob('actual_prompt.json'))
     repairs = [read_json(p) for p in prompts if len(read_json(p)) > 2]
     assert len(repairs) == 1 and 'validation_errors' in repairs[0][-1]['content']
+    prior = json.loads(repairs[0][-1]['content'])['previous_candidate']
+    assert prior is not None
 
 
 def test_runtime_failure_regenerates_only_one_code_and_requires_fresh_review(tmp_path, control_config):

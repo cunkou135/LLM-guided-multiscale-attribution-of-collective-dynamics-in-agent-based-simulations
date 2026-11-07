@@ -84,6 +84,19 @@ def build_messages(stage, scenario_text, context, limits):
     if stage=='codes' or stage in EDGE_STAGES:prior['indicators']=context['indicators']
     payload={'template_version':template_version(limits),'generation_task':stage,'task':instructions[stage],
              'fixed_scenario':scenario_text,'prior_generated_definitions':prior,'output_schema':stage_schema(stage, limits)}
+    if stage == 'indicators' and limits.require_analysis_contract:
+        payload['analysis_contract_format'] = {
+            'scope': 'Interface shapes only, not indicator definitions. Derive each actual mathematical and analysis definition from the scenario.',
+            'entity_keys': 'Entity identifiers only, e.g. [agent_id] or [group_id]. Never include step or run_id. System observations use [].',
+            'features': 'For every scalar raw observable use output_features=[value], output_dimension=1, mapping.features=[value], analysis_dimension=1. mapping.features selects existing raw features; it never renames them.',
+            'agent_or_group_scalar_analysis': {'mapping': {'kind':'entity_aggregate', 'aggregation':'mean',
+                'aggregation_missing':'observed', 'features':['value'], 'entity_ids':[], 'entity_id':None},
+                'meaning': 'Compute raw entity observations first. M1 takes the declared population mean. Declare its scientific meaning explicitly. Median/sum are alternatives only when scientifically appropriate.'},
+            'system_scalar_analysis': {'observation_unit':'system', 'entity_keys':[],
+                'mapping': {'kind':'identity', 'aggregation':None, 'aggregation_missing':None,
+                    'features':['value'], 'entity_ids':[], 'entity_id':None}},
+            'entity_vector': 'Requires explicitly fixed existing entity_ids, never an empty list or all agents implicitly. analysis_dimension = selected entities times selected features.',
+            'coverage': 'Return the COMPLETE variable set on ordinary indicator-stage retries, preserving all scale/phenomenon coverage. Only an explicitly requested repair_indicator_ids task returns a subset.'}
     if stage in EDGE_STAGES and 'edge_source_ids' in context:
         payload['eligible_source_ids'] = context['edge_source_ids']
         payload['template_version'] += '/edge-partition-1'

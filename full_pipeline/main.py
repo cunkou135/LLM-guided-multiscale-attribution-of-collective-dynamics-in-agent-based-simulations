@@ -81,15 +81,25 @@ def load_configured_credential(cfg, llm):
 
 
 class AuditedClient:
-    def __init__(self, base, root, stage, previous):
+    def __init__(self, base, root, stage, previous, attempt):
         self.base, self.root, self.stage, self.previous = base, root, stage, previous
+        self.attempt = Path(attempt)
         self.mode = base.mode
 
     def complete(self, messages, directory):
         messages = deepcopy(messages)
         if self.previous:
+            # A stateless API cannot repair a candidate it has never been shown.
+            # Include only this task's preceding parsed response, not other stages.
+            candidates = sorted(p for prior in self.attempt.parent.glob('attempt_*')
+                                if prior.name < self.attempt.name for p in prior.rglob('response.txt') if p.is_file())
+            previous_candidate = None
+            if candidates:
+                try: previous_candidate = generation.parse_response(candidates[-1].read_text(encoding='utf-8'))
+                except (ValueError, TypeError): pass
             messages.append({'role': 'user', 'content': json.dumps({
                 'local_repair_only': True, 'stage': self.stage, 'validation_errors': self.previous,
+                'previous_candidate': previous_candidate,
                 'constraints': 'Repair only this task. Preserve supplied definitions/IDs. No statistical outcomes, true edges, true lags, reference answers or intervention evidence are supplied.'}, ensure_ascii=False)})
         save_json(Path(directory).parent / 'actual_prompt.json', messages)
         file = self.root / 'internal/logs/llm_calls' / (uuid.uuid4().hex + '.json')
@@ -126,7 +136,7 @@ def generate_task(manager, stage, context, limits, client, root, scenario, cfg, 
             report = check_generation(stage, parsed, context, limits)
             save_json(folder / 'quality_validation.json', report)
             return {'parsed': parsed, 'call': initial['call'], 'root': initial['root'], 'source_response': initial['source_response']}
-        wrapped = AuditedClient(client, root, task, previous)
+        wrapped = AuditedClient(client, root, task, previous, folder)
         functions = {'phenomena': generation.identify_phenomena, 'indicators': generation.define_indicators,
             'codes': generation.generate_codes, 'edges_upward': generation.propose_upward_edges,
             'edges_downward': generation.propose_downward_edges, 'edges_intrascale': generation.propose_intrascale_edges}
@@ -168,7 +178,7 @@ def initial_code_batches(manager, context, limits, client, root, scenario, cfg):
         inputs = generation_inputs('codes', local, limits, client, scenario, cfg)
         name = 'code_batch_' + object_digest([n['indicator_id'] for n in nodes])[:16]
         def batch(folder, previous, local=local):
-            wrapped = AuditedClient(client, root, name, previous)
+            wrapped = AuditedClient(client, root, name, previous, folder)
             try:
                 parsed, call = generation.generate_stage('codes', scenario['text'], local,
                     replace(limits, generation_attempts=1), wrapped, folder, allow_partial_codes=True)

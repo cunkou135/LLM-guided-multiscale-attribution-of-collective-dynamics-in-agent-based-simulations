@@ -48,6 +48,9 @@ def test_three_nodes_cannot_pass_formal_coverage_and_prompt_has_contract():
     payload = json.loads(build_messages('indicators', 'explicit mock', context, limits)[1]['content'])
     assert 'target 6 per scale' in payload['task'] and 'analysis_contract' in payload['output_schema']['properties']['indicators']['items']['required']
     assert 'Mechanism scale' in payload['task'] and 'predeclared' in payload['task']
+    formats = payload['analysis_contract_format']
+    assert formats['agent_or_group_scalar_analysis']['mapping']['features'] == ['value']
+    assert formats['system_scalar_analysis']['entity_keys'] == []
 
 
 def test_entity_requires_mapping_and_dimensions_cannot_be_silently_changed():

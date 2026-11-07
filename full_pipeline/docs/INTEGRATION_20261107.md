@@ -47,3 +47,5 @@ python -m full_pipeline --resume full_pipeline/results/<experiment_id>
 这些是代码集成测试，不是新的真实 LLM 正式实验。历史三节点 Fish/Covasim 结果保留，不将其改称为本次丰富图结果；本次集成修改不新增真实 API 实验结论。
 
 全量回归命令：`python -m pytest -q --tb=short --junitxml=full_pipeline/results/integration_regression_20261107.xml`。实际结果为 **204 passed，304.93 秒**；统一命令入口的 `--help` 也已成功运行。
+
+真实运行进一步发现，重试提示此前只携带错误文字，没有携带上次失败的定义，无状态 API 因而无法准确修复。现已补充本任务上次响应，并明确标量原始特征、分析映射及完整覆盖的输入格式。对应全量回归再次得到 **204 passed，283.55 秒**，记录在 `full_pipeline/results/research_retry_context_regression.xml`。修正只改变对应任务的请求版本，保留历史响应、仿真、Schema 和已通过的宏观现象检查点。
