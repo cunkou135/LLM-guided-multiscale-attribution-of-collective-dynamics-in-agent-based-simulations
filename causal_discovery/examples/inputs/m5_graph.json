@@ -1,0 +1,258 @@
+{
+  "graph": {
+    "nodes": [
+      {
+        "node_id": "A",
+        "indicator_id": "A",
+        "scale": "micro",
+        "phenomenon_id": "rule_fixture",
+        "name": "A",
+        "mathematical_definition": "recorded A(t)"
+      },
+      {
+        "node_id": "B",
+        "indicator_id": "B",
+        "scale": "micro",
+        "phenomenon_id": "rule_fixture",
+        "name": "B",
+        "mathematical_definition": "recorded B(t)"
+      },
+      {
+        "node_id": "Y",
+        "indicator_id": "Y",
+        "scale": "macro",
+        "phenomenon_id": "rule_fixture",
+        "name": "Y",
+        "mathematical_definition": "recorded Y(t)"
+      },
+      {
+        "node_id": "T",
+        "indicator_id": "T",
+        "scale": "micro",
+        "phenomenon_id": "rule_fixture",
+        "name": "T",
+        "mathematical_definition": "recorded T(t)"
+      },
+      {
+        "node_id": "bad",
+        "indicator_id": "bad",
+        "scale": "macro",
+        "phenomenon_id": "rule_fixture",
+        "name": "bad",
+        "mathematical_definition": "recorded bad(t)"
+      }
+    ],
+    "edges": [
+      {
+        "edge_id": "e0",
+        "source": "A",
+        "target": "Y",
+        "relation_type": "semantic_candidate"
+      },
+      {
+        "edge_id": "e1",
+        "source": "B",
+        "target": "Y",
+        "relation_type": "semantic_candidate"
+      },
+      {
+        "edge_id": "e2",
+        "source": "A",
+        "target": "T",
+        "relation_type": "semantic_candidate"
+      },
+      {
+        "edge_id": "e3",
+        "source": "T",
+        "target": "A",
+        "relation_type": "semantic_candidate"
+      },
+      {
+        "edge_id": "e4",
+        "source": "bad",
+        "target": "T",
+        "relation_type": "semantic_candidate"
+      }
+    ],
+    "run_ids": [
+      "fixture"
+    ]
+  },
+  "data": {
+    "valid_nodes": [
+      "A",
+      "B",
+      "Y",
+      "T"
+    ],
+    "invalid_nodes": {
+      "bad": {
+        "reason": "synthetic invalid data rule test"
+      }
+    },
+    "source_graph": "M5 artificial rule fixture, not algorithm-estimated evidence"
+  },
+  "lag_results": [
+    {
+      "target": "Y",
+      "parent_lags": {
+        "A": [
+          2
+        ],
+        "B": [
+          3
+        ]
+      },
+      "primary_lags": {
+        "A": 2,
+        "B": 3
+      },
+      "parent_status": {
+        "A": "estimated",
+        "B": "estimated"
+      },
+      "self_evidence": []
+    },
+    {
+      "target": "T",
+      "parent_lags": {
+        "A": [
+          2
+        ]
+      },
+      "primary_lags": {
+        "A": 2
+      },
+      "parent_status": {
+        "A": "estimated"
+      },
+      "self_evidence": [
+        {
+          "lag": 1,
+          "validation_gain": 0.2,
+          "status": "supported",
+          "calibration": {
+            "p_value": 0.001,
+            "p_value_valid": true,
+            "method": "ARTIFICIAL M5 RULE FIXTURE ONLY"
+          }
+        }
+      ],
+      "primary_self_lag": 1
+    },
+    {
+      "target": "A",
+      "parent_lags": {
+        "T": [
+          1
+        ]
+      },
+      "primary_lags": {
+        "T": 1
+      },
+      "parent_status": {
+        "T": "estimated"
+      },
+      "self_evidence": []
+    }
+  ],
+  "granger_results": [
+    {
+      "source": "A",
+      "target": "T",
+      "primary_lag": 2,
+      "lags": [
+        2
+      ],
+      "prediction_gain": 0.4,
+      "status": "supported",
+      "calibration": {
+        "p_value": 0.001,
+        "p_value_valid": true,
+        "method": "ARTIFICIAL M5 RULE FIXTURE ONLY"
+      }
+    },
+    {
+      "source": "T",
+      "target": "A",
+      "primary_lag": 1,
+      "lags": [
+        1
+      ],
+      "prediction_gain": 0.4,
+      "status": "supported",
+      "calibration": {
+        "p_value": 0.001,
+        "p_value_valid": true,
+        "method": "ARTIFICIAL M5 RULE FIXTURE ONLY"
+      }
+    }
+  ],
+  "pid_results": [
+    {
+      "sources": [
+        "A",
+        "B"
+      ],
+      "target": "Y",
+      "source_lags": {
+        "A": [
+          2
+        ],
+        "B": [
+          3
+        ]
+      },
+      "primary_lags": {
+        "A": 2,
+        "B": 3
+      },
+      "synergy": 1.0,
+      "redundancy": 0.0,
+      "joint_information": 1.0,
+      "unique": {
+        "A": 0.0,
+        "B": 0.0
+      },
+      "status": "supported",
+      "tests": {
+        "marginal_1": {
+          "gain_bits": 0.0,
+          "status": "rejected",
+          "calibration": {
+            "p_value": 0.8,
+            "p_value_valid": true,
+            "method": "ARTIFICIAL M5 RULE FIXTURE ONLY"
+          }
+        },
+        "marginal_2": {
+          "gain_bits": 0.0,
+          "status": "rejected",
+          "calibration": {
+            "p_value": 0.8,
+            "p_value_valid": true,
+            "method": "ARTIFICIAL M5 RULE FIXTURE ONLY"
+          }
+        },
+        "joint": {
+          "gain_bits": 1.0,
+          "status": "supported",
+          "calibration": {
+            "p_value": 0.001,
+            "p_value_valid": true,
+            "method": "ARTIFICIAL M5 RULE FIXTURE ONLY"
+          }
+        },
+        "synergy": {
+          "gain_bits": 1.0,
+          "status": "supported",
+          "calibration": {
+            "p_value": 0.001,
+            "p_value_valid": true,
+            "method": "ARTIFICIAL M5 RULE FIXTURE ONLY"
+          }
+        }
+      }
+    }
+  ]
+}

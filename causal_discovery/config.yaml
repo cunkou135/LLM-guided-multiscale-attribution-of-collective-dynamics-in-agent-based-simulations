@@ -1,0 +1,65 @@
+random_seed: 20261106
+demo:
+  m1_seed: 27
+  m1_length: 32
+  m2_seed: 805
+  m2_length: 2400
+  m3_seed: 983
+  m3_length: 2400
+  m4_seed: 371
+  m4_length: 6000
+  pipeline_seed: 701
+  pipeline_runs: 8
+  pipeline_length: 512
+data:
+  min_total_observations: 256
+  min_samples_per_run: 8
+  max_missing_fraction: 0.2
+  constant_tolerance: 1.0e-12
+  node_overrides: {}
+split:
+  fractions: [0.50, 0.15, 0.10, 0.25]
+  run_roles: {}
+  min_windows: {train: 128, validation: 48, confirmation: 48, test: 64}
+rnn:
+  # Recorded history samples; reported lags/weights multiply by actual step_size.
+  max_lag: 4
+  hidden_size: 20
+  epochs: 120
+  min_epochs: 30
+  patience: 20
+  batch_size: 256
+  learning_rate: 0.008
+  weight_decay: 0.0001
+  input_dropout: 0.03
+  gradient_clip_norm: 5.0
+  threads: 1
+  seeds: [19, 41]
+lag:
+  min_absolute_gain: 0.005
+  min_relative_gain: 0.01
+  minimum_seed_support: 0.75
+  maximum_primary_spread: 1
+calibration:
+  bootstrap_repeats: 499
+  block_length: 8
+  alpha: 0.05
+  assume_weak_stationarity: true
+  max_block_mean_shift_sd: 1.5
+granger:
+  min_prediction_gain: 0.005
+  minimum_positive_seed_fraction: 0.75
+pid:
+  bins: 2
+  discrete: auto
+  max_categories: 8
+  max_joint_states: 4096
+  pseudocount: 0.5
+  min_test_samples: 64
+  min_training_cell_count: 4
+  min_training_coverage: 0.9
+  min_information_bits: 0.01
+  max_pairs: 12
+decision:
+  correction: by
+  alpha: 0.05

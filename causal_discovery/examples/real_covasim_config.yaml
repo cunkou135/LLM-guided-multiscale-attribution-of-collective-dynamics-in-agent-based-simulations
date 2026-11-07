@@ -1,0 +1,4 @@
+data:
+  node_overrides:
+    icts_meso_layer_contact_change:
+      features: [c, h, s, w]

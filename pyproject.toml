@@ -12,17 +12,19 @@ dependencies = ["mesa[viz]==3.5.2", "PyYAML>=6,<7", "pyarrow>=18,<23", "pandas>=
 test = ["pytest>=8,<10", "psutil>=5.9,<8"]
 causal = ["jsonschema>=4.23,<5"]
 graphs = ["matplotlib>=3.9,<4", "Pillow>=10,<12"]
+discovery = ["torch>=2.5,<3", "jsonschema>=4.23,<5"]
 
 [tool.setuptools.packages.find]
-include = ["simulations*", "visualization*", "examples*", "experiments*", "scenarios*", "causal_graph*"]
-exclude = ["causal_graph.results*", "causal_graph.examples*", "causal_graph.docs*", "causal_graph.sandbox*"]
+include = ["simulations*", "visualization*", "examples*", "experiments*", "scenarios*", "causal_graph*", "causal_discovery*"]
+exclude = ["causal_graph.results*", "causal_graph.examples*", "causal_graph.docs*", "causal_graph.sandbox*", "causal_discovery.results*", "causal_discovery.examples*", "causal_discovery.docs*", "causal_discovery.tests*"]
 namespaces = true
 
 [tool.setuptools.package-data]
 scenarios = ["*.md", "*.yaml", "SHA256SUMS", "v2/*.md"]
 visualization = ["*.vue", "*.css"]
 causal_graph = ["configs/*.yaml", "docs/*.md", "sandbox/Dockerfile", "requirements-lock.txt", "README.md"]
+causal_discovery = ["config.yaml", "final_graph.schema.json", "README.md"]
 
 [tool.pytest.ini_options]
 pythonpath = ["."]
-testpaths = ["tests", "causal_graph/tests"]
+testpaths = ["tests", "causal_graph/tests", "causal_discovery/tests"]

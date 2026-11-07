@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["schema_version", "source_graph", "weight_semantics", "nodes", "edges"],
+  "properties": {
+    "schema_version": {"const": "causal-discovery/1.0"},
+    "source_graph": {"type": "string"},
+    "weight_semantics": {"const": "primary_lag_in_simulation_steps"},
+    "nodes": {"type": "array", "items": {"type": "object", "required": ["node_id", "indicator_id", "name", "scale", "phenomenon_id", "mathematical_definition"], "properties": {"node_id": {"type": "string"}, "indicator_id": {"type": "string"}, "scale": {"enum": ["micro", "meso", "macro"]}}}},
+    "edges": {"type": "array", "items": {"type": "object", "required": ["edge_id", "source", "target", "weight", "lags", "relation_type", "method", "status", "evidence"], "properties": {
+      "edge_id": {"type": "string"}, "source": {"type": "string"}, "target": {"type": "string"},
+      "weight": {"type": "integer", "minimum": 1},
+      "lags": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "integer", "minimum": 1}},
+      "relation_type": {"enum": ["individual_predictive", "joint_only", "self_memory"]},
+      "method": {"enum": ["rnn_granger", "lagged_mmi_pid", "rnn_lag"]}, "status": {"const": "accepted"},
+      "evidence": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["kind", "method", "status"], "properties": {"kind": {"enum": ["granger", "pid_marginal", "pid_joint", "self_memory"]}, "status": {"const": "accepted"}}}}
+    }}}
+  }
+}

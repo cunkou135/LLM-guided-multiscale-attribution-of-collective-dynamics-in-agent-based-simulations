@@ -1,0 +1,10 @@
+data:
+  node_overrides:
+    frag_micro_nn_distance:
+      entity_mode: aggregate
+      aggregation: mean
+      aggregation_missing: propagate
+    elong_micro_axis_alignment:
+      entity_mode: aggregate
+      aggregation: mean
+      aggregation_missing: propagate

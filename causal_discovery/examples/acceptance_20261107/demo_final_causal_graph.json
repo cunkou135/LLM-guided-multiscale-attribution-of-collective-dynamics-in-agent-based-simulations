@@ -1,0 +1,911 @@
+{
+  "schema_version": "causal-discovery/1.0",
+  "source_graph": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_discovery\\results\\acceptance_20261107\\demo_input_graph.json",
+  "weight_semantics": "primary_lag_in_simulation_steps",
+  "evidence_scope": "observational directed predictive dependence and joint information, not structural causal truth",
+  "nodes": [
+    {
+      "node_id": "X",
+      "indicator_id": "X",
+      "name": "Synthetic recorded X",
+      "scale": "micro",
+      "phenomenon_id": "demo",
+      "mathematical_definition": "V_X(t) is the recorded scalar observation at step t",
+      "units": "synthetic units",
+      "analysis_transformations": {
+        "seed_701": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_702": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_703": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_704": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_705": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_706": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_707": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_708": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        }
+      }
+    },
+    {
+      "node_id": "A",
+      "indicator_id": "A",
+      "name": "Synthetic recorded A",
+      "scale": "micro",
+      "phenomenon_id": "demo",
+      "mathematical_definition": "V_A(t) is the recorded scalar observation at step t",
+      "units": "synthetic units",
+      "analysis_transformations": {
+        "seed_701": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_702": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_703": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_704": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_705": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_706": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_707": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_708": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        }
+      }
+    },
+    {
+      "node_id": "B",
+      "indicator_id": "B",
+      "name": "Synthetic recorded B",
+      "scale": "meso",
+      "phenomenon_id": "demo",
+      "mathematical_definition": "V_B(t) is the recorded scalar observation at step t",
+      "units": "synthetic units",
+      "analysis_transformations": {
+        "seed_701": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_702": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_703": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_704": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_705": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_706": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_707": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_708": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        }
+      }
+    },
+    {
+      "node_id": "Y",
+      "indicator_id": "Y",
+      "name": "Synthetic recorded Y",
+      "scale": "macro",
+      "phenomenon_id": "demo",
+      "mathematical_definition": "V_Y(t) is the recorded scalar observation at step t",
+      "units": "synthetic units",
+      "analysis_transformations": {
+        "seed_701": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_702": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_703": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_704": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_705": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_706": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_707": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_708": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        }
+      }
+    },
+    {
+      "node_id": "Z",
+      "indicator_id": "Z",
+      "name": "Synthetic recorded Z",
+      "scale": "macro",
+      "phenomenon_id": "demo",
+      "mathematical_definition": "V_Z(t) is the recorded scalar observation at step t",
+      "units": "synthetic units",
+      "analysis_transformations": {
+        "seed_701": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_702": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_703": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_704": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_705": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_706": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_707": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_708": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        }
+      }
+    },
+    {
+      "node_id": "W",
+      "indicator_id": "W",
+      "name": "Synthetic recorded W",
+      "scale": "meso",
+      "phenomenon_id": "demo",
+      "mathematical_definition": "V_W(t) is the recorded scalar observation at step t",
+      "units": "synthetic units",
+      "analysis_transformations": {
+        "seed_701": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_702": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_703": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_704": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_705": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_706": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_707": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        },
+        "seed_708": {
+          "features": [
+            "value"
+          ],
+          "input_entity_level": false,
+          "aggregation": null,
+          "formula": "V_f(t) = recorded value of explicitly selected feature f at step t",
+          "analysis_unit": "run_step"
+        }
+      }
+    }
+  ],
+  "edges": [
+    {
+      "edge_id": "demo_X_Y",
+      "source": "X",
+      "target": "Y",
+      "relation_type": "individual_predictive",
+      "scale_direction": "bottom_up",
+      "semantic_rationale": "Predeclared synthetic candidate, not an accepted relation",
+      "candidate_relation_type": "semantic_candidate",
+      "candidate_edge_ids": [
+        "demo_X_Y"
+      ],
+      "weight": 2,
+      "lags": [
+        2,
+        3
+      ],
+      "method": "rnn_granger",
+      "status": "accepted",
+      "evidence": [
+        {
+          "kind": "granger",
+          "method": "rnn_granger",
+          "status": "accepted",
+          "prediction_gain": 0.7178522348403931,
+          "calibration": {
+            "method": "centered_moving_block_bootstrap",
+            "null": "expected heldout predictive score gain <= 0",
+            "p_value": 0.002,
+            "p_value_valid": true,
+            "assumptions": [
+              "held-out predictions fixed before evaluation",
+              "weakly stationary, weakly dependent score differences within runs",
+              "independent random-seed runs when more than one run is resampled"
+            ],
+            "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+            "repeats": 499,
+            "block_length": 8,
+            "run_count": 2,
+            "gain": 0.7178521991246937,
+            "block_mean_shift_sd": [
+              0.3582716252626406,
+              0.06264199425925576
+            ],
+            "confidence_interval": [
+              0.6857852553622145,
+              0.7588634400411087
+            ],
+            "finite_samples": 1016,
+            "seed": 1815747578
+          },
+          "adjusted_p_value": 0.007247619047619048,
+          "lags_origin": "M2 held-out ablation"
+        }
+      ]
+    },
+    {
+      "edge_id": "demo_A_Z",
+      "source": "A",
+      "target": "Z",
+      "relation_type": "joint_only",
+      "scale_direction": "bottom_up",
+      "semantic_rationale": "Predeclared synthetic candidate, not an accepted relation",
+      "candidate_relation_type": "semantic_candidate",
+      "candidate_edge_ids": [
+        "demo_A_Z"
+      ],
+      "weight": 2,
+      "lags": [
+        2
+      ],
+      "method": "lagged_mmi_pid",
+      "status": "accepted",
+      "evidence": [
+        {
+          "kind": "pid_joint",
+          "method": "lagged_mmi_pid",
+          "status": "accepted",
+          "joint_group_id": "J_493fe95f42469d5b",
+          "joint_sources": [
+            "A",
+            "B"
+          ],
+          "primary_lags": {
+            "A": 2,
+            "B": 3
+          },
+          "synergy_bits": 0.9548251905631631,
+          "synergy_is_group_quantity": true,
+          "joint_information_bits": 0.9842949831974657,
+          "redundancy_bits": 0.01980194284021225,
+          "joint_calibration": {
+            "method": "centered_moving_block_bootstrap",
+            "null": "expected heldout predictive score gain <= 0",
+            "p_value": 0.002,
+            "p_value_valid": true,
+            "assumptions": [
+              "held-out predictions fixed before evaluation",
+              "weakly stationary, weakly dependent score differences within runs",
+              "independent random-seed runs when more than one run is resampled"
+            ],
+            "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+            "repeats": 499,
+            "block_length": 8,
+            "run_count": 2,
+            "gain": 0.9811360446069959,
+            "block_mean_shift_sd": [
+              0.1863303642856386,
+              0.23065346324461952
+            ],
+            "confidence_interval": [
+              0.973416000001374,
+              0.9890712257627851
+            ],
+            "finite_samples": 1016,
+            "seed": 40277633
+          },
+          "synergy_calibration": {
+            "method": "intersection_union_of_two_block_score_tests",
+            "p_value": 0.002,
+            "p_value_valid": true,
+            "null": "joint fails to improve at least one singleton predictor",
+            "component_calibrations": [
+              {
+                "method": "centered_moving_block_bootstrap",
+                "null": "expected heldout predictive score gain <= 0",
+                "p_value": 0.002,
+                "p_value_valid": true,
+                "assumptions": [
+                  "held-out predictions fixed before evaluation",
+                  "weakly stationary, weakly dependent score differences within runs",
+                  "independent random-seed runs when more than one run is resampled"
+                ],
+                "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+                "repeats": 499,
+                "block_length": 8,
+                "run_count": 2,
+                "gain": 0.9850534147663724,
+                "block_mean_shift_sd": [
+                  0.16351075719963398,
+                  0.2797028398869874
+                ],
+                "confidence_interval": [
+                  0.9714524687830354,
+                  0.9975122528859225
+                ],
+                "finite_samples": 1016,
+                "seed": 691370376
+              },
+              {
+                "method": "centered_moving_block_bootstrap",
+                "null": "expected heldout predictive score gain <= 0",
+                "p_value": 0.002,
+                "p_value_valid": true,
+                "assumptions": [
+                  "held-out predictions fixed before evaluation",
+                  "weakly stationary, weakly dependent score differences within runs",
+                  "independent random-seed runs when more than one run is resampled"
+                ],
+                "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+                "repeats": 499,
+                "block_length": 8,
+                "run_count": 2,
+                "gain": 0.9922667550058095,
+                "block_mean_shift_sd": [
+                  0.17265638545851225,
+                  0.21554061056570092
+                ],
+                "confidence_interval": [
+                  0.9780395197441738,
+                  1.0079963548638151
+                ],
+                "finite_samples": 1016,
+                "seed": 1316745709
+              }
+            ],
+            "p_value_scope": "approximate predictive score evidence beyond BOTH singleton histograms; max of component p-values",
+            "assumptions": "Each component block calibration assumptions; no independence of the two p-values required"
+          },
+          "joint_adjusted_p_value": 0.007247619047619048,
+          "synergy_adjusted_p_value": 0.007247619047619048
+        }
+      ],
+      "joint_group_id": "J_493fe95f42469d5b",
+      "joint_sources": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "edge_id": "demo_B_Z",
+      "source": "B",
+      "target": "Z",
+      "relation_type": "joint_only",
+      "scale_direction": "bottom_up",
+      "semantic_rationale": "Predeclared synthetic candidate, not an accepted relation",
+      "candidate_relation_type": "semantic_candidate",
+      "candidate_edge_ids": [
+        "demo_B_Z"
+      ],
+      "weight": 3,
+      "lags": [
+        3
+      ],
+      "method": "lagged_mmi_pid",
+      "status": "accepted",
+      "evidence": [
+        {
+          "kind": "pid_joint",
+          "method": "lagged_mmi_pid",
+          "status": "accepted",
+          "joint_group_id": "J_493fe95f42469d5b",
+          "joint_sources": [
+            "A",
+            "B"
+          ],
+          "primary_lags": {
+            "A": 2,
+            "B": 3
+          },
+          "synergy_bits": 0.9548251905631631,
+          "synergy_is_group_quantity": true,
+          "joint_information_bits": 0.9842949831974657,
+          "redundancy_bits": 0.01980194284021225,
+          "joint_calibration": {
+            "method": "centered_moving_block_bootstrap",
+            "null": "expected heldout predictive score gain <= 0",
+            "p_value": 0.002,
+            "p_value_valid": true,
+            "assumptions": [
+              "held-out predictions fixed before evaluation",
+              "weakly stationary, weakly dependent score differences within runs",
+              "independent random-seed runs when more than one run is resampled"
+            ],
+            "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+            "repeats": 499,
+            "block_length": 8,
+            "run_count": 2,
+            "gain": 0.9811360446069959,
+            "block_mean_shift_sd": [
+              0.1863303642856386,
+              0.23065346324461952
+            ],
+            "confidence_interval": [
+              0.973416000001374,
+              0.9890712257627851
+            ],
+            "finite_samples": 1016,
+            "seed": 40277633
+          },
+          "synergy_calibration": {
+            "method": "intersection_union_of_two_block_score_tests",
+            "p_value": 0.002,
+            "p_value_valid": true,
+            "null": "joint fails to improve at least one singleton predictor",
+            "component_calibrations": [
+              {
+                "method": "centered_moving_block_bootstrap",
+                "null": "expected heldout predictive score gain <= 0",
+                "p_value": 0.002,
+                "p_value_valid": true,
+                "assumptions": [
+                  "held-out predictions fixed before evaluation",
+                  "weakly stationary, weakly dependent score differences within runs",
+                  "independent random-seed runs when more than one run is resampled"
+                ],
+                "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+                "repeats": 499,
+                "block_length": 8,
+                "run_count": 2,
+                "gain": 0.9850534147663724,
+                "block_mean_shift_sd": [
+                  0.16351075719963398,
+                  0.2797028398869874
+                ],
+                "confidence_interval": [
+                  0.9714524687830354,
+                  0.9975122528859225
+                ],
+                "finite_samples": 1016,
+                "seed": 691370376
+              },
+              {
+                "method": "centered_moving_block_bootstrap",
+                "null": "expected heldout predictive score gain <= 0",
+                "p_value": 0.002,
+                "p_value_valid": true,
+                "assumptions": [
+                  "held-out predictions fixed before evaluation",
+                  "weakly stationary, weakly dependent score differences within runs",
+                  "independent random-seed runs when more than one run is resampled"
+                ],
+                "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+                "repeats": 499,
+                "block_length": 8,
+                "run_count": 2,
+                "gain": 0.9922667550058095,
+                "block_mean_shift_sd": [
+                  0.17265638545851225,
+                  0.21554061056570092
+                ],
+                "confidence_interval": [
+                  0.9780395197441738,
+                  1.0079963548638151
+                ],
+                "finite_samples": 1016,
+                "seed": 1316745709
+              }
+            ],
+            "p_value_scope": "approximate predictive score evidence beyond BOTH singleton histograms; max of component p-values",
+            "assumptions": "Each component block calibration assumptions; no independence of the two p-values required"
+          },
+          "joint_adjusted_p_value": 0.007247619047619048,
+          "synergy_adjusted_p_value": 0.007247619047619048
+        }
+      ],
+      "joint_group_id": "J_493fe95f42469d5b",
+      "joint_sources": [
+        "A",
+        "B"
+      ]
+    },
+    {
+      "edge_id": "self_memory__Y",
+      "source": "Y",
+      "target": "Y",
+      "weight": 1,
+      "lags": [
+        1
+      ],
+      "relation_type": "self_memory",
+      "scale_direction": "intra_scale",
+      "method": "rnn_lag",
+      "status": "accepted",
+      "evidence": [
+        {
+          "kind": "self_memory",
+          "method": "rnn_lag",
+          "status": "accepted",
+          "lag": 1,
+          "calibration": {
+            "method": "centered_moving_block_bootstrap",
+            "null": "expected heldout predictive score gain <= 0",
+            "p_value": 0.002,
+            "p_value_valid": true,
+            "assumptions": [
+              "held-out predictions fixed before evaluation",
+              "weakly stationary, weakly dependent score differences within runs",
+              "independent random-seed runs when more than one run is resampled"
+            ],
+            "p_value_scope": "approximate predictive-score test, not structural or exact conditional independence",
+            "repeats": 499,
+            "block_length": 8,
+            "run_count": 1,
+            "gain": 0.10689202256015581,
+            "block_mean_shift_sd": [
+              0.3682927628602164
+            ],
+            "confidence_interval": [
+              0.09340032482149417,
+              0.12165944643885719
+            ],
+            "finite_samples": 508,
+            "seed": 3346791476
+          },
+          "validation_gain": 0.09158482775092125,
+          "adjusted_p_value": 0.007247619047619048
+        }
+      ]
+    }
+  ],
+  "run_ids": [
+    "seed_701",
+    "seed_702",
+    "seed_703",
+    "seed_704",
+    "seed_705",
+    "seed_706",
+    "seed_707",
+    "seed_708"
+  ],
+  "source_graph_sha256": "b0a3286cc5d77c76c3f7d5ee97cc57abc3b7c66442d5776123a30baf3c0c4806",
+  "multiplicity": {
+    "method": "by",
+    "valid_tests": 8
+  },
+  "provenance": {
+    "input_graph_sha256": "b0a3286cc5d77c76c3f7d5ee97cc57abc3b7c66442d5776123a30baf3c0c4806",
+    "data_origin": "explicit_demo_arrays",
+    "algorithm_config_sha256": "c4a85140187d392fdfcd61077186ea4a8153e3328a34af649fcf320d7f1109ef",
+    "llm_calls": 0,
+    "audit_directory": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_discovery\\results\\acceptance_20261107\\demo_final_causal_graph_audit",
+    "source_modules_sha256": {
+      "m1_data.py": "f4370ea62beb3f365030c1f9de73897a270640e7578ea5f9978cdb91bd69cfc8",
+      "m2_lag_rnn.py": "c6ca86d0626c030e63b9897aad34f76aa44227c1257a2f550c5f9276c49aa4ca",
+      "m3_granger.py": "c05e02d33e279e98edb4a8cd1abe99e5ef23f8ae996032e00156f06b6e8917d0",
+      "m4_pid.py": "9049c71a94457318439577b8684f22efa51062933c94b99af43fde516753f610",
+      "m5_graph.py": "47628eb255618d12e8298fd4ba33c8f3d978e768d64d00a6ca312dce22521a4d",
+      "pipeline.py": "8ad52cad9f44fd86a22a1e3f4f6b59b350025a5da1b8e5af8b45e0fb560b83aa",
+      "_common.py": "32ee99e2e3e679f69d0a8a75c2a2257fa2061a758760b3162cae32d13c7a3dba",
+      "_rnn.py": "adf6580abddb0423af18ebe6f48218003eb9d239752b17afe41ad2d043023a6f",
+      "__init__.py": "6b1e7518163871a324e510bafba9ccc0b19ca8bf22e1cf81007a4cdf09d73f9d",
+      "__main__.py": "68ed0673af76f0c56fb056b3e1757942484ccb8366b075985a3cdfca42d6d96f"
+    }
+  }
+}

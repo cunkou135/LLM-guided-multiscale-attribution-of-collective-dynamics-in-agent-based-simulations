@@ -1,0 +1,113 @@
+{
+  "status": "verified",
+  "cli_commands": 16,
+  "tests": 179,
+  "test_file_counts": {
+    "test_fish_migration": 5,
+    "test_models": 4,
+    "test_population": 2,
+    "test_publication": 5,
+    "test_reference": 3,
+    "test_scenarios": 6,
+    "test_schelling_extended": 6,
+    "test_trajectory": 12,
+    "test_visualization": 5,
+    "test_config": 10,
+    "test_data_schema": 7,
+    "test_formal_rich": 7,
+    "test_generation": 9,
+    "test_graph_v2": 5,
+    "test_indicator": 14,
+    "test_local_execution": 5,
+    "test_pipeline": 14,
+    "test_real_logs": 2,
+    "test_schema": 19,
+    "test_streaming": 7,
+    "test_visualize_graphs": 3,
+    "test_m1_data": 6,
+    "test_m2_lag_rnn": 4,
+    "test_m3_granger": 4,
+    "test_m4_pid": 7,
+    "test_m5_graph": 8
+  },
+  "demo_nodes": 6,
+  "demo_edges": 4,
+  "edges": [
+    {
+      "edge_id": "demo_X_Y",
+      "source": "X",
+      "target": "Y",
+      "weight": 2,
+      "relation_type": "individual_predictive"
+    },
+    {
+      "edge_id": "demo_A_Z",
+      "source": "A",
+      "target": "Z",
+      "weight": 2,
+      "relation_type": "joint_only"
+    },
+    {
+      "edge_id": "demo_B_Z",
+      "source": "B",
+      "target": "Z",
+      "weight": 3,
+      "relation_type": "joint_only"
+    },
+    {
+      "edge_id": "self_memory__Y",
+      "source": "Y",
+      "target": "Y",
+      "weight": 1,
+      "relation_type": "self_memory"
+    }
+  ],
+  "actual_parameter_files": 28,
+  "model_hash_references_checked": 28,
+  "original_observation_files_unchanged": [
+    {
+      "path": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\indicator_series\\2a815b4dfe4f47b8ac2416fac04456e5\\frag_micro_nn_distance.parquet",
+      "sha256": "3b312a81989834692e765b861953bf4b9777d72a81fc4c895e38399e387bb2c4"
+    },
+    {
+      "path": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\indicator_series\\2a815b4dfe4f47b8ac2416fac04456e5\\frag_meso_contact_component_count.parquet",
+      "sha256": "4cf060754c76c46cddf0dad5ff306bca23e6bc940786dc3b57db2221359e5811"
+    },
+    {
+      "path": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\indicator_series\\2a815b4dfe4f47b8ac2416fac04456e5\\frag_macro_largest_component_fraction.parquet",
+      "sha256": "af054b1af64809a55d82042106e5256b6011bcf86158bf17e0519d738b10a0ba"
+    },
+    {
+      "path": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\indicator_series\\2a815b4dfe4f47b8ac2416fac04456e5\\elong_micro_axis_alignment.parquet",
+      "sha256": "42ac8d51aeba9ef44e2d72ab20454b4af12dac3ef6056aec2a23c1cfd979cdcc"
+    },
+    {
+      "path": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\fish\\indicator_series\\2a815b4dfe4f47b8ac2416fac04456e5\\elong_macro_global_eigen_ratio.parquet",
+      "sha256": "5791da491ba8b3f12157e370812b190a52b31cf43b3eeb25b2fb2be46ee22554"
+    },
+    {
+      "path": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\indicator_series\\3249f90463154305aed53504106b3dae\\sic_macro_layer_entropy.parquet",
+      "sha256": "2fe88bd2ce1f3d64edf52698b4ee1921b855a23581fd11a7bbeb1e9a4a583ec0"
+    },
+    {
+      "path": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\indicator_series\\3249f90463154305aed53504106b3dae\\icts_meso_layer_contact_change.parquet",
+      "sha256": "934dfd6236571bae46827252f2c92b21559b1122e23d155b7b080b99b7fbd537"
+    },
+    {
+      "path": "E:\\work\\成果\\发表论文\\Nature Communication\\abms_lab\\causal_graph\\results\\v2_live_20261106\\covasim\\indicator_series\\3249f90463154305aed53504106b3dae\\icts_macro_city_contact_change_on_quarantine_increase.parquet",
+      "sha256": "5ffb1143ae8a5b522622133849a128734395e95a7c5789b7c9f0fa07875de63c"
+    }
+  ],
+  "checks": [
+    "schema and complete joint groups",
+    "original node definitions and external IDs preserved",
+    "weights equal estimated M2 primary lags",
+    "accepted numerical evidence passes correction",
+    "invalid node and incident edges absent",
+    "valid independent isolate retained",
+    "actual tensor weights finite, counts and SHA-256 verified",
+    "source graph and observations unchanged",
+    "saved algorithm hashes match current Python sources",
+    "all regression tests passed without skips"
+  ]
+}

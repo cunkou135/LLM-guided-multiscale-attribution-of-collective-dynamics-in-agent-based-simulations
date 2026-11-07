@@ -1,6 +1,6 @@
 # 群体动力学实验室：Schelling、Covasim与鱼群
 
-平台提供100×100异质偏好/有限迁居的扩展Schelling、Mesa 3.5.2标准Schelling，以及原生Covasim 2.0.0。支持实时交互、真实历史回放、批量干预、完整轨迹与论文图版导出。固定想定1.0原文保持原路径和哈希，新增scenarios/v2/下2.0版，默认研究配置使用2.0；其文本、编号和SHA-256不随参数实验改变。独立的 causal_graph 模块提供第一阶段 LLM 候选结构生成；统计因果检验、Bootstrap 和证据融合仍不在本轮实现范围内。
+平台提供100×100异质偏好/有限迁居的扩展Schelling、Mesa 3.5.2标准Schelling，以及原生Covasim 2.0.0。支持实时交互、真实历史回放、批量干预、完整轨迹与论文图版导出。固定想定1.0原文保持原路径和哈希，新增scenarios/v2/下2.0版，默认研究配置使用2.0；其文本、编号和SHA-256不随参数实验改变。独立的 causal_graph 模块提供第一阶段 LLM 候选结构生成。新增 [causal_discovery 第二部分](causal_discovery/README.md)读取已执行指标，提供独立 GRU 时滞、RNN-Granger、简单 MMI-PID 和统一 JSON 图整合；结果表达观测预测依赖及联合信息，不能直接视为结构因果真值。
 
 Covasim 默认配置是**未完成金县历史校准的 hybrid 演示**，没有 LTCF 层。论文的 Figure 3 小规模公开基准已作缓存对照；这不表示原研究的金县人口和疫情校准已经复现。模型、数据与许可来源见 [来源核查](docs/MODEL_SOURCES.md)。
 
