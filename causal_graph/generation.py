@@ -21,7 +21,7 @@ def stage_request(stage, scenario, context, limits):
     return messages, provenance, request_hash
 
 
-def generate_stage(stage, scenario, context, limits, client, root, *, directory=None):
+def generate_stage(stage, scenario, context, limits, client, root, *, directory=None, allow_partial_codes=False):
     directory = Path(directory) if directory is not None else Path(root) / 'generation' / stage
     directory.mkdir(parents=True, exist_ok=True)
     messages, provenance, request_hash = stage_request(stage, scenario, context, limits)
@@ -77,6 +77,7 @@ def generate_stage(stage, scenario, context, limits, client, root, *, directory=
             save_json(call / 'validation.json', {'valid': False, 'errors': [f'{type(exc).__name__}: {exc}']})
             raise
         (call / 'response.txt').write_text(raw, encoding='utf-8')
+        parsed = None
         try:
             parsed = parse_response(raw)
             report = validate_stage(stage, parsed, context, limits)
@@ -84,6 +85,19 @@ def generate_stage(stage, scenario, context, limits, client, root, *, directory=
         except (ValueError, TypeError) as exc:
             report = {'valid': False, 'errors': [f'{type(exc).__name__}: {exc}']}
         save_json(call / 'validation.json', report)
+        if allow_partial_codes and stage == 'codes' and isinstance(parsed, dict) and isinstance(parsed.get('codes'), list):
+            ids = [c.get('indicator_id') for c in parsed['codes'] if isinstance(c, dict)]
+            expected = {c['indicator_id'] for c in context['indicators']}
+            if len(ids) == len(parsed['codes']) and len(ids) == len(set(ids)) and set(ids) <= expected:
+                individual = {}
+                for code in parsed['codes']:
+                    one = {**context, 'indicators': [n for n in context['indicators'] if n['indicator_id'] == code['indicator_id']]}
+                    individual[code['indicator_id']] = validate_stage('codes', {'codes': [code]}, one, limits)
+                save_json(call / 'individual_validation.json', {'kind': 'partial_batch_not_global_approval',
+                    'codes': individual, 'missing_ids': sorted(expected - set(ids))})
+                # Caller checkpoints each function separately. Invalid or missing functions
+                # are repaired individually, never approving this whole batch as valid.
+                return parsed, call.relative_to(root).as_posix()
         if report['valid']:
             save_json(directory / 'parsed.json', parsed)
             relative = str(call.relative_to(root)).replace('\\', '/')

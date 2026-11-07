@@ -231,7 +231,7 @@ class Trajectory:
         paths = list(self.directory.glob('*.parquet')) if (self.directory / 'manifest.json').exists() else list((self.directory / 'checkpoints').glob('*.parquet'))
         return {str(path.relative_to(self.directory)): _digest(path) for path in sorted(paths)}
 
-    def read(self, name, start=None, end=None, agent_id=None):
+    def read(self, name, start=None, end=None, agent_id=None, columns=None):
         if name not in self.catalog:
             raise ValueError(f'{name} was not recorded or does not exist')
         filters = []
@@ -244,7 +244,7 @@ class Trajectory:
             source = sorted((self.directory / 'checkpoints').glob(f'{name}_*.parquet'))
             if not source:
                 raise ValueError(f'No completed checkpoint for {name}')
-        data = pq.read_table(source, filters=filters or None).to_pandas()
+        data = pq.read_table(source, filters=filters or None, columns=columns).to_pandas()
         if agent_id is not None:
             mask = data.agent_id == agent_id
             if 'partner_id' in data:
@@ -253,7 +253,16 @@ class Trajectory:
         return data.copy(deep=True)
 
     def available_steps(self):
-        return sorted(int(s) for s in self.read('model_states').step.unique())
+        return sorted(int(s) for s in self.read('model_states', columns=['step']).step.unique())
+
+    def iter_batches(self, name, columns=None, batch_size=65536):
+        """Bounded-memory public reader; preserves raw values and recording boundaries."""
+        if name not in self.catalog: raise ValueError(f'{name} was not recorded')
+        yield from pq.ParquetFile(self.directory / f'{name}.parquet').iter_batches(batch_size=batch_size, columns=columns)
+
+    def table_schema(self, name):
+        if name not in self.catalog: raise ValueError(f'{name} was not recorded')
+        return pq.read_schema(self.directory / f'{name}.parquet')
 
     def read_snapshot(self, step):
         if step not in self.available_steps():

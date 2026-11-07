@@ -37,6 +37,7 @@ class _CachedOnlyClient:
 def software_provenance():
     root = Path(__file__).resolve().parent
     hashes = {p.name: digest(p) for p in sorted(root.glob('*.py'))}
+    hashes['observation_contract.py'] = digest(root.parent / 'observation_contract.py')
     git = subprocess.run(['git', 'rev-parse', 'HEAD'], cwd=root, capture_output=True, text=True)
     dirty = subprocess.run(['git', 'status', '--porcelain'], cwd=root, capture_output=True, text=True)
     versions = {name: importlib.metadata.version(name) for name in
@@ -106,6 +107,8 @@ def run_pipeline(paths, llm_config, settings, output, *, client=None, resume=Fal
                                ('max_phenomena', 'max_indicators', 'max_edges', 'generation_attempts')}
         if settings.code_batch_size:
             generation_settings['code_batch_size'] = settings.code_batch_size
+        for key in ('min_indicators_per_scale', 'target_indicators_per_scale', 'require_analysis_contract'):
+            if getattr(settings, key): generation_settings[key] = getattr(settings, key)
         identity = {'inputs': [{k: r[k] for k in ('directory', 'data_hashes')} for r in runs],
                     'llm': llm_config.summary(), 'generation_settings': generation_settings,
                     'prompt_version': template_version(settings), 'source_sha256': software['source_sha256'],

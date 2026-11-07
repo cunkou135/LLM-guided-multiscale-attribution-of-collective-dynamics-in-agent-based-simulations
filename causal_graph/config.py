@@ -107,6 +107,10 @@ class PipelineConfig:
     min_observations: int = 3
     missing_fraction_warning: float = .2
     code_batch_size: int = 0
+    min_indicators_per_scale: int = 0
+    target_indicators_per_scale: int = 0
+    require_analysis_contract: bool = False
+    execution_step_batch_size: int = 0
 
     def summary(self):
         return asdict(self)
@@ -123,6 +127,15 @@ def load_pipeline(path):
         raise ValueError('execution_mode must be isolated or trusted_reviewed')
     if type(result.code_batch_size) is not int or result.code_batch_size < 0:
         raise ValueError('code_batch_size must be a nonnegative integer; zero means a single call')
+    if any(type(getattr(result, key)) is not int or getattr(result, key) < 0 for key in
+           ('min_indicators_per_scale', 'target_indicators_per_scale')):
+        raise ValueError('Scale minimum and target must be nonnegative integers')
+    if result.target_indicators_per_scale < result.min_indicators_per_scale or 3 * result.target_indicators_per_scale > result.max_indicators:
+        raise ValueError('Require min_per_scale <= target_per_scale and 3*target <= max_indicators')
+    if type(result.require_analysis_contract) is not bool:
+        raise ValueError('require_analysis_contract must be boolean')
+    if type(result.execution_step_batch_size) is not int or result.execution_step_batch_size < 0:
+        raise ValueError('execution_step_batch_size must be a nonnegative integer')
     if type(result.indicator_timeout) is not int or not 1 <= result.indicator_timeout <= 300:
         raise ValueError('indicator_timeout must be within [1, 300]')
     if not _number(result.missing_fraction_warning, 0, 1):

@@ -1,6 +1,9 @@
 """Exact registered scenario matching and unchanged-model simulation preparation."""
 from copy import deepcopy
+import ast
+import hashlib
 from pathlib import Path
+import subprocess
 
 import yaml
 
@@ -12,6 +15,25 @@ from simulations.common import runner
 from simulations.common.trajectory_api import Trajectory
 
 ROOT = Path(__file__).resolve().parents[1]
+
+
+def reader_only_source_upgrade(old, current):
+    """Allow verified old raw logs when ONLY the public reader changed.
+
+    The original writer/constants AST must equal the current writer/constants,
+    and the old byte hash must match the known Git baseline (LF or CRLF).
+    """
+    key = 'simulations/common/trajectory_api.py'
+    if set(old) != set(current) or any(old[k] != current[k] for k in old if k != key): return False
+    baseline = subprocess.run(['git','show',f'c8df1fbbdbcc9a4c635b7313b1fe8abc69415daf:{key}'], cwd=ROOT, capture_output=True)
+    if baseline.returncode: return False
+    data = baseline.stdout.replace(b'\r\n', b'\n')
+    if old.get(key) not in {hashlib.sha256(data).hexdigest(), hashlib.sha256(data.replace(b'\n',b'\r\n')).hexdigest()}: return False
+    def writer(text):
+        tree = ast.parse(text)
+        tree.body = [n for n in tree.body if not isinstance(n, ast.ClassDef) or n.name != 'Trajectory']
+        return ast.dump(tree, include_attributes=False)
+    return writer(data.decode('utf-8-sig')) == writer((ROOT / key).read_text(encoding='utf-8-sig'))
 
 
 def match_scenario(path: str | Path) -> dict:
@@ -54,6 +76,15 @@ def prepare_run(scenario: dict, cfg: dict, cache: Path, reuse: bool, run_functio
     identity = {k: v for k, v in cfg.items() if k not in ('output', 'visualization')}
     identity.update(scenario_sha256=scenario['scenario_sha256'], sources=source_identity(scenario['model']))
     key = object_digest(identity); cached = cache / f'{key}.json'
+    if reuse and not cached.exists():
+        for previous in cache.glob('*.json'):
+            saved = read_json(previous); original = saved['identity']
+            if ({k:v for k,v in original.items() if k != 'sources'} == {k:v for k,v in identity.items() if k != 'sources'} and
+                    reader_only_source_upgrade(original['sources'], identity['sources'])):
+                assert_unchanged([saved])
+                save_json(cached, {**saved, 'identity':identity, 'source_upgrade': {
+                    'kind':'reader_only_same_writer_AST', 'original_cache':str(previous), 'original_cache_sha256':digest(previous)}})
+                break
     if reuse and cached.exists():
         saved = read_json(cached)
         if saved['identity'] != identity: raise ValueError('Simulation cache identity mismatch')

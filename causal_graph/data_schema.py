@@ -69,30 +69,56 @@ def inspect_trajectory_schema(run):
     trajectory = Trajectory(run['directory'])
     tables = {}
     for name, catalog in trajectory.catalog.items():
-        frame = trajectory.read(name)
+        # Inspect every value for null/type coverage with bounded memory; sample
+        # exactly first/middle/last non-null JSON records as in the original API.
+        counts = {column: 0 for column in catalog['fields']}
+        missing = {column: False for column in counts}
+        types = {column: set() for column in counts}
+        categories = {column:set() for column in counts if column in ('role','layer','event_type','old_state','new_state')}
+        size = 64 if name == 'raw_frames' else 65536
+        for batch in trajectory.iter_batches(name, batch_size=size):
+            frame = batch.to_pandas()
+            for column in counts:
+                observed = frame[column].dropna()
+                counts[column] += len(observed)
+                missing[column] |= bool(frame[column].isna().any())
+                if len(observed): types[column].add(str(pa.array(observed).type))
+                if column in categories and len(categories[column]) <= 64:
+                    categories[column].update(str(v) for v in observed.unique())
         fields = {}
+        json_columns = [column for column in counts if column.endswith('_json')]
+        positions = {column: sorted({0, counts[column] // 2, counts[column] - 1}) if counts[column] else [] for column in json_columns}
+        samples = {column: [] for column in json_columns}; offsets = {column: 0 for column in json_columns}
+        if json_columns:
+            for batch in trajectory.iter_batches(name, columns=json_columns, batch_size=size):
+                frame = batch.to_pandas()
+                for column in json_columns:
+                    observed = frame[column].dropna()
+                    for position in positions[column]:
+                        if offsets[column] <= position < offsets[column] + len(observed):
+                            samples[column].append(observed.iloc[position - offsets[column]])
+                    offsets[column] += len(observed)
         for column, declared in catalog['fields'].items():
-            series = frame[column]
-            observed = series.dropna()
-            actual_type = str(pa.array(observed).type) if len(observed) else declared.get('type', 'unknown')
+            observed_types = types[column]
+            actual_type = 'double' if observed_types <= {'int64', 'int32', 'double'} and 'double' in observed_types else (
+                next(iter(observed_types)) if len(observed_types) == 1 else declared.get('type', 'unknown'))
             fields[column] = {'type': actual_type, 'catalog_type': declared.get('type', 'unknown'),
                               'description': declared.get('description') or 'unknown',
                               'allows_missing': True, 'nullability_source': 'public reader does not expose Parquet nullability; conservatively nullable',
-                              'missing_observed': bool(series.isna().any()),
-                              'type_observation': 'observed_nonnull_values' if len(observed) else 'catalog_only_no_nonnull_values'}
-            if column.endswith('_json'):
-                candidates = observed.tolist()
-                positions = sorted({0, len(candidates) // 2, len(candidates) - 1}) if candidates else []
-                shape = None
-                errors = []
-                for position in positions:
+                              'missing_observed': missing[column],
+                              'type_observation': 'observed_nonnull_values' if counts[column] else 'catalog_only_no_nonnull_values'}
+            if column in categories and len(categories[column]) <= 64:
+                fields[column]['observed_category_domain'] = sorted(categories[column])
+                fields[column]['category_scope'] = 'observed labels only; no frequencies, numeric outcomes or causal evidence'
+            if column in samples:
+                shape = None; errors = []
+                for value in samples[column]:
                     try:
-                        current = describe_json(json.loads(candidates[position]))
+                        current = describe_json(json.loads(value))
                         shape = current if shape is None else merge_shapes(shape, current)
-                    except (ValueError, TypeError):
-                        errors.append('invalid_or_non_JSON_record')
+                    except (ValueError, TypeError): errors.append('invalid_or_non_JSON_record')
                 fields[column]['json_structure'] = shape
-                fields[column]['json_inspection'] = {'records_inspected': len(positions), 'row_selection': 'first_middle_last_nonnull',
+                fields[column]['json_inspection'] = {'records_inspected': len(positions[column]), 'row_selection': 'first_middle_last_nonnull',
                     'array_items_per_level': 8, 'max_depth': 16, 'exhaustive': False, 'errors': errors,
                     'semantics': 'Nested names/types observed in sampled records; meanings unknown unless provided by catalog.'}
         tables[name] = {'purpose': catalog.get('granularity') or 'unknown',
@@ -145,6 +171,8 @@ def build_data_schema(runs):
                                     'run_types': {r['manifest']['run_id']: f['type'] if f else None for r, f in zip(runs, fields)}})
                 continue
             common = deepcopy(fields[0])
+            if any('observed_category_domain' in f for f in fields):
+                common['observed_category_domain'] = sorted(set().union(*(set(f.get('observed_category_domain',[])) for f in fields)))
             common['missing_observed'] = any(f['missing_observed'] for f in fields)
             if len({f['description'] for f in fields}) > 1:
                 common['description'] = 'unknown: catalog descriptions differ across runs'

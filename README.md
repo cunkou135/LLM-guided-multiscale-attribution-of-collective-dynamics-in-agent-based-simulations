@@ -6,6 +6,8 @@ Covasim 默认配置是**未完成金县历史校准的 hybrid 演示**，没有
 
 新增 [full_pipeline 全流程入口](full_pipeline/README.md)：`python -m full_pipeline --scenario scenarios/fish.md`。它自动匹配已注册想定、准备独立种子仿真、调用两个既有研究模块，并发布 `stage1_graph.json` 与 `final_causal_graph.json`。支持分阶段审核、局部修复及 `--resume`；审核未完成或统计数据不足时保留明确状态和原因。
 
+默认采用正式变量配置：每尺度至少 4 个、目标 6 个，总预算 30 个。生成变量时即声明用于 M1 的观测与分析契约，指标执行及 M1 适配先于三类候选边生成。完整正式预算可通过 `--config full_pipeline/config_research.yaml` 指定；原三节点配置仅用于显式接口测试。
+
 ## 安装
 
 主环境使用 Python 3.12：

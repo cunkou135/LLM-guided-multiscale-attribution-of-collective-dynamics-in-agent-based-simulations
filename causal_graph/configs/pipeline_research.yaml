@@ -1,0 +1,13 @@
+max_phenomena: 3
+max_indicators: 30
+min_indicators_per_scale: 4
+target_indicators_per_scale: 6
+require_analysis_contract: true
+max_edges: 120
+generation_attempts: 3
+execution_mode: trusted_reviewed
+indicator_timeout: 300
+min_observations: 3
+missing_fraction_warning: 0.2
+code_batch_size: 4
+execution_step_batch_size: 64

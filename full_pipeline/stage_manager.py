@@ -67,8 +67,11 @@ class StageManager:
             invalidation = directory / 'invalidations' / (saved['attempt'] + '.json')
             if not invalidation.exists():
                 value = read_json(directory / saved['result'])
-                if validator: validator(value)
-                return value
+                try:
+                    if validator: validator(value)
+                    return value
+                except QualityError as exc:
+                    self.invalidate(name, inputs, exc.issues)
             previous = read_json(invalidation)['issues']
         attempts = sorted(directory.glob('attempt_*'))
         if attempts and not previous:

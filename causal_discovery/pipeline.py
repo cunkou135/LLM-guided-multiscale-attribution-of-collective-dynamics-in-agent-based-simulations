@@ -98,7 +98,8 @@ def run_pipeline(input_graph: str | Path | dict, output: str | Path, config: dic
             continue
         if len(ps) == 1:
             parent = ps[0]
-            aligned = align_target(data, target, [parent])
+            # Keep the same common observed clock used by M2. Pair-specific
+            # realignment could silently change sampling intervals and lag units.
             selected = lag.get('parent_lags', {}).get(parent, []) if lag.get('parent_status', {}).get(parent) == 'estimated' else []
             record = test_granger(aligned['parents'][parent], aligned['y'], selected,
                 primary_lag=lag.get('primary_lags', {}).get(parent) if selected else None,
@@ -108,7 +109,7 @@ def run_pipeline(input_graph: str | Path | dict, output: str | Path, config: dic
         elif len(ps) >= 2:
             route.update(pid_pair_plan(ps, cfg['pid']['max_pairs']))
             for a, b in route['evaluated_pairs']:
-                aligned = align_target(data, target, [a, b])
+                # Select sources from M2's common alignment, not a finer pair grid.
                 selected = {s: lag.get('parent_lags', {}).get(s, []) if lag.get('parent_status', {}).get(s) == 'estimated' else [] for s in (a, b)}
                 record = lagged_mmi_pid(aligned['parents'][a], aligned['parents'][b], aligned['y'], selected,
                     sources=(a, b), target=target, primary_lags=lag.get('primary_lags', {}), steps=aligned['steps'], config=cfg)
@@ -126,6 +127,7 @@ def run_pipeline(input_graph: str | Path | dict, output: str | Path, config: dic
     if source and sha256(source) != before: raise ValueError('Input graph changed during analysis')
     final = integrated['graph']
     final['provenance'] = {'input_graph_sha256': before, 'data_origin': data['data_origin'],
+                           'observation_contract_sha256': sha256(Path(__file__).resolve().parents[1] / 'observation_contract.py'),
                            'algorithm_config_sha256': sha256(audit / 'parameters.json'), 'llm_calls': 0,
                            'audit_directory': str(audit), 'source_modules_sha256': {p.name: sha256(p) for p in Path(__file__).parent.glob('*.py')}}
     validate_final_graph(final)

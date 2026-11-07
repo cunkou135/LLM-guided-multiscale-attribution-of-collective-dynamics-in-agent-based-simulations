@@ -60,10 +60,11 @@ def control_config(tmp_path_factory):
     cfg['parameters']['population']['count'] = 12
     file = directory / 'explicit_small_fish_mock_control.yaml'
     file.write_text(yaml.safe_dump(cfg), encoding='utf-8')
-    return {'simulation': {'seeds': [11], 'additional_seeds': [], 'max_total_runs': 1,
+    return {'experiment_mode': 'interface_test', 'simulation': {'seeds': [11], 'additional_seeds': [], 'max_total_runs': 1,
                 'steps': {'fish': 5}, 'configs': {'fish': str(file)}, 'supplement_for_coverage': False},
             'output': {'root': str(directory / 'cache')},
-            'stage1': {'pipeline_overrides': {'max_phenomena': 1, 'max_indicators': 3, 'max_edges': 12}}}
+            'stage1': {'pipeline_config': 'causal_graph/configs/pipeline.yaml',
+                       'pipeline_overrides': {'max_phenomena': 1, 'max_indicators': 3, 'max_edges': 12}}}
 
 
 def approve_fixture(root):
@@ -118,10 +119,12 @@ def test_runtime_failure_regenerates_only_one_code_and_requires_fresh_review(tmp
     assert result['status'] == 'review_required'
     assert [p['indicator_id'] for p in read_json(root / 'internal/stage1/review_request.json')['pending']] == ['test_b']
     counts = Counter(client.calls)
-    assert counts['codes:test_b'] == 2 and counts['edges_upward'] == counts['edges_downward'] == 1
+    assert counts['codes:test_b'] == 2 and counts['edges_upward'] == counts['edges_downward'] == 0
     approve_fixture(root); result = run_full_pipeline(resume=root, client=client)
     assert result['status'] == 'completed'
-    assert Counter(client.calls) == counts
+    after = Counter(client.calls)
+    assert all(after[name] == count for name, count in counts.items())
+    assert all(after[stage] == 1 for stage in ('edges_upward','edges_downward','edges_intrascale'))
     reports = list((filesystem_path(root) / 'internal/stage1/builds').glob('*/execution/*/test_b/attempt_*/report.json'))
     assert any(read_json(p)['status'] == 'failed' for p in reports) and any(read_json(p)['status'] == 'success' for p in reports)
 

@@ -1,6 +1,7 @@
 """Step 1: validate completed runs using public Trajectory and scenario APIs."""
 from pathlib import Path
 from pandas.api.types import is_integer_dtype
+import pyarrow as pa
 
 from scenarios.protocol import load_scenario
 from simulations.common.trajectory_api import Trajectory
@@ -69,18 +70,26 @@ def inspect_run(path):
     for name, entry in t.catalog.items():
         if name not in {'agent_states', 'events', 'contacts', 'raw_frames', 'model_states'} or name + '.parquet' not in checksums:
             raise ValueError(f'Invalid or unregistered catalog table: {name}')
-        data = t.read(name)
-        if set(data.columns) != set(entry['fields']):
+        columns = list(t.table_schema(name).names)
+        if set(columns) != set(entry['fields']):
             raise ValueError(f'Catalog/Parquet field mismatch: {name}')
-        rows[name] = len(data)
-        for key in ('run_id', 'model_name', 'model_version', 'scenario_id', 'scenario_version', 'scenario_sha256', 'seed'):
-            if key not in data or not data[key].eq(meta[key]).all():
-                raise ValueError(f'Row provenance mismatch: {name}/{key}')
-        if not is_integer_dtype(data.step) or data.step.isna().any() or not data.step.between(0, meta['actual_steps']).all():
-            raise ValueError(f'Invalid source time bounds: {name}')
-        if name == 'model_states' and data.step.duplicated().any():
-            raise ValueError('Duplicate model-state time indices')
-        time_steps.update(int(s) for s in data.step.unique())
+        if 'step' not in columns or not pa.types.is_integer(t.table_schema(name).field('step').type):
+            raise ValueError(f'Invalid source time coordinate type: {name}')
+        keys = ('run_id', 'model_name', 'model_version', 'scenario_id', 'scenario_version', 'scenario_sha256', 'seed')
+        if not set(keys) | {'step'} <= set(columns): raise ValueError(f'Missing provenance fields: {name}')
+        rows[name] = 0
+        seen_model_steps = set()
+        for batch in t.iter_batches(name, columns=[*keys, 'step']):
+            data = batch.to_pandas(); rows[name] += len(data)
+            for key in keys:
+                if not data[key].eq(meta[key]).all(): raise ValueError(f'Row provenance mismatch: {name}/{key}')
+            if not is_integer_dtype(data.step) or data.step.isna().any() or not data.step.between(0, meta['actual_steps']).all():
+                raise ValueError(f'Invalid source time bounds: {name}')
+            values = set(int(s) for s in data.step.unique())
+            if name == 'model_states':
+                if data.step.duplicated().any() or seen_model_steps & values: raise ValueError('Duplicate model-state time indices')
+                seen_model_steps.update(values)
+            time_steps.update(values)
     steps = t.available_steps()
     if not steps or steps[0] != 0 or steps[-1] != meta['actual_steps'] or not rows['agent_states']:
         raise ValueError('Missing initial/final source snapshots or empty agent states')

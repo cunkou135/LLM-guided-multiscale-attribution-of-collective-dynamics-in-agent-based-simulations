@@ -7,3 +7,5 @@ scenarios/SHA256SUMS text eol=lf
 causal_graph/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 causal_discovery/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 full_pipeline/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+observation_contract.py -text
+simulations/common/trajectory_api.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -1,0 +1,12 @@
+experiment_mode: research
+simulation:
+  steps: {fish: 1000, covasim: 60}
+  seeds: [11, 22, 33, 44, 55, 66, 77, 88]
+  seeds_by_model:
+    fish: [11, 22, 33, 44]
+    covasim: [11, 22, 33, 44, 55, 66, 77, 88]
+  additional_seeds: []
+  max_total_runs: 8
+  supplement_for_coverage: false
+stage1:
+  pipeline_config: causal_graph/configs/pipeline_research.yaml

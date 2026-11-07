@@ -35,13 +35,23 @@ def check_generation(stage: str, value: dict, context: dict, limits) -> dict:
     problems = [issue(stage, classify_error(stage, e), e) for e in report['errors']]
     if stage == 'indicators':
         signatures = {}
-        for node in value.get('indicators', []):
+        analyses = {}
+        nodes = value.get('indicators', [])
+        if context.get('repair_indicator_ids'):
+            lookup = {n['indicator_id']:n for n in nodes}
+            nodes = [lookup.get(n['indicator_id'],n) for n in context['existing_indicators']]
+        for node in nodes:
             formula = node.get('mathematical_definition', '').casefold()
             formula = re.sub(r'^\s*[^=]{1,50}=(?!=)', '', formula)
             formula = re.sub(r'\s+|[，。；,;]', '', formula)
             if formula in signatures:
                 problems.append(issue(stage, 'duplicate_variable', f'Duplicate normalized mathematical definition of {signatures[formula]}', node['indicator_id']))
             signatures[formula] = node['indicator_id']
+            if 'analysis_contract' in node:
+                analysis = re.sub(r'\s+|[，。；,;]', '', node['analysis_contract']['analysis_definition'].casefold())
+                if analysis in analyses:
+                    problems.append(issue(stage,'duplicate_variable',f'Duplicate normalized analysis quantity of {analyses[analysis]}',node['indicator_id']))
+                analyses[analysis] = node['indicator_id']
             for field in ('mathematical_definition', 'units', 'computation_notes'):
                 if not node.get(field, '').strip(): problems.append(issue(stage, 'incomplete_definition', f'Missing {field}', node['indicator_id']))
     if stage == 'phenomena':
@@ -66,20 +76,23 @@ def check_generation(stage: str, value: dict, context: dict, limits) -> dict:
 
 
 def definition_hash(node: dict) -> str:
-    return object_digest({k: node[k] for k in ('indicator_id', 'phenomenon_id', 'scale', 'name', 'description',
-        'mathematical_definition', 'units', 'computation_notes', 'required_data')})
+    fields = {k: node[k] for k in ('indicator_id', 'phenomenon_id', 'scale', 'name', 'description',
+        'mathematical_definition', 'units', 'computation_notes', 'required_data')}
+    if 'analysis_contract' in node: fields['analysis_contract'] = node['analysis_contract']
+    return object_digest(fields)
 
 
 def reviewed_approvals(graph: dict, review_file: Path, output: Path) -> tuple[dict | None, list]:
     """Require declared review of code AND unchanged definitions; never infer human approval."""
     review = read_json(review_file) if review_file.is_file() else {}
-    pending, accepted, rejections = [], {}, {}
+    pending, accepted, rejections, definition_repairs = [], {}, {}, {}
     for node in graph['nodes']:
         if node['implementation_status'] != 'implemented': continue
         iid = node['indicator_id']; record = review.get('reviews', {}).get(iid, {})
         matching = record.get('code_sha256') == node['code_sha256'] and record.get('definition_sha256') == definition_hash(node)
         if matching and record.get('verdict') == 'rejected':
             rejections[iid] = {'reason': record.get('reason', 'Explicit scientific/code review rejection'), 'code_sha256': node['code_sha256']}
+            if record.get('repair_stage') == 'indicators': definition_repairs[iid] = rejections[iid]['reason']
         elif matching and record.get('verdict') == 'approved' and all(record.get('checks', {}).get(k) is True for k in REVIEW_CHECKS):
             accepted[iid] = node['code_sha256']
         else:
@@ -87,7 +100,8 @@ def reviewed_approvals(graph: dict, review_file: Path, output: Path) -> tuple[di
                             'definition': {k: v for k, v in node.items() if k not in ('execution',)},
                             'required_review_checks': list(REVIEW_CHECKS)})
     save_json(output / 'review_request.json', {'review_file': str(review_file), 'pending': pending,
-        'explicit_rejections': rejections, 'scope': 'Separate actual scientific/code review required; static validation is NOT approval or a sandbox'})
+        'explicit_rejections': rejections, 'definition_repairs':definition_repairs,
+        'scope': 'Separate actual scientific/code review required; static validation is NOT approval or a sandbox'})
     if pending: return None, pending
     if accepted or rejections:
         basic = {k: review.get(k) for k in ('reviewer', 'reviewed_at', 'notes')}

@@ -10,6 +10,21 @@ import pandas as pd
 from pandas.api.types import is_numeric_dtype
 
 from ._common import align_runs, as_matrix, emit, make_windows, read_json, serializable, settings, sha256
+from observation_contract import m1_options, validate_contract
+
+
+def admission_error_type(message: str) -> str:
+    text = message.casefold()
+    if 'configured override conflicts' in text: return 'configuration_error'
+    if any(term in text for term in ('output features differ', 'output observation unit differs', 'output entity keys differ',
+                                    'analysis dimension differs', 'recorded time cadence differs')):
+        return 'implementation_contract_error'
+    if any(term in text for term in ('entity observations require explicit', 'multiple features require',
+        'selected entity absent', 'explicit existing entity_ids', 'explicit entity_id is required')):
+        return 'definition_contract_error'
+    if any(term in text for term in ('insufficient', 'constant/run-level', 'missing fraction', 'all-missing')):
+        return 'data_insufficient'
+    return 'input_data_error'
 
 
 def align_arrays(x: Any, y: Any, steps: Any = None, min_samples: int = 3) -> dict:
@@ -85,7 +100,8 @@ def _adapt_frame(frame: pd.DataFrame, options: dict) -> tuple[pd.DataFrame, dict
             matrix = values.unstack('feature').reindex(columns=requested)
             transform.update(aggregation=aggregation, analysis_unit='run_step', entity_mode=mode,
                              formula=f'V_f(t) = {aggregation}_{{e in recorded E_t}} v_ef(t); missing={missing}',
-                             contributing_entity_counts=frame.groupby('step').entity_id.nunique().to_dict())
+                             recorded_entity_counts=frame.groupby('step').entity_id.nunique().to_dict(),
+                             contributing_entity_counts=frame.dropna(subset=['value']).groupby('step').entity_id.nunique().to_dict())
         elif mode == 'select':
             if 'entity_id' not in options: raise ValueError('Explicit entity_id is required')
             entity = _entity(options['entity_id'])
@@ -133,6 +149,13 @@ def adapt_graph(graph: str | Path | Mapping, config: Mapping | str | Path | None
         node_runs, node_transforms, node_report = {}, {}, {'runs': {}, 'source_files': {}}
         try:
             options = data_cfg['node_overrides'].get(iid, {})
+            contract = node.get('analysis_contract')
+            if contract:
+                validate_contract(contract)
+                declared = m1_options(contract)
+                if any(k in options and options[k] != value for k, value in declared.items()):
+                    raise ValueError('Configured override conflicts with the predeclared analysis mapping')
+                options = {**options, **declared}
             total = 0
             for rid in runs:
                 if 'demo_series' in source:
@@ -156,7 +179,22 @@ def adapt_graph(graph: str | Path | Mapping, config: Mapping | str | Path | None
                     if not {'run_id', 'indicator_id'} <= set(frame): raise ValueError('Missing run/indicator identifiers')
                     frame = frame[(frame.run_id == rid) & (frame.indicator_id == iid)]
                     node_report['source_files'][rid] = {'path': str(file.resolve()), 'sha256': sha256(file), 'raw_rows': len(frame)}
+                if contract:
+                    if set(frame.feature.unique()) != set(contract['output_features']):
+                        raise ValueError('Output features differ from the predeclared raw output contract')
+                    if bool('entity_id' in frame) != bool(contract['entity_keys']):
+                        raise ValueError('Output observation unit differs from the predeclared entity contract')
+                    if 'entity_id' in frame:
+                        keys = set(contract['entity_keys'])
+                        if any(set(json.loads(_entity(v))) != keys for v in frame.entity_id.unique()):
+                            raise ValueError('Output entity keys differ from the predeclared contract')
                 matrix, transformation = _adapt_frame(frame, options)
+                if contract:
+                    transformation.update(contract_version=contract['version'], raw_observation_unit=contract['observation_unit'],
+                        analysis_definition=contract['analysis_definition'], mechanism_scale=node['scale'],
+                        interpretation='Declared analysis quantity; aggregation is not an individual-level causal effect')
+                    if matrix.shape[1] != contract['analysis_dimension']:
+                        raise ValueError('Analysis dimension differs from the predeclared contract')
                 finite_rows = np.isfinite(matrix.to_numpy()).all(axis=1)
                 missing = float(1 - finite_rows.mean()) if len(matrix) else 1.0
                 constants = [name for name in matrix if matrix[name].dropna().empty or np.ptp(matrix[name].dropna()) <= data_cfg['constant_tolerance']]
@@ -172,6 +210,8 @@ def adapt_graph(graph: str | Path | Mapping, config: Mapping | str | Path | None
                 steps = matrix.index.to_numpy()
                 stride = int(np.gcd.reduce(np.diff(steps))) if len(steps) > 1 else 0
                 if stride <= 0: raise ValueError('Nonpositive time cadence')
+                if contract and stride != contract['sampling_interval_steps']:
+                    raise ValueError('Recorded time cadence differs from the predeclared analysis contract')
                 node_report['runs'][rid].update(step_size=stride, gap_count=int(np.count_nonzero(np.diff(steps) != stride)))
                 total += int(finite_rows.sum())
                 node_runs[rid] = serializable({'steps': steps, 'values': matrix.to_numpy(), 'features': list(matrix.columns), 'step_size': stride})
@@ -190,7 +230,7 @@ def adapt_graph(graph: str | Path | Mapping, config: Mapping | str | Path | None
                 raise ValueError(f'insufficient within-run windows for separate analysis partitions: {insufficient}')
             valid.append(iid); series[iid] = node_runs; transforms[iid] = node_transforms
         except (ValueError, KeyError, TypeError, OSError) as exc:
-            invalid[iid] = {'reason': f'{type(exc).__name__}: {exc}', 'report': node_report}
+            invalid[iid] = {'reason': f'{type(exc).__name__}: {exc}', 'error_type':admission_error_type(str(exc)), 'report': node_report}
         reports[iid] = node_report
     kept = [deepcopy(e) for e in edges if e['source'] in valid and e['target'] in valid and e['source'] != e['target']]
     return serializable({'module': 'M1', 'valid_nodes': valid, 'valid_edges': kept, 'series': series,

@@ -1,7 +1,9 @@
+experiment_mode: research
 simulation:
   use_registered_scenario: true
   reuse_matching_runs: true
   seeds: [11, 22, 33, 44]
+  seeds_by_model: {}
   additional_seeds: [55, 66, 77, 88]
   sampling_frequency: 1
   max_total_runs: 8
@@ -10,7 +12,7 @@ simulation:
   configs: {fish: configs/fish.yaml, covasim: configs/covasim.yaml}
 stage1:
   llm_config: causal_graph/configs/deepseek_flash.yaml
-  pipeline_config: causal_graph/configs/pipeline.yaml
+  pipeline_config: causal_graph/configs/pipeline_research.yaml
   pipeline_overrides: {}
   execution_mode: trusted_reviewed
   review_file: null

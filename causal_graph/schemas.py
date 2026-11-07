@@ -2,8 +2,10 @@
 import ast
 import json
 import re
+from copy import deepcopy
 from jsonschema import Draft202012Validator
 from .code_contract import check_required, analyze_access
+from observation_contract import SCHEMA as ANALYSIS_CONTRACT, validate_contract
 
 VERSION = '2.0'
 TEXT = {'type': 'string', 'minLength': 1, 'pattern': r'\S'}
@@ -35,17 +37,35 @@ SCHEMAS.update({stage:obj({'edges':array(EDGE,0)}) for stage in EDGE_STAGES})
 NODE = obj({**INDICATOR['properties'],**{k:v for k,v in CODE['properties'].items() if k!='indicator_id'},
     'node_id':ID,'code_file':{'type':['string','null']},'code_sha256':{'type':['string','null']},
     'generation_call':TEXT,'execution':{'type':'object'}})
+# Optional on legacy archives, mandatory in the explicitly enabled research protocol.
+NODE['properties']['analysis_contract'] = ANALYSIS_CONTRACT
+GRAPH_PHENOMENON = deepcopy(PHENOMENON)
+GRAPH_PHENOMENON['properties'].update(definition=TEXT, scenario_basis=TEXT)
 GRAPH_EDGE = obj({**EDGE['properties'],'edge_id':TEXT,
     'source_phenomenon':ID,'target_phenomenon':ID,
     'generation_sources':array(obj({'stage':TEXT,'call':TEXT,'original_edge_id':ID,'row_index':{'type':'integer','minimum':0}}))})
 GRAPH_SCHEMA = obj({'schema_version':{'const':VERSION},
     'evidence_status':{'const':'unvalidated_semantic_candidates'},
-    'phenomena':array(PHENOMENON),'nodes':array(NODE),'edges':array(GRAPH_EDGE,0)})
+    'phenomena':array(GRAPH_PHENOMENON),'nodes':array(NODE),'edges':array(GRAPH_EDGE,0)})
 EXECUTABLE_SCHEMA = obj({**GRAPH_SCHEMA['properties'],'nodes':array(NODE,0),
     'run_ids':array(TEXT),'execution_policy':{'const':'success_on_every_listed_run'},
     'excluded_nodes':array(obj({'indicator_id':ID,'run_status':{'type':'object',
         'additionalProperties':{'enum':['success','failed','not_executed']}}}),0),
     'excluded_edges':array(obj({'edge':GRAPH_EDGE,'reason':TEXT}),0)})
+
+def stage_schema(stage, limits):
+    schema = deepcopy(SCHEMAS[stage])
+    if limits.require_analysis_contract:
+        if stage == 'indicators':
+            item = schema['properties']['indicators']['items']
+            item['properties']['analysis_contract'] = ANALYSIS_CONTRACT
+            item['required'].append('analysis_contract')
+        if stage == 'phenomena':
+            item = schema['properties']['phenomena']['items']
+            item['properties'].update(definition=TEXT, scenario_basis=TEXT)
+            item['required'].extend(['definition', 'scenario_basis'])
+    return schema
+
 
 def classify_direction(source_scale, target_scale):
     rank = {'micro':0,'meso':1,'macro':2}
@@ -107,7 +127,7 @@ def code_errors(code):
 
 def validate_stage(stage, value, context, limits):
     errors = [f'{"/".join(map(str,e.absolute_path))}: {e.message}'
-              for e in Draft202012Validator(SCHEMAS[stage]).iter_errors(value)]
+              for e in Draft202012Validator(stage_schema(stage, limits)).iter_errors(value)]
     warnings, contracts = [], {}
     if errors:
         return {'valid':False,'errors':errors,'warnings':warnings}
@@ -126,6 +146,21 @@ def validate_stage(stage, value, context, limits):
     if stage in ('indicators','codes') and schema is None:
         errors.append('Observed data schema is required')
     if stage=='indicators':
+        if context.get('repair_indicator_ids'):
+            expected = set(context['repair_indicator_ids'])
+            if set(ids) != expected: return {'valid':False,'errors':['Local definition repair IDs differ from the requested IDs'],'warnings':[]}
+            original = {n['indicator_id']:n for n in context['existing_indicators']}
+            for node in entries:
+                if any(node[key] != original[node['indicator_id']][key] for key in ('scale','phenomenon_id')):
+                    return {'valid':False,'errors':[f'{node["indicator_id"]}: local repair cannot silently change scale or phenomenon'],'warnings':[]}
+            replacements = {n['indicator_id']:n for n in entries}
+            combined = [replacements.get(n['indicator_id'], n) for n in context['existing_indicators']]
+            clean = {k:v for k,v in context.items() if k not in ('repair_indicator_ids','existing_indicators','definition_issues')}
+            return validate_stage('indicators', {'indicators':combined}, clean, limits)
+        counts = {scale: sum(v['scale'] == scale for v in entries) for scale in ('micro', 'meso', 'macro')}
+        for scale, count in counts.items():
+            if count < limits.min_indicators_per_scale:
+                errors.append(f'{scale}: {count} variables < required minimum {limits.min_indicators_per_scale}')
         phenomena={v['phenomenon_id'] for v in context['phenomena']}
         if any(v['phenomenon_id'] not in phenomena for v in entries): errors.append('Invalid phenomenon reference')
         for pid in phenomena:
@@ -134,6 +169,12 @@ def validate_stage(stage, value, context, limits):
         if schema:
             for item in entries:
                 errors.extend(f'{item["indicator_id"]}: {e}' for e in check_required(item['required_data'],schema))
+        for item in entries:
+            if 'analysis_contract' in item:
+                if not any('step' in fields for fields in item['required_data'].values()):
+                    errors.append(f'{item["indicator_id"]}: observed step field is required by the time contract')
+                try: validate_contract(item['analysis_contract'])
+                except ValueError as exc: errors.append(f'{item["indicator_id"]}: invalid analysis contract: {exc}')
     if stage=='codes':
         definitions={v['indicator_id']:v for v in context['indicators']}
         if set(ids)!=set(definitions):errors.append('Code IDs must match all generated indicators exactly')

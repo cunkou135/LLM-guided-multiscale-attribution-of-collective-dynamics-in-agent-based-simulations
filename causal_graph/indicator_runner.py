@@ -5,6 +5,7 @@ from pathlib import Path
 import subprocess
 import sys
 import time
+from dataclasses import replace
 
 import numpy as np
 import pandas as pd
@@ -19,7 +20,7 @@ class ReviewRejected(PermissionError):
     pass
 
 
-def check_result(result, run_id, indicator_id, allowed_steps, settings):
+def check_result(result, run_id, indicator_id, allowed_steps, settings, *, allow_undefined_entities=False):
     if isinstance(result, pd.Series):
         result = result.to_frame(name='value')
     if not isinstance(result, pd.DataFrame) or result.empty:
@@ -77,12 +78,19 @@ def check_result(result, run_id, indicator_id, allowed_steps, settings):
         missing = float(series.isna().mean())
         constant = bool(series.nunique(dropna=True) <= 1 and finite > 0)
         minimum = finite
+        undefined_entities = 0
         if entity_keys is not None:
-            minimum = int(series.notna().groupby(entity_keys).sum().min())
+            per_entity = series.notna().groupby(entity_keys).sum()
+            minimum = int(per_entity.min())
+            undefined_entities = int(per_entity.eq(0).sum())
+            checked_minimum = int(per_entity.loc[per_entity.gt(0)].min()) if per_entity.gt(0).any() else 0
+        else: checked_minimum = minimum
         columns[column] = {'finite_observations': finite, 'minimum_observations_per_entity': minimum,
-                           'missing_fraction': missing, 'constant': constant}
-        if minimum < settings.min_observations:
-            raise ValueError(f'{column}: insufficient actual observations ({minimum} < {settings.min_observations})')
+                           'missing_fraction': missing, 'constant': constant,
+                           'entities_without_defined_values': undefined_entities}
+        required_minimum = checked_minimum if allow_undefined_entities else minimum
+        if required_minimum < settings.min_observations:
+            raise ValueError(f'{column}: insufficient actual observations ({required_minimum} < {settings.min_observations})')
         if constant:
             warnings.append(f'{column}: constant series; retained without causal claims')
         if missing > settings.missing_fraction_warning:
@@ -137,7 +145,9 @@ def _trusted_compute(trajectory, node, code_file, settings, folder):
     output = folder / 'returned_result.parquet'
     save_json(request, {'run_dir': str(trajectory.directory.resolve()), 'code_file': str(code_file.resolve()),
                         'code_sha256': node['code_sha256'], 'required': node['required'],
-                        'config': node['config'], 'output': str(output)})
+                        'config': node['config'], 'output': str(output),
+                        'analysis_contract': node.get('analysis_contract'),
+                        'step_batch_size': settings.execution_step_batch_size})
     keep = {'SYSTEMROOT', 'WINDIR', 'PATH', 'TEMP', 'TMP', 'USERPROFILE', 'LOCALAPPDATA',
             'APPDATA', 'PROGRAMDATA', 'CONDA_PREFIX', 'VIRTUAL_ENV'}
     env = {k: v for k, v in os.environ.items() if k.upper() in keep}
@@ -212,7 +222,13 @@ def execute_indicator(node, run, root, settings, approvals=None):
             result = result.to_frame(name='value')
         if isinstance(result, pd.DataFrame):
             result.to_parquet(folder / 'returned_result.parquet')
-        series, quality = check_result(result, rid, iid, run['allowed_steps'], settings)
+        contract = node.get('analysis_contract', {})
+        aggregation = contract.get('mapping', {}).get('kind') == 'entity_aggregate'
+        raw_settings = replace(settings, min_observations=1) if aggregation else settings
+        series, quality = check_result(result, rid, iid, run['allowed_steps'], raw_settings, allow_undefined_entities=aggregation)
+        quality['raw_observation_validation'] = {'minimum_per_observed_entity':raw_settings.min_observations,
+            'undefined_entities_allowed_for_declared_aggregation':aggregation,
+            'analysis_time_eligibility':'separately checked by M1 after the predeclared mapping'}
         destination = Path(root) / 'indicator_series' / rid / f'{iid}.parquet'
         destination.parent.mkdir(parents=True, exist_ok=True)
         series.to_parquet(destination, index=False)
